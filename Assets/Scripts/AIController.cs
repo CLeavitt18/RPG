@@ -88,7 +88,6 @@ public class AIController : LivingEntities
         CalculateStats();
         CalculateWeight();
         StatusManger.RunCalculs();
-        ChainCalcs();
         ChillCalcs();
         CalculateSpeed();
 

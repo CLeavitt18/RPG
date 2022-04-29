@@ -1037,7 +1037,7 @@ public class LivingEntities : MonoBehaviour
         CalculateSpeed();
     }
 
-    protected void ChainCalcs()
+    /*protected void ChainCalcs()
     {
         for (int HandType = 0; HandType < 2; HandType++)
         {
@@ -1053,7 +1053,7 @@ public class LivingEntities : MonoBehaviour
             Hands[HandType].Stats.ChainLength *= 1 + Temp;
             Hands[HandType].Stats.ChainLength = Mathf.Round(Hands[HandType].Stats.ChainLength * 10) * .1f;
         }
-    }
+    }*/
 
     protected void ChillCalcs()
     {

@@ -65,7 +65,6 @@
     <Compile Include="Assets\Scripts\DayNight.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\ResourceDeposit.cs" />
-    <Compile Include="Assets\Scripts\BaseClasses\StatusAffect.cs" />
     <Compile Include="Assets\Scripts\ResourceHolder.cs" />
     <Compile Include="Assets\Scripts\PotionRolller.cs" />
     <Compile Include="Assets\Scripts\NPCDialogue.cs" />
@@ -169,6 +168,8 @@
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\RuneTableUI.cs" />
     <Compile Include="Assets\Scripts\ReflectBurning.cs" />
+    <Compile Include="Assets\Scripts\LightningStatusManager.cs" />
+    <Compile Include="Assets\Scripts\ChainAffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

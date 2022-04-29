@@ -52,7 +52,6 @@ public class Player : LivingEntities
 
         ResetPowers();
         StatusManger.RunCalculs();
-        ChainCalcs();
         ChillCalcs();
         CalculateSpeed();
 
@@ -518,8 +517,6 @@ public class Player : LivingEntities
                         }
                     }
 
-                    StatusManger.RunCalculs();
-
                     break;
                 case SkillType.Astromancy:
 
@@ -531,8 +528,6 @@ public class Player : LivingEntities
                             SpellDamageMulti(i, DamageTypeEnum.Lightning);
                         }
                     }
-
-                    ChainCalcs();
 
                     break;
                 case SkillType.Cryomancy:
@@ -568,6 +563,8 @@ public class Player : LivingEntities
                     break;
             }
         }
+
+        StatusManger.RunCalculs();
 
         if (LevelProgress >= GlobalValues.LevelProgressMax)
         {
@@ -674,7 +671,6 @@ public class Player : LivingEntities
         }
 
         StatusManger.RunCalculs();
-        ChainCalcs();
         ChillCalcs();
 
         for (int i = 0; i < 3; i++)
