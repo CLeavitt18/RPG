@@ -1013,11 +1013,6 @@ public class LivingEntities : MonoBehaviour
     #endregion
 
     #region StatusAffects
-    /*public virtual IEnumerator ChainLightning(DamageStats stats, int id)
-    {
-        yield break;
-    }*/
-
     public IEnumerator ChillStatus(DamageStats stats)
     {
         Chilled = true;
@@ -1036,24 +1031,6 @@ public class LivingEntities : MonoBehaviour
 
         CalculateSpeed();
     }
-
-    /*protected void ChainCalcs()
-    {
-        for (int HandType = 0; HandType < 2; HandType++)
-        {
-            Hands[HandType].Stats.ChainDamage = 25;
-            Hands[HandType].Stats.Chains = 3;
-            Hands[HandType].Stats.ChainLength = 4.5f;
-
-            float Temp;
-
-            Temp = (float)Skills[(int)SkillType.Astromancy].Level * .01f;
-            Hands[HandType].Stats.ChainDamage += (int)(25 * Temp);
-            Hands[HandType].Stats.Chains += (int)(3 * Temp);
-            Hands[HandType].Stats.ChainLength *= 1 + Temp;
-            Hands[HandType].Stats.ChainLength = Mathf.Round(Hands[HandType].Stats.ChainLength * 10) * .1f;
-        }
-    }*/
 
     protected void ChillCalcs()
     {

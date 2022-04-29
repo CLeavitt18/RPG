@@ -6,6 +6,8 @@ public class StatusManager : MonoBehaviour
 
     [SerializeField] private LightningStatusManager lightningManager;
 
+    [SerializeField] private IceStatusManager iceManager;
+
 
     [SerializeField] private LivingEntities self;
 

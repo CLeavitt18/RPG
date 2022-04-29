@@ -170,6 +170,8 @@
     <Compile Include="Assets\Scripts\ReflectBurning.cs" />
     <Compile Include="Assets\Scripts\LightningStatusManager.cs" />
     <Compile Include="Assets\Scripts\ChainAffect.cs" />
+    <Compile Include="Assets\Scripts\IceStatusManager.cs" />
+    <Compile Include="Assets\Scripts\ChillAffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
