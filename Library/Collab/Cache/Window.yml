@@ -1,0 +1,1014 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 61
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe70aba2e7074048aca5de573b64a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SimpleSelectedItems:
+    m_Keys:
+    - Assets/Animation.meta
+    - Assets/Animation/Enemy.meta
+    - Assets/Animation/Enemy/Skeleton Death.anim
+    - Assets/Animation/Enemy/Skeleton Death.anim.meta
+    - Assets/Animation/Enemy/Skeleton Hit.anim
+    - Assets/Animation/Enemy/Skeleton Hit.anim.meta
+    - Assets/Animation/Enemy/Skeleton Idle.anim
+    - Assets/Animation/Enemy/Skeleton Idle.anim.meta
+    - Assets/Animation/Enemy/SkeletonModel.controller
+    - Assets/Animation/Enemy/SkeletonModel.controller.meta
+    - Assets/Animation/Player.meta
+    - Assets/Animation/Player/Axe Attack.anim
+    - Assets/Animation/Player/Axe Attack.anim.meta
+    - Assets/Animation/Player/Axe.anim
+    - Assets/Animation/Player/Axe.anim.meta
+    - Assets/Animation/Player/Axe.controller
+    - Assets/Animation/Player/Axe.controller.meta
+    - Assets/Animation/Player/Dagger Attack.anim
+    - Assets/Animation/Player/Dagger Attack.anim.meta
+    - Assets/Animation/Player/Dagger Idle.anim
+    - Assets/Animation/Player/Dagger Idle.anim.meta
+    - Assets/Animation/Player/Dagger.controller
+    - Assets/Animation/Player/Dagger.controller.meta
+    - Assets/Animation/Player/Sword Attack.anim
+    - Assets/Animation/Player/Sword Attack.anim.meta
+    - Assets/Animation/Player/Sword Idle.anim
+    - Assets/Animation/Player/Sword Idle.anim.meta
+    - Assets/Animation/Player/Sword.controller
+    - Assets/Animation/Player/Sword.controller.meta
+    - Assets/FPSCounter.cs
+    - Assets/FPSCounter.cs.meta
+    - Assets/Materials.meta
+    - Assets/Materials/Bone.mat
+    - Assets/Materials/Bone.mat.meta
+    - Assets/Materials/Bronze(Mat).mat
+    - Assets/Materials/Bronze(Mat).mat.meta
+    - Assets/Materials/Bronze.mat
+    - Assets/Materials/Bronze.mat.meta
+    - Assets/Materials/Chest.mat
+    - Assets/Materials/Chest.mat.meta
+    - Assets/Materials/Cobalt(Mat).mat
+    - Assets/Materials/Cobalt(Mat).mat.meta
+    - Assets/Materials/Cobalt.mat
+    - Assets/Materials/Cobalt.mat.meta
+    - Assets/Materials/Copper(Mat).mat
+    - Assets/Materials/Copper(Mat).mat.meta
+    - Assets/Materials/Copper.mat
+    - Assets/Materials/Copper.mat.meta
+    - Assets/Materials/Ebony(Mat).mat
+    - Assets/Materials/Ebony(Mat).mat.meta
+    - Assets/Materials/Ebony.mat
+    - Assets/Materials/Ebony.mat.meta
+    - Assets/Materials/Fire.mat
+    - Assets/Materials/Fire.mat.meta
+    - Assets/Materials/Ground.mat
+    - Assets/Materials/Ground.mat.meta
+    - Assets/Materials/Iron(Mat).mat
+    - Assets/Materials/Iron(Mat).mat.meta
+    - Assets/Materials/Iron.mat
+    - Assets/Materials/Iron.mat.meta
+    - Assets/Materials/Mithril(Mat).mat
+    - Assets/Materials/Mithril(Mat).mat.meta
+    - Assets/Materials/Mithril.mat
+    - Assets/Materials/Mithril.mat.meta
+    - Assets/Materials/New Lighting Settings.lighting
+    - Assets/Materials/New Lighting Settings.lighting.meta
+    - Assets/Materials/Silver(Mat).mat
+    - Assets/Materials/Silver(Mat).mat.meta
+    - Assets/Materials/Silver.mat
+    - Assets/Materials/Silver.mat.meta
+    - Assets/Materials/Sky.mat
+    - Assets/Materials/Sky.mat.meta
+    - Assets/Materials/Steel(Mat).mat
+    - Assets/Materials/Steel(Mat).mat.meta
+    - Assets/Materials/Steel.mat
+    - Assets/Materials/Steel.mat.meta
+    - Assets/Materials/Tin(Mat).mat
+    - Assets/Materials/Tin(Mat).mat.meta
+    - Assets/Materials/Tin.mat
+    - Assets/Materials/Tin.mat.meta
+    - Assets/Materials/Torch.mat
+    - Assets/Materials/Torch.mat.meta
+    - Assets/Materials/Wall.mat
+    - Assets/Materials/Wall.mat.meta
+    - Assets/Materials/Wood.mat
+    - Assets/Materials/Wood.mat.meta
+    - Assets/Post-Prosessing.asset
+    - Assets/Post-Prosessing.asset.meta
+    - Assets/Prefabs.meta
+    - Assets/Prefabs/Armour.prefab
+    - Assets/Prefabs/Armour.prefab.meta
+    - Assets/Prefabs/ArmourBanner.prefab
+    - Assets/Prefabs/ArmourBanner.prefab.meta
+    - Assets/Prefabs/BurningAffect.prefab
+    - Assets/Prefabs/BurningAffect.prefab.meta
+    - Assets/Prefabs/Ceiling.prefab
+    - Assets/Prefabs/Ceiling.prefab.meta
+    - Assets/Prefabs/ChilledAffect.prefab
+    - Assets/Prefabs/ChilledAffect.prefab.meta
+    - Assets/Prefabs/Enemies.meta
+    - Assets/Prefabs/Enemies/BossSkeleton.prefab
+    - Assets/Prefabs/Enemies/BossSkeleton.prefab.meta
+    - Assets/Prefabs/Enemies/Skeleton.prefab
+    - Assets/Prefabs/Enemies/Skeleton.prefab.meta
+    - Assets/Prefabs/FPSCounter.prefab
+    - Assets/Prefabs/FPSCounter.prefab.meta
+    - Assets/Prefabs/Ground(Forest).prefab
+    - Assets/Prefabs/Ground(Forest).prefab.meta
+    - Assets/Prefabs/Ground(Mine_Caves).prefab
+    - Assets/Prefabs/Ground(Mine_Caves).prefab.meta
+    - Assets/Prefabs/IDManeger.prefab
+    - Assets/Prefabs/IDManeger.prefab.meta
+    - Assets/Prefabs/Interactables.meta
+    - Assets/Prefabs/Interactables/Bed.prefab
+    - Assets/Prefabs/Interactables/Bed.prefab.meta
+    - Assets/Prefabs/Interactables/Chest.prefab
+    - Assets/Prefabs/Interactables/Chest.prefab.meta
+    - Assets/Prefabs/Interactables/Door.prefab
+    - Assets/Prefabs/Interactables/Door.prefab.meta
+    - Assets/Prefabs/Interactables/EnemyLoot.prefab
+    - Assets/Prefabs/Interactables/EnemyLoot.prefab.meta
+    - Assets/Prefabs/Interactables/Forge.prefab
+    - Assets/Prefabs/Interactables/Forge.prefab.meta
+    - Assets/Prefabs/Interactables/Refinary.prefab
+    - Assets/Prefabs/Interactables/Refinary.prefab.meta
+    - Assets/Prefabs/Light.prefab
+    - Assets/Prefabs/Light.prefab.meta
+    - Assets/Prefabs/LightManager.prefab
+    - Assets/Prefabs/LightManager.prefab.meta
+    - Assets/Prefabs/LightningChain.prefab
+    - Assets/Prefabs/LightningChain.prefab.meta
+    - Assets/Prefabs/MainLIght.prefab
+    - Assets/Prefabs/MainLIght.prefab.meta
+    - Assets/Prefabs/Player.prefab
+    - Assets/Prefabs/Player.prefab.meta
+    - Assets/Prefabs/PlayerProfileButton.prefab
+    - Assets/Prefabs/PlayerProfileButton.prefab.meta
+    - Assets/Prefabs/QuestItems.meta
+    - Assets/Prefabs/QuestItems/Tongs.prefab
+    - Assets/Prefabs/QuestItems/Tongs.prefab.meta
+    - Assets/Prefabs/ResourceCostSlot.prefab
+    - Assets/Prefabs/ResourceCostSlot.prefab.meta
+    - Assets/Prefabs/Resources.meta
+    - Assets/Prefabs/Resources/Deposits.meta
+    - Assets/Prefabs/Resources/Deposits/Coal Ore Deposit.prefab
+    - Assets/Prefabs/Resources/Deposits/Coal Ore Deposit.prefab.meta
+    - Assets/Prefabs/Resources/Deposits/Cobalt Ore Deposit.prefab
+    - Assets/Prefabs/Resources/Deposits/Cobalt Ore Deposit.prefab.meta
+    - Assets/Prefabs/Resources/Deposits/Copper Ore Deposit.prefab
+    - Assets/Prefabs/Resources/Deposits/Copper Ore Deposit.prefab.meta
+    - Assets/Prefabs/Resources/Deposits/Ebony Ore Deposit.prefab
+    - Assets/Prefabs/Resources/Deposits/Ebony Ore Deposit.prefab.meta
+    - Assets/Prefabs/Resources/Deposits/Iron Ore Deposit.prefab
+    - Assets/Prefabs/Resources/Deposits/Iron Ore Deposit.prefab.meta
+    - Assets/Prefabs/Resources/Deposits/Mithril Ore Deposit.prefab
+    - Assets/Prefabs/Resources/Deposits/Mithril Ore Deposit.prefab.meta
+    - Assets/Prefabs/Resources/Deposits/Silver Ore Deposit.prefab
+    - Assets/Prefabs/Resources/Deposits/Silver Ore Deposit.prefab.meta
+    - Assets/Prefabs/Resources/Deposits/Tin Ore Deposit.prefab
+    - Assets/Prefabs/Resources/Deposits/Tin Ore Deposit.prefab.meta
+    - Assets/Prefabs/Resources/Deposits/Tree.prefab
+    - Assets/Prefabs/Resources/Deposits/Tree.prefab.meta
+    - Assets/Prefabs/Resources/Resource.meta
+    - Assets/Prefabs/Resources/Resource/Bone.prefab
+    - Assets/Prefabs/Resources/Resource/Bone.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Bronze Ingot.prefab
+    - Assets/Prefabs/Resources/Resource/Bronze Ingot.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Coal.prefab
+    - Assets/Prefabs/Resources/Resource/Coal.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Cobalt Ingot.prefab
+    - Assets/Prefabs/Resources/Resource/Cobalt Ingot.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Cobalt Ore.prefab
+    - Assets/Prefabs/Resources/Resource/Cobalt Ore.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Copper Ingot.prefab
+    - Assets/Prefabs/Resources/Resource/Copper Ingot.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Copper Ore.prefab
+    - Assets/Prefabs/Resources/Resource/Copper Ore.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Ebony Ingot.prefab
+    - Assets/Prefabs/Resources/Resource/Ebony Ingot.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Ebony Ore.prefab
+    - Assets/Prefabs/Resources/Resource/Ebony Ore.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Hide.prefab
+    - Assets/Prefabs/Resources/Resource/Hide.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Iron Ingot.prefab
+    - Assets/Prefabs/Resources/Resource/Iron Ingot.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Iron Ore.prefab
+    - Assets/Prefabs/Resources/Resource/Iron Ore.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Leather.prefab
+    - Assets/Prefabs/Resources/Resource/Leather.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Mithril Ingot.prefab
+    - Assets/Prefabs/Resources/Resource/Mithril Ingot.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Mithril Ore.prefab
+    - Assets/Prefabs/Resources/Resource/Mithril Ore.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Silver Ingot.prefab
+    - Assets/Prefabs/Resources/Resource/Silver Ingot.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Silver Ore.prefab
+    - Assets/Prefabs/Resources/Resource/Silver Ore.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Steel Ingot.prefab
+    - Assets/Prefabs/Resources/Resource/Steel Ingot.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Tin Ingot.prefab
+    - Assets/Prefabs/Resources/Resource/Tin Ingot.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Tin Ore.prefab
+    - Assets/Prefabs/Resources/Resource/Tin Ore.prefab.meta
+    - Assets/Prefabs/Resources/Resource/Wood.prefab
+    - Assets/Prefabs/Resources/Resource/Wood.prefab.meta
+    - Assets/Prefabs/ResourcesBanner.prefab
+    - Assets/Prefabs/ResourcesBanner.prefab.meta
+    - Assets/Prefabs/RimeLight.prefab
+    - Assets/Prefabs/RimeLight.prefab.meta
+    - Assets/Prefabs/SceneManager.prefab
+    - Assets/Prefabs/SceneManager.prefab.meta
+    - Assets/Prefabs/ScriptialbeObjects.meta
+    - Assets/Prefabs/ScriptialbeObjects/Armour.meta
+    - Assets/Prefabs/ScriptialbeObjects/Armour/CopperArmour.asset
+    - Assets/Prefabs/ScriptialbeObjects/Armour/CopperArmour.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Armour/IronArmour.asset
+    - Assets/Prefabs/ScriptialbeObjects/Armour/IronArmour.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Armour/LeatherArmour.asset
+    - Assets/Prefabs/ScriptialbeObjects/Armour/LeatherArmour.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier1.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier1.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier2.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier2.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier3.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier3.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier4.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier4.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier5.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier5.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier6.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/ColdTier6.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier1.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier1.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier2.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier2.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier3.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier3.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier4.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier4.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier5.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier5.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier6.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/FireTier6.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier1.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier1.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier2.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier2.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier3.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier3.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier4.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier4.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier5.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier5.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier6.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/LightningTier6.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier1.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier1.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier2.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier2.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier3.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier3.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier4.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier4.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier5.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier5.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier6.asset
+    - Assets/Prefabs/ScriptialbeObjects/Catalysts/PhysTier6.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/DropTables.meta
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/CatalystTablees.meta
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/CatalystTablees/CatTable10.asset
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/CatalystTablees/CatTable10.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/CatalystTablees/CatTable5.asset
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/CatalystTablees/CatTable5.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials.meta
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials/UpToLevel10.asset
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials/UpToLevel10.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials/UpToLevel25.asset
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials/UpToLevel25.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials/UpToLevel40.asset
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials/UpToLevel40.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials/UpToLevel5.asset
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials/UpToLevel5.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials/UpToLevel55.asset
+    - Assets/Prefabs/ScriptialbeObjects/DropTables/WeaponMaterials/UpToLevel55.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/EnemyScalers.meta
+    - Assets/Prefabs/ScriptialbeObjects/EnemyScalers/BossSkeletonScaler.asset
+    - Assets/Prefabs/ScriptialbeObjects/EnemyScalers/BossSkeletonScaler.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/EnemyScalers/SkeletonScaler.asset
+    - Assets/Prefabs/ScriptialbeObjects/EnemyScalers/SkeletonScaler.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Lighting.meta
+    - Assets/Prefabs/ScriptialbeObjects/Lighting/DefaultLighting.asset
+    - Assets/Prefabs/ScriptialbeObjects/Lighting/DefaultLighting.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Quests.meta
+    - Assets/Prefabs/ScriptialbeObjects/Quests/MissingTongs.asset
+    - Assets/Prefabs/ScriptialbeObjects/Quests/MissingTongs.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Axe.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Axe/AxeBlades.asset
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Axe/AxeBlades.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Axe/AxeCaps.asset
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Axe/AxeCaps.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Axe/AxeHandels.asset
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Axe/AxeHandels.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Dagger.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Dagger/DaggerBlades.asset
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Dagger/DaggerBlades.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Resources.asset
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Resources.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Sword.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Sword/SwordBlades.asset
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Sword/SwordBlades.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Sword/SwordGrips.asset
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Sword/SwordGrips.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Sword/SwordHilts.asset
+    - Assets/Prefabs/ScriptialbeObjects/Recipes/Sword/SwordHilts.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Spells.meta
+    - Assets/Prefabs/ScriptialbeObjects/Spells/Channeled.asset
+    - Assets/Prefabs/ScriptialbeObjects/Spells/Channeled.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/BoneMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/BoneMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/BronzeMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/BronzeMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/CobaltMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/CobaltMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/CopperMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/CopperMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/EbonyMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/EbonyMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/IronMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/IronMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/MithrilMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/MithrilMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/SilverMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/SilverMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/SteelMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/SteelMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/TinMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/TinMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/WoodMultis.asset
+    - Assets/Prefabs/ScriptialbeObjects/WeaonMaterialMultis/WoodMultis.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Weapons.meta
+    - Assets/Prefabs/ScriptialbeObjects/Weapons/Axe.asset
+    - Assets/Prefabs/ScriptialbeObjects/Weapons/Axe.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Weapons/Dagger.asset
+    - Assets/Prefabs/ScriptialbeObjects/Weapons/Dagger.asset.meta
+    - Assets/Prefabs/ScriptialbeObjects/Weapons/Sword.asset
+    - Assets/Prefabs/ScriptialbeObjects/Weapons/Sword.asset.meta
+    - Assets/Prefabs/Shrines.meta
+    - Assets/Prefabs/Shrines/Fire.meta
+    - Assets/Prefabs/Shrines/Fire/100%ChanceToBurnShrine.prefab
+    - Assets/Prefabs/Shrines/Fire/100%ChanceToBurnShrine.prefab.meta
+    - Assets/Prefabs/Shrines/Fire/BurningStacksShrine.prefab
+    - Assets/Prefabs/Shrines/Fire/BurningStacksShrine.prefab.meta
+    - Assets/Prefabs/Shrines/Fire/DoubleBurningDamageShrine.prefab
+    - Assets/Prefabs/Shrines/Fire/DoubleBurningDamageShrine.prefab.meta
+    - Assets/Prefabs/Shrines/Fire/NoBurningPenaltyDeal75%LessFireDamageShrine.prefab
+    - Assets/Prefabs/Shrines/Fire/NoBurningPenaltyDeal75%LessFireDamageShrine.prefab.meta
+    - Assets/Prefabs/Shrines/Fire/ReflectBurningShrine.prefab
+    - Assets/Prefabs/Shrines/Fire/ReflectBurningShrine.prefab.meta
+    - Assets/Prefabs/Shrines/Fire/X3FireDamageCantBurnShrine.prefab
+    - Assets/Prefabs/Shrines/Fire/X3FireDamageCantBurnShrine.prefab.meta
+    - Assets/Prefabs/Shrines/Ice.meta
+    - Assets/Prefabs/Shrines/Lightning.meta
+    - Assets/Prefabs/Shrines/Physical.meta
+    - Assets/Prefabs/Shrines/Shrine.prefab
+    - Assets/Prefabs/Shrines/Shrine.prefab.meta
+    - Assets/Prefabs/Slot.prefab
+    - Assets/Prefabs/Slot.prefab.meta
+    - Assets/Prefabs/Spell.prefab
+    - Assets/Prefabs/Spell.prefab.meta
+    - Assets/Prefabs/SpellAffect.prefab
+    - Assets/Prefabs/SpellAffect.prefab.meta
+    - Assets/Prefabs/SpellAffects.meta
+    - Assets/Prefabs/SpellAffects/Boulder Rush(SpellAffect).prefab
+    - Assets/Prefabs/SpellAffects/Boulder Rush(SpellAffect).prefab.meta
+    - Assets/Prefabs/SpellAffects/Fire Ball(SpellAffect).prefab
+    - Assets/Prefabs/SpellAffects/Fire Ball(SpellAffect).prefab.meta
+    - Assets/Prefabs/SpellAffects/Flame(SpellAffect).prefab
+    - Assets/Prefabs/SpellAffects/Flame(SpellAffect).prefab.meta
+    - Assets/Prefabs/SpellAffects/Frostbite(SpellAffect).prefab
+    - Assets/Prefabs/SpellAffects/Frostbite(SpellAffect).prefab.meta
+    - Assets/Prefabs/SpellAffects/Icicile Spike(SpellAffect).prefab
+    - Assets/Prefabs/SpellAffects/Icicile Spike(SpellAffect).prefab.meta
+    - Assets/Prefabs/SpellAffects/Lightning Strike(SpellAffect).prefab
+    - Assets/Prefabs/SpellAffects/Lightning Strike(SpellAffect).prefab.meta
+    - Assets/Prefabs/SpellAffects/Mudslide(SpellAffect).prefab
+    - Assets/Prefabs/SpellAffects/Mudslide(SpellAffect).prefab.meta
+    - Assets/Prefabs/SpellAffects/Sparks(SpellAffect).prefab
+    - Assets/Prefabs/SpellAffects/Sparks(SpellAffect).prefab.meta
+    - Assets/Prefabs/Spells.meta
+    - Assets/Prefabs/Spells/Boulder Rush.prefab
+    - Assets/Prefabs/Spells/Boulder Rush.prefab.meta
+    - Assets/Prefabs/Spells/Fire Ball.prefab
+    - Assets/Prefabs/Spells/Fire Ball.prefab.meta
+    - Assets/Prefabs/Spells/Flame.prefab
+    - Assets/Prefabs/Spells/Flame.prefab.meta
+    - Assets/Prefabs/Spells/Frostbite.prefab
+    - Assets/Prefabs/Spells/Frostbite.prefab.meta
+    - Assets/Prefabs/Spells/Icicile Spike.prefab
+    - Assets/Prefabs/Spells/Icicile Spike.prefab.meta
+    - Assets/Prefabs/Spells/Mudslide.prefab
+    - Assets/Prefabs/Spells/Mudslide.prefab.meta
+    - Assets/Prefabs/Spells/Sparks.prefab
+    - Assets/Prefabs/Spells/Sparks.prefab.meta
+    - Assets/Prefabs/Spells/lightning Strike.prefab
+    - Assets/Prefabs/Spells/lightning Strike.prefab.meta
+    - Assets/Prefabs/SpellsBanner.prefab
+    - Assets/Prefabs/SpellsBanner.prefab.meta
+    - Assets/Prefabs/TestWeapon.prefab
+    - Assets/Prefabs/TestWeapon.prefab.meta
+    - Assets/Prefabs/Ui.meta
+    - Assets/Prefabs/Ui/Container UI.prefab
+    - Assets/Prefabs/Ui/Container UI.prefab.meta
+    - Assets/Prefabs/Ui/ForgeUi.prefab
+    - Assets/Prefabs/Ui/ForgeUi.prefab.meta
+    - Assets/Prefabs/Ui/Player UI.prefab
+    - Assets/Prefabs/Ui/Player UI.prefab.meta
+    - Assets/Prefabs/Ui/RefinaryUi.prefab
+    - Assets/Prefabs/Ui/RefinaryUi.prefab.meta
+    - Assets/Prefabs/Wall.prefab
+    - Assets/Prefabs/Wall.prefab.meta
+    - Assets/Prefabs/Weapon.prefab
+    - Assets/Prefabs/Weapon.prefab.meta
+    - Assets/Prefabs/WeaponBanner.prefab
+    - Assets/Prefabs/WeaponBanner.prefab.meta
+    - Assets/Prefabs/WeaponParts.meta
+    - Assets/Prefabs/WeaponParts/AxeParts.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(B).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(B).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(BR).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(BR).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(CO).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(CO).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(CU).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(CU).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(E).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(E).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(I).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(I).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(M).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(M).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(SI).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(SI).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(ST).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(ST).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(T).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(T).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(W).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Blades/AxeBlade(W).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(B).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(B).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(BR).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(BR).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(CO).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(CO).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(CU).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(CU).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(E).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(E).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(I).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(I).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(M).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(M).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(SI).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(SI).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(ST).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(ST).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(T).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(T).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(W).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Caps/AxeCap(W).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(B).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(B).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(BR).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(BR).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(CO).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(CO).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(CU).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(CU).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(E).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(E).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(I).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(I).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(M).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(M).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(SI).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(SI).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(ST).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(ST).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(T).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(T).prefab.meta
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(W).prefab
+    - Assets/Prefabs/WeaponParts/AxeParts/Handels/AxeHandel(W).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(B).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(B).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(BR).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(BR).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(CO).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(CO).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(CU).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(CU).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(E).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(E).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(I).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(I).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(M).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(M).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(SI).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(SI).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(ST).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(ST).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(T).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(T).prefab.meta
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(W).prefab
+    - Assets/Prefabs/WeaponParts/DaggerParts/DaggerBlade(W).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(B).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(B).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(BR).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(BR).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(CO).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(CO).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(CU).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(CU).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(E).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(E).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(I).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(I).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(M).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(M).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(SI).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(SI).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(ST).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(ST).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(T).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(T).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(W).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Blades/SwordBlade(W).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(B).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(B).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(BR).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(BR).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(CO).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(CO).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(CU).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(CU).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(E).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(E).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(I).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(I).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(M).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(M).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(SI).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(SI).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(ST).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(ST).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(T).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(T).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(W).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Grips/Grip(W).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(B).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(B).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(BR).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(BR).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(CO).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(CO).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(CU).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(CU).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(E).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(E).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(I).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(I).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(M).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(M).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(SI).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(SI).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(ST).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(ST).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(T).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(T).prefab.meta
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(W).prefab
+    - Assets/Prefabs/WeaponParts/SwordParts/Hilts/Hilt(W).prefab.meta
+    - Assets/Prefabs/WorldStateTracker.prefab
+    - Assets/Prefabs/WorldStateTracker.prefab.meta
+    - Assets/ProBuilder Data.meta
+    - Assets/ProBuilder Data/Default Material Palette.asset
+    - Assets/ProBuilder Data/Default Material Palette.asset.meta
+    - Assets/Scenes.meta
+    - Assets/Scenes/BaseScene.unity
+    - Assets/Scenes/BaseScene.unity.meta
+    - Assets/Scenes/Cave Level 1.meta
+    - Assets/Scenes/Cave Level 1.unity
+    - Assets/Scenes/Cave Level 1.unity.meta
+    - Assets/Scenes/Cave Level 1/NavMesh.asset
+    - Assets/Scenes/Cave Level 1/NavMesh.asset.meta
+    - Assets/Scenes/GeneratingTestArea.unity
+    - Assets/Scenes/GeneratingTestArea.unity.meta
+    - Assets/Scenes/Main Menu.unity
+    - Assets/Scenes/Main Menu.unity.meta
+    - Assets/Scenes/Mine.meta
+    - Assets/Scenes/Mine.unity
+    - Assets/Scenes/Mine.unity.meta
+    - Assets/Scenes/Mine/NavMesh.asset
+    - Assets/Scenes/Mine/NavMesh.asset.meta
+    - Assets/Scenes/Starting Camp.meta
+    - Assets/Scenes/Starting Camp.unity
+    - Assets/Scenes/Starting Camp.unity.meta
+    - Assets/Scenes/Starting Camp/NavMesh-Ground(Forest).asset
+    - Assets/Scenes/Starting Camp/NavMesh-Ground(Forest).asset.meta
+    - Assets/Scenes/Test.meta
+    - Assets/Scenes/Test.unity
+    - Assets/Scenes/Test.unity.meta
+    - Assets/Scenes/Test/NavMesh-Ground(Forest).asset
+    - Assets/Scenes/Test/NavMesh-Ground(Forest).asset.meta
+    - Assets/Scripts.meta
+    - Assets/Scripts/ArmourHolder.cs
+    - Assets/Scripts/ArmourHolder.cs.meta
+    - Assets/Scripts/ArmourRoller.cs
+    - Assets/Scripts/ArmourRoller.cs.meta
+    - Assets/Scripts/BaseClasses.meta
+    - Assets/Scripts/BaseClasses/BaseHolder.cs
+    - Assets/Scripts/BaseClasses/BaseHolder.cs.meta
+    - Assets/Scripts/BaseClasses/HitManager.cs
+    - Assets/Scripts/BaseClasses/HitManager.cs.meta
+    - Assets/Scripts/BaseClasses/Interactialbes.cs
+    - Assets/Scripts/BaseClasses/Interactialbes.cs.meta
+    - Assets/Scripts/BaseClasses/InventoryManager.cs
+    - Assets/Scripts/BaseClasses/InventoryManager.cs.meta
+    - Assets/Scripts/BaseClasses/LivingEntities.cs
+    - Assets/Scripts/BaseClasses/LivingEntities.cs.meta
+    - Assets/Scripts/ButtonActions.cs
+    - Assets/Scripts/ButtonActions.cs.meta
+    - Assets/Scripts/ChannelSpellHitManager.cs
+    - Assets/Scripts/ChannelSpellHitManager.cs.meta
+    - Assets/Scripts/ContainersUI.cs
+    - Assets/Scripts/ContainersUI.cs.meta
+    - Assets/Scripts/CraftingMaterialHolder.cs
+    - Assets/Scripts/CraftingMaterialHolder.cs.meta
+    - Assets/Scripts/CreateWeapon.cs
+    - Assets/Scripts/CreateWeapon.cs.meta
+    - Assets/Scripts/DayNight.cs
+    - Assets/Scripts/DayNight.cs.meta
+    - Assets/Scripts/EnemyActivation.cs
+    - Assets/Scripts/EnemyActivation.cs.meta
+    - Assets/Scripts/EnemyController.cs
+    - Assets/Scripts/EnemyController.cs.meta
+    - Assets/Scripts/ForgeUI.cs
+    - Assets/Scripts/ForgeUI.cs.meta
+    - Assets/Scripts/Ground.cs
+    - Assets/Scripts/Ground.cs.meta
+    - Assets/Scripts/Interactiables.meta
+    - Assets/Scripts/Interactiables/Bed.cs
+    - Assets/Scripts/Interactiables/Bed.cs.meta
+    - Assets/Scripts/Interactiables/Containers.cs
+    - Assets/Scripts/Interactiables/Containers.cs.meta
+    - Assets/Scripts/Interactiables/Doors.cs
+    - Assets/Scripts/Interactiables/Doors.cs.meta
+    - Assets/Scripts/Interactiables/Forge.cs
+    - Assets/Scripts/Interactiables/Forge.cs.meta
+    - Assets/Scripts/Interactiables/NPCInteractiable.cs
+    - Assets/Scripts/Interactiables/NPCInteractiable.cs.meta
+    - Assets/Scripts/Interactiables/Refinary.cs
+    - Assets/Scripts/Interactiables/Refinary.cs.meta
+    - Assets/Scripts/Interactiables/Shrine.cs
+    - Assets/Scripts/Interactiables/Shrine.cs.meta
+    - Assets/Scripts/Interactiables/WeaponInteractiable.cs
+    - Assets/Scripts/Interactiables/WeaponInteractiable.cs.meta
+    - Assets/Scripts/LightingManager.cs
+    - Assets/Scripts/LightingManager.cs.meta
+    - Assets/Scripts/MainMenu.cs
+    - Assets/Scripts/MainMenu.cs.meta
+    - Assets/Scripts/NPC.cs
+    - Assets/Scripts/NPC.cs.meta
+    - Assets/Scripts/NPCDialogue.cs
+    - Assets/Scripts/NPCDialogue.cs.meta
+    - Assets/Scripts/Player.cs
+    - Assets/Scripts/Player.cs.meta
+    - Assets/Scripts/PlayerCamera.cs
+    - Assets/Scripts/PlayerCamera.cs.meta
+    - Assets/Scripts/PlayerInventory.cs
+    - Assets/Scripts/PlayerInventory.cs.meta
+    - Assets/Scripts/PlayerProfileInfo.cs
+    - Assets/Scripts/PlayerProfileInfo.cs.meta
+    - Assets/Scripts/PrefabIDs.cs
+    - Assets/Scripts/PrefabIDs.cs.meta
+    - Assets/Scripts/ProjectileSpellHitManger.cs
+    - Assets/Scripts/ProjectileSpellHitManger.cs.meta
+    - Assets/Scripts/QuestHolder.cs
+    - Assets/Scripts/QuestHolder.cs.meta
+    - Assets/Scripts/QuestItemHolder.cs
+    - Assets/Scripts/QuestItemHolder.cs.meta
+    - Assets/Scripts/QuestTracker.cs
+    - Assets/Scripts/QuestTracker.cs.meta
+    - Assets/Scripts/RefinaryUi.cs
+    - Assets/Scripts/RefinaryUi.cs.meta
+    - Assets/Scripts/ResourceDeposit.cs
+    - Assets/Scripts/ResourceDeposit.cs.meta
+    - Assets/Scripts/ResourceHolder.cs
+    - Assets/Scripts/ResourceHolder.cs.meta
+    - Assets/Scripts/SaveSystem.meta
+    - Assets/Scripts/SaveSystem/ContainerData.cs
+    - Assets/Scripts/SaveSystem/ContainerData.cs.meta
+    - Assets/Scripts/SaveSystem/DepositData.cs
+    - Assets/Scripts/SaveSystem/DepositData.cs.meta
+    - Assets/Scripts/SaveSystem/EnemyData.cs
+    - Assets/Scripts/SaveSystem/EnemyData.cs.meta
+    - Assets/Scripts/SaveSystem/LoadSystem.cs
+    - Assets/Scripts/SaveSystem/LoadSystem.cs.meta
+    - Assets/Scripts/SaveSystem/PlayerData.cs
+    - Assets/Scripts/SaveSystem/PlayerData.cs.meta
+    - Assets/Scripts/SaveSystem/SaveSystem.cs
+    - Assets/Scripts/SaveSystem/SaveSystem.cs.meta
+    - Assets/Scripts/SaveSystem/SceneData.cs
+    - Assets/Scripts/SaveSystem/SceneData.cs.meta
+    - Assets/Scripts/SaveSystem/WorldData.cs
+    - Assets/Scripts/SaveSystem/WorldData.cs.meta
+    - Assets/Scripts/SceneManager.cs
+    - Assets/Scripts/SceneManager.cs.meta
+    - Assets/Scripts/ScriptableObjects.meta
+    - Assets/Scripts/ScriptableObjects/BaseArmour.cs
+    - Assets/Scripts/ScriptableObjects/BaseArmour.cs.meta
+    - Assets/Scripts/ScriptableObjects/BaseRecipes.cs
+    - Assets/Scripts/ScriptableObjects/BaseRecipes.cs.meta
+    - Assets/Scripts/ScriptableObjects/BaseSpell.cs
+    - Assets/Scripts/ScriptableObjects/BaseSpell.cs.meta
+    - Assets/Scripts/ScriptableObjects/BaseWeapon.cs
+    - Assets/Scripts/ScriptableObjects/BaseWeapon.cs.meta
+    - Assets/Scripts/ScriptableObjects/Catalyst.cs
+    - Assets/Scripts/ScriptableObjects/Catalyst.cs.meta
+    - Assets/Scripts/ScriptableObjects/DropTable.cs
+    - Assets/Scripts/ScriptableObjects/DropTable.cs.meta
+    - Assets/Scripts/ScriptableObjects/EnemyScalers.cs
+    - Assets/Scripts/ScriptableObjects/EnemyScalers.cs.meta
+    - Assets/Scripts/ScriptableObjects/LightingPreset.cs
+    - Assets/Scripts/ScriptableObjects/LightingPreset.cs.meta
+    - Assets/Scripts/ScriptableObjects/MatMults.cs
+    - Assets/Scripts/ScriptableObjects/MatMults.cs.meta
+    - Assets/Scripts/ScriptableObjects/QuestData.cs
+    - Assets/Scripts/ScriptableObjects/QuestData.cs.meta
+    - Assets/Scripts/ShrineSwapButton.cs
+    - Assets/Scripts/ShrineSwapButton.cs.meta
+    - Assets/Scripts/SlotsActions.cs
+    - Assets/Scripts/SlotsActions.cs.meta
+    - Assets/Scripts/SpellHolder.cs
+    - Assets/Scripts/SpellHolder.cs.meta
+    - Assets/Scripts/WeaponHitManager.cs
+    - Assets/Scripts/WeaponHitManager.cs.meta
+    - Assets/Scripts/WeaponHolder.cs
+    - Assets/Scripts/WeaponHolder.cs.meta
+    - Assets/Scripts/WeaponRoller.cs
+    - Assets/Scripts/WeaponRoller.cs.meta
+    - Assets/Scripts/WorldStateTracker.cs
+    - Assets/Scripts/WorldStateTracker.cs.meta
+    - Assets/Shaders.meta
+    - Assets/Tree 1.prefab
+    - Assets/Tree 1.prefab.meta
+    - Assets/Tree 1_Textures.meta
+    - Assets/Tree 1_Textures/diffuse.png
+    - Assets/Tree 1_Textures/diffuse.png.meta
+    - Assets/Tree 1_Textures/normal_specular.png
+    - Assets/Tree 1_Textures/normal_specular.png.meta
+    - Assets/Tree 1_Textures/shadow.png
+    - Assets/Tree 1_Textures/shadow.png.meta
+    - Assets/Tree 1_Textures/translucency_gloss.png
+    - Assets/Tree 1_Textures/translucency_gloss.png.meta
+    - Assets/Tree.prefab
+    - Assets/Tree.prefab.meta
+    - Assets/Tree_Textures.meta
+    - Assets/Tree_Textures/diffuse.png
+    - Assets/Tree_Textures/diffuse.png.meta
+    - Assets/Tree_Textures/normal_specular.png
+    - Assets/Tree_Textures/normal_specular.png.meta
+    - Assets/Tree_Textures/shadow.png
+    - Assets/Tree_Textures/shadow.png.meta
+    - Assets/Tree_Textures/translucency_gloss.png
+    - Assets/Tree_Textures/translucency_gloss.png.meta
+    - Assets/WhiteSquare.png
+    - Assets/WhiteSquare.png.meta
+    - Assets/navmesh.meta
+    - Assets/navmesh/Examples.meta
+    - Assets/navmesh/Examples/Cube.prefab
+    - Assets/navmesh/Examples/Cube.prefab.meta
+    - Assets/navmesh/Examples/Editor.meta
+    - Assets/navmesh/Examples/Editor/NavMeshComponentsExamplesEditor.asmdef
+    - Assets/navmesh/Examples/Editor/NavMeshComponentsExamplesEditor.asmdef.meta
+    - Assets/navmesh/Examples/Editor/NavMeshPrefabInstanceEditor.cs
+    - Assets/navmesh/Examples/Editor/NavMeshPrefabInstanceEditor.cs.meta
+    - Assets/navmesh/Examples/Materials.meta
+    - Assets/navmesh/Examples/Materials/brightgreen.mat
+    - Assets/navmesh/Examples/Materials/brightgreen.mat.meta
+    - Assets/navmesh/Examples/Materials/brown.mat
+    - Assets/navmesh/Examples/Materials/brown.mat.meta
+    - Assets/navmesh/Examples/Materials/crosshair.mat
+    - Assets/navmesh/Examples/Materials/crosshair.mat.meta
+    - Assets/navmesh/Examples/Materials/floor.mat
+    - Assets/navmesh/Examples/Materials/floor.mat.meta
+    - Assets/navmesh/Examples/Materials/green.mat
+    - Assets/navmesh/Examples/Materials/green.mat.meta
+    - Assets/navmesh/Examples/Materials/grey.mat
+    - Assets/navmesh/Examples/Materials/grey.mat.meta
+    - Assets/navmesh/Examples/Materials/modify_crosshair.png
+    - Assets/navmesh/Examples/Materials/modify_crosshair.png.meta
+    - Assets/navmesh/Examples/Materials/red.mat
+    - Assets/navmesh/Examples/Materials/red.mat.meta
+    - Assets/navmesh/Examples/Materials/yellow.mat
+    - Assets/navmesh/Examples/Materials/yellow.mat.meta
+    - Assets/navmesh/Examples/NavMeshComponentsExamples.asmdef
+    - Assets/navmesh/Examples/NavMeshComponentsExamples.asmdef.meta
+    - Assets/navmesh/Examples/Prefabs.meta
+    - Assets/navmesh/Examples/Prefabs/BanyanTree.fbx
+    - Assets/navmesh/Examples/Prefabs/BanyanTree.fbx.meta
+    - Assets/navmesh/Examples/Prefabs/BanyanTree.prefab
+    - Assets/navmesh/Examples/Prefabs/BanyanTree.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile0.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile0.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile1.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile1.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile10.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile10.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile11.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile11.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile12.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile12.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile13.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile13.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile14.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile14.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile15.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile15.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile2.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile2.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile3.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile3.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile4.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile4.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile5.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile5.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile6.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile6.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile7.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile7.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile8.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile8.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile9.prefab
+    - Assets/navmesh/Examples/Prefabs/DungeonTiles/Tile9.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/GroundTile.prefab
+    - Assets/navmesh/Examples/Prefabs/GroundTile.prefab.meta
+    - Assets/navmesh/Examples/Prefabs/Materials.meta
+    - Assets/navmesh/Examples/Prefabs/Materials/BanyanBark.mat
+    - Assets/navmesh/Examples/Prefabs/Materials/BanyanBark.mat.meta
+    - Assets/navmesh/Examples/Prefabs/Materials/BanyanBranches.mat
+    - Assets/navmesh/Examples/Prefabs/Materials/BanyanBranches.mat.meta
+    - Assets/navmesh/Examples/Prefabs/Plank.prefab
+    - Assets/navmesh/Examples/Prefabs/Plank.prefab.meta
+    - Assets/navmesh/Examples/Scenes.meta
+    - Assets/navmesh/Examples/Scenes/1_multiple_agent_sizes.meta
+    - Assets/navmesh/Examples/Scenes/1_multiple_agent_sizes.unity
+    - Assets/navmesh/Examples/Scenes/1_multiple_agent_sizes.unity.meta
+    - Assets/navmesh/Examples/Scenes/1_multiple_agent_sizes/NavMesh-Geometry 1.asset
+    - Assets/navmesh/Examples/Scenes/1_multiple_agent_sizes/NavMesh-Geometry 1.asset.meta
+    - Assets/navmesh/Examples/Scenes/1_multiple_agent_sizes/NavMesh-Geometry.asset
+    - Assets/navmesh/Examples/Scenes/1_multiple_agent_sizes/NavMesh-Geometry.asset.meta
+    - Assets/navmesh/Examples/Scenes/2_drop_plank.unity
+    - Assets/navmesh/Examples/Scenes/2_drop_plank.unity.meta
+    - Assets/navmesh/Examples/Scenes/3_free_orientation.meta
+    - Assets/navmesh/Examples/Scenes/3_free_orientation.unity
+    - Assets/navmesh/Examples/Scenes/3_free_orientation.unity.meta
+    - Assets/navmesh/Examples/Scenes/3_free_orientation/NavMesh.asset
+    - Assets/navmesh/Examples/Scenes/3_free_orientation/NavMesh.asset.meta
+    - Assets/navmesh/Examples/Scenes/4_sliding_window_infinite.unity
+    - Assets/navmesh/Examples/Scenes/4_sliding_window_infinite.unity.meta
+    - Assets/navmesh/Examples/Scenes/5_sliding_window_terrain.unity
+    - Assets/navmesh/Examples/Scenes/5_sliding_window_terrain.unity.meta
+    - Assets/navmesh/Examples/Scenes/6_modify_mesh.unity
+    - Assets/navmesh/Examples/Scenes/6_modify_mesh.unity.meta
+    - Assets/navmesh/Examples/Scenes/7_dungeon.unity
+    - Assets/navmesh/Examples/Scenes/7_dungeon.unity.meta
+    - Assets/navmesh/Examples/Scenes/7b_dungeon_tile_prefabs.unity
+    - Assets/navmesh/Examples/Scenes/7b_dungeon_tile_prefabs.unity.meta
+    - Assets/navmesh/Examples/Scripts.meta
+    - Assets/navmesh/Examples/Scripts/AgentLinkMover.cs
+    - Assets/navmesh/Examples/Scripts/AgentLinkMover.cs.meta
+    - Assets/navmesh/Examples/Scripts/ClickToMove.cs
+    - Assets/navmesh/Examples/Scripts/ClickToMove.cs.meta
+    - Assets/navmesh/Examples/Scripts/DestroyOnTrigger.cs
+    - Assets/navmesh/Examples/Scripts/DestroyOnTrigger.cs.meta
+    - Assets/navmesh/Examples/Scripts/DungeonManager.cs
+    - Assets/navmesh/Examples/Scripts/DungeonManager.cs.meta
+    - Assets/navmesh/Examples/Scripts/EnableIffSleeping.cs
+    - Assets/navmesh/Examples/Scripts/EnableIffSleeping.cs.meta
+    - Assets/navmesh/Examples/Scripts/FreeCam.cs
+    - Assets/navmesh/Examples/Scripts/FreeCam.cs.meta
+    - Assets/navmesh/Examples/Scripts/LocalNavMeshBuilder.cs
+    - Assets/navmesh/Examples/Scripts/LocalNavMeshBuilder.cs.meta
+    - Assets/navmesh/Examples/Scripts/MeshTool.cs
+    - Assets/navmesh/Examples/Scripts/MeshTool.cs.meta
+    - Assets/navmesh/Examples/Scripts/NavMeshPrefabInstance.cs
+    - Assets/navmesh/Examples/Scripts/NavMeshPrefabInstance.cs.meta
+    - Assets/navmesh/Examples/Scripts/NavMeshSourceTag.cs
+    - Assets/navmesh/Examples/Scripts/NavMeshSourceTag.cs.meta
+    - Assets/navmesh/Examples/Scripts/Oscillator.cs
+    - Assets/navmesh/Examples/Scripts/Oscillator.cs.meta
+    - Assets/navmesh/Examples/Scripts/RandomInstancing.cs
+    - Assets/navmesh/Examples/Scripts/RandomInstancing.cs.meta
+    - Assets/navmesh/Examples/Scripts/RandomWalk.cs
+    - Assets/navmesh/Examples/Scripts/RandomWalk.cs.meta
+    - Assets/navmesh/Examples/Scripts/SpawnPrefabOnKeyDown.cs
+    - Assets/navmesh/Examples/Scripts/SpawnPrefabOnKeyDown.cs.meta
+    - Assets/navmesh/Examples/Terrains.meta
+    - Assets/navmesh/Examples/Terrains/Islands.asset
+    - Assets/navmesh/Examples/Terrains/Islands.asset.meta
+    - Assets/navmesh/Examples/Terrains/LightmapWithFog.png
+    - Assets/navmesh/Examples/Terrains/LightmapWithFog.png.meta
+    - Assets/navmesh/Examples/Terrains/layer_LightmapWithFog(2048.000,2048.000)(0.000,0.000)(0.000,0.000,0.000),0.000,0.000.terrainlayer
+    - Assets/navmesh/Examples/Terrains/layer_LightmapWithFog(2048.000,2048.000)(0.000,0.000)(0.000,0.000,0.000),0.000,0.000.terrainlayer.meta
+    - Assets/navmesh/Gizmos.meta
+    - Assets/navmesh/Gizmos/NavMeshLink Icon.png
+    - Assets/navmesh/Gizmos/NavMeshLink Icon.png.meta
+    - Assets/navmesh/Gizmos/NavMeshModifierVolume Icon.png
+    - Assets/navmesh/Gizmos/NavMeshModifierVolume Icon.png.meta
+    - Assets/navmesh/Gizmos/NavMeshSurface Icon.png
+    - Assets/navmesh/Gizmos/NavMeshSurface Icon.png.meta
+    - Assets/navmesh/NavMeshComponents.meta
+    - Assets/navmesh/NavMeshComponents/Editor.meta
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshAssetManager.cs
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshAssetManager.cs.meta
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshComponentsEditor.asmdef
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshComponentsEditor.asmdef.meta
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshComponentsGUIUtility.cs
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshComponentsGUIUtility.cs.meta
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshLinkEditor.cs
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshLinkEditor.cs.meta
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshModifierEditor.cs
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshModifierEditor.cs.meta
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshModifierVolumeEditor.cs
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshModifierVolumeEditor.cs.meta
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshSurfaceEditor.cs
+    - Assets/navmesh/NavMeshComponents/Editor/NavMeshSurfaceEditor.cs.meta
+    - Assets/navmesh/NavMeshComponents/Scripts.meta
+    - Assets/navmesh/NavMeshComponents/Scripts/NavMeshComponents.asmdef
+    - Assets/navmesh/NavMeshComponents/Scripts/NavMeshComponents.asmdef.meta
+    - Assets/navmesh/NavMeshComponents/Scripts/NavMeshLink.cs
+    - Assets/navmesh/NavMeshComponents/Scripts/NavMeshLink.cs.meta
+    - Assets/navmesh/NavMeshComponents/Scripts/NavMeshModifier.cs
+    - Assets/navmesh/NavMeshComponents/Scripts/NavMeshModifier.cs.meta
+    - Assets/navmesh/NavMeshComponents/Scripts/NavMeshModifierVolume.cs
+    - Assets/navmesh/NavMeshComponents/Scripts/NavMeshModifierVolume.cs.meta
+    - Assets/navmesh/NavMeshComponents/Scripts/NavMeshSurface.cs
+    - Assets/navmesh/NavMeshComponents/Scripts/NavMeshSurface.cs.meta
+    - Assets/navmesh/Tests.meta
+    - Assets/navmesh/Tests/Editor.meta
+    - Assets/navmesh/Tests/Editor/NavMeshComponentsTestsEditmode.asmdef
+    - Assets/navmesh/Tests/Editor/NavMeshComponentsTestsEditmode.asmdef.meta
+    - Assets/navmesh/Tests/Editor/NavMeshModifierVolumeInPrefabTests.cs
+    - Assets/navmesh/Tests/Editor/NavMeshModifierVolumeInPrefabTests.cs.meta
+    - Assets/navmesh/Tests/Editor/NavMeshSurfaceInPrefabTests.cs
+    - Assets/navmesh/Tests/Editor/NavMeshSurfaceInPrefabTests.cs.meta
+    - Assets/navmesh/Tests/Editor/NavMeshSurfaceInPrefabVariantTests.cs
+    - Assets/navmesh/Tests/Editor/NavMeshSurfaceInPrefabVariantTests.cs.meta
+    - Assets/navmesh/Tests/Editor/PrefabSavingUtil.cs
+    - Assets/navmesh/Tests/Editor/PrefabSavingUtil.cs.meta
+    - Assets/navmesh/Tests/Editor/PrefabStageAutoSavingUtil.cs
+    - Assets/navmesh/Tests/Editor/PrefabStageAutoSavingUtil.cs.meta
+    - Assets/navmesh/Tests/NavMeshComponentsTestsPlaymode.asmdef
+    - Assets/navmesh/Tests/NavMeshComponentsTestsPlaymode.asmdef.meta
+    - Assets/navmesh/Tests/NavMeshSurfaceAgentTests.cs
+    - Assets/navmesh/Tests/NavMeshSurfaceAgentTests.cs.meta
+    - Assets/navmesh/Tests/NavMeshSurfaceLinkTests.cs
+    - Assets/navmesh/Tests/NavMeshSurfaceLinkTests.cs.meta
+    - Assets/navmesh/Tests/NavMeshSurfaceModifierTests.cs
+    - Assets/navmesh/Tests/NavMeshSurfaceModifierTests.cs.meta
+    - Assets/navmesh/Tests/NavMeshSurfaceModifierVolumeTests.cs
+    - Assets/navmesh/Tests/NavMeshSurfaceModifierVolumeTests.cs.meta
+    - Assets/navmesh/Tests/NavMeshSurfaceTests.cs
+    - Assets/navmesh/Tests/NavMeshSurfaceTests.cs.meta
+    - ProjectSettings/EditorBuildSettings.asset
+    - ProjectSettings/InputManager.asset
+    - ProjectSettings/NavMeshAreas.asset
+    - ProjectSettings/ProjectSettings.asset
+    - ProjectSettings/TagManager.asset
+    - ProjectSettings/UnityConnectSettings.asset
+    - 
+    m_Values: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  RevisionSummary: 
+  ChangesSearchValue: 
+  SelectedHistoryRevision: 
+  HistoryPageNumber: 0
+  TabIndex: 0

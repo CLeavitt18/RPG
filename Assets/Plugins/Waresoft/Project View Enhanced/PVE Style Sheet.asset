@@ -1,0 +1,510 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2025852851, guid: f0d05ec2c3ef4bc408b18ff8e202de90, type: 3}
+  m_Name: PVE Style Sheet
+  m_EditorClassIdentifier: 
+  styles:
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: eb0b39248419557419d5ab1fc6771d10
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Shape - Orange Diamond Coloured
+    overrideLabel: 1
+    labelColour: {r: 1.3014317, g: 0.8177557, b: 0.33407983, a: 1}
+    labelStyle: 1
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827, g: 0.427, b: 0.027, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 65ddebe446a2e82428156cb6f986c58f
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Shape - Blue Circle Coloured
+    overrideLabel: 1
+    labelColour: {r: 0.64511865, g: 0.91323453, b: 1.304539, a: 1}
+    labelStyle: 1
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.235, g: 0.42, b: 0.69, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 637b2da159093434383f596f0a3be184
+    priority: 0
+    recursive: 1
+    overrideIcon: 0
+    iconName: Shape - Blue Diamond
+    overrideLabel: 0
+    labelColour: {r: 0.65028167, g: 0.9095938, b: 1.3078748, a: 1}
+    labelStyle: 2
+    overrideBackground: 0
+    backgroundName: Flat
+    backgroundColour: {r: 0.239, g: 0.42, b: 0.698, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 05d969cfd0bfc39418c410aa1ef15eb3
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Shape - Red Diamond Coloured
+    overrideLabel: 1
+    labelColour: {r: 1.5332776, g: 0.5995975, b: 0.59439594, a: 1}
+    labelStyle: 1
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.769, g: 0.051, b: 0.047, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: bef05713d4ccaea4fbe14c87f23a692b
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Shape - Green Diamond Coloured
+    overrideLabel: 1
+    labelColour: {r: 0.27245665, g: 1.188799, b: 0.2802387, a: 1}
+    labelStyle: 1
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.043, g: 0.514, b: 0.047, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: f059391ad79f90d4baa308ed2c4db88a
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Shape - Grey Circle Coloured
+    overrideLabel: 1
+    labelColour: {r: 1.0080831, g: 0.9939237, b: 0.9939237, a: 1}
+    labelStyle: 1
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.565, g: 0.557, b: 0.557, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: cbf4f2a78ff87dd4fa42f23e447c87cf
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Shape - Yellow Diamond Coloured
+    overrideLabel: 1
+    labelColour: {r: 1.1760339, g: 0.9341959, b: 0.20868205, a: 1}
+    labelStyle: 1
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827, g: 0.627, b: 0.027, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 796141ccd5850e44a993a32895536918
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Jungle Green
+    overrideLabel: 1
+    labelColour: {r: 0.40418327, g: 1.1301308, b: 0.7817343, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.42745098, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: f2e9e96521b0eb54e9a94ef447ced4ce
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Mahogany
+    overrideLabel: 1
+    labelColour: {r: 1.3985964, g: 0.7003641, b: 0.7003641, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.42745098, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: c8635d6ed0c472847a1406262fd8e501
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Cerulean Blue
+    overrideLabel: 1
+    labelColour: {r: 0.6481886, g: 0.84153837, b: 1.4166614, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.42745098, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 71c1c1fe4af9e37479a9b15d246db63c
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Bronze
+    overrideLabel: 1
+    labelColour: {r: 1.244524, g: 0.8500515, b: 0.4807048, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.42745098, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 17e892b159594064ca7a6f8d5137342c
+    priority: 0
+    recursive: 0
+    overrideIcon: 1
+    iconName: Colour - Bronze
+    overrideLabel: 1
+    labelColour: {r: 1.244524, g: 0.8500515, b: 0.4807048, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.42745098, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 24c354770e6033340998baf618c3f496
+    priority: 0
+    recursive: 0
+    overrideIcon: 1
+    iconName: Colour - Gold
+    overrideLabel: 1
+    labelColour: {r: 1.1383508, g: 0.94899434, b: 0.37102413, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.627451, b: 0.02745098, a: 0}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 2a00df4b2e046044996ae36496df6359
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Gold
+    overrideLabel: 1
+    labelColour: {r: 1.1383508, g: 0.94899434, b: 0.37102413, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.627451, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 1a062f3601a323d4a8eabcffb1552c8d
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Cerulean Blue
+    overrideLabel: 1
+    labelColour: {r: 0.6481886, g: 0.84153837, b: 1.4166614, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.627451, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 8d0b6e38a8ec4b74985cd1b9aa627ba3
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Gold
+    overrideLabel: 1
+    labelColour: {r: 1.1383508, g: 0.94899434, b: 0.37102413, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.627451, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 5ba59d56d2d307f4fba772f5b274d873
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Chilean Fire
+    overrideLabel: 1
+    labelColour: {r: 1.3341154, g: 0.76460314, b: 0.59265196, a: 1}
+    labelStyle: 0
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.627451, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 2fe23ca229ee5a3428aed89ac365de13
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Forest Green
+    overrideLabel: 1
+    labelColour: {r: 0.44308484, g: 1.1427376, b: 0.47607088, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.627451, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 05b46c0e47492b9489840faf95e1a2c6
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Gold
+    overrideLabel: 1
+    labelColour: {r: 1.1383508, g: 0.94899434, b: 0.37102413, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.627451, b: 0.02745098, a: 0.29803923}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: b23b2fce78663534ab9ce4e177361efd
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Gold
+    overrideLabel: 1
+    labelColour: {r: 1.1383508, g: 0.94899434, b: 0.37102413, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.627451, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 5448785baca8da14e8fa947bd9a7009a
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Gold
+    overrideLabel: 1
+    labelColour: {r: 1.1383508, g: 0.94899434, b: 0.37102413, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.827451, g: 0.627451, b: 0.02745098, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 03aa5ef35bb80fc4cbc34d5d7812a5b8
+    priority: 0
+    recursive: 0
+    overrideIcon: 1
+    iconName: Colour - Mahogany
+    overrideLabel: 1
+    labelColour: {r: 1.3985964, g: 0.7003641, b: 0.7003641, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.76862746, g: 0.050980393, b: 0.047058824, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: a4c6cf4328359e246a2cb3ced7ebc32c
+    priority: 0
+    recursive: 0
+    overrideIcon: 1
+    iconName: Colour - Mahogany
+    overrideLabel: 1
+    labelColour: {r: 1.3985964, g: 0.7003641, b: 0.7003641, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.76862746, g: 0.050980393, b: 0.047058824, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 6384eb985a1a38a43a914c40bf56f400
+    priority: 0
+    recursive: 0
+    overrideIcon: 1
+    iconName: Colour - Mahogany
+    overrideLabel: 1
+    labelColour: {r: 1.3985964, g: 0.7003641, b: 0.7003641, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.76862746, g: 0.050980393, b: 0.047058824, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 8737ace226117a241afcb884e3128ab5
+    priority: 0
+    recursive: 0
+    overrideIcon: 1
+    iconName: Colour - Mahogany
+    overrideLabel: 1
+    labelColour: {r: 1.3985964, g: 0.7003641, b: 0.7003641, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.76862746, g: 0.050980393, b: 0.047058824, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 4eee50cd9fb9c184596fc11e2db5a9f1
+    priority: 0
+    recursive: 0
+    overrideIcon: 1
+    iconName: Colour - Mahogany
+    overrideLabel: 1
+    labelColour: {r: 1.3985964, g: 0.7003641, b: 0.7003641, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.76862746, g: 0.050980393, b: 0.047058824, a: 0.2509804}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: bc4cde15d1d7f074c84a79d2caf10c7f
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Purple
+    overrideLabel: 1
+    labelColour: {r: 1.0334773, g: 0.7149495, b: 1.4357617, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.796, g: 0.482, b: 0.188, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: cedde5988d00c614098f4df5b64ef16a
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Forest Green
+    overrideLabel: 1
+    labelColour: {r: 0.44308484, g: 1.1427376, b: 0.47607088, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.173, g: 0.576, b: 0.192, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: ef91c5eff5087194fa9baec1f35c4e24
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Forest Green
+    overrideLabel: 1
+    labelColour: {r: 0.44308484, g: 1.1427376, b: 0.47607088, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.173, g: 0.576, b: 0.192, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 1706ab344657a6340b776c4ef799e22a
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Forest Green
+    overrideLabel: 1
+    labelColour: {r: 0.44308484, g: 1.1427376, b: 0.47607088, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.173, g: 0.576, b: 0.192, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: f645cd8fa72ff4f4d8ec480f36cc25e9
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Forest Green
+    overrideLabel: 1
+    labelColour: {r: 0.44308484, g: 1.1427376, b: 0.47607088, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.173, g: 0.576, b: 0.192, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: 39c5348d5c2809946a0a29cd5f493c41
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Forest Green
+    overrideLabel: 1
+    labelColour: {r: 0.44308484, g: 1.1427376, b: 0.47607088, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.173, g: 0.576, b: 0.192, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 1
+    matchMethod: 2
+    matchValue: ed2b00c0bc498fb46b873ee4915c6f78
+    priority: 0
+    recursive: 0
+    overrideIcon: 1
+    iconName: Colour - Mahogany
+    overrideLabel: 1
+    labelColour: {r: 1.3985964, g: 0.7003641, b: 0.7003641, a: 1}
+    labelStyle: 2
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.792, g: 0.239, b: 0.239, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6badac8cde14f4aa38503c2549aa1b, type: 3}
+  m_Name: SkeletonBossScaler
+  m_EditorClassIdentifier: 
+  ThreshHolds: 010000000200000005000000
+  BaseMasteries: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
+  BaseSkills: 0f0000000f0000000f0000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  MasteryWeights: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
+  SkillWeights: 1400000014000000140000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  BaseAbilities: 1e0000000a00000005000000
+  AbilitiesPerLevel: 0f0000000a00000003000000
+  WeaponData:
+  - Type: 1
+    PrimaryIds: 0
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 6
+  - Type: 1
+    PrimaryIds: 2
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 6
+  - Type: 1
+    PrimaryIds: 3
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 6
+  OffWeaponData:
+  - Type: 2
+    PrimaryIds: 0
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 0
+  - Type: 2
+    PrimaryIds: 0
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 1
+  - Type: 2
+    PrimaryIds: 2
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 0

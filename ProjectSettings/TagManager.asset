@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Interactiables
+  - Container
+  - Slot
+  - Enemy
+  - Door
+  - NPC
+  - Weapon
+  - Armour
+  - WeaponPart
+  - Blade
+  - Forge
+  - MainMenu
+  - Spell
+  - Resource
+  - QuestItem
+  - ResourceDeposit
+  - Ground
+  - Refinary
+  - Gold
+  - Misc
+  - Quest
+  - Potion
+  - Key
+  - Minion
+  - RuneTable
+  - Rune
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Enemy
+  - Contructables
+  - Interactiables
+  - Ignore
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

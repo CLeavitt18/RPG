@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e50c73ccea4f943ac243d089dcc5ca, type: 3}
+  m_Name: Catalysts
+  m_EditorClassIdentifier: 
+  ItemsRequired:
+  - Amount: 01000000
+    Item:
+    - New Geo Essence
+  - Amount: 01000000
+    Item:
+    - Lesser Geo Essence
+  - Amount: 01000000
+    Item:
+    - Common Geo Essence
+  - Amount: 01000000
+    Item:
+    - Powerful Geo Essence
+  - Amount: 01000000
+    Item:
+    - Old Geo Essence
+  - Amount: 01000000
+    Item:
+    - Primal Geo Essence
+  - Amount: 01000000
+    Item:
+    - New Pyro Essence
+  - Amount: 01000000
+    Item:
+    - Lesser Pyro Essence
+  - Amount: 01000000
+    Item:
+    - Common Pyro Essence
+  - Amount: 01000000
+    Item:
+    - Powerful Pyro Essence
+  - Amount: 01000000
+    Item:
+    - Old Pyro Essence
+  - Amount: 01000000
+    Item:
+    - Primal Pyro Essence
+  - Amount: 01000000
+    Item:
+    - New Astro Essence
+  - Amount: 01000000
+    Item:
+    - Lesser Astro Essence
+  - Amount: 01000000
+    Item:
+    - Common Astro Essence
+  - Amount: 01000000
+    Item:
+    - Powerful Astro Essence
+  - Amount: 01000000
+    Item:
+    - Old Astro Essence
+  - Amount: 01000000
+    Item:
+    - Primal Astro Essence
+  - Amount: 01000000
+    Item:
+    - New Cryo Essence
+  - Amount: 01000000
+    Item:
+    - Lesser Cryo Essence
+  - Amount: 01000000
+    Item:
+    - Common Cryo Essence
+  - Amount: 01000000
+    Item:
+    - Powerful Cryo Essence
+  - Amount: 01000000
+    Item:
+    - Old Cryo Essence
+  - Amount: 01000000
+    Item:
+    - Primal Cryo Essence

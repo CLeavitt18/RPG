@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741d341359b2cd94f87ae99abcc0d9b2, type: 3}
+  m_Name: DamageSpellBase
+  m_EditorClassIdentifier: 
+  Ranges:
+  - Ranges:
+    - Type: 0
+      LDamage: 4
+      HDamage: 16
+    - Type: 1
+      LDamage: 2
+      HDamage: 23
+    - Type: 2
+      LDamage: 0
+      HDamage: 36
+    - Type: 3
+      LDamage: 6
+      HDamage: 9
+  - Ranges:
+    - Type: 0
+      LDamage: 16
+      HDamage: 30
+    - Type: 1
+      LDamage: 14
+      HDamage: 44
+    - Type: 2
+      LDamage: 0
+      HDamage: 67
+    - Type: 3
+      LDamage: 19
+      HDamage: 22
+  - Ranges:
+    - Type: 0
+      LDamage: 50
+      HDamage: 80
+    - Type: 1
+      LDamage: 35
+      HDamage: 125
+    - Type: 2
+      LDamage: 0
+      HDamage: 185
+    - Type: 3
+      LDamage: 55
+      HDamage: 58
+  - Ranges:
+    - Type: 0
+      LDamage: 25
+      HDamage: 50
+    - Type: 1
+      LDamage: 18
+      HDamage: 76
+    - Type: 2
+      LDamage: 0
+      HDamage: 109
+    - Type: 3
+      LDamage: 31
+      HDamage: 35
+  CastsPerSecond:
+  - floats:
+    - 3
+    - 3
+    - 3
+    - 3
+  - floats:
+    - 2
+    - 2
+    - 2
+    - 2
+  - floats:
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+  - floats:
+    - 1
+    - 1
+    - 1
+    - 1
+  ManaCost:
+  - ints: 04000000040000000400000004000000
+  - ints: 08000000080000000800000008000000
+  - ints: 0c0000000c0000000c0000000c000000
+  - ints: 14000000140000001400000014000000
+  SpellAffects:
+  - Resources:
+    - {fileID: 2836226209321691655, guid: 8be732630a3a781408851d207775fae4, type: 3}
+    - {fileID: 2836226209321691655, guid: 2ad24bc1ee4dc0c4292655e5c3dcefa1, type: 3}
+    - {fileID: 2836226209321691655, guid: 881e7243145409543a858c151c23db33, type: 3}
+    - {fileID: 2836226209321691655, guid: 2faba351424b0d8419fa36eae7126899, type: 3}
+    - {fileID: 0}
+  - Resources:
+    - {fileID: 6980226527911800416, guid: 81e54688e68e3b5418ad9c1dbd37bae9, type: 3}
+    - {fileID: 6980226527911800416, guid: 931b7ace5396e8a49b758dab20a71e79, type: 3}
+    - {fileID: 6980226527911800416, guid: 7ff08c8663cb20f439ac54bd67137f67, type: 3}
+    - {fileID: 6980226527911800416, guid: 288b6ad4c0001b54e8e750c59df87d9a, type: 3}
+    - {fileID: 0}
+  - Resources:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - Resources:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

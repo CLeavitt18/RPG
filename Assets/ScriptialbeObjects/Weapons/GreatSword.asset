@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef39b4ffcb00c441a590afad1e20ac0, type: 3}
+  m_Name: GreatSword
+  m_EditorClassIdentifier: 
+  WeaponSkillType: 0
+  HandType: 1
+  LifeSteal: 0
+  PwrAttackDamage: 50
+  CritDamage: 40
+  Durability: 400
+  StatusChance: 3c0000003c0000003c0000003c000000
+  MinDamage: 120000000c0000000000000017000000
+  MaxDamage: 26000000320000004b0000001d000000
+  Values: 1e000000960000007800000096000000ce010000d20000001c02000020040000860100005802000028050000
+  Primary: {fileID: 1189308012053909339, guid: 1454d6e0968d3294a9ddb2d2faaa10bd, type: 3}
+  Secondary:
+  - {fileID: 11400000, guid: fee9b2fbf029cc9488b1a509b214f524, type: 2}
+  - {fileID: 11400000, guid: 0c1f456b8d590924b84fd24eb5812c03, type: 2}
+  - {fileID: 11400000, guid: 0e6dd1977f063a24a906bfc322274887, type: 2}
+  - {fileID: 11400000, guid: 11d08d54e7be6d8428b8220a2bb4c171, type: 2}
+  - {fileID: 11400000, guid: 0298d10c401c7504f8021f71aee4dc90, type: 2}
+  - {fileID: 11400000, guid: c98eb118b33b1e14ea866c47eb4f3601, type: 2}
+  - {fileID: 11400000, guid: 301b51b138d212f4799ba08696dc1d8b, type: 2}
+  - {fileID: 11400000, guid: 7a6818bb57a420d43a4aec7bd57194eb, type: 2}
+  - {fileID: 11400000, guid: 828ebb70c6c04744c8ed541dc6b0f6b0, type: 2}
+  - {fileID: 11400000, guid: 9c40e7511aab10f439184a2d7e4cb614, type: 2}
+  - {fileID: 11400000, guid: c54075bfe113684489a19896092fad06, type: 2}
+  Tertiary:
+  - {fileID: 11400000, guid: a31d3319c5c9195479582f06501ab4c4, type: 2}
+  - {fileID: 11400000, guid: 40823872f2b3e3e44a1e1d893a5e28ad, type: 2}
+  - {fileID: 11400000, guid: a103bc7e0f073a6489578fedd2b1f2c3, type: 2}
+  - {fileID: 11400000, guid: 06eeec8c78a0c6646a61dacd1ae1d7ce, type: 2}
+  - {fileID: 11400000, guid: eff542db2efc8664eac442eaf6b7fb6c, type: 2}
+  - {fileID: 11400000, guid: 4d8c16a40e529a34ab2f8dcb960e0f19, type: 2}
+  - {fileID: 11400000, guid: 725b055283798b048bd811259f2fe020, type: 2}
+  - {fileID: 11400000, guid: 193e69581cb25114e9b182bb56a1ef64, type: 2}
+  - {fileID: 11400000, guid: dc1f273b4b76d854da0d814c1bd2c016, type: 2}
+  - {fileID: 11400000, guid: 0661dc330df68364e99723687ae3266d, type: 2}
+  - {fileID: 11400000, guid: dfd5590a60808e042a1712c8193a997d, type: 2}
+  Weigth: 1200
+  AttacksPerSecond: 0.85
+  Type: 3
+  Animator:
+  - {fileID: 9100000, guid: 9344fa12332de4f4dba788bf6e64dc7c, type: 2}
+  - {fileID: 9100000, guid: 5230684a2cbe6e144b724f5e1cce165e, type: 2}
+  AttackAnimationName: Sword Attack
+  PwrAttackAnimationName: Sword Power Attack

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef39b4ffcb00c441a590afad1e20ac0, type: 3}
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  WeaponSkillType: 0
+  HandType: 0
+  LifeSteal: 20
+  PwrAttackDamage: 125
+  CritDamage: 60
+  Durability: 260
+  StatusChance: 3c0000003c0000003c0000003c000000
+  MinDamage: 07000000040000000000000009000000
+  MaxDamage: 1100000017000000240000000d000000
+  Values: 14000000640000005000000064000000340100008c00000068010000c0020000040100009001000070030000
+  Primary: {fileID: 3499376422265019266, guid: 5cd1f14095790cc41a05d9d6d7e4c4fc, type: 3}
+  Secondary:
+  - {fileID: 11400000, guid: da6ef4e3e9443fc4bb0b7e624b68c805, type: 2}
+  - {fileID: 11400000, guid: 860db6f5c6d55db4ea890780d4fea5a7, type: 2}
+  - {fileID: 11400000, guid: b5b6ce0f0723966498aab227e6e69dc1, type: 2}
+  - {fileID: 11400000, guid: df2292599d1c7d043a38de0e132552e2, type: 2}
+  - {fileID: 11400000, guid: 445c3206f9e3a1e48a6e6601dd558baa, type: 2}
+  - {fileID: 11400000, guid: ffaa960cfad77444494cf594fae98da8, type: 2}
+  - {fileID: 11400000, guid: fa953a764053ce844ad8fe1963907b17, type: 2}
+  - {fileID: 11400000, guid: b107d42d272be6c479226a59cb475191, type: 2}
+  - {fileID: 11400000, guid: 6c663b16616210a45b5d5e8b2575c825, type: 2}
+  - {fileID: 11400000, guid: 4501ee2bf1e224d458f9b818d15f22c7, type: 2}
+  - {fileID: 11400000, guid: d0631f0ccbec24d479158d00e1034969, type: 2}
+  Tertiary:
+  - {fileID: 11400000, guid: dcd883b0eb80ef44c9e53b51b751e613, type: 2}
+  - {fileID: 11400000, guid: bd99af484e7dfa4418c2f613ebbfcd05, type: 2}
+  - {fileID: 11400000, guid: b02964a50684d4549a00f32b0d75b251, type: 2}
+  - {fileID: 11400000, guid: a0eae0c4962529444a948b6dc83cfc63, type: 2}
+  - {fileID: 11400000, guid: ae550537169f8ca439f50d7db33e1e37, type: 2}
+  - {fileID: 11400000, guid: d7604937f77dbb647958364c88d2984d, type: 2}
+  - {fileID: 11400000, guid: 8caf5bdb81c9c3e4292734b75787f371, type: 2}
+  - {fileID: 11400000, guid: 7afad979e2a077e499196f24c29a37cd, type: 2}
+  - {fileID: 11400000, guid: f17f68899c1def041beb9d679b68cb6b, type: 2}
+  - {fileID: 11400000, guid: c3f2b010e93dd3543976f227a8139ce5, type: 2}
+  - {fileID: 11400000, guid: cfecb6bdba353f84bb9f9bc398bc0f2a, type: 2}
+  Weigth: 800
+  AttacksPerSecond: 1.35
+  Type: 1
+  Animator:
+  - {fileID: 9100000, guid: 209769f460af03349a877eb8d92764d6, type: 2}
+  - {fileID: 9100000, guid: 2e73d904839c8fe468c1c4b8dc47bb4b, type: 2}
+  AttackAnimationName: Axe Attack
+  PwrAttackAnimationName: Axe Power Attack

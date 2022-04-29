@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e50c73ccea4f943ac243d089dcc5ca, type: 3}
+  m_Name: Resources
+  m_EditorClassIdentifier: 
+  ItemsRequired:
+  - Name: Leather
+    Amount: 01000000
+    Item:
+    - Hide
+  - Name: Copper Ingot
+    Amount: 0200000001000000
+    Item:
+    - Copper Ore
+    - Coal
+  - Name: Iron Ingot
+    Amount: 0200000001000000
+    Item:
+    - Iron Ore
+    - Coal
+  - Name: Silver Ingot
+    Amount: 0200000001000000
+    Item:
+    - Silver Ore
+    - Coal
+  - Name: Steel Ingot
+    Amount: 020000000100000002000000
+    Item:
+    - Iron Ingot
+    - Silver Ingot
+    - Coal
+  - Name: Cobalt Ingot
+    Amount: 0200000001000000
+    Item:
+    - Cobalt Ore
+    - Coal
+  - Name: Mithril Ingot
+    Amount: 0200000001000000
+    Item:
+    - Mithril Ore
+    - Coal
+  - Name: Ebony Ingot
+    Amount: 0200000001000000
+    Item:
+    - Ebony Ore
+    - Coal
+  - Name: Tin Ingot
+    Amount: 0200000001000000
+    Item:
+    - Tin Ore
+    - Coal
+  - Name: Bronze
+    Amount: 020000000100000002000000
+    Item:
+    - Copper Ingot
+    - Tin Ingot
+    - Coal

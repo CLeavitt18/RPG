@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906975bc8b4484d4b983f17aa4027f42, type: 3}
+  m_Name: AxeCap(ST)
+  m_EditorClassIdentifier: 
+  Value: 176
+  WeaponPart: {fileID: 8402849883259828597, guid: 7e986ff788b866047a7b4772c50e024b, type: 3}
