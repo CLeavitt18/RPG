@@ -26,8 +26,8 @@ public class StatusManager : MonoBehaviour
         fireManager.StartBurning(target, damage);
     }
 
-    public void StartChain(LivingEntities target, int damage)
+    public void StartChain(LivingEntities target, int damage, int chains)
     {
-        lightningManager.StartChain(target, damage);
+        lightningManager.StartChain(target, damage, chains);
     }
 }

@@ -18,7 +18,7 @@ public class FireStatusManager : MonoBehaviour
 
         BurningStatus status = null;
 
-        switch (statusAffect.GetType())
+        switch (statusAffect.GetStatusType())
         {
             case StatusTypeEnum.BaseType:
                 status = target.gameObject.AddComponent<BurningStatus>();

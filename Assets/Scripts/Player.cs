@@ -403,7 +403,7 @@ public class Player : LivingEntities
         return false;
     }
 
-    public override IEnumerator ChainLightning(DamageStats stats, int id)
+    /*public override IEnumerator ChainLightning(DamageStats stats, int id)
     {
         yield return new WaitForEndOfFrame();
 
@@ -423,7 +423,7 @@ public class Player : LivingEntities
         {
             StartCoroutine(ChainLightning(stats, id));
         }
-    }
+    }*/
 
     /*public override IEnumerator BurningStatus(DamageStats stats, int id)
     {

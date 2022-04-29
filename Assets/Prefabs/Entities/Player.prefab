@@ -297,6 +297,8 @@ GameObject:
   - component: {fileID: 5014798448673781093}
   - component: {fileID: 5886805575967077947}
   - component: {fileID: 4252330496049339204}
+  - component: {fileID: 9047054723285619647}
+  - component: {fileID: 3571938016359581265}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -708,6 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireManager: {fileID: 5886805575967077947}
+  lightningManager: {fileID: 9047054723285619647}
   self: {fileID: 2279016529319697592}
 --- !u!114 &5886805575967077947
 MonoBehaviour:
@@ -745,6 +748,36 @@ MonoBehaviour:
   x2Damge: 0
   waitTime: 0
   nextTickTime: 0
+--- !u!114 &9047054723285619647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2279016529319697543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255334db31c7e1b409c2013064a936ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusAffect: {fileID: 3571938016359581265}
+--- !u!114 &3571938016359581265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2279016529319697543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563c88f14f2514242b02607d374e0eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  self: {fileID: 0}
+  _damage: 0
+  chains: 0
+  chainLength: 0
 --- !u!1 &2279016529663060647
 GameObject:
   m_ObjectHideFlags: 0

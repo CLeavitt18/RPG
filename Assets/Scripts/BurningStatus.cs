@@ -141,7 +141,7 @@ public class BurningStatus : MonoBehaviour
         _type = type;
     }
 
-    public StatusTypeEnum GetType()
+    public StatusTypeEnum GetStatusType()
     {
         return _type;
     }

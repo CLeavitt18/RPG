@@ -340,7 +340,7 @@ public class AIController : LivingEntities
         return base.BurningStatus(stats, id);
     }*/
 
-    public override IEnumerator ChainLightning(DamageStats stats, int id)
+    /*public override IEnumerator ChainLightning(DamageStats stats, int id)
     {
         yield return new WaitForEndOfFrame();
 
@@ -404,7 +404,7 @@ public class AIController : LivingEntities
 
             BestTarget.CheckHealth();
         }
-    }
+    }*/
 
     public override void CalculateSpeed()
     {

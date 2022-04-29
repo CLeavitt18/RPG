@@ -1013,10 +1013,10 @@ public class LivingEntities : MonoBehaviour
     #endregion
 
     #region StatusAffects
-    public virtual IEnumerator ChainLightning(DamageStats stats, int id)
+    /*public virtual IEnumerator ChainLightning(DamageStats stats, int id)
     {
         yield break;
-    }
+    }*/
 
     public IEnumerator ChillStatus(DamageStats stats)
     {

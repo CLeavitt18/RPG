@@ -41,10 +41,10 @@ public class WeaponHitManager : HitManager
 
         DamageStats statsCopy = new DamageStats(Stats);
 
-        if (Stats.DamageTypes.Contains(DamageTypeEnum.Fire))
-        {
-            int id = Stats.DamageTypes.IndexOf(DamageTypeEnum.Fire);
+        int id;
 
+        if ((id = Stats.DamageTypes.IndexOf(DamageTypeEnum.Fire)) != -1)
+        {
             if (Stats.Status[id] == true)
             {
                 //Debug.Log("Burning status Started");
@@ -52,20 +52,16 @@ public class WeaponHitManager : HitManager
             }
         }
 
-        if (Stats.DamageTypes.Contains(DamageTypeEnum.Lightning))
+        if ((id = Stats.DamageTypes.IndexOf(DamageTypeEnum.Lightning)) != -1)
         {
-            int id = Stats.DamageTypes.IndexOf(DamageTypeEnum.Lightning);
-
             if (Stats.Status[id] == true)
             {
-                StartCoroutine(OL.ChainLightning(statsCopy, id));
+                Stats.Parent.StatusManger.StartChain(OL, Stats.DamageValues[id], 0);
             }
         }
 
-        if (Stats.DamageTypes.Contains(DamageTypeEnum.Ice))
+        if ((id = Stats.DamageTypes.IndexOf(DamageTypeEnum.Ice)) != -1 )
         {
-            int id = Stats.DamageTypes.IndexOf(DamageTypeEnum.Ice);
-
             if (Stats.Status[id] == true && !OL.GetChilled())
             {
                 StartCoroutine(OL.ChillStatus(statsCopy));
