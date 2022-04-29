@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\DayNight.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\ResourceDeposit.cs" />
+    <Compile Include="Assets\Scripts\BaseClasses\StatusAffect.cs" />
     <Compile Include="Assets\Scripts\ResourceHolder.cs" />
     <Compile Include="Assets\Scripts\PotionRolller.cs" />
     <Compile Include="Assets\Scripts\NPCDialogue.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Scripts\SlotsActions.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\DepositData.cs" />
     <Compile Include="Assets\Scripts\Key.cs" />
+    <Compile Include="Assets\Scripts\StatusManager.cs" />
     <Compile Include="Assets\Scripts\ResourceRoller.cs" />
     <Compile Include="Assets\Scripts\SceneManagerOwn.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\BaseDamageSpell.cs" />
@@ -131,6 +133,7 @@
     <Compile Include="Assets\Scripts\ArmourHolder.cs" />
     <Compile Include="Assets\Scripts\CatalystHolder.cs" />
     <Compile Include="Assets\Scripts\LoadProfileButton.cs" />
+    <Compile Include="Assets\Scripts\BurningStatus.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Enums.cs" />
     <Compile Include="Assets\Scripts\GolemSpell.cs" />
     <Compile Include="Assets\Scripts\Interactiables\ItemInteractiable.cs" />
@@ -159,11 +162,13 @@
     <Compile Include="Assets\Scripts\FPSCounter.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Catalyst.cs" />
     <Compile Include="Assets\Scripts\SpellHolder.cs" />
+    <Compile Include="Assets\Scripts\FireStatusManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IConsumable.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\ContainerData.cs" />
     <Compile Include="Assets\Scripts\PlayerUi.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\RuneTableUI.cs" />
+    <Compile Include="Assets\Scripts\ReflectBurning.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

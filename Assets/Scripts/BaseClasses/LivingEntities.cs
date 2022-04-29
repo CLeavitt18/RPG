@@ -49,6 +49,8 @@ public class LivingEntities : MonoBehaviour
 
     [SerializeField] public Inventory Inventory;
 
+    [SerializeField] public StatusManager StatusManger;
+
     [SerializeField] protected List<AIController> Minions;
 
     [SerializeField] private float NextRegen;
@@ -1011,48 +1013,6 @@ public class LivingEntities : MonoBehaviour
     #endregion
 
     #region StatusAffects
-    public virtual IEnumerator BurningStatus(DamageStats stats, int id)
-    {
-        yield return new WaitForEndOfFrame();
-
-        stats.DamageValues[id] = (int)((float)stats.DamageValues[id] * ((float)stats.BurnDamage * .01f));
-
-        Burning = true;
-        BurningStacks++;
-
-        for (int i = 0; i < stats.BurnTicks; i++)
-        {
-            if (Dead == true)
-            {
-                yield break;
-            }
-
-            GameObject BA = Instantiate(PrefabIDs.prefabIDs.BurnAffect, transform.position, transform.rotation, gameObject.transform);
-
-            Attributes[0].Current -= stats.DamageValues[id];
-
-            if (CompareTag(GlobalValues.PlayerTag))
-            {
-                PlayerUi.playerUi.SetPlayerAttributeUI(0);
-            }
-
-            yield return new WaitForSeconds(stats.BurnWaitTime * .5f);
-
-            Destroy(BA);
-
-            yield return new WaitForSeconds(stats.BurnWaitTime * .5f);
-
-            CheckHealth();
-        }
-
-        BurningStacks--;
-
-        if (BurningStacks == 0)
-        {
-            Burning = false;
-        }
-    }
-
     public virtual IEnumerator ChainLightning(DamageStats stats, int id)
     {
         yield break;
@@ -1075,34 +1035,6 @@ public class LivingEntities : MonoBehaviour
         ActionSpeed = 1;
 
         CalculateSpeed();
-    }
-
-    protected void BurningCalcs()
-    {
-        for (int HandType = 0; HandType < 2; HandType++)
-        {
-            Hands[HandType].Stats.BurnDamage = 10;
-            Hands[HandType].Stats.BurnTicks = 12;
-            Hands[HandType].Stats.BurnWaitTime = .25f;
-
-            float Temp;
-
-            Temp = (float)Skills[(int)SkillType.Pyromancy].Level * .01f;
-            Hands[HandType].Stats.BurnDamage += (int)(10 * Temp);
-            Hands[HandType].Stats.BurnTicks += (int)(12 * Temp);
-            Hands[HandType].Stats.BurnWaitTime *= 1 - (Temp * .5f);
-
-            //Check shrine affects
-            if (Powers[1].Contains(1))
-            {
-                Hands[HandType].Stats.BurnDamage = 100;
-            }
-
-            if (Powers[1].Contains(3))
-            {
-                Hands[HandType].Stats.BurnDamage *= 2;
-            }
-        }
     }
 
     protected void ChainCalcs()

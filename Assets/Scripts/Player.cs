@@ -51,7 +51,7 @@ public class Player : LivingEntities
         WorldStateTracker.Tracker.FirstOpen = false;
 
         ResetPowers();
-        BurningCalcs();
+        StatusManger.RunCalculs();
         ChainCalcs();
         ChillCalcs();
         CalculateSpeed();
@@ -426,12 +426,12 @@ public class Player : LivingEntities
         }
     }
 
-    public override IEnumerator BurningStatus(DamageStats stats, int id)
+    /*public override IEnumerator BurningStatus(DamageStats stats, int id)
     {
         PlayerUi.playerUi.CallBurning(stats.BurnTicks, stats.BurnWaitTime);
 
         return base.BurningStatus(stats, id);
-    }
+    }*/
 
     public override void CalculateSpeed()
     {
@@ -518,7 +518,7 @@ public class Player : LivingEntities
                         }
                     }
 
-                    BurningCalcs();
+                    StatusManger.RunCalculs();
 
                     break;
                 case SkillType.Astromancy:
@@ -673,7 +673,7 @@ public class Player : LivingEntities
             CalculateAttribute(i);
         }
 
-        BurningCalcs();
+        StatusManger.RunCalculs();
         ChainCalcs();
         ChillCalcs();
 

@@ -294,6 +294,9 @@ GameObject:
   - component: {fileID: 2279016529319697592}
   - component: {fileID: 6780483836794040838}
   - component: {fileID: 5917650953009909481}
+  - component: {fileID: 5014798448673781093}
+  - component: {fileID: 5886805575967077947}
+  - component: {fileID: 4252330496049339204}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -630,6 +633,7 @@ MonoBehaviour:
   Running: 0
   IsEmmune: 00000000
   Inventory: {fileID: 5917650953009909481}
+  StatusManger: {fileID: 5014798448673781093}
   Minions: []
   NextRegen: 0
   NextStaminaDegen: 0
@@ -691,6 +695,56 @@ MonoBehaviour:
   CurrentCarryWeight: 0
   InventroyHolder: {fileID: 0}
   AllItems: []
+--- !u!114 &5014798448673781093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2279016529319697543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e74532b3f5acd24c9959c2ab2c19163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireManager: {fileID: 5886805575967077947}
+  self: {fileID: 2279016529319697592}
+--- !u!114 &5886805575967077947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2279016529319697543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44321719d6dd246498958e0fb5299ad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusAffect: {fileID: 4252330496049339204}
+  stacks: 0
+  canStack: 0
+  burning: 0
+--- !u!114 &4252330496049339204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2279016529319697543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f7a47c85a083f4299676d6b9cff81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  _type: 1
+  _damage: 0
+  ticks: 0
+  burningDamage100: 0
+  x2Damge: 0
+  waitTime: 0
+  nextTickTime: 0
 --- !u!1 &2279016529663060647
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,28 +47,8 @@ public class WeaponHitManager : HitManager
 
             if (Stats.Status[id] == true)
             {
-                //Starts burning on self if relfect Burning is active
-                if (Stats.Parent.GetPower(1, 0))
-                {
-                    //Starts burning on self if
-                    //not already burning
-                    //or 
-                    //burning can stack
-                    if (!Stats.Parent.GetBurning() || Stats.Parent.GetPower(0, 3))
-                    {
-                        StartCoroutine(Stats.Parent.BurningStatus(statsCopy, id));
-                    }
-                }
-
-                //Start burning on enemy if
-                //the enemy is not already buring
-                //or 
-                //buring can stack
-                if (!OL.GetBurning() || Stats.Parent.GetPower(0, 3))
-                {
-                    StartCoroutine(OL.BurningStatus(statsCopy, id));
-                    //Debug.Log("Burning Started on enemy");
-                }
+                //Debug.Log("Burning status Started");
+                Stats.Parent.StatusManger.StartBurning(OL, Stats.DamageValues[id]);
             }
         }
 

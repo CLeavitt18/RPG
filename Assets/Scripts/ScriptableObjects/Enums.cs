@@ -1,4 +1,14 @@
-﻿public enum EntityType : byte
+﻿public enum StatusTypeEnum : byte
+{
+    BaseType,
+    AdvancedBase,
+    SecondType,
+    AdvancedSecondType,
+    ThirdType,
+    AdvacnedThirdType
+}
+
+public enum EntityType : byte
 {
     Player,
     Enemy,

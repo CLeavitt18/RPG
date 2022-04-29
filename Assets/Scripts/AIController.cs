@@ -87,7 +87,7 @@ public class AIController : LivingEntities
 
         CalculateStats();
         CalculateWeight();
-        BurningCalcs();
+        StatusManger.RunCalculs();
         ChainCalcs();
         ChillCalcs();
         CalculateSpeed();
@@ -336,10 +336,10 @@ public class AIController : LivingEntities
         return TotalDamage;
     }
 
-    public override IEnumerator BurningStatus(DamageStats stats, int id)
+    /*public override IEnumerator BurningStatus(DamageStats stats, int id)
     {
         return base.BurningStatus(stats, id);
-    }
+    }*/
 
     public override IEnumerator ChainLightning(DamageStats stats, int id)
     {
