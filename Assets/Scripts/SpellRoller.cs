@@ -45,7 +45,12 @@ public class SpellRoller : MonoBehaviour
         }
 
         Item Item = CreateSpell(mat_id, runes);
-        
+
+        for (int i = 0; i < numOfRunes; i++)
+        {
+            Destroy(runes[i].gameObject);
+        }
+
         return Item;
     }
 
