@@ -5,7 +5,7 @@ public class IceStatusManager : MonoBehaviour
     [SerializeField] private ChillAffect statusAffect;
 
     [SerializeField] private bool chilled;
-
+    [SerializeField] private bool frozen;
 
     public void RunCalcs(int level)
     {
@@ -15,7 +15,7 @@ public class IceStatusManager : MonoBehaviour
 
     public void StartChill(LivingEntities target)
     {
-        if (chilled)
+        if (chilled && frozen)
         {
             return;
         }
@@ -45,8 +45,25 @@ public class IceStatusManager : MonoBehaviour
         status.CallStartAffect(GetComponent<LivingEntities>());
     }
 
+    public bool GetChilled()
+    {
+        return chilled;
+    }
+
     public void SetChilled(bool state)
     {
         chilled = state;
     }
+
+    public bool GetFrozen()
+    {
+        return frozen;
+    }
+
+    public void SetFrozen(bool state)
+    {
+        frozen = state;
+    }
+
+
 }

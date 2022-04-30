@@ -19,7 +19,16 @@ public class ChillAffect : MonoBehaviour
 
     public void CallStartAffect(LivingEntities origin)
     {
-        StartCoroutine(StartAffect(origin));
+        IceStatusManager manager = GetComponent<IceStatusManager>();
+
+        if (manager.GetChilled())
+        {
+            StartCoroutine(StartSecondAffect(origin));
+        }
+        else
+        {
+            StartCoroutine(StartAffect(origin));
+        }
     }
 
     public virtual IEnumerator StartAffect(LivingEntities origin)
@@ -34,12 +43,38 @@ public class ChillAffect : MonoBehaviour
 
         yield return new WaitForSeconds(duration);
 
+        if (manager.GetFrozen())
+        {
+            Destroy(ChilledAffectTemp);
+            yield break;
+        }
+
         manager.SetChilled(false);
         Destroy(ChilledAffectTemp);
 
         self.SetActionSpeedDefault();
 
         Destroy(this);
+    }
+
+    public virtual IEnumerator StartSecondAffect(LivingEntities origin)
+    {
+        IceStatusManager manager = GetComponent<IceStatusManager>();
+
+        manager.SetFrozen(true);
+
+        self.ReduceActionSpeed(self.GetActionSpeed());
+
+        GameObject ChilledAffectTemp = Instantiate(PrefabIDs.prefabIDs.ChilledAffect, transform.position, transform.rotation, gameObject.transform);
+
+        yield return new WaitForSeconds(duration);
+
+        manager.SetFrozen(false);
+        Destroy(ChilledAffectTemp);
+
+        self.SetActionSpeedDefault();
+
+        StartCoroutine(StartAffect(origin));
     }
 
     public virtual void SetStats(ChillAffect affect)
@@ -52,7 +87,7 @@ public class ChillAffect : MonoBehaviour
     {
         float TempChillA = 25f;
         chillAffect = 25;
-        duration = 3.0f;
+        duration = 1.5f;
 
         float Temp = level * .01f;
 
