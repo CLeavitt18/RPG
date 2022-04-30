@@ -73,11 +73,6 @@ public class BurningStatus : MonoBehaviour
         Destroy(this);
     }
 
-    public virtual void Stop()
-    {
-
-    }
-
     public virtual void SetStats(BurningStatus bs)
     {
         _damage = bs._damage;

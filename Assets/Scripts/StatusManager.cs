@@ -20,6 +20,7 @@ public class StatusManager : MonoBehaviour
     {
         fireManager.RunCalc(self.GetSkillLevel((int)SkillType.Pyromancy));
         lightningManager.RunCalc(self.GetSkillLevel((int)SkillType.Astromancy));
+        iceManager.RunCalcs(self.GetSkillLevel((int)SkillType.Cryomancy));
     }
 
     public void StartBurning(LivingEntities target, int damage)
@@ -31,5 +32,10 @@ public class StatusManager : MonoBehaviour
     public void StartChain(LivingEntities target, int damage, int chains)
     {
         lightningManager.StartChain(target, damage, chains);
+    }
+
+    public void StartChill(LivingEntities target)
+    {
+        iceManager.StartChill(target);
     }
 }

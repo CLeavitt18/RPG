@@ -13,7 +13,26 @@ public class LightningStatusManager : MonoBehaviour
 
     public virtual void StartChain(LivingEntities target, int damage, int chains)
     {
-       ChainAffect status = target.gameObject.AddComponent<ChainAffect>();
+        ChainAffect status = null;
+
+        switch (statusAffect.GetStatusType())
+        {
+            case StatusTypeEnum.BaseType:
+                status = target.gameObject.AddComponent<ChainAffect>();
+                break;
+            case StatusTypeEnum.AdvancedBase:
+                break;
+            case StatusTypeEnum.SecondType:
+                break;
+            case StatusTypeEnum.AdvancedSecondType:
+                break;
+            case StatusTypeEnum.ThirdType:
+                break;
+            case StatusTypeEnum.AdvacnedThirdType:
+                break;
+            default:
+                break;
+        }
 
         status.SetStats(statusAffect);
 

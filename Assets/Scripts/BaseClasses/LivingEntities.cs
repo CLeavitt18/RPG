@@ -1012,44 +1012,6 @@ public class LivingEntities : MonoBehaviour
     }
     #endregion
 
-    #region StatusAffects
-    public IEnumerator ChillStatus(DamageStats stats)
-    {
-        Chilled = true;
-        GameObject ChilledAffectTemp = Instantiate(PrefabIDs.prefabIDs.ChilledAffect, transform.position, transform.rotation, gameObject.transform);
-
-        ActionSpeed -= (float)stats.ChillAffect * .01f;
-
-        CalculateSpeed();
-
-        yield return new WaitForSeconds(stats.ChillDuration);
-
-        Chilled = false;
-        Destroy(ChilledAffectTemp);
-
-        ActionSpeed = 1;
-
-        CalculateSpeed();
-    }
-
-    protected void ChillCalcs()
-    {
-        for (int HandType = 0; HandType < 2; HandType++)
-        {
-            Hands[HandType].Stats.ChillAffect = 25;
-            float TempChillA = 25f;
-            Hands[HandType].Stats.ChillDuration = 3.0f;
-
-            float Temp;
-
-            Temp = (float)Skills[(int)SkillType.Cryomancy].Level * .01f;
-            TempChillA *= 1 + Temp;
-            Hands[HandType].Stats.ChillAffect = (int)TempChillA;
-            Hands[HandType].Stats.ChillDuration *= 1 + Temp;
-        }
-    }
-    #endregion
-
     #region BaseCalcs
     public virtual void CalculateSpeed()
     {
@@ -1516,6 +1478,20 @@ public class LivingEntities : MonoBehaviour
     public void SetLevel(int level)
     {
         Level = level;
+    }
+
+    public void ReduceActionSpeed(float reduction)
+    {
+        ActionSpeed -= reduction;
+
+        CalculateSpeed();
+    }
+
+    public void SetActionSpeedDefault()
+    {
+        ActionSpeed = 1;
+
+        CalculateSpeed();
     }
     #endregion
 }

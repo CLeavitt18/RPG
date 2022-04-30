@@ -4,24 +4,49 @@ public class IceStatusManager : MonoBehaviour
 {
     [SerializeField] private ChillAffect statusAffect;
 
+    [SerializeField] private bool chilled;
 
-    public virtual void CalculateStats(int skillLevel)
+
+    public void RunCalcs(int level)
     {
-        _damage = 25;
-        _chains = 3;
-        chainLength = 4.5f;
-
-        float Temp;
-
-        Temp = (float)skillLevel * .01f;
-        _damage += (int)(25 * Temp);
-        _chains += (int)(3 * Temp);
-        chainLength *= 1 + Temp;
-        chainLength = Mathf.Round(chainLength * 10) * .1f;
+        statusAffect.CalculateStats(level);
     }
+
 
     public void StartChill(LivingEntities target)
     {
+        if (chilled)
+        {
+            return;
+        }
 
+        ChillAffect status = null;
+
+        switch (statusAffect.GetStatusType())
+        {
+            case StatusTypeEnum.BaseType:
+                status = target.gameObject.AddComponent<ChillAffect>();
+                break;
+            case StatusTypeEnum.AdvancedBase:
+                break;
+            case StatusTypeEnum.SecondType:
+                break;
+            case StatusTypeEnum.AdvancedSecondType:
+                break;
+            case StatusTypeEnum.ThirdType:
+                break;
+            case StatusTypeEnum.AdvacnedThirdType:
+                break;
+            default:
+                break;
+        }
+
+        status.SetStats(statusAffect);
+        status.CallStartAffect(GetComponent<LivingEntities>());
+    }
+
+    public void SetChilled(bool state)
+    {
+        chilled = state;
     }
 }

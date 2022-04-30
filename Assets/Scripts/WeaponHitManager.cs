@@ -62,9 +62,9 @@ public class WeaponHitManager : HitManager
 
         if ((id = Stats.DamageTypes.IndexOf(DamageTypeEnum.Ice)) != -1 )
         {
-            if (Stats.Status[id] == true && !OL.GetChilled())
+            if (Stats.Status[id] == true)
             {
-                StartCoroutine(OL.ChillStatus(statsCopy));
+                Stats.Parent.StatusManger.StartChill(OL);
             }
         }
     }

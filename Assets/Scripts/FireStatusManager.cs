@@ -6,8 +6,8 @@ public class FireStatusManager : MonoBehaviour
 
     [SerializeField] private int stacks;
 
-    [SerializeField] bool canStack;
-    [SerializeField] bool burning;
+    [SerializeField] private bool canStack;
+    [SerializeField] private bool burning;
 
     public void StartBurning(LivingEntities target, int damage)
     {
@@ -22,7 +22,7 @@ public class FireStatusManager : MonoBehaviour
         {
             case StatusTypeEnum.BaseType:
                 status = target.gameObject.AddComponent<BurningStatus>();
-                Debug.Log("Burning Started on Target " + target.name);
+                //Debug.Log("Burning Started on Target " + target.name);
                 break;
             case StatusTypeEnum.AdvancedBase:
                 status = target.gameObject.AddComponent<ReflectBurning>();
@@ -51,7 +51,7 @@ public class FireStatusManager : MonoBehaviour
         Destroy(statusAffect);
 
         statusAffect = gameObject.AddComponent<ReflectBurning>();
-        //statusAffect.CalculateStats();
+        statusAffect.CalculateStats(GetComponent<LivingEntities>().GetSkillLevel((int)SkillType.Pyromancy));
     }
 
     public void SetIsBurning(bool state)
