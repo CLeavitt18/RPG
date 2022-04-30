@@ -168,6 +168,8 @@ GameObject:
   - component: {fileID: 8502897106214171061}
   - component: {fileID: 8511884122220073128}
   - component: {fileID: 6976846160086338631}
+  - component: {fileID: 6657727472345078895}
+  - component: {fileID: 7839028153141372942}
   m_Layer: 8
   m_Name: Model
   m_TagString: Enemy
@@ -602,6 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireManager: {fileID: 19582901922698039}
   lightningManager: {fileID: 8511884122220073128}
+  iceManager: {fileID: 6657727472345078895}
   self: {fileID: 4155685964200010374}
 --- !u!114 &19582901922698039
 MonoBehaviour:
@@ -664,11 +667,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563c88f14f2514242b02607d374e0eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  _type: 0
   self: {fileID: 4155685964200010374}
   _damage: 0
-  chains: 0
+  _chains: 0
   chainLength: 0
+--- !u!114 &6657727472345078895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667978222684927281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7419525c6565cb344bb195d8ff6a2850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusAffect: {fileID: 7839028153141372942}
+  chilled: 0
+--- !u!114 &7839028153141372942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667978222684927281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b97131831dd41428d6461f2cba84c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  self: {fileID: 4155685964200010374}
+  chillAffect: 0
+  duration: 0
 --- !u!1 &1667978223657683228
 GameObject:
   m_ObjectHideFlags: 0

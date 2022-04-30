@@ -14,7 +14,6 @@ public class BurningStatus : MonoBehaviour
     [SerializeField] private bool x2Damge;
 
     [SerializeField] private float waitTime;
-    [SerializeField] private float nextTickTime;
 
     private void OnEnable()
     {

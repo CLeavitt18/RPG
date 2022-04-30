@@ -296,9 +296,11 @@ GameObject:
   - component: {fileID: 5917650953009909481}
   - component: {fileID: 5014798448673781093}
   - component: {fileID: 5886805575967077947}
-  - component: {fileID: 4252330496049339204}
+  - component: {fileID: 5331274024402552389}
   - component: {fileID: 9047054723285619647}
   - component: {fileID: 3571938016359581265}
+  - component: {fileID: -1784974816910764016}
+  - component: {fileID: 7031406506073760698}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -711,6 +713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireManager: {fileID: 5886805575967077947}
   lightningManager: {fileID: 9047054723285619647}
+  iceManager: {fileID: -1784974816910764016}
   self: {fileID: 2279016529319697592}
 --- !u!114 &5886805575967077947
 MonoBehaviour:
@@ -724,11 +727,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44321719d6dd246498958e0fb5299ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusAffect: {fileID: 4252330496049339204}
+  statusAffect: {fileID: 5331274024402552389}
   stacks: 0
   canStack: 0
   burning: 0
---- !u!114 &4252330496049339204
+--- !u!114 &5331274024402552389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -737,17 +740,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2279016529319697543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5f7a47c85a083f4299676d6b9cff81e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b69792097867444ead5890c4ec89b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  self: {fileID: 0}
-  _type: 1
+  self: {fileID: 2279016529319697592}
+  _type: 0
   _damage: 0
   ticks: 0
   burningDamage100: 0
   x2Damge: 0
   waitTime: 0
-  nextTickTime: 0
 --- !u!114 &9047054723285619647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,11 +775,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563c88f14f2514242b02607d374e0eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  self: {fileID: 0}
+  _type: 0
+  self: {fileID: 2279016529319697592}
   _damage: 0
-  chains: 0
+  _chains: 0
   chainLength: 0
+--- !u!114 &-1784974816910764016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2279016529319697543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7419525c6565cb344bb195d8ff6a2850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusAffect: {fileID: 7031406506073760698}
+  chilled: 0
+--- !u!114 &7031406506073760698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2279016529319697543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b97131831dd41428d6461f2cba84c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  self: {fileID: 2279016529319697592}
+  chillAffect: 0
+  duration: 0
 --- !u!1 &2279016529663060647
 GameObject:
   m_ObjectHideFlags: 0

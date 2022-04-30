@@ -52,7 +52,6 @@ public class Player : LivingEntities
 
         ResetPowers();
         StatusManger.RunCalculs();
-        ChillCalcs();
         CalculateSpeed();
 
         for (int i = 0; i < 3; i++)
@@ -538,7 +537,8 @@ public class Player : LivingEntities
                         SpellDamageMulti(i, DamageTypeEnum.Ice);
                     }
 
-                    ChillCalcs();
+
+                    StatusManger.RunCalculs();
                     break;
 
                 case SkillType.Syromancy:
@@ -671,7 +671,6 @@ public class Player : LivingEntities
         }
 
         StatusManger.RunCalculs();
-        ChillCalcs();
 
         for (int i = 0; i < 3; i++)
         {
