@@ -19,18 +19,6 @@ public class SpellRoller : MonoBehaviour
         for (int i = 0; i < numOfRunes; i++)
         {
             runes[i] = Roller.roller.runeRoller.RollRune().GetComponent<RuneHolder>().spell;
-
-            if (runes[i].SpellType == SpellType.DamageSpell)
-            {
-                DamageSpell dspell = runes[i] as DamageSpell;
-
-                for (int x = 0; x < dspell.DamageRanges.Count; x++)
-                {
-                    Debug.Log("Damage Type = " + dspell.DamageRanges[x].Type + " Low Damage = " + dspell.DamageRanges[x].LDamage + " High Damage = " + dspell.DamageRanges[x].HDamage);
-                }
-
-                Debug.Log("Debug Logs from " + runes[i].ToString());
-            }
         }
 
         int chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
@@ -45,11 +33,6 @@ public class SpellRoller : MonoBehaviour
         }
 
         Item Item = CreateSpell(mat_id, runes);
-
-        for (int i = 0; i < numOfRunes; i++)
-        {
-            Destroy(runes[i].gameObject);
-        }
 
         return Item;
     }
@@ -119,6 +102,11 @@ public class SpellRoller : MonoBehaviour
 
         spellH.ValueMulti = mats[mat_id].Multi;
         spellH.SetSpellState();
+
+        for (int i = 0; i < runes.Length; i++)
+        {
+            Destroy(runes[i].gameObject);
+        }
 
         return spellH;
     }

@@ -86,7 +86,7 @@
     <Compile Include="Assets\Scripts\WeaponHolder.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\LightingManager.cs" />
-    <Compile Include="Assets\RuneHolder.cs" />
+    <Compile Include="Assets\Scripts\RuneHolder.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\Item.cs" />
     <Compile Include="Assets\Scripts\IceStatusManager.cs" />
     <Compile Include="Assets\Scripts\RuneRoller.cs" />
@@ -172,6 +172,8 @@
     <Compile Include="Assets\Scripts\PlayerUi.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\RuneTableUI.cs" />
+    <Compile Include="Assets\Scripts\Interactiables\SpellCraftingTable.cs" />
+    <Compile Include="Assets\Scripts\SpellCraftingTableUi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
