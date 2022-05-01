@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\MatMults.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\BaseArmour.cs" />
     <Compile Include="Assets\Scripts\QuestTracker.cs" />
+    <Compile Include="Assets\Scripts\Interactiables\SpellCraftingTable.cs" />
     <Compile Include="Assets\Scripts\DayNight.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\ResourceDeposit.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Assets\Scripts\BaseClasses\IUi.cs" />
     <Compile Include="Assets\Scripts\LoadingScreen.cs" />
     <Compile Include="Assets\Scripts\SpellRoller.cs" />
+    <Compile Include="Assets\Scripts\SpellCraftingTableUi.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\PlayerData.cs" />
     <Compile Include="Assets\Scripts\RefinaryUi.cs" />
     <Compile Include="Assets\Scripts\ChillAffect.cs" />
@@ -172,8 +174,7 @@
     <Compile Include="Assets\Scripts\PlayerUi.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\RuneTableUI.cs" />
-    <Compile Include="Assets\Scripts\Interactiables\SpellCraftingTable.cs" />
-    <Compile Include="Assets\Scripts\SpellCraftingTableUi.cs" />
+    <Compile Include="Assets\Scripts\CraftingSlotAction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

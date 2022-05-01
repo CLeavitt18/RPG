@@ -9,6 +9,8 @@ public class SpellCraftingTableUi : MonoBehaviour
 
     [SerializeField] private SpellHolder spell;
 
+    [SerializeField] private Text runeSlot;
+
     [SerializeField] private Transform runeContentHolder;
 
     [SerializeField] private Dropdown materialTypeDropDown;
@@ -27,14 +29,12 @@ public class SpellCraftingTableUi : MonoBehaviour
             }
         }
 
-        Inventory runes = Player.player.Inventory;
-
-        int numOfRunes = runes.StartIds[3] - runes.StartIds[2];
+        Inventory inventory = Player.player.Inventory;
 
 
-        for (int i = 0; i < numOfRunes; i++)
+        for (int i = inventory.StartIds[2]; i < inventory.StartIds[3]; i++)
         {
-
+            //Player.player.Inventory.AllItems[i];
         }
     }
 }

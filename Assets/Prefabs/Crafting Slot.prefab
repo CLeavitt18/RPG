@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 3868985129560367503}
   - component: {fileID: 1609596644914611770}
   - component: {fileID: 3180647273454416251}
-  - component: {fileID: 3171948322714703750}
+  - component: {fileID: -2659195676630602503}
   - component: {fileID: 1260086525809972653}
   m_Layer: 5
   m_Name: Crafting Slot
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3171948322714703750
+--- !u!114 &-2659195676630602503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,16 +294,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1865744662274582771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1426053aea2a8704a97d8f89eb7a31fe, type: 3}
+  m_Script: {fileID: 11500000, guid: e32d7428931a5a542b62739e7fae4026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mode: 0
-  item: {fileID: 0}
-  EquipedIndicator: {fileID: 7852501995455974518}
-  UI: {fileID: 0}
-  QuestUi: {fileID: 0}
-  Clicked: 0
-  NextTime: 0
 --- !u!61 &1260086525809972653
 BoxCollider2D:
   m_ObjectHideFlags: 0
