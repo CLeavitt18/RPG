@@ -527,6 +527,12 @@ public class Inventory : MonoBehaviour, ISavable
         }
     }
 
+    public Item this[int i]
+    {
+        get { return AllItems[i]; }
+        private set { AllItems[i] = value; }
+    }
+
     public bool Save(int id)
     {
         return SaveSystem.SaveContainer(this, id);

@@ -61,4 +61,9 @@ public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerC
             QuestUi.SetQuestFocused(this, item);
         }*/
     }
+
+    public void SetSlot(Item item)
+    {
+
+    }
 }
