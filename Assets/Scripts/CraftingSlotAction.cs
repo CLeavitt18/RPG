@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     [SerializeField] private bool Clicked;
 
-    [SerializeField] private Item item;
+    [SerializeField] private SpellCraftingTableUi _ui;
+
+    [SerializeField] private Item _item;
 
     [SerializeField] private float NextTime = 0.0f;
 
@@ -62,8 +65,11 @@ public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerC
         }*/
     }
 
-    public void SetSlot(Item item)
+    public void SetSlot(Item item, SpellCraftingTableUi ui)
     {
+        _item = item;
+        _ui = ui;
 
+        transform.GetChild(0).gameObject.GetComponent<Text>().text = item.Name;
     }
 }

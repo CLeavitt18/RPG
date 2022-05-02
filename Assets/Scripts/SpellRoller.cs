@@ -37,7 +37,7 @@ public class SpellRoller : MonoBehaviour
         return Item;
     }
 
-    public Item CreateSpell(int mat_id, Spell[] runes)
+    public Item CreateSpell(int mat_id, Spell[] runes, bool cleanUp = true)
     {
         SpellHolder spellH = Instantiate(PrefabIDs.prefabIDs.SpellHolder).GetComponent<SpellHolder>();
 
@@ -103,9 +103,12 @@ public class SpellRoller : MonoBehaviour
         spellH.ValueMulti = mats[mat_id].Multi;
         spellH.SetSpellState();
 
-        for (int i = 0; i < runes.Length; i++)
+        if (cleanUp)
         {
-            Destroy(runes[i].gameObject);
+            for (int i = 0; i < runes.Length; i++)
+            {
+                Destroy(runes[i].gameObject);
+            }
         }
 
         return spellH;

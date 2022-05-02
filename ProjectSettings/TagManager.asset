@@ -30,6 +30,7 @@ TagManager:
   - Minion
   - RuneTable
   - Rune
+  - SpellTable
   layers:
   - Default
   - TransparentFX
