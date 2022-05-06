@@ -9,8 +9,10 @@ public class Helper : MonoBehaviour
     public static Helper helper;
 
     [SerializeField] private GameObject itemDetailsPrefab;
-    
     [SerializeField] private GameObject textSlot;
+
+    [SerializeField] private GameObject costDetailsPrefab;
+    [SerializeField] private GameObject resourceSlot;
 
     private void OnEnable()
     {
@@ -27,7 +29,7 @@ public class Helper : MonoBehaviour
 
         StringBuilder sb = new StringBuilder();
 
-        nameText.text = item.name;
+        nameText.text = item.Name;
 
         SpawnItemDetailSlot("", t);
 
@@ -219,7 +221,7 @@ public class Helper : MonoBehaviour
      
         if (rune is DamageSpell dSpell)
         {
-            float TempDamage = 0;
+            float TempDamage;
 
             int DPS = 0;
 
@@ -300,25 +302,77 @@ public class Helper : MonoBehaviour
 
         if (potion is GainPotion gPotion)
         {
-            sb = new StringBuilder("Gain ");
             sb.Append(gPotion.LowerRange);
             sb.Append(" to ");
             sb.Append(gPotion.UpperRange);
             sb.Append(' ');
             sb.Append(gPotion.Type.ToString());
-        }
-        else
-        {
 
+            SpawnItemDetailSlot(sb.ToString(), t);
         }
     }
 
     private Text SpawnItemDetailSlot(string text, Transform t)
     {
-        Text slot = Instantiate(textSlot, t).GetComponent<Text>();
+        Text _text = Instantiate(textSlot, t).GetComponent<Text>();
 
-        slot.text = text;
+        _text.text = text;
 
-        return slot;
+        return _text;
+    }
+
+    public bool CreateResourceCostDetails(DictionaryOfStringAndInt items, Transform parent)
+    {
+        bool playercanCraft = false;
+        int count = 0;
+
+        GameObject ui = Instantiate(costDetailsPrefab, parent.position, parent.rotation, parent);
+
+        Transform t = ui.transform.GetChild(0).GetChild(0);
+
+        StringBuilder sb = new StringBuilder();
+
+        Color color;
+
+        foreach (KeyValuePair<string, int> item in items)
+        {
+            sb.Append(item.Key);
+            sb.Append(" x ");
+            sb.Append(item.Value.ToString("n0"));
+
+            color = Color.red;
+
+            for (int x = Player.player.Inventory.StartIds[3]; x < Player.player.Inventory.StartIds[4]; x++)
+            {
+                if (Player.player.Inventory.AllItems[x].gameObject.name == item.Key &&
+                    Player.player.Inventory.AllItems[x].GetComponent<ResourceHolder>().Amount >= item.Value)
+                {
+                    color = Color.black;
+                    count++;
+                    break;
+                }
+            }
+
+            SpawnResourceDetailsSlot(sb.ToString(), t, color);
+
+            sb.Clear();
+        }
+
+        if (count == items.Count)
+        {
+            playercanCraft = true;
+        }
+
+        return playercanCraft;
+    }
+
+    private Text SpawnResourceDetailsSlot(string text, Transform t, Color color)
+    {
+        Text _text = Instantiate(resourceSlot, t).GetComponent<Text>();
+
+        _text.text = text;
+        _text.color = Color.red;
+
+        return _text;
     }
 }

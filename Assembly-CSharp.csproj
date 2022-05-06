@@ -151,6 +151,7 @@
     <Compile Include="Assets\Scripts\QuestUi.cs" />
     <Compile Include="Assets\Scripts\PlayerProfileInfo.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Helper.cs" />
     <Compile Include="Assets\Scripts\Interactiables\Forge.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\GlobalValues.cs" />
@@ -175,7 +176,8 @@
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\RuneTableUI.cs" />
     <Compile Include="Assets\Scripts\CraftingSlotAction.cs" />
-    <Compile Include="Assets\Scripts\Helper.cs" />
+    <Compile Include="Assets\Scripts\SerializableDictionary.cs" />
+    <Compile Include="Assets\Scripts\DictionaryOfStringAndInt.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
