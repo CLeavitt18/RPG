@@ -21,36 +21,19 @@ public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerC
             Clicked = false;
         }
 
-        if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            if (Clicked)
-            {
-                //UI.SetFocus(this, 0, item, Player.player.GetMode());
-                Clicked = false;
-            }
-            else
-            {
-                NextTime = Time.realtimeSinceStartup + WaitTime;
-                Clicked = true;
-            }
 
-            //Debug.Log("Left Mouse Button");
-        }
-        else if (eventData.button == PointerEventData.InputButton.Right)
+        if (Clicked)
         {
-            if (Clicked)
-            {
-                //UI.SetFocus(this, 1, item, Player.player.GetMode());
-                Clicked = false;
-            }
-            else
-            {
-                NextTime = Time.realtimeSinceStartup + WaitTime;
-                Clicked = true;
-            }
-
-            //Debug.Log("Right Mouse Button");
+            _ui.SetRune(_item);
+            Clicked = false;
         }
+        else
+        {
+            NextTime = Time.realtimeSinceStartup + WaitTime;
+            Clicked = true;
+        }
+
+        //Debug.Log("Left Mouse Button");
     }
 
     public void OnPointerEnter(PointerEventData eventData)

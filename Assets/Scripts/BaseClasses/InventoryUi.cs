@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class InventoryUi : IUi
 {
+    public GameObject ItemDetails;
+
     public static InventoryUi containerUi;
     public static InventoryUi playerUi;
 
@@ -18,8 +20,6 @@ public class InventoryUi : IUi
     public GameObject slot;
     public GameObject inventoryUi;
     public GameObject ActionBar;
-    public GameObject ItemDetails;
-    public GameObject DetailSlot;
     public GameObject AmountUi;
     public GameObject CategoryPrefab;
     public GameObject InventoryBar;
@@ -27,7 +27,7 @@ public class InventoryUi : IUi
     public GameObject PlayerButton;
     public GameObject PlayerCanvas;
 
-    public Transform ItemDetailsList;
+    public Transform ItemDetailsLocation;
     public Transform InventroyHolder;
 
     public Slider AmountBar;
@@ -647,6 +647,10 @@ public class InventoryUi : IUi
                         InstructionText.text = Instructions[0];
                     }
                 }
+                else if (FocusedItem.CompareTag(GlobalValues.PotionTag))
+                {
+                    InstructionText.text = Instructions[7];
+                }
                 else
                 {
                     InstructionText.text = Instructions[2];
@@ -663,311 +667,20 @@ public class InventoryUi : IUi
             InstructionText.text = Instructions[6];
         }
 
-        if (ItemDetailsList.childCount != 1)
+        if (ItemDetailsLocation.childCount != 0)
         {
-            int children = ItemDetailsList.childCount;
-
-            for (int i = 0; i < children; i++)
-            {
-                if (i != 0)
-                {
-                    Destroy(ItemDetailsList.GetChild(i).gameObject);
-                }
-            }
+            Destroy(ItemDetailsLocation.GetChild(0).gameObject);
         }
 
-        float TempDamage;
-        int DPS = 0;
-        StringBuilder sb = new StringBuilder();
-
-        ItemDetails.SetActive(true);
-        ItemNameText.text = FocusedItem.name;
-
-        SpawnItemDetailSlot("");
-
-        switch (FocusedItem.tag)
-        {
-            case GlobalValues.WeaponTag:
-
-                WeaponHolder weapon = FocusedItem.GetComponent<WeaponHolder>();
-
-                switch (weapon.Type)
-                {
-                    case WeaponType.Sword:
-                    case WeaponType.Dagger:
-                    case WeaponType.GreatSword:
-
-                        sb.Append("Blade: ");
-                        sb.Append(weapon.Materials[0].ToString());
-
-                        SpawnItemDetailSlot(sb.ToString());
-
-                        sb.Clear();
-
-                        sb.Append("Hilt: ");
-                        sb.Append(weapon.Materials[1].ToString());
-
-                        SpawnItemDetailSlot(sb.ToString());
-
-                        sb.Clear();
-
-                        sb.Append("Grip: ");
-                        sb.Append(weapon.Materials[2].ToString());
-
-                        SpawnItemDetailSlot(sb.ToString());
-
-                        sb.Clear();
-
-                        break;
-                    case WeaponType.Axe:
-
-                        sb.Append("Blade: ");
-                        sb.Append(weapon.Materials[0].ToString());
-
-                        SpawnItemDetailSlot(sb.ToString());
-
-                        sb.Clear();
-
-                        sb.Append("Top: ");
-                        sb.Append(weapon.Materials[1].ToString());
-
-                        SpawnItemDetailSlot(sb.ToString());
-
-                        sb.Clear();
-
-                        sb.Append("Handle: ");
-                        sb.Append(weapon.Materials[2].ToString());
-
-                        SpawnItemDetailSlot(sb.ToString());
-
-                        sb.Clear();
-
-                        break;
-                    default:
-                        break;
-                }
-
-                SpawnItemDetailSlot("");
-
-                for (int i = 0; i < weapon.DamageRanges.Count; i++)
-                {
-                    sb.Append(weapon.DamageRanges[i].Type.ToString());
-                    sb.Append(": ");
-                    sb.Append(weapon.DamageRanges[i].LDamage.ToString("n0"));
-                    sb.Append(" to ");
-                    sb.Append(weapon.DamageRanges[i].HDamage.ToString("n0"));
-
-                    SpawnItemDetailSlot(sb.ToString());
-
-                    TempDamage = (weapon.DamageRanges[i].LDamage + weapon.DamageRanges[i].HDamage) * .5f;
-                    DPS += (int)TempDamage;
-
-                    sb.Clear();
-                }
-
-                SpawnItemDetailSlot("");
-
-                sb.Append("Damage: ");
-                sb.Append(DPS.ToString("n0"));
-
-                SpawnItemDetailSlot(sb.ToString());
-
-                sb.Clear();
-
-                sb.Append("Attack Speed: ");
-                sb.Append(weapon.ActionsPerSecond.ToString("0.00"));
-
-                SpawnItemDetailSlot(sb.ToString());
-
-                break;
-            case GlobalValues.SpellTag:
-
-                float castRate = 0;
-
-                SpellHolder SpellH = FocusedItem.GetComponent<SpellHolder>();
-
-                int NumOfSpells = SpellH.GetNumOfSpells();
-
-                sb.Append("Material: ");
-                sb.Append(SpellH.Type.ToString());
-
-                SpawnItemDetailSlot(sb.ToString());
-
-                sb.Clear();
-
-                SpawnItemDetailSlot("");
-
-                for (int i = 0; i < 3; i++)
-                {
-                    sb.Append("Slot ");
-                    sb.Append((i + 1).ToString("n0"));
-                    sb.Append(": ");
-
-                    if (i < NumOfSpells && SpellH.Spells[i] != null)
-                    {
-                        sb.Append(SpellH.Spells[i].SpellType.ToString());
-                    }
-                    else
-                    {
-                        sb.Append("Empty");
-                    }
-
-                    SpawnItemDetailSlot(sb.ToString());
-
-                    sb.Clear();
-                }
-
-                for (int i = 0; i < NumOfSpells; i++)
-                {
-                    SpawnItemDetailSlot("");
-
-                    Text name = SpawnItemDetailSlot(SpellH.Spells[i].Name);
-                    name.alignment = TextAnchor.MiddleCenter;
-
-                    SpawnItemDetailSlot("");
-
-                    if (SpellH.Spells[i] is DamageSpell dSpell)
-                    {
-                        castRate = dSpell.CastsPerSecond;
-
-                        for (int x = 0; x < dSpell.DamageRanges.Count; x++)
-                        {
-                            sb.Append(dSpell.DamageRanges[x].Type.ToString());
-                            sb.Append(": ");
-                            sb.Append(dSpell.DamageRanges[x].LDamage);
-                            sb.Append(" to ");
-                            sb.Append(dSpell.DamageRanges[x].HDamage);
-
-                            TempDamage = (dSpell.DamageRanges[x].LDamage + dSpell.DamageRanges[x].HDamage) * .5f;
-                            DPS += (int)TempDamage;
-
-                            SpawnItemDetailSlot(sb.ToString());
-
-                            sb.Clear();
-                        }
-
-                        SpawnItemDetailSlot("");
-
-                        sb.Append("Damage: ");
-                        sb.Append(DPS.ToString("n0"));
-
-                        SpawnItemDetailSlot(sb.ToString());
-
-                        sb.Clear();
-
-                    }
-                    else if (SpellH.Spells[i] is GolemSpell gSpell)
-                    {
-                        castRate = gSpell.CastsPerSecond;
-
-                        sb.Append("Minions: ");
-                        sb.Append(gSpell.Number);
-
-                        SpawnItemDetailSlot(sb.ToString());
-
-                        sb.Clear();
-                    }
-
-                    SpawnItemDetailSlot("");
-
-                    sb.Append(SpellH.Spells[i].CostType.ToString());
-                    sb.Append(" Cost: ");
-                    sb.Append(SpellH.Spells[i].Cost.ToString("n0"));
-
-                    SpawnItemDetailSlot(sb.ToString());
-
-                    sb.Clear();
-
-                    if (SpellH.Spells[i].CastType != CastType.Aura)
-                    {
-                        sb.Append("Cast Rate: ");
-                        sb.Append(castRate.ToString("n0"));
-
-                        SpawnItemDetailSlot(sb.ToString());
-
-                        sb.Clear();
-                    }
-
-                    sb.Append("Cast Type: ");
-                    sb.Append(SpellH.Spells[i].CastType.ToString());
-
-                    SpawnItemDetailSlot(sb.ToString());
-
-                    sb.Clear();
-                }
-
-                break;
-            case GlobalValues.ArmourTag:
-
-                ArmourHolder armour = FocusedItem.GetComponent<ArmourHolder>();
-
-                break;
-            case GlobalValues.PotionTag:
-
-                if (playerMode == PlayerState.InInventoy)
-                {
-                    InstructionText.text = Instructions[7];
-                }
-
-                if (FocusedItem.GetComponent<GainPotion>() != null)
-                {
-                    GainPotion potion = FocusedItem.GetComponent<GainPotion>();
-
-                    sb = new StringBuilder("Gain ");
-                    sb.Append(potion.LowerRange);
-                    sb.Append(" to ");
-                    sb.Append(potion.UpperRange);
-                    sb.Append(' ');
-                    sb.Append(potion.Type.ToString());
-                }
-                else
-                {
-
-                }
-                break;
-            default:
-                break;
-        }
-
-        switch (FocusedItem.tag)
-        {
-            case GlobalValues.WeaponTag:
-                sb = new StringBuilder("Attacks Per Second: ");
-                sb.Append(FocusedItem.GetComponent<WeaponHolder>().ActionsPerSecond.ToString("0.00"));
-
-                break;
-            case GlobalValues.SpellTag:
-            case GlobalValues.ArmourTag:
-            case GlobalValues.PotionTag:
-                break;
-            default:
-                ItemDetails.SetActive(false);
-                break;
-        }
-    }
-
-    public Text SpawnItemDetailSlot(string text)
-    {
-        Text slot = Instantiate(DetailSlot, ItemDetailsList).GetComponent<Text>();
-
-        slot.text = text;
-
-        return slot;
+        ItemDetails = Helper.helper.CreateItemDetails(FocusedItem, ItemDetailsLocation);
     }
 
     public void TurnItemDetailsOff()
     {
-        int chidren = ItemDetailsList.childCount;
-
-        for (int i = 0; i < chidren; i++)
+        if (ItemDetailsLocation.childCount != 0)
         {
-            if (i != 0)
-            {
-                Destroy(ItemDetailsList.transform.GetChild(i).gameObject);
-            }
+            Destroy(ItemDetailsLocation.GetChild(0).gameObject);
         }
-
-        ItemDetails.SetActive(false);
     }
 
     public void AddAmount()

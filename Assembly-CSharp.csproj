@@ -175,6 +175,7 @@
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\RuneTableUI.cs" />
     <Compile Include="Assets\Scripts\CraftingSlotAction.cs" />
+    <Compile Include="Assets\Scripts\Helper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
