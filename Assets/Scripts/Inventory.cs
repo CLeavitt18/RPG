@@ -35,14 +35,10 @@ public class Inventory : MonoBehaviour, ISavable
     {
         if (AllItems.Count != 0)
         {
-            List<Item> TempList = new List<Item>();
+            List<Item> TempList = new List<Item>(AllItems);
 
-            for (int i = 0; i < AllItems.Count; i++)
-            {
-                TempList.Add(AllItems[i]);
-            }
-
-            AllItems = new List<Item>();
+            AllItems.Clear();
+            
             StartIds[0] = 0;
             StartIds[1] = 0;
             StartIds[2] = 0;

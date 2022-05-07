@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\SaveSystem\DepositData.cs" />
     <Compile Include="Assets\Scripts\Key.cs" />
     <Compile Include="Assets\Scripts\StatusManager.cs" />
+    <Compile Include="Assets\Scripts\SerializableDictionary.cs" />
     <Compile Include="Assets\Scripts\ResourceRoller.cs" />
     <Compile Include="Assets\Scripts\SceneManagerOwn.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\BaseDamageSpell.cs" />
@@ -172,12 +173,11 @@
     <Compile Include="Assets\Scripts\FireStatusManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IConsumable.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\ContainerData.cs" />
+    <Compile Include="Assets\Scripts\DictionaryOfStringAndInt.cs" />
     <Compile Include="Assets\Scripts\PlayerUi.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\RuneTableUI.cs" />
     <Compile Include="Assets\Scripts\CraftingSlotAction.cs" />
-    <Compile Include="Assets\Scripts\SerializableDictionary.cs" />
-    <Compile Include="Assets\Scripts\DictionaryOfStringAndInt.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
