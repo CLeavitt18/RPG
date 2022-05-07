@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+
 public static class LoadSystem
 {
     public static void LoadItem(WeaponStats FromWeapon, WeaponHolder ToWeapon)
@@ -107,6 +108,7 @@ public static class LoadSystem
     {
         ToRuneH.Name = FromRuneH.Name;
         ToRuneH.Amount = FromRuneH.Amount;
+        ToRuneH.Rarity = FromRuneH.Rarity;
 
         if (FromRuneH.runeData.SpellTypeId == 0)
         {
@@ -120,7 +122,7 @@ public static class LoadSystem
         LoadRune(FromRuneH.runeData, ToRuneH.spell);
     }
 
-   private static void LoadRune(SpellData FromRune, Spell ToRune)
+    private static void LoadRune(SpellData FromRune, Spell ToRune)
     {
         if (ToRune is DamageSpell spellD)
         {
@@ -149,7 +151,7 @@ public static class LoadSystem
 
             spellD.SpellAffect = PrefabIDs.prefabIDs.SpellAffects[FromRune.SpellAffectID];
         }
-        else if(ToRune is GolemSpell spellG)
+        else if (ToRune is GolemSpell spellG)
         {
             spellG.SpellType = (SpellType)FromRune.SpellTypeId;
 
@@ -195,7 +197,7 @@ public static class LoadSystem
 
         ToWeapon.DamageRanges = new DamageTypeStruct[FromWeapon.DamageRanges.Count];
         ToWeapon.StatusChance = new int[FromWeapon.StatusChance.Count];
-        
+
         for (int i = 0; i < FromWeapon.DamageRanges.Count; i++)
         {
             ToWeapon.DamageRanges[i] = FromWeapon.DamageRanges[i];
@@ -216,7 +218,7 @@ public static class LoadSystem
 
         ToWeapon.Materials = new MaterialType[3];
 
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             ToWeapon.Materials[i] = FromWeapon.Materials[i];
         }
@@ -296,7 +298,7 @@ public static class LoadSystem
 
             ToArmour.Enchantments[i].PowerType = FromArmour.Enchantments[i].PowerType;
             ToArmour.Enchantments[i].PowerID = FromArmour.Enchantments[i].PowerID;
-        } 
+        }
 
         ToArmour.IsEquiped = FromArmour.IsEquiped;
 
@@ -337,8 +339,10 @@ public static class LoadSystem
     {
         ToRuneH.Amount = FromRuneH.Amount;
         ToRuneH.Name = FromRuneH.Name;
+        ToRuneH.Rarity = FromRuneH.Rarity;
 
         ToRuneH.runeData = new SpellData();
+
 
         LoadRune(FromRuneH.spell, ToRuneH.runeData);
     }

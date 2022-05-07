@@ -224,6 +224,8 @@ public class RuneHolderData
     public int Amount;
 
     public string Name;
+
+    public Color Rarity;
 }
 
 [Serializable]

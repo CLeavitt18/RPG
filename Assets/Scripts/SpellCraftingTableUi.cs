@@ -138,6 +138,11 @@ public class SpellCraftingTableUi : MonoBehaviour
         Preview();
     }
 
+    public void RemoveRune()
+    {
+        SetRune(null);
+    }
+
     public void Preview()
     {
         if (spellItemDetailsLocation.childCount != 0)
