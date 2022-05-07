@@ -94,6 +94,11 @@ public class SpellCraftingTableUi : MonoBehaviour
             ClearRuneSlots();
         }
 
+        if (runeItemDetailsLocation.childCount != 0)
+        {
+            Destroy(runeItemDetailsLocation.GetChild(0).gameObject);
+        }
+
         Inventory inventory = Player.player.Inventory;
 
         for (int i = inventory.StartIds[2]; i < inventory.StartIds[3]; i++)

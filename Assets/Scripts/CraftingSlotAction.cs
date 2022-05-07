@@ -12,7 +12,7 @@ public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerC
 
     [SerializeField] private float _nextTime = 0.0f;
 
-    [SerializeField] private float _waitTime = 0.1f;
+    [SerializeField] private float _waitTime = 0.25f;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -23,7 +23,7 @@ public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerC
 
         if (_clicked)
         {
-            Debug.Log("Slot clicked twice");
+            //Debug.Log("Slot clicked twice");
             _ui.SetRune(_item);
             _clicked = false;
         }
@@ -32,20 +32,11 @@ public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerC
             _nextTime = Time.realtimeSinceStartup + _waitTime;
             _clicked = true;
         }
-
-        //Debug.Log("Left Mouse Button");
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        /*if (Mode == SlotState.Item)
-        {
-            UI.SetFocus(this, 0, item, Player.player.GetMode());
-        }
-        else
-        {
-            QuestUi.SetQuestFocused(this, item);
-        }*/
+        _ui.PreviewRune(_item);
     }
 
     public void SetSlot(Item item, SpellCraftingTableUi ui)
@@ -54,5 +45,6 @@ public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerC
         _ui = ui;
 
         transform.GetChild(0).gameObject.GetComponent<Text>().text = item.Name;
+        GetComponent<Image>().color = item.Rarity;
     }
 }
