@@ -157,8 +157,6 @@ public class ForgeUI : MonoBehaviour
             Destroy(resourceCostRetailsLocation.GetChild(0).gameObject);
         }
 
-        bool AlreadyUsed = false;
-
         if (RequiredItems.Count != 0)
         {
             RequiredItems.Clear();
@@ -203,6 +201,23 @@ public class ForgeUI : MonoBehaviour
             catch (System.ArgumentException)
             {
                 RequiredItems[temp.Item[i]] += temp.Amount[i];
+            }
+        }
+
+        if (Cat_ID != 0)
+        {
+            temp = RecipesCatalyst.ItemsRequired[Cat_ID];
+
+            for (int i = 0; i < temp.Item.Length; i++)
+            {
+                try
+                {
+                    RequiredItems.Add(temp.Item[i], temp.Amount[i]);
+                }
+                catch (System.ArgumentException)
+                {
+                    RequiredItems[temp.Item[i]] += temp.Amount[i];
+                }
             }
         }
 

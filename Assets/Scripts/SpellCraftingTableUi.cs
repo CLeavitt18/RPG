@@ -14,11 +14,26 @@ public class SpellCraftingTableUi : MonoBehaviour
     [SerializeField] private Item[] runesFocused;
 
     [SerializeField] private Transform runeContentHolder;
+    [SerializeField] private Transform runeItemDetailsLocation;
+    [SerializeField] private Transform spellItemDetailsLocation;
+    [SerializeField] private Transform costDetailsLocation;
 
     [SerializeField] private GameObject slot;
 
     [SerializeField] private Dropdown materialTypeDropDown;
     [SerializeField] private Dropdown slotIdDropDown;
+
+    private void OnEnable()
+    {
+        if (table != null && table != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            table = this;
+        }
+    }
 
     public void SetState(bool state)
     {
@@ -35,7 +50,9 @@ public class SpellCraftingTableUi : MonoBehaviour
 
             CreateRuneSlots();
 
-            //Add logic for default display of spell stats
+            CreatePlaceHolderSpell();
+
+            Preview();
         }
         else
         {
@@ -50,6 +67,11 @@ public class SpellCraftingTableUi : MonoBehaviour
 
     private void CreatePlaceHolderSpell()
     {
+        if (spell != null)
+        {
+            Destroy(spell.gameObject);
+        }
+
         Spell[] spells = new Spell[3];
 
         for (int i = 0; i < 3; i++)
@@ -78,7 +100,7 @@ public class SpellCraftingTableUi : MonoBehaviour
         {
             if ((runesFocused[0] != null && inventory[i] == runesFocused[0]) ||
                 (runesFocused[1] != null && inventory[i] == runesFocused[1]) ||
-                (runesFocused[2] != null &&inventory[i] == runesFocused[2])) 
+                (runesFocused[2] != null && inventory[i] == runesFocused[2])) 
             {
                 continue;
             }
@@ -93,7 +115,7 @@ public class SpellCraftingTableUi : MonoBehaviour
     {
         int loops = runeContentHolder.childCount;
 
-        for (int i = loops; i > 0; i--)
+        for (int i = 0; i < loops; i++)
         {
             Destroy(runeContentHolder.GetChild(i).gameObject);
         }
@@ -107,10 +129,46 @@ public class SpellCraftingTableUi : MonoBehaviour
 
         CreateRuneSlots();
         CreatePlaceHolderSpell();
+
+        Preview();
+    }
+
+    public void Preview()
+    {
+        if (spellItemDetailsLocation.childCount != 0)
+        {
+            Destroy(spellItemDetailsLocation.GetChild(0).gameObject);
+        }
+
+        Helper.helper.CreateItemDetails(spell, spellItemDetailsLocation);
+    }
+
+    public void PreviewRune(Item item)
+    {
+        if (runeItemDetailsLocation.childCount != 0)
+        {
+            Destroy(runeItemDetailsLocation.GetChild(0).gameObject);
+        }
+
+        Helper.helper.CreateItemDetails(item, runeItemDetailsLocation);
+    }
+
+    public void MaterialTypeChange()
+    {
+        CreateRuneSlots();
+
+        CreatePlaceHolderSpell();
+
+        Preview();
     }
 
     public void SetCurrentSepllSlot()
     {
         CurrentSpellSlot = slotIdDropDown.value;
+    }
+
+    public Transform GetRuneItemDetailsLocation()
+    {
+        return runeItemDetailsLocation;
     }
 }

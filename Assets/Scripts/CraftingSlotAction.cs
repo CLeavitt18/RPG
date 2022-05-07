@@ -4,33 +4,33 @@ using UnityEngine.UI;
 
 public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
-    [SerializeField] private bool Clicked;
+    [SerializeField] private bool _clicked;
 
     [SerializeField] private SpellCraftingTableUi _ui;
 
     [SerializeField] private Item _item;
 
-    [SerializeField] private float NextTime = 0.0f;
+    [SerializeField] private float _nextTime = 0.0f;
 
-    [SerializeField] private float WaitTime = 0.1f;
+    [SerializeField] private float _waitTime = 0.1f;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (Time.realtimeSinceStartup >= NextTime)
+        if (Time.realtimeSinceStartup >= _nextTime)
         {
-            Clicked = false;
+            _clicked = false;
         }
 
-
-        if (Clicked)
+        if (_clicked)
         {
+            Debug.Log("Slot clicked twice");
             _ui.SetRune(_item);
-            Clicked = false;
+            _clicked = false;
         }
         else
         {
-            NextTime = Time.realtimeSinceStartup + WaitTime;
-            Clicked = true;
+            _nextTime = Time.realtimeSinceStartup + _waitTime;
+            _clicked = true;
         }
 
         //Debug.Log("Left Mouse Button");

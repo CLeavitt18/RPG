@@ -402,35 +402,6 @@ public class Player : LivingEntities
         return false;
     }
 
-    /*public override IEnumerator ChainLightning(DamageStats stats, int id)
-    {
-        yield return new WaitForEndOfFrame();
-
-        PlayerUi.playerUi.CallShocked(stats.Chains);
-
-        stats.DamageValues[id] = (int)((float)stats.DamageValues[id] * ((float)stats.DamageValues[id] * .01f));
-
-        LoseAttribute(stats.DamageValues[id], AttributesEnum.Health);
-
-        stats.Chains--;
-
-        PlayerUi.playerUi.SetPlayerAttributeUI(0);
-
-        yield return new WaitForSeconds(.20f);
-
-        if (stats.Chains > 0)
-        {
-            StartCoroutine(ChainLightning(stats, id));
-        }
-    }*/
-
-    /*public override IEnumerator BurningStatus(DamageStats stats, int id)
-    {
-        PlayerUi.playerUi.CallBurning(stats.BurnTicks, stats.BurnWaitTime);
-
-        return base.BurningStatus(stats, id);
-    }*/
-
     public override void CalculateSpeed()
     {
         base.CalculateSpeed();

@@ -41,7 +41,8 @@ public class SpellRoller : MonoBehaviour
     {
         SpellHolder spellH = Instantiate(PrefabIDs.prefabIDs.SpellHolder).GetComponent<SpellHolder>();
 
-        spellH.Rarity = (runes[0].gameObject.GetComponent<RuneHolder>()).Rarity;
+        //spellH.Rarity = (runes[0].gameObject.GetComponent<RuneHolder>()).Rarity;
+        spellH.Rarity = new Color(1.0f, 0.0f, 0.0f, 0.5f);
         spellH.Type = (MaterialType)mat_id;
 
         spellH.Name = spellH.Type.ToString() + " Spell Focus";
@@ -50,6 +51,11 @@ public class SpellRoller : MonoBehaviour
 
         for (int i = 0; i < runes.Length; i++)
         {
+            if (runes[i] == null)
+            {
+                break;
+            }
+
             switch (runes[i].SpellType)
             {
                 case SpellType.DamageSpell:

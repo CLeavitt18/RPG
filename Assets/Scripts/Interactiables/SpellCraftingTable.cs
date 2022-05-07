@@ -25,7 +25,7 @@ public class SpellCraftingTable : Interactialbes, IInteractable
 
     public void Interact(bool State)
     {
-        RuneTableUI.table.SetState(State);
+        SpellCraftingTableUi.table.SetState(State);
         SetPlayerState(State);
     }
 }

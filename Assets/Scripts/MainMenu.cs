@@ -22,6 +22,11 @@ public class MainMenu : MonoBehaviour
     public string PlayerName;
     public string SaveProfile;
 
+    private void OnEnable()
+    {
+        Application.targetFrameRate = 144;
+    }
+
     public void NewGame()
     {
         NewGameMenu.SetActive(true);

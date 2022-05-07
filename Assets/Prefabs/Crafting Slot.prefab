@@ -135,11 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32d7428931a5a542b62739e7fae4026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Clicked: 0
+  _clicked: 0
   _ui: {fileID: 0}
   _item: {fileID: 0}
-  NextTime: 0
-  WaitTime: 0.1
+  _nextTime: 0
+  _waitTime: 0.25
 --- !u!61 &1260086525809972653
 BoxCollider2D:
   m_ObjectHideFlags: 0

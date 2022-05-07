@@ -16,12 +16,18 @@ public class Helper : MonoBehaviour
 
     private void OnEnable()
     {
-        helper = this;
+        if (helper != null && helper != this)
+        {
+            Destroy(helper);
+        }
+        else if (helper != this)
+        {
+            helper = this;
+        }
     }
 
-    public GameObject CreateItemDetails(Item item, Transform parent)
+    public void CreateItemDetails(Item item, Transform parent)
     {
-        //Debug.Log("Craeting New Item Details Ui");
         GameObject Ui = Instantiate(itemDetailsPrefab, parent.position, parent.rotation, parent);
 
         Transform t = Ui.transform.GetChild(0).GetChild(0);
@@ -53,8 +59,6 @@ public class Helper : MonoBehaviour
             default:
                 break;
         }
-
-        return Ui;
     }
 
     private void CreateWeaponText(Item item, Transform t, StringBuilder sb)

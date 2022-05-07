@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class InventoryUi : IUi
 {
-    public GameObject ItemDetails;
-
     public static InventoryUi containerUi;
     public static InventoryUi playerUi;
 
@@ -672,7 +670,7 @@ public class InventoryUi : IUi
             Destroy(ItemDetailsLocation.GetChild(0).gameObject);
         }
 
-        ItemDetails = Helper.helper.CreateItemDetails(FocusedItem, ItemDetailsLocation);
+        Helper.helper.CreateItemDetails(FocusedItem, ItemDetailsLocation);
     }
 
     public void TurnItemDetailsOff()
