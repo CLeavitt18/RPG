@@ -14,6 +14,7 @@ public class PlayerData : LivingEntitiesData
     public Skill[] Masteries = new Skill[GlobalValues.Masteries];
     public Skill[] Skills = new Skill[GlobalValues.Skills];
 
+
     public PlayerData(Player Player) : base(Player)
     {
         for (int i = 0; i < 3; i++)

@@ -7,7 +7,12 @@ public class RuneTableUI : MonoBehaviour
 
     [SerializeField] SpellType type;
 
-    [SerializeField] private Spell rune;
+    [SerializeField] private Transform itemDetailsLocation;
+    [SerializeField] private Transform itemCostDetailsLocation;
+
+    [SerializeField] private Item rune;
+
+    [SerializeField] private DictionaryOfStringAndInt requiredItems;
 
     [SerializeField] private Dropdown spellTypeDropDown;
     [SerializeField] private Dropdown damageTypeDropDown;
@@ -111,28 +116,31 @@ public class RuneTableUI : MonoBehaviour
             Destroy(rune.gameObject);
         }
 
-        rune = (Roller.roller.runeRoller.CreateRune(
+        rune = Roller.roller.runeRoller.CreateRune(
             type, 
             (AttributesEnum)costTypeDropDown.value, 
             (CastType)castTypeDropDown.value, 
             (CastTarget)targetTypeDropDown.value, 
             damageTypeDropDown.value, 
             damageTypeDropDown.value * 6 + catTypeDropDown.value, 
-            Player.player.GetSkillLevel((int)SkillType.SpellCrafting))).GetComponent<Spell>();
+            Player.player.GetSkillLevel((int)SkillType.SpellCrafting));
+
+        Helper.helper.CreateItemDetails(rune, itemDetailsLocation);
+        Helper.helper.CreateResourceCostDetails(requiredItems, itemCostDetailsLocation);
     }
 
     public void CreateRune()
     {
-        rune = (Roller.roller.runeRoller.CreateRune(
+        rune = Roller.roller.runeRoller.CreateRune(
             type,
             (AttributesEnum)costTypeDropDown.value,
             (CastType)castTypeDropDown.value,
             (CastTarget)targetTypeDropDown.value,
             damageTypeDropDown.value,
             damageTypeDropDown.value * 6 + catTypeDropDown.value,
-            Player.player.GetSkillLevel((int)SkillType.SpellCrafting))).GetComponent<Spell>();
+            Player.player.GetSkillLevel((int)SkillType.SpellCrafting));
 
-        Player.player.Inventory.AddItem(rune.GetComponent<Item>(), true, 1);
+        Player.player.Inventory.AddItem(rune, true, 1);
 
         SetState(true);
         Preview();

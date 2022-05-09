@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-
+﻿
 [System.Serializable]
 public class InventoryData
 {
@@ -22,6 +21,7 @@ public class InventoryData
     public CraftingMaterials[] Potions;
     public CraftingMaterials[] Resources;
     public CraftingMaterials[] Misc;
+
 
     public InventoryData(Inventory inventory)
     {

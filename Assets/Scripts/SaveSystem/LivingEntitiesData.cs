@@ -1,19 +1,10 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 [System.Serializable]
 public class LivingEntitiesData
 {
     public AttributeStruct[] Attributes = new AttributeStruct[3];
     
     public int Level;
-   /* public int NumOfWeapons;
-    public int NumOfArmour;
-    public int NumOfSpells;
-    public int NumOfRunes;
-    public int NumOfPotions;
-    public int NumOfResources;
-    public int NumOfMisc;*/
     public int CurrentWeaponID;
     public int CurrentOffWeaponID;
     public int CurrentMainHandID;
@@ -24,19 +15,7 @@ public class LivingEntitiesData
     public float[] Position = new float[3];
     public float[] Rotation = new float[3];
 
-    //public WeaponStats[] Weapons;
-
-    //public ArmourStats[] Armour;
-
-    //public SpellHolderData[] Spells;
-
-    //public RuneHolderData[] Runes;
-
     public MinionData[] Minions;
-
-    //public CraftingMaterials[] Potions;
-    //public CraftingMaterials[] Resources;
-    //public CraftingMaterials[] Misc;
 
     public bool FirstOpen = true;
 
@@ -88,17 +67,6 @@ public class LivingEntitiesData
 
             id++;
         }
-
-        //Uncomment out when ready to check for waht armor is equoped
-
-        /*id = 0;
-
-        for (int i = inventory.StartIds[0]; i < inventory.StartIds[1]; i++)
-        {
-            ArmourHolder ArmourH = inventory.AllItems[i].GetComponent<ArmourHolder>();
-
-            id++;
-        }*/
         
         id = 0;
 
