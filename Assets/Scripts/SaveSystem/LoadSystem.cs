@@ -339,7 +339,7 @@ public static class LoadSystem
     {
         ToRuneH.Amount = FromRuneH.Amount;
         ToRuneH.Name = FromRuneH.Name;
-        ToRuneH.Rarity = FromRuneH.Rarity;
+        //ToRuneH.Rarity = FromRuneH.Rarity;
 
         ToRuneH.runeData = new SpellData();
 

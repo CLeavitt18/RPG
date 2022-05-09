@@ -143,13 +143,15 @@ public class LivingEntitiesData
         Runes = new RuneHolderData[NumOfRunes];
         id = 0;
 
-        for(int i = inventory.StartIds[3]; i < inventory.StartIds[2]; i++)
+        for(int i = inventory.StartIds[2]; i < inventory.StartIds[3]; i++)
         {
             Runes[id] = new RuneHolderData();
 
-            RuneHolder runeRef = inventory.AllItems[id].GetComponent<RuneHolder>();
+            RuneHolder runeRef = inventory.AllItems[i].GetComponent<RuneHolder>();
 
             LoadSystem.LoadItem(runeRef, Runes[id]);
+
+            id++;
         }
 
         NumOfPotions = inventory.StartIds[4] - inventory.StartIds[3];
