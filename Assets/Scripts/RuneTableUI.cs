@@ -23,7 +23,14 @@ public class RuneTableUI : MonoBehaviour
 
     private void OnEnable()
     {
-        table = this;
+        if (table != null && table != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            table = this;
+        }
     }
 
     public void SetState(bool state)
