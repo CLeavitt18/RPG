@@ -172,7 +172,7 @@
     <Compile Include="Assets\Scripts\SpellHolder.cs" />
     <Compile Include="Assets\Scripts\FireStatusManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IConsumable.cs" />
-    <Compile Include="Assets\Scripts\SaveSystem\ContainerData.cs" />
+    <Compile Include="Assets\Scripts\SaveSystem\InventoryData.cs" />
     <Compile Include="Assets\Scripts\DictionaryOfStringAndInt.cs" />
     <Compile Include="Assets\Scripts\PlayerUi.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />

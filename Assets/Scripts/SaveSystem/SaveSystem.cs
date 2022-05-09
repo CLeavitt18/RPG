@@ -318,7 +318,7 @@ public static class SaveSystem
 
     public static bool SaveContainer(Inventory Container, int ID)
     {
-        ContainerData Data = new ContainerData(Container);
+        InventoryData Data = new InventoryData(Container);
 
         string Json = JsonUtility.ToJson(Data, true);
 
@@ -352,13 +352,13 @@ public static class SaveSystem
         return true;
     }
 
-    public static ContainerData LoadContainer(string Path)
+    public static InventoryData LoadContainer(string Path)
     {
         if (File.Exists(Path))
         {
             string SaveString = File.ReadAllText(Path);
 
-            ContainerData Data = JsonUtility.FromJson<ContainerData>(SaveString);
+            InventoryData Data = JsonUtility.FromJson<InventoryData>(SaveString);
 
             return Data;
         }

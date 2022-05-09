@@ -1102,7 +1102,7 @@ public class LivingEntities : MonoBehaviour
 
     public void LoadEntity(LivingEntitiesData Data)
     {
-        ContainerData iData = Data.inventoryData;
+        InventoryData iData = Data.inventoryData;
         
         Level = Data.Level;
 

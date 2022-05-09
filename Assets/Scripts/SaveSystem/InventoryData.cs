@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class ContainerData
+public class InventoryData
 {
     public int NumOfWeapons;
     public int NumOfArmour;
@@ -23,7 +23,7 @@ public class ContainerData
     public CraftingMaterials[] Resources;
     public CraftingMaterials[] Misc;
 
-    public ContainerData(Inventory inventory)
+    public InventoryData(Inventory inventory)
     {
         int id;
 

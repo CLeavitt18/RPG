@@ -40,7 +40,7 @@ public class LivingEntitiesData
 
     public bool FirstOpen = true;
 
-    public ContainerData inventoryData;
+    public InventoryData inventoryData;
 
 
     public LivingEntitiesData(LivingEntities entity)
@@ -48,7 +48,7 @@ public class LivingEntitiesData
         int id = 0;
         Inventory inventory = entity.Inventory;
 
-        inventoryData = new ContainerData(inventory);
+        inventoryData = new InventoryData(inventory);
 
         Item rightHand = entity.GetHeldItem(0);
         Item leftHand = entity.GetHeldItem(1);

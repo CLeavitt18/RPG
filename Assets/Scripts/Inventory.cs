@@ -571,7 +571,7 @@ public class Inventory : MonoBehaviour, ISavable
 
         path.Append(GlobalValues.SaveExtension);
 
-        ContainerData Data;
+        InventoryData Data;
 
         if (File.Exists(tempPath.ToString()))
         {
