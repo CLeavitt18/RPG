@@ -39,9 +39,6 @@ public class LivingEntities : MonoBehaviour
     [SerializeField] private List<int>[] Powers;
 
     [SerializeField] protected bool Dead;
-    [SerializeField] protected bool Burning;
-    [SerializeField] protected bool Chilled;
-    [SerializeField] protected bool Frozen;
     [SerializeField] protected bool Confused;
     [SerializeField] public bool Running;
 
@@ -790,7 +787,7 @@ public class LivingEntities : MonoBehaviour
                     TempDamage *= 0.25f;
                 }
 
-                if (Burning == true && Powers[1].Contains(0))
+                if (Powers[1].Contains(0))
                 {
                     //checks which burning mulit to use with reflect burning to self
                     if (Powers[1].Contains(4) && BurningStacks > 1)
@@ -1353,16 +1350,6 @@ public class LivingEntities : MonoBehaviour
     public bool GetDead()
     {
         return Dead;
-    }
-
-    public bool GetBurning()
-    {
-        return Burning;
-    }
-
-    public bool GetChilled()
-    {
-        return Chilled;
     }
 
     public ArmourHolder GetEquipedArmour(int id)

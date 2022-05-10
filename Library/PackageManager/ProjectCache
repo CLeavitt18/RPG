@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637790602549333581
-    m_Hash: 2024773619
+      ticks: 637877352188773098
+    m_Hash: 3621326492
   m_LockFileStatus:
     m_FilePath: E:/Unity games/RPG/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637790602549363342
-    m_Hash: 3531649163
+      ticks: 637877352188857419
+    m_Hash: 1392080414
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -80,6 +80,7 @@ m_ResolvedPackages:
     - 1.14.13
     - 1.14.15
     - 1.14.16
+    - 1.14.17
     - 1.15.1
     - 1.15.4
     - 1.15.7
@@ -88,6 +89,7 @@ m_ResolvedPackages:
     - 1.15.13
     - 1.15.15
     - 1.15.16
+    - 1.15.17
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -110,6 +112,7 @@ m_ResolvedPackages:
     - 1.14.13
     - 1.14.15
     - 1.14.16
+    - 1.14.17
     - 1.15.1
     - 1.15.4
     - 1.15.7
@@ -118,6 +121,7 @@ m_ResolvedPackages:
     - 1.15.13
     - 1.15.15
     - 1.15.16
+    - 1.15.17
     - 2.0.0-preview.6
     - 2.0.0-preview.8
     - 2.0.0-preview.15
@@ -340,12 +344,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 2.0.11
     nextVersion: 
-- packageId: com.unity.ide.vscode@1.2.4
+- packageId: com.unity.ide.vscode@1.2.5
   testable: 0
   isDirectDependency: 1
-  version: 1.2.4
+  version: 1.2.5
   source: 1
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.ide.vscode@1.2.4
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.ide.vscode@1.2.5
   assetPath: Packages/com.unity.ide.vscode
   name: com.unity.ide.vscode
   displayName: Visual Studio Code Editor
@@ -394,13 +398,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637660806170000000
+  datePublishedTicks: 637800255360000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
-    url: git+https://github.com/Unity-Technologies/com.unity.ide.vscode.git
-    revision: 1f4f605d5c988cb610c372b5c5216c46cc8f5d30
+    url: https://github.com/Unity-Technologies/com.unity.ide.vscode.git
+    revision: b0740c80bfc2440527c317109f7c3d9100132722
     path: 
   unityLifecycle:
     version: 1.2.4

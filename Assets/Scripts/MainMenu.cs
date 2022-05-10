@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using System.Text;
 
 public class MainMenu : MonoBehaviour
 {

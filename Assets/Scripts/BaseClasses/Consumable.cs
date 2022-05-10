@@ -1,4 +1,3 @@
-using UnityEngine;
 
 public class Consumable : Item, IConsumable
 {
@@ -11,6 +10,9 @@ public class Consumable : Item, IConsumable
         name = Name;
     }
 
+
+    
+
     public void Action()
     {
         Effect();
@@ -18,7 +20,7 @@ public class Consumable : Item, IConsumable
 
     public virtual void Effect()
     {
-
+        
     }
 
     protected virtual bool Equality(Item Item)

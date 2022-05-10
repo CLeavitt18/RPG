@@ -17,6 +17,7 @@ ScriptsOnlyBuild:
     - ChannelSpellHitManager
     - ChillAffect
     - Containers
+    - CraftingSlotAction
     - CreateNewSaveProfileButton
     - DamageSpell
     - Doors
@@ -76,6 +77,8 @@ ScriptsOnlyBuild:
     - SceneManagerOwn
     - SleepUi
     - SlotsActions
+    - SpellCraftingTable
+    - SpellCraftingTableUi
     - SpellHolder
     - SpellRoller
     - StatusManager
@@ -405,6 +408,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -497,8 +502,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 6658}
     - Class: 114
       Script: {instanceID: 6932}
-    - Class: 114
-      Script: {instanceID: 7008}
     - Class: 114
       Script: {instanceID: 7266}
     - Class: 114
@@ -796,6 +799,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2162}
     - Class: 114
+      Script: {instanceID: 2240}
+    - Class: 114
       Script: {instanceID: 2416}
     - Class: 114
       Script: {instanceID: 2498}
@@ -900,6 +905,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5340}
     - Class: 114
+      Script: {instanceID: 5370}
+    - Class: 114
       Script: {instanceID: 5526}
     - Class: 114
       Script: {instanceID: 5566}
@@ -979,6 +986,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 7944}
     - Class: 114
       Script: {instanceID: 8016}
+    - Class: 114
+      Script: {instanceID: 8066}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1806,7 +1815,7 @@ ScriptsOnlyBuild:
     className: Minion
   - hash:
       serializedVersion: 2
-      Hash: ef2a5ed60092d72b4e3041e6a336be70
+      Hash: 6c5ba36da0e0d29b3c04bcf32a14b031
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: InventoryUi
@@ -1986,7 +1995,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerFloatField
   - hash:
       serializedVersion: 2
-      Hash: 68bc27cf4773edfe302bc639236e376c
+      Hash: 6c5ff6e2fb7e311c4c01e58723c8c444
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpellCraftingTableUi
@@ -2598,13 +2607,13 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 5361b0048ce7bae9ab67eae99c02c3e5
+      Hash: a1caa9976d90c66646f5ece8a0c9c5b4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RuneTableUI
   - hash:
       serializedVersion: 2
-      Hash: 5b514f41a95504588767074c20adf5c9
+      Hash: df93940b1d1b3a298f68f9652cfb0c45
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CraftingSlotAction

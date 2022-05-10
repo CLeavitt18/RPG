@@ -2,7 +2,6 @@
 
 public class Interactialbes : MonoBehaviour
 {
-
     public GameObject PUIInsruction;
 
     public bool UIOpen;
