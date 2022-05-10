@@ -60,14 +60,11 @@ public class GainPotion : Consumable
             return false;
         }
 
-        if (Type == potion.Type)
+        if (LowerRange == potion.LowerRange)
         {
-            if (LowerRange == potion.LowerRange)
+            if (UpperRange == potion.UpperRange)
             {
-                if (UpperRange == potion.UpperRange)
-                {
-                    return true;
-                }
+                return true;
             }
         }
 

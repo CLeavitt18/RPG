@@ -5,13 +5,6 @@ public class Consumable : Item, IConsumable
 
     public LivingEntities PotionHolder;
 
-    public void OnEnable()
-    {
-        name = Name;
-    }
-
-
-    
 
     public void Action()
     {

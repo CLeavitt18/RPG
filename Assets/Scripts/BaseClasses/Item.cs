@@ -12,6 +12,11 @@ public class Item : MonoBehaviour
 
     public string Name;
 
+    protected void OnEnable() 
+    {
+        name = Name;
+    }
+
     public virtual void SpawnItem()
     {
         Debug.Log("Method not implmented");
