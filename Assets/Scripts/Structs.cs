@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,14 +15,6 @@ public struct Skill
     public int Level;
     public ulong Exp;
     public ulong RExp;
-}
-
-[Serializable]
-public struct ShrineData
-{
-    public string Name;
-    public string Description;
-    public bool Active;
 }
 
 [Serializable]

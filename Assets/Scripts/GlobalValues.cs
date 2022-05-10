@@ -41,10 +41,17 @@ public static class GlobalValues
     public const int LevelCap = 100;
     public const int APointsPerLevel = 10;
 
-    public const float MDamStrInterval = .5f;
-    public const float MDamPerStr = .05f;
-    public const float RDamDexInterval = .5f;
-    public const float RDamPerDex = .045f;
-    public const float SPDamIntInterval = .5f;
-    public const float SPDamPerInt = .055f;
+    public const float MDamStrInterval = 0.5f;
+    public const float MDamPerStr = 0.05f;
+    public const float RDamDexInterval = 0.50f;
+    public const float RDamPerDex = 0.045f;
+    public const float SPDamIntInterval = 0.50f;
+    public const float SPDamPerInt = 0.055f;
+
+    public static readonly Color baseRarity = new Color(0.50f, 0.50f, 0.50f, 1.00f);
+    public static readonly Color common = new Color(0.72f, 0.72f, 0.72f, 1.00f);
+    public static readonly Color uncommon = new Color(0.50f, 0.36f, 1.00f, 0.50f);
+    public static readonly Color magic = new Color(0.09f, 0.87f, 0.05f, 0.50f);
+    public static readonly Color rare = new Color(0.99f, 0.92f, 0.00f, 0.50f);
+    public static readonly Color legendary = new Color(0.89f, 0.22f, 0.5f, 0.5f);
 }

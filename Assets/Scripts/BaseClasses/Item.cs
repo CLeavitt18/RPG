@@ -15,6 +15,7 @@ public class Item : MonoBehaviour
     protected void OnEnable() 
     {
         name = Name;
+        Rarity = GlobalValues.baseRarity;
     }
 
     public virtual void SpawnItem()

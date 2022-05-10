@@ -124,7 +124,7 @@ public class LivingEntities : MonoBehaviour
                     hand.Stats.Status.Add(false);
                 }
             }
-
+            
             if (hand.ChannelTime >= .2f)
             {
                 float cost = Weapon.Weight / 100f;
