@@ -1,13 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class QuestItemHolder : Item
 {
-    public void OnEnable()
-    {
-        gameObject.name = Name;
-    }
     public override void SpawnItem()
     {
         base.SpawnItem();

@@ -1,11 +1,6 @@
-using UnityEngine;
 
 public class Key : Item
 {
-    private void OnEnable()
-    {
-        name = Name;
-    }
     public override void SpawnItem()
     {
         base.SpawnItem();

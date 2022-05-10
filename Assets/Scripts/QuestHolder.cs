@@ -23,11 +23,7 @@ public class QuestHolder : Item
     public GameObject[] QuestItems;
 
     public string[] Directions;
-
-    public void OnEnable()
-    {
-        gameObject.name = QuestName;
-    }
+    
 
     public QuestReward[] GetReward()
     {

@@ -1,12 +1,6 @@
-﻿using UnityEngine;
-
+﻿
 public class ResourceHolder : Item
 {
-    public void OnEnable()
-    {
-        gameObject.name = Name;
-    }
-
     public override void SpawnItem()
     {
         base.SpawnItem();
@@ -15,6 +9,7 @@ public class ResourceHolder : Item
     public override void StoreItem()
     {
         base .StoreItem();
+
     }
 
     public override bool Equals(Item Item)

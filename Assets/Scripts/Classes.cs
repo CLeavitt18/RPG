@@ -173,7 +173,7 @@ public class WeaponStats
 
     public MaterialType[] Materials;
 
-    public Color Rarity;
+    public float[] Rarity;
 
     public float AttacksPerSecond;
 
@@ -195,6 +195,8 @@ public class ArmourStats
     public int SkillType;
     public int ItemId;
 
+    public float[] Rarity;
+
     public int[] Resistences = new int[3];
 
     public Power[] Enchantments;
@@ -212,6 +214,8 @@ public class SpellHolderData
     public int MaterialId;
     public int MaterialMulti;
 
+    public float[] Rarity;
+
     public SpellData[] SpellsData;
 
     public string Name;
@@ -225,7 +229,7 @@ public class RuneHolderData
 
     public string Name;
 
-    public Color Rarity;
+    public float[] Rarity;
 }
 
 [Serializable]
