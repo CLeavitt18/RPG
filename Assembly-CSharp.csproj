@@ -70,7 +70,7 @@
      <Compile Include="Assets\Scripts\RuneHolder.cs" />
      <Compile Include="Assets\Scripts\BaseClasses\Item.cs" />
      <Compile Include="Assets\Scripts\IceStatusManager.cs" />
-     <Compile Include="Assets\Scripts\RuneRoller.cs" />
+     <Compile Include="Assets\Scripts\Generators\RuneRoller.cs" />
      <Compile Include="Assets\Scripts\RuneTable.cs" />
      <Compile Include="Assets\Scripts\SlotsActions.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\DepositData.cs" />
@@ -87,7 +87,7 @@
      <Compile Include="Assets\Scripts\Minion.cs" />
      <Compile Include="Assets\Scripts\BaseClasses\InventoryUi.cs" />
      <Compile Include="Assets\Scripts\Consumables\GainPotion.cs" />
-     <Compile Include="Assets\Scripts\WeaponRoller.cs" />
+     <Compile Include="Assets\Scripts\Generators\WeaponRoller.cs" />
      <Compile Include="Assets\Scripts\CatogoryButton.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\LightingPreset.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\LoadSystem.cs" />
@@ -95,7 +95,7 @@
      <Compile Include="Assets\Scripts\SleepUi.cs" />
      <Compile Include="Assets\Scripts\BaseClasses\IUi.cs" />
      <Compile Include="Assets\Scripts\LoadingScreen.cs" />
-     <Compile Include="Assets\Scripts\SpellRoller.cs" />
+     <Compile Include="Assets\Scripts\Generators\SpellRoller.cs" />
      <Compile Include="Assets\Scripts\SpellCraftingTableUi.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\PlayerData.cs" />
      <Compile Include="Assets\Scripts\RefinaryUi.cs" />
@@ -109,12 +109,12 @@
      <Compile Include="Assets\Scripts\BaseClasses\AI.cs" />
      <Compile Include="Assets\Scripts\Interfaces\IEquipable.cs" />
      <Compile Include="Assets\Scripts\Structs.cs" />
-     <Compile Include="Assets\Scripts\MiscRoller.cs" />
+     <Compile Include="Assets\Scripts\Generators\MiscRoller.cs" />
      <Compile Include="Assets\Scripts\NPC.cs" />
      <Compile Include="Assets\Scripts\JewelryHolder.cs" />
      <Compile Include="Assets\Scripts\CreateNewSaveProfileButton.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\DoorData.cs" />
-     <Compile Include="Assets\Scripts\ArmourRoller.cs" />
+     <Compile Include="Assets\Scripts\Generators\ArmourRoller.cs" />
      <Compile Include="Assets\Scripts\ArmourHolder.cs" />
      <Compile Include="Assets\Scripts\CatalystHolder.cs" />
      <Compile Include="Assets\Scripts\LoadProfileButton.cs" />
