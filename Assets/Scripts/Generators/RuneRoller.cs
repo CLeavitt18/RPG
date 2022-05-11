@@ -115,6 +115,7 @@ public class RuneRoller : MonoBehaviour
 
         int id = (int)spellType;
         int castId = (int)castType;
+        int rarityId = cat_id % 6;
 
         Item item = Instantiate(runeHolder).GetComponent<Item>();
 
@@ -199,7 +200,7 @@ public class RuneRoller : MonoBehaviour
         }
 
         runeH.spell.Name = runeH.Name;
-        item.Rarity = GlobalValues.rarities[cat_id % 6];
+        item.Rarity = GlobalValues.rarities[rarityId];
 
         runeH.Name += " Rune";
         runeH.name = runeH.Name;
