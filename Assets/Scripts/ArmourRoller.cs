@@ -18,125 +18,55 @@ public class ArmourRoller : MonoBehaviour
 
     public Item RollArmour()
     {
-        int Mat_Id;
-        int Cat_Id;
+        int Mat_Id = 0;
+        int Cat_Id = 0;
 
-        SkillType skill;
+        SkillType skill = 0;
 
-        ArmourType State;
+        ArmourType State = 0;
 
         int Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
 
-        switch (Chance)
+        for (int i = 0;  i < MatTable[0].Chances.Length; i++)   
         {
-            case int x when x <= MatTable[0].Chances[0]:
-                Mat_Id = 0;
-                break;     
-            case int x when x > MatTable[0].Chances[0] && x <= MatTable[0].Chances[1]:
-                Mat_Id = 1;
+            if(Chance <= MatTable[0].Chances[i])
+            {
+                Mat_Id = i;
                 break;
-            case int x when x > MatTable[0].Chances[1] && x <= MatTable[0].Chances[2]:
-                Mat_Id = 2;
-                break;            
-            case int x when x > MatTable[0].Chances[2] && x <= MatTable[0].Chances[3]:
-                Mat_Id = 3;
-                break;  
-            case int x when x > MatTable[0].Chances[3] && x <= MatTable[0].Chances[4]:
-                Mat_Id = 4;
-                break;            
-            case int x when x > MatTable[0].Chances[4] && x <= MatTable[0].Chances[5]:
-                Mat_Id = 5;
-                break;
-            case int x when x > MatTable[0].Chances[5] && x <= MatTable[0].Chances[6]:
-                Mat_Id = 6;
-                break;            
-            case int x when x > MatTable[0].Chances[6] && x <= MatTable[0].Chances[7]:
-                Mat_Id = 7;
-                break;        
-            case int x when x > MatTable[0].Chances[7] && x <= MatTable[0].Chances[8]:
-                Mat_Id = 8;
-                break;
-            case int x when x > MatTable[0].Chances[8] && x <= MatTable[0].Chances[9]:
-                Mat_Id = 9;
-                break;            
-            case int x when x > MatTable[0].Chances[9] && x <= MatTable[0].Chances[10]:
-                Mat_Id = 10;
-                break;
-            default: //case int x when x > MatTable[0].Chances[10]:
-                Mat_Id = 11;
-                break;
+            } 
         }
 
         Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
 
-        switch (Chance)
+        for(int i = 0; i < TypeTable[0].Chances.Length; i++)
         {
-            case int x when x <= TypeTable[0].Chances[0]:
-                State = ArmourType.Helmat;
+            if(Chance <= TypeTable[0].Chances[i])
+            {
+                State = (ArmourType)i;
                 break;
-            case int x when x > TypeTable[0].Chances[0] && x <= TypeTable[0].Chances[1]:
-                State = ArmourType.RightPauldron;
-                break;
-            case int x when x > TypeTable[0].Chances[1] && x <= TypeTable[0].Chances[2]:
-                State = ArmourType.LeftPauldron;
-                break;
-            case int x when x > TypeTable[0].Chances[2] && x <= TypeTable[0].Chances[3]:
-                State = ArmourType.ChestPlate;
-                break;
-            case int x when x > TypeTable[0].Chances[3] && x <= TypeTable[0].Chances[4]:
-                State = ArmourType.RightGauntlet;
-                break;
-            case int x when x > TypeTable[0].Chances[4] && x <= TypeTable[0].Chances[5]:
-                State = ArmourType.LeftGauntlet;
-                break;            
-            case int x when x > TypeTable[0].Chances[5] && x <= TypeTable[0].Chances[6]:
-                State = ArmourType.Leggings;
-                break;
-            case int x when x > TypeTable[0].Chances[6] && x <= TypeTable[0].Chances[7]:
-                State = ArmourType.RightBoot;
-                break;
-            default: //case int x when x > TypeTable[0].Chances[7]:
-                State = ArmourType.LeftBoot;
-                break;
+            }
         }
 
         Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
 
-        switch (Chance)
+        for (int i = 0; i < ClassTable[0].Chances.Length; i++)
         {
-            case int x when x <= ClassTable[0].Chances[0]:
-                skill = SkillType.LightArmour;
+            if(Chance <= ClassTable[0].Chances.Length)
+            {
+                skill = (SkillType)i;
                 break;
-            case int x when x > ClassTable[0].Chances[0] && x <= ClassTable[0].Chances[1]:
-                    skill = SkillType.MediumArmour;
-                break;
-            default: //x > ClassTable[0].Chances[1]:
-                skill = SkillType.HeavyArmour;
-                break;
+            }
         }
 
         Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
 
-        switch (Chance)
+        for(int i = 0; i < CatTable[0].Chances.Length; i++)
         {
-            case int x when x < CatTable[0].Chances[0]:
-                Cat_Id = 0;
+            if (Chance <= CatTable[0].Chances[i])
+            {
+                Cat_Id = i;
                 break;
-            case int x when (x >= CatTable[0].Chances[0] && x < CatTable[0].Chances[1]):
-                Cat_Id = 1;
-                break;
-            case int x when (x >= CatTable[0].Chances[1] && x < CatTable[0].Chances[2]):
-                Cat_Id = 2;
-                break;
-            case int x when (x >= CatTable[0].Chances[2] && x < CatTable[0].Chances[3]):
-                Cat_Id = 3;
-                break;
-            case int x when (x >= CatTable[0].Chances[3] && x < CatTable[0].Chances[4]):
-                Cat_Id = 4;
-                break;
-            default: //case int x when x >= CatTable[0].Chances[4]:
-                Cat_Id = 5;
-                break;
+            }
         }
 
         return CreateArmour(Mat_Id, State, skill, Cat_Id);
@@ -148,20 +78,9 @@ public class ArmourRoller : MonoBehaviour
 
         BaseArmour ArmourBase;
 
-        int Catogory;
+        int Catogory = (int)SkillType;
 
-        switch (SkillType)
-        {
-            case SkillType.HeavyArmour:
-                Catogory = 2;
-                break;
-            case SkillType.MediumArmour:
-                Catogory = 1;
-                break;
-            default: // Light Armour
-                Catogory = 0;
-                break;
-        }
+        int rarityId = Cat_Id % 6;
 
         if (Type == ArmourType.Helmat)
         {
@@ -186,6 +105,28 @@ public class ArmourRoller : MonoBehaviour
         else //Boots
         {
             ArmourBase = Armour[5];
+        }
+
+        switch(rarityId)
+        {
+            case 0:
+                armour.Rarity = GlobalValues.baseRarity;
+                break;
+            case 1:
+                armour.Rarity = GlobalValues.common;
+                break;
+            case 2:
+                armour.Rarity = GlobalValues.uncommon;
+                break;
+            case 3:
+                armour.Rarity = GlobalValues.magic;
+                break;
+            case 4:
+                armour.Rarity = GlobalValues.rare;
+                break;
+            default:
+                armour.Rarity = GlobalValues.legendary;
+                break;
         }
 
         ArmourHolder ArmourH = armour as ArmourHolder;
