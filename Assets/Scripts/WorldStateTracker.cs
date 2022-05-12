@@ -50,12 +50,12 @@ public class WorldStateTracker : MonoBehaviour
         }
     }
 
-    public void CallSaveGame(bool intialStart = false)
+    public void CallSaveGame()
     {
-        StartCoroutine(SaveGame(intialStart));
+        StartCoroutine(SaveGame());
     }
 
-    public IEnumerator SaveGame(bool intialStart)
+    public IEnumerator SaveGame()
     {
         Player.player.SavePlayer(true);
         UpdateTracker();
@@ -69,7 +69,7 @@ public class WorldStateTracker : MonoBehaviour
 
         int tracker = SceneManagerOwn.Manager.Tracker;
         int target = SceneManagerOwn.Manager.Target;
-
+        
         do
         {
             tracker = SceneManagerOwn.Manager.Tracker;
@@ -82,12 +82,6 @@ public class WorldStateTracker : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         SaveSystem.DeleteAllTempFiles();
-
-        if (intialStart!)
-        {
-            Player.player.SetPlayerStateActive();
-            PlayerUi.playerUi.StartPause(false);
-        }
     }
 
     public void LoadGame()

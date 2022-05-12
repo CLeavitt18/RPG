@@ -48,8 +48,8 @@ public static class GlobalValues
     public const float SPDamIntInterval = 0.50f;
     public const float SPDamPerInt = 0.055f;
 
-    public static readonly Color[] rarities = {new Color(0.50f, 0.50f, 0.50f, 1.00f), //base color
-                                               new Color(0.72f, 0.72f, 0.72f, 1.00f), //common color
+    public static readonly Color[] rarities = {new Color(0.72f, 0.72f, 0.72f, 0.50f), //base color
+                                               new Color(0.50f, 0.50f, 0.50f, 0.50f), //common color
                                                new Color(0.50f, 0.36f, 1.00f, 0.50f), //uncommon color
                                                new Color(0.09f, 0.87f, 0.05f, 0.50f), //magic color
                                                new Color(0.99f, 0.92f, 0.00f, 0.50f), //rare color

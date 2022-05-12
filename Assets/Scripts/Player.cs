@@ -850,7 +850,7 @@ public class Player : LivingEntities
                 CalculateAttribute(i);
             }
 
-            WorldStateTracker.Tracker.CallSaveGame(true);
+            WorldStateTracker.Tracker.CallSaveGame();
         }
     }
 
@@ -1022,7 +1022,6 @@ public class Player : LivingEntities
         CalculateWeight();
 
         InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
-        PlayerUi.playerUi.StartPause(false);
     }
 
     #region Getters

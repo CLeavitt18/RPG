@@ -92,7 +92,7 @@ public class PlayerUi : MonoBehaviour
     public void StartPause(bool pause)
     {
         PauseMenu.SetActive(pause);
-        //PlayerCanvas.SetActive(!pause);
+        PlayerCanvas.SetActive(!pause);
     }
 
     public void ExitPauseMenu()
