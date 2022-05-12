@@ -258,9 +258,9 @@ public class LivingEntities : MonoBehaviour
                 break;
             case CastType.Aura:
 
-                if (SpellH is GolemSpell)
+                if (SpellH is GolemSpell gspell)
                 {
-                    if ((SpellH as GolemSpell).Activated)
+                    if (gspell.Activated)
                     {
                         return;
                     }
@@ -312,7 +312,7 @@ public class LivingEntities : MonoBehaviour
     #region CreateFunctions
     protected void CreateWeapon(int HandType)
     {
-        Hand hand = Hands[HandType];
+        Hand hand = Hands[HandType]; 
 
         WeaponHolder weapon = hand.HeldItem.GetComponent<WeaponHolder>();
 

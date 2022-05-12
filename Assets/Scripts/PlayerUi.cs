@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -94,7 +92,7 @@ public class PlayerUi : MonoBehaviour
     public void StartPause(bool pause)
     {
         PauseMenu.SetActive(pause);
-        PlayerCanvas.SetActive(!pause);
+        //PlayerCanvas.SetActive(!pause);
     }
 
     public void ExitPauseMenu()

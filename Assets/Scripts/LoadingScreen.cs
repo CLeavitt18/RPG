@@ -24,6 +24,8 @@ public class LoadingScreen : MonoBehaviour
         {
             yield break;
         }
+        
+        Time.timeScale = 0;
 
         yield return new WaitForSecondsRealtime(Time.deltaTime);
 
@@ -39,8 +41,6 @@ public class LoadingScreen : MonoBehaviour
         } while (tracker < target);
 
         yield return new WaitForSecondsRealtime(.5f);
-
-        Time.timeScale = 0;
 
         transform.GetChild(0).gameObject.SetActive(false);
         

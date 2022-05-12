@@ -21,15 +21,15 @@ public class WorldStateTracker : MonoBehaviour
 
     public void OnEnable()
     {
-        if (Tracker == null)
+        if (Tracker != null && Tracker != this)
+        {
+            Destroy(gameObject);
+        }
+        else
         {
             DontDestroyOnLoad(gameObject);
             Tracker = this;
             //Debug.Log("World State Tracker " + Tracker.gameObject.name);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -50,12 +50,12 @@ public class WorldStateTracker : MonoBehaviour
         }
     }
 
-    public void CallSaveGame()
+    public void CallSaveGame(bool intialStart = false)
     {
-        StartCoroutine(SaveGame());
+        StartCoroutine(SaveGame(intialStart));
     }
 
-    public IEnumerator SaveGame()
+    public IEnumerator SaveGame(bool intialStart)
     {
         Player.player.SavePlayer(true);
         UpdateTracker();
@@ -83,9 +83,11 @@ public class WorldStateTracker : MonoBehaviour
 
         SaveSystem.DeleteAllTempFiles();
 
-        Player.player.SetPlayerStateActive();
-
-        PlayerUi.playerUi.StartPause(false);
+        if (intialStart!)
+        {
+            Player.player.SetPlayerStateActive();
+            PlayerUi.playerUi.StartPause(false);
+        }
     }
 
     public void LoadGame()

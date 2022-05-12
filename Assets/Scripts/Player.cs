@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Text;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -851,7 +850,7 @@ public class Player : LivingEntities
                 CalculateAttribute(i);
             }
 
-            WorldStateTracker.Tracker.CallSaveGame();
+            WorldStateTracker.Tracker.CallSaveGame(true);
         }
     }
 
