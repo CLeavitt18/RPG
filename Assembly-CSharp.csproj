@@ -158,6 +158,7 @@
      <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
      <Compile Include="Assets\Scripts\RuneTableUI.cs" />
      <Compile Include="Assets\Scripts\CraftingSlotAction.cs" />
+     <Compile Include="Assets\Scripts\TorchHolder.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.24f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

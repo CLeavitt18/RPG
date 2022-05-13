@@ -2621,4 +2621,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Starting Camp.unity
   - Assets/Scenes/Mine.unity
   - Assets/Scenes/Cave Level 1.unity
-  playerPath: E:/Unity games/RPG Builds/RPG.exe
+  playerPath: C:/Users/zanth/Desktop/Unity Built Games/RPG.exe
