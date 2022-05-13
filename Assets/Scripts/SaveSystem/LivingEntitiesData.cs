@@ -56,15 +56,15 @@ public class LivingEntitiesData
 
         for (int i = start; i < end; i++)
         {
-            WeaponHolder WeaponH = inventory.AllItems[i].GetComponent<WeaponHolder>();
+            WeaponHolder WeaponH = inventory[i].GetComponent<WeaponHolder>();
 
-            if (inventory.AllItems[i] == rightHand)
+            if (inventory[i] == rightHand)
             {
                 CurrentMainHandID = 1;
                 CurrentWeaponID = i;
             }
 
-            if (inventory.AllItems[i] == leftHand && rightHand != leftHand)
+            if (inventory[i] == leftHand && rightHand != leftHand)
             {
                 CurrentOffHandID = 1;
                 CurrentOffWeaponID = i;
@@ -80,15 +80,15 @@ public class LivingEntitiesData
 
         for (int i = start; i < end; i++)
         {
-            SpellHolder SpellH = inventory.AllItems[i].GetComponent<SpellHolder>();
+            SpellHolder SpellH = inventory[i].GetComponent<SpellHolder>();
 
-            if (inventory.AllItems[i] == rightHand)
+            if (inventory[i] == rightHand)
             {
                 CurrentMainHandID = 2;
                 CurrentWeaponID = i;
             }
 
-            if (inventory.AllItems[i] == leftHand && rightHand != leftHand)
+            if (inventory[i] == leftHand && rightHand != leftHand)
             {
                 CurrentOffHandID = 2;
                 CurrentOffWeaponID = i;

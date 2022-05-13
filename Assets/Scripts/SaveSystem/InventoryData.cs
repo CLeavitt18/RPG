@@ -40,7 +40,7 @@ public class InventoryData
         {
             Weapons[id] = new WeaponStats();
 
-            WeaponHolder WeaponH = inventory.AllItems[i].GetComponent<WeaponHolder>();
+            WeaponHolder WeaponH = inventory[i].GetComponent<WeaponHolder>();
 
             LoadSystem.LoadItem(WeaponH, Weapons[id]);
 
@@ -159,7 +159,7 @@ public class InventoryData
 
         for (int i = start; i < end; i++)
         {
-            Item Ref = inventory.AllItems[i];
+            Item Ref = inventory[i];
 
             for (int x = 0; x < PrefabIDs.prefabIDs.Items.Length; x++)
             {

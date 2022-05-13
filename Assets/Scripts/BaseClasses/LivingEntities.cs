@@ -1128,16 +1128,16 @@ public class LivingEntities : MonoBehaviour
             Attributes[i].Reserved = Data.Attributes[i].Reserved;
         }
 
-        if (Inventory.AllItems.Count != 0)
+        if (Inventory.Count != 0)
         {
-            int Count = Inventory.AllItems.Count;
+            int Count = Inventory.Count;
 
             for (int i = 0; i < Count; i++)
             {
-                Destroy(Inventory.AllItems[i]);
+                Destroy(Inventory[i].gameObject);
             }
 
-            Inventory.AllItems.Clear();
+            Inventory.Clear();
             Inventory.StartIds = new int[GlobalValues.MiscStart + 1];
         }
 
@@ -1154,13 +1154,13 @@ public class LivingEntities : MonoBehaviour
 
             if (Data.CurrentMainHandID == 1)
             {
-                EquipItem(Inventory.AllItems[Data.CurrentWeaponID], 0);
+                EquipItem(Inventory[Data.CurrentWeaponID], 0);
             }
 
             if (Data.CurrentOffHandID == 1)
             {
 
-                EquipItem(Inventory.AllItems[Data.CurrentOffWeaponID], 1);
+                EquipItem(Inventory[Data.CurrentOffWeaponID], 1);
             }
         }
 
@@ -1194,12 +1194,12 @@ public class LivingEntities : MonoBehaviour
 
             if (Data.CurrentMainHandID == 2)
             {
-                EquipItem(Inventory.AllItems[Data.CurrentWeaponID], 0);
+                EquipItem(Inventory[Data.CurrentWeaponID], 0);
             }
 
             if (Data.CurrentOffHandID == 2)
             {
-                EquipItem(Inventory.AllItems[Data.CurrentOffWeaponID], 1);
+                EquipItem(Inventory[Data.CurrentOffWeaponID], 1);
             }
         }
 

@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour, ISavable
 
     public Transform InventroyHolder;
 
-    public List<Item> AllItems;
+    [SerializeField] private List<Item> AllItems;
 
     public void OnEnable()
     {
@@ -39,12 +39,7 @@ public class Inventory : MonoBehaviour, ISavable
         {
             List<Item> TempList = new List<Item>(AllItems);
 
-            AllItems.Clear();
-            
-            for(int i = 0; i < GlobalValues.MiscStart + 1; i++)
-            {
-                StartIds[i] = 0;
-            }
+            Clear();
 
             for (int i = 0; i < TempList.Count; i++)
             {
@@ -506,6 +501,16 @@ public class Inventory : MonoBehaviour, ISavable
         {
             CreatedItem item = Roller.roller.miscRoller.RollMisc();
             AddItem(item.Item, true, item.Amount, true);
+        }
+    }
+
+    public void Clear()
+    {
+        AllItems.Clear();
+        
+        for(int i = 0; i < GlobalValues.MiscStart + 1; i++)
+        {
+            StartIds[i] = 0;
         }
     }
 

@@ -24,7 +24,7 @@ public class Containers : Interactialbes, IInteractable
         switch (Mode)
         {
             case UiState.Container:
-                if (Inventory.AllItems.Count == 0)
+                if (Inventory.Count == 0)
                 {
                     PUIInsruction.GetComponent<Text>().text = "E: Open (Empty)";
                 }

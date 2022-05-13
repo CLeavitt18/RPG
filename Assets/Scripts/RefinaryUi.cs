@@ -168,7 +168,7 @@ public class RefinaryUi : MonoBehaviour
             {
                 if (Inventory[x].name == ItemsRequired.Item[i])
                 {
-                    Inventory.RemoveItem(Player.player.Inventory.AllItems[x], ItemsRequired.Amount[i] * ResourceAmount);
+                    Inventory.RemoveItem(Inventory[x], ItemsRequired.Amount[i] * ResourceAmount);
                 }
             }
         }

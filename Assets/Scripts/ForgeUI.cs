@@ -280,9 +280,9 @@ public class ForgeUI : MonoBehaviour
         {
             for (int x = start; x < end; x++)
             {
-                if (item.Key == pInventory.AllItems[x].name)
+                if (item.Key == pInventory[x].name)
                 {
-                    pInventory.RemoveItem(Player.player.Inventory.AllItems[x], item.Value);
+                    pInventory.RemoveItem(pInventory[x], item.Value);
                 }
             }
         }

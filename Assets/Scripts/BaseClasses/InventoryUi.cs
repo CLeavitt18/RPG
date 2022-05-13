@@ -126,17 +126,17 @@ public class InventoryUi : IUi
 
     public override void Set()
     {
-        List<Item> AllItems = new List<Item>();
+        Inventory AllItems;
         int[] StartIds;
 
         if (UiMode == UiState.Player)
         {
-            AllItems = Player.player.Inventory.AllItems;
+            AllItems = Player.player.Inventory;
             StartIds = Player.player.Inventory.StartIds;
         }
         else
         {
-            AllItems = Player.player.GetHit().GetComponent<Inventory>().AllItems;
+            AllItems = Player.player.GetHit().GetComponent<Inventory>();
             StartIds = Player.player.GetHit().GetComponent<Inventory>().StartIds;
         }
 
@@ -836,7 +836,7 @@ public class InventoryUi : IUi
 
     public void SetPlayerEquipedIndicators()
     {
-        List<Item> AllItems = Player.player.Inventory.AllItems;
+        Inventory AllItems = Player.player.Inventory;
 
         if (AllItems.Count == 0 || Slots.Count == 0)
         {
