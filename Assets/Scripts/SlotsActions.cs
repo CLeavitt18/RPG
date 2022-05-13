@@ -92,11 +92,13 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
         {
             QuestUi = ui as QuestUi;
             UI = null;
+            Mode = SlotState.Quest;
         }
         else
         {
             UI = ui as InventoryUi;
             QuestUi = null;
+            Mode = SlotState.Item;
         }
 
         _Item = item;
