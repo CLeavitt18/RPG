@@ -55,9 +55,11 @@ public class Inventory : MonoBehaviour, ISavable
         if (Stackable && !FromRoller)
         {
             string Name = Item.name;
+            Color rarity = Item.Rarity;
             Item = Instantiate(Item, InventroyHolder);
             Item.name = Name;
             Item.Amount = Amount;
+            Item.Rarity = rarity;
         }
 
         Item itemObject = Item.GetComponent<Item>();
