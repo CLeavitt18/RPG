@@ -96,5 +96,25 @@ public class LivingEntitiesData
 
             id++;
         }
+
+        start = inventory.GetStart(GlobalValues.MiscStart);
+        end = inventory.Count;
+
+        for(int i = start; i < end; i++)
+        {
+            if(inventory[i] is TorchHolder torch && torch.IsEquiped)
+            {
+                if(torch == rightHand)
+                {
+                    CurrentMainHandID = 3;
+                    CurrentWeaponID = i;
+                }
+                else
+                {
+                    CurrentOffHandID = 3;
+                    CurrentOffWeaponID = i;
+                }
+            }
+        }
     }
 }

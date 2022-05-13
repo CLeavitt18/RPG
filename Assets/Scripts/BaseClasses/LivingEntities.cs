@@ -124,7 +124,7 @@ public class LivingEntities : MonoBehaviour
                     hand.Stats.Status.Add(false);
                 }
             }
-            
+
             if (hand.ChannelTime >= .2f)
             {
                 float cost = Weapon.Weight / 100f;
@@ -312,7 +312,7 @@ public class LivingEntities : MonoBehaviour
     #region CreateFunctions
     protected void CreateWeapon(int HandType)
     {
-        Hand hand = Hands[HandType]; 
+        Hand hand = Hands[HandType];
 
         WeaponHolder weapon = hand.HeldItem.GetComponent<WeaponHolder>();
 
@@ -347,7 +347,7 @@ public class LivingEntities : MonoBehaviour
             {
                 hand.Stats.DamageValues.Add(CalculateSpellDamage(damageSpell, HandType, damageSpell.DamageRanges[i].Type, i));
                 hand.Stats.DamageTypes.Add(damageSpell.DamageRanges[i].Type);
-                
+
                 int Chance;
                 Chance = Random.Range(1, 101);
 
@@ -1102,7 +1102,7 @@ public class LivingEntities : MonoBehaviour
 
     public virtual void CheckHealth()
     {
-        
+
     }
 
     protected void ResetPowers()
@@ -1118,7 +1118,7 @@ public class LivingEntities : MonoBehaviour
     public void LoadEntity(LivingEntitiesData Data)
     {
         InventoryData iData = Data.inventoryData;
-        
+
         Level = Data.Level;
 
         for (int i = 0; i < 3; i++)
@@ -1140,112 +1140,102 @@ public class LivingEntities : MonoBehaviour
             Inventory.Clear();
         }
 
-        if (iData.NumOfWeapons > 0)
+        for (int i = 0; i < iData.NumOfWeapons; i++)
         {
-            for (int i = 0; i < iData.NumOfWeapons; i++)
+            WeaponHolder weapon = Instantiate(PrefabIDs.prefabIDs.WeaponHolder, Inventory.InventroyHolder).GetComponent<WeaponHolder>();
+
+            LoadSystem.LoadItem(iData.Weapons[i], weapon);
+
+            Inventory.AddItem(weapon, false, iData.Weapons[i].Amount);
+        }
+
+        if (Data.CurrentMainHandID == 1)
+        {
+            EquipItem(Inventory[Data.CurrentWeaponID], 0);
+        }
+
+        if (Data.CurrentOffHandID == 1)
+        {
+
+            EquipItem(Inventory[Data.CurrentOffWeaponID], 1);
+        }
+
+        for (int i = 0; i < iData.NumOfArmour; i++)
+        {
+            ArmourHolder armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder, Inventory.InventroyHolder).GetComponent<ArmourHolder>();
+
+            LoadSystem.LoadItem(iData.Armour[i], armour);
+
+            Inventory.AddItem(armour, false, iData.Armour[i].Amount);
+
+            if (iData.Armour[i].IsEquiped)
             {
-                WeaponHolder weapon = Instantiate(PrefabIDs.prefabIDs.WeaponHolder, Inventory.InventroyHolder).GetComponent<WeaponHolder>();
-
-                LoadSystem.LoadItem(iData.Weapons[i], weapon);
-
-                Inventory.AddItem(weapon, false, iData.Weapons[i].Amount);
-            }
-
-            if (Data.CurrentMainHandID == 1)
-            {
-                EquipItem(Inventory[Data.CurrentWeaponID], 0);
-            }
-
-            if (Data.CurrentOffHandID == 1)
-            {
-
-                EquipItem(Inventory[Data.CurrentOffWeaponID], 1);
+                EquipItem(armour, 0);
             }
         }
 
-        if (iData.NumOfArmour > 0)
+        for (int i = 0; i < iData.NumOfSpells; i++)
         {
-            for (int i = 0; i < iData.NumOfArmour; i++)
-            {
-                ArmourHolder armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder, Inventory.InventroyHolder).GetComponent<ArmourHolder>();
+            SpellHolder spell = Instantiate(PrefabIDs.prefabIDs.SpellHolder, Inventory.InventroyHolder).GetComponent<SpellHolder>();
 
-                LoadSystem.LoadItem(iData.Armour[i], armour);
+            LoadSystem.LoadItem(iData.Spells[i], spell);
 
-                Inventory.AddItem(armour, false, iData.Armour[i].Amount);
-
-                if (iData.Armour[i].IsEquiped)
-                {
-                    EquipItem(armour, 0);
-                }
-            }
+            Inventory.AddItem(spell, false, iData.Spells[i].Amount);
         }
 
-        if (iData.NumOfSpells > 0)
+        if (Data.CurrentMainHandID == 2)
         {
-            for (int i = 0; i < iData.NumOfSpells; i++)
-            {
-                SpellHolder spell = Instantiate(PrefabIDs.prefabIDs.SpellHolder, Inventory.InventroyHolder).GetComponent<SpellHolder>();
-
-                LoadSystem.LoadItem(iData.Spells[i], spell);
-
-                Inventory.AddItem(spell, false, iData.Spells[i].Amount);
-            }
-
-            if (Data.CurrentMainHandID == 2)
-            {
-                EquipItem(Inventory[Data.CurrentWeaponID], 0);
-            }
-
-            if (Data.CurrentOffHandID == 2)
-            {
-                EquipItem(Inventory[Data.CurrentOffWeaponID], 1);
-            }
+            EquipItem(Inventory[Data.CurrentWeaponID], 0);
         }
 
-        if (iData.NumOfRunes > 0)
+        if (Data.CurrentOffHandID == 2)
         {
-            for (int i = 0; i < iData.NumOfRunes; i++)
-            {
-                RuneHolder rune = Instantiate(PrefabIDs.prefabIDs.RuneHolder, Inventory.InventroyHolder).GetComponent<RuneHolder>(); 
-
-                LoadSystem.LoadItem(iData.Runes[i], rune);
-
-                Inventory.AddItem(rune, false, iData.Runes[i].Amount);
-            }
+            EquipItem(Inventory[Data.CurrentOffWeaponID], 1);
         }
 
-        if (iData.NumOfPotions > 0)
+        for (int i = 0; i < iData.NumOfRunes; i++)
         {
-            for (int i = 0; i < iData.NumOfPotions; i++)
-            {
-                Consumable potion = Instantiate(PrefabIDs.prefabIDs.Potions[iData.Potions[i].ResourceId], Inventory.InventroyHolder).GetComponent<Consumable>();
-                potion.Amount = iData.Potions[i].Amount;
+            RuneHolder rune = Instantiate(PrefabIDs.prefabIDs.RuneHolder, Inventory.InventroyHolder).GetComponent<RuneHolder>();
 
-                Inventory.AddItem(potion, false, iData.Potions[i].Amount);
-            }
+            LoadSystem.LoadItem(iData.Runes[i], rune);
+
+            Inventory.AddItem(rune, false, iData.Runes[i].Amount);
         }
 
-        if (iData.NumOfResources > 0)
+        for (int i = 0; i < iData.NumOfPotions; i++)
         {
-            for (int i = 0; i < iData.NumOfResources; i++)
-            {
-                ResourceHolder HResource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[iData.Resources[i].ResourceId], Inventory.InventroyHolder).GetComponent<ResourceHolder>();
-                HResource.Amount = iData.Resources[i].Amount;
+            Consumable potion = Instantiate(PrefabIDs.prefabIDs.Potions[iData.Potions[i].ResourceId], Inventory.InventroyHolder).GetComponent<Consumable>();
+            potion.Amount = iData.Potions[i].Amount;
 
-                Inventory.AddItem(HResource, false, iData.Resources[i].Amount);
-            }
+            Inventory.AddItem(potion, false, iData.Potions[i].Amount);
         }
 
-        if (iData.NumOfMisc > 0)
+        for (int i = 0; i < iData.NumOfResources; i++)
         {
-            for (int i = 0; i < iData.NumOfMisc; i++)
-            {
-                Item misc = Instantiate(PrefabIDs.prefabIDs.Items[iData.Misc[i].ResourceId], Inventory.InventroyHolder).GetComponent<Item>();
-                misc.Amount = iData.Misc[i].Amount;
+            ResourceHolder HResource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[iData.Resources[i].ResourceId], Inventory.InventroyHolder).GetComponent<ResourceHolder>();
+            HResource.Amount = iData.Resources[i].Amount;
 
-                Inventory.AddItem(misc, false, iData.Misc[i].Amount);
-            }
+            Inventory.AddItem(HResource, false, iData.Resources[i].Amount);
         }
+
+        for (int i = 0; i < iData.NumOfMisc; i++)
+        {
+            Item misc = Instantiate(PrefabIDs.prefabIDs.Items[iData.Misc[i].ResourceId], Inventory.InventroyHolder).GetComponent<Item>();
+            misc.Amount = iData.Misc[i].Amount;
+
+            Inventory.AddItem(misc, false, iData.Misc[i].Amount);
+        }
+
+        if (Data.CurrentMainHandID == 3)
+        {
+            EquipItem(Inventory[Data.CurrentWeaponID], 0);
+        }
+
+        if (Data.CurrentOffHandID == 3)
+        {
+            EquipItem(Inventory[Data.CurrentOffWeaponID], 1);
+        }
+
     }
 
     #region Getters
