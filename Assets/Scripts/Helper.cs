@@ -338,6 +338,11 @@ public class Helper : MonoBehaviour
 
         Color color;
 
+        Inventory pInventory = Player.player.Inventory;
+
+        int start = pInventory.StartIds[GlobalValues.ResourceStart];
+        int end = pInventory.StartIds[GlobalValues.MiscStart];
+
         foreach (KeyValuePair<string, int> item in items)
         {
             sb.Append(item.Key);
@@ -346,10 +351,10 @@ public class Helper : MonoBehaviour
 
             color = Color.red;
 
-            for (int x = Player.player.Inventory.StartIds[3]; x < Player.player.Inventory.StartIds[4]; x++)
+            for (int x = start; x < end; x++)
             {
-                if (Player.player.Inventory.AllItems[x].gameObject.name == item.Key &&
-                    Player.player.Inventory.AllItems[x].GetComponent<ResourceHolder>().Amount >= item.Value)
+                if (pInventory[x].gameObject.name == item.Key && 
+                pInventory[x].GetComponent<ResourceHolder>().Amount >= item.Value)
                 {
                     color = Color.black;
                     count++;

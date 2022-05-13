@@ -271,13 +271,18 @@ public class ForgeUI : MonoBehaviour
         ter_Id = 0;
         Cat_ID = 0;
 
+        Inventory pInventory = Player.player.Inventory;
+
+        int start = pInventory.StartIds[GlobalValues.ResourceStart];
+        int end = pInventory.StartIds[GlobalValues.MiscStart];
+
         foreach (KeyValuePair<string, int> item in RequiredItems)
         {
-            for (int x = Player.player.Inventory.StartIds[3]; x < Player.player.Inventory.StartIds[4]; x++)
+            for (int x = start; x < end; x++)
             {
-                if (item.Key == Player.player.Inventory.AllItems[x].name)
+                if (item.Key == pInventory.AllItems[x].name)
                 {
-                    Player.player.Inventory.RemoveItem(Player.player.Inventory.AllItems[x], item.Value);
+                    pInventory.RemoveItem(Player.player.Inventory.AllItems[x], item.Value);
                 }
             }
         }

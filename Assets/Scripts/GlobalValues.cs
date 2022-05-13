@@ -41,6 +41,13 @@ public static class GlobalValues
     public const int Armourpieces = 9;
     public const int LevelCap = 100;
     public const int APointsPerLevel = 10;
+    public const int ArmourStart = 0;
+    public const int SpellStart = 1;
+    public const int RuneStart = 2;
+    public const int PotionStart = 3;
+    public const int ResourceStart = 4;
+    public const int MiscStart = 5;
+
 
     public const float MDamStrInterval = 0.5f;
     public const float MDamPerStr = 0.05f;

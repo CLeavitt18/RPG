@@ -676,7 +676,7 @@ public class LivingEntities : MonoBehaviour
                 {
                     if (Hands[i].HeldItem == Item)
                     {
-                        Destroy(Hands[i].HandLocation.GetChild(0));
+                        Destroy(Hands[i].HandLocation.GetChild(1).gameObject);
                         Hands[i].HeldItem = null;
                         break;
                     }
@@ -1138,7 +1138,7 @@ public class LivingEntities : MonoBehaviour
             }
 
             Inventory.AllItems.Clear();
-            Inventory.StartIds = new int[6];
+            Inventory.StartIds = new int[GlobalValues.MiscStart + 1];
         }
 
         if (iData.NumOfWeapons > 0)

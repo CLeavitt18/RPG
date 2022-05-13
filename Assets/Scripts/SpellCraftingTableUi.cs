@@ -101,7 +101,10 @@ public class SpellCraftingTableUi : MonoBehaviour
 
         Inventory inventory = Player.player.Inventory;
 
-        for (int i = inventory.StartIds[2]; i < inventory.StartIds[3]; i++)
+        int start = inventory.StartIds[GlobalValues.RuneStart];
+        int end = inventory.StartIds[GlobalValues.PotionStart];
+
+        for (int i = start; i < end; i++)
         {
             if ((runesFocused[0] != null && inventory[i] == runesFocused[0]) ||
                 (runesFocused[1] != null && inventory[i] == runesFocused[1]) ||

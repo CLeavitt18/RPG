@@ -22,6 +22,8 @@ public class Inventory : MonoBehaviour, ISavable
     public int MinMisc;
     public int MaxMisc;
 
+    public int Count { get{ return AllItems.Count;} private set{} }
+
     public int[] StartIds = new int[6];
 
     public int MaxCarryWeight;
@@ -39,12 +41,10 @@ public class Inventory : MonoBehaviour, ISavable
 
             AllItems.Clear();
             
-            StartIds[0] = 0;
-            StartIds[1] = 0;
-            StartIds[2] = 0;
-            StartIds[3] = 0;
-            StartIds[4] = 0;
-            StartIds[5] = 0;
+            for(int i = 0; i < GlobalValues.MiscStart + 1; i++)
+            {
+                StartIds[i] = 0;
+            }
 
             for (int i = 0; i < TempList.Count; i++)
             {
@@ -74,35 +74,35 @@ public class Inventory : MonoBehaviour, ISavable
         {
             case GlobalValues.WeaponTag:
                 start_id = 0;
-                end_id = StartIds[0];
+                end_id = StartIds[GlobalValues.ArmourStart];
                 break;
             case GlobalValues.ArmourTag:
-                start_id = StartIds[0];
-                end_id = StartIds[1];
+                start_id = StartIds[GlobalValues.ArmourStart];
+                end_id = StartIds[GlobalValues.SpellStart];
                 break;
             case GlobalValues.SpellTag:
-                start_id = StartIds[1];
-                end_id = StartIds[2];
+                start_id = StartIds[GlobalValues.SpellStart];
+                end_id = StartIds[GlobalValues.RuneStart];
                 break;
             case GlobalValues.RuneTag:
-                start_id= StartIds[2];
-                end_id= StartIds[3];
+                start_id= StartIds[GlobalValues.RuneStart];
+                end_id= StartIds[GlobalValues.PotionStart];
                 break;
             case GlobalValues.PotionTag:
-                start_id = StartIds[3];
-                end_id = StartIds[4];
+                start_id = StartIds[GlobalValues.PotionStart];
+                end_id = StartIds[GlobalValues.ResourceStart];
 
                 Item.GetComponent<Consumable>().PotionHolder = gameObject.GetComponent<LivingEntities>();
                 Item.transform.parent = InventroyHolder;
 
                 break;
             case GlobalValues.ResourceTag:
-                start_id = StartIds[4];
-                end_id = StartIds[5];
+                start_id = StartIds[GlobalValues.ResourceStart];
+                end_id = StartIds[GlobalValues.MiscStart];
                 break;
             default:
-                //Gold || Misc || Key
-                start_id = StartIds[5];
+                //Gold || Misc || Key || Torch
+                start_id = StartIds[GlobalValues.MiscStart];
                 end_id = AllItems.Count;
                 break;
         }
@@ -147,44 +147,37 @@ public class Inventory : MonoBehaviour, ISavable
 
     UpdateStartIDs:
 
+        int loopStart;
+
         switch (Item.tag)
         {
             case GlobalValues.WeaponTag:
-                StartIds[0]++;
-                StartIds[1]++;
-                StartIds[2]++;
-                StartIds[3]++;
-                StartIds[4]++;
-                StartIds[5]++;
+                loopStart = GlobalValues.ArmourStart;
                 break;
             case GlobalValues.ArmourTag:
-                StartIds[1]++;
-                StartIds[2]++;
-                StartIds[3]++;
-                StartIds[4]++;
-                StartIds[5]++;
+                loopStart = GlobalValues.SpellStart;
                 break;
             case GlobalValues.SpellTag:
-                StartIds[2]++;
-                StartIds[3]++;
-                StartIds[4]++;
-                StartIds[5]++;
+                loopStart = GlobalValues.RuneStart;
                 break;
             case GlobalValues.RuneTag:
-                StartIds[3]++;
-                StartIds[4]++;
-                StartIds[5]++;
+                loopStart = GlobalValues.PotionStart;
                 break;
             case GlobalValues.PotionTag:
-                StartIds[4]++;
-                StartIds[5]++;
+                loopStart = GlobalValues.ResourceStart;
                 break;
             case GlobalValues.ResourceTag:
-                StartIds[5]++;
+                loopStart = GlobalValues.MiscStart;
                 break;
             default:
                 //Gold || Misc || Key
+                loopStart = GlobalValues.MiscStart + 1;
                 break;
+        }
+
+        for (int i = loopStart; i < GlobalValues.MiscStart + 1; i++)
+        {
+            StartIds[i]++;
         }
     }
 
@@ -196,45 +189,38 @@ public class Inventory : MonoBehaviour, ISavable
         CurrentCarryWeight -= Item.Weight * Amount;
 
         if (Item.Amount == 0)
-        {
+        {   
+            int loopStart;
+
             switch (Item.tag)
             {
                 case GlobalValues.WeaponTag:
-                    StartIds[0]--;
-                    StartIds[1]--;
-                    StartIds[2]--;
-                    StartIds[3]--;
-                    StartIds[4]--;
-                    StartIds[5]--;
+                    loopStart = GlobalValues.ArmourStart;
                     break;
                 case GlobalValues.ArmourTag:
-                    StartIds[1]--;
-                    StartIds[2]--;
-                    StartIds[3]--;
-                    StartIds[4]--;
-                    StartIds[5]--;
+                    loopStart = GlobalValues.SpellStart;
                     break;
                 case GlobalValues.SpellTag:
-                    StartIds[2]--;
-                    StartIds[3]--;
-                    StartIds[4]--;
-                    StartIds[5]--;
+                    loopStart = GlobalValues.RuneStart;
                     break;
                 case GlobalValues.RuneTag:
-                    StartIds[3]--;
-                    StartIds[4]--;
-                    StartIds[5]--;
+                    loopStart = GlobalValues.PotionStart;
                     break;
                 case GlobalValues.PotionTag:
-                    StartIds[4]--;
-                    StartIds[5]--;
+                    loopStart = GlobalValues.ResourceStart;
                     break;
                 case GlobalValues.ResourceTag:
-                    StartIds[5]--;
+                    loopStart = GlobalValues.MiscStart;
                     break;
                 default:
                     //Gold || Misc || Key
+                    loopStart = GlobalValues.MiscStart + 1;
                     break;
+            }
+
+            for(int i = loopStart; i < GlobalValues.MiscStart + 1; i++)
+            {
+                StartIds[i]--;
             }
 
             //Debug.Log("Item Removed");
@@ -317,7 +303,7 @@ public class Inventory : MonoBehaviour, ISavable
 
         Inventory NPCInventory = Player.player.GetHit().GetComponent<Inventory>();
 
-        for (int i = StartIds[3]; i <= AllItems.Count; i++)
+        for (int i = StartIds[GlobalValues.MiscStart]; i <= AllItems.Count; i++)
         {
             //Debug.Log("i = " + i);
             if (i == AllItems.Count)
@@ -327,7 +313,7 @@ public class Inventory : MonoBehaviour, ISavable
 
                 AddItem(goldH, false, 0);
 
-                for (int x = NPCInventory.StartIds[3]; x < NPCInventory.AllItems.Count; x++)
+                for (int x = NPCInventory.StartIds[GlobalValues.MiscStart]; x < NPCInventory.AllItems.Count; x++)
                 {
                     if (NPCInventory.AllItems[x].CompareTag(GlobalValues.GoldTag))
                     {
@@ -346,7 +332,7 @@ public class Inventory : MonoBehaviour, ISavable
             if (AllItems[i].CompareTag(GlobalValues.GoldTag))
             {
                 //Debug.Log("Player Gold Found");
-                for (int x = NPCInventory.StartIds[3]; x < NPCInventory.AllItems.Count; x++)
+                for (int x = NPCInventory.StartIds[GlobalValues.MiscStart]; x < NPCInventory.AllItems.Count; x++)
                 {
                     if (NPCInventory.AllItems[x].CompareTag(GlobalValues.GoldTag))
                     {
@@ -377,7 +363,7 @@ public class Inventory : MonoBehaviour, ISavable
         List<Item> PlayerAllItems = Player.player.Inventory.AllItems;
         int[] PlayerStartIds = Player.player.Inventory.StartIds;
 
-        for (int i = StartIds[3]; i <= AllItems.Count; i++)
+        for (int i = StartIds[GlobalValues.MiscStart]; i <= AllItems.Count; i++)
         {
             if (i == AllItems.Count)
             {
@@ -551,7 +537,7 @@ public class Inventory : MonoBehaviour, ISavable
             }
 
             AllItems = new List<Item>();
-            StartIds = new int[6];
+            StartIds = new int[GlobalValues.MiscStart + 1];
         }
 
         StringBuilder path = new StringBuilder(Application.persistentDataPath);

@@ -70,7 +70,7 @@ public class Player : LivingEntities
         {
             for (int handType = 0; handType < 2; handType++)
             {
-                if (Hands[handType].HeldItem != null)
+                if (Hands[handType].HeldItem != null && Hands[handType].HeldItem is TorchHolder == false)
                 {
                     if (Hands[handType].State == AttackType.Melee)
                     {

@@ -82,6 +82,7 @@ ScriptsOnlyBuild:
     - SpellHolder
     - SpellRoller
     - StatusManager
+    - TorchHolder
     - WeaponHitManager
     - WeaponHolder
     - WeaponParts
@@ -93,6 +94,7 @@ ScriptsOnlyBuild:
     - LocalNavMeshBuilder
     Unity.ProBuilder.dll:
     - UnityEngine.ProBuilder.ProBuilderMesh
+    - UnityEngine.ProBuilder.Shapes.ProBuilderShape
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
     - UnityEngine.Rendering.UI.DebugUIHandlerButton
@@ -163,8 +165,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
-    WaresoftProjectViewEnhanced.dll:
-    - WaresoftEditor.ProjectViewEnhanced.PVEStyleSheet
   sceneClasses:
     Assets/Scenes/Cave Level 1.unity:
     - Class: 1
@@ -228,6 +228,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2698}
     - Class: 114
+      Script: {instanceID: 2758}
+    - Class: 114
       Script: {instanceID: 2914}
     - Class: 114
       Script: {instanceID: 3114}
@@ -277,6 +279,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4458}
     - Class: 114
       Script: {instanceID: 4530}
+    - Class: 114
+      Script: {instanceID: 4708}
     - Class: 114
       Script: {instanceID: 4822}
     - Class: 114
@@ -353,6 +357,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 7670}
     - Class: 114
       Script: {instanceID: 7882}
+    - Class: 114
+      Script: {instanceID: 27422}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -584,6 +590,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2698}
     - Class: 114
+      Script: {instanceID: 2758}
+    - Class: 114
       Script: {instanceID: 2914}
     - Class: 114
       Script: {instanceID: 3114}
@@ -633,6 +641,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4458}
     - Class: 114
       Script: {instanceID: 4530}
+    - Class: 114
+      Script: {instanceID: 4708}
     - Class: 114
       Script: {instanceID: 4822}
     - Class: 114
@@ -707,6 +717,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 7670}
     - Class: 114
       Script: {instanceID: 7882}
+    - Class: 114
+      Script: {instanceID: 27422}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -807,6 +819,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2698}
     - Class: 114
+      Script: {instanceID: 2758}
+    - Class: 114
       Script: {instanceID: 2914}
     - Class: 114
       Script: {instanceID: 2932}
@@ -876,6 +890,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4530}
     - Class: 114
       Script: {instanceID: 4558}
+    - Class: 114
+      Script: {instanceID: 4708}
     - Class: 114
       Script: {instanceID: 4822}
     - Class: 114
@@ -986,6 +1002,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 7954}
     - Class: 114
       Script: {instanceID: 8004}
+    - Class: 114
+      Script: {instanceID: 27422}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -2615,6 +2633,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CraftingSlotAction
+  - hash:
+      serializedVersion: 2
+      Hash: 0a1aa888171378fa29faca37497c74c2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TorchHolder
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main Menu.unity

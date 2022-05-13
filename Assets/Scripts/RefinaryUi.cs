@@ -99,16 +99,20 @@ public class RefinaryUi : MonoBehaviour
             Instantiate(ResourceSlot, ResourceUiContentHolder);
         }
 
+        Inventory inventory = Player.player.Inventory;
+
+        int start = inventory.StartIds[GlobalValues.ResourceStart];
+        int end = inventory.StartIds[GlobalValues.MiscStart];
+        
         for (int i = 0; i < ResourceUiContentHolder.childCount; i++)
         {
             ResourceUiContentHolder.GetChild(i).gameObject.GetComponent<Text>().text = ItemsRequired.Item[i] + " x " + ItemsRequired.Amount[i];
             ResourceUiContentHolder.GetChild(i).gameObject.GetComponent<Text>().color = Color.red;
 
-            for (int x = Player.player.Inventory.StartIds[3]; x < Player.player.Inventory.StartIds[4]; x++)
+            for (int x = start; x < end; x++)
             {
 
-                if (Player.player.Inventory.AllItems[x].name == ItemsRequired.Item[i] &&
-                    Player.player.Inventory.AllItems[x].GetComponent<ResourceHolder>().Amount >= ItemsRequired.Amount[i])
+                if (inventory[x].name == ItemsRequired.Item[i] && inventory[x].Amount >= ItemsRequired.Amount[i])
                 {
                     ResourceUiContentHolder.GetChild(i).gameObject.GetComponent<Text>().color = Color.black;
                     break;
@@ -122,15 +126,19 @@ public class RefinaryUi : MonoBehaviour
         int Target = 0;
         int Count = 0;
 
+        Inventory inventory = Player.player.Inventory;
+
+        int start = inventory.StartIds[GlobalValues.ResourceStart];
+        int end = inventory.StartIds[GlobalValues.MiscStart];
 
         for (int i = 0; i < ResourceRecipes.ItemsRequired[R_Id].Amount.Length; i++)
         {
             Target++;
 
-            for (int x = Player.player.Inventory.StartIds[3]; x < Player.player.Inventory.StartIds[4]; x++)
+            for (int x = start; x < end; x++)
             {
-                if (Player.player.Inventory.AllItems[x].name == ResourceRecipes.ItemsRequired[R_Id].Item[i] &&
-                    Player.player.Inventory.AllItems[x].GetComponent<ResourceHolder>().Amount >= ResourceRecipes.ItemsRequired[R_Id].Amount[i] * ResourceAmount)
+                if (inventory[x].name == ResourceRecipes.ItemsRequired[R_Id].Item[i] &&
+                    inventory[x].Amount >= ResourceRecipes.ItemsRequired[R_Id].Amount[i] * ResourceAmount)
                 {
                     Count++;
                 }
@@ -151,14 +159,14 @@ public class RefinaryUi : MonoBehaviour
     public void Refine()
     {
         Inventory Inventory = Player.player.Inventory;
-        List<Item> AllItems = Inventory.AllItems;
-        int[] StartIds = Inventory.StartIds;
+        int start = Inventory.StartIds[GlobalValues.ResourceStart];
+        int end = Inventory.StartIds[GlobalValues.MiscStart];
 
         for (int i = 0; i < ItemsRequired.Amount.Length; i++)
         {
-            for (int x = StartIds[3]; x < StartIds[4]; x++)
+            for (int x = start; x < end; x++)
             {
-                if (AllItems[x].name == ItemsRequired.Item[i])
+                if (Inventory[x].name == ItemsRequired.Item[i])
                 {
                     Inventory.RemoveItem(Player.player.Inventory.AllItems[x], ItemsRequired.Amount[i] * ResourceAmount);
                 }

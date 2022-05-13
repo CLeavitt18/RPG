@@ -25,13 +25,18 @@ public class InventoryData
 
     public InventoryData(Inventory inventory)
     {
+        int start;
+        int end;
         int id;
 
-        NumOfWeapons = inventory.StartIds[0];
+        start = 0;
+        end = inventory.StartIds[GlobalValues.ArmourStart];
+
+        NumOfWeapons = end;
         Weapons = new WeaponStats[NumOfWeapons];
         id = 0;
 
-        for (int i = 0; i < inventory.StartIds[0]; i++)
+        for (int i = start; i < end; i++)
         {
             Weapons[id] = new WeaponStats();
 
@@ -42,30 +47,36 @@ public class InventoryData
             id++;
         }
 
-        NumOfArmour = inventory.StartIds[1] - inventory.StartIds[0];
+        start = inventory.StartIds[GlobalValues.ArmourStart];
+        end = inventory.StartIds[GlobalValues.SpellStart];
+
+        NumOfArmour = end - start;
         Armour = new ArmourStats[NumOfArmour];
         id = 0;
 
-        for (int i = inventory.StartIds[0]; i < inventory.StartIds[1]; i++)
+        for (int i = start; i < end; i++)
         {
             Armour[id] = new ArmourStats();
 
-            ArmourHolder ArmourH = inventory.AllItems[i].GetComponent<ArmourHolder>();
+            ArmourHolder ArmourH = inventory.GetComponent<ArmourHolder>();
 
             LoadSystem.LoadItem(ArmourH, Armour[id]);
 
             id++;
         }
 
-        NumOfSpells = inventory.StartIds[2] - inventory.StartIds[1];
+        start = inventory.StartIds[GlobalValues.SpellStart];
+        end = inventory.StartIds[GlobalValues.RuneStart];
+
+        NumOfSpells = end - start;
         Spells = new SpellHolderData[NumOfSpells];
         id = 0;
 
-        for (int i = inventory.StartIds[1]; i < inventory.StartIds[2]; i++)
+        for (int i = start; i < end; i++)
         {
             Spells[id] = new SpellHolderData();
 
-            SpellHolder SpellH = inventory.AllItems[i].GetComponent<SpellHolder>();
+            SpellHolder SpellH = inventory.GetComponent<SpellHolder>();
 
             LoadSystem.LoadItem(SpellH, Spells[id]);
 
@@ -73,31 +84,34 @@ public class InventoryData
         }
 
         //Runes
-        //2 = start of runes
-        //3 = end of runes
+        start = inventory.StartIds[GlobalValues.RuneStart];
+        end = inventory.StartIds[GlobalValues.PotionStart];
 
-        NumOfRunes = inventory.StartIds[3] - inventory.StartIds[2];
+        NumOfRunes = end - start;
         Runes = new RuneHolderData[NumOfRunes];
         id = 0;
 
-        for (int i = inventory.StartIds[2]; i < inventory.StartIds[3]; i++)
+        for (int i = start; i < end; i++)
         {
             Runes[id] = new RuneHolderData();
 
-            RuneHolder runeRef = inventory.AllItems[i].GetComponent<RuneHolder>();
+            RuneHolder runeRef = inventory.GetComponent<RuneHolder>();
 
             LoadSystem.LoadItem(runeRef, Runes[id]);
 
             id++;
         }
 
-        NumOfPotions = inventory.StartIds[4] - inventory.StartIds[3];
+        start = inventory.StartIds[GlobalValues.PotionStart];
+        end = inventory.StartIds[GlobalValues.ResourceStart];
+        
+        NumOfPotions = end - start;
         Potions = new CraftingMaterials[NumOfPotions];
         id = 0;
 
-        for (int i = inventory.StartIds[3]; i < inventory.StartIds[4]; i++)
+        for (int i = start; i < end; i++)
         {
-            Consumable Ref = inventory.AllItems[i].GetComponent<Consumable>();
+            Consumable Ref = inventory[i].GetComponent<Consumable>();
 
             for (int x = 0; x < PrefabIDs.prefabIDs.Potions.Length; x++)
             {
@@ -112,38 +126,43 @@ public class InventoryData
             id++;
         }
 
-        NumOfResources = inventory.StartIds[5] - inventory.StartIds[4];
+        start = inventory.StartIds[GlobalValues.ResourceStart];
+        end = inventory.StartIds[GlobalValues.MiscStart];
+
+        NumOfResources = end - start;
         Resources = new CraftingMaterials[NumOfResources];
         id = 0;
 
-        for (int i = inventory.StartIds[4]; i < inventory.StartIds[5]; i++)
+        for (int i = start; i < end; i++)
         {
-            ResourceHolder Ref = inventory.AllItems[i].GetComponent<ResourceHolder>();
+            Item item = inventory[i];
 
             for (int x = 0; x < PrefabIDs.prefabIDs.CraftingMaterials.Length; x++)
             {
-                if (PrefabIDs.prefabIDs.CraftingMaterials[x].name == Ref.Name)
+                if (PrefabIDs.prefabIDs.CraftingMaterials[x].name == item.Name)
                 {
                     Resources[id].ResourceId = x;
                     break;
                 }
             }
             
-            Resources[id].Amount = Ref.Amount;
+            Resources[id].Amount = item.Amount;
             id++;
         }
 
-        NumOfMisc = inventory.AllItems.Count - inventory.StartIds[5];
+        start = inventory.StartIds[GlobalValues.MiscStart];
+        end = inventory.Count;
+
+        NumOfMisc = end - start;
         Misc = new CraftingMaterials[NumOfMisc];
         id = 0;
 
-        for (int i = inventory.StartIds[5]; i < inventory.AllItems.Count; i++)
+        for (int i = start; i < end; i++)
         {
-            Item Ref = inventory.AllItems[i].GetComponent<Item>();
+            Item Ref = inventory.AllItems[i];
 
             for (int x = 0; x < PrefabIDs.prefabIDs.Items.Length; x++)
             {
-
                 if (PrefabIDs.prefabIDs.Items[x] == null)
                 {
                     break;

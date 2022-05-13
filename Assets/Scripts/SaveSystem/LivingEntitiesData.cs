@@ -24,6 +24,8 @@ public class LivingEntitiesData
 
     public LivingEntitiesData(LivingEntities entity)
     {
+        int start;
+        int end;
         int id = 0;
         Inventory inventory = entity.Inventory;
 
@@ -49,7 +51,10 @@ public class LivingEntitiesData
             Attributes[i].Reserved = entity.GetResrvedAttribute(i);
         }
 
-        for (int i = 0; i < inventory.StartIds[0]; i++)
+        start = 0;
+        end = inventory.StartIds[GlobalValues.ArmourStart];
+
+        for (int i = start; i < end; i++)
         {
             WeaponHolder WeaponH = inventory.AllItems[i].GetComponent<WeaponHolder>();
 
@@ -68,9 +73,12 @@ public class LivingEntitiesData
             id++;
         }
         
+        start = inventory.StartIds[GlobalValues.SpellStart];
+        end = inventory.StartIds[GlobalValues.RuneStart];
+
         id = 0;
 
-        for (int i = inventory.StartIds[1]; i < inventory.StartIds[2]; i++)
+        for (int i = start; i < end; i++)
         {
             SpellHolder SpellH = inventory.AllItems[i].GetComponent<SpellHolder>();
 
