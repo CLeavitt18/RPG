@@ -63,30 +63,25 @@ public class PlayerUi : MonoBehaviour
     {
         for (int i = 0; i < uis.Length; i++)
         {
-            if ((int)UiType.Inventory == i)
+            if(i == (int)UiType.Inventory)
             {
                 uis[i].Set();
+                continue;
             }
-            else
-            {
-                uis[i].Clear();
-            }
+            uis[i].Clear();
         }
+
+        uis[(int)UiType.Inventory].Set();
     }
 
     public void CallSetQuestInventory()
     {
         for (int i = 0; i < uis.Length; i++)
         {
-            if ((int)UiType.Quests == i)
-            {
-                uis[i].Set();
-            }
-            else
-            {
-                uis[i].Clear();
-            }
+            uis[i].Clear();
         }
+
+        uis[(int)UiType.Quests].Set();
     }
 
     public void StartPause(bool pause)

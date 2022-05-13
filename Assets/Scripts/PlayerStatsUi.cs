@@ -24,10 +24,12 @@ public class PlayerStatsUi : IUi
 
     public override void Set()
     {
-        if (StatsListHolder.childCount != 0)
+        if (isActive)
         {
             return;
         }
+
+        isActive = true;
 
         StatsUi.SetActive(true);
 
@@ -476,12 +478,14 @@ public class PlayerStatsUi : IUi
 
     public override void Clear()
     {
-        int loops = StatsListHolder.childCount;
-
-        if (loops == 0)
+        if (!isActive)
         {
             return;
         }
+
+        isActive = false;
+
+        int loops = StatsListHolder.childCount;
 
         for (int i = 0; i < loops; i++)
         {

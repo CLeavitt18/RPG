@@ -23,7 +23,12 @@ public class QuestUi : IUi
 
     public override void Set()
     {
-        Debug.Log("Setting Quest Log");
+        if (isActive)
+        {
+            return;
+        }
+
+        isActive = true;
 
         List<QuestHolder> Quests = QuestTracker.questTracker.Quests;
 
@@ -31,8 +36,6 @@ public class QuestUi : IUi
 
         for (int i = 0; i < Quests.Count; i++)
         {
-            Debug.Log("Creating Quest " + i);
-
             Quest = Quests[i];
 
             GameObject NewSlot = Instantiate(QuestSlot, holder);
@@ -129,12 +132,14 @@ public class QuestUi : IUi
 
     public override void Clear()
     {
-        int count = holder.childCount;
-
-        if (count == 0)
+        if (!isActive)
         {
             return;
         }
+
+        isActive = false;
+
+        int count = holder.childCount;
 
         for (int i = 0; i < count; i++)
         {

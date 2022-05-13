@@ -88,7 +88,6 @@ public class InventoryUi : IUi
             {
                 StartCoroutine(SetEquipment('R', 0));
             }
-
         }
         else
         {
@@ -134,6 +133,15 @@ public class InventoryUi : IUi
         {
             inventory = Player.player.GetHit().GetComponent<Inventory>();
         }
+
+        if (isActive)
+        {
+            return;
+        }
+
+        isActive = true;
+
+        InventoryBar.SetActive(true);
 
         int LoopStart = 0;
         int LoopEnd = 0;
@@ -410,10 +418,12 @@ public class InventoryUi : IUi
     {
         int children = InventroyHolder.childCount;
 
-        if (children == 0)
+        if (!isActive)
         {
             return;
         }
+
+        isActive = false;
 
         if (!inventoryUi.activeSelf)
         {

@@ -21,6 +21,13 @@ public class LevelUpUi : IUi
 
     public override void Set()
     {
+        if (isActive)
+        {
+            return;
+        }
+
+        isActive = true;
+        
         SetLevelCounter(Player.player.GetStoredLevels(), true);
         
         levelUpUi.SetActive(true);
