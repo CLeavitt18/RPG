@@ -517,6 +517,13 @@ public class LivingEntities : MonoBehaviour
                 break;
             case GlobalValues.JewlryTag:
                 break;
+            case GlobalValues.TorchTag:
+                hand.HeldItem = Item;
+
+                ((TorchHolder)Item).SpawnItemForUse(hand.HandLocation);
+
+                hand.State = AttackType.None;
+                break;
             default:
                 break;
         }
@@ -663,6 +670,17 @@ public class LivingEntities : MonoBehaviour
 
                 break;
             case GlobalValues.JewlryTag:
+                break;
+            case GlobalValues.TorchTag:
+                for (int i = 0; i < 2; i++)
+                {
+                    if (Hands[i].HeldItem == Item)
+                    {
+                        Destroy(Hands[i].HandLocation.GetChild(0));
+                        Hands[i].HeldItem = null;
+                        break;
+                    }
+                }
                 break;
         }
 

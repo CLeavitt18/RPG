@@ -31,6 +31,7 @@ TagManager:
   - RuneTable
   - Rune
   - SpellTable
+  - Torch
   layers:
   - Default
   - TransparentFX

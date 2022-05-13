@@ -29,6 +29,7 @@ public static class GlobalValues
     public const string KeyTag = "Key";
     public const string GoldTag = "Gold";
     public const string MiscTag = "Misc";
+    public const string TorchTag = "Torch";
 
     public static readonly string[] AttackInputs = { "Fire1", "Fire2", "1", "2", "3", "4" };
 
