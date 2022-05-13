@@ -23,20 +23,22 @@ public class QuestUi : IUi
 
     public override void Set()
     {
+        Debug.Log("Setting Quest Log");
+
         List<QuestHolder> Quests = QuestTracker.questTracker.Quests;
 
         QuestHolder Quest;
 
         for (int i = 0; i < Quests.Count; i++)
         {
+            Debug.Log("Creating Quest " + i);
+
             Quest = Quests[i];
 
             GameObject NewSlot = Instantiate(QuestSlot, holder);
             SlotsActions slot = NewSlot.GetComponent<SlotsActions>();
 
-            slot.QuestUi = this;
-            slot.UI = null;
-            slot.transform.GetChild(0).gameObject.GetComponent<Text>().text = Quest.QuestName;
+            slot.SetState(this, Quest);
 
             Slots.Add(slot);
         }

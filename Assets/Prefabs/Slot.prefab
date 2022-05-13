@@ -298,9 +298,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mode: 0
-  Id: 0
+  _Item: {fileID: 0}
   EquipedIndicator: {fileID: 7852501995455974518}
+  WaitTime: 0.25
   UI: {fileID: 0}
+  QuestUi: {fileID: 0}
+  displayNameText: {fileID: 7895715894455434969}
+  indicatorText: {fileID: 216531870629135547}
   Clicked: 0
   NextTime: 0
 --- !u!61 &1260086525809972653

@@ -13695,7 +13695,7 @@ MonoBehaviour:
   holder: {fileID: 8732479581419763760}
   DetailsUi: {fileID: 6756153939899070823}
   detailUiHolder: {fileID: 0}
-  QuestSlot: {fileID: 1865744662274582771, guid: 6532b92d51638fc468e9c2d428636e5f, type: 3}
+  QuestSlot: {fileID: 1865744662274582771, guid: 1a81b4f74f83cf642bcc649887360ec5, type: 3}
   FocusedItem: {fileID: 0}
 --- !u!114 &7905633172275075591
 MonoBehaviour:

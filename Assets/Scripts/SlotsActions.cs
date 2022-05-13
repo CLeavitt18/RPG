@@ -1,19 +1,23 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
-    public SlotState Mode;
+    [SerializeField] private SlotState Mode;
 
-    public Item item;
+    [SerializeField] private Item _Item;
 
-    public GameObject EquipedIndicator;
+    [SerializeField] private GameObject EquipedIndicator;
 
-    private float WaitTime = .25f;
+    [SerializeField] private float WaitTime = .25f;
 
-    public InventoryUi UI;
+    [SerializeField] public InventoryUi UI;
 
-    public QuestUi QuestUi;
+    [SerializeField] public QuestUi QuestUi;
+
+    [SerializeField] private Text displayNameText;
+    [SerializeField] private Text indicatorText;
 
     [SerializeField] private bool Clicked = false;
 
@@ -36,7 +40,7 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
         {
             if (Clicked)
             {
-                UI.SetFocus(this, 0, item, Player.player.GetMode());
+                UI.SetFocus(this, 0, _Item, Player.player.GetMode());
                 Clicked = false;
             }
             else
@@ -51,7 +55,7 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
         {
             if (Clicked)
             {
-                UI.SetFocus(this, 1, item, Player.player.GetMode());
+                UI.SetFocus(this, 1, _Item, Player.player.GetMode());
                 Clicked = false;
             }
             else
@@ -74,11 +78,40 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
 
         if (Mode == SlotState.Item)
         {
-            UI.SetFocus(this, 0, item, Player.player.GetMode());
+            UI.SetFocus(this, 0, _Item, Player.player.GetMode());
         }
         else
         {
-            QuestUi.SetQuestFocused(this, item);
+            QuestUi.SetQuestFocused(this, _Item);
         }
+    }
+
+    public void SetState(IUi ui, Item item)
+    {
+        if(ui as QuestUi )
+        {
+            QuestUi = ui as QuestUi;
+            UI = null;
+        }
+        else
+        {
+            UI = ui as InventoryUi;
+            QuestUi = null;
+        }
+
+        _Item = item;
+
+        displayNameText.text = item.name;
+    }
+
+    public void SetIndicator(bool state, string text)
+    {
+        EquipedIndicator.SetActive(true);
+        indicatorText.text = text;
+    }
+
+    public Item GetItem()
+    {
+        return _Item;
     }
 }

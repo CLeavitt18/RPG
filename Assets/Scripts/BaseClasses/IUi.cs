@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class IUi : MonoBehaviour
 {
+    //[SerializeField] protected bool isActive;
+
     public virtual void Set()
     {
 
@@ -16,4 +18,9 @@ public class IUi : MonoBehaviour
     {
 
     }
+
+    /*public bool GetActive()
+    {
+        return isActive;
+    }*/
 }

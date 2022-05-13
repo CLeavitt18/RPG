@@ -80,7 +80,7 @@ public class InventoryUi : IUi
                 }
                 else if (playerMode == PlayerState.InContainer)
                 {
-                    Player.player.Inventory.TransferItem(Focus.item, (int)AmountBar.value);
+                    Player.player.Inventory.TransferItem(FocusedItem, (int)AmountBar.value);
                 }
             }
 
@@ -516,8 +516,9 @@ public class InventoryUi : IUi
         NewSlot.GetComponent<Image>().color = Item.Rarity;
 
         SlotsActions slot = NewSlot.GetComponent<SlotsActions>();
-        slot.UI = this;
-        slot.item = Item;
+
+        slot.SetState(this, Item);
+
         Slots.Add(slot);
 
         int id = Slots.Count - 1;
@@ -843,30 +844,28 @@ public class InventoryUi : IUi
             Item rightHand = Player.player.GetHeldItem(0);
             Item leftHand = Player.player.GetHeldItem(1);
 
-            if (AllItems[i].CompareTag(GlobalValues.WeaponTag) || AllItems[i].CompareTag(GlobalValues.SpellTag))
+            if (AllItems[i].CompareTag(GlobalValues.WeaponTag) || 
+            AllItems[i].CompareTag(GlobalValues.SpellTag) || 
+            AllItems[i].CompareTag(GlobalValues.TorchTag))
             {
                 if (AllItems[i] == rightHand)
                 {
                     if (rightHand == leftHand)
                     {
-                        Slots[i].EquipedIndicator.SetActive(true);
-                        Slots[i].transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "LR";
+                        Slots[i].SetIndicator(true, "LR");
                     }
                     else
                     {
-                        Slots[i].EquipedIndicator.SetActive(true);
-                        Slots[i].transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "R";
+                        Slots[i].SetIndicator(true, "R");
                     }
                 }
                 else if (AllItems[i] == leftHand)
                 {
-                    Slots[i].EquipedIndicator.SetActive(true);
-                    Slots[i].gameObject.transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "L";
+                    Slots[i].SetIndicator(true, "L");
                 }
                 else
                 {
-                    Slots[i].EquipedIndicator.SetActive(false);
-                    Slots[i].transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "";
+                    Slots[i].SetIndicator(false, "");
                 }
             }
 
@@ -883,13 +882,11 @@ public class InventoryUi : IUi
 
                 if (armour == Player.player.GetEquipedArmour(ArmourID))
                 {
-                    Slots[i].GetComponent<SlotsActions>().EquipedIndicator.SetActive(true);
-                    Slots[i].transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "";
+                    Slots[i].GetComponent<SlotsActions>().SetIndicator(true, "");
                 }
                 else
                 {
-                    Slots[i].GetComponent<SlotsActions>().EquipedIndicator.SetActive(false);
-                    Slots[i].transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "";
+                    Slots[i].GetComponent<SlotsActions>().SetIndicator(false, "");
                 }
             }
         }
