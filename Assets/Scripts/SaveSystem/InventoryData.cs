@@ -1,4 +1,5 @@
-﻿
+﻿using UnityEngine;
+
 [System.Serializable]
 public class InventoryData
 {
@@ -30,7 +31,7 @@ public class InventoryData
         int id;
 
         start = 0;
-        end = inventory.StartIds[GlobalValues.ArmourStart];
+        end = inventory.GetStart(GlobalValues.ArmourStart);
 
         NumOfWeapons = end;
         Weapons = new WeaponStats[NumOfWeapons];
@@ -47,8 +48,8 @@ public class InventoryData
             id++;
         }
 
-        start = inventory.StartIds[GlobalValues.ArmourStart];
-        end = inventory.StartIds[GlobalValues.SpellStart];
+        start = inventory.GetStart(GlobalValues.ArmourStart);
+        end = inventory.GetStart(GlobalValues.SpellStart);
 
         NumOfArmour = end - start;
         Armour = new ArmourStats[NumOfArmour];
@@ -58,15 +59,15 @@ public class InventoryData
         {
             Armour[id] = new ArmourStats();
 
-            ArmourHolder ArmourH = inventory.GetComponent<ArmourHolder>();
+            ArmourHolder ArmourH = inventory[i].GetComponent<ArmourHolder>();
 
             LoadSystem.LoadItem(ArmourH, Armour[id]);
 
             id++;
         }
 
-        start = inventory.StartIds[GlobalValues.SpellStart];
-        end = inventory.StartIds[GlobalValues.RuneStart];
+        start = inventory.GetStart(GlobalValues.SpellStart);
+        end = inventory.GetStart(GlobalValues.RuneStart);
 
         NumOfSpells = end - start;
         Spells = new SpellHolderData[NumOfSpells];
@@ -76,7 +77,7 @@ public class InventoryData
         {
             Spells[id] = new SpellHolderData();
 
-            SpellHolder SpellH = inventory.GetComponent<SpellHolder>();
+            SpellHolder SpellH = inventory[i].GetComponent<SpellHolder>();
 
             LoadSystem.LoadItem(SpellH, Spells[id]);
 
@@ -84,8 +85,8 @@ public class InventoryData
         }
 
         //Runes
-        start = inventory.StartIds[GlobalValues.RuneStart];
-        end = inventory.StartIds[GlobalValues.PotionStart];
+        start = inventory.GetStart(GlobalValues.RuneStart);
+        end = inventory.GetStart(GlobalValues.PotionStart);
 
         NumOfRunes = end - start;
         Runes = new RuneHolderData[NumOfRunes];
@@ -95,15 +96,15 @@ public class InventoryData
         {
             Runes[id] = new RuneHolderData();
 
-            RuneHolder runeRef = inventory.GetComponent<RuneHolder>();
+            RuneHolder runeRef = inventory[i].GetComponent<RuneHolder>();
 
             LoadSystem.LoadItem(runeRef, Runes[id]);
 
             id++;
         }
 
-        start = inventory.StartIds[GlobalValues.PotionStart];
-        end = inventory.StartIds[GlobalValues.ResourceStart];
+        start = inventory.GetStart(GlobalValues.PotionStart);
+        end = inventory.GetStart(GlobalValues.ResourceStart);
         
         NumOfPotions = end - start;
         Potions = new CraftingMaterials[NumOfPotions];
@@ -126,8 +127,8 @@ public class InventoryData
             id++;
         }
 
-        start = inventory.StartIds[GlobalValues.ResourceStart];
-        end = inventory.StartIds[GlobalValues.MiscStart];
+        start = inventory.GetStart(GlobalValues.ResourceStart);
+        end = inventory.GetStart(GlobalValues.MiscStart);
 
         NumOfResources = end - start;
         Resources = new CraftingMaterials[NumOfResources];
@@ -150,7 +151,7 @@ public class InventoryData
             id++;
         }
 
-        start = inventory.StartIds[GlobalValues.MiscStart];
+        start = inventory.GetStart(GlobalValues.MiscStart);
         end = inventory.Count;
 
         NumOfMisc = end - start;

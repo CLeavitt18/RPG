@@ -273,8 +273,8 @@ public class ForgeUI : MonoBehaviour
 
         Inventory pInventory = Player.player.Inventory;
 
-        int start = pInventory.StartIds[GlobalValues.ResourceStart];
-        int end = pInventory.StartIds[GlobalValues.MiscStart];
+        int start = pInventory.GetStart(GlobalValues.ResourceStart);
+        int end = pInventory.GetStart(GlobalValues.MiscStart);
 
         foreach (KeyValuePair<string, int> item in RequiredItems)
         {

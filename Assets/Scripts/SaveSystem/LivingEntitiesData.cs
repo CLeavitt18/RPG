@@ -52,7 +52,7 @@ public class LivingEntitiesData
         }
 
         start = 0;
-        end = inventory.StartIds[GlobalValues.ArmourStart];
+        end = inventory.GetStart(GlobalValues.ArmourStart);
 
         for (int i = start; i < end; i++)
         {
@@ -73,8 +73,8 @@ public class LivingEntitiesData
             id++;
         }
         
-        start = inventory.StartIds[GlobalValues.SpellStart];
-        end = inventory.StartIds[GlobalValues.RuneStart];
+        start = inventory.GetStart(GlobalValues.SpellStart);
+        end = inventory.GetStart(GlobalValues.RuneStart);
 
         id = 0;
 

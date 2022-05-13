@@ -1138,7 +1138,6 @@ public class LivingEntities : MonoBehaviour
             }
 
             Inventory.Clear();
-            Inventory.StartIds = new int[GlobalValues.MiscStart + 1];
         }
 
         if (iData.NumOfWeapons > 0)

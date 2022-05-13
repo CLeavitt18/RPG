@@ -101,8 +101,8 @@ public class RefinaryUi : MonoBehaviour
 
         Inventory inventory = Player.player.Inventory;
 
-        int start = inventory.StartIds[GlobalValues.ResourceStart];
-        int end = inventory.StartIds[GlobalValues.MiscStart];
+        int start = inventory.GetStart(GlobalValues.ResourceStart);
+        int end = inventory.GetStart(GlobalValues.MiscStart);
         
         for (int i = 0; i < ResourceUiContentHolder.childCount; i++)
         {
@@ -128,8 +128,8 @@ public class RefinaryUi : MonoBehaviour
 
         Inventory inventory = Player.player.Inventory;
 
-        int start = inventory.StartIds[GlobalValues.ResourceStart];
-        int end = inventory.StartIds[GlobalValues.MiscStart];
+        int start = inventory.GetStart(GlobalValues.ResourceStart);
+        int end = inventory.GetStart(GlobalValues.MiscStart);
 
         for (int i = 0; i < ResourceRecipes.ItemsRequired[R_Id].Amount.Length; i++)
         {
@@ -159,8 +159,8 @@ public class RefinaryUi : MonoBehaviour
     public void Refine()
     {
         Inventory Inventory = Player.player.Inventory;
-        int start = Inventory.StartIds[GlobalValues.ResourceStart];
-        int end = Inventory.StartIds[GlobalValues.MiscStart];
+        int start = Inventory.GetStart(GlobalValues.ResourceStart);
+        int end = Inventory.GetStart(GlobalValues.MiscStart);
 
         for (int i = 0; i < ItemsRequired.Amount.Length; i++)
         {

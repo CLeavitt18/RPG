@@ -126,18 +126,13 @@ public class InventoryUi : IUi
 
     public override void Set()
     {
-        Inventory AllItems;
-        int[] StartIds;
-
         if (UiMode == UiState.Player)
         {
-            AllItems = Player.player.Inventory;
-            StartIds = Player.player.Inventory.StartIds;
+            inventory = Player.player.Inventory;
         }
         else
         {
-            AllItems = Player.player.GetHit().GetComponent<Inventory>();
-            StartIds = Player.player.GetHit().GetComponent<Inventory>().StartIds;
+            inventory = Player.player.GetHit().GetComponent<Inventory>();
         }
 
         int LoopStart = 0;
@@ -222,43 +217,43 @@ public class InventoryUi : IUi
         {
             case InventoryState.AllItems:
                 LoopStart = 0;
-                LoopEnd = AllItems.Count;
+                LoopEnd = inventory.Count;
                 break;
             case InventoryState.Weapons:
                 LoopStart = 0;
-                LoopEnd = StartIds[0];
+                LoopEnd = inventory.GetStart(GlobalValues.ArmourStart);
                 break;
             case InventoryState.Armour:
-                LoopStart = StartIds[0];
-                LoopEnd = StartIds[1];
+                LoopStart = inventory.GetStart(GlobalValues.ArmourStart);
+                LoopEnd = inventory.GetStart(GlobalValues.SpellStart);
                 break;
             case InventoryState.Spells:
-                LoopStart = StartIds[1];
-                LoopEnd = StartIds[2];
+                LoopStart = inventory.GetStart(GlobalValues.SpellStart);
+                LoopEnd = inventory.GetStart(GlobalValues.RuneStart);
                 break;
             case InventoryState.Runes:
-                LoopStart = StartIds[2];
-                LoopEnd = StartIds[3];
+                LoopStart = inventory.GetStart(GlobalValues.RuneStart);
+                LoopEnd = inventory.GetStart(GlobalValues.PotionStart);
                 break;
             case InventoryState.Potions:
-                LoopStart = StartIds[3];
-                LoopEnd = StartIds[4];
+                LoopStart = inventory.GetStart(GlobalValues.PotionStart);
+                LoopEnd = inventory.GetStart(GlobalValues.ResourceStart);
                 break;
             case InventoryState.Resources:
-                LoopStart = StartIds[4];
-                LoopEnd = StartIds[5];
+                LoopStart = inventory.GetStart(GlobalValues.ResourceStart);
+                LoopEnd = inventory.GetStart(GlobalValues.MiscStart);
                 break;
             case InventoryState.Misc:
-                LoopStart = StartIds[5];
-                LoopEnd = AllItems.Count;
+                LoopStart = inventory.GetStart(GlobalValues.MiscStart);
+                LoopEnd = inventory.Count;
                 break;
         }
 
         for (int i = LoopStart; i < LoopEnd; i++)
         {
-            Item Item = AllItems[i].GetComponent<Item>();
+            Item Item = inventory[i].GetComponent<Item>();
 
-            if (AllItems[i].CompareTag(GlobalValues.GoldTag))
+            if (Item.CompareTag(GlobalValues.GoldTag))
             {
                 if (UiMode == UiState.Container && Player.player.GetHit().CompareTag(GlobalValues.NPCTag))
                 {
@@ -275,10 +270,10 @@ public class InventoryUi : IUi
                 }
             }
 
-            if (AllItems[i].gameObject.GetComponent<IEquipable>() != null &&
+            if (Item.GetComponent<IEquipable>() != null &&
                 Player.player.GetMode() == PlayerState.InStore)
             {
-                if (AllItems[i].GetComponent<IEquipable>().IsEquiped)
+                if (Item.GetComponent<IEquipable>().IsEquiped)
                 {
                     continue;
                 }
@@ -287,7 +282,7 @@ public class InventoryUi : IUi
             Text MiscText;
             int id;
 
-            switch (AllItems[i].tag)
+            switch (Item.tag)
             {
                 case GlobalValues.WeaponTag:
                     if (WeaponsBanner == null)
@@ -301,7 +296,7 @@ public class InventoryUi : IUi
                         id = SpawnItemInventorySlot(Item);
                         MiscText = Slots[id].transform.GetChild(2).gameObject.GetComponent<Text>();
 
-                        WeaponHolder Weapon = AllItems[i].GetComponent<WeaponHolder>();
+                        WeaponHolder Weapon = Item.GetComponent<WeaponHolder>();
 
                         sb = new StringBuilder(Weapon.CurrentDurability.ToString("n0"));
                         sb.Append('/');
@@ -322,7 +317,7 @@ public class InventoryUi : IUi
                         id = SpawnItemInventorySlot(Item);
                         MiscText = Slots[id].transform.GetChild(2).gameObject.GetComponent<Text>();
 
-                        ArmourHolder armour = AllItems[i].GetComponent<ArmourHolder>();
+                        ArmourHolder armour = Item.GetComponent<ArmourHolder>();
 
                         sb = new StringBuilder(armour.CurrentDurability.ToString("n0"));
                         sb.Append('/');
@@ -343,7 +338,7 @@ public class InventoryUi : IUi
                         id = SpawnItemInventorySlot(Item);
                         MiscText = Slots[id].transform.GetChild(2).gameObject.GetComponent<Text>();
 
-                        SpellHolder Spell = AllItems[i].GetComponent<SpellHolder>();
+                        SpellHolder Spell = Item.GetComponent<SpellHolder>();
 
                         //MiscText.text = Spell.ManaCost.ToString("n0");
                     }

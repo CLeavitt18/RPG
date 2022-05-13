@@ -87,7 +87,8 @@ public class NPCDialogue : MonoBehaviour
             if (CurrentQuest != Quests.Length)
             {
                 Inventory Inventory = Player.player.Inventory;
-                int start = Inventory.StartIds[GlobalValues.MiscStart];
+
+                int start = Inventory.GetStart(GlobalValues.MiscStart);
                 int end = Inventory.Count;
 
                 for (int i = start; i < end; i++)
@@ -149,7 +150,7 @@ public class NPCDialogue : MonoBehaviour
         }
 
         Inventory Inventory = Player.player.Inventory;
-        int start = Inventory.StartIds[GlobalValues.MiscStart];
+        int start = Inventory.GetStart(GlobalValues.MiscStart);
         int end = Inventory.Count;
 
         for (int i = end; i < end; i++)

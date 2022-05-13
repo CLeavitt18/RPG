@@ -101,8 +101,8 @@ public class SpellCraftingTableUi : MonoBehaviour
 
         Inventory inventory = Player.player.Inventory;
 
-        int start = inventory.StartIds[GlobalValues.RuneStart];
-        int end = inventory.StartIds[GlobalValues.PotionStart];
+        int start = inventory.GetStart(GlobalValues.RuneStart);
+        int end = inventory.GetStart(GlobalValues.PotionStart);
 
         for (int i = start; i < end; i++)
         {

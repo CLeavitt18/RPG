@@ -50,15 +50,17 @@ public class Doors : Interactialbes, IInteractable, ISavable
     {
         if (Locked)
         {
-            Inventory list = Player.player.Inventory;
-            int[] StartIds = Player.player.Inventory.StartIds;
+            Inventory inventory = Player.player.Inventory;
+
+            int start = inventory.GetStart(GlobalValues.MiscStart);
+            int end = inventory.Count;
 
             StringBuilder KeyName = new StringBuilder("Key to ");
             KeyName.Append(Name);
 
-            for (int i = StartIds[GlobalValues.MiscStart]; i < list.Count; i++)
+            for (int i = start; i < end; i++)
             {
-                if (list[i].name == KeyName.ToString())
+                if (inventory[i].name == KeyName.ToString())
                 {
                     Locked = false;
                     return;

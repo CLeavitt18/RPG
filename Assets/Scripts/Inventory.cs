@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour, ISavable
 
     public int Count { get{ return AllItems.Count;} private set{} }
 
-    public int[] StartIds = new int[6];
+    [SerializeField] private int[] StartIds = new int[6];
 
     public int MaxCarryWeight;
     public int CurrentCarryWeight;
@@ -518,6 +518,11 @@ public class Inventory : MonoBehaviour, ISavable
     {
         get { return AllItems[i]; }
         private set { AllItems[i] = value; }
+    }
+
+    public int GetStart(int id)
+    {
+        return StartIds[id];
     }
 
     public bool Save(int id)
