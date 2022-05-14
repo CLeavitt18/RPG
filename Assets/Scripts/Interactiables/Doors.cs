@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using System.IO;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -113,7 +112,7 @@ public class Doors : Interactialbes, IInteractable, ISavable
 
         path.Append(GlobalValues.SaveExtension);
 
-        if (Directory.Exists(tempPath.ToString()))
+        if (File.Exists(tempPath.ToString()))
         {
             data = SaveSystem.LoadDoor(tempPath.ToString());
         }

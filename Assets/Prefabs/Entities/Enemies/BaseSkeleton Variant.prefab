@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseSkeleton Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4764811998473412352, guid: 79c37338a4a243145891fefcbcb96ff7, type: 3}
+      propertyPath: Name
+      value: Skeleton
+      objectReference: {fileID: 0}
     - target: {fileID: 4764811998473412383, guid: 79c37338a4a243145891fefcbcb96ff7, type: 3}
       propertyPath: m_Name
       value: SkeletonModel
