@@ -134,17 +134,12 @@ public class InventoryUi : IUi
             inventory = Player.player.GetHit().GetComponent<Inventory>();
         }
 
-        if (isActive)
-        {
-            return;
-        }
-
-        isActive = true;
-
         if (InventoryBar != null)
         {
             InventoryBar.SetActive(true);
         }
+
+        isActive = true;
 
         int LoopStart = 0;
         int LoopEnd = 0;
