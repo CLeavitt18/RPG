@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        Application.targetFrameRate = 144;
+        Application.targetFrameRate = -1;
     }
 
     public void NewGame()
@@ -63,9 +63,8 @@ public class MainMenu : MonoBehaviour
         {
             if (File.Name != "Unity")
             {
-                GameObject Profile = Instantiate(PlayerProfileButton);
+                GameObject Profile = Instantiate(PlayerProfileButton, PlayerProfilesList);
 
-                Profile.transform.SetParent(PlayerProfilesList);
                 Profile.transform.GetChild(0).gameObject.GetComponent<Text>().text = File.Name;
             }
         }

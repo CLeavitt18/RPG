@@ -13,7 +13,8 @@ public class Player : LivingEntities
     [SerializeField] private int AttributePoints;
     [SerializeField] private int SprintSpeed;
     [SerializeField] private int StoredLevel;
-    [Range(0, GlobalValues.LevelProgressMax), SerializeField] private int LevelProgress;
+    [Range(0, int.MaxValue), SerializeField] private int LevelProgress;
+    [Range(8, int.MaxValue), SerializeField] private int requiredLevelProgress;
 
     [SerializeField] private LayerMask Interactiables;
 
@@ -536,12 +537,7 @@ public class Player : LivingEntities
 
         StatusManger.RunCalculs();
 
-        if (LevelProgress >= GlobalValues.LevelProgressMax)
-        {
-            LevelProgress -= GlobalValues.LevelProgressMax;
-            StoredLevel++;
-            PlayerUi.playerUi.CallSetLevelCounter(StoredLevel);
-        }
+        CheckLevelProgress();
     }
 
     public void GainMasteryExp(long Exp)
@@ -564,7 +560,22 @@ public class Player : LivingEntities
             if (Masteries[mastery].Exp >= Masteries[mastery].RExp)
             {
                 GainMasteryExp(0);
+                return;
             }
+
+            CheckLevelProgress();
+        }
+    }
+
+    private void CheckLevelProgress()
+    {
+        if (LevelProgress >= requiredLevelProgress)
+        {
+            LevelProgress -= requiredLevelProgress;
+            StoredLevel++;
+            PlayerUi.playerUi.CallSetLevelCounter(StoredLevel);
+
+            requiredLevelProgress = (int)(requiredLevelProgress * 1.15f);
         }
     }
 
@@ -944,6 +955,7 @@ public class Player : LivingEntities
 
         AttributePoints = Data.AttributePoints;
         LevelProgress = Data.LevelProgress;
+        requiredLevelProgress = Data.requiredLevelProgress;
         StoredLevel = Data.StoredLevel;
 
         if (StoredLevel != 0)
@@ -1029,6 +1041,11 @@ public class Player : LivingEntities
     public int GetLevelProgress()
     {
         return LevelProgress;
+    }
+
+    public int GetRequiredLevelProgress()
+    {
+        return requiredLevelProgress;
     }
 
     public PlayerState GetMode()

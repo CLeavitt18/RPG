@@ -138,6 +138,7 @@
      <Compile Include="Assets\Scripts\GlobalValues.cs" />
      <Compile Include="Assets\Scripts\Interfaces\IInteractable.cs" />
      <Compile Include="Assets\Scripts\BaseClasses\HitManager.cs" />
+     <Compile Include="Assets\Scripts\TorchHolder.cs" />
      <Compile Include="Assets\Scripts\WorldStateTracker.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\WorldData.cs" />
      <Compile Include="Assets\Scripts\PlayerCamera.cs" />
@@ -158,7 +159,6 @@
      <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
      <Compile Include="Assets\Scripts\RuneTableUI.cs" />
      <Compile Include="Assets\Scripts\CraftingSlotAction.cs" />
-     <Compile Include="Assets\Scripts\TorchHolder.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.24f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

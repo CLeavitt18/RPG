@@ -35,7 +35,6 @@ public static class GlobalValues
 
     public const int MinRoll = 1;
     public const int MaxRoll = 1001;
-    public const int LevelProgressMax = 7;
     public const int Masteries = 10;
     public const int Skills = 17;
     public const int Armourpieces = 9;

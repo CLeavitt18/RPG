@@ -4,6 +4,7 @@ public class PlayerData : LivingEntitiesData
 {
     public int AttributePoints;
     public int LevelProgress;
+    public int requiredLevelProgress;
     public int StoredLevel;
     public int NumOfQuests;
     
@@ -25,6 +26,7 @@ public class PlayerData : LivingEntitiesData
         AttributePoints = Player.GetAPoints();
         LevelProgress = Player.GetLevelProgress();
         StoredLevel = Player.GetStoredLevels();
+        requiredLevelProgress = Player.GetRequiredLevelProgress();
 
         CRotation[0] = Player.gameObject.transform.GetChild(0).rotation.eulerAngles.x;
         CRotation[1] = Player.gameObject.transform.GetChild(0).rotation.eulerAngles.y;

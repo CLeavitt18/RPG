@@ -141,7 +141,10 @@ public class InventoryUi : IUi
 
         isActive = true;
 
-        InventoryBar.SetActive(true);
+        if (InventoryBar != null)
+        {
+            InventoryBar.SetActive(true);
+        }
 
         int LoopStart = 0;
         int LoopEnd = 0;
