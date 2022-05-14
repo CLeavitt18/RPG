@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23ccd707e621e947a15dea3261fea21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Update: 0
+  Update: 1
   LoadingBar: {fileID: 8516249271921657708}
 --- !u!1 &8516249271210615050
 GameObject:
