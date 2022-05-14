@@ -414,14 +414,14 @@ public class InventoryUi : IUi
 
     public override void Clear()
     {
-        int children = InventroyHolder.childCount;
-
         if (!isActive)
         {
             return;
         }
 
         isActive = false;
+        
+        int children = InventroyHolder.childCount;
 
         if (!inventoryUi.activeSelf)
         {

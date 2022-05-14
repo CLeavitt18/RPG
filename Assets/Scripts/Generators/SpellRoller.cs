@@ -121,7 +121,15 @@ public class SpellRoller : MonoBehaviour
         spellH.ValueMulti = mats[mat_id].Multi;
         spellH.SetSpellState();
 
-        spellH.Rarity = GlobalValues.rarities[(int)((float)rarityIdsTotal / numRune)];
+        if(numRune != 0)
+        {
+            spellH.Rarity = GlobalValues.rarities[(int)((float)rarityIdsTotal / numRune)];
+        }
+        else
+        {
+            spellH.Rarity = GlobalValues.rarities[0];
+        }
+
 
         if (cleanUp)
         {
