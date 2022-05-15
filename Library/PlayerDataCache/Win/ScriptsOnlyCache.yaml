@@ -1474,7 +1474,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerVBox
   - hash:
       serializedVersion: 2
-      Hash: 30b62af989309d3f8738bab5a7d3a4d8
+      Hash: afedcc1dd7497c5bf0c2f12999e5b7dc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AIController
@@ -1522,7 +1522,7 @@ ScriptsOnlyBuild:
     className: Oscillator
   - hash:
       serializedVersion: 2
-      Hash: caaab9e5dc658987364762ce898e059a
+      Hash: d9fbc3b87fe0f3ae77c8d665289b6b14
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WeaponHitManager
@@ -1582,7 +1582,7 @@ ScriptsOnlyBuild:
     className: WeaponHolder
   - hash:
       serializedVersion: 2
-      Hash: a6754244271c98dfbdab1e46b5e78221
+      Hash: 36b21bdd808a1faeee116cf9b108d244
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -2092,7 +2092,7 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: 57b045b3e9a9a822a2b65d5774998c8b
+      Hash: dff32987600d2b5e7faa31168657b1b6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LivingEntities
@@ -2344,7 +2344,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: ffbb347d10f938d6ab07f5197a0e620c
+      Hash: 2d8d86fbec0e245e079419a5e094cc4c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ProjectileSpellHitManger
@@ -2386,7 +2386,7 @@ ScriptsOnlyBuild:
     className: PositionAsUV1
   - hash:
       serializedVersion: 2
-      Hash: c092cc9a671eca56a04854dea95fb770
+      Hash: 87780ca38deb6f90aacf6412cc3fa38e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChannelSpellHitManager
@@ -2464,7 +2464,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: caaab9e5dc658987364762ce898e059a
+      Hash: d9fbc3b87fe0f3ae77c8d665289b6b14
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: HitManager

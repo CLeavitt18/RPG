@@ -34,8 +34,8 @@ public class WeaponHitManager : HitManager
 
         int DamageDelt = HitSomething(OL);
 
-        Debug.Log("damage delt " + DamageDelt);
-        Debug.Log("life to be gained " + (int)((float)DamageDelt * weapon.LifeSteal * .01f));
+        //Debug.Log("damage delt " + DamageDelt);
+        //Debug.Log("life to be gained " + (int)((float)DamageDelt * weapon.LifeSteal * .01f));
 
         if (DamageDelt > 0 && weapon.LifeSteal > 0)
         {

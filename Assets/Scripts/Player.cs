@@ -944,6 +944,7 @@ public class Player : LivingEntities
 
                     minion.Owner = this;
                     minion.SourceSpell = (GolemSpell)Hands[data.HandSource].HeldItem.GetComponent<SpellHolder>().Spells[data.SourceId];
+                    minion.SourceSpell.Alive++;
 
                     minion.LoadMinion(data);
 
