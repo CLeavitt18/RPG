@@ -90,11 +90,16 @@ public static class LoadSystem
         {
             SpellData spellData = FromSpell.SpellsData[i];
 
-            if (spellData.SpellTypeId == 0)
+            if (spellData.SpellTypeId == (int)SpellType.None)
+            {
+                continue;
+            }
+
+            if (spellData.SpellTypeId == (int)SpellType.DamageSpell)
             {
                 ToSpell.Spells[i] = ToSpell.gameObject.AddComponent<DamageSpell>();
             }
-            else if (spellData.SpellTypeId == 1)
+            else if (spellData.SpellTypeId == (int)SpellType.GolemSpell)
             {
                 ToSpell.Spells[i] = ToSpell.gameObject.AddComponent<GolemSpell>();
             }
@@ -344,7 +349,7 @@ public static class LoadSystem
 
     public static void LoadItem(SpellHolder FromSpell, SpellHolderData ToSpell)
     {
-        ToSpell.SpellsData = new SpellData[FromSpell.Spells.Length];
+        ToSpell.SpellsData = new SpellData[FromSpell.GetNumOfSpells()];
 
         for (int i = 0; i < FromSpell.Spells.Length; i++)
         {

@@ -107,6 +107,11 @@ public class Player : LivingEntities
 
                         for (int i = 0; i < SpellH.Spells.Length; i++)
                         {
+                            if (SpellH.Spells[i] == null)
+                            {
+                                continue;
+                            }
+
                             string key = GlobalValues.AttackInputs[index];
                             Spell spell = SpellH.Spells[i];
 

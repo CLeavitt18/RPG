@@ -447,15 +447,11 @@ public class Inventory : MonoBehaviour, ISavable
 
         for (InventoryState state = InventoryState.Weapons; state < InventoryState.AllItems; state++)
         {
-            Debug.Log("Current Item Spawn " + state.ToString());
-
             chance = Random.Range(0, max);
 
             if (chance == 0)
             {
                 int index = (int)state;
-
-                Debug.Log("Enum = " + index);
 
                 num = Random.Range(ranges[index].min, ranges[index].max + 1);
 

@@ -15,7 +15,7 @@ public class RuneRoller : MonoBehaviour
 
     public Item RollRune()
     {
-        int chance = Random.Range(0, 2);
+        int chance = Random.Range((int)SpellType.DamageSpell, (int)SpellType.None);
 
         SpellType spellType;
         AttributesEnum costType;
@@ -24,7 +24,6 @@ public class RuneRoller : MonoBehaviour
         int damageType;
         int cat_id;
         int level;
-
 
         spellType = (SpellType)chance;
 

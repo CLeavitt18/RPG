@@ -91,7 +91,8 @@ public enum CastTarget : byte
 public enum SpellType : byte
 {
     DamageSpell,
-    GolemSpell
+    GolemSpell,
+    None
 }
 
 public enum ArmourType : byte
