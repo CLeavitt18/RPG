@@ -114,7 +114,7 @@ public class InventoryUi : IUi
 
         if (State == true)
         {
-            CallSetInventory(0);
+            CallSetInventory(InventoryState.AllItems);
         }
 
         if (Focus != null)
@@ -581,7 +581,7 @@ public class InventoryUi : IUi
             {
                 inventory = Player.player.GetHit().GetComponent<Inventory>();
 
-                CallSetInventory(0);
+                CallSetInventory(InventoryState.AllItems);
             }
             else
             {

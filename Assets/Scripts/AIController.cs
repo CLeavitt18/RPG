@@ -123,7 +123,7 @@ public class AIController : LivingEntities
         int tertiary = (int)weaponData.TertiaryIds;
         int cat = (int)weaponData.WeaponCatayst;
 
-        Item WeaponH = Roller.roller.weaponRoller.CreateWeapon(WeaponType, primary, secoundary, tertiary, cat).GetComponent<Item>();
+        Item WeaponH = Roller.roller.CreateWeapon(WeaponType, primary, secoundary, tertiary, cat).GetComponent<Item>();
 
         Inventory.AddItem(WeaponH, false, 1);
 
@@ -140,7 +140,7 @@ public class AIController : LivingEntities
             tertiary = (int)weaponData.TertiaryIds;
             cat = (int)weaponData.WeaponCatayst;
 
-            WeaponH = Roller.roller.weaponRoller.CreateWeapon(WeaponType, primary, secoundary, tertiary, cat).GetComponent<Item>();
+            WeaponH = Roller.roller.CreateWeapon(WeaponType, primary, secoundary, tertiary, cat).GetComponent<Item>();
 
             Inventory.AddItem(WeaponH, false, 1);
 

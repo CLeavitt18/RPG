@@ -7,7 +7,7 @@ public class PotionRolller : MonoBehaviour
     [SerializeField] private DropTable[] Tables;
     [SerializeField] private DropTable[] AmountTables;
 
-    public CreatedItem RollPotion()
+    public Item RollPotion()
     {
         int PotionId = 0;
         int Amount = 0;
@@ -43,8 +43,6 @@ public class PotionRolller : MonoBehaviour
         Item potion = Instantiate(Potions[PotionId]).GetComponent<Item>();
         potion.Amount = Amount;
 
-        CreatedItem item = new CreatedItem(potion, Amount);
-
-        return item;
+        return potion;
     }
 }

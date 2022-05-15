@@ -29,7 +29,7 @@ public class Player : LivingEntities
 
         if (SceneManager.GetActiveScene().name == "Test")
         {
-            InventoryUi.playerUi.CallSetInventory(0);
+            InventoryUi.playerUi.CallSetInventory(InventoryState.AllItems);
             return;
         }
 

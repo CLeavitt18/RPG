@@ -244,14 +244,14 @@ public enum UiState : byte
 
 public enum InventoryState : byte
 {
-    AllItems,
     Weapons,
     Armour,
     Spells,
     Runes,
     Potions,
     Resources,
-    Misc
+    Misc,
+    AllItems
 }
 
 public enum PauseUiState : byte

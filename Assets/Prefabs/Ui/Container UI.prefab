@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  Mode: 0
+  Mode: 7
   UiMode: 0
   FocusedItem: {fileID: 0}
   slot: {fileID: 1865744662274582771, guid: 1a81b4f74f83cf642bcc649887360ec5, type: 3}

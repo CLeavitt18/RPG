@@ -65,6 +65,13 @@ public struct DialogueSet
 }
 
 [Serializable]
+public struct Range
+{
+    public int min;
+    public int max;
+}
+
+[Serializable]
 public struct CraftingMaterials
 {
     public int ResourceId;

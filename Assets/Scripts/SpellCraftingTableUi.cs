@@ -84,7 +84,7 @@ public class SpellCraftingTableUi : MonoBehaviour
             spells[i] = runesFocused[i].GetComponent<Spell>();
         }
 
-        spell = Roller.roller.spellRoller.CreateSpell(materialTypeDropDown.value, spells, false).GetComponent<SpellHolder>();
+        spell = Roller.roller.CreateSpell(materialTypeDropDown.value, spells, false).GetComponent<SpellHolder>();
     }
 
     private void CreateRuneSlots()

@@ -82,6 +82,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 3005634500929940404, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
+      propertyPath: ranges.Array.data[0].max
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005634500929940404, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
+      propertyPath: ranges.Array.data[0].min
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005634500929940404, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
+      propertyPath: ranges.Array.data[1].max
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005634500929940404, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
+      propertyPath: ranges.Array.data[1].min
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4155685964200010374, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
       propertyPath: Type
       value: 2

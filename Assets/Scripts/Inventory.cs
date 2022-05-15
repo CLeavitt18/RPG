@@ -7,20 +7,7 @@ public class Inventory : MonoBehaviour, ISavable
 {
     public UiState Mode;
 
-    public int MinWeapons;
-    public int MaxWeapons;
-    public int MinArmour;
-    public int MaxArmour;
-    public int MinRunes;
-    public int MaxRunes;
-    public int MinSpells;
-    public int MaxSpells;
-    public int MinPotions;
-    public int MaxPotions;
-    public int MinResources;
-    public int MaxResources;
-    public int MinMisc;
-    public int MaxMisc;
+    [SerializeField] private Range[] ranges;
 
     public int Count { get{ return AllItems.Count;} private set{} }
 
@@ -454,90 +441,31 @@ public class Inventory : MonoBehaviour, ISavable
         int num;
         int chance = Random.Range(0,4);
 
-        if (chance == 0)
-        {
-            num = Random.Range(MinWeapons, MaxWeapons + 1);
+        Item item = null;
 
-            for (int i = 0; i < num; i++)
+        for (InventoryState state = InventoryState.Weapons; state < InventoryState.AllItems; state++)
+        {
+            Debug.Log("Current Item Spawn " + state.ToString());
+
+            chance = Random.Range(0, 4);
+
+            if (chance == 0)
             {
-                AddItem(Roller.roller.weaponRoller.RollWeapon(), true, 1, true);
+                int index = (int)state;
+
+                Debug.Log("Enum = " + index);
+
+                num = Random.Range(ranges[index].min, ranges[index].max + 1);
+
+                for (int x = 0; x < num; x++)
+                {
+                    item = Roller.roller.Roll(state);
+                    AddItem(item, true, item.Amount, true);
+                }
             }
         }
 
-        chance = Random.Range(0, 4);
-
-        if (chance == 0)
-        {
-            num = Random.Range(MinArmour, MaxArmour + 1);
-
-            for (int i = 0; i < num; i++)
-            {
-                AddItem(Roller.roller.armourRoller.RollArmour(), true, 1, true);
-            }
-        }
-
-        chance = Random.Range(0, 4);
-
-        if (chance == 0)
-        {
-            num = Random.Range(MinSpells, MaxSpells + 1);
-
-            for (int i = 0; i < num; i++)
-            {
-                AddItem(Roller.roller.spellRoller.RollSpell(), true, 1, true);
-            }
-        }
-
-        chance = Random.Range(0, 4);
-
-        if (chance == 0)
-        {
-            num = Random.Range(MinRunes, MaxRunes + 1);
-
-            for (int i = 0; i < num; i++)
-            {
-                AddItem(Roller.roller.runeRoller.RollRune(), true, 1, true);
-            }
-        }
-
-        chance = Random.Range(0, 4);
-
-        if (chance == 0)
-        {
-            num = Random.Range(MinPotions, MaxPotions + 1);
-
-            for (int i = 0; i < num; i++)
-            {
-                CreatedItem item = Roller.roller.potionRolller.RollPotion();
-                AddItem(item.Item, true, item.Amount, true);
-            }
-        }
-
-        chance = Random.Range(0, 4);
-
-        if (chance == 0)
-        {
-            num = Random.Range(MinResources, MaxResources + 1);
-
-            for (int i = 0; i < num; i++)
-            {
-                CreatedItem item = Roller.roller.resourceRoller.RollResource();
-                AddItem(item.Item, true, item.Amount, true);
-            }
-        }
-
-        chance = Random.Range(0, 4);
-
-        if (chance == 0)
-        {
-            num = Random.Range(MinMisc, MaxMisc + 1);
-
-            for (int i = 0; i < num; i++)
-            {
-                CreatedItem item = Roller.roller.miscRoller.RollMisc();
-                AddItem(item.Item, true, item.Amount, true);
-            }
-        }
+        ranges = new Range[0];
     }
 
     public void Clear()
@@ -689,6 +617,8 @@ public class Inventory : MonoBehaviour, ISavable
 
             AddItem(misc, false, Data.Misc[i].Amount);
         }
+
+        ranges = new Range[0];
 
         return true;
     }

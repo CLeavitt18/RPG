@@ -18,7 +18,7 @@ public class SpellRoller : MonoBehaviour
 
         for (int i = 0; i < numOfRunes; i++)
         {
-            runes[i] = Roller.roller.runeRoller.RollRune().GetComponent<RuneHolder>().spell;
+            runes[i] = GetComponent<RuneRoller>().RollRune().GetComponent<RuneHolder>().spell;
         }
 
         int chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);

@@ -123,7 +123,7 @@ public class RuneTableUI : MonoBehaviour
             Destroy(rune.gameObject);
         }
 
-        rune = Roller.roller.runeRoller.CreateRune(
+        rune = Roller.roller.CreateRune(
             type, 
             (AttributesEnum)costTypeDropDown.value, 
             (CastType)castTypeDropDown.value, 
@@ -138,7 +138,7 @@ public class RuneTableUI : MonoBehaviour
 
     public void CreateRune()
     {
-        rune = Roller.roller.runeRoller.CreateRune(
+        rune = Roller.roller.CreateRune(
             type,
             (AttributesEnum)costTypeDropDown.value,
             (CastType)castTypeDropDown.value,

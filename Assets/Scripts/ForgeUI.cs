@@ -72,7 +72,7 @@ public class ForgeUI : MonoBehaviour
             Destroy(weapon.gameObject);
         }
 
-        weapon = (Roller.roller.weaponRoller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
+        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
 
         PreviewItem();
         DisplayResourceCosts();
@@ -91,7 +91,7 @@ public class ForgeUI : MonoBehaviour
 
         Destroy(weapon.gameObject);
 
-        weapon = (Roller.roller.weaponRoller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
+        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
 
         PreviewItem();
         DisplayResourceCosts();
@@ -103,7 +103,7 @@ public class ForgeUI : MonoBehaviour
 
         Destroy(weapon.gameObject);
 
-        weapon = (Roller.roller.weaponRoller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
+        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
 
         PreviewItem();
         DisplayResourceCosts();
@@ -115,7 +115,7 @@ public class ForgeUI : MonoBehaviour
 
         Destroy(weapon.gameObject);
 
-        weapon = (Roller.roller.weaponRoller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
+        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
 
         PreviewItem();
         DisplayResourceCosts();
@@ -127,7 +127,7 @@ public class ForgeUI : MonoBehaviour
 
         Destroy(weapon.gameObject);
 
-        weapon = (Roller.roller.weaponRoller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
+        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
 
         PreviewItem();
         DisplayResourceCosts();
@@ -139,7 +139,7 @@ public class ForgeUI : MonoBehaviour
 
         Destroy(weapon.gameObject);
 
-        weapon = (Roller.roller.weaponRoller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
+        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
 
         PreviewItem();
         DisplayResourceCosts();
@@ -239,7 +239,7 @@ public class ForgeUI : MonoBehaviour
 
     public void CreateWeapon()
     {
-        Item Item = Roller.roller.weaponRoller.CreateWeapon(
+        Item Item = Roller.roller.CreateWeapon(
              (WeaponType)ItemCatogoryType,
              mat_Id,
              sec_Id,

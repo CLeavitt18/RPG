@@ -13671,6 +13671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c71294a18dd63042bfc708250061794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   StatsUi: {fileID: 5570031153744333840}
   StatsListHolder: {fileID: 9176028751999625334}
   StatTextPrefab: {fileID: 5465560238402369435, guid: 41ba8da58d0450545bad4c373b2ec5ce, type: 3}
@@ -13688,6 +13689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d078ff5725e3149b675c7607811702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   Focus: {fileID: 0}
   Slots: []
   ItemNameText: {fileID: 0}
@@ -13709,7 +13711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f6fd72ee98e0444a508932b10735ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mode: 0
+  isActive: 0
+  Mode: 7
   UiMode: 2
   FocusedItem: {fileID: 0}
   slot: {fileID: 1865744662274582771, guid: 1a81b4f74f83cf642bcc649887360ec5, type: 3}
@@ -13754,6 +13757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acfbcad3b3f69541b9e2c29451fd969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   SleepDuration: 1
   _sleepUi: {fileID: 8622550789067401649}
   SleepText: {fileID: 7582902581351617669}
@@ -13771,6 +13775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33939f65f707b9040b6a76b3cd15fe71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
   levelUpUi: {fileID: 6017402170861628333}
   LevelUpCounter: {fileID: 2055055003594045699}
   TempAttributes: 000000000000000000000000

@@ -210,7 +210,7 @@ public class NPCDialogue : MonoBehaviour
 
                 Player.player.SetPlayerStatInStore();
 
-                InventoryUi.playerUi.CallSetInventory(0);
+                InventoryUi.playerUi.CallSetInventory(InventoryState.AllItems);
                 DialogueBox.SetActive(false);
                 ContinueButton.SetActive(false);
 

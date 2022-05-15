@@ -340,6 +340,50 @@ PrefabInstance:
       propertyPath: AllItems.Array.data[0]
       value: 
       objectReference: {fileID: 2696653505997847375}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[0].max
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[0].min
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[1].max
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[1].min
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[2].max
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[2].min
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[3].max
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[4].max
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[4].min
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[5].max
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248163606826628148, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: ranges.Array.data[5].min
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3441224913548087288, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
       propertyPath: m_Name
       value: George Variant

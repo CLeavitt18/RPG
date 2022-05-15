@@ -9,7 +9,7 @@ public class ResourceRoller : MonoBehaviour
     [SerializeField] private DropTable[] OtherTable;
     [SerializeField] private DropTable[] AmountTable;
 
-    public CreatedItem RollResource()
+    public Item RollResource()
     {
         int Re_Type = 0;
         int Re_Id = 0;
@@ -127,8 +127,6 @@ public class ResourceRoller : MonoBehaviour
 
         Item.Amount = Amount;
 
-        CreatedItem item = new CreatedItem(Item, Amount);
-
-        return item;
+        return Item;
     }
 }

@@ -514,9 +514,6 @@ MonoBehaviour:
     ChannelTime: 0
     ActionsPerSecond: 0
   Dead: 0
-  Burning: 0
-  Chilled: 0
-  Frozen: 0
   Confused: 0
   Running: 0
   IsEmmune: 00000000
@@ -571,20 +568,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mode: 0
-  MinWeapons: 0
-  MaxWeapons: 0
-  MinArmour: 0
-  MaxArmour: 0
-  MinRunes: 0
-  MaxRunes: 0
-  MinSpells: 0
-  MaxSpells: 0
-  MinPotions: 0
-  MaxPotions: 0
-  MinResources: 0
-  MaxResources: 0
-  MinMisc: 0
-  MaxMisc: 0
+  ranges:
+  - min: 0
+    max: 0
+  - min: 0
+    max: 0
+  - min: 0
+    max: 0
+  - min: 0
+    max: 0
+  - min: 0
+    max: 0
+  - min: 0
+    max: 0
+  - min: 0
+    max: 0
   StartIds: 000000000000000000000000000000000000000000000000
   MaxCarryWeight: 300
   CurrentCarryWeight: 0
@@ -641,7 +639,6 @@ MonoBehaviour:
   burningDamage100: 0
   x2Damge: 0
   waitTime: 0
-  nextTickTime: 0
 --- !u!114 &8511884122220073128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,6 +683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusAffect: {fileID: 7839028153141372942}
   chilled: 0
+  frozen: 0
 --- !u!114 &7839028153141372942
 MonoBehaviour:
   m_ObjectHideFlags: 0
