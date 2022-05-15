@@ -1125,6 +1125,11 @@ public class LivingEntities : MonoBehaviour
         }
     }
 
+    public void RemoveMinion(Minion minion)
+    {
+        Minions.Remove(minion.GetComponent<AIController>());
+    }
+
     public void LoadEntity(LivingEntitiesData Data)
     {
         InventoryData iData = Data.inventoryData;

@@ -203,6 +203,13 @@ public class Minion : AI
 
         SourceSpell.Alive--;
 
+        if (SourceSpell.Alive == 0)
+        {
+            SourceSpell.Activated = false;
+        }
+
+        Owner.RemoveMinion(this);
+
         Destroy(transform.parent.gameObject);
     }
 

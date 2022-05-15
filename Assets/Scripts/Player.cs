@@ -109,6 +109,15 @@ public class Player : LivingEntities
                         {
                             if (SpellH.Spells[i] == null)
                             {
+                                if (i == 0)
+                                {
+                                    index += 2 + handType;
+                                }   
+                                else
+                                {
+                                    index++;
+                                }
+
                                 continue;
                             }
 
@@ -153,7 +162,6 @@ public class Player : LivingEntities
                             {
                                 index++;
                             }
-
                         }
                     }
                 }

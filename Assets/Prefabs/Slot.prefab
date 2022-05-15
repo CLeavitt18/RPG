@@ -300,7 +300,7 @@ MonoBehaviour:
   Mode: 0
   _Item: {fileID: 0}
   EquipedIndicator: {fileID: 7852501995455974518}
-  WaitTime: 0.25
+  WaitTime: 0.5
   UI: {fileID: 0}
   QuestUi: {fileID: 0}
   displayNameText: {fileID: 7895715894455434969}
