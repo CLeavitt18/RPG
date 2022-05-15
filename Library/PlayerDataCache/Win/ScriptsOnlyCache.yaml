@@ -166,8 +166,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
-    WaresoftProjectViewEnhanced.dll:
-    - WaresoftEditor.ProjectViewEnhanced.PVEStyleSheet
   sceneClasses:
     Assets/Scenes/Cave Level 1.unity:
     - Class: 1
@@ -416,6 +414,8 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}

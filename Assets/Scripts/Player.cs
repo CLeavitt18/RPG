@@ -14,7 +14,7 @@ public class Player : LivingEntities
     [SerializeField] private int SprintSpeed;
     [SerializeField] private int StoredLevel;
     [Range(0, int.MaxValue), SerializeField] private int LevelProgress;
-    [Range(8, int.MaxValue), SerializeField] private int requiredLevelProgress;
+    [SerializeField] private int requiredLevelProgress;
 
     [SerializeField] private LayerMask Interactiables;
 
@@ -446,7 +446,7 @@ public class Player : LivingEntities
 
             TempExpNumber = Skills[skill].RExp * 1.4f;
             Skills[skill].RExp = (ulong)TempExpNumber;
-            LevelProgress++;
+            LevelProgress += Skills[skill].Level;
 
             if (Skills[skill].Exp >= Skills[skill].RExp)
             {
@@ -560,7 +560,7 @@ public class Player : LivingEntities
             TempExpNumber = Masteries[mastery].RExp * 1.4;
             Masteries[mastery].RExp = (ulong)TempExpNumber;
 
-            LevelProgress++;
+            LevelProgress += Masteries[mastery].Level;
 
             if (Masteries[mastery].Exp >= Masteries[mastery].RExp)
             {
@@ -610,7 +610,7 @@ public class Player : LivingEntities
 
         PlayerUi.playerUi.Close();
     }
-
+    
     public void SetPlayerStateInContainer()
     {
         Cursor.visible = true;

@@ -156,8 +156,6 @@ public class Helper : MonoBehaviour
         sb.Append(weapon.ActionsPerSecond.ToString("0.00"));
 
         SpawnItemDetailSlot(sb.ToString(), t);
-
-        SpawnItemDetailSlot(sb.ToString(), t);
     }
 
     private void CreateArmourText(Item item, Transform t, StringBuilder sb)

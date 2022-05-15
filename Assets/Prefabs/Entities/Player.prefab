@@ -630,9 +630,6 @@ MonoBehaviour:
     ChannelTime: 0
     ActionsPerSecond: 0
   Dead: 0
-  Burning: 0
-  Chilled: 0
-  Frozen: 0
   Confused: 0
   Running: 0
   IsEmmune: 00000000
@@ -646,6 +643,7 @@ MonoBehaviour:
   SprintSpeed: 2
   StoredLevel: 0
   LevelProgress: 0
+  requiredLevelProgress: 8
   Interactiables:
     serializedVersion: 2
     m_Bits: 1280
@@ -680,20 +678,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mode: 2
-  MinWeapons: 0
-  MaxWeapons: 0
-  MinArmour: 0
-  MaxArmour: 0
-  MinRunes: 0
-  MaxRunes: 0
-  MinSpells: 0
-  MaxSpells: 0
-  MinPotions: 0
-  MaxPotions: 0
-  MinResources: 0
-  MaxResources: 0
-  MinMisc: 0
-  MaxMisc: 0
+  max: 0
+  ranges: []
   StartIds: 000000000000000000000000000000000000000000000000
   MaxCarryWeight: 15000
   CurrentCarryWeight: 0
@@ -794,6 +780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusAffect: {fileID: 7031406506073760698}
   chilled: 0
+  frozen: 0
 --- !u!114 &7031406506073760698
 MonoBehaviour:
   m_ObjectHideFlags: 0

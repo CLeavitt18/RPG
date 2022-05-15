@@ -24,7 +24,7 @@ MonoBehaviour:
     PrimaryIds: 0
     SecondaryIds: 0
     TertiaryIds: 0
-    WeaponCatayst: 6
+    WeaponCatayst: 7
   - Type: 1
     PrimaryIds: 2
     SecondaryIds: 0

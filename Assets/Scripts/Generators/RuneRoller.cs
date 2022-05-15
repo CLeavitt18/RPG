@@ -145,6 +145,9 @@ public class RuneRoller : MonoBehaviour
 
                 rune = gRune;
 
+                castId = 0;
+                damageType = 0;
+
                 damage = new DamageTypeStruct(baseSpells[id].Ranges[castId][damageType], cat.CatMultis[damageType]);
 
                 gRune.DamageRange = damage;

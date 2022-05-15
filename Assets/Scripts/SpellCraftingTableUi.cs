@@ -184,4 +184,13 @@ public class SpellCraftingTableUi : MonoBehaviour
     {
         return runeItemDetailsLocation;
     }
+
+    public void CreateSpell()
+    {
+        Player.player.Inventory.AddItem(spell, true, 1);
+
+        spell = null;
+
+        CreatePlaceHolderSpell();
+    }
 }
