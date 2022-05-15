@@ -19,7 +19,6 @@ ScriptsOnlyBuild:
     - Containers
     - CraftingSlotAction
     - CreateNewSaveProfileButton
-    - DamageSpell
     - Doors
     - DropTable
     - Enemy
@@ -30,7 +29,6 @@ ScriptsOnlyBuild:
     - Forge
     - ForgeUI
     - GainPotion
-    - GolemSpell
     - Ground
     - Helper
     - IceStatusManager
@@ -90,8 +88,6 @@ ScriptsOnlyBuild:
     - WorldStateTracker
     NavMeshComponents.dll:
     - UnityEngine.AI.NavMeshSurface
-    NavMeshComponentsEditor.dll:
-    - UnityEditor.AI.NavMeshAssetManager
     NavMeshComponentsExamples.dll:
     - LocalNavMeshBuilder
     Unity.ProBuilder.dll:
@@ -418,6 +414,8 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -862,8 +860,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3760}
     - Class: 114
-      Script: {instanceID: 3768}
-    - Class: 114
       Script: {instanceID: 3868}
     - Class: 114
       Script: {instanceID: 3964}
@@ -963,8 +959,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 6426}
     - Class: 114
       Script: {instanceID: 6452}
-    - Class: 114
-      Script: {instanceID: 6466}
     - Class: 114
       Script: {instanceID: 6478}
     - Class: 114
@@ -2516,7 +2510,7 @@ ScriptsOnlyBuild:
     className: ReflectBurning
   - hash:
       serializedVersion: 2
-      Hash: 7c05f478974cb5f1350d5d7bfacddb76
+      Hash: e30a0829db2aedeb9670527c9b21e2c2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Inventory

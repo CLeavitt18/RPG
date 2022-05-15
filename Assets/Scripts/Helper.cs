@@ -306,6 +306,7 @@ public class Helper : MonoBehaviour
 
         if (potion is GainPotion gPotion)
         {
+            sb.Append("Gain: ");
             sb.Append(gPotion.LowerRange);
             sb.Append(" to ");
             sb.Append(gPotion.UpperRange);

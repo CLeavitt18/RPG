@@ -7,6 +7,8 @@ public class Inventory : MonoBehaviour, ISavable
 {
     public UiState Mode;
 
+    [SerializeField] private int max;
+
     [SerializeField] private Range[] ranges;
 
     public int Count { get{ return AllItems.Count;} private set{} }
@@ -439,7 +441,7 @@ public class Inventory : MonoBehaviour, ISavable
     public void SetDefaultState(bool priority)
     {
         int num;
-        int chance = Random.Range(0,4);
+        int chance;
 
         Item item = null;
 
@@ -447,7 +449,7 @@ public class Inventory : MonoBehaviour, ISavable
         {
             Debug.Log("Current Item Spawn " + state.ToString());
 
-            chance = Random.Range(0, 4);
+            chance = Random.Range(0, max);
 
             if (chance == 0)
             {
