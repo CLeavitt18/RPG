@@ -1,6 +1,4 @@
 using System.Text;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,6 +42,8 @@ public class LevelUpUi : IUi
             sb.Append(Player.player.GetAbility(i));
 
             AttributeButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text = sb.ToString();
+
+            sb.Clear();
         }
 
         sb = new StringBuilder("Avaliable Points: ");
