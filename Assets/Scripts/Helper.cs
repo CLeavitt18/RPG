@@ -184,7 +184,7 @@ public class Helper : MonoBehaviour
             sb.Append((i + 1).ToString("n0"));
             sb.Append(": ");
 
-            if (i < NumOfSpells && SpellH.Spells[i] != null)
+            if (SpellH.Spells[i] != null)
             {
                 sb.Append(SpellH.Spells[i].SpellType.ToString());
             }
@@ -198,8 +198,13 @@ public class Helper : MonoBehaviour
             sb.Clear();
         }
 
-        for (int i = 0; i < NumOfSpells; i++)
+        for (int i = 0; i < 3; i++)
         {
+            if (SpellH.Spells[i] == null)
+            {
+                continue;
+            }
+
             SpawnItemDetailSlot("", t);
 
             Text name = SpawnItemDetailSlot(SpellH.Spells[i].Name, t);

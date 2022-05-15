@@ -55,7 +55,7 @@ public class SpellRoller : MonoBehaviour
         {
             if (runes[i] == null)
             {
-                break;
+                continue;
             }
             
             numRune++;
