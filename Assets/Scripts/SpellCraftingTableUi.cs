@@ -60,6 +60,18 @@ public class SpellCraftingTableUi : MonoBehaviour
 
             ClearRuneSlots();
 
+            for (int i = 0; i < 3; i++)
+            {
+                runesFocused[i] = null;
+            }
+
+            Destroy(spell.gameObject);
+            Destroy(spellItemDetailsLocation.GetChild(0).gameObject);
+
+            if (runeItemDetailsLocation.transform.childCount != 0)
+            {
+                Destroy(runeItemDetailsLocation.GetChild(0).gameObject);
+            }
             //add logic for cleaing up details ui for spell statss
         }
 
@@ -129,6 +141,8 @@ public class SpellCraftingTableUi : MonoBehaviour
         }
 
         runeContentHolder.DetachChildren();
+
+        Preview();
     }
 
     public void SetRune(Item rune)
