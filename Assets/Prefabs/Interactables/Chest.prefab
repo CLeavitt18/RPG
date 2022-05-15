@@ -367,16 +367,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mode: 0
   MinWeapons: 1
-  MaxWeapons: 3
+  MaxWeapons: 2
   MinArmour: 0
-  MaxArmour: 2
+  MaxArmour: 0
   MinRunes: 1
-  MaxRunes: 5
-  MinSpells: 2
-  MaxSpells: 5
+  MaxRunes: 2
+  MinSpells: 1
+  MaxSpells: 1
   MinPotions: 0
-  MaxPotions: 4
-  MinResources: 0
+  MaxPotions: 3
+  MinResources: 1
   MaxResources: 4
   MinMisc: 0
   MaxMisc: 1

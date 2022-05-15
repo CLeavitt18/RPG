@@ -451,58 +451,92 @@ public class Inventory : MonoBehaviour, ISavable
 
     public void SetDefaultState(bool priority)
     {
-        int Chance;
+        int num;
+        int chance = Random.Range(0,4);
 
-        Chance = Random.Range(MinWeapons, MaxWeapons + 1);
-
-        for (int i = 0; i < Chance; i++)
+        if (chance == 0)
         {
-            AddItem(Roller.roller.weaponRoller.RollWeapon(), true, 1, true);
+            num = Random.Range(MinWeapons, MaxWeapons + 1);
+
+            for (int i = 0; i < num; i++)
+            {
+                AddItem(Roller.roller.weaponRoller.RollWeapon(), true, 1, true);
+            }
         }
 
-        Chance = Random.Range(MinArmour, MaxArmour + 1);
+        chance = Random.Range(0, 4);
 
-        for (int i = 0; i < Chance; i++)
+        if (chance == 0)
         {
-            AddItem(Roller.roller.armourRoller.RollArmour(), true, 1, true);
+            num = Random.Range(MinArmour, MaxArmour + 1);
+
+            for (int i = 0; i < num; i++)
+            {
+                AddItem(Roller.roller.armourRoller.RollArmour(), true, 1, true);
+            }
         }
 
-        Chance = Random.Range(MinSpells, MaxSpells + 1);
+        chance = Random.Range(0, 4);
 
-        for (int i = 0; i < Chance; i++)
+        if (chance == 0)
         {
-            AddItem(Roller.roller.spellRoller.RollSpell(), true, 1, true);
+            num = Random.Range(MinSpells, MaxSpells + 1);
+
+            for (int i = 0; i < num; i++)
+            {
+                AddItem(Roller.roller.spellRoller.RollSpell(), true, 1, true);
+            }
         }
 
-        Chance = Random.Range(MinRunes, MaxRunes + 1);
+        chance = Random.Range(0, 4);
 
-        for (int i = 0; i < Chance; i++)
+        if (chance == 0)
         {
-            AddItem(Roller.roller.runeRoller.RollRune(), true, 1, true);
+            num = Random.Range(MinRunes, MaxRunes + 1);
+
+            for (int i = 0; i < num; i++)
+            {
+                AddItem(Roller.roller.runeRoller.RollRune(), true, 1, true);
+            }
         }
 
-        Chance = Random.Range(MinPotions, MaxPotions + 1);
+        chance = Random.Range(0, 4);
 
-        for (int i = 0; i < Chance; i++)
+        if (chance == 0)
         {
-            CreatedItem item = Roller.roller.potionRolller.RollPotion();
-            AddItem(item.Item, true, item.Amount, true);
+            num = Random.Range(MinPotions, MaxPotions + 1);
+
+            for (int i = 0; i < num; i++)
+            {
+                CreatedItem item = Roller.roller.potionRolller.RollPotion();
+                AddItem(item.Item, true, item.Amount, true);
+            }
         }
 
-        Chance = Random.Range(MinResources, MaxResources + 1);
+        chance = Random.Range(0, 4);
 
-        for (int i = 0; i < Chance; i++)
+        if (chance == 0)
         {
-            CreatedItem item = Roller.roller.resourceRoller.RollResource();
-            AddItem(item.Item, true, item.Amount, true);
+            num = Random.Range(MinResources, MaxResources + 1);
+
+            for (int i = 0; i < num; i++)
+            {
+                CreatedItem item = Roller.roller.resourceRoller.RollResource();
+                AddItem(item.Item, true, item.Amount, true);
+            }
         }
 
-        Chance = Random.Range(MinMisc, MaxMisc + 1);
+        chance = Random.Range(0, 4);
 
-        for (int i = 0; i < Chance; i++)
+        if (chance == 0)
         {
-            CreatedItem item = Roller.roller.miscRoller.RollMisc();
-            AddItem(item.Item, true, item.Amount, true);
+            num = Random.Range(MinMisc, MaxMisc + 1);
+
+            for (int i = 0; i < num; i++)
+            {
+                CreatedItem item = Roller.roller.miscRoller.RollMisc();
+                AddItem(item.Item, true, item.Amount, true);
+            }
         }
     }
 
