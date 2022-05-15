@@ -899,14 +899,15 @@ public class LivingEntities : MonoBehaviour
                 stats.DamageValues[i] = (int)(stats.DamageValues[i] - (stats.DamageValues[i] * ProtectionValue));
             }
 
-            if (CompareTag(GlobalValues.EnemyTag) && stats.Parent == Player.player)
+            if (!CompareTag(GlobalValues.PlayerTag) && stats.Parent == Player.player)
             {
                 SkillType skill;
 
                 switch (damageType)
                 {
                     case 0:
-                        skill = Player.player.Hands[stats.SourceHand].HeldItem.GetComponent<IEquipable>().SkillType;
+                        Item item = Player.player.Hands[stats.SourceHand].HeldItem;
+                        skill = item.GetComponent<IEquipable>().SkillType;
                         break;
                     case 1:
                         skill = SkillType.Pyromancy;

@@ -41,6 +41,5 @@ public class ProjectileSpellHitManger : HitManager
         }
 
         this.transform.position = Point1;
-
     }
 }
