@@ -14,7 +14,7 @@ public class SpellRoller : MonoBehaviour
 
         int numOfRunes = Random.Range(1, 4);
 
-        Spell[] runes = new Spell[numOfRunes];
+        Spell[] runes = new Spell[3];
 
         for (int i = 0; i < numOfRunes; i++)
         {
@@ -51,7 +51,7 @@ public class SpellRoller : MonoBehaviour
         int numRune = 0;
         int rarityIdsTotal = 0;
 
-        for (int i = 0; i < runes.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
             if (runes[i] == null)
             {
