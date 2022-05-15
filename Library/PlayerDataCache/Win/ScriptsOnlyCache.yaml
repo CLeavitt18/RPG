@@ -88,6 +88,8 @@ ScriptsOnlyBuild:
     - WorldStateTracker
     NavMeshComponents.dll:
     - UnityEngine.AI.NavMeshSurface
+    NavMeshComponentsEditor.dll:
+    - UnityEditor.AI.NavMeshAssetManager
     NavMeshComponentsExamples.dll:
     - LocalNavMeshBuilder
     Unity.ProBuilder.dll:
@@ -414,8 +416,6 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 81
-      Script: {instanceID: 0}
-    - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -2510,7 +2510,7 @@ ScriptsOnlyBuild:
     className: ReflectBurning
   - hash:
       serializedVersion: 2
-      Hash: e30a0829db2aedeb9670527c9b21e2c2
+      Hash: 5c0c79d02a5774a28fb8593bfa1d6bf0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Inventory

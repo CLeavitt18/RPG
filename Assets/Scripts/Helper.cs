@@ -157,12 +157,6 @@ public class Helper : MonoBehaviour
 
         SpawnItemDetailSlot(sb.ToString(), t);
 
-        sb.Clear();
-
-        sb.Append("Attacks Per Second: ");
-        sb.Append(weapon.ActionsPerSecond.ToString("0.00"));
-
-
         SpawnItemDetailSlot(sb.ToString(), t);
     }
 
