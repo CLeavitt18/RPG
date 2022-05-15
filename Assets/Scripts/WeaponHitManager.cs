@@ -34,9 +34,12 @@ public class WeaponHitManager : HitManager
 
         int DamageDelt = HitSomething(OL);
 
-        if (DamageDelt > 0 && Stats.LifeSteal > 0)
+        Debug.Log("damage delt " + DamageDelt);
+        Debug.Log("life to be gained " + (int)((float)DamageDelt * weapon.LifeSteal * .01f));
+
+        if (DamageDelt > 0 && weapon.LifeSteal > 0)
         {
-            Stats.Parent.GainAttribute((int)(DamageDelt * Stats.LifeSteal * .01f), (int)AttributesEnum.Health);
+            Stats.Parent.GainAttribute((int)((float)DamageDelt * weapon.LifeSteal * .01f), (int)AttributesEnum.Health);
         }
 
         DamageStats statsCopy = new DamageStats(Stats);

@@ -315,7 +315,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Burn Damage: ");
-                                    sb.Append(stats.BurnDamage);
+                                    sb.Append(Player.player.GetBurnDamage());
                                     sb.Append("%");
 
                                     text.text = sb.ToString();
@@ -327,7 +327,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Burn Ticks: ");
-                                    sb.Append(stats.BurnTicks);
+                                    sb.Append(Player.player.GetTicks());
 
                                     text.text = sb.ToString();
 
@@ -339,7 +339,8 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Time Between Burn Ticks: ");
-                                    sb.Append(Mathf.Round(stats.BurnWaitTime * 100) * .01f);
+                                    sb.Append(Mathf.Round(Player.player.GetWaitTime() * 100) * .01f);
+                                    sb.Append("s");
 
                                     text.text = sb.ToString();
                                     #endregion
@@ -366,7 +367,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Chain Damage: ");
-                                    sb.Append(stats.ChainDamage);
+                                    sb.Append(Player.player.GetChainDamage());
                                     sb.Append("%");
 
                                     text.text = sb.ToString();
@@ -378,7 +379,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Number Of Chains: ");
-                                    sb.Append(stats.Chains);
+                                    sb.Append(Player.player.GetChains());
 
                                     text.text = sb.ToString();
                                     #endregion
@@ -389,7 +390,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Chain Lenght: ");
-                                    sb.Append(stats.ChainLength);
+                                    sb.Append(Player.player.GetChainLength());
 
                                     text.text = sb.ToString();
                                     #endregion
@@ -416,10 +417,19 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Chill Affect: ");
-                                    sb.Append(stats.ChillAffect);
+                                    sb.Append(Player.player.GetChillAffect());
                                     sb.Append("% Reduced Action Speed");
 
                                     text.text = sb.ToString();
+
+                                    sb.Clear();
+
+                                    text = Instantiate(StatTextPrefab, StatsListHolder);
+
+                                    sb.Append("Chill Duration");
+                                    sb.Append(Player.player.GetChillDuration());
+                                    sb.Append("s");
+
                                     #endregion
                                     break;
                                 case DamageTypeEnum.Soul:

@@ -139,4 +139,21 @@ public class BurningStatus : MonoBehaviour
     {
         return _type;
     }
+
+    #region Getters
+    public int GetBurnDamage()
+    {
+        return _damage;
+    }
+
+    public int GetTicks()
+    {
+        return ticks;
+    }
+
+    public float GetWaitTime()
+    {
+        return waitTime;
+    }
+    #endregion
 }

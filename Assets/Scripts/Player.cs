@@ -598,7 +598,7 @@ public class Player : LivingEntities
     {
         StoredLevel -= amount;
     }
-
+    
     public void SetPlayerStateActive()
     {
         Mode = PlayerState.Active;
@@ -610,7 +610,7 @@ public class Player : LivingEntities
 
         PlayerUi.playerUi.Close();
     }
-    
+
     public void SetPlayerStateInContainer()
     {
         Cursor.visible = true;
@@ -1076,6 +1076,46 @@ public class Player : LivingEntities
     public bool GetFirstOpen()
     {
         return FirstOpen;
+    }
+
+    public int GetBurnDamage()
+    {
+        return StatusManger.GetBurnDamage();
+    }
+
+    public int GetTicks()
+    {
+        return StatusManger.GetTicks();
+    }
+
+    public float GetWaitTime()
+    {
+        return StatusManger.GetWaitTime();
+    }
+
+    public int GetChainDamage()
+    {
+        return StatusManger.GetChainDamage();
+    }
+
+    public int GetChains()
+    {
+        return StatusManger.GetChains();
+    }
+
+    public float GetChainLength()
+    {
+        return StatusManger.GetChainLength();
+    }
+
+    public int GetChillAffect()
+    {
+        return StatusManger.GetChillAffect();
+    }
+
+    public float GetChillDuration()
+    {
+        return StatusManger.GetChillDuration();
     }
     #endregion
 }

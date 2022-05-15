@@ -78,4 +78,19 @@ public class FireStatusManager : MonoBehaviour
     {
         return stacks;
     }
+
+    public int GetBurnDamage()
+    {
+        return statusAffect.GetBurnDamage();
+    }
+
+    public int GetTicks()
+    {
+        return statusAffect.GetTicks();
+    }
+
+    public float GetWaitTime()
+    {
+        return statusAffect.GetWaitTime();
+    }
 }

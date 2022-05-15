@@ -46,4 +46,19 @@ public class LightningStatusManager : MonoBehaviour
         }
 
     }
+
+    public int GetChainDamage()
+    {
+        return statusAffect.GetChainDamage();
+    }
+
+    public int GetChains()
+    {
+        return statusAffect.GetChains();
+    }
+
+    public float GetChainLength()
+    {
+        return statusAffect.GetChainLength();
+    }
 }

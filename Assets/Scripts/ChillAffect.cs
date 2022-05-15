@@ -105,4 +105,14 @@ public class ChillAffect : MonoBehaviour
     {
         return _type;
     }
+
+    public int GetChillAffect()
+    {
+        return chillAffect;
+    }
+
+    public float GetChillDuration()
+    {
+        return duration;
+    }
 }

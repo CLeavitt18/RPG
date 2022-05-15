@@ -38,4 +38,44 @@ public class StatusManager : MonoBehaviour
     {
         iceManager.StartChill(target);
     }
+
+    public int GetBurnDamage()
+    {
+        return fireManager.GetBurnDamage();
+    }
+
+    public int GetTicks()
+    {
+        return fireManager.GetTicks();
+    }
+
+    public float GetWaitTime()
+    {
+        return fireManager.GetWaitTime();
+    }
+
+    public int GetChainDamage()
+    {
+        return lightningManager.GetChainDamage();
+    }
+
+    public int GetChains()
+    {
+        return lightningManager.GetChains();
+    }
+
+    public float GetChainLength()
+    {
+        return lightningManager.GetChainLength();
+    }
+
+    public int GetChillAffect()
+    {
+        return iceManager.GetChillAffect();
+    }
+
+    public float GetChillDuration()
+    {
+        return iceManager.GetChillDuration();
+    }
 }

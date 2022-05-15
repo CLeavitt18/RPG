@@ -65,5 +65,13 @@ public class IceStatusManager : MonoBehaviour
         frozen = state;
     }
 
+    public int GetChillAffect()
+    {
+        return statusAffect.GetChillAffect();
+    }
 
+    public float GetChillDuration()
+    {
+        return statusAffect.GetChillDuration();
+    }
 }

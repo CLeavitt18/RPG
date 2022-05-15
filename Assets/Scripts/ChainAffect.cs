@@ -104,11 +104,6 @@ public class ChainAffect : MonoBehaviour
         chainLength *= 1 + Temp;
         chainLength = Mathf.Round(chainLength * 10) * .1f;
     }
-    
-    public int GetChains()
-    {
-        return _chains;
-    }
 
     protected void SetType(StatusTypeEnum type)
     {
@@ -118,5 +113,20 @@ public class ChainAffect : MonoBehaviour
     public StatusTypeEnum GetStatusType()
     {
         return _type;
+    }
+
+    public int GetChainDamage()
+    {
+        return _damage;
+    }
+
+    public int GetChains()
+    {
+        return _chains;
+    }
+
+    public float GetChainLength()
+    {
+        return chainLength;
     }
 }

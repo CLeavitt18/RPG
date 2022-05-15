@@ -9,16 +9,7 @@ public class DamageStats
 
     public int SourceHand;
 
-    public float BurnWaitTime;
-    public float ChainLength;
-    public float ChillDuration;
-
     public int LifeSteal;
-    public int BurnDamage;
-    public int BurnTicks;
-    public int ChainDamage;
-    public int Chains;
-    public int ChillAffect;
 
     public List<DamageTypeEnum> DamageTypes;
     public List<int> DamageValues;
@@ -30,16 +21,8 @@ public class DamageStats
 
         SourceHand = 0;
 
-        BurnWaitTime = 0;
-        ChainLength = 0;
-        ChillDuration = 0;
-
         LifeSteal = 0;
-        BurnDamage = 0;
-        BurnTicks = 0;
-        ChainDamage = 0;
-        Chains = 0;
-        ChillAffect = 0;
+
         DamageTypes = new List<DamageTypeEnum>();
         DamageValues = new List<int>();
         Status = new List<bool>();
@@ -51,15 +34,7 @@ public class DamageStats
 
         SourceHand = stats.SourceHand;
 
-        BurnWaitTime = stats.BurnWaitTime;
-        ChainLength = stats.ChainLength;
-        ChillDuration = stats.ChillDuration;
-
-        BurnDamage = stats.BurnDamage;
-        BurnTicks = stats.BurnTicks;
-        ChainDamage = stats.ChainDamage;
-        Chains = stats.Chains;
-        ChillAffect = stats.ChillAffect;
+        LifeSteal = stats.LifeSteal;
 
         DamageTypes = new List<DamageTypeEnum>();
 
