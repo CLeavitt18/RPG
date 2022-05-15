@@ -167,7 +167,7 @@ public class PlayerUi : MonoBehaviour
 
     public void CallSetLevelCounter(int level)
     {
-        (uis[(int)UiType.LevelUp] as LevelUpUi).SetLevelCounter(level, true);
+        (uis[(int)UiType.LevelUp] as LevelUpUi).SetLevelCounter(level);
     }
 
     public void CallBurning(int ticks, float waitTime)

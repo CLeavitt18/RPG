@@ -26,7 +26,7 @@ public class LevelUpUi : IUi
 
         isActive = true;
         
-        SetLevelCounter(Player.player.GetStoredLevels(), true);
+        SetLevelCounter(Player.player.GetStoredLevels());
         
         levelUpUi.SetActive(true);
         Player.player.AddAPoints(GlobalValues.APointsPerLevel);
@@ -112,9 +112,15 @@ public class LevelUpUi : IUi
         }
     }
 
-    public void SetLevelCounter(int Levels, bool State)
+    public void SetLevelCounter(int Levels)
     {
-        LevelUpCounter.SetActive(State);
+        if (Levels == 0)
+        {
+            LevelUpCounter.SetActive(false);
+            return;
+        }
+
+        LevelUpCounter.SetActive(true);
 
         StringBuilder sb = new StringBuilder(Levels.ToString());
 
