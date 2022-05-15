@@ -907,7 +907,16 @@ public class LivingEntities : MonoBehaviour
                 {
                     case 0:
                         Item item = Player.player.Hands[stats.SourceHand].HeldItem;
-                        skill = item.GetComponent<IEquipable>().SkillType;
+
+                        if (item is SpellHolder)
+                        {
+                            skill = SkillType.Geomancy;
+                        }
+                        else
+                        {
+                            skill = item.GetComponent<IEquipable>().SkillType;
+                        }
+
                         break;
                     case 1:
                         skill = SkillType.Pyromancy;

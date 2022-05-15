@@ -419,7 +419,7 @@ public class Player : LivingEntities
 
     public void GainExp(long Exp, int skill)
     {
-        Debug.Log("gain exp Called");
+        //Debug.Log("gain exp Called");
 
         double TempExpNumber;
 
