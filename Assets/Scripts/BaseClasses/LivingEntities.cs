@@ -656,7 +656,6 @@ public class LivingEntities : MonoBehaviour
                             if ((Minions[id].Controller as Minion).SourceSpell == golemSpell)
                             {
                                 (Minions[id].Controller as Minion).CallDeath(false);
-                                Minions.RemoveAt(id);
                             }
                             else
                             {
