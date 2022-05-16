@@ -133,8 +133,13 @@ public class SpellRoller : MonoBehaviour
 
         if (cleanUp)
         {
-            for (int i = 0; i < runes.Length; i++)
+            for (int i = 0; i < 3; i++)
             {
+                if (runes[i] == null)
+                {
+                    continue;
+                }
+                
                 Destroy(runes[i].gameObject);
             }
         }
