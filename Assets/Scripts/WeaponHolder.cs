@@ -144,7 +144,7 @@ public class WeaponHolder : Item, IEquipable
         }
 
         Spawns = new WeaponSpawns[0];
-        name = Name;
+        name = GetName();
     }
 
     public override bool Equals(Item Item)

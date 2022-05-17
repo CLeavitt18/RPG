@@ -190,6 +190,7 @@ public class RuneRoller : MonoBehaviour
         runeH.spell = rune;
 
         string name = rune.SpellAffect.name;
+        string tempName = "";
 
         for (int i = 0; i < name.Length; i++)
         {
@@ -198,14 +199,13 @@ public class RuneRoller : MonoBehaviour
                 break;
             }
 
-            runeH.Name += name[i];
+            tempName += name[i];
         }
 
-        runeH.spell.Name = runeH.Name;
-        item.Rarity = GlobalValues.rarities[rarityId];
+        runeH.spell.Name = tempName;
+        item.SetRarity(GlobalValues.rarities[rarityId]);
 
-        runeH.Name += " Rune";
-        runeH.name = runeH.Name;
+        runeH.SetName(tempName + " Rune");
 
         return item;
     }

@@ -112,7 +112,7 @@ public class RefinaryUi : MonoBehaviour
             for (int x = start; x < end; x++)
             {
 
-                if (inventory[x].name == ItemsRequired.Item[i] && inventory[x].Amount >= ItemsRequired.Amount[i])
+                if (inventory[x].name == ItemsRequired.Item[i] && inventory[x].GetAmount() >= ItemsRequired.Amount[i])
                 {
                     ResourceUiContentHolder.GetChild(i).gameObject.GetComponent<Text>().color = Color.black;
                     break;
@@ -138,7 +138,7 @@ public class RefinaryUi : MonoBehaviour
             for (int x = start; x < end; x++)
             {
                 if (inventory[x].name == ResourceRecipes.ItemsRequired[R_Id].Item[i] &&
-                    inventory[x].Amount >= ResourceRecipes.ItemsRequired[R_Id].Amount[i] * ResourceAmount)
+                    inventory[x] >= ResourceRecipes.ItemsRequired[R_Id].Amount[i] * ResourceAmount)
                 {
                     Count++;
                 }
@@ -176,7 +176,7 @@ public class RefinaryUi : MonoBehaviour
         Item RH = Instantiate(Resources[R_Id]).GetComponent<Item>();
         RH.name = Resources[R_Id].name;
 
-        RH.Amount = ResourceAmount;
+        RH.SetAmount(ResourceAmount);
 
         Player.player.Inventory.AddItem(RH, true, ResourceAmount);
         InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);

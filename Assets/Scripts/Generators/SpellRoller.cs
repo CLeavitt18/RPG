@@ -44,7 +44,7 @@ public class SpellRoller : MonoBehaviour
         //spellH.Rarity = (runes[0].gameObject.GetComponent<RuneHolder>()).Rarity;
         spellH.Type = (MaterialType)mat_id;
 
-        spellH.Name = spellH.Type.ToString() + " Spell Focus";
+        spellH.SetName(spellH.Type.ToString() + " Spell Focus");
 
         DamageTypeStruct damageType;
 
@@ -62,7 +62,7 @@ public class SpellRoller : MonoBehaviour
 
             for(int x = 0; x > GlobalValues.rarities.Length; x++)
             {
-                if(runes[i].GetComponent<RuneHolder>().Rarity == GlobalValues.rarities[i])
+                if(runes[i].GetComponent<RuneHolder>().GetRarity() == GlobalValues.rarities[i])
                 {
                     rarityIdsTotal += i;
                 }
@@ -123,14 +123,13 @@ public class SpellRoller : MonoBehaviour
 
         if(numRune != 0)
         {
-            spellH.Rarity = GlobalValues.rarities[(int)((float)rarityIdsTotal / numRune)];
+            spellH.SetRarity(GlobalValues.rarities[(int)((float)rarityIdsTotal / numRune)]);
         }
         else
         {
-            spellH.Rarity = GlobalValues.rarities[0];
+            spellH.SetRarity(GlobalValues.rarities[0]);
         }
-
-
+    
         if (cleanUp)
         {
             for (int i = 0; i < 3; i++)
@@ -139,7 +138,7 @@ public class SpellRoller : MonoBehaviour
                 {
                     continue;
                 }
-                
+
                 Destroy(runes[i].gameObject);
             }
         }

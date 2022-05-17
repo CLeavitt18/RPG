@@ -143,6 +143,6 @@ MonoBehaviour:
   PUIInsruction: {fileID: 0}
   UIOpen: 0
   WaitTime: 0.1
-  Name: Rune Talbe
+  Name: Rune Table
   NextTime: 0
   UI: {fileID: 0}

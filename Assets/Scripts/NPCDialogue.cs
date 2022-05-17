@@ -93,7 +93,7 @@ public class NPCDialogue : MonoBehaviour
 
                 for (int i = start; i < end; i++)
                 {
-                    if (Inventory[i].GetComponent<Item>().Name == Quests[CurrentQuest].QuestItems[0].GetComponent<Item>().Name)
+                    if (Inventory[i].GetName() == Quests[CurrentQuest].QuestItems[0].GetComponent<Item>().GetName())
                     {
                         QuestButton.SetActive(true);
                         QuestItemFound = true;
@@ -142,9 +142,9 @@ public class NPCDialogue : MonoBehaviour
             for (int x = 0; x < reward[i].Rewards.Length; x++)
             {
                 Item Item = Instantiate(reward[i].Rewards[x]);
-                Item.GetComponent<Item>().Amount = reward[i].Amount[x];
+                Item.SetAmount(reward[i].Amount[x]);
 
-                Player.player.Inventory.AddItem(Item, true, Item.GetComponent<Item>().Amount);
+                Player.player.Inventory.AddItem(Item, true, Item.GetAmount());
                 Destroy(Item);
             }
         }
@@ -157,9 +157,9 @@ public class NPCDialogue : MonoBehaviour
         {
             for (int x = 0; x < Quests[CurrentQuest].QuestItems.Length; x++)
             {
-                if (Inventory[i].Name == Quests[CurrentQuest].QuestItems[x].GetComponent<Item>().Name)
+                if (Inventory[i].GetName() == Quests[CurrentQuest].QuestItems[x].GetComponent<Item>().GetName())
                 {
-                    Player.player.Inventory.RemoveItem(Inventory[i], Inventory[i].Amount);
+                    Player.player.Inventory.RemoveItem(Inventory[i], Inventory[i].GetAmount());
                 }
             }
         }

@@ -35,7 +35,7 @@ public class Helper : MonoBehaviour
 
         StringBuilder sb = new StringBuilder();
 
-        nameText.text = item.Name;
+        nameText.text = item.GetName();
 
         SpawnItemDetailSlot("", t);
 
@@ -352,7 +352,7 @@ public class Helper : MonoBehaviour
             for (int x = start; x < end; x++)
             {
                 if (pInventory[x].gameObject.name == item.Key && 
-                pInventory[x].GetComponent<ResourceHolder>().Amount >= item.Value)
+                pInventory[x].GetAmount() >= item.Value)
                 {
                     color = Color.black;
                     count++;

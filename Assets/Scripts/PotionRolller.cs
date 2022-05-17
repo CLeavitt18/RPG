@@ -41,7 +41,7 @@ public class PotionRolller : MonoBehaviour
         }
 
         Item potion = Instantiate(Potions[PotionId]).GetComponent<Item>();
-        potion.Amount = Amount;
+        potion.SetAmount(Amount);
 
         return potion;
     }

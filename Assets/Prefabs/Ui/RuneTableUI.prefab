@@ -5549,7 +5549,7 @@ GameObject:
   - component: {fileID: 8418968593544850522}
   - component: {fileID: 4657191580423352363}
   m_Layer: 5
-  m_Name: RuneTalbeUI
+  m_Name: RuneTableUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

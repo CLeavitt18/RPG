@@ -17,15 +17,15 @@ public static class LoadSystem
         }
 
         ToWeapon.ActionsPerSecond = FromWeapon.AttacksPerSecond;
-        ToWeapon.Weight = FromWeapon.Weight;
-        ToWeapon.Value = FromWeapon.Value;
-        ToWeapon.Name = FromWeapon.Name;
+        ToWeapon.SetWeight(FromWeapon.Weight);
+        ToWeapon.SetValue(FromWeapon.Value);
+        ToWeapon.SetName(FromWeapon.Name);
         ToWeapon.LifeSteal = FromWeapon.LifeSteal;
         ToWeapon.CurrentDurability = FromWeapon.CurrentDurability;
         ToWeapon.MaxDurability = FromWeapon.MaxDurability;
         ToWeapon.AttackAnimationName = FromWeapon.AttackAnimationName;
         ToWeapon.PwrAttackAnimationName = FromWeapon.PwrAttackAnimationName;
-        ToWeapon.Amount = FromWeapon.Amount;
+        ToWeapon.SetAmount(FromWeapon.Amount);
 
         Color color = new Color(
             FromWeapon.Rarity[0], 
@@ -33,7 +33,7 @@ public static class LoadSystem
             FromWeapon.Rarity[2],
             FromWeapon.Rarity[3]);
 
-        ToWeapon.Rarity = color;
+        ToWeapon.SetRarity(color);
 
         for (int i = 0; i < 3; i++)
         {
@@ -56,9 +56,9 @@ public static class LoadSystem
         ToArmour.CurrentDurability = FromArmour.CurrentDurablity;
         ToArmour.MaxDurability = FromArmour.MaxDurablity;
         ToArmour.ArmourType = (ArmourType)FromArmour.ArmourType;
-        ToArmour.Value = FromArmour.Value;
-        ToArmour.Amount = FromArmour.Amount;
-        ToArmour.Weight = FromArmour.Weight;
+        ToArmour.SetValue(FromArmour.Value);
+        ToArmour.SetAmount(FromArmour.Amount);
+        ToArmour.SetWeight(FromArmour.Weight);
         ToArmour.SkillType = (SkillType)FromArmour.SkillType;
 
         ToArmour.Resistences = new int[3];
@@ -75,9 +75,9 @@ public static class LoadSystem
 
         ToArmour.IsEquiped = FromArmour.IsEquiped;
 
-        ToArmour.Name = FromArmour.Name;
+        ToArmour.SetName(FromArmour.Name);
 
-        ToArmour._Item = null;
+        ToArmour.SetItem(null);
 
         ToArmour.SetArmourState();
     }
@@ -110,8 +110,8 @@ public static class LoadSystem
         ToSpell.ValueMulti = FromSpell.MaterialMulti;
         ToSpell.Type = (MaterialType)FromSpell.MaterialId;
         ToSpell.SkillType = (SkillType)FromSpell.SpellSkillType;
-        ToSpell.Amount = FromSpell.Amount;
-        ToSpell.Name = FromSpell.Name;
+        ToSpell.SetAmount(FromSpell.Amount);
+        ToSpell.SetName(FromSpell.Name);
 
         Color color = new Color(
             FromSpell.Rarity[0],
@@ -119,15 +119,15 @@ public static class LoadSystem
             FromSpell.Rarity[2],
             FromSpell.Rarity[3]);
 
-        ToSpell.Rarity = color;
+        ToSpell.SetRarity(color);
 
         ToSpell.SetSpellState();
     }
 
     public static void LoadItem(RuneHolderData FromRuneH, RuneHolder ToRuneH)
     {
-        ToRuneH.Name = FromRuneH.Name;
-        ToRuneH.Amount = FromRuneH.Amount;
+        ToRuneH.SetName(FromRuneH.Name);
+        ToRuneH.SetAmount(FromRuneH.Amount);
 
         Color color = new Color(
             FromRuneH.Rarity[0],
@@ -135,7 +135,7 @@ public static class LoadSystem
             FromRuneH.Rarity[2],
             FromRuneH.Rarity[3]);
 
-        ToRuneH.Rarity = color;
+        ToRuneH.SetRarity(color);
 
         if (FromRuneH.runeData.SpellTypeId == 0)
         {
@@ -232,22 +232,22 @@ public static class LoadSystem
         }
 
         ToWeapon.AttacksPerSecond = FromWeapon.ActionsPerSecond;
-        ToWeapon.Weight = FromWeapon.Weight;
-        ToWeapon.Value = FromWeapon.Value;
-        ToWeapon.Name = FromWeapon.Name;
+        ToWeapon.Weight = FromWeapon.GetWeight();
+        ToWeapon.Value = FromWeapon.GetValue();
+        ToWeapon.Name = FromWeapon.GetName();
         ToWeapon.LifeSteal = FromWeapon.LifeSteal;
         ToWeapon.CurrentDurability = FromWeapon.CurrentDurability;
         ToWeapon.MaxDurability = FromWeapon.MaxDurability;
         ToWeapon.AttackAnimationName = FromWeapon.AttackAnimationName;
         ToWeapon.PwrAttackAnimationName = FromWeapon.PwrAttackAnimationName;
-        ToWeapon.Amount = FromWeapon.Amount;
+        ToWeapon.Amount = FromWeapon.GetAmount();
 
         ToWeapon.Rarity = new float[4];
 
-        ToWeapon.Rarity[0] = FromWeapon.Rarity.r;
-        ToWeapon.Rarity[1] = FromWeapon.Rarity.g;
-        ToWeapon.Rarity[2] = FromWeapon.Rarity.b;
-        ToWeapon.Rarity[3] = FromWeapon.Rarity.a;
+        ToWeapon.Rarity[0] = FromWeapon.GetRarity().r;
+        ToWeapon.Rarity[1] = FromWeapon.GetRarity().g;
+        ToWeapon.Rarity[2] = FromWeapon.GetRarity().b;
+        ToWeapon.Rarity[3] = FromWeapon.GetRarity().a;
 
         ToWeapon.Materials = new MaterialType[3];
 
@@ -311,17 +311,17 @@ public static class LoadSystem
         ToArmour.CurrentDurablity = FromArmour.CurrentDurability;
         ToArmour.MaxDurablity = FromArmour.MaxDurability;
         ToArmour.ArmourType = (int)FromArmour.ArmourType;
-        ToArmour.Value = FromArmour.Value;
-        ToArmour.Amount = FromArmour.Amount;
-        ToArmour.Weight = FromArmour.Weight;
+        ToArmour.Value = FromArmour.GetValue();
+        ToArmour.Amount = FromArmour.GetAmount();
+        ToArmour.Weight = FromArmour.GetWeight();
         ToArmour.SkillType = (int)FromArmour.SkillType;
 
         ToArmour.Rarity = new float[4];
 
-        ToArmour.Rarity[0] = FromArmour.Rarity.r;
-        ToArmour.Rarity[1] = FromArmour.Rarity.g;
-        ToArmour.Rarity[2] = FromArmour.Rarity.b;
-        ToArmour.Rarity[3] = FromArmour.Rarity.a;
+        ToArmour.Rarity[0] = FromArmour.GetRarity().r;
+        ToArmour.Rarity[1] = FromArmour.GetRarity().g;
+        ToArmour.Rarity[2] = FromArmour.GetRarity().b;
+        ToArmour.Rarity[3] = FromArmour.GetRarity().a;
 
         ToArmour.Resistences = new int[3];
 
@@ -342,7 +342,7 @@ public static class LoadSystem
 
         ToArmour.IsEquiped = FromArmour.IsEquiped;
 
-        ToArmour.Name = FromArmour.Name;
+        ToArmour.Name = FromArmour.GetName();
 
         ToArmour.ItemId = 0;
     }
@@ -370,28 +370,28 @@ public static class LoadSystem
         ToSpell.MaterialMulti = FromSpell.ValueMulti;
         ToSpell.MaterialId = (int)FromSpell.Type;
         ToSpell.SpellSkillType = (int)FromSpell.SkillType;
-        ToSpell.Amount = FromSpell.Amount;
-        ToSpell.Name = FromSpell.Name;
+        ToSpell.Amount = FromSpell.GetAmount();
+        ToSpell.Name = FromSpell.GetName();
 
         ToSpell.Rarity = new float[4];
 
-        ToSpell.Rarity[0] = FromSpell.Rarity.r;
-        ToSpell.Rarity[1] = FromSpell.Rarity.g;
-        ToSpell.Rarity[2] = FromSpell.Rarity.b;
-        ToSpell.Rarity[3] = FromSpell.Rarity.a;
+        ToSpell.Rarity[0] = FromSpell.GetRarity().r;
+        ToSpell.Rarity[1] = FromSpell.GetRarity().g;
+        ToSpell.Rarity[2] = FromSpell.GetRarity().b;
+        ToSpell.Rarity[3] = FromSpell.GetRarity().a;
     }
 
     public static void LoadItem(RuneHolder FromRuneH, RuneHolderData ToRuneH)
     {
-        ToRuneH.Amount = FromRuneH.Amount;
-        ToRuneH.Name = FromRuneH.Name;
+        ToRuneH.Amount = FromRuneH.GetAmount();
+        ToRuneH.Name = FromRuneH.GetName();
 
         ToRuneH.Rarity = new float[4];
 
-        ToRuneH.Rarity[0] = FromRuneH.Rarity.r;
-        ToRuneH.Rarity[1] = FromRuneH.Rarity.g;
-        ToRuneH.Rarity[2] = FromRuneH.Rarity.b;
-        ToRuneH.Rarity[3] = FromRuneH.Rarity.a;
+        ToRuneH.Rarity[0] = FromRuneH.GetRarity().r;
+        ToRuneH.Rarity[1] = FromRuneH.GetRarity().g;
+        ToRuneH.Rarity[2] = FromRuneH.GetRarity().b;
+        ToRuneH.Rarity[3] = FromRuneH.GetRarity().a;
 
         ToRuneH.runeData = new SpellData();
 

@@ -19,7 +19,7 @@ public class ResourceHolder : Item
             return false;
         }
 
-        if (Name == Item.Name)
+        if (GetName() == Item.GetName())
         {
             return true;
         }

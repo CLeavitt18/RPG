@@ -125,7 +125,7 @@ public class ResourceRoller : MonoBehaviour
 
         Item Item = Instantiate(Resources[Re_Type].Resources[Re_Id]).GetComponent<Item>();
 
-        Item.Amount = Amount;
+        Item.SetAmount(Amount);
 
         return Item;
     }

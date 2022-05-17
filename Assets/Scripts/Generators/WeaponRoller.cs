@@ -180,7 +180,7 @@ public class WeaponRoller : MonoBehaviour
             }
         }
 
-        weapon.GetComponent<Item>().Name = name;
+        WeaponRef.SetName(name);
 
         WeaponRef.Type = baseWeapon.Type;
         WeaponRef.SkillType = baseWeapon.WeaponSkillType;
@@ -193,15 +193,12 @@ public class WeaponRoller : MonoBehaviour
         WeaponRef.Secoundary = secondary.WeaponPart;
         WeaponRef.Teritiary = tertiary.WeaponPart;
 
-        WeaponRef.Value = baseWeapon.Values[pri_Id];
-        WeaponRef.Value += secondary.Value;
-        WeaponRef.Value += tertiary.Value;
-        WeaponRef.Value = (int)((float)WeaponRef.Value * 1.1f);
-
         WeaponRef.ActionsPerSecond = baseWeapon.AttacksPerSecond - (baseWeapon.AttacksPerSecond * ((sec_Id * 0.005f) + (ter_Id * 0.005f)));
         WeaponRef.ActionsPerSecond = Mathf.Round(WeaponRef.ActionsPerSecond * 1000) / 1000;
 
-        WeaponRef.Weight = (int)(baseWeapon.Weigth * (1f + (0.02f * ((float)pri_Id + sec_Id + ter_Id))));
+        int weight = (int)(baseWeapon.Weigth * (1f + (0.02f * ((float)pri_Id + sec_Id + ter_Id))));
+
+        WeaponRef.SetWeight(weight);
 
         int averageDamage = 0;
 
@@ -255,8 +252,15 @@ public class WeaponRoller : MonoBehaviour
 
         averageDamage = (int)(averageDamage * WeaponRef.ActionsPerSecond);
 
-        WeaponRef.Value = (int)(WeaponRef.Value * (1f + (averageDamage / 100f)));
-        WeaponRef.Value *= cat.ValueMulti;
+
+        float value = baseWeapon.Values[pri_Id];
+        value += secondary.Value;
+        value += tertiary.Value;
+        value *= 1.1f;
+        value *= 1.0f + (averageDamage / 100.0f);
+        value *= cat.ValueMulti;
+
+        WeaponRef.SetValue((int)value);
 
         for (int i = 0; i < WeaponRef.DamageRanges.Count; i++)
         {
@@ -278,7 +282,7 @@ public class WeaponRoller : MonoBehaviour
         WeaponRef.AttackAnimationName = baseWeapon.AttackAnimationName;
         WeaponRef.PwrAttackAnimationName = baseWeapon.PwrAttackAnimationName;
 
-        WeaponRef.Rarity = GlobalValues.rarities[rarityId];
+        WeaponRef.SetRarity(GlobalValues.rarities[rarityId]);
 
         if (cat_Id < 6)
         {

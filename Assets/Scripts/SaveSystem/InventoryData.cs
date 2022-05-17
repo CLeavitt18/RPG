@@ -116,14 +116,14 @@ public class InventoryData
 
             for (int x = 0; x < PrefabIDs.prefabIDs.Potions.Length; x++)
             {
-                if (PrefabIDs.prefabIDs.Potions[x].name == Ref.Name)
+                if (PrefabIDs.prefabIDs.Potions[x].name == Ref.GetName())
                 {
                    Potions[id].ResourceId = x;
                     break;
                 }
             }
 
-            Potions[id].Amount = Ref.Amount;
+            Potions[id].Amount = Ref.GetAmount();
             id++;
         }
 
@@ -140,14 +140,14 @@ public class InventoryData
 
             for (int x = 0; x < PrefabIDs.prefabIDs.CraftingMaterials.Length; x++)
             {
-                if (PrefabIDs.prefabIDs.CraftingMaterials[x].name == item.Name)
+                if (PrefabIDs.prefabIDs.CraftingMaterials[x].name == item.GetName())
                 {
                     Resources[id].ResourceId = x;
                     break;
                 }
             }
             
-            Resources[id].Amount = item.Amount;
+            Resources[id].Amount = item.GetAmount();
             id++;
         }
 
@@ -169,14 +169,14 @@ public class InventoryData
                     break;
                 }
 
-                if (Ref.Name == PrefabIDs.prefabIDs.Items[x].name)
+                if (Ref.GetName() == PrefabIDs.prefabIDs.Items[x].name)
                 {
                     Misc[id].ResourceId = x;
                     break;
                 }
             }
 
-            Misc[id].Amount = Ref.Amount;
+            Misc[id].Amount = Ref.GetAmount();
 
             id++;
         }

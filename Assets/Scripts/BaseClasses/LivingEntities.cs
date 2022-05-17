@@ -127,7 +127,7 @@ public class LivingEntities : MonoBehaviour
 
             if (hand.ChannelTime >= .2f)
             {
-                float cost = Weapon.Weight / 100f;
+                float cost = Weapon.GetWeight() / 100f;
                 cost *= 1 + (Mathf.Floor(Attributes[(int)Abilities.Strenght].Ability * .5f)) * .05f;
 
                 if (LoseAttribute((int)cost, AttributesEnum.Stamina))
@@ -1218,26 +1218,32 @@ public class LivingEntities : MonoBehaviour
 
         for (int i = 0; i < iData.NumOfPotions; i++)
         {
-            Consumable potion = Instantiate(PrefabIDs.prefabIDs.Potions[iData.Potions[i].ResourceId], Inventory.InventroyHolder).GetComponent<Consumable>();
-            potion.Amount = iData.Potions[i].Amount;
+            CraftingMaterials potionData = iData.Potions[i];
 
-            Inventory.AddItem(potion, false, iData.Potions[i].Amount);
+            Consumable potion = Instantiate(PrefabIDs.prefabIDs.Potions[potionData.ResourceId], Inventory.InventroyHolder).GetComponent<Consumable>();
+            potion.SetAmount(potionData.Amount);
+
+            Inventory.AddItem(potion, false, potionData.Amount);
         }
 
         for (int i = 0; i < iData.NumOfResources; i++)
         {
-            ResourceHolder HResource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[iData.Resources[i].ResourceId], Inventory.InventroyHolder).GetComponent<ResourceHolder>();
-            HResource.Amount = iData.Resources[i].Amount;
+            CraftingMaterials resourceData = iData.Resources[i];
 
-            Inventory.AddItem(HResource, false, iData.Resources[i].Amount);
+            ResourceHolder HResource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[resourceData.ResourceId], Inventory.InventroyHolder).GetComponent<ResourceHolder>();
+            HResource.SetAmount(resourceData.Amount);
+
+            Inventory.AddItem(HResource, false, resourceData.Amount);
         }
 
         for (int i = 0; i < iData.NumOfMisc; i++)
         {
-            Item misc = Instantiate(PrefabIDs.prefabIDs.Items[iData.Misc[i].ResourceId], Inventory.InventroyHolder).GetComponent<Item>();
-            misc.Amount = iData.Misc[i].Amount;
+            CraftingMaterials miscData = iData.Misc[i];
 
-            Inventory.AddItem(misc, false, iData.Misc[i].Amount);
+            Item misc = Instantiate(PrefabIDs.prefabIDs.Items[miscData.ResourceId], Inventory.InventroyHolder).GetComponent<Item>();
+            misc.SetAmount(miscData.Amount);
+
+            Inventory.AddItem(misc, false, miscData.Amount);
         }
 
         if (Data.CurrentMainHandID == 3)

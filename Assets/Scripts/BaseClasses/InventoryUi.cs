@@ -263,11 +263,11 @@ public class InventoryUi : IUi
             {
                 if (UiMode == UiState.Container && Player.player.GetHit().CompareTag(GlobalValues.NPCTag))
                 {
-                    GoldText.text = Item.Amount.ToString("n0");
+                    GoldText.text = Item.GetAmount().ToString("n0");
                 }
                 else if (UiMode == UiState.Player)
                 {
-                    GoldText.text = Item.Amount.ToString("n0");
+                    GoldText.text = Item.GetAmount().ToString("n0");
                 }
 
                 if (Player.player.GetMode() == PlayerState.InStore)
@@ -482,7 +482,7 @@ public class InventoryUi : IUi
     {
         StringBuilder WeightString = new StringBuilder();
 
-        int ItemWeight = Item.Weight;
+        int ItemWeight = Item.GetWeight();
         int BeforeDecimal = ItemWeight / 100;
         int AfterDecimal = ItemWeight - BeforeDecimal * 100;
 
@@ -521,7 +521,7 @@ public class InventoryUi : IUi
 
         GameObject NewSlot = Instantiate(this.slot, InventroyHolder);
 
-        NewSlot.GetComponent<Image>().color = Item.Rarity;
+        NewSlot.GetComponent<Image>().color = Item.GetRarity();
 
         SlotsActions slot = NewSlot.GetComponent<SlotsActions>();
 
@@ -536,23 +536,23 @@ public class InventoryUi : IUi
         Text MiscText = Slots[id].transform.GetChild(2).GetComponent<Text>();
         Text ValueText = Slots[id].transform.GetChild(3).GetComponent<Text>();
 
-        if (Item.Amount > 1)
+        if (Item.GetAmount() > 1)
         {
-            StringBuilder sb = new StringBuilder(Item.Name);
+            StringBuilder sb = new StringBuilder(Item.GetName());
             sb.Append(" (");
-            sb.Append(Item.Amount.ToString("n0"));
+            sb.Append(Item.GetAmount().ToString("n0"));
             sb.Append(")");
 
             NameText.text = sb.ToString();
         }
         else
         {
-            NameText.text = Item.Name;
+            NameText.text = Item.GetName();
         }
 
         WeightText.text = WeightString.ToString();
 
-        ValueText.text = Item.Value.ToString("n0");
+        ValueText.text = Item.GetValue().ToString("n0");
 
         return id;
     }
@@ -608,10 +608,10 @@ public class InventoryUi : IUi
     {
         if (Focus != null && Focus == Slot)
         {
-            if (FocusedItem.GetComponent<Item>().Amount >= 4)
+            if (FocusedItem.GetAmount() >= 4)
             {
                 AmountUi.SetActive(true);
-                AmountBar.maxValue = FocusedItem.GetComponent<Item>().Amount;
+                AmountBar.maxValue = FocusedItem.GetAmount();
             }
             else
             {
@@ -726,7 +726,7 @@ public class InventoryUi : IUi
 
             if (playerMode == PlayerState.InStore)
             {
-                Player.player.Inventory.SellItem(FocusedItem, amount);
+                Player.player.Inventory.SellItem(FocusedItem, amount, FocusedItem.GetValue());
                 Player.player.CalculateSpeed();
             }
             else if (playerMode == PlayerState.InInventoy)
@@ -826,7 +826,7 @@ public class InventoryUi : IUi
 
             item.SpawnItem();
 
-            Player.player.Inventory.RemoveItem(FocusedItem, item.Amount, false);
+            Player.player.Inventory.RemoveItem(FocusedItem, item.GetAmount(), false);
             SetPlayerEquipedIndicators();
             Focus = null;
 

@@ -13,7 +13,7 @@ public class TorchHolder : Item, IEquipable
 
     public void SpawnItemForUse(Transform location)
     {
-        Transform place = Instantiate(_Item, location).transform;
+        Transform place = Instantiate(GetItem(), location).transform;
 
         Vector3 start = place.GetChild(0).position;
         Vector3 end = location.position;

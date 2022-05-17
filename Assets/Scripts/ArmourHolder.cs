@@ -34,7 +34,7 @@ public class ArmourHolder : Item, IEquipable
 
     public void SetArmourState()
     {
-        name = Name;
+        name = GetName();
     }
 
     public override bool Equals(Item Item)
@@ -46,7 +46,7 @@ public class ArmourHolder : Item, IEquipable
             return false;
         }
 
-        if (armourH.Name == Name)
+        if (armourH.GetName() == GetName())
         {
             if (armourH.Armour == Armour)
             {
@@ -62,7 +62,7 @@ public class ArmourHolder : Item, IEquipable
 
                     if (armourH._skillType == SkillType)
                     {
-                        if (armourH.Weight == Weight)
+                        if (armourH.GetWeight() == GetWeight())
                         {
                             return true;
                         }

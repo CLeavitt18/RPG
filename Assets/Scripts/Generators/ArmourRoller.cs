@@ -107,7 +107,7 @@ public class ArmourRoller : MonoBehaviour
             ArmourBase = Armour[5];
         }
 
-        armour.Rarity = GlobalValues.rarities[rarityId];
+        armour.SetRarity(GlobalValues.rarities[rarityId]);
 
         ArmourHolder ArmourH = armour as ArmourHolder;
 
@@ -116,7 +116,7 @@ public class ArmourRoller : MonoBehaviour
         ArmourH.CurrentDurability = ArmourBase.Durability;
         ArmourH.MaxDurability = ArmourH.CurrentDurability;
 
-        ArmourH.Weight = ArmourBase.Weight[Catogory];
+        ArmourH.SetWeight(ArmourBase.Weight[Catogory]);
         ArmourH.ArmourType = Type;
 
         ArmourH.SkillType = SkillType;
@@ -171,7 +171,7 @@ public class ArmourRoller : MonoBehaviour
             }
         }
 
-        ArmourH.Name = sb.ToString();
+        ArmourH.SetName(sb.ToString());
 
         ArmourH.SetArmourState();
 

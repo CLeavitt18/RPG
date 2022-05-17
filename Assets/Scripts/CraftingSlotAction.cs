@@ -44,7 +44,7 @@ public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerC
         _item = item;
         _ui = ui;
 
-        transform.GetChild(0).gameObject.GetComponent<Text>().text = item.Name;
-        GetComponent<Image>().color = item.Rarity;
+        transform.GetChild(0).gameObject.GetComponent<Text>().text = item.GetName();
+        GetComponent<Image>().color = item.GetRarity();
     }
 }

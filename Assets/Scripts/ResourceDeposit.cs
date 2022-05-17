@@ -33,9 +33,9 @@ public class ResourceDeposit : Interactialbes, IInteractable, ISavable
 
     public void Interact(bool State)
     {
-        Resource.GetComponent<ResourceHolder>().Amount *= ResourceMulti;
+        //Resource.GetComponent<ResourceHolder>().Amount *= ResourceMulti;
 
-        Player.player.Inventory.AddItem(Resource, true, Resource.GetComponent<ResourceHolder>().Amount);
+        Player.player.Inventory.AddItem(Resource, true, Resource.GetAmount());
         InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
 
         IsDead = true;

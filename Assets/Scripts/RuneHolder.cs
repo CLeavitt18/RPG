@@ -16,7 +16,7 @@ public class RuneHolder : Item
 
     public override bool Equals(Item Item)
     {
-        if (Name == Item.Name)
+        if (GetName() == Item.GetName())
         {
             if (spell.Equals((Item as RuneHolder).spell))
             {

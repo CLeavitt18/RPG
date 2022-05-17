@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour, ISavable
 
             for (int i = 0; i < TempList.Count; i++)
             {
-                AddItem(TempList[i], false, TempList[i].GetComponent<Item>().Amount);
+                AddItem(TempList[i], false, TempList[i].GetAmount());
             }
         }
     }
@@ -44,11 +44,11 @@ public class Inventory : MonoBehaviour, ISavable
         if (Stackable && !FromRoller)
         {
             string Name = Item.name;
-            Color rarity = Item.Rarity;
+            Color rarity = Item.GetRarity();
             Item = Instantiate(Item, InventroyHolder);
             Item.name = Name;
-            Item.Amount = Amount;
-            Item.Rarity = rarity;
+            Item.SetAmount(Amount);
+            Item.SetRarity(rarity);
         }
 
         Item itemObject = Item.GetComponent<Item>();
@@ -97,7 +97,7 @@ public class Inventory : MonoBehaviour, ISavable
         {
             AllItems.Add(Item);
 
-            CurrentCarryWeight += itemObject.Weight * Amount;
+            CurrentCarryWeight += itemObject.GetWeight() * Amount;
             Item.transform.parent = InventroyHolder;
 
             goto UpdateStartIDs;
@@ -116,8 +116,8 @@ public class Inventory : MonoBehaviour, ISavable
 
                 if (itemObject.Equals(item))
                 {
-                    item.Amount += Amount;
-                    CurrentCarryWeight += itemObject.Weight * Amount;
+                    item += item;
+                    CurrentCarryWeight += itemObject.GetWeight() * Amount;
 
                     Destroy(Item.gameObject);
 
@@ -128,7 +128,7 @@ public class Inventory : MonoBehaviour, ISavable
 
         AllItems.Insert(end_id, Item);
 
-        CurrentCarryWeight += itemObject.Weight * Amount;
+        CurrentCarryWeight += itemObject.GetWeight() * Amount;
         Item.transform.parent = InventroyHolder;
 
     UpdateStartIDs:
@@ -171,10 +171,10 @@ public class Inventory : MonoBehaviour, ISavable
     {
         //Debug.Log("Remove item called");
 
-        Item.Amount -= Amount;
-        CurrentCarryWeight -= Item.Weight * Amount;
+        Item -= Amount;
+        CurrentCarryWeight -= Item.GetWeight() * Amount;
 
-        if (Item.Amount == 0)
+        if (Item.GetAmount() == 0)
         {   
             int loopStart;
 
@@ -231,14 +231,14 @@ public class Inventory : MonoBehaviour, ISavable
 
             Item item = AllItems[i].GetComponent<Item>();
 
-            if (AllItems[i].GetComponent<IEquipable>().IsEquiped && item.Amount > 1)
+            if (AllItems[i].GetComponent<IEquipable>().IsEquiped && item.GetAmount() > 1)
             {
                 Item ItemClone = Instantiate(AllItems[i], InventroyHolder);
                 ItemClone.name = AllItems[i].name;
                 ItemClone.GetComponent<IEquipable>().IsEquiped = false;
-                ItemClone.GetComponent<Item>().Amount--;
+                ItemClone--;
 
-                item.Amount = 1;
+                item.SetAmount(1);
                 AddItem(ItemClone, false, 1);
             }
             else
@@ -255,8 +255,8 @@ public class Inventory : MonoBehaviour, ISavable
                     if (item.Equals(item2) && AllItems[i].GetComponent<IEquipable>().IsEquiped == false &&
                         AllItems[x].GetComponent<IEquipable>().IsEquiped == false && AllItems[i] != AllItems[x])
                     {
-                        AddItem(AllItems[x], true, item2.Amount);
-                        RemoveItem(AllItems[x], item2.Amount);
+                        AddItem(AllItems[x], true, item2.GetAmount());
+                        RemoveItem(AllItems[x], item2.GetAmount());
                         break;
                     }
                 }
@@ -272,10 +272,10 @@ public class Inventory : MonoBehaviour, ISavable
                 TransferItem(Item, Amount);
                 break;
             case UiState.Store:
-                BuyItem(Item, Amount);
+                BuyItem(Item, Amount, Item.GetValue());
                 break;
             case UiState.Player:
-                SellItem(Item, Amount);
+                SellItem(Item, Amount, Item.GetValue());
                 break;
             default:
                 break;
@@ -283,7 +283,7 @@ public class Inventory : MonoBehaviour, ISavable
     }
 
     //Player selling to NPC
-    public void SellItem(Item Item, int Amount)
+    public void SellItem(Item Item, int Amount, int value)
     {
         //Debug.Log("Sell Item Called");
 
@@ -304,10 +304,10 @@ public class Inventory : MonoBehaviour, ISavable
                     if (NPCInventory.AllItems[x].CompareTag(GlobalValues.GoldTag))
                     {
                         //Debug.Log("NPC Gold Found");
-                        if (NPCInventory.AllItems[x].GetComponent<Item>().Amount >= Item.GetComponent<Item>().Value * Amount)
+                        if (NPCInventory.AllItems[x].GetAmount() >= value * Amount)
                         {
-                            AllItems[i].GetComponent<Item>().Amount += Item.GetComponent<Item>().Value * Amount;
-                            NPCInventory.AllItems[x].GetComponent<Item>().Amount -= Item.GetComponent<Item>().Value * Amount;
+                            AllItems[i] += value * Amount;
+                            NPCInventory.AllItems[x] -= value * Amount;
                             TransferItem(Item, Amount);
                             return;
                         }
@@ -324,10 +324,10 @@ public class Inventory : MonoBehaviour, ISavable
                     {
                         //Debug.Log("NPC Gold Found");
 
-                        if (NPCInventory.AllItems[x].GetComponent<Item>().Amount >= Item.GetComponent<Item>().Value * Amount)
+                        if (NPCInventory.AllItems[x].GetAmount() >= value * Amount)
                         {
-                            AllItems[i].GetComponent<Item>().Amount += Item.GetComponent<Item>().Value * Amount;
-                            NPCInventory.AllItems[x].GetComponent<Item>().Amount -= Item.GetComponent<Item>().Value * Amount;
+                            AllItems[i] += value * Amount;
+                            NPCInventory.AllItems[x] -= value * Amount;
                             TransferItem(Item, Amount);
                             return;
                         }
@@ -343,7 +343,7 @@ public class Inventory : MonoBehaviour, ISavable
     }
 
     //Player buying from NPC
-    public void BuyItem(Item Item, int Amount)
+    public void BuyItem(Item Item, int Amount, int value)
     {
         //Debug.Log("BuyItem Called");
         List<Item> PlayerAllItems = Player.player.Inventory.AllItems;
@@ -361,10 +361,10 @@ public class Inventory : MonoBehaviour, ISavable
                 {
                     if (AllItems[x].CompareTag(GlobalValues.GoldTag))
                     {
-                        if (AllItems[x].GetComponent<Item>().Amount >= Item.GetComponent<Item>().Value * Amount)
+                        if (AllItems[x].GetAmount() >= value * Amount)
                         {
-                            PlayerAllItems[i].GetComponent<Item>().Amount += Item.GetComponent<Item>().Value * Amount;
-                            AllItems[x].GetComponent<Item>().Amount -= Item.GetComponent<Item>().Value * Amount;
+                            PlayerAllItems[i] += value * Amount;
+                            AllItems[x] -= value * Amount;
                             TransferItem(Item, Amount);
                             return;
                         }
@@ -384,10 +384,10 @@ public class Inventory : MonoBehaviour, ISavable
                     {
                         //Debug.Log($"Player Gold found: {PlayerAllItems[x].GetComponent<IItem>().Amount}");
 
-                        if (PlayerAllItems[x].GetComponent<Item>().Amount >= Item.GetComponent<Item>().Value * Amount)
+                        if (PlayerAllItems[x].GetAmount() >= value * Amount)
                         {
-                            PlayerAllItems[x].GetComponent<Item>().Amount -= Item.GetComponent<Item>().Value * Amount;
-                            AllItems[i].GetComponent<Item>().Amount += Item.GetComponent<Item>().Value * Amount;
+                            PlayerAllItems[x] -= value * Amount;
+                            AllItems[i] += value * Amount;
                             TransferItem(Item, Amount);
                             return;
                         }
@@ -458,7 +458,7 @@ public class Inventory : MonoBehaviour, ISavable
                 for (int x = 0; x < num; x++)
                 {
                     item = Roller.roller.Roll(state);
-                    AddItem(item, true, item.Amount, true);
+                    AddItem(item, true, item.GetAmount(), true);
                 }
             }
         }
@@ -593,7 +593,7 @@ public class Inventory : MonoBehaviour, ISavable
         {
             Consumable potion = Instantiate(PrefabIDs.prefabIDs.Potions[Data.Potions[i].ResourceId], InventroyHolder).GetComponent<Consumable>();
 
-            potion.Amount = Data.Potions[i].Amount;
+            potion.SetAmount(Data.Potions[i].Amount);
 
             AddItem(potion, false, Data.Potions[i].Amount);
         }
@@ -602,7 +602,7 @@ public class Inventory : MonoBehaviour, ISavable
         {
             ResourceHolder resource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[Data.Resources[i].ResourceId], InventroyHolder).GetComponent<ResourceHolder>();
 
-            resource.Amount = Data.Resources[i].Amount;
+            resource.SetAmount(Data.Resources[i].Amount);
 
             AddItem(resource, false, Data.Resources[i].Amount);
         }
@@ -611,7 +611,7 @@ public class Inventory : MonoBehaviour, ISavable
         {
             Item misc = Instantiate(PrefabIDs.prefabIDs.Items[Data.Misc[i].ResourceId], InventroyHolder).GetComponent<Item>();
 
-            misc.Amount = Data.Misc[i].Amount;
+            misc.SetAmount(Data.Misc[i].Amount);
 
             AddItem(misc, false, Data.Misc[i].Amount);
         }
