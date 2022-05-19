@@ -47,7 +47,10 @@ public class SleepUi : IUi
 
     public void StartSleep()
     {
-        StartCoroutine(Sleep());
+        if (!IsSleeping)
+        {
+            StartCoroutine(Sleep());
+        }
     }
 
     public IEnumerator Sleep()
