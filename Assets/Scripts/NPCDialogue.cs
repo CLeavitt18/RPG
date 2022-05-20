@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,8 +48,6 @@ public class NPCDialogue : MonoBehaviour
 
         if (State == false)
         {
-            Player.player.SetPlayerStateActive();
-
             StoreButton.SetActive(true);
             LeaveButton.SetActive(true);
 
@@ -56,6 +55,7 @@ public class NPCDialogue : MonoBehaviour
             Accept.SetActive(false);
             Reject.SetActive(false);
 
+            StartCoroutine(CheckForInput());
         }
         else
         {
@@ -113,6 +113,20 @@ public class NPCDialogue : MonoBehaviour
                 QuestButton.SetActive(!PlayerHasQuest);
             }
         }
+    }
+
+    private IEnumerator CheckForInput()
+    {
+        while(!Input.GetButtonUp("Fire1"))
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return new WaitForEndOfFrame();
+
+        Player.player.SetPlayerStateActive();
+
+        yield break;
     }
 
     public void SetNPCQuest()
