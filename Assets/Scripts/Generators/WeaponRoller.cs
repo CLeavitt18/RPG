@@ -143,7 +143,7 @@ public class WeaponRoller : MonoBehaviour
     {
         GameObject weapon = Instantiate(PrefabIDs.prefabIDs.WeaponHolder);
         WeaponHolder WeaponRef = weapon.GetComponent<WeaponHolder>();
-
+        
         WeaponRef.Materials[0] = (MaterialType)pri_Id;
         WeaponRef.Materials[1] = (MaterialType)sec_Id;
         WeaponRef.Materials[2] = (MaterialType)ter_Id;

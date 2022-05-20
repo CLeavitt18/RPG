@@ -121,7 +121,7 @@ public class ItemData
 
 
 [Serializable]
-public class WeaponStats
+public class WeaponStatsData
 {
     public int LifeSteal;
     public int CritDamage;
@@ -133,7 +133,6 @@ public class WeaponStats
     public int Teritiary;
     public int CurrentDurability;
     public int MaxDurability;
-    public int AltAnimatorId;
     public int Amount;
     public int Value;
     public int Weight;
@@ -149,6 +148,43 @@ public class WeaponStats
     public MaterialType[] Materials;
 
     public float[] Rarity;
+
+    public float AttacksPerSecond;
+
+    public string Name;
+    public string AttackAnimationName;
+    public string PwrAttackAnimationName;
+}
+
+[Serializable]
+public class WeaponStats
+{
+    public SkillType WeaponSkillType;
+    public HandType HandType;
+    public MaterialType Materail;
+    
+    public int LifeSteal;
+    public int CritDamage;
+    public GameObject Primary;
+    public GameObject Secoundary;
+    public GameObject Teritiary;
+    public int CurrentDurability;
+    public int MaxDurability;
+    public int Amount;
+    public int Value;
+    public int Weight;
+
+    public int[] StatusChance;
+
+    public DamageTypeStruct[] DamageRanges;
+
+    public RuntimeAnimatorController[] AnimatorId = new RuntimeAnimatorController[2];
+    
+    public WeaponType Type;
+
+    public MaterialType[] Materials = new MaterialType[3];
+
+    public Color Rarity;
 
     public float AttacksPerSecond;
 

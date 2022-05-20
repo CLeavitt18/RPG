@@ -11,7 +11,7 @@ public class InventoryData
     public int NumOfResources;
     public int NumOfMisc;
 
-    public WeaponStats[] Weapons;
+    public WeaponStatsData[] Weapons;
 
     public ArmourStats[] Armour;
 
@@ -34,12 +34,12 @@ public class InventoryData
         end = inventory.GetStart(GlobalValues.ArmourStart);
 
         NumOfWeapons = end;
-        Weapons = new WeaponStats[NumOfWeapons];
+        Weapons = new WeaponStatsData[NumOfWeapons];
         id = 0;
 
         for (int i = start; i < end; i++)
         {
-            Weapons[id] = new WeaponStats();
+            Weapons[id] = new WeaponStatsData();
 
             WeaponHolder WeaponH = inventory[i].GetComponent<WeaponHolder>();
 

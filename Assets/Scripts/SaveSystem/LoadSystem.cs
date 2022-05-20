@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class LoadSystem
 {
-    public static void LoadItem(WeaponStats FromWeapon, WeaponHolder ToWeapon)
+    public static void LoadItem(WeaponStatsData FromWeapon, WeaponHolder ToWeapon)
     {
         ToWeapon.CritDamage = FromWeapon.CritDamage;
         ToWeapon.Type = FromWeapon.Type;
@@ -215,7 +215,7 @@ public static class LoadSystem
         return ToQuest;
     }
 
-    public static void LoadItem(WeaponHolder FromWeapon, WeaponStats ToWeapon)
+    public static void LoadItem(WeaponHolder FromWeapon, WeaponStatsData ToWeapon)
     {
         ToWeapon.CritDamage = FromWeapon.GetCrit();
         ToWeapon.Type = FromWeapon.GetWeaponType();
