@@ -111,9 +111,54 @@ public class WeaponHolder : Item
     {
         if (Primary != null)
         {
-            Debug.Log("weapon State alerady set");
+            Debug.Log("Weapon State alerady set");
             return;
         }
+
+        SkillType = stats.WeaponSkillType;
+        HandType = stats.HandType;
+        Type = stats.Type;
+
+        Material = stats.Material;
+
+        LifeSteal = stats.LifeSteal;
+        CritDamage = stats.CritDamage;
+        PwrAttackDamage = stats.PwrAttackDamage;
+
+        Primary = stats.Primary;
+        Secoundary = stats.Secoundary;
+        Teritiary = stats.Teritiary;
+
+        CurrentDurability = stats.CurrentDurability;
+        MaxDurability = stats.MaxDurability;
+
+        SetAmount(stats.Amount);
+        SetValue(stats.Value);
+        SetWeight(stats.Weight);
+        SetRarity(stats.Rarity);
+        SetName(stats.Name);
+
+        for (int i = 0; i < stats.StatusChance.Count; i++)
+        {
+            StatusChance.Add(stats.StatusChance[i]);
+        }
+
+        for (int i = 0; i < stats.DamageRanges.Count; i++)
+        {
+            DamageRanges[i] = stats.DamageRanges[i];
+        }
+
+        Animator[0] = stats.Animator[0];
+        Animator[1] = stats.Animator[1];
+        
+        Materials[0] = stats.Materials[0];
+        Materials[1] = stats.Materials[1];
+        Materials[2] = stats.Materials[2];
+
+        ActionsPerSecond = stats.ActionsPerSecond;
+
+        AttackAnimationName = stats.AttackAnimationName;
+        PwrAttackAnimationName = stats.PwrAttackAnimationName;
 
         try
         {

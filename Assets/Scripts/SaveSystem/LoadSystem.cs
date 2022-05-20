@@ -8,6 +8,7 @@ public static class LoadSystem
         WeaponStats stats = new WeaponStats();
 
         stats.CritDamage = FromWeapon.CritDamage;
+        stats.PwrAttackDamage = FromWeapon.PwrAttackDamage;
         stats.Type = FromWeapon.Type;
         stats.WeaponSkillType = (SkillType)FromWeapon.WeaponSkillType;
         stats.HandType = (HandType)FromWeapon.HandType;
@@ -220,6 +221,7 @@ public static class LoadSystem
     public static void LoadItem(WeaponHolder FromWeapon, WeaponStatsData ToWeapon)
     {
         ToWeapon.CritDamage = FromWeapon.GetCrit();
+        ToWeapon.PwrAttackDamage = FromWeapon.GetPowerAttack();
         ToWeapon.Type = FromWeapon.GetWeaponType();
         ToWeapon.WeaponSkillType = (int)FromWeapon.GetSkill();
         ToWeapon.HandType = (int)FromWeapon.GetHandType();
