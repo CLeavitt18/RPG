@@ -87,7 +87,7 @@ public static class LoadSystem
 
     public static void LoadItem(SpellHolderData FromSpell, SpellHolder ToSpell)
     {
-        ToSpell.Spells = new Spell[FromSpell.SpellsData.Length];
+        ToSpell.Spells = new Spell[3];
 
         for (int i = 0; i < FromSpell.SpellsData.Length; i++)
         {
@@ -365,13 +365,15 @@ public static class LoadSystem
 
     public static void LoadItem(SpellHolder FromSpell, SpellHolderData ToSpell)
     {
-        ToSpell.SpellsData = new SpellData[FromSpell.GetNumOfSpells()];
+        ToSpell.SpellsData = new SpellData[3];
 
         for (int i = 0; i < FromSpell.Spells.Length; i++)
         {
             if (FromSpell.Spells[i] == null)
             {
-                break;
+                ToSpell.SpellsData[i] = new SpellData();
+                ToSpell.SpellsData[i].SpellTypeId = (int)SpellType.None;
+                continue;
             }
 
             Spell SpellH = FromSpell.Spells[i];
