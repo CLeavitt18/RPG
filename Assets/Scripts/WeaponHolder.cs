@@ -107,8 +107,14 @@ public class WeaponHolder : Item
         HitManagerRef = null;
     }
 
-    public void SetWeaponState()
+    public void SetWeaponState(WeaponStats stats)
     {
+        if (Primary != null)
+        {
+            Debug.Log("weapon State alerady set");
+            return;
+        }
+
         try
         {
             WeaponSpawn = Spawns[(int)Type];
@@ -173,15 +179,6 @@ public class WeaponHolder : Item
     public void DecrementDurability()
     {
         CurrentDurability--;
-    }
-
-    public void SetStats()
-    {
-        if (Primary != null)
-        {
-            Debug.Log("weapon State alerady set");
-            return;
-        }
     }
 
     public SkillType GetSkill()

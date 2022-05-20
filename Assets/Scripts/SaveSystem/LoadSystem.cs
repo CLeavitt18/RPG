@@ -5,27 +5,29 @@ public static class LoadSystem
 {
     public static void LoadItem(WeaponStatsData FromWeapon, WeaponHolder ToWeapon)
     {
-        ToWeapon.CritDamage = FromWeapon.CritDamage;
-        ToWeapon.Type = FromWeapon.Type;
-        ToWeapon.SetSkill((SkillType)FromWeapon.WeaponSkillType);
-        ToWeapon.HandType = (HandType)FromWeapon.HandType;
+        WeaponStats stats = new WeaponStats();
+
+        stats.CritDamage = FromWeapon.CritDamage;
+        stats.Type = FromWeapon.Type;
+        stats.WeaponSkillType = (SkillType)FromWeapon.WeaponSkillType;
+        stats.HandType = (HandType)FromWeapon.HandType;
 
         for (int i = 0; i < FromWeapon.DamageRanges.Length; i++)
         {
-            ToWeapon.DamageRanges.Add(FromWeapon.DamageRanges[i]);
-            ToWeapon.StatusChance.Add(FromWeapon.StatusChance[i]);
+            stats.DamageRanges.Add(FromWeapon.DamageRanges[i]);
+            stats.StatusChance.Add(FromWeapon.StatusChance[i]);
         }
 
-        ToWeapon.ActionsPerSecond = FromWeapon.AttacksPerSecond;
-        ToWeapon.SetWeight(FromWeapon.Weight);
-        ToWeapon.SetValue(FromWeapon.Value);
-        ToWeapon.SetName(FromWeapon.Name);
-        ToWeapon.LifeSteal = FromWeapon.LifeSteal;
-        ToWeapon.CurrentDurability = FromWeapon.CurrentDurability;
-        ToWeapon.MaxDurability = FromWeapon.MaxDurability;
-        ToWeapon.AttackAnimationName = FromWeapon.AttackAnimationName;
-        ToWeapon.PwrAttackAnimationName = FromWeapon.PwrAttackAnimationName;
-        ToWeapon.SetAmount(FromWeapon.Amount);
+        stats.ActionsPerSecond = FromWeapon.AttacksPerSecond;
+        stats.Weight = FromWeapon.Weight;
+        stats.Value = FromWeapon.Value;
+        stats.Name = FromWeapon.Name;
+        stats.LifeSteal = FromWeapon.LifeSteal;
+        stats.CurrentDurability = FromWeapon.CurrentDurability;
+        stats.MaxDurability = FromWeapon.MaxDurability;
+        stats.AttackAnimationName = FromWeapon.AttackAnimationName;
+        stats.PwrAttackAnimationName = FromWeapon.PwrAttackAnimationName;
+        stats.Amount = FromWeapon.Amount;
 
         Color color = new Color(
             FromWeapon.Rarity[0], 
@@ -33,21 +35,21 @@ public static class LoadSystem
             FromWeapon.Rarity[2],
             FromWeapon.Rarity[3]);
 
-        ToWeapon.SetRarity(color);
+        stats.Rarity = color;
 
         for (int i = 0; i < 3; i++)
         {
-            ToWeapon.Materials[i] = FromWeapon.Materials[i];
+            stats.Materials[i] = FromWeapon.Materials[i];
         }
 
-        ToWeapon.Material = PrefabIDs.prefabIDs.WeaponMaterials[FromWeapon.Materail];
-        ToWeapon.Primary = PrefabIDs.prefabIDs.WeaponParts[FromWeapon.Primary];
-        ToWeapon.Secoundary = PrefabIDs.prefabIDs.WeaponParts[FromWeapon.Secoundary];
-        ToWeapon.Teritiary = PrefabIDs.prefabIDs.WeaponParts[FromWeapon.Teritiary];
-        ToWeapon.Animator[0] = PrefabIDs.prefabIDs.Animators[FromWeapon.AnimatorId[0]];
-        ToWeapon.Animator[1] = PrefabIDs.prefabIDs.Animators[FromWeapon.AnimatorId[1]];
+        stats.Material = PrefabIDs.prefabIDs.WeaponMaterials[FromWeapon.Material];
+        stats.Primary = PrefabIDs.prefabIDs.WeaponParts[FromWeapon.Primary];
+        stats.Secoundary = PrefabIDs.prefabIDs.WeaponParts[FromWeapon.Secoundary];
+        stats.Teritiary = PrefabIDs.prefabIDs.WeaponParts[FromWeapon.Teritiary];
+        stats.Animator[0] = PrefabIDs.prefabIDs.Animators[FromWeapon.AnimatorId[0]];
+        stats.Animator[1] = PrefabIDs.prefabIDs.Animators[FromWeapon.AnimatorId[1]];
 
-        ToWeapon.SetWeaponState();
+        ToWeapon.SetWeaponState(stats);
     }
 
     public static void LoadItem(ArmourStats FromArmour, ArmourHolder ToArmour)
@@ -266,7 +268,7 @@ public static class LoadSystem
         {
             if (PrefabIDs.prefabIDs.WeaponMaterials[y] == FromWeapon.GetMaterial())
             {
-                ToWeapon.Materail = y;
+                ToWeapon.Material = y;
                 break;
             }
         }

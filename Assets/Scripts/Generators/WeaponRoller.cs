@@ -143,10 +143,12 @@ public class WeaponRoller : MonoBehaviour
     {
         GameObject weapon = Instantiate(PrefabIDs.prefabIDs.WeaponHolder);
         WeaponHolder WeaponRef = weapon.GetComponent<WeaponHolder>();
-        
-        WeaponRef.Materials[0] = (MaterialType)pri_Id;
-        WeaponRef.Materials[1] = (MaterialType)sec_Id;
-        WeaponRef.Materials[2] = (MaterialType)ter_Id;
+
+        WeaponStats stats = new WeaponStats();
+
+        stats.Materials[0] = (MaterialType)pri_Id;
+        stats.Materials[1] = (MaterialType)sec_Id;
+        stats.Materials[2] = (MaterialType)ter_Id;
 
         float multi;
 
@@ -180,25 +182,25 @@ public class WeaponRoller : MonoBehaviour
             }
         }
 
-        WeaponRef.SetName(name);
+        stats.Name = name;
 
-        WeaponRef.Type = baseWeapon.Type;
-        WeaponRef.SetSkill(baseWeapon.WeaponSkillType);
-        WeaponRef.HandType = baseWeapon.HandType;
+        stats.Type = baseWeapon.Type;
+        stats.WeaponSkillType = baseWeapon.WeaponSkillType;
+        stats.HandType = baseWeapon.HandType;
 
-        WeaponRef.CritDamage = baseWeapon.CritDamage;
+        stats.CritDamage = baseWeapon.CritDamage;
 
-        WeaponRef.Primary = primary;
+        stats.Primary = primary;
 
-        WeaponRef.Secoundary = secondary.WeaponPart;
-        WeaponRef.Teritiary = tertiary.WeaponPart;
+        stats.Secoundary = secondary.WeaponPart;
+        stats.Teritiary = tertiary.WeaponPart;
 
-        WeaponRef.ActionsPerSecond = baseWeapon.AttacksPerSecond - (baseWeapon.AttacksPerSecond * ((sec_Id * 0.005f) + (ter_Id * 0.005f)));
-        WeaponRef.ActionsPerSecond = Mathf.Round(WeaponRef.GetAttackSpeed() * 1000) / 1000;
+        stats.ActionsPerSecond = baseWeapon.AttacksPerSecond - (baseWeapon.AttacksPerSecond * ((sec_Id * 0.005f) + (ter_Id * 0.005f)));
+        stats.ActionsPerSecond = Mathf.Round(stats.ActionsPerSecond * 1000) / 1000;
 
         int weight = (int)(baseWeapon.Weigth * (1f + (0.02f * ((float)pri_Id + sec_Id + ter_Id))));
 
-        WeaponRef.SetWeight(weight);
+        stats.Weight = weight;
 
         int averageDamage = 0;
 
@@ -241,7 +243,7 @@ public class WeaponRoller : MonoBehaviour
 
             };
 
-            WeaponRef.DamageRanges.Add(damageStruct);
+            stats.DamageRanges.Add(damageStruct);
 
             temp = damageStruct.LDamage;
             temp += damageStruct.HDamage;
@@ -250,7 +252,7 @@ public class WeaponRoller : MonoBehaviour
             averageDamage += temp;
         }
 
-        averageDamage = (int)(averageDamage * WeaponRef.GetAttackSpeed());
+        averageDamage = (int)(averageDamage * stats.ActionsPerSecond);
 
 
         float value = baseWeapon.Values[pri_Id];
@@ -260,48 +262,48 @@ public class WeaponRoller : MonoBehaviour
         value *= 1.0f + (averageDamage / 100.0f);
         value *= cat.ValueMulti;
 
-        WeaponRef.SetValue((int)value);
+        stats.Value = (int)value;
 
-        for (int i = 0; i < WeaponRef.GetDamageRangesCount(); i++)
+        for (int i = 0; i < stats.DamageRanges.Count; i++)
         {
-            WeaponRef.StatusChance.Add(60);
+            stats.StatusChance.Add(60);
         }
 
-        WeaponRef.MaxDurability = (int)(baseWeapon.Durability *
+        stats.MaxDurability = (int)(baseWeapon.Durability *
             (1f + (.2f * (pri_Id + sec_Id + ter_Id))) * multi);
-        WeaponRef.CurrentDurability = WeaponRef.MaxDurability;
+        stats.CurrentDurability = stats.MaxDurability;
 
         for (int i = 0; i < 2; i++)
         {
-            WeaponRef.Animator[i] = baseWeapon.Animator[i];
+            stats.Animator[i] = baseWeapon.Animator[i];
         }
 
-        WeaponRef.LifeSteal = baseWeapon.LifeSteal;
-        WeaponRef.PwrAttackDamage = baseWeapon.PwrAttackDamage;
+        stats.LifeSteal = baseWeapon.LifeSteal;
+        stats.PwrAttackDamage = baseWeapon.PwrAttackDamage;
 
-        WeaponRef.AttackAnimationName = baseWeapon.AttackAnimationName;
-        WeaponRef.PwrAttackAnimationName = baseWeapon.PwrAttackAnimationName;
+        stats.AttackAnimationName = baseWeapon.AttackAnimationName;
+        stats.PwrAttackAnimationName = baseWeapon.PwrAttackAnimationName;
 
-        WeaponRef.SetRarity(GlobalValues.rarities[rarityId]);
+        stats.Rarity = GlobalValues.rarities[rarityId];
 
         if (cat_Id < 6)
         {
-            WeaponRef.Material = WeaponMaterials[pri_Id];
+            stats.Material = WeaponMaterials[pri_Id];
         }
         else if (cat_Id < 12)
         {
-            WeaponRef.Material = FireMaterials[pri_Id];
+            stats.Material = FireMaterials[pri_Id];
         }
         else if (cat_Id < 18)
         {
-            WeaponRef.Material = LightningMaterials[pri_Id];
+            stats.Material = LightningMaterials[pri_Id];
         }
         else
         {
-            WeaponRef.Material = IceMaterials[pri_Id];
+            stats.Material = IceMaterials[pri_Id];
         }
 
-        WeaponRef.SetWeaponState();
+        WeaponRef.SetWeaponState(stats);
 
         return weapon.GetComponent<Item>();
     }

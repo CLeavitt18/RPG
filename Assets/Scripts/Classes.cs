@@ -125,9 +125,10 @@ public class WeaponStatsData
 {
     public int LifeSteal;
     public int CritDamage;
+    public int PwrAttackDamage;
     public int WeaponSkillType;
     public int HandType;
-    public int Materail;
+    public int Material;
     public int Primary;
     public int Secoundary;
     public int Teritiary;
@@ -161,10 +162,11 @@ public class WeaponStats
 {
     public SkillType WeaponSkillType;
     public HandType HandType;
-    public MaterialType Materail;
+    public Material Material;
     
     public int LifeSteal;
     public int CritDamage;
+    public int PwrAttackDamage;
     public GameObject Primary;
     public GameObject Secoundary;
     public GameObject Teritiary;
@@ -174,11 +176,11 @@ public class WeaponStats
     public int Value;
     public int Weight;
 
-    public int[] StatusChance;
+    public List<int> StatusChance;
 
-    public DamageTypeStruct[] DamageRanges;
+    public List<DamageTypeStruct> DamageRanges;
 
-    public RuntimeAnimatorController[] AnimatorId = new RuntimeAnimatorController[2];
+    public RuntimeAnimatorController[] Animator = new RuntimeAnimatorController[2];
     
     public WeaponType Type;
 
@@ -186,7 +188,7 @@ public class WeaponStats
 
     public Color Rarity;
 
-    public float AttacksPerSecond;
+    public float ActionsPerSecond;
 
     public string Name;
     public string AttackAnimationName;
