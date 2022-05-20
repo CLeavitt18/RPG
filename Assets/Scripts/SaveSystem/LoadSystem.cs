@@ -220,7 +220,7 @@ public static class LoadSystem
         ToWeapon.CritDamage = FromWeapon.CritDamage;
         ToWeapon.Type = FromWeapon.Type;
         ToWeapon.WeaponSkillType = (int)FromWeapon.GetSkill();
-        ToWeapon.HandType = (int)FromWeapon.HandType;
+        ToWeapon.HandType = (int)FromWeapon.GetHandType();
 
         ToWeapon.DamageRanges = new DamageTypeStruct[FromWeapon.DamageRanges.Count];
         ToWeapon.StatusChance = new int[FromWeapon.StatusChance.Count];
@@ -235,7 +235,7 @@ public static class LoadSystem
         ToWeapon.Weight = FromWeapon.GetWeight();
         ToWeapon.Value = FromWeapon.GetValue();
         ToWeapon.Name = FromWeapon.GetName();
-        ToWeapon.LifeSteal = FromWeapon.LifeSteal;
+        ToWeapon.LifeSteal = FromWeapon.GetLifeSteal();
         ToWeapon.CurrentDurability = FromWeapon.CurrentDurability;
         ToWeapon.MaxDurability = FromWeapon.MaxDurability;
         ToWeapon.AttackAnimationName = FromWeapon.AttackAnimationName;

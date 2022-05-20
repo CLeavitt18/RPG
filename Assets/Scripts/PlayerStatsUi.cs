@@ -256,7 +256,7 @@ public class PlayerStatsUi : IUi
                         text = Instantiate(StatTextPrefab, StatsListHolder);
 
                         sb.Append("Life Steal: ");
-                        sb.Append(tempWeapon.LifeSteal);
+                        sb.Append(tempWeapon.GetLifeSteal());
                         sb.Append("%");
 
                         text.text = sb.ToString();

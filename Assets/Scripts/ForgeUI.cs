@@ -72,7 +72,14 @@ public class ForgeUI : MonoBehaviour
             Destroy(weapon.gameObject);
         }
 
-        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
+        weapon = Roller.roller.CreateWeapon(
+            (WeaponType)ItemCatogoryType, 
+            mat_Id, 
+            sec_Id, 
+            ter_Id, 
+            Cat_ID, 
+            Player.player.GetSkillLevel((int)SkillType.Smithing))
+            .GetComponent<WeaponHolder>();
 
         PreviewItem();
         DisplayResourceCosts();

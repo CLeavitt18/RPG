@@ -83,7 +83,7 @@ public class LivingEntities : MonoBehaviour
 
             hand.Stats.SourceHand = HandType;
 
-            hand.Stats.LifeSteal = Weapon.LifeSteal;
+            hand.Stats.LifeSteal = Weapon.GetLifeSteal();
 
             for (int i = 0; i < Weapon.StatusChance.Count; i++)
             {
@@ -411,7 +411,7 @@ public class LivingEntities : MonoBehaviour
             case GlobalValues.WeaponTag:
                 WeaponHolder weaponH = Item.GetComponent<WeaponHolder>();
 
-                if (weaponH.HandType == global::HandType.TwoHanded)
+                if (weaponH.GetHandType() == global::HandType.TwoHanded)
                 {
                     if (Hands[0].HeldItem != null && Hands[0].HeldItem != Item)
                     {

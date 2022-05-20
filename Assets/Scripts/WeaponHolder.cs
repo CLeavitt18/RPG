@@ -7,9 +7,9 @@ public class WeaponHolder : Item
 {
     [SerializeField] private SkillType SkillType;
 
-    public HandType HandType;
+    [SerializeField] private HandType HandType;
 
-    public int LifeSteal;
+    [SerializeField] private int LifeSteal;
     public int PwrAttackDamage;
     public int CurrentDurability;
     public int MaxDurability;
@@ -181,13 +181,18 @@ public class WeaponHolder : Item
         }
     }
 
-    public void SetSkill(SkillType skill)
-    {
-        SkillType = skill;
-    }
-
     public SkillType GetSkill()
     {
         return SkillType;
+    }
+
+    public HandType GetHandType()
+    {
+        return HandType;
+    }
+
+    public int GetLifeSteal()
+    {
+        return LifeSteal;
     }
 }
