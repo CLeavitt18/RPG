@@ -703,9 +703,9 @@ public class Player : LivingEntities
 
             if (item is WeaponHolder weapon)
             {
-                for (int x = 0; x < weapon.DamageRanges.Count; x++)
+                for (int x = 0; x < weapon.GetDamageRangesCount(); x++)
                 {
-                    MeleeDamageMulti(i, weapon.DamageRanges[x].Type);
+                    MeleeDamageMulti(i, weapon.GetDamageType(i));
                 }
             }
             else //Item is SpellHolder

@@ -23,11 +23,11 @@ public class WeaponHitManager : HitManager
 
         WeaponHolder weapon = Stats.Parent.GetHeldItem(Stats.SourceHand).GetComponent<WeaponHolder>();
 
-        if (weapon.CurrentDurability > 0)
+        if (weapon.GetDurability() > 0)
         {
-            weapon.CurrentDurability--;
+            weapon.DecrementDurability();
         }
-        else if(weapon.MaxDurability != 0)
+        else if(weapon.GetMaxDurability() != 0)
         {
             return;
         }

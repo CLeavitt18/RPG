@@ -10,40 +10,38 @@ public class WeaponHolder : Item
     [SerializeField] private HandType HandType;
 
     [SerializeField] private int LifeSteal;
-    public int PwrAttackDamage;
-    public int CurrentDurability;
-    public int MaxDurability;
+    [SerializeField] private int PwrAttackDamage;
+    [SerializeField] private int CurrentDurability;
+    [SerializeField] private int MaxDurability;
 
-    public int CritDamage;
+    [SerializeField] private int CritDamage;
 
-    public List<int> StatusChance;
+    [SerializeField] private List<int> StatusChance;
     
-    public float ActionsPerSecond;
+    [SerializeField] private float ActionsPerSecond;
     
-    public List<DamageTypeStruct> DamageRanges;
+    [SerializeField] private List<DamageTypeStruct> DamageRanges;
 
     [SerializeField] private WeaponSpawns WeaponSpawn;
 
     [SerializeField] private WeaponSpawns[] Spawns;
 
-    [SerializeField] private List<DamageTypeStruct> _damageRanges;
+    [SerializeField] private GameObject Primary;
+    [SerializeField] private GameObject Secoundary;
+    [SerializeField] private GameObject Teritiary;
 
-    public GameObject Primary;
-    public GameObject Secoundary;
-    public GameObject Teritiary;
+    [SerializeField] private Material Material;
 
-    public Material Material;
+    [SerializeField] private MaterialType[] Materials = new MaterialType[3];
 
-    public MaterialType[] Materials = new MaterialType[3];
-
-    public WeaponHitManager HitManagerRef;
+    [SerializeField] private WeaponHitManager HitManagerRef;
     
-    public WeaponType Type;
+    [SerializeField] private WeaponType Type;
 
-    public RuntimeAnimatorController[] Animator = new RuntimeAnimatorController[2];
+    [SerializeField] private RuntimeAnimatorController[] Animator = new RuntimeAnimatorController[2];
 
-    public string AttackAnimationName;
-    public string PwrAttackAnimationName;
+    [SerializeField] private string AttackAnimationName;
+    [SerializeField] private string PwrAttackAnimationName;
 
 
     public override void SpawnItem()
@@ -172,6 +170,11 @@ public class WeaponHolder : Item
         return false;
     }
 
+    public void DecrementDurability()
+    {
+        CurrentDurability--;
+    }
+
     public void SetStats()
     {
         if (Primary != null)
@@ -194,5 +197,110 @@ public class WeaponHolder : Item
     public int GetLifeSteal()
     {
         return LifeSteal;
+    }
+
+    public int GetPowerAttack()
+    {
+        return PwrAttackDamage;
+    }
+
+    public int GetDurability()
+    {
+        return CurrentDurability;
+    }
+
+    public int GetMaxDurability()
+    {
+        return MaxDurability;
+    }
+
+    public int GetCrit()
+    {
+        return CritDamage;
+    }
+
+    public int GetStatusCount()
+    {
+        return StatusChance.Count;
+    }
+
+    public int GetStatus(int id)
+    {
+        return StatusChance[id];
+    }
+
+    public float GetAttackSpeed()
+    {
+        return ActionsPerSecond;
+    }
+
+    public int GetDamageRangesCount()
+    {
+        return DamageRanges.Count;
+    }
+
+    public int GetLowerRange(int id)
+    {
+        return DamageRanges[id].LDamage;
+    }
+
+    public int GetUpperRange(int id)
+    {
+        return DamageRanges[id].HDamage;
+    }
+
+    public DamageTypeEnum GetDamageType(int id)
+    {
+        return DamageRanges[id].Type;
+    }
+
+    public GameObject GetPrimary()
+    {
+        return Primary;
+    }
+
+    public GameObject GetSecoundary()
+    {
+        return Secoundary;
+    }
+
+    public GameObject GetTeritiary()
+    {
+        return Teritiary;
+    }
+
+    public Material GetMaterial()
+    {
+        return Material;
+    }
+
+    public MaterialType GetMaterialType(int id)
+    {
+        return Materials[id];
+    }
+
+    public WeaponHitManager GetHitManager()
+    {
+        return HitManagerRef;
+    }
+
+    public WeaponType GetWeaponType()
+    {
+        return Type;
+    }
+
+    public RuntimeAnimatorController GetAnimationController(int id)
+    {
+        return Animator[id];
+    }
+
+    public string GetAttackAnimationName()
+    {
+        return AttackAnimationName;
+    }
+
+    public string GetPwrAttackAnimationName()
+    {
+        return PwrAttackAnimationName;
     }
 }

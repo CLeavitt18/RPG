@@ -228,15 +228,15 @@ public class PlayerStatsUi : IUi
 
                         WeaponHolder weapon = heldItem.GetComponent<WeaponHolder>();
 
-                        for (int x = 0; x < weapon.DamageRanges.Count; x++)
+                        for (int x = 0; x < weapon.GetDamageRangesCount(); x++)
                         {
                             text = Instantiate(StatTextPrefab, StatsListHolder);
 
-                            sb.Append(weapon.DamageRanges[x].Type.ToString());
+                            sb.Append(weapon.GetDamageType(x).ToString());
                             sb.Append(": ");
-                            sb.Append(weapon.DamageRanges[x].LDamage.ToString("n0"));
+                            sb.Append(weapon.GetLowerRange(x).ToString("n0"));
                             sb.Append(" to ");
-                            sb.Append(weapon.DamageRanges[x].HDamage.ToString("n0"));
+                            sb.Append(weapon.GetUpperRange(x).ToString("n0"));
 
                             text.text = sb.ToString();
                             sb.Clear();
@@ -247,7 +247,7 @@ public class PlayerStatsUi : IUi
                         WeaponHolder tempWeapon = weapon as WeaponHolder;
 
                         sb.Append("Attacks Per Secound: ");
-                        sb.Append(tempWeapon.ActionsPerSecond);
+                        sb.Append(tempWeapon.GetAttackSpeed().ToString("0.00"));
 
                         text.text = sb.ToString();
 
@@ -261,9 +261,9 @@ public class PlayerStatsUi : IUi
 
                         text.text = sb.ToString();
 
-                        for (int i = 0; i < weapon.DamageRanges.Count; i++)
+                        for (int i = 0; i < weapon.GetDamageRangesCount(); i++)
                         {
-                            switch (weapon.DamageRanges[i].Type)
+                            switch (weapon.GetDamageType(i))
                             {
                                 case DamageTypeEnum.Physical:
                                     text = Instantiate(BannerPrefab, StatsListHolder);
@@ -275,7 +275,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Critical Chance: ");
-                                    sb.Append(weapon.StatusChance[i]);
+                                    sb.Append(weapon.GetStatus(i));
                                     sb.Append("%");
 
                                     text.text = sb.ToString();
@@ -287,7 +287,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Critital Damage: ");
-                                    sb.Append(weapon.CritDamage);
+                                    sb.Append(weapon.GetCrit());
                                     sb.Append("%");
 
                                     text.text = sb.ToString();
@@ -303,7 +303,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Burn Chance: ");
-                                    sb.Append(weapon.StatusChance[i]);
+                                    sb.Append(weapon.GetStatus(i));
                                     sb.Append("%");
 
                                     text.text = sb.ToString();
@@ -355,7 +355,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Chain Chance: ");
-                                    sb.Append(weapon.StatusChance[i]);
+                                    sb.Append(weapon.GetStatus(i));
                                     sb.Append("%");
 
                                     text.text = sb.ToString();
@@ -405,7 +405,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Chill Chance: ");
-                                    sb.Append(weapon.StatusChance[3]);
+                                    sb.Append(weapon.GetStatus(3));
                                     sb.Append("%");
 
                                     text.text = sb.ToString();
@@ -462,15 +462,15 @@ public class PlayerStatsUi : IUi
                         }*/
 
                         #region CreateMultiText
-                        for (int x = 0; x < weapon.DamageRanges.Count; x++)
+                        for (int x = 0; x < weapon.GetDamageRangesCount(); x++)
                         {
                             text = Instantiate(StatTextPrefab, StatsListHolder);
 
                             sb.Clear();
 
-                            sb.Append(weapon.DamageRanges[x].Type.ToString());
+                            sb.Append(weapon.GetDamageType(x).ToString());
                             sb.Append(" Damage: ");
-                            sb.Append(multi[(int)weapon.DamageRanges[x].Type]);
+                            sb.Append(multi[(int)weapon.GetDamageType(x)]);
 
                             text.text = sb.ToString();
 

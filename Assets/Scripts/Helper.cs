@@ -69,28 +69,28 @@ public class Helper : MonoBehaviour
 
         int DPS = 0;
 
-        switch (weapon.Type)
+        switch (weapon.GetWeaponType())
         {
             case WeaponType.Sword:
             case WeaponType.Dagger:
             case WeaponType.GreatSword:
 
                 sb.Append("Blade: ");
-                sb.Append(weapon.Materials[0].ToString());
+                sb.Append(weapon.GetMaterialType(0).ToString());
 
                 SpawnItemDetailSlot(sb.ToString(), t);
 
                 sb.Clear();
 
                 sb.Append("Hilt: ");
-                sb.Append(weapon.Materials[1].ToString());
+                sb.Append(weapon.GetMaterialType(1).ToString());
 
                 SpawnItemDetailSlot(sb.ToString(), t);
 
                 sb.Clear();
 
                 sb.Append("Grip: ");
-                sb.Append(weapon.Materials[2].ToString());
+                sb.Append(weapon.GetMaterialType(2).ToString());
 
                 SpawnItemDetailSlot(sb.ToString(), t);
 
@@ -100,21 +100,21 @@ public class Helper : MonoBehaviour
             case WeaponType.Axe:
 
                 sb.Append("Blade: ");
-                sb.Append(weapon.Materials[0].ToString());
+                sb.Append(weapon.GetMaterialType(0).ToString());
 
                 SpawnItemDetailSlot(sb.ToString(), t);
 
                 sb.Clear();
 
                 sb.Append("Top: ");
-                sb.Append(weapon.Materials[1].ToString());
+                sb.Append(weapon.GetMaterialType(1).ToString());
 
                 SpawnItemDetailSlot(sb.ToString(), t);
 
                 sb.Clear();
 
                 sb.Append("Handle: ");
-                sb.Append(weapon.Materials[2].ToString());
+                sb.Append(weapon.GetMaterialType(2).ToString());
 
                 SpawnItemDetailSlot(sb.ToString(), t);
 
@@ -127,17 +127,17 @@ public class Helper : MonoBehaviour
 
         SpawnItemDetailSlot("", t);
 
-        for (int i = 0; i < weapon.DamageRanges.Count; i++)
+        for (int i = 0; i < weapon.GetDamageRangesCount(); i++)
         {
-            sb.Append(weapon.DamageRanges[i].Type.ToString());
+            sb.Append(weapon.GetDamageType(i).ToString());
             sb.Append(": ");
-            sb.Append(weapon.DamageRanges[i].LDamage.ToString("n0"));
+            sb.Append(weapon.GetLowerRange(i).ToString("n0"));
             sb.Append(" to ");
-            sb.Append(weapon.DamageRanges[i].HDamage.ToString("n0"));
+            sb.Append(weapon.GetUpperRange(i).ToString("n0"));
 
             SpawnItemDetailSlot(sb.ToString(), t);
 
-            TempDamage = (weapon.DamageRanges[i].LDamage + weapon.DamageRanges[i].HDamage) * .5f;
+            TempDamage = (weapon.GetLowerRange(i) + weapon.GetUpperRange(i)) * .5f;
             DPS += (int)TempDamage;
 
             sb.Clear();
@@ -153,7 +153,7 @@ public class Helper : MonoBehaviour
         sb.Clear();
 
         sb.Append("Attack Speed: ");
-        sb.Append(weapon.ActionsPerSecond.ToString("0.00"));
+        sb.Append(weapon.GetAttackSpeed().ToString("0.00"));
 
         SpawnItemDetailSlot(sb.ToString(), t);
     }

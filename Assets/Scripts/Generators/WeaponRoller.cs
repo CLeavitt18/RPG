@@ -194,7 +194,7 @@ public class WeaponRoller : MonoBehaviour
         WeaponRef.Teritiary = tertiary.WeaponPart;
 
         WeaponRef.ActionsPerSecond = baseWeapon.AttacksPerSecond - (baseWeapon.AttacksPerSecond * ((sec_Id * 0.005f) + (ter_Id * 0.005f)));
-        WeaponRef.ActionsPerSecond = Mathf.Round(WeaponRef.ActionsPerSecond * 1000) / 1000;
+        WeaponRef.ActionsPerSecond = Mathf.Round(WeaponRef.GetAttackSpeed() * 1000) / 1000;
 
         int weight = (int)(baseWeapon.Weigth * (1f + (0.02f * ((float)pri_Id + sec_Id + ter_Id))));
 
@@ -250,7 +250,7 @@ public class WeaponRoller : MonoBehaviour
             averageDamage += temp;
         }
 
-        averageDamage = (int)(averageDamage * WeaponRef.ActionsPerSecond);
+        averageDamage = (int)(averageDamage * WeaponRef.GetAttackSpeed());
 
 
         float value = baseWeapon.Values[pri_Id];
@@ -262,7 +262,7 @@ public class WeaponRoller : MonoBehaviour
 
         WeaponRef.SetValue((int)value);
 
-        for (int i = 0; i < WeaponRef.DamageRanges.Count; i++)
+        for (int i = 0; i < WeaponRef.GetDamageRangesCount(); i++)
         {
             WeaponRef.StatusChance.Add(60);
         }

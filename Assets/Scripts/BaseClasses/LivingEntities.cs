@@ -74,24 +74,24 @@ public class LivingEntities : MonoBehaviour
             WeaponHitManager PrimaryRef;
             WeaponHolder Weapon;
 
-            PrimaryRef = hand.HeldItem.GetComponent<WeaponHolder>().HitManagerRef;
+            PrimaryRef = hand.HeldItem.GetComponent<WeaponHolder>().GetHitManager();
             Weapon = hand.HeldItem.GetComponent<WeaponHolder>();
 
-            StatusChances = new int[Weapon.StatusChance.Count];
+            StatusChances = new int[Weapon.GetStatusCount()];
 
-            hand.Animator.speed = Weapon.ActionsPerSecond * ActionSpeed;
+            hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed;
 
             hand.Stats.SourceHand = HandType;
 
             hand.Stats.LifeSteal = Weapon.GetLifeSteal();
 
-            for (int i = 0; i < Weapon.StatusChance.Count; i++)
+            for (int i = 0; i < StatusChances.Length; i++)
             {
-                StatusChances[i] = Weapon.StatusChance[i];
+                StatusChances[i] = Weapon.GetStatus(i);
 
                 if (Powers[1].Contains(2) && i != 0)
                 {
-                    if (Weapon.DamageRanges[i].Type == DamageTypeEnum.Fire)
+                    if (Weapon.GetDamageType(i) == DamageTypeEnum.Fire)
                     {
                         StatusChances[i] = 100;
                     }
@@ -101,16 +101,16 @@ public class LivingEntities : MonoBehaviour
                     }
                 }
 
-                if (Powers[1].Contains(5) && Weapon.DamageRanges[i].Type == DamageTypeEnum.Fire)
+                if (Powers[1].Contains(5) && Weapon.GetDamageType(i) == DamageTypeEnum.Fire)
                 {
                     StatusChances[i] = 0;
                 }
             }
 
-            for (int i = 0; i < Weapon.DamageRanges.Count; i++)
+            for (int i = 0; i < Weapon.GetDamageRangesCount(); i++)
             {
-                hand.Stats.DamageValues.Add(CalculateMeleeDamage(Weapon, HandType, Weapon.DamageRanges[i].Type, i));
-                hand.Stats.DamageTypes.Add(Weapon.DamageRanges[i].Type);
+                hand.Stats.DamageValues.Add(CalculateMeleeDamage(Weapon, HandType, Weapon.GetDamageType(i), i));
+                hand.Stats.DamageTypes.Add(Weapon.GetDamageType(i));
 
                 int Chance;
                 Chance = Random.Range(1, 101);
@@ -132,10 +132,10 @@ public class LivingEntities : MonoBehaviour
 
                 if (LoseAttribute((int)cost, AttributesEnum.Stamina))
                 {
-                    hand.Stats.DamageValues[0] = (int)(hand.Stats.DamageValues[0] * (1 + Weapon.PwrAttackDamage * .01f));
-                    hand.NextAttack = Time.time + (1f / Weapon.ActionsPerSecond * ActionSpeed * 1.25f);
-                    hand.Animator.speed = Weapon.ActionsPerSecond * ActionSpeed * 1.25f;
-                    hand.Animator.SetTrigger(Weapon.PwrAttackAnimationName);
+                    hand.Stats.DamageValues[0] = (int)(hand.Stats.DamageValues[0] * (1 + Weapon.GetPowerAttack() * .01f));
+                    hand.NextAttack = Time.time + (1f / Weapon.GetAttackSpeed() * ActionSpeed * 1.25f);
+                    hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed * 1.25f;
+                    hand.Animator.SetTrigger(Weapon.GetPwrAttackAnimationName());
                 }
                 else
                 {
@@ -150,9 +150,9 @@ public class LivingEntities : MonoBehaviour
             }
             else
             {
-                hand.NextAttack = Time.time + (1f / Weapon.ActionsPerSecond * ActionSpeed);
-                hand.Animator.speed = Weapon.ActionsPerSecond * ActionSpeed;
-                hand.Animator.SetTrigger(Weapon.AttackAnimationName);
+                hand.NextAttack = Time.time + (1f / Weapon.GetAttackSpeed() * ActionSpeed);
+                hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed;
+                hand.Animator.SetTrigger(Weapon.GetAttackAnimationName());
             }
 
             hand.ChannelTime = 0;
@@ -163,7 +163,7 @@ public class LivingEntities : MonoBehaviour
 
             yield return new WaitForSeconds(hand.Animator.speed);
 
-            hand.Animator.speed = Weapon.ActionsPerSecond * ActionSpeed;
+            hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed;
 
             PrimaryRef.Stats.Clear();
         }
@@ -327,8 +327,8 @@ public class LivingEntities : MonoBehaviour
 
         hand.Animator.enabled = true;
 
-        hand.Animator.runtimeAnimatorController = weapon.Animator[HandType];
-        hand.Animator.speed = weapon.ActionsPerSecond * ActionSpeed;
+        hand.Animator.runtimeAnimatorController = weapon.GetAnimationController(HandType);
+        hand.Animator.speed = weapon.GetAttackSpeed() * ActionSpeed;
     }
 
     protected void CreateSpell(int HandType, Spell SpellH)
@@ -445,9 +445,9 @@ public class LivingEntities : MonoBehaviour
 
                 CreateWeapon(HandType);
 
-                for (int i = 0; i < weaponH.DamageRanges.Count; i++)
+                for (int i = 0; i < weaponH.GetDamageRangesCount(); i++)
                 {
-                    MeleeDamageMulti(HandType, weaponH.DamageRanges[i].Type);
+                    MeleeDamageMulti(HandType, weaponH.GetDamageType(i));
                 }
                 break;
             case GlobalValues.ArmourTag:
@@ -782,7 +782,7 @@ public class LivingEntities : MonoBehaviour
     {
         float TempDamage;
 
-        TempDamage = Random.Range(Weapon.DamageRanges[id].LDamage, Weapon.DamageRanges[id].HDamage + 1);
+        TempDamage = Random.Range(Weapon.GetLowerRange(id), Weapon.GetUpperRange(id) + 1);
 
         TempDamage *= Hands[HandType].DamageMultis.Melee[(int)DamageType];
 
@@ -791,9 +791,9 @@ public class LivingEntities : MonoBehaviour
             case DamageTypeEnum.Physical:
                 int CriticalChance = Random.Range(0, 101);
 
-                if (CriticalChance <= Weapon.StatusChance[0])
+                if (CriticalChance <= Weapon.GetStatus(0))
                 {
-                    TempDamage *= 1 + (Weapon.CritDamage * .01f);
+                    TempDamage *= 1 + (Weapon.GetCrit() * .01f);
                     //Debug.Log("Critical " + TempDamage);
                 }
                 break;
@@ -828,9 +828,9 @@ public class LivingEntities : MonoBehaviour
                 break;
         }
 
-        if (Weapon.MaxDurability != 0)
+        if (Weapon.GetMaxDurability() != 0)
         {
-            TempDamage *= (float)Weapon.CurrentDurability / (float)Weapon.MaxDurability;
+            TempDamage *= (float)Weapon.GetDurability() / (float)Weapon.GetMaxDurability();
         }
 
         return (int)TempDamage;

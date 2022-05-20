@@ -259,16 +259,16 @@ public class ForgeUI : MonoBehaviour
         float ExpValue = 0;
         int Tracker = 0;
 
-        for (int i = 0; i < WeaponRef.DamageRanges.Count; i++)
+        for (int i = 0; i < WeaponRef.GetDamageRangesCount(); i++)
         {
-            if (WeaponRef.DamageRanges[i].HDamage > 0)
+            if (WeaponRef.GetUpperRange(i) > 0)
             {
-                ExpValue += WeaponRef.DamageRanges[i].LDamage + WeaponRef.DamageRanges[i].HDamage;
+                ExpValue += WeaponRef.GetLowerRange(i) + WeaponRef.GetUpperRange(i);
                 Tracker += 2;
             }
         }
 
-        Player.player.GainExp((long)((ExpValue * (1 / (float)Tracker)) * WeaponRef.ActionsPerSecond), (int)SkillType.Smithing);
+        Player.player.GainExp((long)((ExpValue * (1 / (float)Tracker)) * WeaponRef.GetAttackSpeed()), (int)SkillType.Smithing);
         Player.player.Inventory.AddItem(Item, true, 1);
         InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
 

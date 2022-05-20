@@ -177,10 +177,10 @@ public class Minion : AI
 
         WeaponHolder fist = entity.GetHeldItem(HandType).GetComponent<WeaponHolder>();
 
-        for (int i = 0; i < fist.DamageRanges.Count; i++)
+        for (int i = 0; i < fist.GetDamageRangesCount(); i++)
         {
-            fist.DamageRanges[i].LDamage = (int)(fist.DamageRanges[i].LDamage * (multi + matCatMulti));
-            fist.DamageRanges[i].HDamage = (int)(fist.DamageRanges[i].HDamage * (multi + matCatMulti));
+            fist.DamageRanges[i].LDamage = (int)(fist.GetLowerRange(i) * (multi + matCatMulti));
+            fist.DamageRanges[i].HDamage = (int)(fist.GetUpperRange(i) * (multi + matCatMulti));
         }
     }
 

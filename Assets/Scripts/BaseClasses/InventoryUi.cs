@@ -304,9 +304,9 @@ public class InventoryUi : IUi
 
                         WeaponHolder Weapon = Item.GetComponent<WeaponHolder>();
 
-                        sb = new StringBuilder(Weapon.CurrentDurability.ToString("n0"));
+                        sb = new StringBuilder(Weapon.GetDurability().ToString("n0"));
                         sb.Append('/');
-                        sb.Append(Weapon.MaxDurability.ToString("n0"));
+                        sb.Append(Weapon.GetMaxDurability().ToString("n0"));
 
                         MiscText.text = sb.ToString();
                     }

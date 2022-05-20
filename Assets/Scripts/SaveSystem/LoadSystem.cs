@@ -217,29 +217,35 @@ public static class LoadSystem
 
     public static void LoadItem(WeaponHolder FromWeapon, WeaponStats ToWeapon)
     {
-        ToWeapon.CritDamage = FromWeapon.CritDamage;
-        ToWeapon.Type = FromWeapon.Type;
+        ToWeapon.CritDamage = FromWeapon.GetCrit();
+        ToWeapon.Type = FromWeapon.GetWeaponType();
         ToWeapon.WeaponSkillType = (int)FromWeapon.GetSkill();
         ToWeapon.HandType = (int)FromWeapon.GetHandType();
 
-        ToWeapon.DamageRanges = new DamageTypeStruct[FromWeapon.DamageRanges.Count];
-        ToWeapon.StatusChance = new int[FromWeapon.StatusChance.Count];
+        ToWeapon.DamageRanges = new DamageTypeStruct[FromWeapon.GetDamageRangesCount()];
+        ToWeapon.StatusChance = new int[FromWeapon.GetStatusCount()];
 
-        for (int i = 0; i < FromWeapon.DamageRanges.Count; i++)
+        for (int i = 0; i < ToWeapon.DamageRanges.Length; i++)
         {
-            ToWeapon.DamageRanges[i] = FromWeapon.DamageRanges[i];
-            ToWeapon.StatusChance[i] = FromWeapon.StatusChance[i];
+            ToWeapon.DamageRanges[i] = new DamageTypeStruct()
+            { 
+               LDamage = FromWeapon.GetLowerRange(i),
+               HDamage = FromWeapon.GetUpperRange(i),
+               Type = FromWeapon.GetDamageType(i)
+            };
+                
+            ToWeapon.StatusChance[i] = FromWeapon.GetStatus(i);
         }
 
-        ToWeapon.AttacksPerSecond = FromWeapon.ActionsPerSecond;
+        ToWeapon.AttacksPerSecond = FromWeapon.GetAttackSpeed();
         ToWeapon.Weight = FromWeapon.GetWeight();
         ToWeapon.Value = FromWeapon.GetValue();
         ToWeapon.Name = FromWeapon.GetName();
         ToWeapon.LifeSteal = FromWeapon.GetLifeSteal();
-        ToWeapon.CurrentDurability = FromWeapon.CurrentDurability;
-        ToWeapon.MaxDurability = FromWeapon.MaxDurability;
-        ToWeapon.AttackAnimationName = FromWeapon.AttackAnimationName;
-        ToWeapon.PwrAttackAnimationName = FromWeapon.PwrAttackAnimationName;
+        ToWeapon.CurrentDurability = FromWeapon.GetDurability();
+        ToWeapon.MaxDurability = FromWeapon.GetMaxDurability();
+        ToWeapon.AttackAnimationName = FromWeapon.GetAttackAnimationName();
+        ToWeapon.PwrAttackAnimationName = FromWeapon.GetPwrAttackAnimationName();
         ToWeapon.Amount = FromWeapon.GetAmount();
 
         ToWeapon.Rarity = new float[4];
@@ -253,21 +259,25 @@ public static class LoadSystem
 
         for (int i = 0; i < 3; i++)
         {
-            ToWeapon.Materials[i] = FromWeapon.Materials[i];
+            ToWeapon.Materials[i] = FromWeapon.GetMaterialType(i);
         }
 
         for (int y = 0; y < PrefabIDs.prefabIDs.WeaponMaterials.Length; y++)
         {
-            if (PrefabIDs.prefabIDs.WeaponMaterials[y] == FromWeapon.Material)
+            if (PrefabIDs.prefabIDs.WeaponMaterials[y] == FromWeapon.GetMaterial())
             {
                 ToWeapon.Materail = y;
                 break;
             }
         }
 
+        GameObject primary = FromWeapon.GetPrimary();
+        GameObject secoundary = FromWeapon.GetSecoundary();
+        GameObject teritiary = FromWeapon.GetTeritiary();
+
         for (int y = 0; y < PrefabIDs.prefabIDs.WeaponParts.Length; y++)
         {
-            if (PrefabIDs.prefabIDs.WeaponParts[y] == FromWeapon.Primary)
+            if (PrefabIDs.prefabIDs.WeaponParts[y] == primary)
             {
                 ToWeapon.Primary = y;
                 break;
@@ -276,7 +286,7 @@ public static class LoadSystem
 
         for (int y = 0; y < PrefabIDs.prefabIDs.WeaponParts.Length; y++)
         {
-            if (PrefabIDs.prefabIDs.WeaponParts[y] == FromWeapon.Secoundary)
+            if (PrefabIDs.prefabIDs.WeaponParts[y] == secoundary )
             {
                 ToWeapon.Secoundary = y;
                 break;
@@ -285,7 +295,7 @@ public static class LoadSystem
 
         for (int y = 0; y < PrefabIDs.prefabIDs.WeaponParts.Length; y++)
         {
-            if (PrefabIDs.prefabIDs.WeaponParts[y] == FromWeapon.Teritiary)
+            if (PrefabIDs.prefabIDs.WeaponParts[y] == teritiary)
             {
                 ToWeapon.Teritiary = y;
                 break;
@@ -294,9 +304,11 @@ public static class LoadSystem
 
         for (int i = 0; i < 2; i++)
         {
+            RuntimeAnimatorController anime = FromWeapon.GetAnimationController(i);
+
             for (int x = 0; x < PrefabIDs.prefabIDs.Animators.Length; x++)
             {
-                if (PrefabIDs.prefabIDs.Animators[x] == FromWeapon.Animator[i])
+                if (PrefabIDs.prefabIDs.Animators[x] == anime)
                 {
                     ToWeapon.AnimatorId[i] = x;
                     break;
