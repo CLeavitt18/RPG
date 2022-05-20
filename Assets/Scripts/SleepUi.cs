@@ -18,6 +18,8 @@ public class SleepUi : IUi
     public override void Set()
     {
         _sleepUi.SetActive(true);
+
+        SetSleepDuration();
     }
 
     public override void Clear()
@@ -40,9 +42,12 @@ public class SleepUi : IUi
 
     public void CancelSleep()
     {
+        IsSleeping = false;
         SleepBar.value = 1;
         SleepDuration = 1;
         Player.player.SetPlayerStateActive();
+        StopAllCoroutines();
+        Clear();
     }
 
     public void StartSleep()
