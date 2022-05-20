@@ -1,15 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class JewelryHolder : Item, IEquipable
+public class JewelryHolder : Item
 {
-    public bool IsEquiped { get { return _isEquiped; } set { _isEquiped = value; } }
-
-    public SkillType SkillType { get { return _skillType; } set { _skillType = value; } }
-
-    [SerializeField] private bool _isEquiped;
-
-    [SerializeField] private SkillType _skillType;
+    public SkillType SkillType;
 
     public int PowerLimit;
 

@@ -183,7 +183,7 @@ public class WeaponRoller : MonoBehaviour
         WeaponRef.SetName(name);
 
         WeaponRef.Type = baseWeapon.Type;
-        WeaponRef.SkillType = baseWeapon.WeaponSkillType;
+        WeaponRef.SetSkill(baseWeapon.WeaponSkillType);
         WeaponRef.HandType = baseWeapon.HandType;
 
         WeaponRef.CritDamage = baseWeapon.CritDamage;

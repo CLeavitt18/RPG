@@ -109,7 +109,7 @@ public class Inventory : MonoBehaviour, ISavable
             {
                 Item item = AllItems[i].GetComponent<Item>();
 
-                if (item is IEquipable && (item as IEquipable).IsEquiped)
+                if (item.GetEquipable() && item.GetEquiped())
                 {
                     continue; 
                 }
@@ -224,18 +224,18 @@ public class Inventory : MonoBehaviour, ISavable
     {
         for (int i = 0; i < AllItems.Count; i++)
         {
-            if (AllItems[i].GetComponent<IEquipable>() == null)
+            if (AllItems[i].GetEquipable() == false)
             {
                 continue;
             }
 
             Item item = AllItems[i].GetComponent<Item>();
 
-            if (AllItems[i].GetComponent<IEquipable>().IsEquiped && item.GetAmount() > 1)
+            if (AllItems[i].GetEquiped() && item.GetAmount() > 1)
             {
                 Item ItemClone = Instantiate(AllItems[i], InventroyHolder);
                 ItemClone.name = AllItems[i].name;
-                ItemClone.GetComponent<IEquipable>().IsEquiped = false;
+                ItemClone.SetEquiped(false);
                 ItemClone--;
 
                 item.SetAmount(1);
@@ -245,15 +245,15 @@ public class Inventory : MonoBehaviour, ISavable
             {
                 for (int x = 0; x < AllItems.Count; x++)
                 {
-                    if (AllItems[x].GetComponent<IEquipable>() == null)
+                    if (AllItems[x].GetEquipable() == false)
                     {
                         continue;
                     }
 
                     Item item2 = AllItems[x].GetComponent<Item>();
 
-                    if (item.Equals(item2) && AllItems[i].GetComponent<IEquipable>().IsEquiped == false &&
-                        AllItems[x].GetComponent<IEquipable>().IsEquiped == false && AllItems[i] != AllItems[x])
+                    if (item.Equals(item2) && AllItems[i].GetEquiped() == false &&
+                        AllItems[x].GetEquiped() == false && AllItems[i] != AllItems[x])
                     {
                         AddItem(AllItems[x], true, item2.GetAmount());
                         RemoveItem(AllItems[x], item2.GetAmount());
@@ -417,7 +417,7 @@ public class Inventory : MonoBehaviour, ISavable
         }
         else
         {
-            if (Item.GetComponent<IEquipable>() != null && Item.GetComponent<IEquipable>().IsEquiped == true)
+            if (Item.GetEquipable() && Item.GetEquiped())
             {
                 return;
             }

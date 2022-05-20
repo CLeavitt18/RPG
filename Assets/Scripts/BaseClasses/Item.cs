@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] private InventoryState itemType;
+
     [SerializeField] private int Value;
     [SerializeField] private int Amount;
     [SerializeField] private int Weight;
@@ -11,6 +13,9 @@ public class Item : MonoBehaviour
     [SerializeField] private Color Rarity;
 
     [SerializeField] private string Name;
+
+    [SerializeField] private bool isEquipable;
+    [SerializeField] private bool equiped;
 
 
     protected void OnEnable() 
@@ -69,6 +74,20 @@ public class Item : MonoBehaviour
         this.name = name;
     }
 
+    public void SetEquiped(bool State)
+    {
+        equiped = State;
+
+        if (equiped)
+        {
+            
+        }
+        else
+        {
+            StoreItem();
+        }
+    }
+
     #endregion
 
     #region Getters
@@ -101,6 +120,21 @@ public class Item : MonoBehaviour
     public string GetName()
     {
         return Name;
+    }
+
+    public bool GetEquipable()
+    {
+        return isEquipable;
+    }
+
+    public bool GetEquiped()
+    {
+        return equiped;
+    }
+
+    public InventoryState GetItemType()
+    {
+        return itemType;
     }
 
     #endregion

@@ -106,7 +106,6 @@
      <Compile Include="Assets\Scripts\BaseClasses\LivingEntities.cs" />
      <Compile Include="Assets\Scripts\ExistingSaveProfileButton.cs" />
      <Compile Include="Assets\Scripts\BaseClasses\AI.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\IEquipable.cs" />
      <Compile Include="Assets\Scripts\Structs.cs" />
      <Compile Include="Assets\Scripts\Generators\MiscRoller.cs" />
      <Compile Include="Assets\Scripts\NPC.cs" />

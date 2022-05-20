@@ -698,7 +698,7 @@ public class Player : LivingEntities
                 continue;
             }
 
-            IEquipable item = Hands[i].HeldItem.GetComponent<IEquipable>();
+            Item item = Hands[i].HeldItem;
 
 
             if (item is WeaponHolder weapon)

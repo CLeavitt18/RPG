@@ -7,7 +7,7 @@ public static class LoadSystem
     {
         ToWeapon.CritDamage = FromWeapon.CritDamage;
         ToWeapon.Type = FromWeapon.Type;
-        ToWeapon.SkillType = (SkillType)FromWeapon.WeaponSkillType;
+        ToWeapon.SetSkill((SkillType)FromWeapon.WeaponSkillType);
         ToWeapon.HandType = (HandType)FromWeapon.HandType;
 
         for (int i = 0; i < FromWeapon.DamageRanges.Length; i++)
@@ -73,7 +73,7 @@ public static class LoadSystem
             ToArmour.Enchantments.Add(FromArmour.Enchantments[i]);
         }
 
-        ToArmour.IsEquiped = FromArmour.IsEquiped;
+        ToArmour.SetEquiped(FromArmour.IsEquiped);
 
         ToArmour.SetName(FromArmour.Name);
 
@@ -219,7 +219,7 @@ public static class LoadSystem
     {
         ToWeapon.CritDamage = FromWeapon.CritDamage;
         ToWeapon.Type = FromWeapon.Type;
-        ToWeapon.WeaponSkillType = (int)FromWeapon.SkillType;
+        ToWeapon.WeaponSkillType = (int)FromWeapon.GetSkill();
         ToWeapon.HandType = (int)FromWeapon.HandType;
 
         ToWeapon.DamageRanges = new DamageTypeStruct[FromWeapon.DamageRanges.Count];
@@ -340,7 +340,7 @@ public static class LoadSystem
             ToArmour.Enchantments[i].PowerID = FromArmour.Enchantments[i].PowerID;
         }
 
-        ToArmour.IsEquiped = FromArmour.IsEquiped;
+        ToArmour.IsEquiped = FromArmour.GetEquiped();
 
         ToArmour.Name = FromArmour.GetName();
 

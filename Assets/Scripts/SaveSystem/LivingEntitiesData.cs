@@ -102,7 +102,7 @@ public class LivingEntitiesData
 
         for(int i = start; i < end; i++)
         {
-            if(inventory[i] is TorchHolder torch && torch.IsEquiped)
+            if(inventory[i] is TorchHolder torch && torch.GetEquiped())
             {
                 if(torch == rightHand)
                 {

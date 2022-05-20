@@ -1,18 +1,10 @@
 ﻿using UnityEngine;
 
-public class SpellHolder : Item, IEquipable
+public class SpellHolder : Item
 {
-    public HandType HandType { get { return _handType; } set { _handType = value; } }
+    public HandType HandType;
 
-    public SkillType SkillType { get { return _skillType; } set { _skillType = value; } }
-
-    public bool IsEquiped { get { return _isEquiped; } set { _isEquiped = value; } }
-
-    [SerializeField] private HandType _handType;
-
-    [SerializeField] private SkillType _skillType;
-
-    [SerializeField] private bool _isEquiped;
+    public SkillType SkillType;
 
     public Spell[] Spells = new Spell[3];
 

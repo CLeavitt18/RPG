@@ -49,6 +49,8 @@ MonoBehaviour:
   _Item: {fileID: 0}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
   Name: 
+  isEquipable: 1
+  equiped: 0
   Armour: 0
   CurrentDurability: 0
   MaxDurability: 0

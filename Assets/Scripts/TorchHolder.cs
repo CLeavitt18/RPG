@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class TorchHolder : Item, IEquipable
+public class TorchHolder : Item
 {
-    public bool IsEquiped { get; set; }
-
-    public SkillType SkillType { get; set; }
-
     public override void SpawnItem()
     {
         base.SpawnItem();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmourHolder : Item, IEquipable
+public class ArmourHolder : Item
 {
     public int Armour;
     public int CurrentDurability;
@@ -14,13 +14,7 @@ public class ArmourHolder : Item, IEquipable
 
     public List<Power> Enchantments;
 
-    public SkillType SkillType { get { return _skillType; } set { _skillType = value; } }
-
-    public bool IsEquiped { get { return _isEquiped; } set { _isEquiped = value; } }
-
-    [SerializeField] private SkillType _skillType;
-
-    [SerializeField] private bool _isEquiped;
+    public SkillType SkillType;
 
     public override void SpawnItem()
     {
@@ -60,7 +54,7 @@ public class ArmourHolder : Item, IEquipable
                         }
                     }
 
-                    if (armourH._skillType == SkillType)
+                    if (armourH.SkillType == SkillType)
                     {
                         if (armourH.GetWeight() == GetWeight())
                         {

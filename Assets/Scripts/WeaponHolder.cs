@@ -3,38 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponHolder : Item, IEquipable
+public class WeaponHolder : Item
 {
-    public SkillType SkillType { get { return _skillType; } set { _skillType = value; } }
+    [SerializeField] private SkillType SkillType;
 
-    public HandType HandType { get { return _handType; } set { _handType = value; } }
+    public HandType HandType;
 
     public int LifeSteal;
     public int PwrAttackDamage;
     public int CurrentDurability;
     public int MaxDurability;
 
-    public int CritDamage { get { return _critDamage; } set { _critDamage = value; } }
+    public int CritDamage;
 
-    public List<int> StatusChance { get { return _statusChance; }set { _statusChance = value; } }
+    public List<int> StatusChance;
     
-    public float ActionsPerSecond { get { return _actionsPerSecound; } set { _actionsPerSecound = value; } }
-
-    public bool IsEquiped { get { return _isEquiped; } set { _isEquiped = value; } }
+    public float ActionsPerSecond;
     
-    public List<DamageTypeStruct> DamageRanges { get { return _damageRanges; } set { _damageRanges = value; } }
-
-
-    [SerializeField] private SkillType _skillType;
-    [SerializeField] private HandType _handType;
-
-    [SerializeField] private int _critDamage;
-
-    [SerializeField] private List<int> _statusChance;
-    
-    [SerializeField] private float _actionsPerSecound;
-
-    [SerializeField] private bool _isEquiped;
+    public List<DamageTypeStruct> DamageRanges;
 
     [SerializeField] private WeaponSpawns WeaponSpawn;
 
@@ -128,7 +114,6 @@ public class WeaponHolder : Item, IEquipable
         try
         {
             WeaponSpawn = Spawns[(int)Type];
-
         }
         catch
         {
@@ -185,5 +170,24 @@ public class WeaponHolder : Item, IEquipable
         }
 
         return false;
+    }
+
+    public void SetStats()
+    {
+        if (Primary != null)
+        {
+            Debug.Log("weapon State alerady set");
+            return;
+        }
+    }
+
+    public void SetSkill(SkillType skill)
+    {
+        SkillType = skill;
+    }
+
+    public SkillType GetSkill()
+    {
+        return SkillType;
     }
 }

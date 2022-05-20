@@ -276,10 +276,10 @@ public class InventoryUi : IUi
                 }
             }
 
-            if (Item.GetComponent<IEquipable>() != null &&
+            if (Item.GetEquipable() &&
                 Player.player.GetMode() == PlayerState.InStore)
             {
-                if (Item.GetComponent<IEquipable>().IsEquiped)
+                if (Item.GetEquiped())
                 {
                     continue;
                 }
@@ -638,9 +638,9 @@ public class InventoryUi : IUi
             }
             else if (playerMode == PlayerState.InInventoy)
             {
-                if (item.GetComponent<IEquipable>() != null)
+                if (item.GetEquipable())
                 {
-                    if (item.GetComponent<IEquipable>().IsEquiped)
+                    if (item.GetEquiped())
                     {
                         InstructionText.text = Instructions[1];
                     }
@@ -731,7 +731,7 @@ public class InventoryUi : IUi
             }
             else if (playerMode == PlayerState.InInventoy)
             {
-                if (FocusedItem.GetComponent<IEquipable>() != null)
+                if (FocusedItem.GetEquipable())
                 {
                     StartCoroutine(SetEquipment('E', ClickSource));
                 }
@@ -765,11 +765,9 @@ public class InventoryUi : IUi
     {
         if (KeyTracker == 'E')
         {
-            IEquipable item = FocusedItem.GetComponent<IEquipable>();
-
             Item heldItem;
 
-            if (item is WeaponHolder || item is SpellHolder)
+            if (FocusedItem is WeaponHolder || FocusedItem is SpellHolder)
             {
                 for (int i = 0; i < 2; i++)
                 {
@@ -787,7 +785,7 @@ public class InventoryUi : IUi
                     }
                 }
             }
-            else if (item is ArmourHolder holder)
+            else if (FocusedItem is ArmourHolder holder)
             {
                 int id = (int)holder.ArmourType;
 
@@ -800,7 +798,7 @@ public class InventoryUi : IUi
                 }
             }
 
-            if (item.IsEquiped)
+            if (FocusedItem.GetEquiped())
             {
                 Player.player.UnequipItem(FocusedItem);
                 goto CleanUpUi;

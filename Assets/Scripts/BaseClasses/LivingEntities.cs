@@ -402,7 +402,7 @@ public class LivingEntities : MonoBehaviour
     #region UpDateEquipedItems
     public void EquipItem(Item Item, int HandType)
     {
-        Item.GetComponent<IEquipable>().IsEquiped = true;
+        Item.SetEquiped(true);
 
         Hand hand = Hands[HandType];
 
@@ -600,7 +600,7 @@ public class LivingEntities : MonoBehaviour
 
     public void UnequipItem(Item Item)
     {
-        Item.GetComponent<IEquipable>().IsEquiped = false;
+        Item.SetEquiped(false);
 
         Item.GetComponent<Item>().StoreItem();
 
@@ -714,7 +714,7 @@ public class LivingEntities : MonoBehaviour
 
                 StrenghtMeleeMulti = (Mathf.Floor(Attributes[0].Ability * .5f)) * .05f;
 
-                PercentFromLevel = (float)Skills[(int)Hands[HandType].HeldItem.GetComponent<WeaponHolder>().SkillType].Level * .01f;
+                PercentFromLevel = (float)Skills[(int)Hands[HandType].HeldItem.GetComponent<WeaponHolder>().GetSkill()].Level * .01f;
 
                 Hands[HandType].DamageMultis.Melee[(int)Type] = 1;
 
@@ -913,7 +913,8 @@ public class LivingEntities : MonoBehaviour
                         }
                         else
                         {
-                            skill = item.GetComponent<IEquipable>().SkillType;
+                            WeaponHolder weapon = item as WeaponHolder;
+                            skill = weapon.GetSkill();
                         }
 
                         break;

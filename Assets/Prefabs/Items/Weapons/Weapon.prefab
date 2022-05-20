@@ -323,22 +323,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aae939d8f1119d408d4b39fb75d3018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
   Value: 0
   Amount: 1
   Weight: 0
   _Item: {fileID: 0}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
   Name: 
+  isEquipable: 1
+  equiped: 0
+  SkillType: 0
+  HandType: 0
   LifeSteal: 0
   PwrAttackDamage: 0
   CurrentDurability: 0
   MaxDurability: 0
-  _skillType: 0
-  _handType: 0
-  _critDamage: 0
-  _statusChance: 
-  _actionsPerSecound: 0
-  _isEquiped: 0
+  CritDamage: 0
+  StatusChance: 
+  ActionsPerSecond: 0
+  DamageRanges: []
   WeaponSpawn:
     PrimarySpawn: {fileID: 0}
     SecoundarySpawn: {fileID: 0}

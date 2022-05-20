@@ -43,9 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81154f8d8e3bd6f49b79d6d663d087df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
   Value: 5
   Amount: 1
   Weight: 500
   _Item: {fileID: 3076996124621727448, guid: 49bb77f35380df7469b80a2d2753c6d0, type: 3}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
   Name: Torch
+  isEquipable: 1
+  equiped: 0
