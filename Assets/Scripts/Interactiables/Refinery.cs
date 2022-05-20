@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Refinary : Interactialbes, IInteractable
+public class Refinery : Interactialbes, IInteractable
 {
     public GameObject RefinaryUI;
 
@@ -15,7 +15,7 @@ public class Refinary : Interactialbes, IInteractable
     public void Interact(bool State)
     {
         RefinaryUI.SetActive(State);
-        RefinaryUI.transform.parent.gameObject.GetComponent<RefinaryUi>().SetRefinaryToDefault();
+        RefinaryUI.transform.parent.gameObject.GetComponent<RefineryUi>().SetRefinaryToDefault();
         SetPlayerState(State);
     }
     public override void SetUiOpen()

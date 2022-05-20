@@ -97,12 +97,12 @@
      <Compile Include="Assets\Scripts\Generators\SpellRoller.cs" />
      <Compile Include="Assets\Scripts\SpellCraftingTableUi.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\PlayerData.cs" />
-     <Compile Include="Assets\Scripts\RefinaryUi.cs" />
+     <Compile Include="Assets\Scripts\RefineryUi.cs" />
      <Compile Include="Assets\Scripts\ChillAffect.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\MinionData.cs" />
      <Compile Include="Assets\Scripts\PlayerStatsUi.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\SaveSystem.cs" />
-     <Compile Include="Assets\Scripts\Interactiables\Refinary.cs" />
+     <Compile Include="Assets\Scripts\Interactiables\Refinery.cs" />
      <Compile Include="Assets\Scripts\BaseClasses\LivingEntities.cs" />
      <Compile Include="Assets\Scripts\ExistingSaveProfileButton.cs" />
      <Compile Include="Assets\Scripts\BaseClasses\AI.cs" />

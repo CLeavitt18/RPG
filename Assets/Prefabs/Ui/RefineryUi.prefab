@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300.04358, y: -441.8872}
+  m_AnchoredPosition: {x: 300.04358, y: -203.54736}
   m_SizeDelta: {x: 600.08716, y: 49.58496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7171070220958989673
@@ -248,7 +248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300.04358, y: -441.8872}
+  m_AnchoredPosition: {x: 300.04358, y: -84.37744}
   m_SizeDelta: {x: 600.08716, y: 49.58496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &486496134065145979
@@ -460,7 +460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300.04358, y: -322.7173}
+  m_AnchoredPosition: {x: 300.04358, y: -441.8872}
   m_SizeDelta: {x: 600.08716, y: 49.58496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8454014302520907728
@@ -804,7 +804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300.04358, y: -203.54736}
+  m_AnchoredPosition: {x: 300.04358, y: -322.7173}
   m_SizeDelta: {x: 600.08716, y: 49.58496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8454014302601691567
@@ -915,7 +915,7 @@ GameObject:
   - component: {fileID: 8454014302646386448}
   - component: {fileID: 8454014302646386449}
   m_Layer: 5
-  m_Name: RefinaryContent
+  m_Name: RefineryContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -948,7 +948,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.000030517578, y: 0}
-  m_SizeDelta: {x: -22.108398, y: -568.2993}
+  m_SizeDelta: {x: -22.108398, y: -449.1294}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!223 &8454014302646386450
 Canvas:
@@ -1475,7 +1475,7 @@ GameObject:
   - component: {fileID: 8454014302901328668}
   - component: {fileID: 8454014302901328669}
   m_Layer: 5
-  m_Name: RefinaryBG
+  m_Name: RefineryBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1744,7 +1744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300.04358, y: -84.37744}
+  m_AnchoredPosition: {x: 300.04358, y: -143.9624}
   m_SizeDelta: {x: 600.08716, y: 49.58496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8454014302970599427
@@ -1956,7 +1956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300.04358, y: -382.30225}
+  m_AnchoredPosition: {x: 300.04358, y: -501.47217}
   m_SizeDelta: {x: 600.08716, y: 49.58496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8454014303052348219
@@ -2067,7 +2067,7 @@ GameObject:
   - component: {fileID: 8454014303072395759}
   - component: {fileID: 8454014303072395755}
   m_Layer: 5
-  m_Name: RefinaryUi
+  m_Name: RefineryUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2186,8 +2186,9 @@ MonoBehaviour:
   ResourceSlider: {fileID: 8454014304544877861}
   ResourceAmountText: {fileID: 8454014304502999036}
   ItemsRequired:
-    Amount: 
-    Item: []
+    Amount: 01000000
+    Item:
+    - Hide
 --- !u!1 &8454014303162231267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,7 +2201,7 @@ GameObject:
   - component: {fileID: 8454014303162231260}
   - component: {fileID: 8454014303162231261}
   m_Layer: 5
-  m_Name: RefinaryUiPanel
+  m_Name: RefineryUiPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2279,7 +2280,7 @@ GameObject:
   - component: {fileID: 8454014303218823154}
   - component: {fileID: 8454014303218823148}
   m_Layer: 5
-  m_Name: RefinaryViewport
+  m_Name: RefineryViewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3524,7 +3525,7 @@ GameObject:
   - component: {fileID: 8454014304019267502}
   - component: {fileID: 8454014304019267496}
   m_Layer: 5
-  m_Name: RefinaryUiBG
+  m_Name: RefineryUiBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3864,7 +3865,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300.04358, y: -263.13232}
+  m_AnchoredPosition: {x: 300.04358, y: -382.30225}
   m_SizeDelta: {x: 600.08716, y: 49.58496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8454014304146810535
@@ -3997,7 +3998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000091552734}
+  m_AnchoredPosition: {x: 22.535599, y: 0.000091552734}
   m_SizeDelta: {x: -373.2522, y: -488.37262}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!223 &8454014304332029903
@@ -4114,7 +4115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300.04358, y: -143.9624}
+  m_AnchoredPosition: {x: 300.04358, y: -263.13232}
   m_SizeDelta: {x: 600.08716, y: 49.58496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8454014304354687335
@@ -4247,7 +4248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300.04358, y: -441.8872}
+  m_AnchoredPosition: {x: 300.04358, y: -561.0571}
   m_SizeDelta: {x: 600.08716, y: 49.58496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8454014304436479821
@@ -4577,7 +4578,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Resourcce Amount Text
+  m_Text: 1
 --- !u!1 &8454014304544877867
 GameObject:
   m_ObjectHideFlags: 0

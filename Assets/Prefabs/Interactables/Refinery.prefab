@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 2118551471934112001}
   - component: {fileID: 2118551471934112250}
   m_Layer: 10
-  m_Name: Refinary
-  m_TagString: Untagged
+  m_Name: Refinery
+  m_TagString: Refinary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -130,6 +130,6 @@ MonoBehaviour:
   PUIInsruction: {fileID: 0}
   UIOpen: 0
   WaitTime: 0.1
-  Name: Refinary
+  Name: Refinery
   NextTime: 0
   RefinaryUI: {fileID: 0}

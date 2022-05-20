@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class RefinaryUi : MonoBehaviour
+public class RefineryUi : MonoBehaviour
 {
     public int R_Id;
     public int ResourceAmount = 1;
