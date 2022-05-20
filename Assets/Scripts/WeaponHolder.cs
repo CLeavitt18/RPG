@@ -145,7 +145,7 @@ public class WeaponHolder : Item
 
         for (int i = 0; i < stats.DamageRanges.Count; i++)
         {
-            DamageRanges[i] = stats.DamageRanges[i];
+            DamageRanges.Add(stats.DamageRanges[i]);
         }
 
         Animator[0] = stats.Animator[0];

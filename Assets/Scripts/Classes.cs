@@ -176,9 +176,9 @@ public class WeaponStats
     public int Value;
     public int Weight;
 
-    public List<int> StatusChance;
+    public List<int> StatusChance = new List<int>();
 
-    public List<DamageTypeStruct> DamageRanges;
+    public List<DamageTypeStruct> DamageRanges = new List<DamageTypeStruct>();
 
     public RuntimeAnimatorController[] Animator = new RuntimeAnimatorController[2];
     
