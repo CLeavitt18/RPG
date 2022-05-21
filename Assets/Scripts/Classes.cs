@@ -139,10 +139,9 @@ public class WeaponStatsData
     public int Weight;
 
     public int[] StatusChance;
+    public int[] AnimatorId = new int[2];
 
     public DamageTypeStruct[] DamageRanges;
-
-    public int[] AnimatorId = new int[2];
     
     public WeaponType Type;
 
@@ -162,29 +161,30 @@ public class WeaponStats
 {
     public SkillType WeaponSkillType;
     public HandType HandType;
-    public Material Material;
+    public WeaponType Type;
+
+    public MaterialType[] Materials = new MaterialType[3];
     
     public int LifeSteal;
     public int CritDamage;
     public int PwrAttackDamage;
-    public GameObject Primary;
-    public GameObject Secoundary;
-    public GameObject Teritiary;
     public int CurrentDurability;
     public int MaxDurability;
     public int Amount;
     public int Value;
     public int Weight;
 
+    public Material Material;
+    
+    public GameObject Primary;
+    public GameObject Secoundary;
+    public GameObject Teritiary;
+
     public List<int> StatusChance = new List<int>();
 
     public List<DamageTypeStruct> DamageRanges = new List<DamageTypeStruct>();
 
     public RuntimeAnimatorController[] Animator = new RuntimeAnimatorController[2];
-    
-    public WeaponType Type;
-
-    public MaterialType[] Materials = new MaterialType[3];
 
     public Color Rarity;
 
@@ -233,6 +233,23 @@ public class SpellHolderData
 
     public string Name;
 }
+
+[Serializable]
+public class SpellHolderStats
+{
+    public SkillType SpellSkillType;
+
+    public int Amount;
+    public int MaterialId;
+    public int MaterialMulti;
+
+    public Color Rarity;
+
+    public Spell[] SpellsData;
+
+    public string Name;
+}
+
 [Serializable]
 public class RuneHolderData
 {

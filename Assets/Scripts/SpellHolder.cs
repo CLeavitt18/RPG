@@ -2,15 +2,15 @@
 
 public class SpellHolder : Item
 {
-    public HandType HandType;
+    [SerializeField] public HandType HandType;
 
-    public SkillType SkillType;
+    [SerializeField] public SkillType SkillType;
 
-    public Spell[] Spells = new Spell[3];
+    [SerializeField] public Spell[] Spells = new Spell[3];
 
-    public MaterialType Type;
+    [SerializeField] public MaterialType Type;
 
-    public int ValueMulti;
+    [SerializeField] public int ValueMulti;
 
     [SerializeField] private int numOfSpells;
 
@@ -31,15 +31,11 @@ public class SpellHolder : Item
 
         numOfSpells = 0;
 
-        for (int i = 0; i < Spells.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
             if (Spells[i] != null)
             {
                 numOfSpells++;
-            }
-            else
-            {
-                break;
             }
         }
     }
