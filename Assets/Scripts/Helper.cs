@@ -9,7 +9,7 @@ public class Helper : MonoBehaviour
 
     [SerializeField] private GameObject itemDetailsPrefab;
     [SerializeField] private GameObject textSlot;
-    
+
     [SerializeField] private GameObject costDetailsPrefab;
     [SerializeField] private GameObject resourceSlot;
 
@@ -169,7 +169,7 @@ public class Helper : MonoBehaviour
         int NumOfSpells = SpellH.GetNumOfSpells();
 
         sb.Append("Material: ");
-        sb.Append(SpellH.Type.ToString());
+        sb.Append(SpellH.GetMaterialType().ToString());
 
         SpawnItemDetailSlot(sb.ToString(), t);
 
@@ -183,9 +183,9 @@ public class Helper : MonoBehaviour
             sb.Append((i + 1).ToString("n0"));
             sb.Append(": ");
 
-            if (SpellH.Spells[i] != null)
+            if (SpellH.GetRune(i) != null)
             {
-                sb.Append(SpellH.Spells[i].SpellType.ToString());
+                sb.Append(SpellH.GetRune(i).SpellType.ToString());
             }
             else
             {
@@ -199,19 +199,19 @@ public class Helper : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            if (SpellH.Spells[i] == null)
+            if (SpellH.GetRune(i) == null)
             {
                 continue;
             }
 
             SpawnItemDetailSlot("", t);
 
-            Text name = SpawnItemDetailSlot(SpellH.Spells[i].Name, t);
+            Text name = SpawnItemDetailSlot(SpellH.GetRune(i).Name, t);
             name.alignment = TextAnchor.MiddleCenter;
 
             SpawnItemDetailSlot("", t);
 
-            CreateRuneStatsText(SpellH.Spells[i], t, sb);
+            CreateRuneStatsText(SpellH.GetRune(i), t, sb);
         }
     }
 

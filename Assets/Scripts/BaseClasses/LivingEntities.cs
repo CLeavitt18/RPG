@@ -466,7 +466,7 @@ public class LivingEntities : MonoBehaviour
             case GlobalValues.SpellTag:
                 SpellHolder SpellH = Item.GetComponent<SpellHolder>();
 
-                if (SpellH.HandType == global::HandType.TwoHanded)
+                if (SpellH.GetHandType() == global::HandType.TwoHanded)
                 {
                     if (Hands[0].HeldItem != null && Hands[0].HeldItem != Item)
                     {
@@ -501,12 +501,10 @@ public class LivingEntities : MonoBehaviour
                 //Create Spell Object in world
 
                 //Calculate Spell Damage multis
-                for (int i = 0; i < SpellH.Spells.Length; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if (SpellH.Spells[i] is DamageSpell)
+                    if (SpellH.GetRune(i) is DamageSpell dSpell)
                     {
-                        DamageSpell dSpell = SpellH.Spells[i] as DamageSpell;
-
                         for (int x = 0; x < dSpell.DamageRanges.Count; x++)
                         {
                             SpellDamageMulti(HandType, dSpell.DamageRanges[x].Type);
@@ -640,14 +638,10 @@ public class LivingEntities : MonoBehaviour
 
                 SpellHolder SpellH = Item.GetComponent<SpellHolder>();
 
-                int lenght = SpellH.Spells.Length;
-
-                for (int i = 0; i < lenght; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if (SpellH.Spells[i] != null && SpellH.Spells[i] is GolemSpell)
+                    if (SpellH.GetRune(i) != null && SpellH.GetRune(i) is GolemSpell golemSpell)
                     {
-                        GolemSpell golemSpell = SpellH.Spells[i] as GolemSpell;
-
                         int id = 0;
                         int count = Minions.Count;
 

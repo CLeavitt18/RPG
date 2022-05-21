@@ -173,7 +173,7 @@ public class Minion : AI
     {
         float multi = 1f + (entity.GetLevel() - 1f) * .05f;
 
-        int matCatMulti = SourceSpell.gameObject.GetComponent<SpellHolder>().ValueMulti;
+        int matCatMulti = SourceSpell.gameObject.GetComponent<SpellHolder>().GetValueMulti();
 
         WeaponHolder fist = entity.GetHeldItem(HandType).GetComponent<WeaponHolder>();
 

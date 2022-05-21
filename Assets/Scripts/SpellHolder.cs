@@ -2,15 +2,15 @@
 
 public class SpellHolder : Item
 {
-    [SerializeField] public HandType HandType;
+    [SerializeField] private HandType HandType;
 
-    [SerializeField] public SkillType SkillType;
+    [SerializeField] private SkillType SkillType;
+    
+    [SerializeField] private MaterialType Type;
 
-    [SerializeField] public Spell[] Spells = new Spell[3];
+    [SerializeField] private Spell[] Spells = new Spell[3];
 
-    [SerializeField] public MaterialType Type;
-
-    [SerializeField] public int ValueMulti;
+    [SerializeField] private int ValueMulti;
 
     [SerializeField] private int numOfSpells;
 
@@ -75,6 +75,32 @@ public class SpellHolder : Item
 
         return false;
     }
+
+    public HandType GetHandType()
+    {
+        return HandType;
+    }
+
+    public SkillType GetSkill()
+    {
+        return SkillType;
+    }
+
+    public MaterialType GetMaterialType()
+    {
+        return Type;
+    }
+
+    public Spell GetRune(int id)
+    {
+        return Spells[id];
+    }
+
+    public int GetValueMulti()
+    {
+        return ValueMulti;
+    }
+
 
     public int GetNumOfSpells()
     {

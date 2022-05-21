@@ -37,9 +37,9 @@ public class MinionData : EnemyData
             {
                 SpellHolder spellH = heldItem.GetComponent<SpellHolder>();
 
-                for (int x = 0; x < spellH.Spells.Length; x++)
+                for (int x = 0; x < 3; x++)
                 {
-                    Spell spellRef = spellH.Spells[x];
+                    Spell spellRef = spellH.GetRune(x);
                     if (spellRef != null && spellRef == refM.SourceSpell)
                     {
                         HandSource = i;

@@ -107,7 +107,7 @@ public static class LoadSystem
                 ToSpell.Spells[i] = ToSpell.gameObject.AddComponent<GolemSpell>();
             }
 
-            LoadRune(spellData, ToSpell.Spells[i]);
+            LoadRune(spellData, ToSpell.GetRune(i));
         }
 
         ToSpell.ValueMulti = FromSpell.MaterialMulti;
@@ -367,27 +367,27 @@ public static class LoadSystem
     {
         ToSpell.SpellsData = new SpellData[3];
 
-        for (int i = 0; i < FromSpell.Spells.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
-            if (FromSpell.Spells[i] == null)
+            if (FromSpell.GetRune(i) == null)
             {
                 ToSpell.SpellsData[i] = new SpellData();
                 ToSpell.SpellsData[i].SpellTypeId = (int)SpellType.None;
                 continue;
             }
 
-            Spell SpellH = FromSpell.Spells[i];
+            Spell SpellH = FromSpell.GetRune(i);
 
             ToSpell.SpellsData[i] = new SpellData();
 
             SpellData spellData = ToSpell.SpellsData[i];
 
-            LoadRune(FromSpell.Spells[i], spellData);
+            LoadRune(FromSpell.GetRune(i), spellData);
         }
 
-        ToSpell.MaterialMulti = FromSpell.ValueMulti;
-        ToSpell.MaterialId = (int)FromSpell.Type;
-        ToSpell.SpellSkillType = (int)FromSpell.SkillType;
+        ToSpell.MaterialMulti = FromSpell.GetValueMulti();
+        ToSpell.MaterialId = (int)FromSpell.GetMaterialType();
+        ToSpell.SpellSkillType = (int)FromSpell.GetSkill();
         ToSpell.Amount = FromSpell.GetAmount();
         ToSpell.Name = FromSpell.GetName();
 

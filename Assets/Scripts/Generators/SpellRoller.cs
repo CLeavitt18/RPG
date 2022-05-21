@@ -43,7 +43,7 @@ public class SpellRoller : MonoBehaviour
         //spellH.Rarity = (runes[0].gameObject.GetComponent<RuneHolder>()).Rarity;
         spellH.Type = (MaterialType)mat_id;
 
-        spellH.SetName(spellH.Type.ToString() + " Spell Focus");
+        spellH.SetName(spellH.GetMaterialType().ToString() + " Spell Focus");
 
         DamageTypeStruct damageType;
 
@@ -74,7 +74,7 @@ public class SpellRoller : MonoBehaviour
 
                     spellH.Spells[i] = spellH.gameObject.AddComponent<DamageSpell>();
 
-                    DamageSpell spellRef = spellH.Spells[i] as DamageSpell;
+                    DamageSpell spellRef = spellH.GetRune(i) as DamageSpell;
 
                     spellRef.DamageRanges = new List<DamageTypeStruct>();
                     spellRef.StatusChance = new List<int>();
@@ -93,7 +93,7 @@ public class SpellRoller : MonoBehaviour
 
                     spellH.Spells[i] = spellH.gameObject.AddComponent<GolemSpell>();
 
-                    GolemSpell spellref = spellH.Spells[i] as GolemSpell;
+                    GolemSpell spellref = spellH.GetRune(i) as GolemSpell;
 
                     damageType = new DamageTypeStruct(gSpell.DamageRange, mats[mat_id].Multi);
 

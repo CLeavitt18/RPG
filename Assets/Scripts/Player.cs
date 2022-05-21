@@ -105,9 +105,9 @@ public class Player : LivingEntities
 
                         int index = handType;
 
-                        for (int i = 0; i < SpellH.Spells.Length; i++)
+                        for (int i = 0; i < 3; i++)
                         {
-                            if (SpellH.Spells[i] == null)
+                            if (SpellH.GetRune(i) == null)
                             {
                                 if (i == 0)
                                 {
@@ -122,7 +122,7 @@ public class Player : LivingEntities
                             }
 
                             string key = GlobalValues.AttackInputs[index];
-                            Spell spell = SpellH.Spells[i];
+                            Spell spell = SpellH.GetRune(i);
 
                             if (spell.CastType == CastType.Channelled)
                             {
@@ -712,9 +712,9 @@ public class Player : LivingEntities
             {
                 SpellHolder spell = item as SpellHolder;
 
-                for (int x = 0; x < spell.Spells.Length; x++)
+                for (int x = 0; x < 3; x++)
                 {
-                    if (spell.Spells[x] is DamageSpell dSpell)
+                    if (spell.GetRune(i) is DamageSpell dSpell)
                     {
                         for (int y = 0; y < dSpell.DamageRanges.Count; y++)
                         {
@@ -953,7 +953,7 @@ public class Player : LivingEntities
                     Minion minion = minionH.transform.GetChild(0).GetComponent<Minion>();
 
                     minion.Owner = this;
-                    minion.SourceSpell = (GolemSpell)Hands[data.HandSource].HeldItem.GetComponent<SpellHolder>().Spells[data.SourceId];
+                    minion.SourceSpell = (GolemSpell)Hands[data.HandSource].HeldItem.GetComponent<SpellHolder>().GetRune(data.SourceId);
                     minion.SourceSpell.Alive++;
 
                     minion.LoadMinion(data);
