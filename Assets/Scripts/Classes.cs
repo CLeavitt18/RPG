@@ -247,7 +247,7 @@ public class SpellHolderStats
 
     public Color Rarity;
 
-    public Spell[] Spells = new Spell[3];
+    public SpellData[] Spells = new SpellData[3];
 
     public string Name;
 }

@@ -91,16 +91,18 @@ public static class LoadSystem
   
         SpellData spellData;
 
-        for (int i = 0; i < FromSpell.SpellsData.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
             spellData = FromSpell.SpellsData[i];
 
             if (spellData.SpellTypeId == (int)SpellType.None)
             {
+                stats.Spells[i] = null;
+
                 continue;
             }
-
-            LoadRune(spellData, stats.Spells[i]);
+            
+            stats.Spells[i] = spellData;
         }
 
         stats.MaterialMulti = FromSpell.MaterialMulti;
@@ -145,7 +147,7 @@ public static class LoadSystem
         LoadRune(FromRuneH.runeData, ToRuneH.spell);
     }
 
-    private static void LoadRune(SpellData FromRune, Spell ToRune)
+    public static void LoadRune(SpellData FromRune, Spell ToRune)
     {
         if (ToRune is DamageSpell spellD)
         {
@@ -409,11 +411,11 @@ public static class LoadSystem
         LoadRune(FromRuneH.spell, ToRuneH.runeData);
     }
 
-    private static void LoadRune(Spell FromRune, SpellData ToRune)
+    public static void LoadRune(Spell FromRune, SpellData ToRune)
     {
         if (FromRune is DamageSpell spellD)
         {
-            ToRune.SpellTypeId = 0;
+            ToRune.SpellTypeId = (int)SpellType.DamageSpell;
 
             ToRune.StatArray2 = new int[spellD.DamageRanges.Count];
             ToRune.StatArray3 = new int[spellD.DamageRanges.Count];
@@ -448,7 +450,7 @@ public static class LoadSystem
         }
         else if (FromRune is GolemSpell spellG)
         {
-            ToRune.SpellTypeId = 1;
+            ToRune.SpellTypeId = (int)SpellType.GolemSpell;
 
             ToRune.bool0 = spellG.Activated;
 

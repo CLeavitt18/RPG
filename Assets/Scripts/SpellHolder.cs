@@ -41,56 +41,34 @@ public class SpellHolder : Item
                 continue;
             }
 
-            Spell spell = stats.Spells[i];
-
             numOfSpells++;
 
-            switch (spell.SpellType)
+            switch ((SpellType)stats.Spells[i].SpellAffectID)
             {
                 case SpellType.DamageSpell:
-                    DamageSpell dSpell = spell as DamageSpell;
-
                     Spells[i] = gameObject.AddComponent<DamageSpell>();
 
                     DamageSpell spellRef = Spells[i] as DamageSpell;
 
-                    spellRef.DamageRanges = new List<DamageTypeStruct>();
-                    spellRef.StatusChance = new List<int>();
+                    Spells[i].SpellType = SpellType.DamageSpell;
 
-                    for (int x  = 0; x < dSpell.DamageRanges.Count; x++)
-                    {
-                        spellRef.DamageRanges.Add(dSpell.DamageRanges[x]);
-                        spellRef.StatusChance.Add(dSpell.StatusChance[x]);
-                    }
+                    LoadSystem.LoadRune(stats.Spells[i], spellRef);
 
                     break;
                 case SpellType.GolemSpell:
-                    GolemSpell gSpell = spell as GolemSpell;
-
                     Spells[i] = gameObject.AddComponent<GolemSpell>();
+
+                    Spells[i].SpellType = SpellType.GolemSpell;
 
                     GolemSpell spellref = Spells[i] as GolemSpell;
 
-                    spellref.DamageRange = gSpell.DamageRange;
-                    spellref.Number = gSpell.Number;
+                    LoadSystem.LoadRune(stats.Spells[i], spellref);
 
                     break;
                 default:
                     break;
             }
-
-            Spells[i].SpellType = spell.SpellType;
-            Spells[i].CastType = spell.CastType;
-            Spells[i].Target = spell.Target;
-            Spells[i].CostType = spell.CostType;
-            Spells[i].SpellAffect = spell.SpellAffect;
-            Spells[i].Cost = spell.Cost;
-            Spells[i].CastsPerSecond = spell.CastsPerSecond;
-            Spells[i].SkillType = spell.SkillType;
-
-            Spells[i].Name = spell.Name;
         }
-
     }
 
     public override bool Equals(Item Item)

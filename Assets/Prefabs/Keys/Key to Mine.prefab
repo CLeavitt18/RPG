@@ -40,12 +40,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2052076080218209554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2563b42d9e32702428ca74491b0aec23, type: 3}
+  m_Script: {fileID: 11500000, guid: 16cd26cb687ad5b47bd9c8ff28155170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 50
+  itemType: 0
+  Value: 100
   Amount: 1
   Weight: 100
   _Item: {fileID: 0}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
-  Name: Key to Mine
+  Name: Key To Mine
+  isEquipable: 0
+  equiped: 0

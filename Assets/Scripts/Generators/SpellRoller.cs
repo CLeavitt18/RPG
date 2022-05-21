@@ -46,7 +46,19 @@ public class SpellRoller : MonoBehaviour
         stats.Type = (MaterialType)mat_id;
 
         stats.Name = ((MaterialType)mat_id).ToString() + " Spell Focus";
-        stats.Spells = runes;
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (runes[i] == null)
+            {
+                stats.Spells[i] = null;
+                continue;
+            }
+
+            stats.Spells[i] = new SpellData();
+
+            LoadSystem.LoadRune(runes[i], stats.Spells[i]);
+        }
 
         int numRune = 0;
         int rarityIdsTotal = 0;
@@ -55,6 +67,7 @@ public class SpellRoller : MonoBehaviour
         {
             if (runes[i] == null)
             {
+                stats.Spells[i] = null;
                 continue;
             }
             
@@ -108,7 +121,7 @@ public class SpellRoller : MonoBehaviour
 
         spellH.SetSpellState(stats);
     
-        if (cleanUp)
+        /*if (cleanUp)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -119,7 +132,7 @@ public class SpellRoller : MonoBehaviour
 
                 Destroy(runes[i].gameObject);
             }
-        }
+        }*/
 
         return spellH;
     }
