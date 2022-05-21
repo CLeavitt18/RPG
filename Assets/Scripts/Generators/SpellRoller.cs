@@ -60,6 +60,32 @@ public class SpellRoller : MonoBehaviour
             
             numRune++;
 
+            switch (runes[i].SpellType)
+            {
+                case SpellType.DamageSpell:
+                    DamageSpell dSpell = runes[i] as DamageSpell;
+
+                    DamageTypeStruct damageType;
+
+                    for (int x = 0; x < dSpell.DamageRanges.Count; x++)
+                    {
+                        damageType = new DamageTypeStruct(dSpell.DamageRanges[x], mats[mat_id].Multi);
+
+                        dSpell.DamageRanges[x] = damageType;
+                    }
+                    break;
+                case SpellType.GolemSpell:
+                    GolemSpell gSpell = runes[i] as GolemSpell;
+
+                    gSpell.DamageRange = new DamageTypeStruct(gSpell.DamageRange, mats[mat_id].Multi);
+
+                    break;
+                default:
+                    break;
+            }
+
+            runes[i].Cost = runes[i].Cost * mats[mat_id].Multi;
+
             for(int x = 0; x > GlobalValues.rarities.Length; x++)
             {
                 if(runes[i].GetComponent<RuneHolder>().GetRarity() == GlobalValues.rarities[i])

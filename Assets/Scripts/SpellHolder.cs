@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class SpellHolder : Item
 {
@@ -27,41 +28,50 @@ public class SpellHolder : Item
 
     public void SetSpellState(SpellHolderStats stats)
     {
-        name = GetName();
+        SetName(stats.Name);
+        name = stats.Name;
+        name = stats.Name;
 
         numOfSpells = 0;
 
-        /*switch (runes[i].SpellType)
+        for (int i = 0; i < 3; i++)
+        {
+            if (stats.Spells[i] == null)
+            {
+                continue;
+            }
+
+            Spell spell = stats.Spells[i];
+
+            numOfSpells++;
+
+            switch (spell.SpellType)
             {
                 case SpellType.DamageSpell:
-                    DamageSpell dSpell = runes[i] as DamageSpell;
+                    DamageSpell dSpell = spell as DamageSpell;
 
-                    dSpell.Spells[i] = spellH.gameObject.AddComponent<DamageSpell>();
+                    Spells[i] = gameObject.AddComponent<DamageSpell>();
 
-                    DamageSpell spellRef = spellH.GetRune(i) as DamageSpell;
+                    DamageSpell spellRef = Spells[i] as DamageSpell;
 
                     spellRef.DamageRanges = new List<DamageTypeStruct>();
                     spellRef.StatusChance = new List<int>();
 
                     for (int x  = 0; x < dSpell.DamageRanges.Count; x++)
                     {
-                        damageType = new DamageTypeStruct(dSpell.DamageRanges[x], mats[mat_id].Multi);
-
-                        spellRef.DamageRanges.Add(damageType);
+                        spellRef.DamageRanges.Add(dSpell.DamageRanges[x]);
                         spellRef.StatusChance.Add(dSpell.StatusChance[x]);
                     }
 
                     break;
                 case SpellType.GolemSpell:
-                    GolemSpell gSpell = runes[i] as GolemSpell;
+                    GolemSpell gSpell = spell as GolemSpell;
 
-                    spellH.Spells[i] = spellH.gameObject.AddComponent<GolemSpell>();
+                    Spells[i] = gameObject.AddComponent<GolemSpell>();
 
-                    GolemSpell spellref = spellH.GetRune(i) as GolemSpell;
+                    GolemSpell spellref = Spells[i] as GolemSpell;
 
-                    damageType = new DamageTypeStruct(gSpell.DamageRange, mats[mat_id].Multi);
-
-                    spellref.DamageRange = damageType;
+                    spellref.DamageRange = gSpell.DamageRange;
                     spellref.Number = gSpell.Number;
 
                     break;
@@ -69,24 +79,18 @@ public class SpellHolder : Item
                     break;
             }
 
-            spellH.Spells[i].SpellType = runes[i].SpellType;
-            spellH.Spells[i].CastType = runes[i].CastType;
-            spellH.Spells[i].Target = runes[i].Target;
-            spellH.Spells[i].CostType = runes[i].CostType;
-            spellH.Spells[i].SpellAffect = runes[i].SpellAffect;
-            spellH.Spells[i].Cost = runes[i].Cost * mats[mat_id].Multi;
-            spellH.Spells[i].CastsPerSecond = runes[i].CastsPerSecond;
-            spellH.Spells[i].SkillType = runes[i].SkillType;
+            Spells[i].SpellType = spell.SpellType;
+            Spells[i].CastType = spell.CastType;
+            Spells[i].Target = spell.Target;
+            Spells[i].CostType = spell.CostType;
+            Spells[i].SpellAffect = spell.SpellAffect;
+            Spells[i].Cost = spell.Cost;
+            Spells[i].CastsPerSecond = spell.CastsPerSecond;
+            Spells[i].SkillType = spell.SkillType;
 
-            spellH.Spells[i].Name = runes[i].Name;*/
-
-        for (int i = 0; i < 3; i++)
-        {
-            if (Spells[i] != null)
-            {
-                numOfSpells++;
-            }
+            Spells[i].Name = spell.Name;
         }
+
     }
 
     public override bool Equals(Item Item)
