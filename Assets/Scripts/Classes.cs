@@ -222,6 +222,7 @@ public class ArmourStats
 [Serializable]
 public class SpellHolderData
 {
+    public int handType;
     public int SpellSkillType;
     public int Amount;
     public int MaterialId;
@@ -237,15 +238,16 @@ public class SpellHolderData
 [Serializable]
 public class SpellHolderStats
 {
+    public HandType handType;
     public SkillType SpellSkillType;
+    public MaterialType Type;
 
     public int Amount;
-    public int MaterialId;
     public int MaterialMulti;
 
     public Color Rarity;
 
-    public Spell[] SpellsData;
+    public Spell[] Spells = new Spell[3];
 
     public string Name;
 }

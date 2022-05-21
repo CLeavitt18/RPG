@@ -87,34 +87,27 @@ public static class LoadSystem
 
     public static void LoadItem(SpellHolderData FromSpell, SpellHolder ToSpell)
     {
-        ToSpell.Spells = new Spell[3];
+        SpellHolderStats stats = new SpellHolderStats();
+  
+        SpellData spellData;
 
         for (int i = 0; i < FromSpell.SpellsData.Length; i++)
         {
-            SpellData spellData = FromSpell.SpellsData[i];
+            spellData = FromSpell.SpellsData[i];
 
             if (spellData.SpellTypeId == (int)SpellType.None)
             {
                 continue;
             }
 
-            if (spellData.SpellTypeId == (int)SpellType.DamageSpell)
-            {
-                ToSpell.Spells[i] = ToSpell.gameObject.AddComponent<DamageSpell>();
-            }
-            else if (spellData.SpellTypeId == (int)SpellType.GolemSpell)
-            {
-                ToSpell.Spells[i] = ToSpell.gameObject.AddComponent<GolemSpell>();
-            }
-
-            LoadRune(spellData, ToSpell.GetRune(i));
+            LoadRune(spellData, stats.Spells[i]);
         }
 
-        ToSpell.ValueMulti = FromSpell.MaterialMulti;
-        ToSpell.Type = (MaterialType)FromSpell.MaterialId;
-        ToSpell.SkillType = (SkillType)FromSpell.SpellSkillType;
-        ToSpell.SetAmount(FromSpell.Amount);
-        ToSpell.SetName(FromSpell.Name);
+        stats.MaterialMulti = FromSpell.MaterialMulti;
+        stats.Type = (MaterialType)FromSpell.MaterialId;
+        stats.SpellSkillType = (SkillType)FromSpell.SpellSkillType;
+        stats.Amount = FromSpell.Amount;
+        stats.Name = FromSpell.Name;
 
         Color color = new Color(
             FromSpell.Rarity[0],
@@ -122,9 +115,9 @@ public static class LoadSystem
             FromSpell.Rarity[2],
             FromSpell.Rarity[3]);
 
-        ToSpell.SetRarity(color);
+        stats.Rarity = color;
 
-        ToSpell.SetSpellState();
+        ToSpell.SetSpellState(stats);
     }
 
     public static void LoadItem(RuneHolderData FromRuneH, RuneHolder ToRuneH)

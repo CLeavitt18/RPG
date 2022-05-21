@@ -25,11 +25,60 @@ public class SpellHolder : Item
         base.StoreItem();
     }
 
-    public void SetSpellState()
+    public void SetSpellState(SpellHolderStats stats)
     {
         name = GetName();
 
         numOfSpells = 0;
+
+        /*switch (runes[i].SpellType)
+            {
+                case SpellType.DamageSpell:
+                    DamageSpell dSpell = runes[i] as DamageSpell;
+
+                    dSpell.Spells[i] = spellH.gameObject.AddComponent<DamageSpell>();
+
+                    DamageSpell spellRef = spellH.GetRune(i) as DamageSpell;
+
+                    spellRef.DamageRanges = new List<DamageTypeStruct>();
+                    spellRef.StatusChance = new List<int>();
+
+                    for (int x  = 0; x < dSpell.DamageRanges.Count; x++)
+                    {
+                        damageType = new DamageTypeStruct(dSpell.DamageRanges[x], mats[mat_id].Multi);
+
+                        spellRef.DamageRanges.Add(damageType);
+                        spellRef.StatusChance.Add(dSpell.StatusChance[x]);
+                    }
+
+                    break;
+                case SpellType.GolemSpell:
+                    GolemSpell gSpell = runes[i] as GolemSpell;
+
+                    spellH.Spells[i] = spellH.gameObject.AddComponent<GolemSpell>();
+
+                    GolemSpell spellref = spellH.GetRune(i) as GolemSpell;
+
+                    damageType = new DamageTypeStruct(gSpell.DamageRange, mats[mat_id].Multi);
+
+                    spellref.DamageRange = damageType;
+                    spellref.Number = gSpell.Number;
+
+                    break;
+                default:
+                    break;
+            }
+
+            spellH.Spells[i].SpellType = runes[i].SpellType;
+            spellH.Spells[i].CastType = runes[i].CastType;
+            spellH.Spells[i].Target = runes[i].Target;
+            spellH.Spells[i].CostType = runes[i].CostType;
+            spellH.Spells[i].SpellAffect = runes[i].SpellAffect;
+            spellH.Spells[i].Cost = runes[i].Cost * mats[mat_id].Multi;
+            spellH.Spells[i].CastsPerSecond = runes[i].CastsPerSecond;
+            spellH.Spells[i].SkillType = runes[i].SkillType;
+
+            spellH.Spells[i].Name = runes[i].Name;*/
 
         for (int i = 0; i < 3; i++)
         {
