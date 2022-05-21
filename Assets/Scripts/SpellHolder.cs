@@ -46,21 +46,36 @@ public class SpellHolder : Item
 
     public override bool Equals(Item Item)
     {
-        /*SpellHolder spell;
+        SpellHolder spell;
 
         try
         {
-            spell = (SpellHolder)Item;
+            spell = Item as SpellHolder;
         }
         catch
         {
             return false;
         }
 
-        if (name == spell.name)
+        if (GetName() == spell.GetName() && HandType == spell.HandType)
         {
+            for (int i = 0; i < 3; i++)
+            {
+                if (Spells[i] == null && spell.Spells[i] == null)
+                {
+                    continue;
+                }
+
+                if ((Spells[i] != null && spell.Spells[i] == null) || 
+                (Spells[i] == null && spell.Spells[i] != null) || 
+                Spells[i].Equals(spell.Spells[i]) == false)
+                {
+                    return false;
+                }
+            }
+
             return true;
-        }*/
+        }
 
         return false;
     }

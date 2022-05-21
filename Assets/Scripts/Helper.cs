@@ -1,5 +1,4 @@
 using System.Text;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +9,7 @@ public class Helper : MonoBehaviour
 
     [SerializeField] private GameObject itemDetailsPrefab;
     [SerializeField] private GameObject textSlot;
-
+    
     [SerializeField] private GameObject costDetailsPrefab;
     [SerializeField] private GameObject resourceSlot;
 
