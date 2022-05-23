@@ -60,7 +60,7 @@ public class Player : LivingEntities
         }
     }
 
-    public void Update()
+    protected override void Update()
     {
         float Translate = Input.GetAxis("Vertical") * Time.deltaTime * Speed;
         float Strafe = Input.GetAxis("Horizontal") * Time.deltaTime * (Speed * .35f);
@@ -330,6 +330,8 @@ public class Player : LivingEntities
                     break;
             }
         }
+
+        base.Update();
     }
 
     public void OnDrawGizmos()

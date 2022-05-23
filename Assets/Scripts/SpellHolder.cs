@@ -28,6 +28,9 @@ public class SpellHolder : Item
 
     public void SetSpellState(SpellHolderStats stats)
     {
+        //Create some way of checking if the stats have not been set yet
+        //Make a gamobject for the _item that can be spawn when the spell is equiped
+        //Check if its null or not null return out becasue the spells stats has already beeen set before
         SetName(stats.Name);
         name = stats.Name;
         name = stats.Name;
@@ -43,7 +46,7 @@ public class SpellHolder : Item
 
             numOfSpells++;
 
-            switch ((SpellType)stats.Spells[i].SpellAffectID)
+            switch ((SpellType)stats.Spells[i].SpellTypeId)
             {
                 case SpellType.DamageSpell:
                     Spells[i] = gameObject.AddComponent<DamageSpell>();

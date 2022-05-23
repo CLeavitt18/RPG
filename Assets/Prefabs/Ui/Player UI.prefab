@@ -1204,7 +1204,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Intelligence
+  m_Text: Dexterity
 --- !u!1 &729000469855766068
 GameObject:
   m_ObjectHideFlags: 0
@@ -4088,7 +4088,7 @@ GameObject:
   - component: {fileID: 1955887246215363083}
   - component: {fileID: 5325129539472030659}
   m_Layer: 5
-  m_Name: IntelligenceButton
+  m_Name: DexterityButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6451,7 +6451,7 @@ GameObject:
   - component: {fileID: 2827873427825973957}
   - component: {fileID: 1998389682884661342}
   m_Layer: 5
-  m_Name: DexterityButton
+  m_Name: IntelligenceButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11843,7 +11843,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Dexterity
+  m_Text: Intelligence
 --- !u!1 &8119303189795207596
 GameObject:
   m_ObjectHideFlags: 0

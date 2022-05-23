@@ -10,22 +10,23 @@ public class LivingEntities : MonoBehaviour
 
     [SerializeField] private AttributeStruct[] Attributes = new AttributeStruct[3];
 
+    [SerializeField] protected int RunningStaminaCost;
+    [Range(GlobalValues.MinRoll, GlobalValues.MaxRoll), SerializeField] protected int ThreatLevel;
+    
     [SerializeField] private int BaseArmour;
     [SerializeField] private int Accuracy;
     [SerializeField] private int Level;
     [SerializeField] private int BurningStacks;
-    [SerializeField] protected int RunningStaminaCost;
-    [Range(GlobalValues.MinRoll, GlobalValues.MaxRoll), SerializeField] protected int ThreatLevel;
-
     [SerializeField] private int Armour;
 
     [Range(-95, 95), SerializeField] private byte[] Resistences = new byte[3];
-
+    
     [SerializeField] protected float RayDistance;
-    [SerializeField] private float BaseSpeed;
     [SerializeField] protected float Speed;
-    [SerializeField] private float ActionSpeed = 1.0f;
     [SerializeField] protected float RunStaminaDegenRate;
+
+    [SerializeField] private float BaseSpeed;
+    [SerializeField] private float ActionSpeed = 1.0f;
 
     [SerializeField] protected Transform RaySpawn;
 
@@ -37,9 +38,9 @@ public class LivingEntities : MonoBehaviour
     [SerializeField] protected Hand[] Hands = new Hand[2];
 
     [SerializeField] private List<int>[] Powers;
-
+    
     [SerializeField] protected bool Dead;
-    [SerializeField] protected bool Confused;
+
     [SerializeField] public bool Running;
 
     [SerializeField] private bool[] IsEmmune = new bool[4];
@@ -57,6 +58,11 @@ public class LivingEntities : MonoBehaviour
     [SerializeField] protected float NextStaminaDegen;
 
     [SerializeField] protected RaycastHit Hit;
+
+    protected virtual void Update() 
+    {
+        
+    }
 
     #region AttackFunctions
     protected IEnumerator Attack(int HandType)
@@ -112,8 +118,7 @@ public class LivingEntities : MonoBehaviour
                 hand.Stats.DamageValues.Add(CalculateMeleeDamage(Weapon, HandType, Weapon.GetDamageType(i), i));
                 hand.Stats.DamageTypes.Add(Weapon.GetDamageType(i));
 
-                int Chance;
-                Chance = Random.Range(1, 101);
+                int Chance = Random.Range(1, 101);
 
                 if (Chance <= StatusChances[i] && hand.Stats.DamageValues[i] > 0)
                 {
@@ -429,7 +434,6 @@ public class LivingEntities : MonoBehaviour
                     Hands[0].HeldItem = Item;
                     Hands[1].HeldItem = Item;
 
-                    //HandType = 0;
                 }
                 else
                 {

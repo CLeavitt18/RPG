@@ -33,6 +33,7 @@ public struct EnemyWeaponData
 public struct AttributeStruct
 {
     public int Ability;
+    public int RegenAmount;
     public int APerLevel;
 
     public float APercentPerLevel;

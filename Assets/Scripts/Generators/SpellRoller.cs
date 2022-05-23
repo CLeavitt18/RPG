@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellRoller : MonoBehaviour
@@ -42,7 +41,6 @@ public class SpellRoller : MonoBehaviour
 
         SpellHolderStats stats = new SpellHolderStats();
 
-        //spellH.Rarity = (runes[0].gameObject.GetComponent<RuneHolder>()).Rarity;
         stats.Type = (MaterialType)mat_id;
 
         stats.Name = ((MaterialType)mat_id).ToString() + " Spell Focus";
@@ -121,7 +119,7 @@ public class SpellRoller : MonoBehaviour
 
         spellH.SetSpellState(stats);
     
-        /*if (cleanUp)
+        if (cleanUp)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -132,7 +130,7 @@ public class SpellRoller : MonoBehaviour
 
                 Destroy(runes[i].gameObject);
             }
-        }*/
+        }
 
         return spellH;
     }
