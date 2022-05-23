@@ -148,7 +148,7 @@ public class AIController : LivingEntities
         }
     }
 
-    public void Update()
+    protected override void Update()
     {
         if (Dead || Time.timeScale == 0 || Agent.enabled == false)
         {
