@@ -38,10 +38,12 @@ public class LivingEntities : MonoBehaviour
     [SerializeField] protected Hand[] Hands = new Hand[2];
 
     [SerializeField] private List<int>[] Powers;
+
+    [SerializeField] public bool Running;
     
     [SerializeField] protected bool Dead;
 
-    [SerializeField] public bool Running;
+    [SerializeField] protected bool[] IsRegening = new bool[3];
 
     [SerializeField] private bool[] IsEmmune = new bool[4];
 
@@ -59,10 +61,6 @@ public class LivingEntities : MonoBehaviour
 
     [SerializeField] protected RaycastHit Hit;
 
-    protected virtual void Update() 
-    {
-        
-    }
 
     #region AttackFunctions
     protected IEnumerator Attack(int HandType)
@@ -314,7 +312,6 @@ public class LivingEntities : MonoBehaviour
     }
     #endregion
 
-    #region CreateFunctions
     protected void CreateWeapon(int HandType)
     {
         Hand hand = Hands[HandType];
@@ -402,9 +399,7 @@ public class LivingEntities : MonoBehaviour
             gSpell.Activated = true;
         }
     }
-    #endregion
 
-    #region UpDateEquipedItems
     public void EquipItem(Item Item, int HandType)
     {
         Item.SetEquiped(true);
@@ -698,9 +693,7 @@ public class LivingEntities : MonoBehaviour
             }
         }
     }
-    #endregion
 
-    #region DamageMultis
     protected void MeleeDamageMulti(int HandType, DamageTypeEnum Type)
     {
         float PercentFromLevel = 0;
@@ -773,9 +766,7 @@ public class LivingEntities : MonoBehaviour
         hand.DamageMultis.Spell[(int)Type] = 1;
         hand.DamageMultis.Spell[(int)Type] += PercentFromInt + PercentFromLevel;
     }
-    #endregion
 
-    #region CalculateDamage
     private int CalculateMeleeDamage(WeaponHolder Weapon, int HandType, DamageTypeEnum DamageType, int id)
     {
         float TempDamage;
@@ -858,9 +849,56 @@ public class LivingEntities : MonoBehaviour
 
         return (int)TempDamage;
     }
-    #endregion
 
-    #region UpdateAttributes
+    public virtual void CheckHealth()
+    {
+
+    }
+
+    protected void CheckForRegen(AttributesEnum type)
+    {
+        int id = (int)type;
+
+        if (IsRegening[id])
+        {
+            return;
+        }
+
+        switch (type)
+        {
+            case AttributesEnum.Health:
+                break;
+            case AttributesEnum.Stamina:
+
+                if (Running)
+                {
+                    return;
+                }
+
+                break;
+            case AttributesEnum.Mana:
+                break;
+            default:
+                break;
+        }
+
+        StartCoroutine(RegenAttribute(type, id));
+    } 
+
+    protected virtual IEnumerator RegenAttribute(AttributesEnum type, int id)
+    {
+        IsRegening[id] = true;
+
+        float wait = 1.10f;
+
+        while (GainAttribute(Attributes[id].RegenAmount, type))
+        {
+            yield return new WaitForSeconds(wait);
+        }
+
+        IsRegening[id] = false;
+    }
+
     public virtual int TakeDamage(DamageStats stats)
     {
         if (Attributes[(int)AttributesEnum.Health].Current <= 0)
@@ -1016,6 +1054,7 @@ public class LivingEntities : MonoBehaviour
         if (Attributes[(int)attribute].Current >= amount || attribute == AttributesEnum.Health)
         {
             Attributes[(int)attribute].Current -= amount;
+            CheckForRegen(attribute);
             return true;
         }
 
@@ -1033,9 +1072,7 @@ public class LivingEntities : MonoBehaviour
 
         return false;
     }
-    #endregion
 
-    #region BaseCalcs
     public virtual void CalculateSpeed()
     {
         float tempSpeed = BaseSpeed * ActionSpeed;
@@ -1105,12 +1142,6 @@ public class LivingEntities : MonoBehaviour
         tempWeight += strenghtMulti;
 
         Inventory.MaxCarryWeight = tempWeight;
-    }
-    #endregion
-
-    public virtual void CheckHealth()
-    {
-
     }
 
     protected void ResetPowers()

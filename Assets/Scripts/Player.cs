@@ -60,7 +60,7 @@ public class Player : LivingEntities
         }
     }
 
-    protected override void Update()
+    protected void Update()
     {
         float Translate = Input.GetAxis("Vertical") * Time.deltaTime * Speed;
         float Strafe = Input.GetAxis("Horizontal") * Time.deltaTime * (Speed * .35f);
@@ -228,6 +228,7 @@ public class Player : LivingEntities
             {
                 Speed += SprintSpeed;
                 Running = true;
+                StopCoroutine(RegenAttribute(AttributesEnum.Stamina, 1));
             }
 
             if (Input.GetButton("Shift") && GetCurrentStamina() >= RunningStaminaCost)
@@ -246,6 +247,7 @@ public class Player : LivingEntities
                 Speed -= SprintSpeed;
                 NextStaminaDegen = 0.0f;
                 Running = false;
+                CheckForRegen(AttributesEnum.Stamina);
             }
         }
 
@@ -330,8 +332,6 @@ public class Player : LivingEntities
                     break;
             }
         }
-
-        base.Update();
     }
 
     public void OnDrawGizmos()
@@ -347,6 +347,11 @@ public class Player : LivingEntities
         {
             Minions[i].GetComponent<AIController>().Target = Target.gameObject.transform;
         }
+    }
+
+    public override void CheckHealth()
+    {
+        base.CheckHealth();
     }
 
     public override int TakeDamage(DamageStats stats)

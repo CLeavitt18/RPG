@@ -119,7 +119,6 @@ public class ItemData
     string Name;
 }
 
-
 [Serializable]
 public class WeaponStatsData
 {

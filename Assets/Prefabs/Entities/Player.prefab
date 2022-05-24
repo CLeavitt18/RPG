@@ -424,21 +424,21 @@ MonoBehaviour:
   Type: 0
   Attributes:
   - Ability: 10
-    RegenAmount: 0
+    RegenAmount: 1
     APerLevel: 40
     APercentPerLevel: 0.2
     Current: 0
     Max: 0
     Reserved: 0
   - Ability: 10
-    RegenAmount: 0
+    RegenAmount: 3
     APerLevel: 30
     APercentPerLevel: 0.1
     Current: 0
     Max: 0
     Reserved: 0
   - Ability: 10
-    RegenAmount: 0
+    RegenAmount: 2
     APerLevel: 20
     APercentPerLevel: 0.08
     Current: 0
@@ -616,8 +616,9 @@ MonoBehaviour:
     NextAttack: 0
     ChannelTime: 0
     ActionsPerSecond: 0
-  Dead: 0
   Running: 0
+  Dead: 0
+  IsRegening: 000000
   IsEmmune: 00000000
   Inventory: {fileID: 5917650953009909481}
   StatusManger: {fileID: 5014798448673781093}

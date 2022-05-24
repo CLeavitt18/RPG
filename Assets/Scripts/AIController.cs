@@ -148,7 +148,7 @@ public class AIController : LivingEntities
         }
     }
 
-    protected override void Update()
+    protected void Update()
     {
         if (Dead || Time.timeScale == 0 || Agent.enabled == false)
         {
@@ -333,77 +333,6 @@ public class AIController : LivingEntities
 
         return TotalDamage;
     }
-
-    /*public override IEnumerator BurningStatus(DamageStats stats, int id)
-    {
-        return base.BurningStatus(stats, id);
-    }*/
-
-    /*public override IEnumerator ChainLightning(DamageStats stats, int id)
-    {
-        yield return new WaitForEndOfFrame();
-
-        stats.DamageValues[id] = (int)((float)stats.DamageValues[id] * (stats.ChainDamage * .01f));
-
-        float ClosestTarget = Mathf.Infinity;
-        AIController BestTarget = null;
-
-        GameObject[] Enemies = GameObject.FindGameObjectsWithTag(GlobalValues.EnemyTag);
-
-        if (Enemies.Length == 1)
-        {
-            yield break;
-        }
-
-        foreach (GameObject Targets in Enemies)
-        {
-            float Distance = Vector3.Distance(Targets.transform.position, transform.position);
-
-            if (Distance < ClosestTarget && Targets != gameObject && Targets.GetComponent<AIController>().Dead == false && Distance <= stats.ChainLength)
-            {
-                ClosestTarget = Distance;
-                BestTarget = Targets.GetComponent<AIController>();
-            }
-        }
-
-        if (BestTarget == null)
-        {
-            CheckHealth();
-            yield break;
-        }
-
-        GameObject LC = Instantiate(PrefabIDs.prefabIDs.LightningChain, gameObject.transform.position, gameObject.transform.rotation);
-        LC.transform.localScale = new Vector3(LC.transform.localScale.x, LC.transform.localScale.y, ClosestTarget + .5f);
-        Vector3 MidPoint = (gameObject.transform.parent.transform.position - BestTarget.transform.parent.position) * .5f;
-        LC.transform.position -= MidPoint;
-
-        Vector3 Direction = (BestTarget.transform.position - LC.transform.position);
-        Quaternion LookRotation = Quaternion.LookRotation(new Vector3(Direction.x, 0, Direction.z));
-        LC.transform.rotation = Quaternion.Slerp(LC.transform.rotation, LookRotation, 360f);
-
-        yield return new WaitForSeconds(.20f);
-
-        Destroy(LC);
-
-        BestTarget.LoseAttribute(stats.DamageValues[id], AttributesEnum.Health);
-
-        BestTarget.animator.SetTrigger(HitAnimationTriggerName);
-
-        stats.Chains--;
-
-        if (stats.Chains > 0 && BestTarget != null)
-        {
-            StartCoroutine(BestTarget.ChainLightning(stats, id));
-        }
-        else
-        {
-            CheckHealth();
-
-            yield return new WaitForSeconds(0.20f);
-
-            BestTarget.CheckHealth();
-        }
-    }*/
 
     public override void CalculateSpeed()
     {
