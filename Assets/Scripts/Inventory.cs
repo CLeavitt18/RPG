@@ -505,7 +505,7 @@ public class Inventory : MonoBehaviour, ISavable
 
             for (int i = 0; i < Count; i++)
             {
-                Destroy(AllItems[i]);
+                Destroy(AllItems[i].gameObject);
             }
 
             AllItems = new List<Item>();

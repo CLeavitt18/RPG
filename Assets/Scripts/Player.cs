@@ -22,6 +22,7 @@ public class Player : LivingEntities
 
     [SerializeField] private bool FirstOpen = true;
 
+
     public void OnEnable()
     {
         player = this;
@@ -228,7 +229,11 @@ public class Player : LivingEntities
             {
                 Speed += SprintSpeed;
                 Running = true;
-                StopCoroutine(RegenAttribute(AttributesEnum.Stamina, 1));
+                if (IsRegening[1])
+                {
+                    StopCoroutine(regens[1]);
+                    IsRegening[1] = false;
+                }
             }
 
             if (Input.GetButton("Shift") && GetCurrentStamina() >= RunningStaminaCost)

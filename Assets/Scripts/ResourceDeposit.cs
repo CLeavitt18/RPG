@@ -1,15 +1,11 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ResourceDeposit : Interactialbes, IInteractable, ISavable
 {
-    public int ResourceMulti;
-
     public Item Resource;
 
     public bool IsDead = false;
@@ -33,8 +29,6 @@ public class ResourceDeposit : Interactialbes, IInteractable, ISavable
 
     public void Interact(bool State)
     {
-        //Resource.GetComponent<ResourceHolder>().Amount *= ResourceMulti;
-
         Player.player.Inventory.AddItem(Resource, true, Resource.GetAmount());
         InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
 

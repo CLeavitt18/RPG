@@ -55,6 +55,8 @@ public class LivingEntities : MonoBehaviour
 
     [SerializeField] private float NextRegen;
 
+    [SerializeField] protected Coroutine[] regens = new Coroutine[3];
+
     [HideInInspector]
 
     [SerializeField] protected float NextStaminaDegen;
@@ -882,7 +884,7 @@ public class LivingEntities : MonoBehaviour
                 break;
         }
 
-        StartCoroutine(RegenAttribute(type, id));
+        regens[id] = StartCoroutine(RegenAttribute(type, id));
     } 
 
     protected virtual IEnumerator RegenAttribute(AttributesEnum type, int id)
