@@ -184,6 +184,7 @@ public class WeaponRoller : MonoBehaviour
         }
 
         stats.Name = name;
+        stats.Amount = 1;
 
         stats.Type = baseWeapon.Type;
         stats.WeaponSkillType = baseWeapon.WeaponSkillType;
