@@ -57,9 +57,9 @@ public static class GlobalValues
 
     public static readonly Color[] rarities = {new Color(0.72f, 0.72f, 0.72f, 0.50f), //base color
                                                new Color(0.50f, 0.50f, 0.50f, 0.50f), //common color
-                                               new Color(0.50f, 0.36f, 1.00f, 0.50f), //uncommon color
-                                               new Color(0.09f, 0.87f, 0.05f, 0.50f), //magic color
-                                               new Color(0.99f, 0.92f, 0.00f, 0.50f), //rare color
-                                               new Color(0.89f, 0.22f, 0.50f, 0.50f)}; //legendary color
+                                               new Color(0.00f, 0.36f, 1.00f, 0.50f), //uncommon color
+                                               new Color(0.00f, 1.00f, 0.36f, 0.50f), //magic color
+                                               new Color(0.94f, 0.80f, 0.00f, 0.50f), //rare color
+                                               new Color(1.00f, 0.25f, 0.25f, 0.50f)}; //legendary color
 
 }

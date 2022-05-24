@@ -1220,7 +1220,7 @@ ScriptsOnlyBuild:
     className: MainMenu
   - hash:
       serializedVersion: 2
-      Hash: 2a1dfde26c068246835dcf9797429b2b
+      Hash: 726a8421b2eec16ef11a3bdf8a624e65
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ResourceDeposit

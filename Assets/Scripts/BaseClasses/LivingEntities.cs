@@ -893,6 +893,8 @@ public class LivingEntities : MonoBehaviour
 
         float wait = 1.10f;
 
+        yield return new WaitForSeconds(wait);
+
         while (GainAttribute(Attributes[id].RegenAmount, type))
         {
             yield return new WaitForSeconds(wait);

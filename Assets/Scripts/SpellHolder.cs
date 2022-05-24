@@ -76,35 +76,25 @@ public class SpellHolder : Item
 
     public override bool Equals(Item Item)
     {
-        SpellHolder spell;
-
-        try
+        if (Item is SpellHolder spell) 
         {
-            spell = Item as SpellHolder;
-        }
-        catch
-        {
-            return false;
-        }
-
-        if (GetName() == spell.GetName() && HandType == spell.HandType)
-        {
-            for (int i = 0; i < 3; i++)
+            if (GetName() == spell.GetName() && HandType == spell.HandType)
             {
-                if (Spells[i] == null && spell.Spells[i] == null)
+                for (int i = 0; i < 3; i++)
                 {
-                    continue;
+                    if (Spells[i] == null && spell.Spells[i] == null)
+                    {
+                        continue;
+                    }
+
+                    if (Spells[i] == null || spell.Spells[i] == null || Spells[i].Equals(spell.Spells[i]) == false)
+                    {
+                        return false;
+                    }
                 }
 
-                if ((Spells[i] != null && spell.Spells[i] == null) || 
-                (Spells[i] == null && spell.Spells[i] != null) || 
-                Spells[i].Equals(spell.Spells[i]) == false)
-                {
-                    return false;
-                }
+                return true;
             }
-
-            return true;
         }
 
         return false;
@@ -134,7 +124,6 @@ public class SpellHolder : Item
     {
         return ValueMulti;
     }
-
 
     public int GetNumOfSpells()
     {
