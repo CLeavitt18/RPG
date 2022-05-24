@@ -53,6 +53,12 @@ public class ForgeUI : MonoBehaviour
         {
             SetCreateWeaponUi();
         }
+        else
+        {
+            Destroy(weapon.gameObject);
+            Destroy(itemDetailsLocation.GetChild(1).gameObject);
+            Destroy(resourceCostRetailsLocation.GetChild(0).gameObject);
+        }
     }
 
     public void SetCreateWeaponUi()
@@ -67,22 +73,7 @@ public class ForgeUI : MonoBehaviour
         ItemCatogoryType = 0;
         Cat_ID = 0;
 
-        if (weapon != null)
-        {
-            Destroy(weapon.gameObject);
-        }
-
-        weapon = Roller.roller.CreateWeapon(
-            (WeaponType)ItemCatogoryType, 
-            mat_Id, 
-            sec_Id, 
-            ter_Id, 
-            Cat_ID, 
-            Player.player.GetSkillLevel((int)SkillType.Smithing))
-            .GetComponent<WeaponHolder>();
-
         PreviewItem();
-        DisplayResourceCosts();
     }
 
     public void SetCreateArmourUi()
@@ -96,65 +87,54 @@ public class ForgeUI : MonoBehaviour
     {
         ItemCatogoryType = Index;
 
-        Destroy(weapon.gameObject);
-
-        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
-
         PreviewItem();
-        DisplayResourceCosts();
     }
 
     public void SetPrimary(int Index)
     {
         mat_Id = Index;
 
-        Destroy(weapon.gameObject);
-
-        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
-
         PreviewItem();
-        DisplayResourceCosts();
     }
 
     public void SetSecoundary(int Index)
     {
         sec_Id = Index;
 
-        Destroy(weapon.gameObject);
-
-        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
-
         PreviewItem();
-        DisplayResourceCosts();
     }
 
     public void SetTeritiary(int Index)
     {
         ter_Id = Index;
 
-        Destroy(weapon.gameObject);
-
-        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
-
         PreviewItem();
-        DisplayResourceCosts();
     }
 
     public void SetCatalyst(int Index)
     {
         Cat_ID = Index;
 
-        Destroy(weapon.gameObject);
-
-        weapon = (Roller.roller.CreateWeapon((WeaponType)ItemCatogoryType, mat_Id, sec_Id, ter_Id, Cat_ID)).GetComponent<WeaponHolder>();
-
         PreviewItem();
-        DisplayResourceCosts();
     }
 
     public void PreviewItem()
     {
+        if (weapon != null)
+        {
+            Destroy(weapon.gameObject);
+        }
+
+        weapon = (Roller.roller.CreateWeapon(
+            (WeaponType)ItemCatogoryType, 
+            mat_Id, 
+            sec_Id, 
+            ter_Id, 
+            Cat_ID, Player.player.GetSkillLevel((int)SkillType.Smithing))).GetComponent<WeaponHolder>();
+
         Helper.helper.CreateItemDetails(weapon, itemDetailsLocation);
+
+        DisplayResourceCosts();
     }
 
     public void DisplayResourceCosts()
@@ -246,30 +226,20 @@ public class ForgeUI : MonoBehaviour
 
     public void CreateWeapon()
     {
-        Item Item = Roller.roller.CreateWeapon(
-             (WeaponType)ItemCatogoryType,
-             mat_Id,
-             sec_Id,
-             ter_Id,
-             Cat_ID,
-             Player.player.GetSkillLevel((int)SkillType.Smithing));
-
-        WeaponHolder WeaponRef = Item.GetComponent<WeaponHolder>();
-
         float ExpValue = 0;
         int Tracker = 0;
 
-        for (int i = 0; i < WeaponRef.GetDamageRangesCount(); i++)
+        for (int i = 0; i < weapon.GetDamageRangesCount(); i++)
         {
-            if (WeaponRef.GetUpperRange(i) > 0)
+            if (weapon.GetUpperRange(i) > 0)
             {
-                ExpValue += WeaponRef.GetLowerRange(i) + WeaponRef.GetUpperRange(i);
+                ExpValue += weapon.GetLowerRange(i) + weapon.GetUpperRange(i);
                 Tracker += 2;
             }
         }
 
-        Player.player.GainExp((long)((ExpValue * (1 / (float)Tracker)) * WeaponRef.GetAttackSpeed()), (int)SkillType.Smithing);
-        Player.player.Inventory.AddItem(Item, true, 1);
+        Player.player.GainExp((long)((ExpValue * (1 / (float)Tracker)) * weapon.GetAttackSpeed()), (int)SkillType.Smithing);
+        Player.player.Inventory.AddItem(weapon, true, 1);
         InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
 
         ItemCatogoryType = 0;
@@ -296,6 +266,5 @@ public class ForgeUI : MonoBehaviour
 
         ConfirmCreateWeaponUi.SetActive(false);
         PreviewItem();
-        DisplayResourceCosts();
     }
 }
