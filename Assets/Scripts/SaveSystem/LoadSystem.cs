@@ -437,11 +437,13 @@ public static class LoadSystem
 
             ToRune.int0 = spellD.CritDamage;
 
-            ToRune.CastRate = spellD.CastsPerSecond;
+            ToRune.CastRate = spellD.GetCastRate();
+
+            GameObject spellAffect = spellD.GetSpellAffect();
 
             for (int x = 0; x < PrefabIDs.prefabIDs.SpellAffects.Length; x++)
             {
-                if (spellD.SpellAffect == PrefabIDs.prefabIDs.SpellAffects[x])
+                if (spellAffect == PrefabIDs.prefabIDs.SpellAffects[x])
                 {
                     ToRune.SpellAffectID = x;
                     break;
@@ -462,9 +464,11 @@ public static class LoadSystem
             ToRune.StatArray0[1] = spellG.DamageRange.LDamage;
             ToRune.StatArray0[2] = spellG.DamageRange.HDamage;
 
+            GameObject spellAffect = spellG.GetSpellAffect();
+
             for (int x = 0; x < PrefabIDs.prefabIDs.Minions.Length; x++)
             {
-                if (spellG.SpellAffect == PrefabIDs.prefabIDs.Minions[x])
+                if (spellAffect == PrefabIDs.prefabIDs.Minions[x])
                 {
                     ToRune.SpellAffectID = x;
                     break;
@@ -472,11 +476,11 @@ public static class LoadSystem
             }
         }
 
-        ToRune.Name = FromRune.Name;
-        ToRune.ManaCost = FromRune.Cost;
-        ToRune.CostType = (int)FromRune.CostType;
-        ToRune.CastType = (int)FromRune.CastType;
-        ToRune.Target = (int)FromRune.Target;
+        ToRune.Name = FromRune.GetName();
+        ToRune.ManaCost = FromRune.GetCost();
+        ToRune.CostType = (int)FromRune.GetCostType();
+        ToRune.CastType = (int)FromRune.GetCastType();
+        ToRune.Target = (int)FromRune.GetTarget();
     }
 
     public static void LoadItem(QuestHolder FromQuest, QuestData ToQuest)

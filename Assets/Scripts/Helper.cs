@@ -185,7 +185,7 @@ public class Helper : MonoBehaviour
 
             if (SpellH.GetRune(i) != null)
             {
-                sb.Append(SpellH.GetRune(i).SpellType.ToString());
+                sb.Append(SpellH.GetRune(i).GetSpellType().ToString());
             }
             else
             {
@@ -206,7 +206,7 @@ public class Helper : MonoBehaviour
 
             SpawnItemDetailSlot("", t);
 
-            Text name = SpawnItemDetailSlot(SpellH.GetRune(i).Name, t);
+            Text name = SpawnItemDetailSlot(SpellH.GetRune(i).GetName(), t);
             name.alignment = TextAnchor.MiddleCenter;
 
             SpawnItemDetailSlot("", t);
@@ -217,7 +217,7 @@ public class Helper : MonoBehaviour
 
     private void CreateRuneStatsText(Spell rune, Transform t, StringBuilder sb)
     {
-        float castRate = rune.CastsPerSecond;
+        float castRate = rune.GetCastRate();
      
         if (rune is DamageSpell dSpell)
         {
@@ -253,7 +253,7 @@ public class Helper : MonoBehaviour
         }
         else if (rune is GolemSpell gSpell)
         {
-            castRate = gSpell.CastsPerSecond;
+            castRate = gSpell.GetCastRate();
 
             sb.Append("Minions: ");
             sb.Append(gSpell.Number);
@@ -265,15 +265,15 @@ public class Helper : MonoBehaviour
 
         SpawnItemDetailSlot("", t);
 
-        sb.Append(rune.CostType.ToString());
+        sb.Append(rune.GetCostType().ToString());
         sb.Append(" Cost: ");
-        sb.Append(rune.Cost.ToString("n0"));
+        sb.Append(rune.GetCost().ToString("n0"));
 
         SpawnItemDetailSlot(sb.ToString(), t);
 
         sb.Clear();
 
-        if (rune.CastType != CastType.Aura)
+        if (rune.GetCastType() != CastType.Aura)
         {
             sb.Append("Cast Rate: ");
             sb.Append(castRate.ToString("n0"));
@@ -284,7 +284,7 @@ public class Helper : MonoBehaviour
         }
 
         sb.Append("Cast Type: ");
-        sb.Append(rune.CastType.ToString());
+        sb.Append(rune.GetCastType().ToString());
 
         SpawnItemDetailSlot(sb.ToString(), t);
 

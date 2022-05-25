@@ -209,11 +209,11 @@ public class LivingEntities : MonoBehaviour
 
         Hand hand = Hands[HandType];
 
-        TempManaCost = SpellH.Cost;
+        TempManaCost = SpellH.GetCost();
         TempChannelTime = hand.ChannelTime;
         TempNextCast = hand.NextAttack;
-        TempCastType = SpellH.CastType;
-        TempCostType = SpellH.CostType;
+        TempCastType = SpellH.GetCastType();
+        TempCostType = SpellH.GetCostType();
 
         TempManaCost *= 1 + ((Attributes[2].Ability * GlobalValues.SPDamIntInterval) * GlobalValues.SPDamPerInt);
 
@@ -292,7 +292,7 @@ public class LivingEntities : MonoBehaviour
 
         Hand hand = Hands[HandType];
 
-        TempManaCost = SpellH.Cost;
+        TempManaCost = SpellH.GetCost();
 
         TempManaCost *= 1 + ((Attributes[2].Ability * GlobalValues.SPDamIntInterval) * GlobalValues.SPDamPerInt);
 
@@ -343,7 +343,7 @@ public class LivingEntities : MonoBehaviour
 
         if (SpellH is DamageSpell damageSpell)
         {
-            Spell = Instantiate(SpellH.SpellAffect, hand.WeaponSpawn.position, hand.WeaponSpawn.rotation, hand.WeaponSpawn);
+            Spell = Instantiate(SpellH.GetSpellAffect(), hand.WeaponSpawn.position, hand.WeaponSpawn.rotation, hand.WeaponSpawn);
 
             HitManager SpellRef = Spell.GetComponent<HitManager>();
 
@@ -383,7 +383,7 @@ public class LivingEntities : MonoBehaviour
         {
             for (int i = 0; i < gSpell.Number; i++)
             {
-                Spell = Instantiate(SpellH.SpellAffect, hand.WeaponSpawn.position, hand.WeaponSpawn.rotation);
+                Spell = Instantiate(SpellH.GetSpellAffect(), hand.WeaponSpawn.position, hand.WeaponSpawn.rotation);
 
                 Minion minion = Spell.transform.GetComponentInChildren<Minion>();
 

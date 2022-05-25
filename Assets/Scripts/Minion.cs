@@ -194,11 +194,11 @@ public class Minion : AI
     {
         float PercentFromInt = (Mathf.Floor((float)Player.player.GetIntelligence() * GlobalValues.SPDamIntInterval)) * GlobalValues.SPDamPerInt;
 
-        float cost = SourceSpell.Cost * (1.0f + (float)PercentFromInt);
+        float cost = SourceSpell.GetCost() * (1.0f + (float)PercentFromInt);
 
         //Debug.Log("cost to be refunded = " + cost);
 
-        Owner.UnReserveAttribute((int)cost, SourceSpell.CostType);
+        Owner.UnReserveAttribute((int)cost, SourceSpell.GetCostType());
 
         SourceSpell.Alive--;
 

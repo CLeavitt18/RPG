@@ -71,7 +71,7 @@ public class SpellRoller : MonoBehaviour
             
             numRune++;
 
-            switch (runes[i].SpellType)
+            switch (runes[i].GetSpellType())
             {
                 case SpellType.DamageSpell:
                     DamageSpell dSpell = runes[i] as DamageSpell;

@@ -2,25 +2,26 @@ using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
-    public string Name;
+    [SerializeField] private string Name;
 
-    public SpellType SpellType;
+    [SerializeField] private SpellType SpellType;
     
-    public CastType CastType;
+    [SerializeField] private CastType CastType;
 
-    public CastTarget Target;
+    [SerializeField] private CastTarget Target;
 
-    public AttributesEnum CostType;
+    [SerializeField] private AttributesEnum CostType;
 
-    public SkillType SkillType;
+    [SerializeField] private SkillType SkillType;
 
-    public int Cost;
+    [SerializeField] private int Cost;
 
-    public GameObject SpellAffect;
+    [SerializeField] private GameObject SpellAffect;
 
-    public float CastsPerSecond;
+    [SerializeField] private float CastsPerSecond;
 
-    protected float NextAttack;
+    [SerializeField] protected float NextAttack;
+
 
     public virtual void Cast(Hand hand)
     {
@@ -41,5 +42,50 @@ public class Spell : MonoBehaviour
         }
 
         return false;
+    }
+
+    public string GetName()
+    {
+        return Name;
+    }
+
+    public SpellType GetSpellType()
+    {
+        return SpellType;
+    }
+
+    public CastType GetCastType()
+    {
+        return CastType;
+    }
+
+    public CastTarget GetTarget()
+    {
+        return Target;
+    }
+
+    public AttributesEnum GetCostType()
+    {
+        return CostType;
+    }
+
+    public SkillType GetSkillType()
+    {
+        return SkillType;
+    }
+
+    public int GetCost()
+    {
+        return Cost;
+    }
+
+    public GameObject GetSpellAffect()
+    {
+        return SpellAffect;
+    }
+
+    public float GetCastRate()
+    {
+        return CastsPerSecond;
     }
 }

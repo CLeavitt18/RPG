@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -189,7 +188,7 @@ public class RuneRoller : MonoBehaviour
 
         runeH.spell = rune;
 
-        string name = rune.SpellAffect.name;
+        string name = rune.GetSpellAffect().name;
         string tempName = "";
 
         for (int i = 0; i < name.Length; i++)

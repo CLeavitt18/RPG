@@ -125,7 +125,9 @@ public class Player : LivingEntities
                             string key = GlobalValues.AttackInputs[index];
                             Spell spell = SpellH.GetRune(i);
 
-                            if (spell.CastType == CastType.Channelled)
+                            CastType castType = spell.GetCastType();
+
+                            if (castType == CastType.Channelled)
                             {
                                 if (Input.GetButton(key))
                                 {
@@ -137,12 +139,12 @@ public class Player : LivingEntities
                                 }
                             }
 
-                            if ((spell.CastType == CastType.Instant || spell.CastType == CastType.Aura) && Input.GetButtonDown(key))
+                            if ((castType == CastType.Instant || castType == CastType.Aura) && Input.GetButtonDown(key))
                             {
                                 Cast(handType, spell);
                             }
 
-                            if (spell.CastType == CastType.Charged)
+                            if (castType == CastType.Charged)
                             {
                                 if (Input.GetButtonDown(key))
                                 {
