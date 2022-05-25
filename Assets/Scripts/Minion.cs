@@ -195,7 +195,6 @@ public class Minion : AI
         float PercentFromInt = (Mathf.Floor((float)Player.player.GetIntelligence() * GlobalValues.SPDamIntInterval)) * GlobalValues.SPDamPerInt;
 
         float cost = SourceSpell.Cost * (1.0f + (float)PercentFromInt);
-        cost /= SourceSpell.Alive;
 
         //Debug.Log("cost to be refunded = " + cost);
 

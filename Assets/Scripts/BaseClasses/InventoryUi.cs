@@ -608,7 +608,7 @@ public class InventoryUi : IUi
     {
         if (Focus != null && Focus == Slot)
         {
-            if (FocusedItem.GetAmount() >= 4)
+            if (FocusedItem.GetAmount() >= 4 && playerMode != PlayerState.InInventoy)
             {
                 AmountUi.SetActive(true);
                 AmountBar.maxValue = FocusedItem.GetAmount();

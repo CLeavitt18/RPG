@@ -51,8 +51,6 @@ public class Inventory : MonoBehaviour, ISavable
             Item.SetRarity(rarity);
         }
 
-        Item itemObject = Item.GetComponent<Item>();
-
         int start_id;
         int end_id;
 
@@ -97,7 +95,7 @@ public class Inventory : MonoBehaviour, ISavable
         {
             AllItems.Add(Item);
 
-            CurrentCarryWeight += itemObject.GetWeight() * Amount;
+            CurrentCarryWeight += Item.GetWeight() * Amount;
             Item.transform.parent = InventroyHolder;
 
             goto UpdateStartIDs;
@@ -107,17 +105,17 @@ public class Inventory : MonoBehaviour, ISavable
         {
             for (int i = start_id; i < end_id; i++)
             {
-                Item item = AllItems[i].GetComponent<Item>();
+                Item item = AllItems[i];
 
                 if (item.GetEquipable() && item.GetEquiped())
                 {
                     continue; 
                 }
 
-                if (itemObject.Equals(item))
+                if (Item.Equals(item))
                 {
-                    item += item;
-                    CurrentCarryWeight += itemObject.GetWeight() * Amount;
+                    item += Item;
+                    CurrentCarryWeight += Item.GetWeight() * Amount;
 
                     Destroy(Item.gameObject);
 
@@ -128,7 +126,7 @@ public class Inventory : MonoBehaviour, ISavable
 
         AllItems.Insert(end_id, Item);
 
-        CurrentCarryWeight += itemObject.GetWeight() * Amount;
+        CurrentCarryWeight += Item.GetWeight() * Amount;
         Item.transform.parent = InventroyHolder;
 
     UpdateStartIDs:

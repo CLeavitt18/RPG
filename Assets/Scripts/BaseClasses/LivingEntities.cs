@@ -273,7 +273,7 @@ public class LivingEntities : MonoBehaviour
                     hand.NextAttack = 0;
                     hand.ChannelTime = 0;
 
-                    if (!ReserveAttribute((int)TempManaCost, TempCostType))
+                    if (!ReserveAttribute(((int)TempManaCost) * gspell.Number, TempCostType))
                     {
                         Debug.Log("Returned from lose attribute");
                         return;

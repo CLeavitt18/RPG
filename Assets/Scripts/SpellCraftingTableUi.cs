@@ -203,8 +203,6 @@ public class SpellCraftingTableUi : MonoBehaviour
     {
         Player.player.Inventory.AddItem(spell, true, 1);
 
-        spell = null;
-
         CreatePlaceHolderSpell();
     }
 }
