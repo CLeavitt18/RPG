@@ -8,6 +8,19 @@ public class GolemSpell : Spell
 
     public bool Activated;
 
+    public override void SetStats(SpellStats stats)
+    {
+        GolemSpellStats statsG = stats as GolemSpellStats;
+
+        DamageRange = statsG.range;
+
+        Number = statsG.number;
+
+        Activated = statsG.activated;
+
+        base.SetStats(stats);
+    }
+
     public override bool Equals(Spell spell)
     {
         if (spell is GolemSpell gSpell)

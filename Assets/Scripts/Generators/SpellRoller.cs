@@ -95,7 +95,8 @@ public class SpellRoller : MonoBehaviour
                     break;
             }
 
-            runes[i].Cost = runes[i].Cost * mats[mat_id].Multi;
+            //Create a way to change the mana cost of a spell based on material Type
+            //runes[i].Cost = runes[i].GetCost() * mats[mat_id].Multi;
 
             for(int x = 0; x > GlobalValues.rarities.Length; x++)
             {

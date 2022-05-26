@@ -31,6 +31,14 @@ public class Spell : MonoBehaviour
         SpellType = stats.SpellType;
         CastType = stats.CastType;
         Target = stats.Target;
+        CostType = stats.CostType;
+        SkillType = stats.SkillType;
+
+        SpellAffect = stats.SpellAffect;
+
+        Cost = stats.ManaCost;
+
+        CastsPerSecond = stats.CastRate;
     }
 
     public virtual void Cast(Hand hand)

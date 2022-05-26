@@ -50,27 +50,15 @@ public class SpellHolder : Item
             {
                 case SpellType.DamageSpell:
                     Spells[i] = gameObject.AddComponent<DamageSpell>();
-
-                    DamageSpell spellRef = Spells[i] as DamageSpell;
-
-                    Spells[i].SpellType = SpellType.DamageSpell;
-
-                    LoadSystem.LoadRune(stats.Spells[i], spellRef);
-
                     break;
                 case SpellType.GolemSpell:
                     Spells[i] = gameObject.AddComponent<GolemSpell>();
-
-                    Spells[i].SpellType = SpellType.GolemSpell;
-
-                    GolemSpell spellref = Spells[i] as GolemSpell;
-
-                    LoadSystem.LoadRune(stats.Spells[i], spellref);
-
                     break;
                 default:
                     break;
             }
+
+            LoadSystem.LoadRune(stats.Spells[i], Spells[i]);
         }
     }
 

@@ -10,7 +10,7 @@ public class ChannelSpellHitManager : HitManager
 
         if (Spell is DamageSpell dSpell)
         {
-            CastRate = dSpell.CastsPerSecond;
+            CastRate = dSpell.GetCastRate();
         }
 
         LifeTime = Time.time + (1f / CastRate);

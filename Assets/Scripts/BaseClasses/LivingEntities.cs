@@ -224,7 +224,7 @@ public class LivingEntities : MonoBehaviour
                 {
                     if (SpellH is DamageSpell)
                     {
-                        hand.NextAttack = 1f / (SpellH as DamageSpell).CastsPerSecond;
+                        hand.NextAttack = 1f / (SpellH as DamageSpell).GetCastRate();
 
                         hand.ChannelTime = 0;
 
@@ -246,7 +246,7 @@ public class LivingEntities : MonoBehaviour
                 {
                     if (SpellH is DamageSpell)
                     {
-                        hand.NextAttack = (1f / (SpellH as DamageSpell).CastsPerSecond) + Time.time;
+                        hand.NextAttack = (1f / (SpellH as DamageSpell).GetCastRate()) + Time.time;
 
                         if (!LoseAttribute((int)TempManaCost, TempCostType))
                         {

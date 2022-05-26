@@ -162,7 +162,7 @@ public class RuneRoller : MonoBehaviour
 
                 castType = CastType.Aura;
 
-                statsG.nunmber = 1;
+                statsG.number = 1;
                 break;
             default:
                 break;
