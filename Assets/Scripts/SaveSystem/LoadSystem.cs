@@ -149,42 +149,52 @@ public static class LoadSystem
 
     public static void LoadRune(SpellData FromRune, Spell ToRune)
     {
-        if (ToRune is DamageSpell spellD)
+        SpellStats stats = null;
+
+        if (ToRune is DamageSpell)
         {
-            spellD.DamageRanges = new List<DamageTypeStruct>();
+            stats = new DamageSpellStats();
+
+            DamageSpellStats statsD = stats as DamageSpellStats;
+
+            statsD.ranges = new List<DamageTypeStruct>();
 
             for (int x = 0; x < FromRune.StatArray2.Length; x++)
             {
-                spellD.DamageRanges.Add(new DamageTypeStruct());
+                statsD.ranges.Add(new DamageTypeStruct());
                 {
-                    spellD.DamageRanges[x].Type = (DamageTypeEnum)FromRune.StatArray2[x];
-                    spellD.DamageRanges[x].LDamage = FromRune.StatArray3[x];
-                    spellD.DamageRanges[x].HDamage = FromRune.StatArray4[x];
+                    statsD.ranges[x].Type = (DamageTypeEnum)FromRune.StatArray2[x];
+                    statsD.ranges[x].LDamage = FromRune.StatArray3[x];
+                    statsD.ranges[x].HDamage = FromRune.StatArray4[x];
                 }
             }
 
-            spellD.StatusChance = new List<int>();
+            statsD.StatusChances = new List<int>();
 
             for (int x = 0; x < FromRune.StatArray1.Length; x++)
             {
-                spellD.StatusChance.Add(FromRune.StatArray1[x]);
+                statsD.StatusChances.Add(FromRune.StatArray1[x]);
             }
 
-            spellD.CritDamage = FromRune.int0;
+            statsD.CritDamage = FromRune.int0;
 
-            spellD.CastsPerSecond = FromRune.CastRate;
+            statsD.CastRate = FromRune.CastRate;
 
-            spellD.SpellAffect = PrefabIDs.prefabIDs.SpellAffects[FromRune.SpellAffectID];
+            statsD.SpellAffect = PrefabIDs.prefabIDs.SpellAffects[FromRune.SpellAffectID];
         }
-        else if (ToRune is GolemSpell spellG)
+        else if (ToRune is GolemSpell)
         {
+            stats = new GolemSpellStats();
+
+            GolemSpellStats spellG = stats as GolemSpellStats;
+
             spellG.SpellType = (SpellType)FromRune.SpellTypeId;
 
-            spellG.Activated = FromRune.bool0;
+            spellG.activated = FromRune.bool0;
 
-            spellG.Number = FromRune.int0;
+            spellG.number = FromRune.int0;
 
-            spellG.DamageRange = new DamageTypeStruct()
+            spellG.range = new DamageTypeStruct()
             {
                 Type = (DamageTypeEnum)FromRune.StatArray0[0],
                 LDamage = FromRune.StatArray0[1],
@@ -194,11 +204,14 @@ public static class LoadSystem
             spellG.SpellAffect = PrefabIDs.prefabIDs.Minions[FromRune.SpellAffectID];
         }
 
-        ToRune.Name = FromRune.Name;
-        ToRune.Cost = FromRune.ManaCost;
-        ToRune.CostType = (AttributesEnum)FromRune.CostType;
-        ToRune.CastType = (CastType)FromRune.CastType;
-        ToRune.Target = (CastTarget)FromRune.Target;
+        stats.Name = FromRune.Name;
+        stats.ManaCost = FromRune.ManaCost;
+        stats.CostType = (AttributesEnum)FromRune.CostType;
+        stats.CastType = (CastType)FromRune.CastType;
+        stats.Target = (CastTarget)FromRune.Target;
+        stats.SkillType = (SkillType)FromRune.SkillType; 
+
+        ToRune.SetStats(stats);
     }
 
     public static QuestHolder LoadItem(QuestData FromQuest, QuestHolder ToQuest)
@@ -481,6 +494,7 @@ public static class LoadSystem
         ToRune.CostType = (int)FromRune.GetCostType();
         ToRune.CastType = (int)FromRune.GetCastType();
         ToRune.Target = (int)FromRune.GetTarget();
+        ToRune.SkillType = (int)FromRune.GetSkillType();
     }
 
     public static void LoadItem(QuestHolder FromQuest, QuestData ToQuest)

@@ -119,6 +119,8 @@ public class RuneRoller : MonoBehaviour
 
         Spell rune = null;
 
+        SpellStats stats = null;
+
         DamageTypeStruct damage;
 
         switch (spellType)
@@ -128,14 +130,18 @@ public class RuneRoller : MonoBehaviour
 
                 rune = dRune;
 
-                dRune.DamageRanges = new List<DamageTypeStruct>();
-                dRune.StatusChance = new List<int>();
+                stats = new DamageSpellStats();
+
+                DamageSpellStats statsD = stats as DamageSpellStats;
+
+                statsD.ranges = new List<DamageTypeStruct>();
+                statsD.StatusChances = new List<int>();
 
                 damage = new DamageTypeStruct(baseSpells[id].Ranges[castId][damageType], cat.CatMultis[damageType]);
 
-                dRune.DamageRanges.Add(damage);
+                statsD.ranges.Add(damage);
 
-                dRune.StatusChance.Add(60);
+                statsD.StatusChances.Add(60);
 
                 break;
             case SpellType.GolemSpell:
@@ -144,16 +150,19 @@ public class RuneRoller : MonoBehaviour
 
                 rune = gRune;
 
+                stats = new GolemSpellStats();
+                GolemSpellStats statsG = stats as GolemSpellStats;
+
                 castId = 0;
                 damageType = 0;
 
                 damage = new DamageTypeStruct(baseSpells[id].Ranges[castId][damageType], cat.CatMultis[damageType]);
 
-                gRune.DamageRange = damage;
+                statsG.range = damage;
 
                 castType = CastType.Aura;
 
-                gRune.Number = 1;
+                statsG.nunmber = 1;
                 break;
             default:
                 break;
@@ -163,32 +172,32 @@ public class RuneRoller : MonoBehaviour
         switch (damageType)
         {
             case 0:
-                rune.SkillType = SkillType.Geomancy;
+                stats.SkillType = SkillType.Geomancy;
                 break;
             case 1:
-                rune.SkillType = SkillType.Pyromancy;
+                stats.SkillType = SkillType.Pyromancy;
                 break;
             case 2:
-                rune.SkillType = SkillType.Astromancy;
+                stats.SkillType = SkillType.Astromancy;
                 break;
             default:
-                rune.SkillType = SkillType.Cryomancy;
+                stats.SkillType = SkillType.Cryomancy;
                 break;
         }
 
-        rune.SpellType = spellType;
-        rune.CastType = castType;
-        rune.Target = castTareget;
-        rune.CostType = costType;
-        rune.SpellAffect = baseSpells[id].SpellAffects[castId][damageType];
-        rune.Cost = baseSpells[id].ManaCost[castId][damageType];
-        rune.CastsPerSecond = baseSpells[id].CastsPerSecond[castId][damageType];
+        stats.SpellType = spellType;
+        stats.CastType = castType;
+        stats.Target = castTareget;
+        stats.CostType = costType;
+        stats.SpellAffect = baseSpells[id].SpellAffects[castId][damageType];
+        stats.ManaCost = baseSpells[id].ManaCost[castId][damageType];
+        stats.CastRate = baseSpells[id].CastsPerSecond[castId][damageType];
 
         RuneHolder runeH = item as RuneHolder;
 
         runeH.spell = rune;
 
-        string name = rune.GetSpellAffect().name;
+        string name = stats.SpellAffect.name;
         string tempName = "";
 
         for (int i = 0; i < name.Length; i++)
@@ -201,10 +210,12 @@ public class RuneRoller : MonoBehaviour
             tempName += name[i];
         }
 
-        runeH.spell.Name = tempName;
         item.SetRarity(GlobalValues.rarities[rarityId]);
+        item.SetName(tempName + " Rune");
 
-        runeH.SetName(tempName + " Rune");
+        stats.Name = tempName;
+
+        runeH.spell.SetStats(stats);
 
         return item;
     }

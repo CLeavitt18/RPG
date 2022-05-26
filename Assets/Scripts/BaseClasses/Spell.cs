@@ -23,6 +23,16 @@ public class Spell : MonoBehaviour
     [SerializeField] protected float NextAttack;
 
 
+    public virtual void SetStats(SpellStats stats)
+    {
+        Name = stats.Name;
+        name = Name;
+
+        SpellType = stats.SpellType;
+        CastType = stats.CastType;
+        Target = stats.Target;
+    }
+
     public virtual void Cast(Hand hand)
     {
 
@@ -43,6 +53,7 @@ public class Spell : MonoBehaviour
 
         return false;
     }
+
 
     public string GetName()
     {

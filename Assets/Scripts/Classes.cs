@@ -272,6 +272,7 @@ public class SpellData
     public int Target;
     public int ManaCost;
     public int CostType;
+    public int SkillType;
     public int SpellAffectID;
     public int SpellTypeId;
 
@@ -288,6 +289,47 @@ public class SpellData
     public int[] StatArray4;
 }
 
+[Serializable]
+public class SpellStats
+{
+    public string Name;
+
+    public CastType CastType;
+
+    public CastTarget Target;
+
+    public AttributesEnum CostType;
+
+    public SpellType SpellType;
+
+    public SkillType SkillType;
+
+    public GameObject SpellAffect;
+
+    public int ManaCost;
+
+    public float CastRate;
+}
+
+[Serializable]
+public class DamageSpellStats : SpellStats
+{
+    public int CritDamage;
+
+    public List<DamageTypeStruct> ranges;
+
+    public List<int> StatusChances;
+}
+
+[Serializable]
+public class GolemSpellStats : SpellStats
+{
+    public int number;
+
+    public bool activated;
+
+    public DamageTypeStruct range;
+}
 [Serializable]
 public class QuestData
 {
