@@ -10141,7 +10141,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Comfirm
+  m_Text: Confirm
 --- !u!1 &6734285999313540915
 GameObject:
   m_ObjectHideFlags: 0
@@ -11077,7 +11077,7 @@ GameObject:
   - component: {fileID: 4031121164713242123}
   - component: {fileID: 1335408887771597045}
   m_Layer: 5
-  m_Name: ComfirmSleepButton
+  m_Name: ConfirmSleepButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
