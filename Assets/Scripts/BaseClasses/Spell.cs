@@ -23,6 +23,15 @@ public class Spell : MonoBehaviour
     [SerializeField] protected float NextAttack;
 
 
+    public int CalculateManaCost(int Intelligence)
+    {
+        float tempCost = GetCost();
+
+        tempCost *= 1 + ((Intelligence * GlobalValues.SPDamIntInterval) * GlobalValues.SPDamPerInt);
+
+        return (int)tempCost;
+    }
+
     public virtual void SetStats(SpellStats stats)
     {
         Name = stats.Name;

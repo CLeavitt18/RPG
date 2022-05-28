@@ -12,7 +12,7 @@ public class LivingEntities : MonoBehaviour
 
     [SerializeField] protected int RunningStaminaCost;
     [Range(GlobalValues.MinRoll, GlobalValues.MaxRoll), SerializeField] protected int ThreatLevel;
-    
+
     [SerializeField] private int BaseArmour;
     [SerializeField] private int Accuracy;
     [SerializeField] private int Level;
@@ -20,7 +20,7 @@ public class LivingEntities : MonoBehaviour
     [SerializeField] private int Armour;
 
     [Range(-95, 95), SerializeField] private byte[] Resistences = new byte[3];
-    
+
     [SerializeField] protected float RayDistance;
     [SerializeField] protected float Speed;
     [SerializeField] protected float RunStaminaDegenRate;
@@ -40,7 +40,7 @@ public class LivingEntities : MonoBehaviour
     [SerializeField] private List<int>[] Powers;
 
     [SerializeField] public bool Running;
-    
+
     [SerializeField] protected bool Dead;
 
     [SerializeField] protected bool[] IsRegening = new bool[3];
@@ -198,43 +198,31 @@ public class LivingEntities : MonoBehaviour
 
     }
 
-    protected void Cast(int HandType, Spell SpellH)
+    protected void Cast(int HandType, Hand hand, Spell SpellH, bool state = false)
     {
-        float TempManaCost;
-        float TempChannelTime;
-        float TempNextCast;
+        int TempManaCost = SpellH.CalculateManaCost(GetIntelligence());
 
-        CastType TempCastType;
-        AttributesEnum TempCostType;
+        float TempChannelTime = hand.ChannelTime;
+        float TempNextCast = hand.NextAttack;
 
-        Hand hand = Hands[HandType];
-
-        TempManaCost = SpellH.GetCost();
-        TempChannelTime = hand.ChannelTime;
-        TempNextCast = hand.NextAttack;
-        TempCastType = SpellH.GetCastType();
-        TempCostType = SpellH.GetCostType();
-
-        TempManaCost *= 1 + ((Attributes[2].Ability * GlobalValues.SPDamIntInterval) * GlobalValues.SPDamPerInt);
+        CastType TempCastType = SpellH.GetCastType();
+        AttributesEnum TempCostType = SpellH.GetCostType();
 
         switch (TempCastType)
         {
             case CastType.Channelled:
                 if (TempChannelTime >= TempNextCast)
                 {
-                    if (SpellH is DamageSpell)
+                    hand.NextAttack = 1f / SpellH.GetCastRate();
+
+                    hand.ChannelTime = 0;
+
+                    if (!LoseAttribute(TempManaCost, TempCostType))
                     {
-                        hand.NextAttack = 1f / (SpellH as DamageSpell).GetCastRate();
-
-                        hand.ChannelTime = 0;
-
-                        if (!LoseAttribute((int)TempManaCost, TempCostType))
-                        {
-                            return;
-                        }
-
-                        CreateSpell(HandType, SpellH);
+                        return;
                     }
+
+                    CreateSpell(HandType, hand, SpellH);
                 }
                 else
                 {
@@ -244,20 +232,35 @@ public class LivingEntities : MonoBehaviour
             case CastType.Instant:
                 if (Time.time >= TempNextCast)
                 {
-                    if (SpellH is DamageSpell)
-                    {
-                        hand.NextAttack = (1f / (SpellH as DamageSpell).GetCastRate()) + Time.time;
+                    hand.NextAttack = (1f / SpellH.GetCastRate()) + Time.time;
 
-                        if (!LoseAttribute((int)TempManaCost, TempCostType))
-                        {
-                            return;
-                        }
+                    if (!LoseAttribute((int)TempManaCost, TempCostType))
+                    {
+                        return;
                     }
 
-                    CreateSpell(HandType, SpellH);
+                    CreateSpell(HandType, hand, SpellH);
                 }
                 break;
             case CastType.Charged:
+                if (state == true)
+                {
+                    hand.ChannelTime = 0;
+                    
+                    if (TempChannelTime >= TempNextCast)
+                    {
+                        if (!LoseAttribute(TempManaCost, TempCostType))
+                        {
+                            return;
+                        }
+
+                        CreateSpell(HandType, hand, SpellH);
+                    }
+                }
+                else
+                {
+                    hand.ChannelTime += Time.deltaTime;
+                }
                 break;
             case CastType.Touch:
                 break;
@@ -280,36 +283,9 @@ public class LivingEntities : MonoBehaviour
                     }
                 }
 
-                CreateSpell(HandType, SpellH);
+                CreateSpell(HandType, hand, SpellH);
 
                 break;
-        }
-    }
-
-    protected void Cast(int HandType, bool State, Spell SpellH)
-    {
-        float TempManaCost;
-
-        Hand hand = Hands[HandType];
-
-        TempManaCost = SpellH.GetCost();
-
-        TempManaCost *= 1 + ((Attributes[2].Ability * GlobalValues.SPDamIntInterval) * GlobalValues.SPDamPerInt);
-
-        if ((int)TempManaCost > Attributes[2].Current)
-        {
-            return;
-        }
-
-        if (State == true && hand.ChannelTime >= (1 / hand.ActionsPerSecond))
-        {
-            CreateSpell(HandType, SpellH);
-            hand.ChannelTime = 0;
-            Attributes[2].Current -= (int)(TempManaCost);
-        }
-        else if (hand.ChannelTime < (1 / hand.ActionsPerSecond))
-        {
-            hand.ChannelTime += Time.deltaTime;
         }
     }
     #endregion
@@ -335,15 +311,18 @@ public class LivingEntities : MonoBehaviour
         hand.Animator.speed = weapon.GetAttackSpeed() * ActionSpeed;
     }
 
-    protected void CreateSpell(int HandType, Spell SpellH)
+    protected void CreateSpell(int HandType, Hand hand, Spell SpellH)
     {
         GameObject Spell;
 
-        Hand hand = Hands[HandType];
-
         if (SpellH is DamageSpell damageSpell)
         {
-            Spell = Instantiate(SpellH.GetSpellAffect(), hand.WeaponSpawn.position, hand.WeaponSpawn.rotation, hand.WeaponSpawn);
+            Spell = Instantiate(SpellH.GetSpellAffect(), hand.WeaponSpawn.position, hand.WeaponSpawn.rotation);
+
+            if (SpellH.GetCastType() == CastType.Channelled)
+            {
+                Spell.transform.SetParent(hand.WeaponSpawn);
+            }
 
             HitManager SpellRef = Spell.GetComponent<HitManager>();
 
@@ -885,7 +864,7 @@ public class LivingEntities : MonoBehaviour
         }
 
         regens[id] = StartCoroutine(RegenAttribute(type, id));
-    } 
+    }
 
     protected virtual IEnumerator RegenAttribute(AttributesEnum type, int id)
     {
@@ -1363,6 +1342,11 @@ public class LivingEntities : MonoBehaviour
         return Attributes[2].Ability;
     }
 
+    public int GetAbility(AttributesEnum type)
+    {
+        return Attributes[(int)type].Ability;
+    }
+
     public int GetAbility(int id)
     {
         return Attributes[id].Ability;
@@ -1528,6 +1512,11 @@ public class LivingEntities : MonoBehaviour
     public void SetLevel(int level)
     {
         Level = level;
+    }
+
+    public float GetBaseSpeed()
+    {
+        return BaseSpeed;
     }
 
     public void ReduceActionSpeed(float reduction)

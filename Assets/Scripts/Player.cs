@@ -64,281 +64,393 @@ public class Player : LivingEntities
     protected void Update()
     {
         float Translate = Input.GetAxis("Vertical") * Time.deltaTime * Speed;
-        float Strafe = Input.GetAxis("Horizontal") * Time.deltaTime * (Speed * .35f);
+        float Strafe = Input.GetAxis("Horizontal") * Time.deltaTime * (GetBaseSpeed() * .35f);
 
         transform.Translate(Strafe, 0, Translate);
 
-        if (Mode == PlayerState.Active)
+        switch (Mode)
         {
-            for (int handType = 0; handType < 2; handType++)
-            {
-                if (Hands[handType].HeldItem != null && Hands[handType].HeldItem is TorchHolder == false)
+            case PlayerState.Active:
+                ActiveInputCheck();
+                break;
+            case PlayerState.InInventoy:
+                InInventoyInputCheck();
+                break;
+            case PlayerState.InJournal:
+                InJournalInputCheck();
+                break;
+            case PlayerState.InStats:
+                InStatsInputCheck();
+                break;
+            case PlayerState.InContainer:
+            case PlayerState.InStore:
+                if (Input.GetButtonDown("Cancel"))
                 {
-                    if (Hands[handType].State == AttackType.Melee)
+                    Hit.collider.gameObject.GetComponent<IInteractable>().Interact(false);
+                    SetPlayerStateActive();
+                }
+                break;
+            case PlayerState.Paused:
+                if (Input.GetButtonDown("Cancel"))
+                {
+                    PlayerUi.playerUi.ExitPauseMenu();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void ActiveInputCheck()
+    {
+        for (int handType = 0; handType < 2; handType++)
+        {
+            Hand hand = Hands[handType];
+
+            if (hand.HeldItem == null || hand.HeldItem is TorchHolder)
+            {
+                continue;
+            }
+
+            AttackType type = hand.State;
+
+            if (type == AttackType.Melee)
+            {
+                if (hand.HasAttacked)
+                {
+                    if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]))
                     {
-                        if (Hands[handType].HasAttacked)
-                        {
-                            if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]))
-                            {
-                                Hands[handType].HasAttacked = false;
-                            }
-
-                            return;
-                        }
-
-                        if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]))
-                        {
-                            StartCoroutine(Attack(handType));
-                            Hands[handType].HasAttacked = false;
-                        }
-                        else if (Input.GetButton(GlobalValues.AttackInputs[handType]))
-                        {
-                            ChargeAttack(handType);
-                        }
+                        hand.HasAttacked = false;
                     }
-                    else if (Hands[handType].State == AttackType.Ranged && Input.GetButton(GlobalValues.AttackInputs[handType]))
+
+                    return;
+                }
+
+                if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]))
+                {
+                    StartCoroutine(Attack(handType));
+                    hand.HasAttacked = false;
+                }
+                else if (Input.GetButton(GlobalValues.AttackInputs[handType]))
+                {
+                    ChargeAttack(handType);
+                }
+            }
+            else if (type == AttackType.Ranged && Input.GetButton(GlobalValues.AttackInputs[handType]))
+            {
+                Shoot();
+            }
+            else
+            {
+                SpellHolder SpellH = hand.HeldItem.GetComponent<SpellHolder>();
+
+                int index = handType;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    if (SpellH.GetRune(i) == null)
                     {
-                        Shoot();
+                        if (i == 0)
+                        {
+                            index += 2 + handType;
+                        }
+                        else
+                        {
+                            index++;
+                        }
+
+                        continue;
+                    }
+
+                    string key = GlobalValues.AttackInputs[index];
+                    Spell spell = SpellH.GetRune(i);
+
+                    CastType castType = spell.GetCastType();
+
+                    switch (castType)
+                    {
+                        case CastType.Channelled:
+                            if (Input.GetButton(key))
+                            {
+                                Cast(handType, hand, spell);
+                            }
+                            else if (Input.GetButtonUp(key))
+                            {
+                                hand.ChannelTime = 0;
+                            }
+                            break;
+                        case CastType.Instant:
+                        case CastType.Aura:
+                            if (Input.GetButtonDown(key))
+                            {
+                                Cast(handType, hand, spell);
+                            }
+                            break;
+                        case CastType.Charged:
+                            if (Input.GetButtonDown(key))
+                            {
+                                Cast(handType, hand, spell);
+
+                            }
+                            else if (Input.GetButtonUp(key))
+                            {
+                                Cast(handType, hand, spell, true);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if (i == 0)
+                    {
+                        index += 2 + handType;
                     }
                     else
                     {
-                        SpellHolder SpellH = Hands[handType].HeldItem.GetComponent<SpellHolder>();
-
-                        int index = handType;
-
-                        for (int i = 0; i < 3; i++)
-                        {
-                            if (SpellH.GetRune(i) == null)
-                            {
-                                if (i == 0)
-                                {
-                                    index += 2 + handType;
-                                }   
-                                else
-                                {
-                                    index++;
-                                }
-
-                                continue;
-                            }
-
-                            string key = GlobalValues.AttackInputs[index];
-                            Spell spell = SpellH.GetRune(i);
-
-                            CastType castType = spell.GetCastType();
-
-                            if (castType == CastType.Channelled)
-                            {
-                                if (Input.GetButton(key))
-                                {
-                                    Cast(handType, spell);
-                                }
-                                else if (Input.GetButtonUp(key))
-                                {
-                                    Hands[handType].ChannelTime = 0;
-                                }
-                            }
-
-                            if ((castType == CastType.Instant || castType == CastType.Aura) && Input.GetButtonDown(key))
-                            {
-                                Cast(handType, spell);
-                            }
-
-                            if (castType == CastType.Charged)
-                            {
-                                if (Input.GetButtonDown(key))
-                                {
-                                    Cast(handType, false, spell);
-
-                                }
-                                else if (Input.GetButtonUp(key))
-                                {
-                                    Cast(handType, true, spell);
-                                }
-                            }
-
-                            if (i == 0)
-                            {
-                                index += 2 + handType;
-                            }
-                            else
-                            {
-                                index++;
-                            }
-                        }
+                        index++;
                     }
                 }
             }
+        }
 
-            Ray InteractionRay = new Ray(RaySpawn.position, RaySpawn.forward);
+        Ray InteractionRay = new Ray(RaySpawn.position, RaySpawn.forward);
 
-            if (Physics.Raycast(InteractionRay, out Hit, RayDistance, Interactiables) && Mode == PlayerState.Active)
+        if (Physics.Raycast(InteractionRay, out Hit, RayDistance, Interactiables) && Mode == PlayerState.Active)
+        {
+            GameObject objectHit = Hit.collider.gameObject;
+
+            if (objectHit.CompareTag(GlobalValues.EnemyTag) || objectHit.CompareTag(GlobalValues.MinionTag))
             {
-                GameObject objectHit = Hit.collider.gameObject;
-
-                if (objectHit.CompareTag(GlobalValues.EnemyTag) || objectHit.CompareTag(GlobalValues.MinionTag))
-                {
-                    if (objectHit.GetComponent<AIController>().GetDead())
-                    {
-                        objectHit.GetComponent<Interactialbes>().SetUiOpen();
-                    }
-
-                    PlayerUi.playerUi.SetEnemyInfoUI(objectHit.GetComponent<AIController>());
-                }
-                else if (objectHit.CompareTag(GlobalValues.NPCTag))
-                {
-                    if (objectHit.GetComponent<AIController>().Mode == Behaviuor.Neutrel || objectHit.GetComponent<AIController>().GetDead())
-                    {
-                        objectHit.GetComponent<Interactialbes>().SetUiOpen();
-                    }
-                    else
-                    {
-                        PlayerUi.playerUi.SetEnemyInfoUI(objectHit.GetComponent<AIController>());
-                    }
-                }
-                else
+                if (objectHit.GetComponent<AIController>().GetDead())
                 {
                     objectHit.GetComponent<Interactialbes>().SetUiOpen();
                 }
 
-                if (Input.GetButtonDown("E"))
+                PlayerUi.playerUi.SetEnemyInfoUI(objectHit.GetComponent<AIController>());
+            }
+            else if (objectHit.CompareTag(GlobalValues.NPCTag))
+            {
+                if (objectHit.GetComponent<AIController>().Mode == Behaviuor.Neutrel || objectHit.GetComponent<AIController>().GetDead())
                 {
+                    objectHit.GetComponent<Interactialbes>().SetUiOpen();
+                }
+                else
+                {
+                    PlayerUi.playerUi.SetEnemyInfoUI(objectHit.GetComponent<AIController>());
+                }
+            }
+            else
+            {
+                objectHit.GetComponent<Interactialbes>().SetUiOpen();
+            }
 
-                    if (objectHit.CompareTag(GlobalValues.EnemyTag) ||
-                        objectHit.CompareTag(GlobalValues.MinionTag))
-                    {
-                        if (objectHit.GetComponent<AIController>().GetDead())
-                        {
-                            objectHit.GetComponent<IInteractable>().Interact(true);
-                        }
-                    }
-                    else if (objectHit.CompareTag(GlobalValues.NPCTag))
-                    {
-                        if (objectHit.GetComponent<AIController>().Mode == Behaviuor.Neutrel ||
-                            objectHit.GetComponent<AIController>().GetDead())
-                        {
-                            objectHit.GetComponent<IInteractable>().Interact(true);
-                        }
-                    }
-                    else
+            if (Input.GetButtonDown("E"))
+            {
+
+                if (objectHit.CompareTag(GlobalValues.EnemyTag) ||
+                    objectHit.CompareTag(GlobalValues.MinionTag))
+                {
+                    if (objectHit.GetComponent<AIController>().GetDead())
                     {
                         objectHit.GetComponent<IInteractable>().Interact(true);
                     }
                 }
-            }
-
-            if (Input.GetButtonDown("Shift") && GetCurrentStamina() >= RunningStaminaCost)
-            {
-                Speed += SprintSpeed;
-                Running = true;
-                if (IsRegening[1])
+                else if (objectHit.CompareTag(GlobalValues.NPCTag))
                 {
-                    StopCoroutine(regens[1]);
-                    IsRegening[1] = false;
+                    if (objectHit.GetComponent<AIController>().Mode == Behaviuor.Neutrel ||
+                        objectHit.GetComponent<AIController>().GetDead())
+                    {
+                        objectHit.GetComponent<IInteractable>().Interact(true);
+                    }
+                }
+                else
+                {
+                    objectHit.GetComponent<IInteractable>().Interact(true);
                 }
             }
+        }
 
-            if (Input.GetButton("Shift") && GetCurrentStamina() >= RunningStaminaCost)
+        bool hasStamina = GetCurrentStamina() >= RunningStaminaCost;
+
+        if (Input.GetButtonDown("Shift") && hasStamina)
+        {
+            Speed += SprintSpeed;
+            Running = true;
+
+            if (IsRegening[1])
             {
-                if (Time.time >= NextStaminaDegen)
-                {
-                    LoseAttribute(RunningStaminaCost, AttributesEnum.Stamina);
-
-                    NextStaminaDegen = RunStaminaDegenRate + Time.time;
-                    PlayerUi.playerUi.SetPlayerAttributeUI(1);
-                }
+                StopCoroutine(regens[1]);
+                IsRegening[1] = false;
             }
+        }
 
-            if ((Input.GetButtonUp("Shift") || GetCurrentStamina() <= RunningStaminaCost) && Running)
-            {
-                Speed -= SprintSpeed;
-                NextStaminaDegen = 0.0f;
-                Running = false;
-                CheckForRegen(AttributesEnum.Stamina);
-            }
+        if (Running && Input.GetButton("Shift") && hasStamina && Time.time >= NextStaminaDegen)
+        {
+            LoseAttribute(RunningStaminaCost, AttributesEnum.Stamina);
+
+            NextStaminaDegen = RunStaminaDegenRate + Time.time;
+            PlayerUi.playerUi.SetPlayerAttributeUI(1);
+        }
+
+        if (Running && (Input.GetButtonUp("Shift") || !hasStamina))
+        {
+            StopRunning();
         }
 
         if (Input.GetButtonDown("I"))
         {
-            if (Mode == PlayerState.Active)
+            if (Running)
             {
-                Cursor.lockState = CursorLockMode.None;
-                Time.timeScale = 0;
-                Mode = PlayerState.InInventoy;
-
-                InventoryUi.playerUi.SetInventroy(true);
-
+                StopRunning();
             }
-            else if (Mode == PlayerState.InJournal)
-            {
-                Mode = PlayerState.InInventoy;
 
-                InventoryUi.playerUi.SetInventroy(true);
-            }
-            else if (Mode == PlayerState.InInventoy)
-            {
-                SetPlayerStateActive();
-            }
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+            Mode = PlayerState.InInventoy;
+
+            InventoryUi.playerUi.SetInventroy(true);
+            return;
         }
 
         if (Input.GetButtonDown("J"))
         {
-            if (Mode == PlayerState.Active)
+            if (Running)
             {
-                Cursor.lockState = CursorLockMode.None;
-                Time.timeScale = 0;
-                Mode = PlayerState.InJournal;
-
-                InventoryUi.playerUi.SetInventroy(true);
-                PlayerUi.playerUi.CallSetQuestInventory();
-
+                StopRunning();
             }
-            else if (Mode == PlayerState.InInventoy)
-            {
-                Mode = PlayerState.InJournal;
 
-                PlayerUi.playerUi.CallSetQuestInventory();
-            }
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+            Mode = PlayerState.InJournal;
+
+            InventoryUi.playerUi.SetInventroy(true);
+            PlayerUi.playerUi.CallSetQuestInventory();
+            return;
         }
 
         if (Input.GetButtonDown("C"))
         {
-            if (Mode == PlayerState.Active)
+            if (Running)
             {
-                Cursor.lockState = CursorLockMode.None;
-                Time.timeScale = 0;
-                Mode = PlayerState.InInventoy;
+                StopRunning();
+            }
 
-                InventoryUi.playerUi.SetInventroy(true);
-                PlayerUi.playerUi.CallSetStats();
-            }
-            else if (Mode == PlayerState.InInventoy)
-            {
-                PlayerUi.playerUi.CallSetStats();
-            }
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+            Mode = PlayerState.InStats;
+
+            InventoryUi.playerUi.SetInventroy(true);
+            PlayerUi.playerUi.CallSetStats();
+            return;
         }
 
         if (Input.GetButtonDown("Cancel"))
         {
-            switch (Mode)
+            if (Running)
             {
-                case PlayerState.Active:
-                    SetPlayerStatePaused();
-                    break;
-                case PlayerState.InInventoy:
-                case PlayerState.InJournal:
-                    SetPlayerStateActive();
-                    break;
-                case PlayerState.InContainer:
-                case PlayerState.InStore:
-                    Hit.collider.gameObject.GetComponent<IInteractable>().Interact(false);
-                    SetPlayerStateActive();
-                    break;
-                case PlayerState.Paused:
-                    PlayerUi.playerUi.ExitPauseMenu();
-                    break;
+                StopRunning();
             }
+
+            SetPlayerStatePaused();
         }
+    }
+
+    private void InInventoyInputCheck()
+    {
+        if (Input.GetButtonDown("I"))
+        {
+            SetPlayerStateActive();
+            return;
+        }
+
+        if (Input.GetButtonDown("J"))
+        {
+            Mode = PlayerState.InJournal;
+
+            PlayerUi.playerUi.CallSetQuestInventory();
+            return;
+        }
+
+        if (Input.GetButtonDown("C"))
+        {
+            Mode = PlayerState.InStats;
+
+            PlayerUi.playerUi.CallSetStats();
+            return;
+        }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SetPlayerStateActive();
+        }
+    }
+
+    private void InJournalInputCheck()
+    {
+        if (Input.GetButtonDown("I"))
+        {
+            Mode = PlayerState.InInventoy;
+
+            PlayerUi.playerUi.CallSetInventory();
+            return;
+        }
+
+        if (Input.GetButtonDown("J"))
+        {
+            SetPlayerStateActive();
+            return;
+        }
+
+        if (Input.GetButtonDown("C"))
+        {
+            Mode = PlayerState.InStats;
+
+            PlayerUi.playerUi.CallSetStats();
+            return;
+        }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SetPlayerStateActive();
+        }
+    }
+
+    private void InStatsInputCheck()
+    {
+        if (Input.GetButtonDown("I"))
+        {
+            Mode = PlayerState.InInventoy;
+
+            PlayerUi.playerUi.CallSetInventory();
+            return;
+        }
+
+        if (Input.GetButtonDown("J"))
+        {
+            Mode = PlayerState.InJournal;
+
+            PlayerUi.playerUi.CallSetQuestInventory();
+            return;
+        }
+
+        if (Input.GetButtonDown("C"))
+        {
+            SetPlayerStateActive();
+            return;
+        }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SetPlayerStateActive();
+        }
+    }
+
+    private void StopRunning()
+    {
+        Speed -= SprintSpeed;
+        NextStaminaDegen = 0.0f;
+        Running = false;
+        CheckForRegen(AttributesEnum.Stamina);
     }
 
     public void OnDrawGizmos()
@@ -622,7 +734,7 @@ public class Player : LivingEntities
     {
         StoredLevel -= amount;
     }
-    
+
     public void SetPlayerStateActive()
     {
         Mode = PlayerState.Active;
@@ -698,12 +810,10 @@ public class Player : LivingEntities
         }
 
         SetLevel(level + 1);
-        SetPlayerStateActive();
 
-        for (int i = 0; i < 3; i++)
-        {
-            CalculateAttribute(i);
-        }
+        UnReserveAttribute(0, AttributesEnum.Mana);
+
+        UpDatePlayerState();
 
         for (int i = 0; i < 2; i++)
         {
@@ -726,14 +836,25 @@ public class Player : LivingEntities
             {
                 SpellHolder spell = item as SpellHolder;
 
+                Spell RuneRef = null;
+
                 for (int x = 0; x < 3; x++)
                 {
-                    if (spell.GetRune(i) is DamageSpell dSpell)
+                    if ((RuneRef = spell.GetRune(x)) == null)
+                    {
+                        continue;
+                    }
+
+                    if (spell.GetRune(x) is DamageSpell dSpell)
                     {
                         for (int y = 0; y < dSpell.DamageRanges.Count; y++)
                         {
                             SpellDamageMulti(i, dSpell.DamageRanges[y].Type);
                         }
+                    }
+                    else if (spell.GetRune(x) is GolemSpell gSpell && gSpell.Activated)
+                    {
+
                     }
                 }
             }

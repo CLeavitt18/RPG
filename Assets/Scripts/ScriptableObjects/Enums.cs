@@ -211,6 +211,7 @@ public enum PlayerState : byte
     Active,
     InInventoy,
     InJournal,
+    InStats,
     InContainer,
     InConvoe,
     InStore,

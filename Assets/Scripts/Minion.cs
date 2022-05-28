@@ -192,9 +192,7 @@ public class Minion : AI
 
     public override void CallDeath(bool Animate)
     {
-        float PercentFromInt = (Mathf.Floor((float)Player.player.GetIntelligence() * GlobalValues.SPDamIntInterval)) * GlobalValues.SPDamPerInt;
-
-        float cost = SourceSpell.GetCost() * (1.0f + (float)PercentFromInt);
+        int cost = SourceSpell.CalculateManaCost(Owner.GetIntelligence());
 
         //Debug.Log("cost to be refunded = " + cost);
 

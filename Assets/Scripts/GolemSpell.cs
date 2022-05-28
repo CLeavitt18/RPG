@@ -8,6 +8,7 @@ public class GolemSpell : Spell
 
     public bool Activated;
 
+
     public override void SetStats(SpellStats stats)
     {
         GolemSpellStats statsG = stats as GolemSpellStats;
