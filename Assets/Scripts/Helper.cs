@@ -293,7 +293,7 @@ public class Helper : MonoBehaviour
 
     private void CreateRuneText(Item item, Transform t, StringBuilder sb)
     {
-        CreateRuneStatsText(item.GetComponent<RuneHolder>().spell, t, sb);
+        CreateRuneStatsText((item as RuneHolder).GetSpell(), t, sb);
     }
 
     private void CreatePotionText(Item item, Transform t, StringBuilder sb)

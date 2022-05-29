@@ -1,8 +1,8 @@
-
+using UnityEngine;
 
 public class RuneHolder : Item
 {
-    public Spell spell;
+    [SerializeField] private Spell _spell = null;
 
     public override void StoreItem()
     {
@@ -18,12 +18,27 @@ public class RuneHolder : Item
     {
         if (GetName() == Item.GetName())
         {
-            if (spell.Equals((Item as RuneHolder).spell))
+            if (_spell.Equals((Item as RuneHolder)._spell))
             {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public Spell GetSpell()
+    {
+        return _spell;
+    }
+
+    public void SetSpell(Spell spell)
+    {
+        if (_spell != null)
+        {
+            return;
+        }
+
+        _spell = spell;
     }
 }

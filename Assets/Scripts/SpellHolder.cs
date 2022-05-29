@@ -4,8 +4,6 @@ using UnityEngine;
 public class SpellHolder : Item
 {
     [SerializeField] private HandType HandType;
-
-    [SerializeField] private SkillType SkillType;
     
     [SerializeField] private MaterialType Type;
 
@@ -91,11 +89,6 @@ public class SpellHolder : Item
     public HandType GetHandType()
     {
         return HandType;
-    }
-
-    public SkillType GetSkill()
-    {
-        return SkillType;
     }
 
     public MaterialType GetMaterialType()

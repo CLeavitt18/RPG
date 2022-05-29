@@ -137,14 +137,14 @@ public static class LoadSystem
 
         if (FromRuneH.runeData.SpellTypeId == 0)
         {
-            ToRuneH.spell = ToRuneH.gameObject.AddComponent<DamageSpell>();
+            ToRuneH.SetSpell(ToRuneH.gameObject.AddComponent<DamageSpell>());
         }
         else if (FromRuneH.runeData.SpellTypeId == 1)
         {
-            ToRuneH.spell = ToRuneH.gameObject.AddComponent<GolemSpell>();
+            ToRuneH.SetSpell(ToRuneH.gameObject.AddComponent<GolemSpell>());
         }
 
-        LoadRune(FromRuneH.runeData, ToRuneH.spell);
+        LoadRune(FromRuneH.runeData, ToRuneH.GetSpell());
     }
 
     public static void LoadRune(SpellData FromRune, Spell ToRune)
@@ -395,7 +395,6 @@ public static class LoadSystem
 
         ToSpell.MaterialMulti = FromSpell.GetValueMulti();
         ToSpell.MaterialId = (int)FromSpell.GetMaterialType();
-        ToSpell.SpellSkillType = (int)FromSpell.GetSkill();
         ToSpell.Amount = FromSpell.GetAmount();
         ToSpell.Name = FromSpell.GetName();
 
@@ -421,7 +420,7 @@ public static class LoadSystem
 
         ToRuneH.runeData = new SpellData();
 
-        LoadRune(FromRuneH.spell, ToRuneH.runeData);
+        LoadRune(FromRuneH.GetSpell(), ToRuneH.runeData);
     }
 
     public static void LoadRune(Spell FromRune, SpellData ToRune)

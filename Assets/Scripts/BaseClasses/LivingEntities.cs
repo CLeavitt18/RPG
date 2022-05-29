@@ -514,11 +514,15 @@ public class LivingEntities : MonoBehaviour
                     switch (Hands[1].State)
                     {
                         case AttackType.None:
+                        case AttackType.Shield:
                             break;
                         case AttackType.Melee:
                             masteryType = MasteryType.OneHandedMelee;
                             break;
-                        default:
+                        case AttackType.Ranged:
+                            masteryType = MasteryType.OneHandedRanged;
+                            break;
+                        case AttackType.Spell:
                             masteryType = MasteryType.OneHandedSpell;
                             break;
                     }
@@ -541,17 +545,48 @@ public class LivingEntities : MonoBehaviour
                             }
 
                             break;
-                        default:
+                        case AttackType.Ranged:
+                            masteryType = MasteryType.MeleeRanged;
+                            break;
+                        case AttackType.Spell:
                             masteryType = MasteryType.MeleeSpell;
+                            break;
+                        case AttackType.Shield:
+                            masteryType = MasteryType.MeleeShield;
                             break;
                     }
                     break;
                 case AttackType.Ranged:
 
-                    masteryType = MasteryType.Bow;
+                    switch (Hands[1].State)
+                    {
+                        case AttackType.None:
+                            masteryType = MasteryType.OneHandedRanged;
+                            break;
+                        case AttackType.Melee:
+                            masteryType = MasteryType.MeleeRanged;
+                            break;
+                        case AttackType.Ranged:
+
+                            if (Hands[0].HeldItem == Hands[1].HeldItem)
+                            {
+                                masteryType = MasteryType.TwoHandedRanged;
+                            }else
+                            {
+                                masteryType = MasteryType.DualWieldingRanged;
+                            }
+
+                            break;
+                        case AttackType.Spell:
+                            masteryType = MasteryType.RangedSpell;
+                            break;
+                        case AttackType.Shield:
+                            masteryType = MasteryType.RangedShield;
+                            break;
+                    }
 
                     break;
-                default:
+                case AttackType.Spell:
                     switch (Hands[1].State)
                     {
                         case AttackType.None:
@@ -560,7 +595,10 @@ public class LivingEntities : MonoBehaviour
                         case AttackType.Melee:
                             masteryType = MasteryType.MeleeSpell;
                             break;
-                        default:
+                        case AttackType.Ranged:
+                            masteryType = MasteryType.RangedSpell;
+                            break;
+                        case AttackType.Spell:
                             if (Hands[0].HeldItem == Hands[1].HeldItem)
                             {
                                 masteryType = MasteryType.TwoHandedSpell;
@@ -569,6 +607,29 @@ public class LivingEntities : MonoBehaviour
                             {
                                 masteryType = MasteryType.DualWieldingSpell;
                             }
+                            break;
+                        case AttackType.Shield:
+                            masteryType = MasteryType.SpellShield;
+                            break;
+                    }
+                    break;
+                case AttackType.Shield:
+                    switch(Hands[1].State)
+                    {
+                        case AttackType.None:
+                            masteryType = MasteryType.None;
+                            break;
+                        case AttackType.Melee:
+                            masteryType = MasteryType.MeleeShield;
+                            break;
+                        case AttackType.Ranged:
+                            masteryType = MasteryType.RangedShield;
+                            break;
+                        case AttackType.Spell:
+                            masteryType = MasteryType.SpellShield;
+                            break;
+                        case AttackType.Shield:
+                            masteryType = MasteryType.None;
                             break;
                     }
                     break;

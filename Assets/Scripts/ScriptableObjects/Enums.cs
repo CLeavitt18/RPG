@@ -19,15 +19,21 @@ public enum EntityType : byte
 public enum MasteryType : byte
 {
     OneHandedMelee,
+    OneHandedRanged,
     OneHandedSpell,
     MeleeShield,
+    RangedShield,
     SpellShield,
+    MeleeRanged,
     MeleeSpell,
+    RangedSpell,
     DualWieldingMelee,
+    DualWieldingRanged,
     DualWieldingSpell,
     TwoHandedMelee,
+    TwoHandedRanged,
     TwoHandedSpell,
-    Bow
+    None
 }
 
 public enum SkillType : byte
@@ -56,7 +62,8 @@ public enum AttackType : byte
     None,
     Melee,
     Ranged,
-    Spell
+    Spell,
+    Shield
 }
 
 public enum WeaponType : byte
@@ -172,7 +179,6 @@ public enum CatType : byte
     T6Ice,
 }
 
-[System.Serializable]
 public enum DamageTypeEnum : byte
 {
     Physical,

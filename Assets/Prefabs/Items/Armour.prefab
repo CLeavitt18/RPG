@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2035971eeabe75449a60392e5890c8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 1
   Value: 0
   Amount: 1
   Weight: 0
@@ -57,5 +58,4 @@ MonoBehaviour:
   Resistences: 000000000000000000000000
   ArmourType: 0
   Enchantments: []
-  _skillType: 0
-  _isEquiped: 0
+  SkillType: 0

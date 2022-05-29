@@ -185,6 +185,10 @@ public class RuneRoller : MonoBehaviour
                 break;
         }
 
+        RuneHolder runeH = item as RuneHolder;
+
+        runeH.SetSpell(rune);
+        
         stats.SpellType = spellType;
         stats.CastType = castType;
         stats.Target = castTareget;
@@ -193,9 +197,6 @@ public class RuneRoller : MonoBehaviour
         stats.ManaCost = baseSpells[id].ManaCost[castId][damageType];
         stats.CastRate = baseSpells[id].CastsPerSecond[castId][damageType];
 
-        RuneHolder runeH = item as RuneHolder;
-
-        runeH.spell = rune;
 
         string name = stats.SpellAffect.name;
         string tempName = "";
@@ -215,7 +216,7 @@ public class RuneRoller : MonoBehaviour
 
         stats.Name = tempName;
 
-        runeH.spell.SetStats(stats);
+        runeH.GetSpell().SetStats(stats);
 
         return item;
     }
