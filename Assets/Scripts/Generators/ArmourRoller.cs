@@ -82,6 +82,8 @@ public class ArmourRoller : MonoBehaviour
 
         int rarityId = Cat_Id % 6;
 
+        ArmourStats stats = new ArmourStats();
+
         if (Type == ArmourType.Helmat)
         {
             ArmourBase = Armour[0];
@@ -107,19 +109,19 @@ public class ArmourRoller : MonoBehaviour
             ArmourBase = Armour[5];
         }
 
-        armour.SetRarity(GlobalValues.rarities[rarityId]);
+        stats.Rarity = GlobalValues.rarities[rarityId];
 
         ArmourHolder ArmourH = armour as ArmourHolder;
 
-        ArmourH.Armour = ArmourBase.Armour[Catogory] * Multis[Mat_Id].Multi * Cats[Cat_Id].CatMultis[0];
+        stats.Armour = ArmourBase.Armour[Catogory] * Multis[Mat_Id].Multi * Cats[Cat_Id].CatMultis[0];
 
-        ArmourH.CurrentDurability = ArmourBase.Durability;
-        ArmourH.MaxDurability = ArmourH.CurrentDurability;
+        stats.MaxDurability = ArmourBase.Durability;
+        stats.CurrentDurability = stats.MaxDurability;
 
-        ArmourH.SetWeight(ArmourBase.Weight[Catogory]);
-        ArmourH.ArmourType = Type;
+        stats.Weight = ArmourBase.Weight[Catogory];
+        stats.ArmourType = Type;
 
-        ArmourH.SkillType = SkillType;
+        stats.SkillType = SkillType;
 
         StringBuilder sb = new StringBuilder();
 
@@ -171,9 +173,9 @@ public class ArmourRoller : MonoBehaviour
             }
         }
 
-        ArmourH.SetName(sb.ToString());
+        stats.Name = sb.ToString();
 
-        ArmourH.SetArmourState();
+        ArmourH.SetStats(stats);
 
         return armour;
     }

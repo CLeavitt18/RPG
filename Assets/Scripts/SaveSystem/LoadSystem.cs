@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class LoadSystem
 {
-    public static void LoadItem(WeaponStatsData FromWeapon, WeaponHolder ToWeapon)
+    public static void LoadItem(WeaponData FromWeapon, WeaponHolder ToWeapon)
     {
         WeaponStats stats = new WeaponStats();
 
@@ -53,36 +53,36 @@ public static class LoadSystem
         ToWeapon.SetWeaponState(stats);
     }
 
-    public static void LoadItem(ArmourStats FromArmour, ArmourHolder ToArmour)
+    public static void LoadItem(ArmourData FromArmour, ArmourHolder ToArmour)
     {
-        ToArmour.Armour = FromArmour.Armour;
-        ToArmour.CurrentDurability = FromArmour.CurrentDurablity;
-        ToArmour.MaxDurability = FromArmour.MaxDurablity;
-        ToArmour.ArmourType = (ArmourType)FromArmour.ArmourType;
-        ToArmour.SetValue(FromArmour.Value);
-        ToArmour.SetAmount(FromArmour.Amount);
-        ToArmour.SetWeight(FromArmour.Weight);
-        ToArmour.SkillType = (SkillType)FromArmour.SkillType;
+        ArmourStats stats = new ArmourStats();
 
-        ToArmour.Resistences = new int[3];
+        stats.Armour = FromArmour.Armour;
+        stats.CurrentDurability = FromArmour.CurrentDurability;
+        stats.MaxDurability = FromArmour.MaxDurablity;
+        stats.ArmourType = (ArmourType)FromArmour.ArmourType;
+        stats.Value = FromArmour.Value;
+        stats.Amount = FromArmour.Amount;
+        stats.Weight = FromArmour.Weight;
+        stats.SkillType = (SkillType)FromArmour.SkillType;
 
         for (int i = 0; i < 3; i++)
         {
-            ToArmour.Resistences[i] = FromArmour.Resistences[i];
+            stats.Resistences[i] = FromArmour.Resistences[i];
         }
+
+        stats.Enchantments = new Power[FromArmour.Enchantments.Length];
 
         for (int i = 0; i < FromArmour.Enchantments.Length; i++)
         {
-            ToArmour.Enchantments.Add(FromArmour.Enchantments[i]);
+            stats.Enchantments[i] = new Power(FromArmour.Enchantments[i]);
         }
 
-        ToArmour.SetEquiped(FromArmour.IsEquiped);
+        stats.IsEquiped = FromArmour.IsEquiped;
 
-        ToArmour.SetName(FromArmour.Name);
+        stats.Name = FromArmour.Name;
 
-        ToArmour.SetItem(null);
-
-        ToArmour.SetArmourState();
+        ToArmour.SetStats(stats);
     }
 
     public static void LoadItem(SpellHolderData FromSpell, SpellHolder ToSpell)
@@ -231,7 +231,7 @@ public static class LoadSystem
         return ToQuest;
     }
 
-    public static void LoadItem(WeaponHolder FromWeapon, WeaponStatsData ToWeapon)
+    public static void LoadItem(WeaponHolder FromWeapon, WeaponData ToWeapon)
     {
         ToWeapon.CritDamage = FromWeapon.GetCrit();
         ToWeapon.PwrAttackDamage = FromWeapon.GetPowerAttack();
@@ -334,10 +334,10 @@ public static class LoadSystem
         }
     }
 
-    public static void LoadItem(ArmourHolder FromArmour, ArmourStats ToArmour)
+    public static void LoadItem(ArmourHolder FromArmour, ArmourData ToArmour)
     {
         ToArmour.Armour = FromArmour.GetArmour();
-        ToArmour.CurrentDurablity = FromArmour.GetCurrentDurability();
+        ToArmour.CurrentDurability = FromArmour.GetCurrentDurability();
         ToArmour.MaxDurablity = FromArmour.GetMaxDurability();
         ToArmour.ArmourType = (int)FromArmour.GetArmourType();
         ToArmour.Value = FromArmour.GetValue();

@@ -549,7 +549,7 @@ public class Inventory : MonoBehaviour, ISavable
             {
                 WeaponHolder weapon = Instantiate(PrefabIDs.prefabIDs.WeaponHolder, InventroyHolder).GetComponent<WeaponHolder>();
 
-                WeaponStatsData WeaponRef = Data.Weapons[i];
+                WeaponData WeaponRef = Data.Weapons[i];
 
                 LoadSystem.LoadItem(WeaponRef, weapon);
 

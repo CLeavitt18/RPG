@@ -112,7 +112,7 @@ public class Hand
 }
 
 [Serializable]
-public class WeaponStatsData
+public class WeaponData
 {
     public int LifeSteal;
     public int CritDamage;
@@ -150,13 +150,13 @@ public class WeaponStatsData
 [Serializable]
 public class ItemStats
 {
-    public int Amount;
+    public int Amount = 1;
     public int Value;
     public int Weight;
 
     public string Name;
 
-    public GameObject Item;
+    public GameObject Item = null;
 
     public Color Rarity;
 }
@@ -195,10 +195,10 @@ public class WeaponStats : ItemStats
 }
 
 [Serializable]
-public class ArmourStats
+public class ArmourData
 {
     public int Armour;
-    public int CurrentDurablity;
+    public int CurrentDurability;
     public int MaxDurablity;
     public int ArmourType;
     public int Value;
@@ -216,6 +216,23 @@ public class ArmourStats
     public bool IsEquiped;
 
     public string Name;
+}
+
+[Serializable]
+public class ArmourStats : ItemStats
+{
+    public int Armour;
+    public int CurrentDurability;
+    public int MaxDurability;
+
+    public ArmourType ArmourType;
+    public SkillType SkillType;
+
+    public int[] Resistences = new int[3];
+
+    public Power[] Enchantments;
+
+    public bool IsEquiped;
 }
 
 [Serializable]

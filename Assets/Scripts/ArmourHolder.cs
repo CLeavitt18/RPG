@@ -25,9 +25,31 @@ public class ArmourHolder : Item
         base.StoreItem();
     }
 
-    public void SetArmourState()
+    public override void SetStats(ItemStats stats)
     {
-        name = GetName();
+        ArmourStats armStats = stats as ArmourStats;
+
+        Armour = armStats.Armour;
+        CurrentDurability = armStats.CurrentDurability;
+        MaxDurability = armStats.MaxDurability;
+
+        for (int i = 0; i < 3; i++)
+        {
+            Resistences[i] = armStats.Resistences[i];
+        }
+
+        Enchantments = new List<Power>();
+
+        for (int i = 0; i < armStats.Enchantments.Length; i++)
+        {
+            Enchantments.Add(armStats.Enchantments[i]);
+        }
+
+        SkillType = armStats.SkillType;
+
+        SetEquiped(armStats.IsEquiped);
+
+        base.SetStats(stats);
     }
 
     public override bool Equals(Item Item)
