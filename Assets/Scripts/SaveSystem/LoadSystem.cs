@@ -124,8 +124,11 @@ public static class LoadSystem
 
     public static void LoadItem(RuneHolderData FromRuneH, RuneHolder ToRuneH)
     {
-        ToRuneH.SetName(FromRuneH.Name);
-        ToRuneH.SetAmount(FromRuneH.Amount);
+        RuneHolderStats stats = new RuneHolderStats();
+
+        stats.Name = FromRuneH.Name;
+
+        stats.Amount = FromRuneH.Amount;
 
         Color color = new Color(
             FromRuneH.Rarity[0],
@@ -133,16 +136,18 @@ public static class LoadSystem
             FromRuneH.Rarity[2],
             FromRuneH.Rarity[3]);
 
-        ToRuneH.SetRarity(color);
+        stats.Rarity = color;
 
         if (FromRuneH.runeData.SpellTypeId == 0)
         {
-            ToRuneH.SetSpell(ToRuneH.gameObject.AddComponent<DamageSpell>());
+            stats.spell = ToRuneH.gameObject.AddComponent<DamageSpell>();
         }
         else if (FromRuneH.runeData.SpellTypeId == 1)
         {
-            ToRuneH.SetSpell(ToRuneH.gameObject.AddComponent<GolemSpell>());
+            stats.spell = ToRuneH.gameObject.AddComponent<GolemSpell>();
         }
+
+        ToRuneH.SetStats(stats);
 
         LoadRune(FromRuneH.runeData, ToRuneH.GetSpell());
     }

@@ -117,8 +117,8 @@ public class RuneRoller : MonoBehaviour
 
         Item item = Instantiate(runeHolder).GetComponent<Item>();
 
-        Spell rune = null;
-
+        RuneHolderStats runeStats = new RuneHolderStats();
+        
         SpellStats stats = null;
 
         DamageTypeStruct damage;
@@ -128,7 +128,7 @@ public class RuneRoller : MonoBehaviour
             case SpellType.DamageSpell:
                 DamageSpell dRune = item.gameObject.AddComponent<DamageSpell>();
 
-                rune = dRune;
+                runeStats.spell = dRune;
 
                 stats = new DamageSpellStats();
 
@@ -148,7 +148,7 @@ public class RuneRoller : MonoBehaviour
 
                 GolemSpell gRune = item.gameObject.AddComponent<GolemSpell>();
 
-                rune = gRune;
+                runeStats.spell = gRune;
 
                 stats = new GolemSpellStats();
                 GolemSpellStats statsG = stats as GolemSpellStats;
@@ -185,10 +185,6 @@ public class RuneRoller : MonoBehaviour
                 break;
         }
 
-        RuneHolder runeH = item as RuneHolder;
-
-        runeH.SetSpell(rune);
-        
         stats.SpellType = spellType;
         stats.CastType = castType;
         stats.Target = castTareget;
@@ -196,7 +192,6 @@ public class RuneRoller : MonoBehaviour
         stats.SpellAffect = baseSpells[id].SpellAffects[castId][damageType];
         stats.ManaCost = baseSpells[id].ManaCost[castId][damageType];
         stats.CastRate = baseSpells[id].CastsPerSecond[castId][damageType];
-
 
         string name = stats.SpellAffect.name;
         string tempName = "";
@@ -211,10 +206,15 @@ public class RuneRoller : MonoBehaviour
             tempName += name[i];
         }
 
-        item.SetRarity(GlobalValues.rarities[rarityId]);
-        item.SetName(tempName + " Rune");
-
         stats.Name = tempName;
+        
+        runeStats.Name = tempName + " Rune";
+        runeStats.Rarity = GlobalValues.rarities[rarityId];
+
+        RuneHolder runeH = item as RuneHolder;
+
+
+        runeH.SetStats(runeStats);
 
         runeH.GetSpell().SetStats(stats);
 

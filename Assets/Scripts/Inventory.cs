@@ -47,8 +47,8 @@ public class Inventory : MonoBehaviour, ISavable
             Color rarity = Item.GetRarity();
             Item = Instantiate(Item, InventroyHolder);
             Item.name = Name;
-            Item.SetAmount(Amount);
-            Item.SetRarity(rarity);
+            //Item.SetAmount(Amount);
+            //Item.SetRarity(rarity);
         }
 
         int start_id;

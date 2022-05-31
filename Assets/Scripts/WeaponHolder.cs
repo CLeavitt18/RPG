@@ -111,7 +111,7 @@ public class WeaponHolder : Item
     {
         if (Primary != null)
         {
-            Debug.Log("Weapon State alerady set");
+            Debug.Log("Weapon State already set");
             return;
         }
 
@@ -131,12 +131,6 @@ public class WeaponHolder : Item
 
         CurrentDurability = stats.CurrentDurability;
         MaxDurability = stats.MaxDurability;
-
-        SetAmount(stats.Amount);
-        SetValue(stats.Value);
-        SetWeight(stats.Weight);
-        SetRarity(stats.Rarity);
-        SetName(stats.Name);
 
         for (int i = 0; i < stats.StatusChance.Count; i++)
         {
@@ -160,6 +154,8 @@ public class WeaponHolder : Item
         AttackAnimationName = stats.AttackAnimationName;
         PwrAttackAnimationName = stats.PwrAttackAnimationName;
 
+        base.SetStats(stats);
+
         try
         {
             WeaponSpawn = Spawns[(int)Type];
@@ -178,7 +174,6 @@ public class WeaponHolder : Item
         }
 
         Spawns = new WeaponSpawns[0];
-        name = GetName();
     }
 
     public override bool Equals(Item Item)

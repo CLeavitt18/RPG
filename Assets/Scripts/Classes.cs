@@ -112,14 +112,6 @@ public class Hand
 }
 
 [Serializable]
-public class ItemData
-{
-    int Amount;
-
-    string Name;
-}
-
-[Serializable]
 public class WeaponStatsData
 {
     public int LifeSteal;
@@ -156,7 +148,21 @@ public class WeaponStatsData
 }
 
 [Serializable]
-public class WeaponStats
+public class ItemStats
+{
+    public int Amount;
+    public int Value;
+    public int Weight;
+
+    public string Name;
+
+    public GameObject Item;
+
+    public Color Rarity;
+}
+
+[Serializable]
+public class WeaponStats : ItemStats
 {
     public SkillType WeaponSkillType;
     public HandType HandType;
@@ -169,9 +175,6 @@ public class WeaponStats
     public int PwrAttackDamage;
     public int CurrentDurability;
     public int MaxDurability;
-    public int Amount;
-    public int Value;
-    public int Weight;
 
     public Material Material;
     
@@ -185,11 +188,8 @@ public class WeaponStats
 
     public RuntimeAnimatorController[] Animator = new RuntimeAnimatorController[2];
 
-    public Color Rarity;
-
     public float ActionsPerSecond;
 
-    public string Name;
     public string AttackAnimationName;
     public string PwrAttackAnimationName;
 }
@@ -235,20 +235,15 @@ public class SpellHolderData
 }
 
 [Serializable]
-public class SpellHolderStats
+public class SpellHolderStats : ItemStats
 {
     public HandType handType;
     public SkillType SpellSkillType;
     public MaterialType Type;
 
-    public int Amount;
     public int MaterialMulti;
 
-    public Color Rarity;
-
     public SpellData[] Spells = new SpellData[3];
-
-    public string Name;
 }
 
 [Serializable]
@@ -309,6 +304,12 @@ public class SpellStats
     public int ManaCost;
 
     public float CastRate;
+}
+
+[Serializable]
+public class RuneHolderStats : ItemStats
+{
+    public Spell spell = null;
 }
 
 [Serializable]

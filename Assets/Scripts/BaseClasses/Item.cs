@@ -41,37 +41,24 @@ public class Item : MonoBehaviour
         return false;
     }
 
-    #region Setters
-
-    public void SetValue(int value)
+    public virtual void SetStats(ItemStats stats)
     {
-        Value = value;
+        Name = stats.Name;
+        name = Name;
+
+        Weight = stats.Weight;
+        Value = stats.Value;
+
+        Rarity = stats.Rarity;
+
+        _Item = stats.Item;
     }
+
+    #region Setters
 
     public void SetAmount(int amount)
     {
         Amount = amount;
-    }
-
-    public void SetWeight(int weight)
-    {
-        Weight = weight;
-    }
-
-    public void SetItem(GameObject item) 
-    {
-        _Item = item;
-    }
-
-    public void SetRarity(Color rarity)
-    {
-        Rarity = rarity;
-    }
-
-    public void SetName(string name)
-    {
-        Name = name;
-        this.name = name;
     }
 
     public void SetEquiped(bool State)

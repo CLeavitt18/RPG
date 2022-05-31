@@ -32,13 +32,17 @@ public class RuneHolder : Item
         return _spell;
     }
 
-    public void SetSpell(Spell spell)
+    public override void SetStats(ItemStats stats)
     {
         if (_spell != null)
         {
             return;
         }
 
-        _spell = spell;
+        RuneHolderStats runeStats = stats as RuneHolderStats; 
+
+        _spell = runeStats.spell;
+
+        base.SetStats(stats);
     }
 }

@@ -1294,8 +1294,8 @@ public class LivingEntities : MonoBehaviour
         {
             CraftingMaterials potionData = iData.Potions[i];
 
-            Consumable potion = Instantiate(PrefabIDs.prefabIDs.Potions[potionData.ResourceId], Inventory.InventroyHolder).GetComponent<Consumable>();
-            potion.SetAmount(potionData.Amount);
+            Item potion = Instantiate(PrefabIDs.prefabIDs.Potions[potionData.ResourceId], Inventory.InventroyHolder).GetComponent<Consumable>();
+            potion += potionData.Amount;
 
             Inventory.AddItem(potion, false, potionData.Amount);
         }
@@ -1304,8 +1304,8 @@ public class LivingEntities : MonoBehaviour
         {
             CraftingMaterials resourceData = iData.Resources[i];
 
-            ResourceHolder HResource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[resourceData.ResourceId], Inventory.InventroyHolder).GetComponent<ResourceHolder>();
-            HResource.SetAmount(resourceData.Amount);
+            Item HResource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[resourceData.ResourceId], Inventory.InventroyHolder).GetComponent<ResourceHolder>();
+            HResource += resourceData.Amount;
 
             Inventory.AddItem(HResource, false, resourceData.Amount);
         }
@@ -1315,7 +1315,7 @@ public class LivingEntities : MonoBehaviour
             CraftingMaterials miscData = iData.Misc[i];
 
             Item misc = Instantiate(PrefabIDs.prefabIDs.Items[miscData.ResourceId], Inventory.InventroyHolder).GetComponent<Item>();
-            misc.SetAmount(miscData.Amount);
+            misc += miscData.Amount;
 
             Inventory.AddItem(misc, false, miscData.Amount);
         }

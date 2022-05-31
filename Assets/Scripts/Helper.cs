@@ -19,7 +19,7 @@ public class Helper : MonoBehaviour
         {
             Destroy(helper);
         }
-        else if (helper != this)
+        else
         {
             helper = this;
         }

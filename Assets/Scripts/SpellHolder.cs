@@ -29,9 +29,6 @@ public class SpellHolder : Item
         //Create some way of checking if the stats have not been set yet
         //Make a gamobject for the _item that can be spawn when the spell is equiped
         //Check if its null or not null return out becasue the spells stats has already beeen set before
-        SetName(stats.Name);
-        name = stats.Name;
-        name = stats.Name;
 
         numOfSpells = 0;
 
@@ -58,6 +55,8 @@ public class SpellHolder : Item
 
             LoadSystem.LoadRune(stats.Spells[i], Spells[i]);
         }
+
+        base.SetStats(stats);
     }
 
     public override bool Equals(Item Item)

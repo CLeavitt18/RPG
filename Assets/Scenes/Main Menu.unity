@@ -2645,14 +2645,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9325f992ea719a2428e1c2126b6f36c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
   Value: 0
   Amount: 0
   Weight: 0
   _Item: {fileID: 0}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
   Name: 
-  _isEquiped: 0
-  _skillType: 0
+  isEquipable: 0
+  equiped: 0
+  SkillType: 0
   PowerLimit: 0
   Powers: []
 --- !u!4 &1121874870

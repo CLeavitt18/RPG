@@ -13,7 +13,7 @@ public class MiscRoller : MonoBehaviour
         int Amount = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
 
         Item Gold = Instantiate(Items[0]).GetComponent<Item>();
-        Gold.SetAmount(Amount);
+        Gold += Amount;
 
         return Gold;
     }
