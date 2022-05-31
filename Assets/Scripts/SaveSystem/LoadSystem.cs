@@ -336,14 +336,14 @@ public static class LoadSystem
 
     public static void LoadItem(ArmourHolder FromArmour, ArmourStats ToArmour)
     {
-        ToArmour.Armour = FromArmour.Armour;
-        ToArmour.CurrentDurablity = FromArmour.CurrentDurability;
-        ToArmour.MaxDurablity = FromArmour.MaxDurability;
-        ToArmour.ArmourType = (int)FromArmour.ArmourType;
+        ToArmour.Armour = FromArmour.GetArmour();
+        ToArmour.CurrentDurablity = FromArmour.GetCurrentDurability();
+        ToArmour.MaxDurablity = FromArmour.GetMaxDurability();
+        ToArmour.ArmourType = (int)FromArmour.GetArmourType();
         ToArmour.Value = FromArmour.GetValue();
         ToArmour.Amount = FromArmour.GetAmount();
         ToArmour.Weight = FromArmour.GetWeight();
-        ToArmour.SkillType = (int)FromArmour.SkillType;
+        ToArmour.SkillType = (int)FromArmour.GetSkillType();
 
         ToArmour.Rarity = new float[4];
 
@@ -356,17 +356,14 @@ public static class LoadSystem
 
         for (int i = 0; i < 3; i++)
         {
-            ToArmour.Resistences[i] = FromArmour.Resistences[i];
+            ToArmour.Resistences[i] = FromArmour.GetResistence(i);
         }
 
-        ToArmour.Enchantments = new Power[FromArmour.Enchantments.Count];
+        ToArmour.Enchantments = new Power[FromArmour.GetEnchantCount()];
 
-        for (int i = 0; i < FromArmour.Enchantments.Count; i++)
+        for (int i = 0; i < ToArmour.Enchantments.Length; i++)
         {
-            ToArmour.Enchantments[i] = new Power();
-
-            ToArmour.Enchantments[i].PowerType = FromArmour.Enchantments[i].PowerType;
-            ToArmour.Enchantments[i].PowerID = FromArmour.Enchantments[i].PowerID;
+            ToArmour.Enchantments[i] = new Power(FromArmour.GetEnchantment(i));
         }
 
         ToArmour.IsEquiped = FromArmour.GetEquiped();

@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class ArmourHolder : Item
 {
-    public int Armour;
-    public int CurrentDurability;
-    public int MaxDurability;
+    [SerializeField] private int Armour;
+    [SerializeField] private int CurrentDurability;
+    [SerializeField] private int MaxDurability;
 
-    [Range(-95, 95)] public int[] Resistences = new int[3];
+    [SerializeField, Range(-95, 95)] private int[] Resistences = new int[3];
 
-    public ArmourType ArmourType;
+    [SerializeField] private ArmourType ArmourType;
 
-    public List<Power> Enchantments;
+    [SerializeField] private List<Power> Enchantments;
 
-    public SkillType SkillType;
+    [SerializeField] private SkillType SkillType;
 
     public override void SpawnItem()
     {
@@ -66,5 +66,57 @@ public class ArmourHolder : Item
         }
 
         return false;
+    }
+
+    public int GetArmour()
+    {
+        return Armour;
+    }
+
+    public int GetCurrentDurability()
+    {
+        return CurrentDurability;
+    }
+
+    public int GetMaxDurability()
+    {
+        return MaxDurability;
+    }
+
+    public int GetResistence(int typeId)
+    {
+        return Resistences[typeId];
+    }
+
+    public int GetResistence(DamageTypeEnum type)
+    {
+        return Resistences[(int)type];
+    }
+
+    public ArmourType GetArmourType()
+    {
+        return ArmourType;
+    }
+
+    public int GetEnchantCount()
+    {
+        return Enchantments.Count;
+    }
+
+    public Power GetEnchantment(int id)
+    {
+        return Enchantments[id];
+    }
+
+    public SkillType GetSkillType()
+    {
+        return SkillType;
+    }
+
+    public static ArmourHolder operator--(ArmourHolder armour)
+    {
+        armour.CurrentDurability--;
+
+        return armour;
     }
 }

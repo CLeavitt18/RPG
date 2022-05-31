@@ -433,12 +433,14 @@ public class LivingEntities : MonoBehaviour
             case GlobalValues.ArmourTag:
                 ArmourHolder newArmour = Item.GetComponent<ArmourHolder>();
 
-                if (EquipedArmour[(int)newArmour.ArmourType] != null)
+                int armourType = (int)newArmour.GetArmourType();
+
+                if (EquipedArmour[armourType] != null)
                 {
-                    UnequipItem(EquipedArmour[(int)newArmour.ArmourType]);
+                    UnequipItem(EquipedArmour[armourType]);
                 }
 
-                EquipedArmour[(int)newArmour.ArmourType] = newArmour;
+                EquipedArmour[armourType] = newArmour;
 
                 UpdateArmour();
                 InventoryUi.playerUi.SetPlayerEquipedIndicators();
@@ -664,7 +666,7 @@ public class LivingEntities : MonoBehaviour
                 }
                 break;
             case GlobalValues.ArmourTag:
-                EquipedArmour[(int)Item.GetComponent<ArmourHolder>().ArmourType] = null;
+                EquipedArmour[(int)Item.GetComponent<ArmourHolder>().GetArmourType()] = null;
                 UpdateArmour();
                 break;
             case GlobalValues.SpellTag:
@@ -729,7 +731,9 @@ public class LivingEntities : MonoBehaviour
         {
             if (EquipedArmour[i] != null)
             {
-                int tempArmour = EquipedArmour[i].Armour * (1 + ((int)EquipedArmour[i].SkillType) / 100);
+                ArmourHolder currArm = EquipedArmour[i];
+
+                int tempArmour = currArm.GetArmour() * (1 + ((int)currArm.GetSkillType()) / 100);
 
                 Armour += tempArmour;
             }
@@ -1034,22 +1038,22 @@ public class LivingEntities : MonoBehaviour
 
                         if (i == 0)
                         {
-                            long tempArmour = (long)(ArmourH.Armour * (1 + ((double)Player.player.Skills[(int)ArmourH.SkillType].Level / 100)));
+                            long tempArmour = (long)(ArmourH.GetArmour() * (1 + ((double)Player.player.Skills[(int)ArmourH.GetSkillType()].Level / 100)));
                             Exp = tempArmour;
                         }
                         else
                         {
                             int Id = i - 1;
 
-                            if (ArmourH.Resistences[Id] == 0)
+                            if (ArmourH.GetResistence(Id) == 0)
                             {
                                 continue;
                             }
 
-                            Exp = (long)(stats.DamageValues[i] * ((double)ArmourH.Resistences[Id] / Player.player.Resistences[Id]));
+                            Exp = (long)(stats.DamageValues[i] * ((double)ArmourH.GetResistence(Id) / Player.player.Resistences[Id]));
                         }
 
-                        Player.player.GainExp(Exp, (int)ArmourH.SkillType);
+                        Player.player.GainExp(Exp, (int)ArmourH.GetSkillType());
                     }
                 }
             }

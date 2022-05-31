@@ -325,9 +325,9 @@ public class InventoryUi : IUi
 
                         ArmourHolder armour = Item.GetComponent<ArmourHolder>();
 
-                        sb = new StringBuilder(armour.CurrentDurability.ToString("n0"));
+                        sb = new StringBuilder(armour.GetCurrentDurability().ToString("n0"));
                         sb.Append('/');
-                        sb.Append(armour.MaxDurability.ToString("n0"));
+                        sb.Append(armour.GetMaxDurability().ToString("n0"));
 
                         MiscText.text = sb.ToString();
                     }
@@ -787,7 +787,7 @@ public class InventoryUi : IUi
             }
             else if (FocusedItem is ArmourHolder holder)
             {
-                int id = (int)holder.ArmourType;
+                int id = (int)holder.GetArmourType();
 
                 ArmourHolder armour = Player.player.GetEquipedArmour(id);
 
@@ -879,7 +879,7 @@ public class InventoryUi : IUi
             {
                 ArmourHolder armour = AllItems[i].GetComponent<ArmourHolder>();
 
-                int ArmourID = (int)armour.ArmourType;
+                int ArmourID = (int)armour.GetArmourType();
 
                 if (Player.player.GetEquipedArmour(ArmourID) == null)
                 {

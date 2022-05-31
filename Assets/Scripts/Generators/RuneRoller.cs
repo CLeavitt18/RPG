@@ -213,7 +213,6 @@ public class RuneRoller : MonoBehaviour
 
         RuneHolder runeH = item as RuneHolder;
 
-
         runeH.SetStats(runeStats);
 
         runeH.GetSpell().SetStats(stats);

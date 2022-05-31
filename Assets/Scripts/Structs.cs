@@ -7,6 +7,12 @@ public struct Power
 {
     public int PowerType;
     public int PowerID;
+
+    public Power(Power power)
+    {
+        PowerType = power.PowerType;
+        PowerID = power.PowerID;
+    }
 }
 
 [Serializable]
