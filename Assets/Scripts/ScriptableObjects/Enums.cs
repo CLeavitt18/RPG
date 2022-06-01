@@ -112,7 +112,8 @@ public enum ArmourType : byte
     LeftGauntlet,
     Leggings,
     RightBoot,
-    LeftBoot
+    LeftBoot,
+    Shield
 }
 
 public enum RingType : byte

@@ -14,6 +14,8 @@ public class PrefabIDs : MonoBehaviour
     public GameObject BurnAffect;
     public GameObject ChilledAffect;
 
+    public RuntimeAnimatorController[] ShieldAnimators;
+
     public GameObject[] Minions;
     public GameObject[] Items;
     public GameObject[] WeaponParts;

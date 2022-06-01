@@ -21,6 +21,7 @@ public static class GlobalValues
     public const string DoorTag = "Door";
     public const string WeaponTag = "Weapon";
     public const string ArmourTag = "Armour";
+    public const string ShieldTag  = "Shield";
     public const string SpellTag = "Spell";
     public const string RuneTag = "Rune";
     public const string PotionTag = "Potion";

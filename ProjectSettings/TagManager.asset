@@ -32,6 +32,7 @@ TagManager:
   - Rune
   - SpellTable
   - Torch
+  - Shield
   layers:
   - Default
   - TransparentFX

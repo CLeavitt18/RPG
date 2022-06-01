@@ -311,6 +311,11 @@ public class LivingEntities : MonoBehaviour
         hand.Animator.speed = weapon.GetAttackSpeed() * ActionSpeed;
     }
 
+    protected void CreateShield(int HandType)
+    {
+
+    }
+
     protected void CreateSpell(int HandType, Hand hand, Spell SpellH)
     {
         GameObject Spell;
@@ -444,6 +449,19 @@ public class LivingEntities : MonoBehaviour
 
                 UpdateArmour();
                 InventoryUi.playerUi.SetPlayerEquipedIndicators();
+                break;
+            case GlobalValues.ShieldTag:
+
+                    if (hand.HeldItem != null && hand.HeldItem != Item)
+                    {
+                        UnequipItem(hand.HeldItem);
+                    }
+
+                    hand.State = AttackType.Shield;
+
+                    hand.HeldItem = Item;
+
+                    CreateShield(HandType);
                 break;
             case GlobalValues.SpellTag:
                 SpellHolder SpellH = Item.GetComponent<SpellHolder>();
@@ -668,6 +686,18 @@ public class LivingEntities : MonoBehaviour
             case GlobalValues.ArmourTag:
                 EquipedArmour[(int)Item.GetComponent<ArmourHolder>().GetArmourType()] = null;
                 UpdateArmour();
+                break;
+            case GlobalValues.ShieldTag:
+                if (Hands[0].HeldItem == Item)
+                {
+                    Hands[0].Animator.enabled = false;
+                    Hands[0].HeldItem = null;
+                }
+                else if (Hands[1].HeldItem == Item)
+                {
+                    Hands[1].Animator.enabled = false;
+                    Hands[1].HeldItem = null;
+                }
                 break;
             case GlobalValues.SpellTag:
                 if (Hands[0].HeldItem == Item)
@@ -954,6 +984,21 @@ public class LivingEntities : MonoBehaviour
             return 0;
         }
 
+        int _armour = Armour;
+
+        for (int i = 0; i < 2; i++)
+        {
+            if (Hands[i].State == AttackType.Shield)
+            {
+                ShieldHitDetector detector = Hands[i].HeldItem.transform.GetChild(0).GetComponent<ShieldHitDetector>();
+
+                if (detector.Protecting && detector.GetHit())
+                {
+                    _armour  += (Hands[i].HeldItem as ArmourHolder).GetArmour();
+                }
+            }
+        }
+
         int TotalDamage = 0;
 
         int damageType;
@@ -967,16 +1012,16 @@ public class LivingEntities : MonoBehaviour
                 continue;
             }
 
-            if (i == 0)
+            if (damageType == 0)
             {
-                stats.DamageValues[i] -= Armour;
+                stats.DamageValues[i] -= _armour ;
 
                 if (stats.DamageValues[i] < 0)
                 {
                     stats.DamageValues[i] = 0;
                 }
             }
-            else if (i < 4)
+            else if (damageType < 4)
             {
                 float ProtectionValue = Resistences[i - 1] * .01f;
                 stats.DamageValues[i] = (int)(stats.DamageValues[i] - (stats.DamageValues[i] * ProtectionValue));

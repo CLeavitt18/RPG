@@ -308,36 +308,39 @@ MonoBehaviour:
   Type: 1
   Attributes:
   - Ability: 0
+    RegenAmount: 0
     APerLevel: 0
     APercentPerLevel: 0
     Current: 0
     Max: 0
     Reserved: 0
   - Ability: 0
+    RegenAmount: 0
     APerLevel: 0
     APercentPerLevel: 0
     Current: 0
     Max: 0
     Reserved: 0
   - Ability: 0
+    RegenAmount: 0
     APerLevel: 0
     APercentPerLevel: 0
     Current: 0
     Max: 0
     Reserved: 0
+  RunningStaminaCost: 0
+  ThreatLevel: 0
   BaseArmour: 0
   Accuracy: 0
   Level: 1
   BurningStacks: 0
-  RunningStaminaCost: 0
-  ThreatLevel: 0
   Armour: 0
   Resistences: 000000
   RayDistance: 0
-  BaseSpeed: 0
   Speed: 0
-  ActionSpeed: 1
   RunStaminaDegenRate: 0
+  BaseSpeed: 0
+  ActionSpeed: 1
   RaySpawn: {fileID: 1667978222592679072}
   EquipedArmour:
   - {fileID: 0}
@@ -457,15 +460,7 @@ MonoBehaviour:
     Stats:
       Parent: {fileID: 0}
       SourceHand: 0
-      BurnWaitTime: 0
-      ChainLength: 0
-      ChillDuration: 0
       LifeSteal: 0
-      BurnDamage: 0
-      BurnTicks: 0
-      ChainDamage: 0
-      Chains: 0
-      ChillAffect: 0
       DamageTypes: 
       DamageValues: 
       Status: 
@@ -497,15 +492,7 @@ MonoBehaviour:
     Stats:
       Parent: {fileID: 0}
       SourceHand: 0
-      BurnWaitTime: 0
-      ChainLength: 0
-      ChillDuration: 0
       LifeSteal: 0
-      BurnDamage: 0
-      BurnTicks: 0
-      ChainDamage: 0
-      Chains: 0
-      ChillAffect: 0
       DamageTypes: 
       DamageValues: 
       Status: 
@@ -513,9 +500,9 @@ MonoBehaviour:
     NextAttack: 0
     ChannelTime: 0
     ActionsPerSecond: 0
-  Dead: 0
-  Confused: 0
   Running: 0
+  Dead: 0
+  IsRegening: 000000
   IsEmmune: 00000000
   Inventory: {fileID: 3005634500929940404}
   StatusManger: {fileID: 5346173447652250204}
