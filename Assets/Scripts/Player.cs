@@ -140,7 +140,7 @@ public class Player : LivingEntities
             {
                 Shoot();
             }
-            else
+            else if(type == AttackType.Spell)
             {
                 SpellHolder SpellH = hand.HeldItem.GetComponent<SpellHolder>();
 
@@ -210,6 +210,10 @@ public class Player : LivingEntities
                         index++;
                     }
                 }
+            }
+            else //Attack Tpye is shield
+            {
+
             }
         }
 

@@ -108,7 +108,7 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
 
     public void SetIndicator(bool state, string text)
     {
-        EquipedIndicator.SetActive(true);
+        EquipedIndicator.SetActive(state);
         indicatorText.text = text;
     }
 

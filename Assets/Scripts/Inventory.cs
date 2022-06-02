@@ -61,6 +61,7 @@ public class Inventory : MonoBehaviour, ISavable
                 end_id = StartIds[GlobalValues.ArmourStart];
                 break;
             case GlobalValues.ArmourTag:
+            case GlobalValues.ShieldTag:
                 start_id = StartIds[GlobalValues.ArmourStart];
                 end_id = StartIds[GlobalValues.SpellStart];
                 break;
@@ -139,6 +140,7 @@ public class Inventory : MonoBehaviour, ISavable
                 loopStart = GlobalValues.ArmourStart;
                 break;
             case GlobalValues.ArmourTag:
+            case GlobalValues.ShieldTag:
                 loopStart = GlobalValues.SpellStart;
                 break;
             case GlobalValues.SpellTag:
@@ -182,6 +184,7 @@ public class Inventory : MonoBehaviour, ISavable
                     loopStart = GlobalValues.ArmourStart;
                     break;
                 case GlobalValues.ArmourTag:
+                case GlobalValues.ShieldTag:
                     loopStart = GlobalValues.SpellStart;
                     break;
                 case GlobalValues.SpellTag:

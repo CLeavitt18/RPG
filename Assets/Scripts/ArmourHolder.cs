@@ -22,7 +22,12 @@ public class ArmourHolder : Item
 
     public override void StoreItem()
     {
-        base.StoreItem();
+        if (transform.childCount == 0)
+        {
+            return;
+        }
+
+        Destroy(transform.GetChild(0).gameObject);
     }
 
     public override void SetStats(ItemStats stats)

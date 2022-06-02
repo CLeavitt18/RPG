@@ -294,7 +294,7 @@ public class LivingEntities : MonoBehaviour
     {
         Hand hand = Hands[HandType];
 
-        WeaponHolder weapon = hand.HeldItem.GetComponent<WeaponHolder>();
+        WeaponHolder weapon = hand.HeldItem as WeaponHolder;
 
         hand.Stats.Parent = this;
 
@@ -313,9 +313,19 @@ public class LivingEntities : MonoBehaviour
 
     protected void CreateShield(int HandType)
     {
+        Hand hand = Hands[HandType];
 
+        ShieldHolder shield = hand.HeldItem as ShieldHolder;
+
+        hand.Stats.Parent = this;
+        
+        hand.HeldItem.transform.position = hand.WeaponSpawn.position;
+        hand.HeldItem.transform.parent = hand.WeaponSpawn;
+
+        hand.HeldItem.transform.rotation = hand.WeaponSpawn.rotation;
+
+        shield.SpawnShield(HandType, this);
     }
-
     protected void CreateSpell(int HandType, Hand hand, Spell SpellH)
     {
         GameObject Spell;

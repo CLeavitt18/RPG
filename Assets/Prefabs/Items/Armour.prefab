@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1687010134819170055}
-  - component: {fileID: 1687010134819170052}
+  - component: {fileID: 281040171642941499}
   m_Layer: 0
   m_Name: Armour
-  m_TagString: Armour
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1687010134819170052
+--- !u!114 &281040171642941499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,22 +40,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1687010134819170053}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2035971eeabe75449a60392e5890c8a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 353fbe86c0b3e5649b7d93eb5843ad35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
   Value: 0
   Amount: 1
-  Weight: 0
-  _Item: {fileID: 0}
+  Weight: 400
+  _Item: {fileID: 7287768545305473151, guid: 0bcf0e2df0fa0604ea3256fc48edd931, type: 3}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
-  Name: 
-  isEquipable: 1
+  Name: Bone Shield
+  isEquipable: 0
   equiped: 0
-  Armour: 0
+  Armour: 3
   CurrentDurability: 0
   MaxDurability: 0
   Resistences: 000000000000000000000000
-  ArmourType: 0
+  ArmourType: 9
   Enchantments: []
-  SkillType: 0
+  SkillType: 11
+  animatorController:
+  - {fileID: 0}
+  - {fileID: 0}

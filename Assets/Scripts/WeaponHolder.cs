@@ -78,7 +78,7 @@ public class WeaponHolder : Item
         Vector3 StartingPosition = Teritiary_GO.transform.GetChild(1).position;
         Vector3 HandPosition = HitManagerRef.Stats.Parent.GetHandPosition(HandType);
 
-        Vector3 OffSet = (HandPosition - StartingPosition);
+        Vector3 OffSet = HandPosition - StartingPosition;
 
         Primary_GO.transform.position += OffSet;
         Secoundary_GO.transform.position += OffSet;

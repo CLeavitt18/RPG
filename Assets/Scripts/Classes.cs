@@ -230,7 +230,7 @@ public class ArmourStats : ItemStats
 
     public int[] Resistences = new int[3];
 
-    public Power[] Enchantments;
+    public Power[] Enchantments = new Power[0];
 
     public bool IsEquiped;
 }

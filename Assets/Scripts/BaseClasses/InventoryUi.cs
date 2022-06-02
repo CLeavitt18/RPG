@@ -312,6 +312,7 @@ public class InventoryUi : IUi
                     }
                     break;
                 case GlobalValues.ArmourTag:
+                case GlobalValues.ShieldTag:
                     if (ArmourBanner == null)
                     {
                         ArmourBanner = Instantiate(CategoryPrefab, InventroyHolder);
@@ -767,7 +768,7 @@ public class InventoryUi : IUi
         {
             Item heldItem;
 
-            if (FocusedItem is WeaponHolder || FocusedItem is SpellHolder)
+            if (FocusedItem is WeaponHolder || FocusedItem is SpellHolder || FocusedItem is ShieldHolder)
             {
                 for (int i = 0; i < 2; i++)
                 {
@@ -852,7 +853,8 @@ public class InventoryUi : IUi
 
             if (AllItems[i].CompareTag(GlobalValues.WeaponTag) || 
             AllItems[i].CompareTag(GlobalValues.SpellTag) || 
-            AllItems[i].CompareTag(GlobalValues.TorchTag))
+            AllItems[i].CompareTag(GlobalValues.TorchTag) ||
+            AllItems[i].CompareTag(GlobalValues.ShieldTag))
             {
                 if (AllItems[i] == rightHand)
                 {
