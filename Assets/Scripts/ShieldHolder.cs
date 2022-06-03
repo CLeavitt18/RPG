@@ -21,4 +21,9 @@ public class ShieldHolder : ArmourHolder
 
         shield.GetComponent<ShieldHitDetector>().SetState(GetArmour(), parent);
     }
+
+    public RuntimeAnimatorController GetAnimatorController(int id)
+    {
+        return animatorController[id];
+    }
 }

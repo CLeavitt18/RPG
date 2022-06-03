@@ -325,6 +325,10 @@ public class LivingEntities : MonoBehaviour
         hand.HeldItem.transform.rotation = hand.WeaponSpawn.rotation;
 
         shield.SpawnShield(HandType, this);
+
+        hand.Animator.enabled = true;
+        hand.Animator.runtimeAnimatorController = shield.GetAnimatorController(HandType);
+        hand.Animator.speed *= ActionSpeed;
     }
     protected void CreateSpell(int HandType, Hand hand, Spell SpellH)
     {

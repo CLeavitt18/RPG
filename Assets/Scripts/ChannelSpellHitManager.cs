@@ -26,7 +26,10 @@ public class ChannelSpellHitManager : HitManager
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(GlobalValues.PlayerTag) || other.CompareTag(GlobalValues.EnemyTag) || other.CompareTag(GlobalValues.NPCTag))
+        if (other.CompareTag(GlobalValues.PlayerTag) || 
+        other.CompareTag(GlobalValues.EnemyTag) || 
+        other.CompareTag(GlobalValues.NPCTag) ||
+        other.CompareTag(GlobalValues.MinionTag))
         {
             HitSomething(other.GetComponent<LivingEntities>());
         }

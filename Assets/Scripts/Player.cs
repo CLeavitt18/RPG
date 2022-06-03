@@ -213,7 +213,15 @@ public class Player : LivingEntities
             }
             else //Attack Tpye is shield
             {
+                if (Input.GetButtonDown(GlobalValues.AttackInputs[handType]))
+                {
+                    hand.Animator.SetTrigger("Start Block");
+                }
 
+                if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]))
+                {
+                    hand.Animator.SetTrigger("End Block");
+                }
             }
         }
 
