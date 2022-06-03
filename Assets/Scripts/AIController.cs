@@ -183,7 +183,7 @@ public class AIController : LivingEntities
 
         if (Physics.Raycast(DetectionRay, out Hit, 40))
         {
-            if (Hit.collider.gameObject == Target.gameObject)
+            if (Hit.collider.gameObject == Target.gameObject || Hit.collider.CompareTag(GlobalValues.ShieldTag))
             {
                 if (GetPath(Path, transform.position, Target.position, NavMesh.AllAreas) == true)
                 {

@@ -12,6 +12,14 @@ public class WeaponHitManager : HitManager
             return;
         }
 
+        if (other.CompareTag(GlobalValues.ShieldTag))
+        {
+            ShieldHitDetector detector = other.GetComponent<ShieldHitDetector>();
+
+            detector.SetHit(true);
+            return;
+        }
+
         if (OL == null || 
             (!OL.CompareTag(GlobalValues.PlayerTag) && !OL.CompareTag(GlobalValues.EnemyTag) && 
             !OL.CompareTag(GlobalValues.MinionTag) && !OL.CompareTag(GlobalValues.NPCTag)) || 
@@ -71,4 +79,15 @@ public class WeaponHitManager : HitManager
             }
         }
     }
+
+    /*private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(GlobalValues.ShieldTag))
+        {
+            ShieldHitDetector detector = other.GetComponent<ShieldHitDetector>();
+
+            detector.SetHit(false);
+            return;
+        }
+    }*/
 }

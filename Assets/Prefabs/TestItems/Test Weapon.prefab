@@ -542,22 +542,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aae939d8f1119d408d4b39fb75d3018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
   Value: 0
   Amount: 1
   Weight: 0
   _Item: {fileID: 0}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
   Name: Test Weapon
+  isEquipable: 1
+  equiped: 0
+  SkillType: 0
+  HandType: 0
   LifeSteal: 50
   PwrAttackDamage: 150
   CurrentDurability: 1000000
   MaxDurability: 1000000
-  _skillType: 0
-  _handType: 0
-  _critDamage: 0
-  _statusChance: 3c000000
-  _actionsPerSecound: 2
-  _isEquiped: 0
+  CritDamage: 0
+  StatusChance: 3c000000
+  ActionsPerSecond: 1.5
+  DamageRanges:
+  - Type: 0
+    LDamage: 1
+    HDamage: 1
   WeaponSpawn:
     PrimarySpawn: {fileID: 2944196039323398044}
     SecoundarySpawn: {fileID: 2464022949445948810}
@@ -575,10 +581,6 @@ MonoBehaviour:
   - PrimarySpawn: {fileID: 983323093093298554}
     SecoundarySpawn: {fileID: 3593036067693811370}
     TeritiarySpawn: {fileID: 4296063306334923457}
-  _damageRanges:
-  - Type: 0
-    LDamage: 1
-    HDamage: 1
   Primary: {fileID: 1189308012053909339, guid: 879498f0a8d199e478e435bfadb78114, type: 3}
   Secoundary: {fileID: 1018671136677016768, guid: b355026b073996d4abaf41e31b48b647, type: 3}
   Teritiary: {fileID: 4630888477316849692, guid: 23f6061f88cb5ae44b225ac479dc1399, type: 3}

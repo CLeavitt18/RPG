@@ -190,7 +190,6 @@ public class Player : LivingEntities
                             if (Input.GetButtonDown(key))
                             {
                                 Cast(handType, hand, spell);
-
                             }
                             else if (Input.GetButtonUp(key))
                             {
@@ -216,11 +215,13 @@ public class Player : LivingEntities
                 if (Input.GetButtonDown(GlobalValues.AttackInputs[handType]))
                 {
                     hand.Animator.SetTrigger("Start Block");
+                    (hand.HeldItem as ShieldHolder).SetState(true);
                 }
 
                 if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]))
                 {
                     hand.Animator.SetTrigger("End Block");
+                    (hand.HeldItem as ShieldHolder).SetState(false);
                 }
             }
         }

@@ -5,14 +5,30 @@ public class ShieldHitDetector : MonoBehaviour
     [SerializeField] private LivingEntities _parent;
     
     [SerializeField] private bool _hit;
-    [SerializeField] public bool Protecting;
+    [SerializeField] private bool _protecting;
 
     [SerializeField] private int _armour;
 
+
+    public void SetProtecting(bool state)
+    {
+        _protecting = state;
+    }
+
+    public void SetHit(bool state)
+    {
+        _hit = state;
+    }
+
     private void OnTriggerEnter(Collider other) 
     {
-        _hit = true;
+        if (!_protecting)
+        {
+            return;
+        }
 
+        _hit = true;
+        
         if (_parent is Player)
         {
             float tempExp = _armour;
@@ -22,9 +38,14 @@ public class ShieldHitDetector : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other) 
+    /*private void OnTriggerExit(Collider other) 
     {
         _hit = false;    
+    }*/
+
+    public bool GetProtecting()
+    {
+        return _protecting;
     }
 
     public bool GetHit()

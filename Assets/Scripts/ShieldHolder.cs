@@ -6,24 +6,39 @@ public class ShieldHolder : ArmourHolder
 
     [SerializeField] private RuntimeAnimatorController[] animatorController = new RuntimeAnimatorController[2];
 
+    [SerializeField] private ShieldHitDetector detector;
+
     public void SpawnShield(int handType, LivingEntities parent)
     {
-        Transform shield = null;
-
         if (handType == 0)
         {
-            shield = Instantiate(GetItem(), transform).transform;
+            detector = Instantiate(GetItem(), transform).GetComponent<ShieldHitDetector>();
         }
         else
         {
-            shield = Instantiate(leftHandModel, transform).transform;
+            detector = Instantiate(leftHandModel, transform).GetComponent<ShieldHitDetector>();
         }
 
-        shield.GetComponent<ShieldHitDetector>().SetState(GetArmour(), parent);
+        detector.SetState(GetArmour(), parent);
+    }
+
+    public void SetState(bool state)
+    {
+        detector.SetProtecting(state);
     }
 
     public RuntimeAnimatorController GetAnimatorController(int id)
     {
         return animatorController[id];
+    }
+
+    public bool GetHit()
+    {
+        return detector.GetHit();
+    }
+
+    public bool GetProtecting()
+    {
+        return detector.GetProtecting();
     }
 }

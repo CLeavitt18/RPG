@@ -1004,14 +1004,21 @@ public class LivingEntities : MonoBehaviour
         {
             if (Hands[i].State == AttackType.Shield)
             {
-                ShieldHitDetector detector = Hands[i].HeldItem.transform.GetChild(0).GetComponent<ShieldHitDetector>();
+                ShieldHolder shield = Hands[i].HeldItem as ShieldHolder;
 
-                if (detector.Protecting && detector.GetHit())
+                if (shield.GetProtecting() && shield.GetHit())
                 {
-                    _armour  += (Hands[i].HeldItem as ArmourHolder).GetArmour();
+                    _armour  += shield.GetArmour();
+                    Debug.Log("Armour from shield = " + _armour);
                 }
             }
         }
+
+        Debug.Log("Amour minus armour from shield " + Armour);
+
+        _armour += Armour;
+
+        Debug.Log("Total Armour = " + _armour);
 
         int TotalDamage = 0;
 

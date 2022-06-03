@@ -62,4 +62,4 @@ MonoBehaviour:
   leftHandModel: {fileID: 7287768545305473151, guid: cdfd9cf764c2e5b448f4ed14972d3d63, type: 3}
   animatorController:
   - {fileID: 9100000, guid: 5cfaf289622e23941b24330e8cdb75ad, type: 2}
-  - {fileID: 0}
+  - {fileID: 9100000, guid: ee2bb021a345d6d4b8788981780f7391, type: 2}
