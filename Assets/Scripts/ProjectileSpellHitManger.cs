@@ -32,7 +32,7 @@ public class ProjectileSpellHitManger : HitManager
             {
                 if (Hit.collider.GetComponent<LivingEntities>() != null)
                 {
-                    HitSomething(Hit.collider.GetComponent<LivingEntities>());
+                    HitSomething(Hit.collider.GetComponent<LivingEntities>(), false);
                     Destroy(gameObject, Time.deltaTime * 1.1f);
                 }
             }

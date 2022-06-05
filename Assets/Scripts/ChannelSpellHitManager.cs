@@ -31,7 +31,7 @@ public class ChannelSpellHitManager : HitManager
         other.CompareTag(GlobalValues.NPCTag) ||
         other.CompareTag(GlobalValues.MinionTag))
         {
-            HitSomething(other.GetComponent<LivingEntities>());
+            HitSomething(other.GetComponent<LivingEntities>(), false);
         }
     }
 }

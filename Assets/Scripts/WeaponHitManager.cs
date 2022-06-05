@@ -2,9 +2,13 @@
 
 public class WeaponHitManager : HitManager
 {
+    [SerializeField] private bool alreaddyHit = false;
+
     public void OnTriggerEnter(Collider other)
     {
-        LivingEntities OL = other.GetComponent<LivingEntities>();
+        LivingEntities OL = null;
+
+        bool hitShield = false;
 
         if (Stats.Parent == null)
         {
@@ -14,20 +18,28 @@ public class WeaponHitManager : HitManager
 
         if (other.CompareTag(GlobalValues.ShieldTag))
         {
-            ShieldHitDetector detector = other.GetComponent<ShieldHitDetector>();
+            OL = other.GetComponent<ShieldHitDetector>().GetParent();
 
-            detector.SetHit(true);
-            return;
+            hitShield = true;
+
+            Debug.Log("Shield Hit");
+        }
+        else
+        {
+            OL = other.GetComponent<LivingEntities>();
         }
 
         if (OL == null || 
             (!OL.CompareTag(GlobalValues.PlayerTag) && !OL.CompareTag(GlobalValues.EnemyTag) && 
             !OL.CompareTag(GlobalValues.MinionTag) && !OL.CompareTag(GlobalValues.NPCTag)) || 
-            OL.CompareTag(Stats.Parent.tag) 
-             || OL.GetDead())
+            OL.CompareTag(Stats.Parent.tag) || 
+            OL.GetDead() ||
+            alreaddyHit)
         {
             return;
         }
+
+        alreaddyHit = true;
 
         WeaponHolder weapon = Stats.Parent.GetHeldItem(Stats.SourceHand).GetComponent<WeaponHolder>();
 
@@ -40,10 +52,7 @@ public class WeaponHitManager : HitManager
             return;
         }
 
-        int DamageDelt = HitSomething(OL);
-
-        //Debug.Log("damage delt " + DamageDelt);
-        //Debug.Log("life to be gained " + (int)((float)DamageDelt * weapon.LifeSteal * .01f));
+        int DamageDelt = HitSomething(OL, hitShield);
 
         if (DamageDelt > 0 && weapon.GetLifeSteal() > 0)
         {
@@ -80,14 +89,8 @@ public class WeaponHitManager : HitManager
         }
     }
 
-    /*private void OnTriggerExit(Collider other)
+    public void SetAlreadyHitFalse()
     {
-        if (other.CompareTag(GlobalValues.ShieldTag))
-        {
-            ShieldHitDetector detector = other.GetComponent<ShieldHitDetector>();
-
-            detector.SetHit(false);
-            return;
-        }
-    }*/
+        alreaddyHit = false;
+    }
 }

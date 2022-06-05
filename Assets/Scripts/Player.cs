@@ -486,9 +486,9 @@ public class Player : LivingEntities
         base.CheckHealth();
     }
 
-    public override int TakeDamage(DamageStats stats)
+    public override int TakeDamage(DamageStats stats, bool shieldHit)
     {
-        int TotalDamage = base.TakeDamage(stats);
+        int TotalDamage = base.TakeDamage(stats, shieldHit);
 
         PlayerUi.playerUi.SetPlayerAttributeUI(0);
 

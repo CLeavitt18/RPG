@@ -171,6 +171,7 @@ public class LivingEntities : MonoBehaviour
             hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed;
 
             PrimaryRef.Stats.Clear();
+            PrimaryRef.SetAlreadyHitFalse();
         }
     }
 
@@ -991,7 +992,7 @@ public class LivingEntities : MonoBehaviour
         IsRegening[id] = false;
     }
 
-    public virtual int TakeDamage(DamageStats stats)
+    public virtual int TakeDamage(DamageStats stats, bool shieldHit)
     {
         if (Attributes[(int)AttributesEnum.Health].Current <= 0)
         {
@@ -1000,19 +1001,21 @@ public class LivingEntities : MonoBehaviour
 
         int _armour = Armour;
 
-        for (int i = 0; i < 2; i++)
+        if (shieldHit)
         {
-            if (Hands[i].State == AttackType.Shield)
+            for (int i = 0; i < 2; i++)
             {
-                ShieldHolder shield = Hands[i].HeldItem as ShieldHolder;
-
-                if (shield.GetProtecting() && shield.GetHit())
+                if (Hands[i].State == AttackType.Shield)
                 {
+                    ShieldHolder shield = Hands[i].HeldItem as ShieldHolder;
+
                     _armour  += shield.GetArmour();
+                    
                     Debug.Log("Armour from shield = " + _armour);
                 }
             }
         }
+
 
         Debug.Log("Amour minus armour from shield " + Armour);
 

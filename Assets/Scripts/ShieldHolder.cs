@@ -32,11 +32,6 @@ public class ShieldHolder : ArmourHolder
         return animatorController[id];
     }
 
-    public bool GetHit()
-    {
-        return detector.GetHit();
-    }
-
     public bool GetProtecting()
     {
         return detector.GetProtecting();

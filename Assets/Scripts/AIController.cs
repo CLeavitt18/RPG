@@ -214,7 +214,7 @@ public class AIController : LivingEntities
 
             if (Physics.Raycast(AttackRay, out Hit, RayDistance))
             {
-                if (Hit.collider.gameObject == Target.gameObject)
+                if (Hit.collider.gameObject == Target.gameObject || Hit.collider.CompareTag(GlobalValues.ShieldTag))
                 {
                     int Chance;
 
@@ -314,9 +314,9 @@ public class AIController : LivingEntities
         transform.parent.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
-    public override int TakeDamage(DamageStats stats)
+    public override int TakeDamage(DamageStats stats, bool shieldHit)
     {
-        int TotalDamage = base.TakeDamage(stats);
+        int TotalDamage = base.TakeDamage(stats, shieldHit);
 
         animator.SetTrigger(HitAnimationTriggerName);
         CheckHealth();

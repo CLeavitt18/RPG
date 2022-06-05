@@ -164,6 +164,10 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 94435771005091078, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
+      propertyPath: Accuracy
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 94435771005091078, guid: 939002616bd9fa3459cf13e0bb6183b8, type: 3}
       propertyPath: BaseSpeed
       value: 6
       objectReference: {fileID: 0}
