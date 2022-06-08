@@ -5,179 +5,29 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637880031312757146
-    m_Hash: 1682597784
+      ticks: 637902977837334361
+    m_Hash: 1275363584
   m_LockFileStatus:
     m_FilePath: E:/Unity games/RPG/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637880031312762106
-    m_Hash: 3724531792
+      ticks: 637902977848350524
+    m_Hash: 3056867882
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: E:/Unity games/RPG/Packages
-m_EditorVersion: 2021.1.24f1 (6667702a1e7c)
+m_EditorVersion: 2022.1.3f1 (1cedbfe38737)
 m_ResolvedPackages:
-- packageId: com.unity.collab-proxy@1.11.2
+- packageId: com.unity.ide.visualstudio@2.0.15
   testable: 0
   isDirectDependency: 1
-  version: 1.11.2
+  version: 2.0.15
   source: 1
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.collab-proxy@1.11.2
-  assetPath: Packages/com.unity.collab-proxy
-  name: com.unity.collab-proxy
-  displayName: Version Control
-  author:
-    name: 
-    email: 
-    url: 
-  category: Editor
-  type: 
-  description: The Version Control package gives you the ability to use either Collaborate
-    or Plastic SCM for Unity (beta) in the Unity editor. To use Plastic SCM for Unity
-    (beta), a Plastic SCM subscription is required. Learn more about how you can
-    get started for free by visiting plasticscm.com.
-  status: 4
-  errors: []
-  versions:
-    all:
-    - 1.2.3-preview
-    - 1.2.4-preview
-    - 1.2.6
-    - 1.2.7
-    - 1.2.9
-    - 1.2.11
-    - 1.2.15
-    - 1.2.16
-    - 1.2.17-preview.3
-    - 1.3.2
-    - 1.3.3
-    - 1.3.4
-    - 1.3.5
-    - 1.3.6
-    - 1.3.7
-    - 1.3.8
-    - 1.3.9
-    - 1.4.9
-    - 1.5.7
-    - 1.6.0
-    - 1.7.1
-    - 1.8.0
-    - 1.9.0
-    - 1.10.2
-    - 1.11.2
-    - 1.12.5
-    - 1.13.5
-    - 1.14.1
-    - 1.14.4
-    - 1.14.7
-    - 1.14.9
-    - 1.14.12
-    - 1.14.13
-    - 1.14.15
-    - 1.14.16
-    - 1.14.17
-    - 1.15.1
-    - 1.15.4
-    - 1.15.7
-    - 1.15.9
-    - 1.15.12
-    - 1.15.13
-    - 1.15.15
-    - 1.15.16
-    - 1.15.17
-    - 2.0.0-preview.6
-    - 2.0.0-preview.8
-    - 2.0.0-preview.15
-    - 2.0.0-preview.17
-    - 2.0.0-preview.20
-    - 2.0.0-preview.21
-    - 2.0.0-preview.22
-    - 2.1.0-preview.3
-    - 2.1.0-preview.5
-    - 2.1.0-preview.6
-    compatible:
-    - 1.11.2
-    - 1.12.5
-    - 1.13.5
-    - 1.14.1
-    - 1.14.4
-    - 1.14.7
-    - 1.14.9
-    - 1.14.12
-    - 1.14.13
-    - 1.14.15
-    - 1.14.16
-    - 1.14.17
-    - 1.15.1
-    - 1.15.4
-    - 1.15.7
-    - 1.15.9
-    - 1.15.12
-    - 1.15.13
-    - 1.15.15
-    - 1.15.16
-    - 1.15.17
-    - 2.0.0-preview.6
-    - 2.0.0-preview.8
-    - 2.0.0-preview.15
-    - 2.0.0-preview.17
-    - 2.0.0-preview.20
-    - 2.0.0-preview.21
-    - 2.0.0-preview.22
-    - 2.1.0-preview.3
-    - 2.1.0-preview.5
-    - 2.1.0-preview.6
-    verified: 1.11.2
-  dependencies: []
-  resolvedDependencies: []
-  keywords:
-  - backup
-  - cloud
-  - collab
-  - collaborate
-  - collaboration
-  - control
-  - plastic
-  - plasticscm
-  - source
-  - team
-  - teams
-  - version
-  - vcs
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.com
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-  hasRegistry: 1
-  hideInEditor: 1
-  entitlements:
-    isAllowed: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 637679178630000000
-  documentationUrl: 
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-    revision: 3bc7fe2ab9acbe4538785fec6100ac17fe9e8da5
-    path: 
-  unityLifecycle:
-    version: 1.11.2
-    nextVersion: 
-- packageId: com.unity.ide.visualstudio@2.0.14
-  testable: 0
-  isDirectDependency: 1
-  version: 2.0.14
-  source: 1
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.ide.visualstudio@2.0.14
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.ide.visualstudio@2.0.15
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -213,9 +63,6 @@ m_ResolvedPackages:
     - 2.0.14
     - 2.0.15
     compatible:
-    - 2.0.11
-    - 2.0.12
-    - 2.0.14
     - 2.0.15
     verified: 2.0.15
   dependencies:
@@ -238,21 +85,18 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637782923640000000
+  datePublishedTicks: 637841884840000000
   documentationUrl: 
-  hasRepository: 0
+  hasRepository: 1
   repository:
-    type: 
-    url: 
-    revision: 
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
+    revision: ca1ece42f5a2c5484ba15a15bb975ccc1f6a1a3c
     path: 
   unityLifecycle:
-    version: 2.0.11
+    version: 2.0.15
     nextVersion: 
 - packageId: com.unity.ide.vscode@1.2.5
   testable: 0
@@ -290,7 +134,6 @@ m_ResolvedPackages:
     - 1.2.4
     - 1.2.5
     compatible:
-    - 1.2.4
     - 1.2.5
     verified: 1.2.5
   dependencies: []
@@ -303,10 +146,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 637800255360000000
   documentationUrl: 
@@ -317,14 +157,14 @@ m_ResolvedPackages:
     revision: b0740c80bfc2440527c317109f7c3d9100132722
     path: 
   unityLifecycle:
-    version: 1.2.4
+    version: 1.2.5
     nextVersion: 
-- packageId: com.unity.probuilder@5.0.3
+- packageId: com.unity.probuilder@5.0.4
   testable: 0
   isDirectDependency: 1
-  version: 5.0.3
+  version: 5.0.4
   source: 1
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.probuilder@5.0.3
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.probuilder@5.0.4
   assetPath: Packages/com.unity.probuilder
   name: com.unity.probuilder
   displayName: ProBuilder
@@ -389,7 +229,6 @@ m_ResolvedPackages:
     - 5.0.3
     - 5.0.4
     compatible:
-    - 5.0.3
     - 5.0.4
     verified: 5.0.4
   dependencies:
@@ -401,7 +240,7 @@ m_ResolvedPackages:
     version: 1.0.0
   resolvedDependencies:
   - name: com.unity.settings-manager
-    version: 1.0.3
+    version: 2.0.1
   - name: com.unity.modules.physics
     version: 1.0.0
   - name: com.unity.modules.imgui
@@ -434,28 +273,25 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637534907290000000
+  datePublishedTicks: 637798446010000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
-    url: git+https://github.com/Unity-Technologies/com.unity.probuilder.git
-    revision: 6a81f0485f2eed8c8a0c193422d52d55f64cd79c
+    url: https://github.com/Unity-Technologies/com.unity.probuilder.git
+    revision: 22982e248cc358e0d09dddd839f6d84cf33a8cb6
     path: 
   unityLifecycle:
-    version: 5.0.3
+    version: 5.0.4
     nextVersion: 
-- packageId: com.unity.render-pipelines.universal@11.0.0
+- packageId: com.unity.render-pipelines.universal@13.1.8
   testable: 0
   isDirectDependency: 1
-  version: 11.0.0
+  version: 13.1.8
   source: 2
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.render-pipelines.universal@11.0.0
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.render-pipelines.universal@13.1.8
   assetPath: Packages/com.unity.render-pipelines.universal
   name: com.unity.render-pipelines.universal
   displayName: Universal RP
@@ -516,22 +352,26 @@ m_ResolvedPackages:
     - 10.8.0
     - 10.8.1
     - 10.9.0
-    - 11.0.0
+    - 13.1.8
     compatible:
-    - 11.0.0
-    verified: 11.0.0
+    - 13.1.8
+    verified: 13.1.8
   dependencies:
   - name: com.unity.mathematics
-    version: 1.1.0
+    version: 1.2.1
+  - name: com.unity.burst
+    version: 1.5.0
   - name: com.unity.render-pipelines.core
-    version: 11.0.0
+    version: 13.1.8
   - name: com.unity.shadergraph
-    version: 11.0.0
+    version: 13.1.8
   resolvedDependencies:
   - name: com.unity.mathematics
-    version: 1.2.1
+    version: 1.2.6
+  - name: com.unity.burst
+    version: 1.7.1
   - name: com.unity.render-pipelines.core
-    version: 11.0.0
+    version: 13.1.8
   - name: com.unity.ugui
     version: 1.0.0
   - name: com.unity.modules.ui
@@ -540,10 +380,12 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.modules.physics
     version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
   - name: com.unity.shadergraph
-    version: 11.0.0
+    version: 13.1.8
   - name: com.unity.searcher
-    version: 4.3.2
+    version: 4.9.2
   keywords:
   - graphics
   - performance
@@ -558,10 +400,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -572,14 +411,14 @@ m_ResolvedPackages:
     revision: 
     path: 
   unityLifecycle:
-    version: 11.0.0
+    version: 13.1.8
     nextVersion: 
-- packageId: com.unity.shadergraph@11.0.0
+- packageId: com.unity.shadergraph@13.1.8
   testable: 0
   isDirectDependency: 1
-  version: 11.0.0
+  version: 13.1.8
   source: 2
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.shadergraph@11.0.0
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.shadergraph@13.1.8
   assetPath: Packages/com.unity.shadergraph
   name: com.unity.shadergraph
   displayName: Shader Graph
@@ -693,18 +532,18 @@ m_ResolvedPackages:
     - 10.8.0
     - 10.8.1
     - 10.9.0
-    - 11.0.0
+    - 13.1.8
     compatible:
-    - 11.0.0
-    verified: 11.0.0
+    - 13.1.8
+    verified: 13.1.8
   dependencies:
   - name: com.unity.render-pipelines.core
-    version: 11.0.0
+    version: 13.1.8
   - name: com.unity.searcher
-    version: 4.3.1
+    version: 4.9.2
   resolvedDependencies:
   - name: com.unity.render-pipelines.core
-    version: 11.0.0
+    version: 13.1.8
   - name: com.unity.ugui
     version: 1.0.0
   - name: com.unity.modules.ui
@@ -713,8 +552,10 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.modules.physics
     version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
   - name: com.unity.searcher
-    version: 4.3.2
+    version: 4.9.2
   keywords: []
   registry:
     id: main
@@ -723,10 +564,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -737,7 +575,7 @@ m_ResolvedPackages:
     revision: 
     path: 
   unityLifecycle:
-    version: 11.0.0
+    version: 13.1.8
     nextVersion: 
 - packageId: com.unity.test-framework@1.1.31
   testable: 0
@@ -796,8 +634,6 @@ m_ResolvedPackages:
     - 2.0.1-pre.12
     - 2.0.1-pre.18
     compatible:
-    - 1.1.29
-    - 1.1.30
     - 1.1.31
     - 2.0.1-exp.1
     - 2.0.1-pre.12
@@ -827,10 +663,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 637804266210000000
   documentationUrl: 
@@ -841,7 +674,7 @@ m_ResolvedPackages:
     revision: 438b0defc147c9be5c969ca79ff03a722b4590ed
     path: 
   unityLifecycle:
-    version: 1.1.29
+    version: 1.1.31
     nextVersion: 
 - packageId: com.unity.textmeshpro@3.0.6
   testable: 0
@@ -971,6 +804,7 @@ m_ResolvedPackages:
     - 3.2.0-pre.1
     - 3.2.0-pre.2
     - 3.2.0-pre.3
+    - 4.0.0-pre.1
     verified: 3.0.6
   dependencies:
   - name: com.unity.ugui
@@ -995,10 +829,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 637547111200000000
   documentationUrl: 
@@ -1011,12 +842,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 3.0.6
     nextVersion: 
-- packageId: com.unity.timeline@1.5.7
+- packageId: com.unity.timeline@1.7.1
   testable: 0
   isDirectDependency: 1
-  version: 1.5.7
+  version: 1.7.1
   source: 1
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.timeline@1.5.7
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.timeline@1.7.1
   assetPath: Packages/com.unity.timeline
   name: com.unity.timeline
   displayName: Timeline
@@ -1105,21 +936,8 @@ m_ResolvedPackages:
     - 1.7.0
     - 1.7.1
     compatible:
-    - 1.5.6
-    - 1.5.7
-    - 1.6.0-pre.1
-    - 1.6.0-pre.3
-    - 1.6.0-pre.4
-    - 1.6.0-pre.5
-    - 1.6.1
-    - 1.6.2
-    - 1.6.3
-    - 1.6.4
-    - 1.7.0-pre.1
-    - 1.7.0-pre.2
-    - 1.7.0
     - 1.7.1
-    verified: 1.5.7
+    verified: 1.7.1
   dependencies:
   - name: com.unity.modules.director
     version: 1.0.0
@@ -1151,21 +969,118 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637704360510000000
+  datePublishedTicks: 637824211470000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-    revision: b0c6687b4bae7608c23b04edd20e0b8002476c6f
+    revision: 9cec37f449d04026a6c454de9e1bf6f34672764e
     path: 
   unityLifecycle:
-    version: 1.5.6
+    version: 1.7.1
+    nextVersion: 
+- packageId: com.unity.toolchain.win-x86_64-linux-x86_64@2.0.2
+  testable: 0
+  isDirectDependency: 1
+  version: 2.0.2
+  source: 1
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.toolchain.win-x86_64-linux-x86_64@2.0.2
+  assetPath: Packages/com.unity.toolchain.win-x86_64-linux-x86_64
+  name: com.unity.toolchain.win-x86_64-linux-x86_64
+  displayName: Toolchain Win Linux x64
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Cross-compilation toolchain to build player target Linux x86_64 on
+    host Windows x86_64
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 0.1.4-preview
+    - 0.1.5-preview
+    - 0.1.6-preview
+    - 0.1.7-preview
+    - 0.1.8-preview
+    - 0.1.9-preview
+    - 0.1.10-preview
+    - 0.1.11-preview
+    - 0.1.13-preview
+    - 0.1.14-preview
+    - 0.1.15-preview
+    - 0.1.16-preview
+    - 0.1.17-preview
+    - 0.1.18-preview
+    - 0.1.19-preview
+    - 0.1.20-preview
+    - 0.1.21-preview
+    - 1.0.0
+    - 2.0.0
+    - 2.0.1
+    - 2.0.2
+    compatible:
+    - 0.1.4-preview
+    - 0.1.5-preview
+    - 0.1.6-preview
+    - 0.1.7-preview
+    - 0.1.8-preview
+    - 0.1.9-preview
+    - 0.1.10-preview
+    - 0.1.11-preview
+    - 0.1.13-preview
+    - 0.1.14-preview
+    - 0.1.15-preview
+    - 0.1.16-preview
+    - 0.1.17-preview
+    - 0.1.18-preview
+    - 0.1.19-preview
+    - 0.1.20-preview
+    - 0.1.21-preview
+    - 1.0.0
+    - 2.0.0
+    - 2.0.1
+    - 2.0.2
+    verified: 
+  dependencies:
+  - name: com.unity.sysroot
+    version: 2.0.3
+  - name: com.unity.sysroot.linux-x86_64
+    version: 2.0.2
+  resolvedDependencies:
+  - name: com.unity.sysroot
+    version: 2.0.3
+  - name: com.unity.sysroot.linux-x86_64
+    version: 2.0.2
+  keywords:
+  - toolchain
+  - windows
+  - linux
+  - cross-compilation
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637902311680000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.sysroot.git
+    revision: 66ed41bba76e1f66c4e578e9bad86d33dff8b82b
+    path: 
+  unityLifecycle:
+    version: 
     nextVersion: 
 - packageId: com.unity.ugui@1.0.0
   testable: 0
@@ -1216,10 +1131,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1267,10 +1179,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1317,10 +1226,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1368,10 +1274,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1419,10 +1322,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1470,10 +1370,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1525,10 +1422,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1584,10 +1478,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1636,10 +1527,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1687,10 +1575,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1738,10 +1623,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1789,10 +1671,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1840,10 +1719,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1891,10 +1767,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1946,10 +1819,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -1997,10 +1867,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2056,10 +1923,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2110,10 +1974,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2161,10 +2022,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2228,10 +2086,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2279,10 +2134,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2338,10 +2190,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2389,10 +2238,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2448,10 +2294,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2507,10 +2350,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2566,10 +2406,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2641,10 +2478,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2696,10 +2530,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2759,10 +2590,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2824,10 +2652,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2875,10 +2700,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2938,10 +2760,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -2993,10 +2812,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -3055,10 +2871,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -3067,6 +2880,167 @@ m_ResolvedPackages:
     type: 
     url: 
     revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+- packageId: com.unity.sysroot@2.0.3
+  testable: 0
+  isDirectDependency: 0
+  version: 2.0.3
+  source: 1
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.sysroot@2.0.3
+  assetPath: Packages/com.unity.sysroot
+  name: com.unity.sysroot
+  displayName: Sysroot Base
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: This is the base sysroot package required by all sysroot and toolchain
+    packages
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 0.1.7-preview
+    - 0.1.8-preview
+    - 0.1.9-preview
+    - 0.1.10-preview
+    - 0.1.11-preview
+    - 0.1.12-preview
+    - 0.1.14-preview
+    - 0.1.15-preview
+    - 0.1.16-preview
+    - 0.1.17-preview
+    - 0.1.18-preview
+    - 0.1.19-preview
+    - 1.0.0
+    - 2.0.0
+    - 2.0.2
+    - 2.0.3
+    compatible:
+    - 0.1.7-preview
+    - 0.1.8-preview
+    - 0.1.9-preview
+    - 0.1.10-preview
+    - 0.1.11-preview
+    - 0.1.12-preview
+    - 0.1.14-preview
+    - 0.1.15-preview
+    - 0.1.16-preview
+    - 0.1.17-preview
+    - 0.1.18-preview
+    - 0.1.19-preview
+    - 1.0.0
+    - 2.0.0
+    - 2.0.2
+    - 2.0.3
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - unity
+  - linux
+  - sysroot
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637902310480000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.sysroot.git
+    revision: 66ed41bba76e1f66c4e578e9bad86d33dff8b82b
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+- packageId: com.unity.sysroot.linux-x86_64@2.0.2
+  testable: 0
+  isDirectDependency: 0
+  version: 2.0.2
+  source: 1
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.sysroot.linux-x86_64@2.0.2
+  assetPath: Packages/com.unity.sysroot.linux-x86_64
+  name: com.unity.sysroot.linux-x86_64
+  displayName: Sysroot Linux x64
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Sysroot used to build unity player for linux x86_64
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 0.1.6-preview
+    - 0.1.7-preview
+    - 0.1.8-preview
+    - 0.1.9-preview
+    - 0.1.10-preview
+    - 0.1.11-preview
+    - 0.1.12-preview
+    - 0.1.13-preview
+    - 0.1.14-preview
+    - 0.1.15-preview
+    - 1.0.0
+    - 2.0.0
+    - 2.0.1
+    - 2.0.2
+    compatible:
+    - 0.1.6-preview
+    - 0.1.7-preview
+    - 0.1.8-preview
+    - 0.1.9-preview
+    - 0.1.10-preview
+    - 0.1.11-preview
+    - 0.1.12-preview
+    - 0.1.13-preview
+    - 0.1.14-preview
+    - 0.1.15-preview
+    - 1.0.0
+    - 2.0.0
+    - 2.0.1
+    - 2.0.2
+    verified: 
+  dependencies:
+  - name: com.unity.sysroot
+    version: 2.0.3
+  resolvedDependencies:
+  - name: com.unity.sysroot
+    version: 2.0.3
+  keywords:
+  - unity
+  - linux
+  - sysroot
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637902310650000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.sysroot.git
+    revision: 66ed41bba76e1f66c4e578e9bad86d33dff8b82b
     path: 
   unityLifecycle:
     version: 
@@ -3116,10 +3090,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 637429759280000000
   documentationUrl: 
@@ -3132,12 +3103,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.0.6
     nextVersion: 
-- packageId: com.unity.render-pipelines.core@11.0.0
+- packageId: com.unity.render-pipelines.core@13.1.8
   testable: 0
   isDirectDependency: 0
-  version: 11.0.0
+  version: 13.1.8
   source: 2
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.render-pipelines.core@11.0.0
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.render-pipelines.core@13.1.8
   assetPath: Packages/com.unity.render-pipelines.core
   name: com.unity.render-pipelines.core
   displayName: Core RP Library
@@ -3254,14 +3225,16 @@ m_ResolvedPackages:
     - 10.8.0
     - 10.8.1
     - 10.9.0
-    - 11.0.0
+    - 13.1.8
     compatible:
-    - 11.0.0
-    verified: 11.0.0
+    - 13.1.8
+    verified: 13.1.8
   dependencies:
   - name: com.unity.ugui
     version: 1.0.0
   - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
     version: 1.0.0
   resolvedDependencies:
   - name: com.unity.ugui
@@ -3272,6 +3245,8 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.modules.physics
     version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
   keywords: []
   registry:
     id: main
@@ -3280,10 +3255,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
   datePublishedTicks: 0
   documentationUrl: 
@@ -3294,14 +3266,14 @@ m_ResolvedPackages:
     revision: 
     path: 
   unityLifecycle:
-    version: 11.0.0
+    version: 13.1.8
     nextVersion: 
-- packageId: com.unity.searcher@4.3.2
+- packageId: com.unity.searcher@4.9.2
   testable: 0
   isDirectDependency: 0
-  version: 4.3.2
+  version: 4.9.2
   source: 1
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.searcher@4.3.2
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.searcher@4.9.2
   assetPath: Packages/com.unity.searcher
   name: com.unity.searcher
   displayName: Searcher
@@ -3334,12 +3306,8 @@ m_ResolvedPackages:
     - 4.9.1
     - 4.9.2
     compatible:
-    - 4.3.2
-    - 4.6.0-preview
-    - 4.7.0-preview
-    - 4.9.1
     - 4.9.2
-    verified: 4.3.2
+    verified: 4.9.2
   dependencies: []
   resolvedDependencies: []
   keywords:
@@ -3352,28 +3320,25 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637509898070000000
+  datePublishedTicks: 637831252240000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.searcher.git
-    revision: 798bfb84c8f09f7788a3a88c3c16d72c50451530
+    revision: 7f9f75b04e97cf09c8ddc3968d059e74d6a2460a
     path: 
   unityLifecycle:
-    version: 4.3.2
+    version: 4.9.2
     nextVersion: 
-- packageId: com.unity.mathematics@1.2.1
+- packageId: com.unity.mathematics@1.2.6
   testable: 0
   isDirectDependency: 0
-  version: 1.2.1
+  version: 1.2.6
   source: 1
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.mathematics@1.2.1
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.mathematics@1.2.6
   assetPath: Packages/com.unity.mathematics
   name: com.unity.mathematics
   displayName: Mathematics
@@ -3407,9 +3372,6 @@ m_ResolvedPackages:
     - 1.2.5
     - 1.2.6
     compatible:
-    - 1.2.1
-    - 1.2.4
-    - 1.2.5
     - 1.2.6
     verified: 1.2.6
   dependencies: []
@@ -3423,28 +3385,191 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637324062630000000
+  datePublishedTicks: 637841876140000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
-    url: git+https://github.com/Unity-Technologies/Unity.Mathematics.git
-    revision: 71412d94b7a0b0fdbb3195a5e6559bf6a761e91a
+    url: https://github.com/Unity-Technologies/Unity.Mathematics.git
+    revision: f110c8c230d253654afed153569030a587cc7557
     path: 
   unityLifecycle:
-    version: 1.2.1
+    version: 1.2.6
     nextVersion: 
-- packageId: com.unity.settings-manager@1.0.3
+- packageId: com.unity.burst@1.7.1
   testable: 0
   isDirectDependency: 0
-  version: 1.0.3
+  version: 1.7.1
   source: 1
-  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.settings-manager@1.0.3
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.burst@1.7.1
+  assetPath: Packages/com.unity.burst
+  name: com.unity.burst
+  displayName: Burst
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Burst is a compiler that translates from IL/.NET bytecode to highly
+    optimized native code using LLVM.
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 0.2.4-preview.5
+    - 0.2.4-preview.7
+    - 0.2.4-preview.11
+    - 0.2.4-preview.12
+    - 0.2.4-preview.13
+    - 0.2.4-preview.14
+    - 0.2.4-preview.15
+    - 0.2.4-preview.16
+    - 0.2.4-preview.17
+    - 0.2.4-preview.18
+    - 0.2.4-preview.19
+    - 0.2.4-preview.20
+    - 0.2.4-preview.21
+    - 0.2.4-preview.22
+    - 0.2.4-preview.23
+    - 0.2.4-preview.24
+    - 0.2.4-preview.25
+    - 0.2.4-preview.30
+    - 0.2.4-preview.31
+    - 0.2.4-preview.33
+    - 0.2.4-preview.34
+    - 0.2.4-preview.37
+    - 0.2.4-preview.41
+    - 0.2.4-preview.45
+    - 0.2.4-preview.48
+    - 0.2.4-preview.50
+    - 1.1.0-preview.2
+    - 1.1.0-preview.3
+    - 1.1.0-preview.4
+    - 1.1.1
+    - 1.1.2
+    - 1.1.3-preview.3
+    - 1.2.0-preview.1
+    - 1.2.0-preview.5
+    - 1.2.0-preview.6
+    - 1.2.0-preview.8
+    - 1.2.0-preview.9
+    - 1.2.0-preview.10
+    - 1.2.0-preview.11
+    - 1.2.0-preview.12
+    - 1.2.0
+    - 1.2.1
+    - 1.2.2
+    - 1.2.3
+    - 1.3.0-preview.1
+    - 1.3.0-preview.2
+    - 1.3.0-preview.3
+    - 1.3.0-preview.4
+    - 1.3.0-preview.5
+    - 1.3.0-preview.6
+    - 1.3.0-preview.7
+    - 1.3.0-preview.8
+    - 1.3.0-preview.9
+    - 1.3.0-preview.10
+    - 1.3.0-preview.11
+    - 1.3.0-preview.12
+    - 1.3.0-preview.13
+    - 1.3.0
+    - 1.3.1
+    - 1.3.2
+    - 1.3.3
+    - 1.3.4
+    - 1.3.5
+    - 1.3.6
+    - 1.3.7
+    - 1.3.8
+    - 1.3.9
+    - 1.4.0-pre.1
+    - 1.4.0-preview.1
+    - 1.4.0-preview.2
+    - 1.4.0-preview.3
+    - 1.4.0-preview.4
+    - 1.4.0-preview.5
+    - 1.4.1-pre.1
+    - 1.4.1-pre.2
+    - 1.4.1
+    - 1.4.2
+    - 1.4.3
+    - 1.4.4-preview.1
+    - 1.4.4-preview.2
+    - 1.4.4
+    - 1.4.5
+    - 1.4.6
+    - 1.4.7
+    - 1.4.8
+    - 1.4.9
+    - 1.4.11
+    - 1.5.0-pre.3
+    - 1.5.0-pre.4
+    - 1.5.0-pre.5
+    - 1.5.0
+    - 1.5.1
+    - 1.5.2
+    - 1.5.3
+    - 1.5.4
+    - 1.5.5
+    - 1.5.6-preview.1
+    - 1.5.6
+    - 1.6.0-pre.2
+    - 1.6.0-pre.3
+    - 1.6.0-pre.4
+    - 1.6.0
+    - 1.6.1
+    - 1.6.2
+    - 1.6.3
+    - 1.6.4
+    - 1.6.5
+    - 1.6.6
+    - 1.7.0-pre.1
+    - 1.7.0
+    - 1.7.1
+    - 1.7.2
+    - 1.8.0-pre.1
+    compatible:
+    - 1.7.1
+    - 1.7.2
+    - 1.8.0-pre.1
+    verified: 1.7.2
+  dependencies:
+  - name: com.unity.mathematics
+    version: 1.2.1
+  resolvedDependencies:
+  - name: com.unity.mathematics
+    version: 1.2.6
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637853933000000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/burst.git
+    revision: 61a801e91b00a608cc94c3c39187f577dd72df2c
+    path: 
+  unityLifecycle:
+    version: 1.7.1
+    nextVersion: 
+- packageId: com.unity.settings-manager@2.0.1
+  testable: 0
+  isDirectDependency: 0
+  version: 2.0.1
+  source: 1
+  resolvedPath: E:\Unity games\RPG\Library\PackageCache\com.unity.settings-manager@2.0.1
   assetPath: Packages/com.unity.settings-manager
   name: com.unity.settings-manager
   displayName: Settings Manager
@@ -3469,10 +3594,8 @@ m_ResolvedPackages:
     - 2.0.0
     - 2.0.1
     compatible:
-    - 1.0.3
-    - 2.0.0
     - 2.0.1
-    verified: 1.0.3
+    verified: 2.0.1
   dependencies: []
   resolvedDependencies: []
   keywords: []
@@ -3483,19 +3606,16 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hasRegistry: 1
   hideInEditor: 1
-  entitlements:
-    isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637300096300000000
+  datePublishedTicks: 637744099390000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
-    url: git+https://github.com/Unity-Technologies/com.unity.settings-manager.git
-    revision: 473664ccba1496294b741cf169740a5d54b3d0b6
+    url: https://github.com/Unity-Technologies/com.unity.settings-manager.git
+    revision: 9b7c12d04ef880168151c127fd6b37b5931197dc
     path: 
   unityLifecycle:
-    version: 1.0.3
+    version: 2.0.1
     nextVersion: 

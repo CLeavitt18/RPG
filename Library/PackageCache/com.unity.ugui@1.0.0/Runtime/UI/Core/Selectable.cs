@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
 {
-    [AddComponentMenu("UI/Selectable", 70)]
+    [AddComponentMenu("UI/Selectable", 35)]
     [ExecuteAlways]
     [SelectionBase]
     [DisallowMultipleComponent]
@@ -440,7 +440,7 @@ namespace UnityEngine.UI
                 {
                     // if the parent group does not allow interaction
                     // we need to break
-                    if (!m_CanvasGroupCache[i].interactable)
+                    if (m_CanvasGroupCache[i].enabled && !m_CanvasGroupCache[i].interactable)
                     {
                         groupAllowInteraction = false;
                         shouldBreak = true;
@@ -569,6 +569,14 @@ namespace UnityEngine.UI
             base.OnDisable();
 
             m_EnableCalled = false;
+        }
+
+        void OnApplicationFocus(bool hasFocus)
+        {
+            if (!hasFocus && IsPressed())
+            {
+                InstantClearState();
+            }
         }
 
 #if UNITY_EDITOR
@@ -1268,6 +1276,8 @@ namespace UnityEngine.UI
         /// </example>
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
+            if (eventData == null || eventData.pointerEnter == null || eventData.pointerEnter.GetComponentInParent<Selectable>() != this)
+                return;
             isPointerInside = true;
             EvaluateAndTransitionToSelectionState();
         }

@@ -1,12 +1,15 @@
 trackSelection = true
 fetchPreview = true
-wantsMore = false
+defaultFlags = 0
 keepOpen = false
 queryFolder = "Assets"
 onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
+	"last_search.7788661B" = "play"
+	"OpenInspectorPreview.7788661B" = "0"
+	"currentGroup.7788661B" = "all"
 }
 providers = {
 	asset = {
@@ -44,6 +47,18 @@ providers = {
 		priority = 100
 		defaultAction = null
 	}
+	adb = {
+		active = false
+		priority = 2500
+		defaultAction = null
+	}
+	performance = {
+		active = false
+		priority = 100
+		defaultAction = null
+	}
+}
+objectSelectors = {
 }
 recentSearches = [
 ]
@@ -51,3 +66,9 @@ searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
 showSavedSearchPanel = false
+expandedQueries = [
+]
+queryBuilder = false
+ignoredProperties = "id;name;classname;imagecontentshash"
+helperWidgetCurrentArea = "all"
+disabledIndexers = ""
