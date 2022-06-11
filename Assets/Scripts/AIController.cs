@@ -203,7 +203,7 @@ public class AIController : LivingEntities
             }
         }
 
-        if (Distance <= Agent.stoppingDistance + .5)
+        if (Distance <= Agent.stoppingDistance + 0.5f)
         {
             FaceTarget();
         }

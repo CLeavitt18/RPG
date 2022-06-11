@@ -508,3 +508,18 @@ MonoBehaviour:
     backgroundColour: {r: 0.792, g: 0.239, b: 0.239, a: 0.25}
     visibleInInspector: 1
     styleFilteredInInspector: 0
+  - mInitialised: 0
+    matchMethod: 2
+    matchValue: 170a36f6d36153045a30688d20215f67
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Colour - Purple Heart
+    overrideLabel: 1
+    labelColour: {r: 0.90064085, g: 0.7468865, b: 1.4477208, a: 1}
+    labelStyle: 0
+    overrideBackground: 1
+    backgroundName: Metal
+    backgroundColour: {r: 0.38, g: 0.251, b: 0.839, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
