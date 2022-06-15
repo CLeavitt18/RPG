@@ -369,7 +369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d2f3ec6a3389949a5f53849e8964c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfExits: 1
+  _numOfExits: 1
+  _isUsed: 00
   _exits:
   - {fileID: 1657868168675975565}
   _navMeshSurface: {fileID: 8488518957897185358}

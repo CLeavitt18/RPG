@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,12 +46,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponHolder: {fileID: 3523631179796964429, guid: 77f24d1409b8fbd428c22d29e69b3f7c, type: 3}
   ArmourHolder: {fileID: 1687010134819170053, guid: 3f12c3a37fe39644eb99ca3b27697b42, type: 3}
+  ShieldHolder: {fileID: 6148637567326029063, guid: f94d3a2ffdb67044b862b931c968f006, type: 3}
   SpellHolder: {fileID: 2865060664139588975, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
   RuneHolder: {fileID: 7922547763874953810, guid: 6e8c592e6f7ca0d4cabc78a563dfd834, type: 3}
   Gold: {fileID: 7591549252762906544, guid: eab6452253f98dd429efb093ed9cc102, type: 3}
   LightningChain: {fileID: 3994210977246602237, guid: fa805414fa60b3444921c405555535db, type: 3}
   BurnAffect: {fileID: 7094513860551159275, guid: fb51342ff86519647a7e157b623fee5d, type: 3}
   ChilledAffect: {fileID: 7094513860551159275, guid: c6abfcd65fa7b6240be21f551bd1fc0f, type: 3}
+  ShieldAnimators: []
   Minions:
   - {fileID: 5693625826450547961, guid: 1e341ab5e75388a4e83655532a9c1035, type: 3}
   Items:
@@ -258,6 +261,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Armour:
+  - {fileID: 7287768545305473151, guid: 0bcf0e2df0fa0604ea3256fc48edd931, type: 3}
   WeaponMaterials:
   - {fileID: 2100000, guid: 8ea9129a3b682d347b8b1c7bb60581f1, type: 2}
   - {fileID: 2100000, guid: b10b42c0df9d5524fab0533c9a220733, type: 2}

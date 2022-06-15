@@ -214,6 +214,7 @@ public class ArmourData
     public Power[] Enchantments;
 
     public bool IsEquiped;
+    public bool IsShield;
 
     public string Name;
 }

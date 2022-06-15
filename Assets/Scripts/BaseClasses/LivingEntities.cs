@@ -1310,26 +1310,24 @@ public class LivingEntities : MonoBehaviour
             Inventory.AddItem(weapon, false, iData.Weapons[i].Amount);
         }
 
-        if (Data.CurrentMainHandID == 1)
-        {
-            EquipItem(Inventory[Data.CurrentWeaponID], 0);
-        }
-
-        if (Data.CurrentOffHandID == 1)
-        {
-
-            EquipItem(Inventory[Data.CurrentOffWeaponID], 1);
-        }
-
         for (int i = 0; i < iData.NumOfArmour; i++)
         {
-            ArmourHolder armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder, Inventory.InventroyHolder).GetComponent<ArmourHolder>();
+            ArmourHolder armour;
+
+            if (iData.Armour[i].IsShield)
+            {
+                armour = Instantiate(PrefabIDs.prefabIDs.ShieldHolder, Inventory.InventroyHolder).GetComponent<ArmourHolder>();
+            }
+            else
+            {
+                armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder, Inventory.InventroyHolder).GetComponent<ArmourHolder>();
+            }
 
             LoadSystem.LoadItem(iData.Armour[i], armour);
 
             Inventory.AddItem(armour, false, iData.Armour[i].Amount);
 
-            if (iData.Armour[i].IsEquiped)
+            if (iData.Armour[i].IsEquiped && iData.Armour[i].IsShield == false)
             {
                 EquipItem(armour, 0);
             }
@@ -1342,16 +1340,6 @@ public class LivingEntities : MonoBehaviour
             LoadSystem.LoadItem(iData.Spells[i], spell);
 
             Inventory.AddItem(spell, false, iData.Spells[i].Amount);
-        }
-
-        if (Data.CurrentMainHandID == 2)
-        {
-            EquipItem(Inventory[Data.CurrentWeaponID], 0);
-        }
-
-        if (Data.CurrentOffHandID == 2)
-        {
-            EquipItem(Inventory[Data.CurrentOffWeaponID], 1);
         }
 
         for (int i = 0; i < iData.NumOfRunes; i++)
@@ -1393,14 +1381,14 @@ public class LivingEntities : MonoBehaviour
             Inventory.AddItem(misc, false, miscData.Amount);
         }
 
-        if (Data.CurrentMainHandID == 3)
+        if (Data.RightHand)
         {
-            EquipItem(Inventory[Data.CurrentWeaponID], 0);
+            EquipItem(Inventory[Data.RightHandId], 0);
         }
 
-        if (Data.CurrentOffHandID == 3)
+        if (Data.LeftHand)
         {
-            EquipItem(Inventory[Data.CurrentOffWeaponID], 1);
+            EquipItem(Inventory[Data.LeftHandId], 1);
         }
 
     }

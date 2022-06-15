@@ -7,6 +7,7 @@ public class PrefabIDs : MonoBehaviour
 
     public GameObject WeaponHolder;
     public GameObject ArmourHolder;
+    public GameObject ShieldHolder;
     public GameObject SpellHolder;
     public GameObject RuneHolder;
     public GameObject Gold;
@@ -24,6 +25,8 @@ public class PrefabIDs : MonoBehaviour
     public GameObject[] CraftingMaterials;
     public GameObject[] Deposits;
     public GameObject[] Quests;
+
+    public GameObject[] Armour;
 
     public Material[] WeaponMaterials;
 

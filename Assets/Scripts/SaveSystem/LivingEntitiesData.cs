@@ -5,10 +5,8 @@ public class LivingEntitiesData
     public AttributeStruct[] Attributes = new AttributeStruct[3];
     
     public int Level;
-    public int CurrentWeaponID;
-    public int CurrentOffWeaponID;
-    public int CurrentMainHandID;
-    public int CurrentOffHandID;
+    public int RightHandId;
+    public int LeftHandId;
     public int NumOfShrines;
     public int NumOfMinions;
 
@@ -18,6 +16,10 @@ public class LivingEntitiesData
     public MinionData[] Minions;
 
     public bool FirstOpen = true;
+
+    //false = nothing equiped true = something is equiped
+    public bool RightHand = false;
+    public bool LeftHand = false;
 
     public InventoryData inventoryData;
 
@@ -60,19 +62,38 @@ public class LivingEntitiesData
 
             if (inventory[i] == rightHand)
             {
-                CurrentMainHandID = 1;
-                CurrentWeaponID = i;
+                RightHand = true;
+                RightHandId = i;
             }
 
             if (inventory[i] == leftHand && rightHand != leftHand)
             {
-                CurrentOffHandID = 1;
-                CurrentOffWeaponID = i;
+                LeftHand = true;
+                LeftHandId = i;
             }
 
             id++;
         }
-        
+
+        start = inventory.GetStart(GlobalValues.ArmourStart);
+        end = inventory.GetStart(GlobalValues.SpellStart);
+
+        for (int i = start; i < end; i++)
+        {
+            ArmourHolder ArmourH = inventory[i].GetComponent<ArmourHolder>();   
+
+            if (inventory[i] == rightHand)
+            {
+                RightHand = true;
+                RightHandId = i;
+            }
+            else if (inventory[i] == leftHand)
+            {
+                LeftHand = true;
+                LeftHandId = i;
+            }
+        }
+
         start = inventory.GetStart(GlobalValues.SpellStart);
         end = inventory.GetStart(GlobalValues.RuneStart);
 
@@ -84,14 +105,14 @@ public class LivingEntitiesData
 
             if (inventory[i] == rightHand)
             {
-                CurrentMainHandID = 2;
-                CurrentWeaponID = i;
+                RightHand = true;
+                RightHandId = i;
             }
 
             if (inventory[i] == leftHand && rightHand != leftHand)
             {
-                CurrentOffHandID = 2;
-                CurrentOffWeaponID = i;
+                LeftHand = true;
+                LeftHandId = i;
             }
 
             id++;
@@ -106,13 +127,13 @@ public class LivingEntitiesData
             {
                 if(torch == rightHand)
                 {
-                    CurrentMainHandID = 3;
-                    CurrentWeaponID = i;
+                    RightHand = true;
+                    RightHandId = i;
                 }
                 else
                 {
-                    CurrentOffHandID = 3;
-                    CurrentOffWeaponID = i;
+                    LeftHand = true;
+                    LeftHandId = i;
                 }
             }
         }

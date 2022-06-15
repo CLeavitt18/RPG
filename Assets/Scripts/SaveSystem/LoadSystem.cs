@@ -66,6 +66,11 @@ public static class LoadSystem
         stats.Weight = FromArmour.Weight;
         stats.SkillType = (SkillType)FromArmour.SkillType;
 
+        if (ToArmour is ShieldHolder)
+        {
+            stats.Item = PrefabIDs.prefabIDs.Armour[0];
+        }
+
         for (int i = 0; i < 3; i++)
         {
             stats.Resistences[i] = FromArmour.Resistences[i];
@@ -344,6 +349,11 @@ public static class LoadSystem
         ToArmour.Amount = FromArmour.GetAmount();
         ToArmour.Weight = FromArmour.GetWeight();
         ToArmour.SkillType = (int)FromArmour.GetSkillType();
+
+        if (FromArmour is ShieldHolder)
+        {
+            ToArmour.IsShield = true;
+        }
 
         ToArmour.Rarity = new float[4];
 

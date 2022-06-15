@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour, ISavable
 
     [SerializeField] private Range[] ranges;
 
-    public int Count { get{ return AllItems.Count;} private set{} }
+    public int Count { get { return AllItems.Count; } private set { } }
 
     [SerializeField] private int[] StartIds = new int[6];
 
@@ -70,8 +70,8 @@ public class Inventory : MonoBehaviour, ISavable
                 end_id = StartIds[GlobalValues.RuneStart];
                 break;
             case GlobalValues.RuneTag:
-                start_id= StartIds[GlobalValues.RuneStart];
-                end_id= StartIds[GlobalValues.PotionStart];
+                start_id = StartIds[GlobalValues.RuneStart];
+                end_id = StartIds[GlobalValues.PotionStart];
                 break;
             case GlobalValues.PotionTag:
                 start_id = StartIds[GlobalValues.PotionStart];
@@ -110,7 +110,7 @@ public class Inventory : MonoBehaviour, ISavable
 
                 if (item.GetEquipable() && item.GetEquiped())
                 {
-                    continue; 
+                    continue;
                 }
 
                 if (Item.Equals(item))
@@ -175,7 +175,7 @@ public class Inventory : MonoBehaviour, ISavable
         CurrentCarryWeight -= Item.GetWeight() * Amount;
 
         if (Item.GetAmount() == 0)
-        {   
+        {
             int loopStart;
 
             switch (Item.tag)
@@ -205,7 +205,7 @@ public class Inventory : MonoBehaviour, ISavable
                     break;
             }
 
-            for(int i = loopStart; i < GlobalValues.MiscStart + 1; i++)
+            for (int i = loopStart; i < GlobalValues.MiscStart + 1; i++)
             {
                 StartIds[i]--;
             }
@@ -470,8 +470,8 @@ public class Inventory : MonoBehaviour, ISavable
     public void Clear()
     {
         AllItems.Clear();
-        
-        for(int i = 0; i < GlobalValues.MiscStart + 1; i++)
+
+        for (int i = 0; i < GlobalValues.MiscStart + 1; i++)
         {
             StartIds[i] = 0;
         }
@@ -498,7 +498,7 @@ public class Inventory : MonoBehaviour, ISavable
         return LoadContainer(id);
     }
 
-    public bool LoadContainer(int id)
+    private bool LoadContainer(int id)
     {
         if (AllItems.Count != 0)
         {
@@ -564,8 +564,16 @@ public class Inventory : MonoBehaviour, ISavable
         {
             for (int i = 0; i < Data.NumOfArmour; i++)
             {
-                ArmourHolder armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder, InventroyHolder).GetComponent<ArmourHolder>();
+                ArmourHolder armour;
 
+                if (Data.Armour[i].IsShield)
+                {
+                    armour = Instantiate(PrefabIDs.prefabIDs.ShieldHolder, InventroyHolder).GetComponent<ArmourHolder>();
+                }
+                else
+                {
+                    armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder, InventroyHolder).GetComponent<ArmourHolder>();
+                }
                 LoadSystem.LoadItem(Data.Armour[i], armour.GetComponent<ArmourHolder>());
 
                 AddItem(armour, false, Data.Armour[i].Amount);
