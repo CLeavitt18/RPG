@@ -20,7 +20,7 @@ MonoBehaviour:
   BaseAbilities: 0a0000000a0000000a000000
   AbilitiesPerLevel: 0a0000000500000000000000
   WeaponData:
-  - Type: 0
+  - Type: 1
     PrimaryIds: 2
     SecondaryIds: 1
     TertiaryIds: 1
