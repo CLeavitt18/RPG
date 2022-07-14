@@ -10,6 +10,8 @@ public class Minion : AI
 
     public DamageTypeEnum Type;
 
+    public EntityType OwnerType;
+
     //minimum distance the minion will be allowed to be away from the owner
     [SerializeField] private float ProtectRange;
 
@@ -72,7 +74,7 @@ public class Minion : AI
 
             if (entity.GetDead() ||
                 Owner == entity ||
-                (type == EntityType.Minion && ((entity as AIController).Controller as Minion).Owner == Owner) ||
+                (entity.CompareTag(GlobalValues.MinionTag) && entity.GetComponent<Minion>().Owner == Owner) ||
                 entity == this)
             {
                 continue;

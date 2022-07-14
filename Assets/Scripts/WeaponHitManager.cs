@@ -21,8 +21,6 @@ public class WeaponHitManager : HitManager
             OL = other.GetComponent<ShieldHitDetector>().GetParent();
 
             hitShield = true;
-
-            Debug.Log("Shield Hit");
         }
         else
         {

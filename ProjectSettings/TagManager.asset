@@ -27,12 +27,13 @@ TagManager:
   - Quest
   - Potion
   - Key
-  - Minion
   - RuneTable
   - Rune
   - SpellTable
   - Torch
   - Shield
+  - SpawnPoint
+  - Minion
   layers:
   - Default
   - TransparentFX

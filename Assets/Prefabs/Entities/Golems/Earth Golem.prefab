@@ -32,6 +32,7 @@ Transform:
   m_LocalRotation: {x: 0.4126005, y: 0.19616088, z: -0.09147132, w: 0.8848247}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.19999999, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5434077110240717660}
   m_RootOrder: 0
@@ -98,31 +99,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aae939d8f1119d408d4b39fb75d3018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
   Value: 0
   Amount: 0
   Weight: 0
   _Item: {fileID: 0}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
   Name: 
+  isEquipable: 0
+  equiped: 0
+  SkillType: 0
+  HandType: 0
   LifeSteal: 15
   PwrAttackDamage: 80
   CurrentDurability: 1
   MaxDurability: 0
-  _skillType: 1
-  _handType: 0
-  _critDamage: 60
-  _statusChance: 3c000000
-  _actionsPerSecound: 1.55
-  _isEquiped: 1
+  CritDamage: 0
+  StatusChance: 
+  ActionsPerSecond: 0
+  DamageRanges: []
   WeaponSpawn:
     PrimarySpawn: {fileID: 0}
     SecoundarySpawn: {fileID: 0}
     TeritiarySpawn: {fileID: 0}
   Spawns: []
-  _damageRanges:
-  - Type: 0
-    LDamage: 10
-    HDamage: 15
   Primary: {fileID: 0}
   Secoundary: {fileID: 0}
   Teritiary: {fileID: 0}
@@ -150,18 +150,11 @@ MonoBehaviour:
   Stats:
     Parent: {fileID: 0}
     SourceHand: 0
-    BurnWaitTime: 0
-    ChainLength: 0
-    ChillDuration: 0
     LifeSteal: 0
-    BurnDamage: 0
-    BurnTicks: 0
-    ChainDamage: 0
-    Chains: 0
-    ChillAffect: 0
     DamageTypes: 
     DamageValues: 
     Status: 
+  alreaddyHit: 0
 --- !u!65 &737853836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -223,6 +216,7 @@ Transform:
   m_LocalRotation: {x: 0.4126005, y: -0.19616082, z: 0.091471285, w: 0.88482475}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.19999999, y: 0.24999996, z: 0.25}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5693625825233730974}
   m_RootOrder: 0
@@ -289,31 +283,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aae939d8f1119d408d4b39fb75d3018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
   Value: 0
   Amount: 0
   Weight: 0
   _Item: {fileID: 0}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
   Name: 
+  isEquipable: 0
+  equiped: 0
+  SkillType: 0
+  HandType: 0
   LifeSteal: 15
   PwrAttackDamage: 80
   CurrentDurability: 1
   MaxDurability: 0
-  _skillType: 1
-  _handType: 0
-  _critDamage: 60
-  _statusChance: 3c000000
-  _actionsPerSecound: 1.55
-  _isEquiped: 1
+  CritDamage: 0
+  StatusChance: 
+  ActionsPerSecond: 0
+  DamageRanges: []
   WeaponSpawn:
     PrimarySpawn: {fileID: 0}
     SecoundarySpawn: {fileID: 0}
     TeritiarySpawn: {fileID: 0}
   Spawns: []
-  _damageRanges:
-  - Type: 0
-    LDamage: 10
-    HDamage: 15
   Primary: {fileID: 0}
   Secoundary: {fileID: 0}
   Teritiary: {fileID: 0}
@@ -341,18 +334,11 @@ MonoBehaviour:
   Stats:
     Parent: {fileID: 0}
     SourceHand: 0
-    BurnWaitTime: 0
-    ChainLength: 0
-    ChillDuration: 0
     LifeSteal: 0
-    BurnDamage: 0
-    BurnTicks: 0
-    ChainDamage: 0
-    Chains: 0
-    ChillAffect: 0
     DamageTypes: 
     DamageValues: 
     Status: 
+  alreaddyHit: 0
 --- !u!65 &1352758569
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -387,6 +373,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 40674644, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
@@ -436,6 +423,14 @@ PrefabInstance:
     - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
       propertyPath: HitAnimationTriggerName
       value: Skeleton Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Hands.Array.data[0].State
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Hands.Array.data[1].State
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
       propertyPath: Hands.Array.data[0].HeldItem
@@ -510,7 +505,24 @@ PrefabInstance:
       value: EarthGolemModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8663921923336765173, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1352758567}
+    - targetCorrespondingSourceObject: {fileID: 8959354862479714359, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 737853834}
   m_SourcePrefab: {fileID: 100100000, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+--- !u!4 &5434077110240717660 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8959354862479714359, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+  m_PrefabInstance: {fileID: 3981109023523930987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5693625825233730974 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8663921923336765173, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+  m_PrefabInstance: {fileID: 3981109023523930987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7029553333166151175 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
@@ -522,13 +534,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3cc067175e5d5345832cee5d2b7667b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5693625825233730974 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8663921923336765173, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
-  m_PrefabInstance: {fileID: 3981109023523930987}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5434077110240717660 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8959354862479714359, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
-  m_PrefabInstance: {fileID: 3981109023523930987}
-  m_PrefabAsset: {fileID: 0}

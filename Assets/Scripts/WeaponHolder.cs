@@ -44,6 +44,26 @@ public class WeaponHolder : Item
     [SerializeField] private string PwrAttackAnimationName;
 
 
+    public void Attack(bool state, DamageStats Damage = null)
+    {
+        if (HitManagerRef == null)
+        {
+            return;
+        }
+
+        HitManagerRef.GetComponent<Collider>().enabled = state;
+        
+        if (state)
+        {
+            HitManagerRef.Stats = new DamageStats(Damage);
+        }
+        else
+        {
+            HitManagerRef.Stats.Clear();
+            HitManagerRef.SetAlreadyHitFalse();
+        }
+    }
+
     public override void SpawnItem()
     {
         gameObject.GetComponent<BoxCollider>().enabled = true;

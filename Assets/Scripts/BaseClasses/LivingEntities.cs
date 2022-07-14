@@ -77,11 +77,7 @@ public class LivingEntities : MonoBehaviour
 
             int[] StatusChances;
 
-            WeaponHitManager PrimaryRef;
-            WeaponHolder Weapon;
-
-            PrimaryRef = hand.HeldItem.GetComponent<WeaponHolder>().GetHitManager();
-            Weapon = hand.HeldItem.GetComponent<WeaponHolder>();
+            WeaponHolder Weapon = hand.HeldItem as WeaponHolder;
 
             StatusChances = new int[Weapon.GetStatusCount()];
 
@@ -147,7 +143,7 @@ public class LivingEntities : MonoBehaviour
                     hand.HasAttacked = true;
                     hand.ChannelTime = 0;
 
-                    PrimaryRef.Stats.Clear();
+                    Weapon.Attack(false);
                     hand.Stats.Clear();
 
                     yield break;
@@ -162,7 +158,7 @@ public class LivingEntities : MonoBehaviour
 
             hand.ChannelTime = 0;
 
-            PrimaryRef.Stats = new DamageStats(hand.Stats);
+            Weapon.Attack(true, hand.Stats);
 
             hand.Stats.Clear();
 
@@ -170,8 +166,7 @@ public class LivingEntities : MonoBehaviour
 
             hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed;
 
-            PrimaryRef.Stats.Clear();
-            PrimaryRef.SetAlreadyHitFalse();
+            Weapon.Attack(false);
         }
     }
 
@@ -247,7 +242,7 @@ public class LivingEntities : MonoBehaviour
                 if (state == true)
                 {
                     hand.ChannelTime = 0;
-                    
+
                     if (TempChannelTime >= TempNextCast)
                     {
                         if (!LoseAttribute(TempManaCost, TempCostType))
@@ -267,13 +262,8 @@ public class LivingEntities : MonoBehaviour
                 break;
             case CastType.Aura:
 
-                if (SpellH is GolemSpell gspell)
+                if (SpellH is GolemSpell gspell && !gspell.Activated)
                 {
-                    if (gspell.Activated)
-                    {
-                        return;
-                    }
-
                     hand.NextAttack = 0;
                     hand.ChannelTime = 0;
 
@@ -319,7 +309,7 @@ public class LivingEntities : MonoBehaviour
         ShieldHolder shield = hand.HeldItem as ShieldHolder;
 
         hand.Stats.Parent = this;
-        
+
         hand.HeldItem.transform.position = hand.WeaponSpawn.position;
         hand.HeldItem.transform.parent = hand.WeaponSpawn;
 
@@ -331,6 +321,7 @@ public class LivingEntities : MonoBehaviour
         hand.Animator.runtimeAnimatorController = shield.GetAnimatorController(HandType);
         hand.Animator.speed *= ActionSpeed;
     }
+
     protected void CreateSpell(int HandType, Hand hand, Spell SpellH)
     {
         GameObject Spell;
@@ -380,24 +371,44 @@ public class LivingEntities : MonoBehaviour
         }
         else if (SpellH is GolemSpell gSpell)
         {
-            for (int i = 0; i < gSpell.Number; i++)
+            if (gSpell.Activated)
             {
-                Spell = Instantiate(SpellH.GetSpellAffect(), hand.WeaponSpawn.position, hand.WeaponSpawn.rotation);
+                if (Hit.collider != null && 
+                    Hit.collider.CompareTag(gameObject.tag) == false && 
+                    Hit.collider.CompareTag(gameObject.tag + "Minion") == false)
+                {
+                    Minion minion;
 
-                Minion minion = Spell.transform.GetComponentInChildren<Minion>();
+                    for (int i = 0; i < gSpell.Alive; i++)
+                    {
+                        minion = Minions[i].Controller as Minion;
 
-                minion.Owner = this;
-
-                minion.SourceSpell = SpellH as GolemSpell;
-
-                minion.SetStats(false);
-
-                Minions.Add(minion.entity);
-
-                gSpell.Alive++;
+                        minion.CheckAvailable(Hit.collider.transform);
+                    }
+                }
             }
+            else
+            {
+                for (int i = 0; i < gSpell.Number; i++)
+                {
+                    Spell = Instantiate(SpellH.GetSpellAffect(), hand.WeaponSpawn.position, hand.WeaponSpawn.rotation);
 
-            gSpell.Activated = true;
+                    Minion minion = Spell.transform.GetComponentInChildren<Minion>();
+
+                    minion.Owner = this;
+                    minion.OwnerType = Type;
+
+                    minion.SourceSpell = SpellH as GolemSpell;
+
+                    minion.SetStats(false);
+
+                    Minions.Add(minion.entity);
+
+                    gSpell.Alive++;
+                }
+
+                gSpell.Activated = true;
+            }
         }
     }
 
@@ -467,16 +478,16 @@ public class LivingEntities : MonoBehaviour
                 break;
             case GlobalValues.ShieldTag:
 
-                    if (hand.HeldItem != null && hand.HeldItem != Item)
-                    {
-                        UnequipItem(hand.HeldItem);
-                    }
+                if (hand.HeldItem != null && hand.HeldItem != Item)
+                {
+                    UnequipItem(hand.HeldItem);
+                }
 
-                    hand.State = AttackType.Shield;
+                hand.State = AttackType.Shield;
 
-                    hand.HeldItem = Item;
+                hand.HeldItem = Item;
 
-                    CreateShield(HandType);
+                CreateShield(HandType);
                 break;
             case GlobalValues.SpellTag:
                 SpellHolder SpellH = Item.GetComponent<SpellHolder>();
@@ -606,7 +617,8 @@ public class LivingEntities : MonoBehaviour
                             if (Hands[0].HeldItem == Hands[1].HeldItem)
                             {
                                 masteryType = MasteryType.TwoHandedRanged;
-                            }else
+                            }
+                            else
                             {
                                 masteryType = MasteryType.DualWieldingRanged;
                             }
@@ -649,7 +661,7 @@ public class LivingEntities : MonoBehaviour
                     }
                     break;
                 case AttackType.Shield:
-                    switch(Hands[1].State)
+                    switch (Hands[1].State)
                     {
                         case AttackType.None:
                             masteryType = MasteryType.None;
@@ -884,13 +896,15 @@ public class LivingEntities : MonoBehaviour
                     TempDamage *= 0.25f;
                 }
 
+                //Checks to see if entity hasa reflect burn to self
                 if (Powers[1].Contains(0))
                 {
                     //checks which burning mulit to use with reflect burning to self
-                    if (Powers[1].Contains(4) && BurningStacks > 1)
+                    //If burns can stack then increase the damage multi from reflect burn 
+                    if (Powers[1].Contains(4) && BurningStacks >= 1)
                     {
                         //More Fire Damage Per Stack on self 
-                        //craeted from having burning can stack and reflect burning to self
+                        //created from having burning can stack and reflect burning to self
                         TempDamage *= 1 + (.5f * BurningStacks);
                     }
                     else
@@ -1009,19 +1023,12 @@ public class LivingEntities : MonoBehaviour
                 {
                     ShieldHolder shield = Hands[i].HeldItem as ShieldHolder;
 
-                    _armour  += shield.GetArmour();
-                    
-                    Debug.Log("Armour from shield = " + _armour);
+                    _armour += shield.GetArmour();
                 }
             }
         }
 
-
-        Debug.Log("Amour minus armour from shield " + Armour);
-
         _armour += Armour;
-
-        Debug.Log("Total Armour = " + _armour);
 
         int TotalDamage = 0;
 
@@ -1038,7 +1045,7 @@ public class LivingEntities : MonoBehaviour
 
             if (damageType == 0)
             {
-                stats.DamageValues[i] -= _armour ;
+                stats.DamageValues[i] -= _armour;
 
                 if (stats.DamageValues[i] < 0)
                 {
@@ -1390,7 +1397,6 @@ public class LivingEntities : MonoBehaviour
         {
             EquipItem(Inventory[Data.LeftHandId], 1);
         }
-
     }
 
     #region Getters

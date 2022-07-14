@@ -18,7 +18,7 @@ public class PlayerCamera : MonoBehaviour
     {
 
     }
-    void Update()
+    void LateUpdate()
     {
         if (Player.player.GetMode() == PlayerState.Active)
         {

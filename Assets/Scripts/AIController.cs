@@ -225,6 +225,7 @@ public class AIController : LivingEntities
                         if (Chance <= GetAccuracy() && Hands[i].HeldItem != null)
                         {
                             StartCoroutine(Attack(i));
+                            Debug.Log("Attack called " + tag);
                         }
                     }
 
