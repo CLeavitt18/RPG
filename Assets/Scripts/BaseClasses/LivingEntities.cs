@@ -808,7 +808,7 @@ public class LivingEntities : MonoBehaviour
 
                 StrenghtMeleeMulti = (Mathf.Floor(Attributes[0].Ability * .5f)) * .05f;
 
-                PercentFromLevel = (float)Skills[(int)Hands[HandType].HeldItem.GetComponent<WeaponHolder>().GetSkill()].Level * .01f;
+                PercentFromLevel = (float)Skills[(int)((Hands[HandType].HeldItem) as WeaponHolder).GetSkill()].Level * .01f;
 
                 Hands[HandType].DamageMultis.Melee[(int)Type] = 1;
 
@@ -1396,6 +1396,14 @@ public class LivingEntities : MonoBehaviour
         if (Data.LeftHand)
         {
             EquipItem(Inventory[Data.LeftHandId], 1);
+        }
+
+        for (int i = 0; i < Attributes.Length; i++)
+        {
+            if (Attributes[i].Current < Attributes[i].Max)
+            {
+                StartCoroutine(RegenAttribute((AttributesEnum)i, i));
+            }
         }
     }
 

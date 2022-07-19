@@ -14,10 +14,12 @@ public class PlayerCamera : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
     private void OnEnable()
     {
 
     }
+
     void LateUpdate()
     {
         if (Player.player.GetMode() == PlayerState.Active)
@@ -32,8 +34,6 @@ public class PlayerCamera : MonoBehaviour
 
             transform.localRotation = Quaternion.AngleAxis(-MouseLook.y, Vector3.right);
             Player.player.transform.localRotation = Quaternion.AngleAxis(MouseLook.x, Player.player.transform.up);
-
-            //Debug.Log("Mouse Look: " + MouseLook);
         }
     }
 }
