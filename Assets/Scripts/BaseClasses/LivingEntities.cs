@@ -1402,7 +1402,7 @@ public class LivingEntities : MonoBehaviour
         {
             if (Attributes[i].Current < Attributes[i].Max)
             {
-                StartCoroutine(RegenAttribute((AttributesEnum)i, i));
+                CheckForRegen((AttributesEnum)i);
             }
         }
     }

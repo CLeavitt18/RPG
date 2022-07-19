@@ -283,7 +283,7 @@ public class Player : LivingEntities
             }
         }
 
-        bool hasStamina = GetCurrentStamina() >= RunningStaminaCost;
+        bool hasStamina = (GetCurrentStamina() >= RunningStaminaCost);
 
         if (Input.GetButtonDown("Shift") && hasStamina)
         {
