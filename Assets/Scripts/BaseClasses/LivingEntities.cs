@@ -67,9 +67,13 @@ public class LivingEntities : MonoBehaviour
     #region AttackFunctions
     protected IEnumerator Attack(int HandType)
     {
-        if (Time.time >= Hands[HandType].NextAttack)
+        if (Hands[HandType].attackFinsihed)
         {
             //if shrine is active make stats a copy of the other hands damagestats class
+
+            string attackAnimation;
+            
+            float attackSpeed;
 
             Hand hand = Hands[HandType];
 
@@ -126,21 +130,21 @@ public class LivingEntities : MonoBehaviour
                 }
             }
 
-            if (hand.ChannelTime >= .2f)
+            if (hand.ChannelTime >= .3f)
             {
-                float cost = Weapon.GetWeight() / 100f;
-                cost *= 1 + (Mathf.Floor(Attributes[(int)Abilities.Strenght].Ability * .5f)) * .05f;
+                float cost = (float)Weapon.GetWeight() / 100f;
+                cost *= 1 + (Mathf.Floor((float)Attributes[(int)Abilities.Strenght].Ability * .5f)) * .05f;
 
                 if (LoseAttribute((int)cost, AttributesEnum.Stamina))
                 {
-                    hand.Stats.DamageValues[0] = (int)(hand.Stats.DamageValues[0] * (1 + Weapon.GetPowerAttack() * .01f));
-                    hand.NextAttack = Time.time + (1f / Weapon.GetAttackSpeed() * ActionSpeed * 1.25f);
-                    hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed * 1.25f;
-                    hand.Animator.SetTrigger(Weapon.GetPwrAttackAnimationName());
+                    hand.Stats.DamageValues[0] = (int)((float)hand.Stats.DamageValues[0] * (1 + ((float)Weapon.GetPowerAttack() * .01f)));
+                    attackSpeed = Weapon.GetAttackSpeed() * ActionSpeed * 1.25f;
+                    attackAnimation = Weapon.GetPwrAttackAnimationName();
                 }
                 else
                 {
                     hand.HasAttacked = true;
+                    hand.attackFinsihed = true;
                     hand.ChannelTime = 0;
 
                     Weapon.Attack(false);
@@ -151,9 +155,8 @@ public class LivingEntities : MonoBehaviour
             }
             else
             {
-                hand.NextAttack = Time.time + (1f / Weapon.GetAttackSpeed() * ActionSpeed);
-                hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed;
-                hand.Animator.SetTrigger(Weapon.GetAttackAnimationName());
+                attackSpeed = Weapon.GetAttackSpeed() * ActionSpeed;
+                attackAnimation = Weapon.GetAttackAnimationName();
             }
 
             hand.ChannelTime = 0;
@@ -162,11 +165,18 @@ public class LivingEntities : MonoBehaviour
 
             hand.Stats.Clear();
 
-            yield return new WaitForSeconds(hand.Animator.speed);
+            hand.attackFinsihed = false;
+            
+            hand.Animator.speed = 1.0f / attackSpeed;
+            hand.Animator.SetTrigger(attackAnimation);
 
-            hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed;
+            yield return new WaitForSeconds(attackSpeed);
+
+            hand.Animator.speed = 1.0f / (Weapon.GetAttackSpeed() * ActionSpeed);
 
             Weapon.Attack(false);
+
+            hand.attackFinsihed = true;
         }
     }
 

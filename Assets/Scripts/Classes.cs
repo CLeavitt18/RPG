@@ -58,11 +58,39 @@ public class DamageStats
         }
     }
 
+    public void SetStats(DamageStats stats)
+    {
+        Parent = stats.Parent;
+
+        SourceHand = stats.SourceHand;
+
+        LifeSteal = stats.LifeSteal;
+
+        Clear();
+
+        for (int i = 0; i < stats.DamageTypes.Count; i++)
+        {
+            DamageTypes.Add(stats.DamageTypes[i]);
+        }
+
+        for (int i = 0; i < stats.DamageValues.Count; i++)
+        {
+            DamageValues.Add(stats.DamageValues[i]);
+        }
+
+        for (int i = 0; i < stats.Status.Count; i++)
+        {
+            Status.Add(stats.Status[i]);
+        }
+    }
+
     public void Clear()
     {
         DamageTypes.Clear();
         DamageValues.Clear();
         Status.Clear();
+
+        Debug.Log("Clear called");
     }
 }
 
@@ -105,10 +133,10 @@ public class Hand
     public DamageStats Stats;
 
     public bool HasAttacked;
+    public bool attackFinsihed = true;
 
     public float NextAttack;
     public float ChannelTime;
-    public float ActionsPerSecond;
 }
 
 [Serializable]

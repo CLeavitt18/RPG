@@ -57,15 +57,12 @@ public class WeaponHitManager : HitManager
             Stats.Parent.GainAttribute((int)((float)DamageDelt * weapon.GetLifeSteal() * .01f), (int)AttributesEnum.Health);
         }
 
-        DamageStats statsCopy = new DamageStats(Stats);
-
         int id;
 
         if ((id = Stats.DamageTypes.IndexOf(DamageTypeEnum.Fire)) != -1)
         {
             if (Stats.Status[id] == true)
             {
-                //Debug.Log("Burning status Started");
                 Stats.Parent.StatusManger.StartBurning(OL, Stats.DamageValues[id]);
             }
         }

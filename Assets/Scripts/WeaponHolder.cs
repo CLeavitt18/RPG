@@ -55,11 +55,10 @@ public class WeaponHolder : Item
         
         if (state)
         {
-            HitManagerRef.Stats = new DamageStats(Damage);
+            HitManagerRef.Stats.SetStats(Damage);
         }
         else
         {
-            HitManagerRef.Stats.Clear();
             HitManagerRef.SetAlreadyHitFalse();
         }
     }
@@ -238,6 +237,11 @@ public class WeaponHolder : Item
 
     public void DecrementDurability()
     {
+        if (CurrentDurability == 0)
+        {
+            return;
+        }
+
         CurrentDurability--;
     }
 
