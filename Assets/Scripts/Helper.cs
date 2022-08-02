@@ -350,7 +350,7 @@ public class Helper : MonoBehaviour
 
             for (int x = start; x < end; x++)
             {
-                if (pInventory[x].gameObject.name == item.Key && 
+                if (pInventory[x].GetName() == item.Key && 
                 pInventory[x].GetAmount() >= item.Value)
                 {
                     color = Color.black;
@@ -377,7 +377,7 @@ public class Helper : MonoBehaviour
         Text _text = Instantiate(resourceSlot, t).GetComponent<Text>();
 
         _text.text = text;
-        _text.color = Color.red;
+        _text.color = color;
 
         return _text;
     }

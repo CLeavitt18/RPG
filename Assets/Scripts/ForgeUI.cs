@@ -56,7 +56,7 @@ public class ForgeUI : MonoBehaviour
         else
         {
             Destroy(weapon.gameObject);
-            Destroy(itemDetailsLocation.GetChild(1).gameObject);
+            Destroy(itemDetailsLocation.GetChild(0).gameObject);
             Destroy(resourceCostDetailsLocation.GetChild(0).gameObject);
         }
     }
