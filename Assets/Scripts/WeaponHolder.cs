@@ -13,7 +13,6 @@ public class WeaponHolder : Item
     [SerializeField] private int PwrAttackDamage;
     [SerializeField] private int CurrentDurability;
     [SerializeField] private int MaxDurability;
-
     [SerializeField] private int CritDamage;
 
     [SerializeField] private List<int> StatusChance;

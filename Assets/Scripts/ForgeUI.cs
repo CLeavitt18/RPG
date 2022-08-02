@@ -24,7 +24,7 @@ public class ForgeUI : MonoBehaviour
     public GameObject[] BaseItems;
 
     [SerializeField] private Transform itemDetailsLocation;
-    public Transform resourceCostRetailsLocation;
+    public Transform resourceCostDetailsLocation;
 
     public BaseWeapon[] WeaponBase;
 
@@ -57,7 +57,7 @@ public class ForgeUI : MonoBehaviour
         {
             Destroy(weapon.gameObject);
             Destroy(itemDetailsLocation.GetChild(1).gameObject);
-            Destroy(resourceCostRetailsLocation.GetChild(0).gameObject);
+            Destroy(resourceCostDetailsLocation.GetChild(0).gameObject);
         }
     }
 
@@ -139,9 +139,9 @@ public class ForgeUI : MonoBehaviour
 
     public void DisplayResourceCosts()
     {
-        if (resourceCostRetailsLocation.childCount != 0)
+        if (resourceCostDetailsLocation.childCount != 0)
         {
-            Destroy(resourceCostRetailsLocation.GetChild(0).gameObject);
+            Destroy(resourceCostDetailsLocation.GetChild(0).gameObject);
         }
 
         if (RequiredItems.Count != 0)
@@ -208,7 +208,7 @@ public class ForgeUI : MonoBehaviour
             }
         }
 
-        canCraft = Helper.helper.CreateResourceCostDetails(RequiredItems, resourceCostRetailsLocation);
+        canCraft = Helper.helper.CreateResourceCostDetails(RequiredItems, resourceCostDetailsLocation);
     }
 
     public void CheckRequirements()

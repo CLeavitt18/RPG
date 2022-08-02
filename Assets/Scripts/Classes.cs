@@ -89,8 +89,6 @@ public class DamageStats
         DamageTypes.Clear();
         DamageValues.Clear();
         Status.Clear();
-
-        Debug.Log("Clear called");
     }
 }
 
