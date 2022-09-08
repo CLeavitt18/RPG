@@ -24,7 +24,7 @@ public class ForgeUI : MonoBehaviour
     public GameObject[] BaseItems;
 
     [SerializeField] private Transform itemDetailsLocation;
-    public Transform resourceCostDetailsLocation;
+    [SerializeField] private Transform resourceCostDetailsLocation;
 
     public BaseWeapon[] WeaponBase;
 
@@ -130,7 +130,7 @@ public class ForgeUI : MonoBehaviour
             mat_Id, 
             sec_Id, 
             ter_Id, 
-            Cat_ID, Player.player.GetSkillLevel((int)SkillType.Smithing))).GetComponent<WeaponHolder>();
+            Cat_ID, Player.player.GetSkillLevel(SkillType.Smithing))).GetComponent<WeaponHolder>();
 
         Helper.helper.CreateItemDetails(weapon, itemDetailsLocation);
 

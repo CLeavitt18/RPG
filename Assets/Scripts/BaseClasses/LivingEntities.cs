@@ -1563,6 +1563,12 @@ public class LivingEntities : MonoBehaviour
         return Masteries[id].RExp;
     }
 
+    public int GetSkillLevel(SkillType skill)
+    {
+        int id = (int)skill;
+        return Skills[id].Level;
+    }
+
     public int GetSkillLevel(int id)
     {
         return Skills[id].Level;

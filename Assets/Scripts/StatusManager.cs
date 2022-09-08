@@ -18,9 +18,9 @@ public class StatusManager : MonoBehaviour
 
     public void RunCalculs()
     {
-        fireManager.RunCalc(self.GetSkillLevel((int)SkillType.Pyromancy));
-        lightningManager.RunCalc(self.GetSkillLevel((int)SkillType.Astromancy));
-        iceManager.RunCalcs(self.GetSkillLevel((int)SkillType.Cryomancy));
+        fireManager.RunCalc(self.GetSkillLevel(SkillType.Pyromancy));
+        lightningManager.RunCalc(self.GetSkillLevel(SkillType.Astromancy));
+        iceManager.RunCalcs(self.GetSkillLevel(SkillType.Cryomancy));
     }
 
     public void StartBurning(LivingEntities target, int damage)

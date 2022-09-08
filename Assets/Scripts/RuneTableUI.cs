@@ -5,10 +5,12 @@ public class RuneTableUI : MonoBehaviour
 {
     static public RuneTableUI table;
 
-    [SerializeField] SpellType type;
+    [SerializeField] private bool canCraft;
+
+    [SerializeField] SpellType spellType;
 
     [SerializeField] private Transform itemDetailsLocation;
-    [SerializeField] private Transform itemCostDetailsLocation;
+    [SerializeField] private Transform resourceCostDetailsLocation;
 
     [SerializeField] private Item rune;
 
@@ -20,6 +22,14 @@ public class RuneTableUI : MonoBehaviour
     [SerializeField] private Dropdown targetTypeDropDown;
     [SerializeField] private Dropdown costTypeDropDown;
     [SerializeField] private Dropdown catTypeDropDown;
+
+    [SerializeField] private BaseRecipes recipesCatalyst;
+    [SerializeField] private BaseRecipes recipescostType;
+    [SerializeField] private BaseRecipes recipeCastTarget;
+    [SerializeField] private BaseRecipes[] recipesSpellType;
+    [SerializeField] private BaseRecipes[] recipesCastType;
+    [SerializeField] private BaseRecipes[] recipesDamageType;
+
 
     private void OnEnable()
     {
@@ -80,19 +90,19 @@ public class RuneTableUI : MonoBehaviour
         }
     }
 
-    public void SetType()
+    public void SetSpellType()
     {
         SpellType _type = (SpellType)spellTypeDropDown.value;
 
-        if (type == SpellType.GolemSpell && _type != SpellType.GolemSpell)
+        if (spellType == SpellType.GolemSpell && _type != SpellType.GolemSpell)
         {
             targetTypeDropDown.value = (int)CastTarget.Other;
             castTypeDropDown.value = (int)CastType.Channelled;
         }
 
-        type = _type;
+        spellType = _type;
 
-        if (type == SpellType.GolemSpell)
+        if (spellType == SpellType.GolemSpell)
         {
             targetTypeDropDown.value = (int)CastTarget.Self;
             castTypeDropDown.value = (int)CastType.Aura;
@@ -124,28 +134,45 @@ public class RuneTableUI : MonoBehaviour
         }
 
         rune = Roller.roller.CreateRune(
-            type, 
+            spellType, 
             (AttributesEnum)costTypeDropDown.value, 
             (CastType)castTypeDropDown.value, 
             (CastTarget)targetTypeDropDown.value, 
             damageTypeDropDown.value, 
             damageTypeDropDown.value * 6 + catTypeDropDown.value, 
-            Player.player.GetSkillLevel((int)SkillType.SpellCrafting));
+            Player.player.GetSkillLevel(SkillType.SpellCrafting));
 
         Helper.helper.CreateItemDetails(rune, itemDetailsLocation);
-        Helper.helper.CreateResourceCostDetails(requiredItems, itemCostDetailsLocation);
+        DisplayResourceCost();
+    }
+
+    private void DisplayResourceCost()
+    {
+        if (resourceCostDetailsLocation.childCount != 0)
+        {
+            Destroy(resourceCostDetailsLocation.GetChild(0).gameObject);
+        }
+
+        if (requiredItems.Count != 0)
+        {
+            requiredItems.Clear();
+        }
+
+        ItemAmount temp = recipesSpellType[(int)spellType].ItemsRequired[damageTypeDropDown.value];
+
+        canCraft = Helper.helper.CreateResourceCostDetails(requiredItems, resourceCostDetailsLocation);
     }
 
     public void CreateRune()
     {
         rune = Roller.roller.CreateRune(
-            type,
+            spellType,
             (AttributesEnum)costTypeDropDown.value,
             (CastType)castTypeDropDown.value,
             (CastTarget)targetTypeDropDown.value,
             damageTypeDropDown.value,
             damageTypeDropDown.value * 6 + catTypeDropDown.value,
-            Player.player.GetSkillLevel((int)SkillType.SpellCrafting));
+            Player.player.GetSkillLevel(SkillType.SpellCrafting));
 
         Player.player.Inventory.AddItem(rune, true, 1);
 

@@ -51,7 +51,7 @@ public class FireStatusManager : MonoBehaviour
         Destroy(statusAffect);
 
         statusAffect = gameObject.AddComponent<ReflectBurning>();
-        statusAffect.CalculateStats(GetComponent<LivingEntities>().GetSkillLevel((int)SkillType.Pyromancy));
+        statusAffect.CalculateStats(GetComponent<LivingEntities>().GetSkillLevel(SkillType.Pyromancy));
     }
 
     public void SetIsBurning(bool state)

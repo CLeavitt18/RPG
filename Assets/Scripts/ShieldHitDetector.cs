@@ -24,7 +24,7 @@ public class ShieldHitDetector : MonoBehaviour
         if (_parent is Player)
         {
             float tempExp = _armour;
-            tempExp *= 1 + (Player.player.GetSkillLevel((int)SkillType.Blocking) * .01f);
+            tempExp *= 1 + (Player.player.GetSkillLevel(SkillType.Blocking) * .01f);
 
             Player.player.GainExp((long)tempExp, (int)SkillType.Blocking);
         }
