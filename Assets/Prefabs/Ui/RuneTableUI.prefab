@@ -5712,9 +5712,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82cf8456f1c62a4d8cd86df696b1cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  canCraft: 0
+  spellType: 0
   itemDetailsLocation: {fileID: 3012888299739983936}
-  itemCostDetailsLocation: {fileID: 1203864661290609617}
+  resourceCostDetailsLocation: {fileID: 0}
   rune: {fileID: 0}
   requiredItems:
     keys: []
@@ -5725,6 +5726,23 @@ MonoBehaviour:
   targetTypeDropDown: {fileID: 5816405915361209641}
   costTypeDropDown: {fileID: 1599039604247486614}
   catTypeDropDown: {fileID: 7474290443473407682}
+  recipesCatalyst: {fileID: 0}
+  recipescostType: {fileID: 0}
+  recipeCastTarget: {fileID: 0}
+  recipesSpellType:
+  - {fileID: 0}
+  - {fileID: 0}
+  recipesCastType:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  recipesDamageType:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &6829574164759252923
 GameObject:
   m_ObjectHideFlags: 0

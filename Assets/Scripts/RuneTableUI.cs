@@ -24,11 +24,10 @@ public class RuneTableUI : MonoBehaviour
     [SerializeField] private Dropdown catTypeDropDown;
 
     [SerializeField] private BaseRecipes recipesCatalyst;
-    [SerializeField] private BaseRecipes recipescostType;
+    [SerializeField] private BaseRecipes recipesCostType;
     [SerializeField] private BaseRecipes recipeCastTarget;
     [SerializeField] private BaseRecipes[] recipesSpellType;
     [SerializeField] private BaseRecipes[] recipesCastType;
-    [SerializeField] private BaseRecipes[] recipesDamageType;
 
 
     private void OnEnable()
@@ -159,6 +158,24 @@ public class RuneTableUI : MonoBehaviour
         }
 
         ItemAmount temp = recipesSpellType[(int)spellType].ItemsRequired[damageTypeDropDown.value];
+
+        //for loop goes here
+
+        temp = recipesCastType[castTypeDropDown.value].ItemsRequired[damageTypeDropDown.value];
+
+        //for loop goes here
+
+        temp = recipesCatalyst.ItemsRequired[damageTypeDropDown.value * 6 + catTypeDropDown.value];
+
+        //for loop goes here
+
+        temp = recipesCostType.ItemsRequired[costTypeDropDown.value];
+
+        //for loop goes here
+
+        temp = recipeCastTarget.ItemsRequired[targetTypeDropDown.value];
+
+        //for loop goes here
 
         canCraft = Helper.helper.CreateResourceCostDetails(requiredItems, resourceCostDetailsLocation);
     }
