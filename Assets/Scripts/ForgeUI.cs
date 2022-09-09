@@ -250,18 +250,9 @@ public class ForgeUI : MonoBehaviour
 
         Inventory pInventory = Player.player.Inventory;
 
-        int start = pInventory.GetStart(GlobalValues.ResourceStart);
-        int end = pInventory.GetStart(GlobalValues.MiscStart);
-
         foreach (KeyValuePair<string, int> item in RequiredItems)
         {
-            for (int x = start; x < end; x++)
-            {
-                if (item.Key == pInventory[x].name)
-                {
-                    pInventory.RemoveItem(pInventory[x], item.Value);
-                }
-            }
+            pInventory.RemoveItem(item.Key, item.Value, InventoryState.Resources);
         }
 
         ConfirmCreateWeaponUi.SetActive(false);

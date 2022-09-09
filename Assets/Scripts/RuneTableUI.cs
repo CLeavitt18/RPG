@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,11 +41,6 @@ public class RuneTableUI : MonoBehaviour
         {
             table = this;
         }
-    }
-
-    public void SetState(bool state)
-    {
-        transform.GetChild(0).gameObject.SetActive(state);
 
         spellTypeDropDown.options.Clear();
         damageTypeDropDown.options.Clear();
@@ -53,39 +49,51 @@ public class RuneTableUI : MonoBehaviour
         costTypeDropDown.options.Clear();
         catTypeDropDown.options.Clear();
 
+        for (int type = 0; type < 2; type++)
+        {
+            spellTypeDropDown.options.Add(new Dropdown.OptionData(((SpellType)type).ToString()));
+        }
+
+        for (int type = 0; type < 4; type++)
+        {
+            damageTypeDropDown.options.Add(new Dropdown.OptionData(((DamageTypeEnum)type).ToString()));
+        }
+
+        for (int type = 0; type < 5; type++)
+        {
+            castTypeDropDown.options.Add(new Dropdown.OptionData(((CastType)type).ToString()));
+        }
+
+        for (int type = 0; type < 2; type++)
+        {
+            targetTypeDropDown.options.Add(new Dropdown.OptionData(((CastTarget)type).ToString()));
+        }
+
+        for (int type = 0; type < 3; type++)
+        {
+            costTypeDropDown.options.Add(new Dropdown.OptionData(((AttributesEnum)type).ToString()));
+        }
+
+        costTypeDropDown.value = 2;
+
+        for (int type = 0; type <= (int)CatType.T6Phys; type++)
+        {
+            catTypeDropDown.options.Add(new Dropdown.OptionData(((CatType)type).ToString()));
+        }
+    }
+
+    public void SetState(bool state)
+    {
+        transform.GetChild(0).gameObject.SetActive(state);
+
         if (state)
         {
-            for (int type = 0; type < 2; type++)
-            {
-                spellTypeDropDown.options.Add(new Dropdown.OptionData(((SpellType)type).ToString()));
-            }
-
-            for (int type = 0; type < 4; type++)
-            {
-                damageTypeDropDown.options.Add(new Dropdown.OptionData(((DamageTypeEnum)type).ToString()));
-            }
-
-            for (int type = 0; type < 5; type++)
-            {
-                castTypeDropDown.options.Add(new Dropdown.OptionData(((CastType)type).ToString()));
-            }
-
-            for (int type = 0; type < 2; type++)
-            {
-                targetTypeDropDown.options.Add(new Dropdown.OptionData(((CastTarget)type).ToString()));
-            }
-
-            for (int type = 0; type < 3; type++)
-            {
-                costTypeDropDown.options.Add(new Dropdown.OptionData(((AttributesEnum)type).ToString()));
-            }
-
+            spellTypeDropDown.value = 0;
+            damageTypeDropDown.value = 0;
+            castTypeDropDown.value = 0;
+            targetTypeDropDown.value = 0;
             costTypeDropDown.value = 2;
-
-            for (int type = 0; type <= (int)CatType.T6Phys; type++)
-            {
-                catTypeDropDown.options.Add(new Dropdown.OptionData(((CatType)type).ToString()));
-            }
+            catTypeDropDown.value = 0;
         }
     }
 
@@ -213,7 +221,6 @@ public class RuneTableUI : MonoBehaviour
             }
         }
 
-
         temp = recipesCatalyst.ItemsRequired[damageTypeDropDown.value * 6 + catTypeDropDown.value];
 
         for (int i = 0; i < temp.Item.Length; i++)
@@ -248,6 +255,13 @@ public class RuneTableUI : MonoBehaviour
             Player.player.GetSkillLevel(SkillType.SpellCrafting));
 
         Player.player.Inventory.AddItem(rune, true, 1);
+
+        Inventory pInventory = Player.player.Inventory;
+
+        foreach (KeyValuePair<string, int> item in requiredItems)
+        {
+            pInventory.RemoveItem(item.Key, item.Value, InventoryState.Resources);
+        }
 
         SetState(true);
         Preview();

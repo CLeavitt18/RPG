@@ -167,6 +167,56 @@ public class Inventory : MonoBehaviour, ISavable
         }
     }
 
+    public void RemoveItem(string itemName, int amount, InventoryState itemType)
+    {
+        int start;
+        int end;
+
+        switch (itemType)
+        {
+            case InventoryState.Weapons:
+                start = 0;
+                end = GlobalValues.ArmourStart;
+                break;
+            case InventoryState.Armour:
+                start = GlobalValues.ArmourStart;
+                end = GlobalValues.SpellStart;
+                break;
+            case InventoryState.Spells:
+                start = GlobalValues.SpellStart;
+                end = GlobalValues.RuneStart;
+                break;
+            case InventoryState.Runes:
+                start = GlobalValues.RuneStart;
+                end = GlobalValues.PotionStart;
+                break;
+            case InventoryState.Potions:
+                start = GlobalValues.PotionStart;
+                end = GlobalValues.ResourceStart;
+                break;
+            case InventoryState.Resources:
+                start = GlobalValues.ResourceStart;
+                end = GlobalValues.MiscStart;
+                break;
+            case InventoryState.Misc:
+                start = GlobalValues.MiscStart;
+                end = Count;
+                break;
+            default:
+                start = 0;
+                end = Count;
+                break;
+        }
+
+        for (int i = start; i < end; i++)
+        {
+            if (this[i].GetName() == itemName)
+            {
+                RemoveItem(this[i], amount);
+            }
+        }
+    }
+    
     public void RemoveItem(Item Item, int Amount, bool CanDestroy = true)
     {
         //Debug.Log("Remove item called");
