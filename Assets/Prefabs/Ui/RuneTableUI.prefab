@@ -5726,19 +5726,14 @@ MonoBehaviour:
   targetTypeDropDown: {fileID: 5816405915361209641}
   costTypeDropDown: {fileID: 1599039604247486614}
   catTypeDropDown: {fileID: 7474290443473407682}
-  recipesCatalyst: {fileID: 0}
-  recipescostType: {fileID: 0}
+  recipesCatalyst: {fileID: 11400000, guid: 3d811bb244854ac4aadfcc895632f552, type: 2}
+  recipesCostType: {fileID: 0}
   recipeCastTarget: {fileID: 0}
   recipesSpellType:
   - {fileID: 0}
   - {fileID: 0}
   recipesCastType:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  recipesDamageType:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

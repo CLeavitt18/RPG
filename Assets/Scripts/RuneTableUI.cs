@@ -44,7 +44,7 @@ public class RuneTableUI : MonoBehaviour
 
     public void SetState(bool state)
     {
-        transform.GetChild(0).gameObject.SetActive(state);  
+        transform.GetChild(0).gameObject.SetActive(state);
 
         spellTypeDropDown.options.Clear();
         damageTypeDropDown.options.Clear();
@@ -81,7 +81,7 @@ public class RuneTableUI : MonoBehaviour
             }
 
             costTypeDropDown.value = 2;
-            
+
             for (int type = 0; type <= (int)CatType.T6Phys; type++)
             {
                 catTypeDropDown.options.Add(new Dropdown.OptionData(((CatType)type).ToString()));
@@ -113,7 +113,7 @@ public class RuneTableUI : MonoBehaviour
         int value = catTypeDropDown.value;
         int start = damageTypeDropDown.value * 6;
         int end = start + 5;
-        
+
         catTypeDropDown.options.Clear();
 
         for (int i = start; i <= end; i++)
@@ -133,12 +133,12 @@ public class RuneTableUI : MonoBehaviour
         }
 
         rune = Roller.roller.CreateRune(
-            spellType, 
-            (AttributesEnum)costTypeDropDown.value, 
-            (CastType)castTypeDropDown.value, 
-            (CastTarget)targetTypeDropDown.value, 
-            damageTypeDropDown.value, 
-            damageTypeDropDown.value * 6 + catTypeDropDown.value, 
+            spellType,
+            (AttributesEnum)costTypeDropDown.value,
+            (CastType)castTypeDropDown.value,
+            (CastTarget)targetTypeDropDown.value,
+            damageTypeDropDown.value,
+            damageTypeDropDown.value * 6 + catTypeDropDown.value,
             Player.player.GetSkillLevel(SkillType.SpellCrafting));
 
         Helper.helper.CreateItemDetails(rune, itemDetailsLocation);
@@ -159,23 +159,79 @@ public class RuneTableUI : MonoBehaviour
 
         ItemAmount temp = recipesSpellType[(int)spellType].ItemsRequired[damageTypeDropDown.value];
 
-        //for loop goes here
+        for (int i = 0; i < temp.Item.Length; i++)
+        {
+            if (requiredItems.ContainsKey(temp.Item[i]))
+            {
+                requiredItems[temp.Item[i]] += temp.Amount[i];
+            }
+            else
+            {
+                requiredItems.Add(temp.Item[i], temp.Amount[i]);
+            }
+        }
 
         temp = recipesCastType[castTypeDropDown.value].ItemsRequired[damageTypeDropDown.value];
 
-        //for loop goes here
-
-        temp = recipesCatalyst.ItemsRequired[damageTypeDropDown.value * 6 + catTypeDropDown.value];
-
-        //for loop goes here
+        for (int i = 0; i < temp.Item.Length; i++)
+        {
+            if (requiredItems.ContainsKey(temp.Item[i]))
+            {
+                requiredItems[temp.Item[i]] += temp.Amount[i];
+            }
+            else
+            {
+                requiredItems.Add(temp.Item[i], temp.Amount[i]);
+            }
+        }
 
         temp = recipesCostType.ItemsRequired[costTypeDropDown.value];
 
-        //for loop goes here
+        for (int i = 0; i < temp.Item.Length; i++)
+        {
+            if (requiredItems.ContainsKey(temp.Item[i]))
+            {
+                requiredItems[temp.Item[i]] += temp.Amount[i];
+            }
+            else
+            {
+                requiredItems.Add(temp.Item[i], temp.Amount[i]);
+            }
+        }
 
         temp = recipeCastTarget.ItemsRequired[targetTypeDropDown.value];
 
-        //for loop goes here
+        for (int i = 0; i < temp.Item.Length; i++)
+        {
+            if (requiredItems.ContainsKey(temp.Item[i]))
+            {
+                requiredItems[temp.Item[i]] += temp.Amount[i];
+            }
+            else
+            {
+                requiredItems.Add(temp.Item[i], temp.Amount[i]);
+            }
+        }
+
+
+        temp = recipesCatalyst.ItemsRequired[damageTypeDropDown.value * 6 + catTypeDropDown.value];
+
+        for (int i = 0; i < temp.Item.Length; i++)
+        {
+            if (requiredItems.ContainsKey(temp.Item[i]))
+            {
+                requiredItems[temp.Item[i]] += temp.Amount[i];
+            }
+            else
+            {
+                requiredItems.Add(temp.Item[i], temp.Amount[i]);
+            }
+
+            if (spellType == SpellType.GolemSpell)
+            {
+                requiredItems[temp.Item[i]]++;
+            }
+        }
 
         canCraft = Helper.helper.CreateResourceCostDetails(requiredItems, resourceCostDetailsLocation);
     }

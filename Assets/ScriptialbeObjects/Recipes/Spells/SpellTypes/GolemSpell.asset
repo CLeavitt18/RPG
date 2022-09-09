@@ -13,23 +13,15 @@ MonoBehaviour:
   m_Name: GolemSpell
   m_EditorClassIdentifier: 
   ItemsRequired:
-  - Amount: 010000000400000002000000
+  - Amount: 01000000
+    Item:
+    - Emerald Heart
+  - Amount: 01000000
     Item:
     - Ruby Heart
-    - 'Fire '
-    - 
-  - Amount: 000000000000000000000000
+  - Amount: 01000000
     Item:
-    - 
-    - 
-    - 
-  - Amount: 000000000000000000000000
+    - Sapphire Heart
+  - Amount: 01000000
     Item:
-    - 
-    - 
-    - 
-  - Amount: 000000000000000000000000
-    Item:
-    - 
-    - 
-    - 
+    - Diamond Heart

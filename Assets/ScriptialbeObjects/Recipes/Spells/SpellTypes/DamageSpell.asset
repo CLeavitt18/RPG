@@ -13,19 +13,15 @@ MonoBehaviour:
   m_Name: DamageSpell
   m_EditorClassIdentifier: 
   ItemsRequired:
-  - Amount: 0000000000000000
+  - Amount: 01000000
     Item:
-    - 
-    - 
-  - Amount: 0000000000000000
+    - Emerald Oval
+  - Amount: 01000000
     Item:
-    - 
-    - 
-  - Amount: 0000000000000000
+    - Ruby Oval
+  - Amount: 01000000
     Item:
-    - 
-    - 
-  - Amount: 0000000000000000
+    - Sapphire Oval
+  - Amount: 01000000
     Item:
-    - 
-    - 
+    - Diamond Oval

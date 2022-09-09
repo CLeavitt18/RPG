@@ -126,10 +126,10 @@ public class ForgeUI : MonoBehaviour
         }
 
         weapon = (Roller.roller.CreateWeapon(
-            (WeaponType)ItemCatogoryType, 
-            mat_Id, 
-            sec_Id, 
-            ter_Id, 
+            (WeaponType)ItemCatogoryType,
+            mat_Id,
+            sec_Id,
+            ter_Id,
             Cat_ID, Player.player.GetSkillLevel(SkillType.Smithing))).GetComponent<WeaponHolder>();
 
         Helper.helper.CreateItemDetails(weapon, itemDetailsLocation);
@@ -153,13 +153,13 @@ public class ForgeUI : MonoBehaviour
 
         for (int i = 0; i < temp.Item.Length; i++)
         {
-            try
-            {
-                RequiredItems.Add(temp.Item[i], temp.Amount[i]);
-            }
-            catch (System.ArgumentException)
+            if (RequiredItems.ContainsKey(temp.Item[i]))
             {
                 RequiredItems[temp.Item[i]] += temp.Amount[i];
+            }
+            else
+            {
+                RequiredItems.Add(temp.Item[i], temp.Amount[i]);
             }
         }
 
@@ -167,13 +167,13 @@ public class ForgeUI : MonoBehaviour
 
         for (int i = 0; i < temp.Item.Length; i++)
         {
-            try
-            {
-                RequiredItems.Add(temp.Item[i], temp.Amount[i]);
-            }
-            catch (System.ArgumentException)
+            if (RequiredItems.ContainsKey(temp.Item[i]))
             {
                 RequiredItems[temp.Item[i]] += temp.Amount[i];
+            }
+            else
+            {
+                RequiredItems.Add(temp.Item[i], temp.Amount[i]);
             }
         }
 
@@ -181,13 +181,13 @@ public class ForgeUI : MonoBehaviour
 
         for (int i = 0; i < temp.Item.Length; i++)
         {
-            try
-            {
-                RequiredItems.Add(temp.Item[i], temp.Amount[i]);
-            }
-            catch (System.ArgumentException)
+            if (RequiredItems.ContainsKey(temp.Item[i]))
             {
                 RequiredItems[temp.Item[i]] += temp.Amount[i];
+            }
+            else
+            {
+                RequiredItems.Add(temp.Item[i], temp.Amount[i]);
             }
         }
 
@@ -197,13 +197,13 @@ public class ForgeUI : MonoBehaviour
 
             for (int i = 0; i < temp.Item.Length; i++)
             {
-                try
-                {
-                    RequiredItems.Add(temp.Item[i], temp.Amount[i]);
-                }
-                catch (System.ArgumentException)
+                if (RequiredItems.ContainsKey(temp.Item[i]))
                 {
                     RequiredItems[temp.Item[i]] += temp.Amount[i];
+                }
+                else
+                {
+                    RequiredItems.Add(temp.Item[i], temp.Amount[i]);
                 }
             }
         }
