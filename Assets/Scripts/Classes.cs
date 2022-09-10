@@ -308,7 +308,6 @@ public class SpellData
     public string Name;
 
     public int CastType;
-    public int Target;
     public int ManaCost;
     public int CostType;
     public int SkillType;
@@ -334,8 +333,6 @@ public class SpellStats
     public string Name;
 
     public CastType CastType;
-
-    public CastTarget Target;
 
     public AttributesEnum CostType;
 

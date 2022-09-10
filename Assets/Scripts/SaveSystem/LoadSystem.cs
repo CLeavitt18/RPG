@@ -218,7 +218,6 @@ public static class LoadSystem
         stats.ManaCost = FromRune.ManaCost;
         stats.CostType = (AttributesEnum)FromRune.CostType;
         stats.CastType = (CastType)FromRune.CastType;
-        stats.Target = (CastTarget)FromRune.Target;
         stats.SkillType = (SkillType)FromRune.SkillType; 
 
         ToRune.SetStats(stats);
@@ -504,7 +503,6 @@ public static class LoadSystem
         ToRune.ManaCost = FromRune.GetCost();
         ToRune.CostType = (int)FromRune.GetCostType();
         ToRune.CastType = (int)FromRune.GetCastType();
-        ToRune.Target = (int)FromRune.GetTarget();
         ToRune.SkillType = (int)FromRune.GetSkillType();
     }
 

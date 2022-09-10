@@ -8,8 +8,6 @@ public class Spell : MonoBehaviour
     
     [SerializeField] private CastType CastType;
 
-    [SerializeField] private CastTarget Target;
-
     [SerializeField] private AttributesEnum CostType;
 
     [SerializeField] private SkillType SkillType;
@@ -39,7 +37,6 @@ public class Spell : MonoBehaviour
 
         SpellType = stats.SpellType;
         CastType = stats.CastType;
-        Target = stats.Target;
         CostType = stats.CostType;
         SkillType = stats.SkillType;
 
@@ -85,11 +82,6 @@ public class Spell : MonoBehaviour
     public CastType GetCastType()
     {
         return CastType;
-    }
-
-    public CastTarget GetTarget()
-    {
-        return Target;
     }
 
     public AttributesEnum GetCostType()

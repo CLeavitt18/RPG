@@ -19,7 +19,6 @@ public class RuneRoller : MonoBehaviour
         SpellType spellType;
         AttributesEnum costType;
         CastType castType = CastType.Channelled;
-        CastTarget castTarget = CastTarget.Other;
         int damageType;
         int cat_id;
         int level;
@@ -32,7 +31,6 @@ public class RuneRoller : MonoBehaviour
                 break;
             case SpellType.GolemSpell:
                 castType = CastType.Aura;
-                castTarget = CastTarget.Self;
                 break;
             default:
                 break;
@@ -58,12 +56,10 @@ public class RuneRoller : MonoBehaviour
             chance = Random.Range(0, 2);
 
             castType = (CastType)chance;
-            castTarget = CastTarget.Other;
         }
         else if (spellType == SpellType.GolemSpell)
         {
             castType = CastType.Aura;
-            castTarget = CastTarget.Self;
         }
 
         chance = Random.Range(0, 4);
@@ -92,7 +88,7 @@ public class RuneRoller : MonoBehaviour
             cat_id = 0;
         }
 
-        Item rune = CreateRune(spellType, costType, castType, castTarget, damageType, cat_id, level);
+        Item rune = CreateRune(spellType, costType, castType, damageType, cat_id, level);
 
         return rune;
     }
@@ -102,7 +98,6 @@ public class RuneRoller : MonoBehaviour
         SpellType spellType,
         AttributesEnum costType,
         CastType castType,
-        CastTarget castTareget,
         int damageType,
         int cat_id,
         int level
@@ -187,7 +182,6 @@ public class RuneRoller : MonoBehaviour
 
         stats.SpellType = spellType;
         stats.CastType = castType;
-        stats.Target = castTareget;
         stats.CostType = costType;
         stats.SpellAffect = baseSpells[id].SpellAffects[castId][damageType];
         stats.ManaCost = baseSpells[id].ManaCost[castId][damageType];

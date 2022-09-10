@@ -76,12 +76,11 @@ public class Roller : MonoBehaviour
         SpellType spellType,
         AttributesEnum costType,
         CastType castType,
-        CastTarget castTareget,
         int damageType,
         int cat_id,
         int level
     )
     {
-        return runeRoller.CreateRune(spellType, costType, castType, castTareget, damageType, cat_id, level);
+        return runeRoller.CreateRune(spellType, costType, castType, damageType, cat_id, level);
     }
 }

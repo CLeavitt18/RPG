@@ -7,26 +7,29 @@ public class RuneTableUI : MonoBehaviour
     static public RuneTableUI table;
 
     [SerializeField] private bool canCraft;
+    [SerializeField] private bool canPreview;
 
     [SerializeField] SpellType spellType;
+    [SerializeField] DamageTypeEnum damageType;
+    [SerializeField] CastType castType;
+    [SerializeField] AttributesEnum costType;
+    [SerializeField] int catType;
 
     [SerializeField] private Transform itemDetailsLocation;
     [SerializeField] private Transform resourceCostDetailsLocation;
 
     [SerializeField] private Item rune;
 
-    [SerializeField] private DictionaryOfStringAndInt requiredItems;
+    [SerializeField] private DictionaryOfStringAndInt requiredItems = new DictionaryOfStringAndInt(10);
 
     [SerializeField] private Dropdown spellTypeDropDown;
     [SerializeField] private Dropdown damageTypeDropDown;
     [SerializeField] private Dropdown castTypeDropDown;
-    [SerializeField] private Dropdown targetTypeDropDown;
     [SerializeField] private Dropdown costTypeDropDown;
     [SerializeField] private Dropdown catTypeDropDown;
 
     [SerializeField] private BaseRecipes recipesCatalyst;
     [SerializeField] private BaseRecipes recipesCostType;
-    [SerializeField] private BaseRecipes recipeCastTarget;
     [SerializeField] private BaseRecipes[] recipesSpellType;
     [SerializeField] private BaseRecipes[] recipesCastType;
 
@@ -41,11 +44,15 @@ public class RuneTableUI : MonoBehaviour
         {
             table = this;
         }
+    }
+
+    private void Start()
+    {
+        canPreview = false;
 
         spellTypeDropDown.options.Clear();
         damageTypeDropDown.options.Clear();
         castTypeDropDown.options.Clear();
-        targetTypeDropDown.options.Clear();
         costTypeDropDown.options.Clear();
         catTypeDropDown.options.Clear();
 
@@ -64,11 +71,6 @@ public class RuneTableUI : MonoBehaviour
             castTypeDropDown.options.Add(new Dropdown.OptionData(((CastType)type).ToString()));
         }
 
-        for (int type = 0; type < 2; type++)
-        {
-            targetTypeDropDown.options.Add(new Dropdown.OptionData(((CastTarget)type).ToString()));
-        }
-
         for (int type = 0; type < 3; type++)
         {
             costTypeDropDown.options.Add(new Dropdown.OptionData(((AttributesEnum)type).ToString()));
@@ -80,6 +82,8 @@ public class RuneTableUI : MonoBehaviour
         {
             catTypeDropDown.options.Add(new Dropdown.OptionData(((CatType)type).ToString()));
         }
+
+        canPreview = true;
     }
 
     public void SetState(bool state)
@@ -88,22 +92,30 @@ public class RuneTableUI : MonoBehaviour
 
         if (state)
         {
+            canPreview = false;
+            
             spellTypeDropDown.value = 0;
             damageTypeDropDown.value = 0;
             castTypeDropDown.value = 0;
-            targetTypeDropDown.value = 0;
             costTypeDropDown.value = 2;
             catTypeDropDown.value = 0;
+            
+            canPreview = true;
+
+            Preview();
         }
     }
 
     public void SetSpellType()
     {
+        bool previewTemp = canPreview;
+
         SpellType _type = (SpellType)spellTypeDropDown.value;
+
+        canPreview = false;
 
         if (spellType == SpellType.GolemSpell && _type != SpellType.GolemSpell)
         {
-            targetTypeDropDown.value = (int)CastTarget.Other;
             castTypeDropDown.value = (int)CastType.Channelled;
         }
 
@@ -111,13 +123,23 @@ public class RuneTableUI : MonoBehaviour
 
         if (spellType == SpellType.GolemSpell)
         {
-            targetTypeDropDown.value = (int)CastTarget.Self;
             castTypeDropDown.value = (int)CastType.Aura;
+        }
+
+        canPreview = previewTemp;
+
+        if (canPreview)
+        {
+            Preview();
         }
     }
 
     public void SetDamageType()
     {
+        bool previewTemp = canPreview;
+
+        damageType = (DamageTypeEnum)damageTypeDropDown.value;
+
         int value = catTypeDropDown.value;
         int start = damageTypeDropDown.value * 6;
         int end = start + 5;
@@ -129,8 +151,46 @@ public class RuneTableUI : MonoBehaviour
             catTypeDropDown.options.Add(new Dropdown.OptionData(((CatType)i).ToString()));
         }
 
+        canPreview = false;
+
         catTypeDropDown.value = value;
-        catTypeDropDown.transform.GetChild(0).GetComponent<Text>().text = ((CatType)(damageTypeDropDown.value * 6 + value)).ToString();
+        
+        canPreview = previewTemp;
+
+        if (canPreview)
+        {
+            Preview();
+        }
+    }
+
+    public void SetCastType()
+    {
+        castType = (CastType)castTypeDropDown.value;
+
+        if (canPreview)
+        {
+            Preview();
+        }
+    }
+
+    public void SetCostType()
+    {
+        costType = (AttributesEnum)costTypeDropDown.value;
+
+        if (canPreview)
+        {
+            Preview();
+        }
+    }
+
+    public void SetCatType()
+    {
+        catType = catTypeDropDown.value;
+
+        if (canPreview)
+        {
+            Preview();
+        }
     }
 
     public void Preview()
@@ -140,13 +200,19 @@ public class RuneTableUI : MonoBehaviour
             Destroy(rune.gameObject);
         }
 
+        if (spellType == SpellType.GolemSpell)
+        {
+            canPreview = false;
+            castTypeDropDown.value = (int)CastType.Aura;
+            canPreview = true;
+        }
+
         rune = Roller.roller.CreateRune(
             spellType,
-            (AttributesEnum)costTypeDropDown.value,
-            (CastType)castTypeDropDown.value,
-            (CastTarget)targetTypeDropDown.value,
+            costType,
+            castType,
             damageTypeDropDown.value,
-            damageTypeDropDown.value * 6 + catTypeDropDown.value,
+            damageTypeDropDown.value * 6 + catType,
             Player.player.GetSkillLevel(SkillType.SpellCrafting));
 
         Helper.helper.CreateItemDetails(rune, itemDetailsLocation);
@@ -207,20 +273,6 @@ public class RuneTableUI : MonoBehaviour
             }
         }
 
-        temp = recipeCastTarget.ItemsRequired[targetTypeDropDown.value];
-
-        for (int i = 0; i < temp.Item.Length; i++)
-        {
-            if (requiredItems.ContainsKey(temp.Item[i]))
-            {
-                requiredItems[temp.Item[i]] += temp.Amount[i];
-            }
-            else
-            {
-                requiredItems.Add(temp.Item[i], temp.Amount[i]);
-            }
-        }
-
         temp = recipesCatalyst.ItemsRequired[damageTypeDropDown.value * 6 + catTypeDropDown.value];
 
         for (int i = 0; i < temp.Item.Length; i++)
@@ -249,14 +301,13 @@ public class RuneTableUI : MonoBehaviour
             spellType,
             (AttributesEnum)costTypeDropDown.value,
             (CastType)castTypeDropDown.value,
-            (CastTarget)targetTypeDropDown.value,
             damageTypeDropDown.value,
             damageTypeDropDown.value * 6 + catTypeDropDown.value,
             Player.player.GetSkillLevel(SkillType.SpellCrafting));
 
-        Player.player.Inventory.AddItem(rune, true, 1);
-
         Inventory pInventory = Player.player.Inventory;
+
+        pInventory.AddItem(rune, true, 1);
 
         foreach (KeyValuePair<string, int> item in requiredItems)
         {
