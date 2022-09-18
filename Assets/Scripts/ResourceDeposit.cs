@@ -30,7 +30,7 @@ public class ResourceDeposit : Interactialbes, IInteractable, ISavable
     public void Interact(bool State)
     {
         Player.player.Inventory.AddItem(Resource, true, Resource.GetAmount());
-        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
+        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
 
         IsDead = true;
 

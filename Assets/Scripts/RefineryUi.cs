@@ -178,7 +178,7 @@ public class RefineryUi : MonoBehaviour
         RH.SetAmount(ResourceAmount);
 
         Player.player.Inventory.AddItem(RH, true, ResourceAmount);
-        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
+        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
 
         SetRefinaryToDefault();
     }

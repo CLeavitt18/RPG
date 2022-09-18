@@ -10,8 +10,8 @@ public class InventoryUi : IUi
     public static InventoryUi containerUi;
     public static InventoryUi playerUi;
 
-    public InventoryState Mode = InventoryState.AllItems;
-    public UiState UiMode;
+    [SerializeField] private InventoryState Mode = InventoryState.AllItems;
+    [SerializeField] public UiState UiMode;
 
     public Item FocusedItem;
 
@@ -749,7 +749,7 @@ public class InventoryUi : IUi
         }
         else
         {
-            if (inventory.Mode == UiState.Container)
+            if (inventory.GetMode() == UiState.Container)
             {
                 inventory.TransferItem(FocusedItem, amount);
                 return;
@@ -940,11 +940,11 @@ public class InventoryUi : IUi
 
             if (i == 0)
             {
-                Weight = Player.player.Inventory.CurrentCarryWeight;
+                Weight = Player.player.Inventory.GetCarryWeight();
             }
             else
             {
-                Weight = Player.player.Inventory.MaxCarryWeight;
+                Weight = Player.player.Inventory.GetMaxCarryWeight();
             }
 
             int BeforeDecimal = Weight / 100;
@@ -992,5 +992,10 @@ public class InventoryUi : IUi
         }
 
         CarryWeigthText.text = WeightText.ToString();
+    }
+
+    public InventoryState GetMode()
+    {
+        return Mode;
     }
 }

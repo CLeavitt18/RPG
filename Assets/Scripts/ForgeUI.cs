@@ -240,7 +240,7 @@ public class ForgeUI : MonoBehaviour
 
         Player.player.GainExp((long)((ExpValue * (1 / (float)Tracker)) * weapon.GetAttackSpeed()), (int)SkillType.Smithing);
         Player.player.Inventory.AddItem(weapon, true, 1);
-        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
+        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
 
         ItemCatogoryType = 0;
         mat_Id = 0;

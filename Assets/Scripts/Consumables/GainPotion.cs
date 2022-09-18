@@ -38,7 +38,7 @@ public class GainPotion : Consumable
         PotionHolder.GainAttribute(amount, Type);
 
         PotionHolder.Inventory.RemoveItem(this, 1);
-        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
+        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
     }
 
     protected override bool Equality(Item Item)

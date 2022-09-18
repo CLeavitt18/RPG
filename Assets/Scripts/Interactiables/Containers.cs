@@ -12,7 +12,7 @@ public class Containers : Interactialbes, IInteractable
     {
         PUIInsruction = GameObject.Find("Player UI").transform.GetChild(2).transform.GetChild(1).gameObject;
         gameObject.name = Name;
-        Mode = GetComponent<Inventory>().Mode;
+        Mode = GetComponent<Inventory>().GetMode();
     }
 
     public override void SetUiOpen()

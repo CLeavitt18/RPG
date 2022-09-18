@@ -11,7 +11,7 @@ public class ItemInteractiable : Interactialbes, IInteractable
     public void Interact(bool State)
     {
         Player.player.Inventory.AddItem(gameObject.GetComponent<Item>(), true, 1);
-        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
+        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
         gameObject.GetComponent<Item>().StoreItem();
     }
 

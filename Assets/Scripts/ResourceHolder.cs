@@ -9,7 +9,6 @@ public class ResourceHolder : Item
     public override void StoreItem()
     {
         base .StoreItem();
-
     }
 
     public override bool Equals(Item Item)

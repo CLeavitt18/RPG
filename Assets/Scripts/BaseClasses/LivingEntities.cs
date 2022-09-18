@@ -1210,10 +1210,12 @@ public class LivingEntities : MonoBehaviour
     public virtual void CalculateSpeed()
     {
         float tempSpeed = BaseSpeed * ActionSpeed;
+        int currentWeight = Inventory.GetCarryWeight();
+        int maxWeight = Inventory.GetMaxCarryWeight();
 
-        if (Inventory.CurrentCarryWeight >= Inventory.MaxCarryWeight)
+        if (currentWeight >= maxWeight)
         {
-            float WeightMulti = Inventory.CurrentCarryWeight - Inventory.MaxCarryWeight;
+            float WeightMulti = currentWeight - maxWeight;
 
             WeightMulti *= .01f;
             WeightMulti *= .05f;
@@ -1267,15 +1269,9 @@ public class LivingEntities : MonoBehaviour
         Attributes[attribute].Current = Attributes[attribute].Max;
     }
 
-    protected virtual void CalculateWeight()
+    protected void CalculateWeight()
     {
-        int tempWeight = 14500;
-
-        int strenghtMulti = ((int)Mathf.Floor(Attributes[0].Ability / 10f)) * 500;
-
-        tempWeight += strenghtMulti;
-
-        Inventory.MaxCarryWeight = tempWeight;
+        Inventory.CalculateWeight(GetAbility(AttributesEnum.Health));
     }
 
     protected void ResetPowers()

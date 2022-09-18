@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour, ISavable
 {
-    public UiState Mode;
+    [SerializeField] private UiState Mode;
 
     [SerializeField] private int max;
 
@@ -15,8 +15,8 @@ public class Inventory : MonoBehaviour, ISavable
 
     [SerializeField] private int[] StartIds = new int[6];
 
-    public int MaxCarryWeight;
-    public int CurrentCarryWeight;
+    [SerializeField] private int MaxCarryWeight;
+    [SerializeField] private int CurrentCarryWeight;
 
     public Transform InventroyHolder;
 
@@ -459,11 +459,11 @@ public class Inventory : MonoBehaviour, ISavable
             //Debug.Log("I'am a NPC/Chest");
 
             Player.player.Inventory.AddItem(Item, true, Amount);
-            InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
+            InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
             InventoryUi.playerUi.SetPlayerEquipedIndicators();
 
             RemoveItem(Item, Amount);
-            InventoryUi.containerUi.CallSetInventory(InventoryUi.containerUi.Mode);
+            InventoryUi.containerUi.CallSetInventory(InventoryUi.containerUi.GetMode());
             InventoryUi.containerUi.Focus = null;
         }
         else
@@ -479,11 +479,11 @@ public class Inventory : MonoBehaviour, ISavable
 
             NPCInventory.AddItem(Item, true, Amount);
 
-            InventoryUi.containerUi.CallSetInventory(InventoryUi.containerUi.Mode);
+            InventoryUi.containerUi.CallSetInventory(InventoryUi.containerUi.GetMode());
 
             RemoveItem(Item, Amount);
 
-            InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.Mode);
+            InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
             InventoryUi.playerUi.SetPlayerEquipedIndicators();
             InventoryUi.playerUi.Focus = null;
         }
@@ -527,6 +527,16 @@ public class Inventory : MonoBehaviour, ISavable
         }
     }
 
+    public void CalculateWeight(int strenght)
+    {
+        int tempWeight = 14500;
+
+        int strenghtMulti = ((int)Mathf.Floor((float)strenght / 10f)) * 500;
+
+        tempWeight += strenghtMulti;
+
+        MaxCarryWeight = tempWeight;
+    }
     public Item this[int i]
     {
         get { return AllItems[i]; }
@@ -536,6 +546,26 @@ public class Inventory : MonoBehaviour, ISavable
     public int GetStart(int id)
     {
         return StartIds[id];
+    }
+
+    public int GetCarryWeight()
+    {
+        return CurrentCarryWeight;
+    }
+
+    public int GetMaxCarryWeight()
+    {
+        return MaxCarryWeight;
+    }
+
+    public UiState GetMode()
+    {
+        return Mode;
+    }
+
+    public void SetToContainer()
+    {
+        Mode = UiState.Container;
     }
 
     public bool Save(int id)

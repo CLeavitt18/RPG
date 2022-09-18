@@ -45,8 +45,8 @@ public class NPC : AI, ISavable
         SaveSystem.SaveNPC(entity, SceneManagerOwn.Manager.SavableObjects.IndexOf(this));
 
         GetComponent<Containers>().Mode = UiState.Container;
-        GetComponent<Inventory>().Mode = UiState.Container;
 
+        entity.Inventory.SetToContainer();
         entity.CallDeath(Animate);
     }
 
