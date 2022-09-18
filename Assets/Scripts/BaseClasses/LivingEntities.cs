@@ -391,7 +391,7 @@ public class LivingEntities : MonoBehaviour
 
                     for (int i = 0; i < gSpell.Alive; i++)
                     {
-                        minion = Minions[i].Controller as Minion;
+                        minion = Minions[i].GetController() as Minion;
 
                         minion.CheckAvailable(Hit.collider.transform);
                     }
@@ -757,9 +757,11 @@ public class LivingEntities : MonoBehaviour
 
                         for (int x = 0; x < count; x++)
                         {
-                            if ((Minions[id].Controller as Minion).SourceSpell == golemSpell)
+                            Minion minion = (Minions[id].GetController() as Minion);
+                            
+                            if (minion.SourceSpell == golemSpell)
                             {
-                                (Minions[id].Controller as Minion).CallDeath(false);
+                                minion.CallDeath(false);
                             }
                             else
                             {

@@ -20,7 +20,7 @@ public class Minion : AI
     {
         float distance;
 
-        float lookRad = entity.LookRad;
+        float lookRad = entity.GetLookRad();
 
         Transform target = entity.Target;
 
@@ -88,15 +88,15 @@ public class Minion : AI
                 if (Owner is AIController)
                 {
                     if (entity is AIController && (!(type == EntityType.Minion) ||
-                                                     ((entity as AIController).Controller as Minion).Owner != Player.player))
+                                                     ((entity as AIController).GetController() as Minion).Owner != Player.player))
                     {
                         continue;
                     }
                 }
                 else
                 {
-                    if ((type == EntityType.NPC && (entity as AIController).Mode != Behaviuor.Hostile) ||
-                        (type == EntityType.Minion && ((entity as AIController).Controller as Minion).Owner == this))
+                    if ((type == EntityType.NPC && (entity as AIController).GetMode() != Behaviuor.Hostile) ||
+                        (type == EntityType.Minion && ((entity as AIController).GetController() as Minion).Owner == this))
                     {
                         continue;
                     }
@@ -132,7 +132,7 @@ public class Minion : AI
 
         float distance = Vector3.Distance(entity.Target.position, transform.parent.position);
 
-        if (distance > entity.LookRad)
+        if (distance > entity.GetLookRad())
         {
             entity.Target = target;
         }

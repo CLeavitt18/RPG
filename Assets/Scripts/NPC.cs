@@ -87,7 +87,7 @@ public class NPC : AI, ISavable
         path.Append(SceneManager.GetActiveScene().name);
         path.Append(GlobalValues.NPCFolder);
         path.Append('/');
-        path.Append(entity.Name);
+        path.Append(entity.GetName());
         path.Append(id);
 
         StringBuilder TempPath = new StringBuilder(path.ToString());

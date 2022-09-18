@@ -116,7 +116,7 @@ public class PlayerUi : MonoBehaviour
     public void SetEnemyInfoUI(AIController enemy)
     {
         EnemyInfoUi.SetActive(true);
-        EnemyInfoText.text = enemy.Name;
+        EnemyInfoText.text = enemy.GetName();
         EnemyHealthBar.fillAmount = (float)enemy.GetCurrentHealth() / enemy.GetMaxHealth();
 
         NextCheck = Time.time + WaitTime;

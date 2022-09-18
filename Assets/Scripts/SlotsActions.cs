@@ -71,7 +71,7 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         //Debug.Log("OnMouseEnter Called");
-        if (UI.Focus == this || UI.AmountUi.activeSelf == true)
+        if (UI.GetFocus() == this || UI.AmountUi.activeSelf == true)
         {
             return;
         }

@@ -4,26 +4,26 @@ using UnityEngine.AI;
 
 public class AIController : LivingEntities
 {
-    public Behaviuor Mode;
+    [SerializeField] private Behaviuor Mode;
     
-    public AI Controller;
+    [SerializeField] private AI Controller;
 
-    public EntityScaler ScalingValues;
+    [SerializeField] private EntityScaler ScalingValues;
 
-    public float LookRad;
-    public float StoppingDistance;
-    public float AttackRange;
-    public float AttackRollWaitTime;
+    [SerializeField] private float LookRad;
+    [SerializeField] private float StoppingDistance;
+    [SerializeField] private float AttackRange;
+    [SerializeField] private float AttackRollWaitTime;
 
-    public bool IsHumanoid = true;
+    //[SerializeField] private bool IsHumanoid = true;
 
-    public Animator animator;
+    [SerializeField] private Animator animator;
 
-    public string HitAnimationTriggerName;
-    public string DeathAnimationBoolName;
-    public string Name;
+    [SerializeField] private string HitAnimationTriggerName;
+    [SerializeField] private string DeathAnimationBoolName;
+    [SerializeField] private string Name;
 
-    public Transform Target;
+    [SerializeField] public Transform Target;
 
     [SerializeField] protected NavMeshAgent Agent;
 
@@ -442,5 +442,25 @@ public class AIController : LivingEntities
     public void SetAgentActive(bool state)
     {
         Agent.enabled = state;
+    }
+
+    public Behaviuor GetMode()
+    {
+        return Mode;
+    }
+
+    public AI GetController()
+    {
+        return Controller;
+    }
+
+    public float GetLookRad()
+    {
+        return LookRad;
+    }
+
+    public string GetName()
+    {
+        return Name;
     }
 }

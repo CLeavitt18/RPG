@@ -11,7 +11,7 @@ public class NPCData : LivingEntitiesData
 
     public NPCData(AIController NPC) : base(NPC)
     {
-        NPC npc = NPC.Controller as NPC;
+        NPC npc = NPC.GetController() as NPC;
 
         CurrentSpeachBranch = npc.CurrentSpeachBranch;
         CurrentQuest = npc.CurrentQuest;

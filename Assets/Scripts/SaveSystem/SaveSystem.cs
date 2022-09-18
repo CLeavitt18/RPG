@@ -213,7 +213,7 @@ public static class SaveSystem
         }
 
         path.Append('/');
-        path.Append(NPC.Name);
+        path.Append(NPC.GetName());
         path.Append(Id);
         path.Append(GlobalValues.TempExtension);
 

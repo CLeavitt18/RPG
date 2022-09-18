@@ -243,7 +243,7 @@ public class Player : LivingEntities
             }
             else if (objectHit.CompareTag(GlobalValues.NPCTag))
             {
-                if (objectHit.GetComponent<AIController>().Mode == Behaviuor.Neutrel || objectHit.GetComponent<AIController>().GetDead())
+                if (objectHit.GetComponent<AIController>().GetMode() == Behaviuor.Neutrel || objectHit.GetComponent<AIController>().GetDead())
                 {
                     objectHit.GetComponent<Interactialbes>().SetUiOpen();
                 }
@@ -270,7 +270,7 @@ public class Player : LivingEntities
                 }
                 else if (objectHit.CompareTag(GlobalValues.NPCTag))
                 {
-                    if (objectHit.GetComponent<AIController>().Mode == Behaviuor.Neutrel ||
+                    if (objectHit.GetComponent<AIController>().GetMode() == Behaviuor.Neutrel ||
                         objectHit.GetComponent<AIController>().GetDead())
                     {
                         objectHit.GetComponent<IInteractable>().Interact(true);
@@ -502,7 +502,7 @@ public class Player : LivingEntities
         {
             for (int i = 0; i < Minions.Count; i++)
             {
-                (Minions[i].Controller as Minion).CheckAvailable(stats.Parent.transform);
+                (Minions[i].GetController() as Minion).CheckAvailable(stats.Parent.transform);
             }
         }
 
@@ -945,7 +945,7 @@ public class Player : LivingEntities
                 {
                     tempPath.Append(MiniPath.ToString());
                     tempPath.Append('/');
-                    tempPath.Append(Minions[i].Name);
+                    tempPath.Append(Minions[i].GetName());
                     tempPath.Append(i);
 
                     if (mode)
@@ -973,7 +973,7 @@ public class Player : LivingEntities
             {
                 tempPath.Append(MiniPath.ToString());
                 tempPath.Append('/');
-                tempPath.Append(Minions[i].Name);
+                tempPath.Append(Minions[i].GetName());
                 tempPath.Append(i);
 
                 if (mode)
@@ -1155,7 +1155,7 @@ public class Player : LivingEntities
             {
                 Vector3 vec = transform.position - (transform.forward + new Vector3(0, 0, -1));
 
-                (Minions[i].Controller as Minion).Move(vec);
+                (Minions[i].GetController() as Minion).Move(vec);
             }
         }
 

@@ -11,13 +11,13 @@ public class MinionData : EnemyData
 
     public MinionData(AIController minion) : base(minion)
     {
-        Mode = (int)minion.Mode;
+        Mode = (int)minion.GetMode();
 
-        Minion refM = minion.Controller as Minion; 
+        Minion refM = minion.GetController() as Minion; 
 
         for (int i = 0; i < PrefabIDs.prefabIDs.Minions.Length; i++)
         {
-            if (minion.Name == PrefabIDs.prefabIDs.Minions[i].transform.GetChild(0).GetComponent<AIController>().Name)
+            if (minion.GetName() == PrefabIDs.prefabIDs.Minions[i].transform.GetChild(0).GetComponent<AIController>().GetName())
             {
                 Id = i;
                 break;

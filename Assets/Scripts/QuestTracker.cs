@@ -52,7 +52,7 @@ public class QuestTracker : MonoBehaviour
         NewQuest.DateAquired[1] = WorldStateTracker.Tracker.Month;
         NewQuest.DateAquired[2] = WorldStateTracker.Tracker.Year;
 
-        NewQuest.NPCName = Player.player.GetHit().GetComponent<AIController>().Name;
+        NewQuest.NPCName = Player.player.GetHit().GetComponent<AIController>().GetName();
 
         if (SceneManagerOwn.Manager != null)
         {

@@ -41,7 +41,7 @@ public class InventoryUi : IUi
     [SerializeField] private Text AmountText;
     [SerializeField] private Text CarryWeigthText;
 
-    [SerializeField] public SlotsActions Focus;
+    [SerializeField] private SlotsActions Focus;
 
     [SerializeField] private Inventory inventory;
 
@@ -561,6 +561,7 @@ public class InventoryUi : IUi
     public void CallSetInventory(InventoryState state)
     {
         Mode = state;
+        Focus = null;
         Set();
 
         if (UiMode == UiState.Player)
@@ -997,5 +998,10 @@ public class InventoryUi : IUi
     public InventoryState GetMode()
     {
         return Mode;
+    }
+
+    public SlotsActions GetFocus()
+    {
+        return Focus;
     }
 }

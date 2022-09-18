@@ -464,7 +464,6 @@ public class Inventory : MonoBehaviour, ISavable
 
             RemoveItem(Item, Amount);
             InventoryUi.containerUi.CallSetInventory(InventoryUi.containerUi.GetMode());
-            InventoryUi.containerUi.Focus = null;
         }
         else
         {
@@ -485,7 +484,6 @@ public class Inventory : MonoBehaviour, ISavable
 
             InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
             InventoryUi.playerUi.SetPlayerEquipedIndicators();
-            InventoryUi.playerUi.Focus = null;
         }
     }
 
