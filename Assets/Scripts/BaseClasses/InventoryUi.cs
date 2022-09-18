@@ -11,37 +11,37 @@ public class InventoryUi : IUi
     public static InventoryUi playerUi;
 
     [SerializeField] private InventoryState Mode = InventoryState.AllItems;
-    [SerializeField] public UiState UiMode;
+    [SerializeField] private UiState UiMode;
 
-    public Item FocusedItem;
+    [SerializeField] private Item FocusedItem;
 
-    public GameObject slot;
-    public GameObject inventoryUi;
-    public GameObject ActionBar;
-    public GameObject AmountUi;
-    public GameObject CategoryPrefab;
-    public GameObject InventoryBar;
-    public GameObject ContainerButton;
-    public GameObject PlayerButton;
-    public GameObject PlayerCanvas;
+    [SerializeField] private GameObject slot;
+    [SerializeField] private GameObject inventoryUi;
+    [SerializeField] private GameObject ActionBar;
+    [SerializeField] public GameObject AmountUi;
+    [SerializeField] private GameObject CategoryPrefab;
+    [SerializeField] private GameObject InventoryBar;
+    [SerializeField] private GameObject ContainerButton;
+    [SerializeField] private GameObject PlayerButton;
+    [SerializeField] public GameObject PlayerCanvas;
 
-    public Transform ItemDetailsLocation;
-    public Transform InventroyHolder;
+    [SerializeField] private Transform ItemDetailsLocation;
+    [SerializeField] private Transform InventroyHolder;
 
-    public Slider AmountBar;
+    [SerializeField] private Slider AmountBar;
 
-    public List<SlotsActions> Slots;
+    [SerializeField] private List<SlotsActions> Slots;
 
-    public string[] Instructions;
+    [SerializeField] private string[] Instructions;
 
-    public Text ItemNameText;
-    public Text InstructionText;
-    public Text ArmourText;
-    public Text GoldText;
-    public Text AmountText;
-    public Text CarryWeigthText;
+    [SerializeField] private Text ItemNameText;
+    [SerializeField] private Text InstructionText;
+    [SerializeField] private Text ArmourText;
+    [SerializeField] private Text GoldText;
+    [SerializeField] private Text AmountText;
+    [SerializeField] private Text CarryWeigthText;
 
-    public SlotsActions Focus;
+    [SerializeField] public SlotsActions Focus;
 
     [SerializeField] private Inventory inventory;
 
