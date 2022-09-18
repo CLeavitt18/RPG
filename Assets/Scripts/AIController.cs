@@ -39,7 +39,7 @@ public class AIController : LivingEntities
         gameObject.transform.parent.gameObject.name = Name;
         gameObject.name = Name;
         Path = new NavMeshPath();
-        Inventory.InventroyHolder = GameObject.Find("NPCInventoryHolder").transform;
+        Inventory.SetHolder(EntityType.NPC);
     }
 
     public bool SetStats(bool priority)

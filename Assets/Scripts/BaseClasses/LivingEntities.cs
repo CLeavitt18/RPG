@@ -787,7 +787,7 @@ public class LivingEntities : MonoBehaviour
                 break;
         }
 
-        Item.transform.parent = Inventory.InventroyHolder;
+        Item.transform.parent = Inventory.GetHolder();
     }
 
     protected void UpdateArmour()
@@ -1316,7 +1316,7 @@ public class LivingEntities : MonoBehaviour
 
         for (int i = 0; i < iData.NumOfWeapons; i++)
         {
-            WeaponHolder weapon = Instantiate(PrefabIDs.prefabIDs.WeaponHolder, Inventory.InventroyHolder).GetComponent<WeaponHolder>();
+            WeaponHolder weapon = Instantiate(PrefabIDs.prefabIDs.WeaponHolder).GetComponent<WeaponHolder>();
 
             LoadSystem.LoadItem(iData.Weapons[i], weapon);
 
@@ -1329,11 +1329,11 @@ public class LivingEntities : MonoBehaviour
 
             if (iData.Armour[i].IsShield)
             {
-                armour = Instantiate(PrefabIDs.prefabIDs.ShieldHolder, Inventory.InventroyHolder).GetComponent<ArmourHolder>();
+                armour = Instantiate(PrefabIDs.prefabIDs.ShieldHolder).GetComponent<ArmourHolder>();
             }
             else
             {
-                armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder, Inventory.InventroyHolder).GetComponent<ArmourHolder>();
+                armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder).GetComponent<ArmourHolder>();
             }
 
             LoadSystem.LoadItem(iData.Armour[i], armour);
@@ -1348,7 +1348,7 @@ public class LivingEntities : MonoBehaviour
 
         for (int i = 0; i < iData.NumOfSpells; i++)
         {
-            SpellHolder spell = Instantiate(PrefabIDs.prefabIDs.SpellHolder, Inventory.InventroyHolder).GetComponent<SpellHolder>();
+            SpellHolder spell = Instantiate(PrefabIDs.prefabIDs.SpellHolder).GetComponent<SpellHolder>();
 
             LoadSystem.LoadItem(iData.Spells[i], spell);
 
@@ -1357,7 +1357,7 @@ public class LivingEntities : MonoBehaviour
 
         for (int i = 0; i < iData.NumOfRunes; i++)
         {
-            RuneHolder rune = Instantiate(PrefabIDs.prefabIDs.RuneHolder, Inventory.InventroyHolder).GetComponent<RuneHolder>();
+            RuneHolder rune = Instantiate(PrefabIDs.prefabIDs.RuneHolder).GetComponent<RuneHolder>();
 
             LoadSystem.LoadItem(iData.Runes[i], rune);
 
@@ -1368,7 +1368,7 @@ public class LivingEntities : MonoBehaviour
         {
             CraftingMaterials potionData = iData.Potions[i];
 
-            Item potion = Instantiate(PrefabIDs.prefabIDs.Potions[potionData.ResourceId], Inventory.InventroyHolder).GetComponent<Consumable>();
+            Item potion = Instantiate(PrefabIDs.prefabIDs.Potions[potionData.ResourceId]).GetComponent<Consumable>();
             potion += potionData.Amount;
 
             Inventory.AddItem(potion, false, potionData.Amount);
@@ -1378,7 +1378,7 @@ public class LivingEntities : MonoBehaviour
         {
             CraftingMaterials resourceData = iData.Resources[i];
 
-            Item HResource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[resourceData.ResourceId], Inventory.InventroyHolder).GetComponent<ResourceHolder>();
+            Item HResource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[resourceData.ResourceId]).GetComponent<ResourceHolder>();
             HResource += resourceData.Amount;
 
             Inventory.AddItem(HResource, false, resourceData.Amount);
@@ -1388,7 +1388,7 @@ public class LivingEntities : MonoBehaviour
         {
             CraftingMaterials miscData = iData.Misc[i];
 
-            Item misc = Instantiate(PrefabIDs.prefabIDs.Items[miscData.ResourceId], Inventory.InventroyHolder).GetComponent<Item>();
+            Item misc = Instantiate(PrefabIDs.prefabIDs.Items[miscData.ResourceId]).GetComponent<Item>();
             misc += miscData.Amount;
 
             Inventory.AddItem(misc, false, miscData.Amount);

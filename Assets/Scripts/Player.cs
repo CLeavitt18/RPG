@@ -26,7 +26,7 @@ public class Player : LivingEntities
     public void OnEnable()
     {
         player = this;
-        Inventory.InventroyHolder = GameObject.Find("PlayerInventoryHolder").transform;
+        Inventory.SetHolder(EntityType.Player);
 
         if (SceneManager.GetActiveScene().name == "Test")
         {
@@ -1186,11 +1186,11 @@ public class Player : LivingEntities
         {
             for (int i = 0; i < Data.NumOfQuests; i++)
             {
-                GameObject Item = Instantiate(PrefabIDs.prefabIDs.Quests[Data.Quests[i].QuestId], Inventory.InventroyHolder);
+                QuestHolder Quest = Instantiate(PrefabIDs.prefabIDs.Quests[Data.Quests[i].QuestId]).GetComponent<QuestHolder>();
 
-                LoadSystem.LoadItem(Data.Quests[i], Item.GetComponent<QuestHolder>());
+                LoadSystem.LoadItem(Data.Quests[i], Quest);
 
-                QuestTracker.questTracker.AddQuestOnLoad(Item.GetComponent<QuestHolder>());
+                QuestTracker.questTracker.AddQuestOnLoad(Quest);
             }
         }
 

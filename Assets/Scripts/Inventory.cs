@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour, ISavable
     [SerializeField] private int MaxCarryWeight;
     [SerializeField] private int CurrentCarryWeight;
 
-    public Transform InventroyHolder;
+    [SerializeField] private Transform InventroyHolder;
 
     [SerializeField] private List<Item> AllItems;
 
@@ -563,9 +563,30 @@ public class Inventory : MonoBehaviour, ISavable
         return Mode;
     }
 
+    public Transform GetHolder()
+    {
+        return InventroyHolder;
+    }
+
     public void SetToContainer()
     {
         Mode = UiState.Container;
+    }
+
+    public void SetHolder(EntityType type)
+    {
+        switch (type)
+        {
+            case EntityType.Player:
+                InventroyHolder = GameObject.Find("PlayerInventoryHolder").transform;
+                break;
+            case EntityType.Enemy:
+                
+                break;
+            case EntityType.NPC:
+                InventroyHolder = GameObject.Find("NPCInventoryHolder").transform;
+                break;
+        }
     }
 
     public bool Save(int id)
