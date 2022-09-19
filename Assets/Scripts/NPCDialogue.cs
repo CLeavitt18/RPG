@@ -58,7 +58,7 @@ public class NPCDialogue : MonoBehaviour
         }
         else
         {
-            bool QuestItemFound = false;
+            bool QuestComplete = false;
             bool PlayerHasQuest = false;
 
             Cursor.visible = State;
@@ -76,38 +76,26 @@ public class NPCDialogue : MonoBehaviour
             {
                 for (int x = 0; x < QuestTracker.questTracker.Quests.Count; x++)
                 {
-                    if (Quests[i].QuestName == QuestTracker.questTracker.Quests[x].QuestName)
+                    if (Quests[i].Equals(QuestTracker.questTracker.Quests[x]))
                     {
-                        PlayerHasQuest = true;
-                    }
-                }
-            }
-
-            if (CurrentQuest != Quests.Length)
-            {
-                Inventory Inventory = Player.player.Inventory;
-
-                int start = Inventory.GetStart(GlobalValues.MiscStart);
-                int end = Inventory.Count;
-
-                for (int i = start; i < end; i++)
-                {
-                    if (Inventory[i].GetName() == Quests[CurrentQuest].QuestItems[0].GetComponent<Item>().GetName())
-                    {
-                        QuestButton.SetActive(true);
-                        QuestItemFound = true;
-                        break;
+                        if (QuestTracker.questTracker.Quests[x].GetComplete())
+                        {
+                            QuestButton.SetActive(true);
+                            QuestComplete = true;
+                            PlayerHasQuest = true;
+                            break;
+                        }
                     }
                 }
             }
 
             NextDialogue = 0;
             
-            if (CurrentQuest == Quests.Length || (PlayerHasQuest && !QuestItemFound))
+            if (CurrentQuest == Quests.Length || (PlayerHasQuest && !QuestComplete))
             {
                 QuestButton.SetActive(false);
             }
-            else if (!QuestItemFound )
+            else if (!QuestComplete )
             {
                 QuestButton.SetActive(!PlayerHasQuest);
             }
@@ -163,18 +151,12 @@ public class NPCDialogue : MonoBehaviour
         }
 
         Inventory Inventory = Player.player.Inventory;
-        int start = Inventory.GetStart(GlobalValues.MiscStart);
-        int end = Inventory.Count;
 
-        for (int i = end; i < end; i++)
+        for (int i = 0; i < Quests[CurrentQuest].QuestItems.Length; i++)
         {
-            for (int x = 0; x < Quests[CurrentQuest].QuestItems.Length; x++)
-            {
-                if (Inventory[i].GetName() == Quests[CurrentQuest].QuestItems[x].GetComponent<Item>().GetName())
-                {
-                    Player.player.Inventory.RemoveItem(Inventory[i], Inventory[i].GetAmount());
-                }
-            }
+            QuestItemCompleteConditon item = Quests[CurrentQuest].QuestItems[i];
+
+            Inventory.RemoveItem(item.item.GetName(), item.amount, InventoryState.Misc);
         }
 
         QuestTracker.questTracker.RemoveQuest(Quests[CurrentQuest]);

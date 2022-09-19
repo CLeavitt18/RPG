@@ -385,3 +385,19 @@ public class QuestData
 
     public string Location;
 }
+
+[Serializable]
+public class QuestItemCompleteConditon
+{
+    public QuestItemHolder item;
+    public int amount;
+    public bool complete;
+}
+
+[Serializable]
+public class QuestEnemyCompleteConditon
+{
+    public AIController enemy;
+    public int amount;
+    public bool complete;
+}

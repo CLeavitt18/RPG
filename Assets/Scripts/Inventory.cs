@@ -165,56 +165,16 @@ public class Inventory : MonoBehaviour, ISavable
         {
             StartIds[i]++;
         }
+
+        if (Item is QuestItemHolder holder)
+        {
+            QuestTracker.questTracker.UpdateQuest(Item.gameObject);
+        }
     }
 
     public void RemoveItem(string itemName, int amount, InventoryState itemType)
     {
-        int start;
-        int end;
-
-        switch (itemType)
-        {
-            case InventoryState.Weapons:
-                start = 0;
-                end = GlobalValues.ArmourStart;
-                break;
-            case InventoryState.Armour:
-                start = GlobalValues.ArmourStart;
-                end = GlobalValues.SpellStart;
-                break;
-            case InventoryState.Spells:
-                start = GlobalValues.SpellStart;
-                end = GlobalValues.RuneStart;
-                break;
-            case InventoryState.Runes:
-                start = GlobalValues.RuneStart;
-                end = GlobalValues.PotionStart;
-                break;
-            case InventoryState.Potions:
-                start = GlobalValues.PotionStart;
-                end = GlobalValues.ResourceStart;
-                break;
-            case InventoryState.Resources:
-                start = GlobalValues.ResourceStart;
-                end = GlobalValues.MiscStart;
-                break;
-            case InventoryState.Misc:
-                start = GlobalValues.MiscStart;
-                end = Count;
-                break;
-            default:
-                start = 0;
-                end = Count;
-                break;
-        }
-
-        for (int i = start; i < end; i++)
-        {
-            if (this[i].GetName() == itemName)
-            {
-                RemoveItem(this[i], amount);
-            }
-        }
+        RemoveItem(Find(name, itemType), amount);
     }
     
     public void RemoveItem(Item Item, int Amount, bool CanDestroy = true)
@@ -515,6 +475,58 @@ public class Inventory : MonoBehaviour, ISavable
         ranges = new Range[0];
     }
 
+    public Item Find(string name, InventoryState itemType)
+    {
+        int start = 0;
+        int end = 0;
+
+        switch (itemType)
+        {
+            case InventoryState.Weapons:
+                start = 0;
+                end = GetStart(GlobalValues.ArmourStart);
+                break;
+            case InventoryState.Armour:
+                start = GetStart(GlobalValues.Armourpieces);
+                end = GetStart(GlobalValues.SpellStart);
+                break;
+            case InventoryState.Spells:
+                start = GetStart(GlobalValues.SpellStart);
+                end = GetStart(GlobalValues.RuneStart);
+                break;
+            case InventoryState.Runes:
+                start = GetStart(GlobalValues.RuneStart);
+                end = GetStart(GlobalValues.PotionStart);
+                break;
+            case InventoryState.Potions:
+                start = GetStart(GlobalValues.PotionStart);
+                end = GetStart(GlobalValues.ResourceStart);
+                break;
+            case InventoryState.Resources:
+                start = GetStart(GlobalValues.ResourceStart);
+                end = GetStart(GlobalValues.MiscStart);
+                break;
+            case InventoryState.Misc:
+                start = GetStart(GlobalValues.MiscStart);
+                end = Count;
+                break;
+            case InventoryState.AllItems:
+                start = 0;
+                end = Count;
+                break;
+        }
+
+        for (int i = start; i < end; i++)
+        {
+           if (AllItems[i].GetName() == name)
+           {
+                return AllItems[i];
+           } 
+        }
+
+        return null;
+    }
+
     public void Clear()
     {
         AllItems.Clear();
@@ -535,6 +547,7 @@ public class Inventory : MonoBehaviour, ISavable
 
         MaxCarryWeight = tempWeight;
     }
+    
     public Item this[int i]
     {
         get { return AllItems[i]; }

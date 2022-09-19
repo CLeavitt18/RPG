@@ -2,31 +2,93 @@
 
 public class QuestHolder : Item
 {
-    [Range(1, 24)] public int HourAquired;
-    [Range(0, 59)] public int MintueAquired;
+    [Range(1, 24), SerializeField] public int HourAquired;
+    [Range(0, 59), SerializeField] public int MintueAquired;
 
-    public int[] DateAquired;
+    [SerializeField] public int[] DateAquired;
 
-    public int QuestCompletionType;
-    public int QuestType;
-    public int MinLevel;
-    public int CurrentQuestStep;
-    public int QuestSteps;
+    [SerializeField] public QuestCompleteType CompletionType;
+    [SerializeField] public int MinLevel;
+    [SerializeField] public int CurrentQuestStep;
+    [SerializeField] public int QuestSteps;
+    
+    [SerializeField] public int QuestType;
 
     [SerializeField] private QuestReward[] Rewards;
 
-    public string QuestName;
-    public string NPCName;
-    public string Location;
+    [SerializeField] public string QuestName;
+    [SerializeField] public string NPCName;
+    [SerializeField] public string Location;
 
     //Items or Enemy Targets
-    public GameObject[] QuestItems;
+    [SerializeField] public QuestItemCompleteConditon[] QuestItems;
+    [SerializeField] public QuestEnemyCompleteConditon[] Bosses;
 
-    public string[] Directions;
+    [SerializeField] public string[] Directions;
+
+    [SerializeField] private bool complete;
     
+    public bool RemoveItemFromCheckList(GameObject item)
+    {
+        return false;
+    }
+
+    public bool CheckCompleteCondicution(GameObject questObject)
+    {
+        bool returnBool = false;
+
+        switch (CompletionType)
+        {
+            case QuestCompleteType.Item:
+
+                QuestItemHolder item = questObject.GetComponent<QuestItemHolder>();
+
+                if (item != null)
+                {
+                    for (int i = 0; i < QuestItems.Length; i++)
+                    {
+                        
+                        if (item.Equals(QuestItems[i].item))
+                        {
+                            QuestItems[i].complete = true;
+                            returnBool = true;
+                        }
+                    }
+                }
+
+                break;
+            case QuestCompleteType.Boss:
+
+                AIController boss = questObject.GetComponent<AIController>();
+
+                if (boss != null)
+                {
+                    
+                }
+
+                break;
+        }
+
+        return returnBool;
+    }
+
+    public override bool Equals(Item Item)
+    {
+        if (Item.GetName() == GetName())
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     public QuestReward[] GetReward()
     {
         return Rewards;
+    }
+
+    public bool GetComplete()
+    {
+        return complete;
     }
 }

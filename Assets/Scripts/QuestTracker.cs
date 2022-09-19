@@ -122,13 +122,10 @@ public class QuestTracker : MonoBehaviour
     {
         for (int i = 0; i < Quests.Count; i++)
         {
-            for (int x = 0; x < Quests[i].QuestItems.Length; x++)
+            if (Quests[i].CheckCompleteCondicution(Item))
             {
-                if (Quests[i].QuestItems[x].name == Item.name)
-                {
-                    Quests[i].CurrentQuestStep++;
-                    return;
-                }
+                Quests[i].CurrentQuestStep++;
+                return;
             }
         }
     }

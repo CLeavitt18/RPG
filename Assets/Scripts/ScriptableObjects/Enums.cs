@@ -235,6 +235,12 @@ public enum NPCChatState : byte
     Training
 }
 
+public enum QuestCompleteType : byte
+{
+    Item,
+    Boss
+}
+
 public enum UiType : byte
 {
     Stats,
