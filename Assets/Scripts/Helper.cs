@@ -9,6 +9,7 @@ public class Helper : MonoBehaviour
 
     [SerializeField] private GameObject itemDetailsPrefab;
     [SerializeField] private GameObject textSlot;
+    [SerializeField] private GameObject questStepTextPrebef;
 
     [SerializeField] private GameObject costDetailsPrefab;
     [SerializeField] private GameObject resourceSlot;
@@ -313,9 +314,18 @@ public class Helper : MonoBehaviour
         }
     }
 
-    private Text SpawnItemDetailSlot(string text, Transform t)
+    private Text SpawnItemDetailSlot(string text, Transform t, bool useQuestText = false)
     {
-        Text _text = Instantiate(textSlot, t).GetComponent<Text>();
+        Text _text;
+
+        if (useQuestText)
+        {
+            _text = Instantiate(questStepTextPrebef, t).GetComponent<Text>();
+        }
+        else
+        {
+            _text = Instantiate(textSlot, t).GetComponent<Text>();
+        }
 
         _text.text = text;
 
@@ -380,5 +390,69 @@ public class Helper : MonoBehaviour
         _text.color = color;
 
         return _text;
+    }
+
+    public void CreateQuestDetails(QuestHolder quest, Transform parent)
+    {
+        GameObject ui = Instantiate(itemDetailsPrefab, parent.position, parent.rotation, parent);
+        Transform t = ui.transform.GetChild(0).GetChild(0);
+
+        Text nameText = t.GetChild(0).GetComponent<Text>();
+
+        nameText.text = quest.QuestName;
+
+        StringBuilder sb = new StringBuilder("Time  ");
+        sb.Append(quest.HourAquired);
+        sb.Append(": ");
+
+        if (quest.MintueAquired < 10)
+        {
+            sb.Append('0');
+        }
+
+        sb.Append(quest.MintueAquired);
+
+        SpawnItemDetailSlot(sb.ToString(), t);
+
+        sb.Clear();
+
+        sb.Append("Date  ");
+        sb.Append(quest.DateAquired[0].ToString());
+        sb.Append(": ");
+        sb.Append(quest.DateAquired[1]);
+        sb.Append(": ");
+        sb.Append(quest.DateAquired[2]);
+
+        SpawnItemDetailSlot(sb.ToString(), t);
+
+        sb.Clear();
+
+        sb.Append("Location: ");
+        sb.Append(quest.Location);
+
+        SpawnItemDetailSlot(sb.ToString(), t);
+
+        sb.Clear();
+
+        sb.Append("NPC: ");
+        sb.Append(quest.NPCName);
+
+        SpawnItemDetailSlot(sb.ToString(), t);
+
+        sb.Clear();
+
+        for (int i = 0; i < quest.CurrentQuestStep; i++)
+        {
+            if (i != quest.CurrentQuestStep - 1)
+            {
+                sb.Append("\u2713");
+            }
+
+            sb.Append("- ");
+            sb.Append(quest.Directions[i]);
+            sb.Append("\n");
+        }
+
+        SpawnItemDetailSlot(sb.ToString(), t, true);
     }
 }

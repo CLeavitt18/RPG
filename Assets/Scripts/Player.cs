@@ -64,7 +64,7 @@ public class Player : LivingEntities
     protected void Update()
     {
         float Translate = Input.GetAxis("Vertical") * Time.deltaTime * Speed;
-        float Strafe = Input.GetAxis("Horizontal") * Time.deltaTime * (GetBaseSpeed() * .35f);
+        float Strafe = Input.GetAxis("Horizontal") * Time.deltaTime * (GetBaseSpeed() * 0.35f);
 
         transform.Translate(Strafe, 0, Translate);
 
@@ -559,7 +559,7 @@ public class Player : LivingEntities
         base.CalculateSpeed();
     }
 
-    void Death()
+    private void Death()
     {
 
     }

@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,5 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDetailsPrefab: {fileID: 240818127529870784, guid: 7769e711c25bd70478074b1975f8d7e4, type: 3}
   textSlot: {fileID: 3673770957568724764, guid: 3a42f3041a15cce4f9de915327dfe302, type: 3}
+  questStepTextPrebef: {fileID: 3673770957568724764, guid: 1000c58f2da33664f922fbc4261e573c, type: 3}
   costDetailsPrefab: {fileID: 3136481579869156807, guid: abc5ef222831c2f4ba0a171d6535aca2, type: 3}
   resourceSlot: {fileID: 603357063693994499, guid: 485d6cf45733508458ebf721a761a67c, type: 3}

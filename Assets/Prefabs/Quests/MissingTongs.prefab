@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,23 +44,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87cf89e462f56af4895c6022c7e3b481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 8
+  Value: 0
+  Amount: 0
+  Weight: 0
+  _Item: {fileID: 0}
+  Rarity: {r: 0, g: 0, b: 0, a: 0}
+  Name: 
+  isEquipable: 0
+  equiped: 0
   HourAquired: 1
   MintueAquired: 0
   DateAquired: 000000000000000000000000
-  QuestCompletionType: 0
-  QuestType: 1
+  CompletionType: 0
   MinLevel: 1
-  CurrentQuestStep: 1
+  CurrentQuestStep: 2
   QuestSteps: 2
+  QuestType: 1
   Rewards:
   - Rewards:
-    - {fileID: 7591549252762906544, guid: eab6452253f98dd429efb093ed9cc102, type: 3}
+    - {fileID: 7591549252762906547, guid: eab6452253f98dd429efb093ed9cc102, type: 3}
     Amount: f4010000
   QuestName: Missing Tongs
   NPCName: George
   Location: 
   QuestItems:
-  - {fileID: 6170037183960945339, guid: c7d40d13dec5a254b8a79123f9d34ccd, type: 3}
+  - item: {fileID: 6170037183960945338, guid: c7d40d13dec5a254b8a79123f9d34ccd, type: 3}
+    amount: 1
+    complete: 0
+  Bosses: []
   Directions:
   - Go to the cave to the East and find the tongs.
   - Return the tongs to George in town.
+  complete: 0

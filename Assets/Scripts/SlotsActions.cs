@@ -71,24 +71,29 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         //Debug.Log("OnMouseEnter Called");
-        if (UI.GetFocus() == this || UI.AmountUi.activeSelf == true)
-        {
-            return;
-        }
-
         if (Mode == SlotState.Item)
         {
+            if (UI.GetFocus() == this || UI.AmountUi.activeSelf == true)
+            {
+                return;
+            }
+
             UI.SetFocus(this, 0, _Item, Player.player.GetMode());
         }
         else
         {
+            if (QuestUi.GetFocus() == this)
+            {
+                return;
+            }
+
             QuestUi.SetQuestFocused(this, _Item);
         }
     }
 
     public void SetState(IUi ui, Item item)
     {
-        if(ui as QuestUi )
+        if(ui as QuestUi)
         {
             QuestUi = ui as QuestUi;
             UI = null;

@@ -266,7 +266,8 @@ public enum InventoryState : byte
     Potions,
     Resources,
     Misc,
-    AllItems
+    AllItems,
+    Quest
 }
 
 public enum PauseUiState : byte
