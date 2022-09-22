@@ -58,7 +58,7 @@ MonoBehaviour:
   DateAquired: 000000000000000000000000
   CompletionType: 0
   MinLevel: 1
-  CurrentQuestStep: 2
+  CurrentQuestStep: 1
   QuestSteps: 2
   QuestType: 1
   Rewards:

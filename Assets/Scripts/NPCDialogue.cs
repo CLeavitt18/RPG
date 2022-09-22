@@ -78,11 +78,12 @@ public class NPCDialogue : MonoBehaviour
                 {
                     if (Quests[i].Equals(QuestTracker.questTracker.Quests[x]))
                     {
+                        PlayerHasQuest = true;
+                        
                         if (QuestTracker.questTracker.Quests[x].GetComplete())
                         {
                             QuestButton.SetActive(true);
                             QuestComplete = true;
-                            PlayerHasQuest = true;
                             break;
                         }
                     }
@@ -95,7 +96,7 @@ public class NPCDialogue : MonoBehaviour
             {
                 QuestButton.SetActive(false);
             }
-            else if (!QuestComplete )
+            else if (!QuestComplete)
             {
                 QuestButton.SetActive(!PlayerHasQuest);
             }
