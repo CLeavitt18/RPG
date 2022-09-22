@@ -384,6 +384,10 @@ public class QuestData
     public int CurrentQuestStep;
 
     public string Location;
+
+    public bool complete;
+    
+    public bool[] itemCompletes;
 }
 
 [Serializable]

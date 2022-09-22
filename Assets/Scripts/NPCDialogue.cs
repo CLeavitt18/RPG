@@ -218,8 +218,10 @@ public class NPCDialogue : MonoBehaviour
 
         if (Mode == NPCChatState.TurnInQuest && NextDialogue == NPCSpeach[CurrentSpeachBranch].Dialogue.Length - 2)
         {
+            Debug.Log("Branch " + CurrentSpeachBranch + " dialogue " + NextDialogue);
             NPCDialogueText.text = NPCSpeach[CurrentSpeachBranch].Dialogue[NextDialogue];
             SetButtons(true);
+            return;
         }
 
         if (Mode == NPCChatState.Quest)

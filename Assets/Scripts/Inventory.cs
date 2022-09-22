@@ -174,7 +174,7 @@ public class Inventory : MonoBehaviour, ISavable
 
     public void RemoveItem(string itemName, int amount, InventoryState itemType)
     {
-        RemoveItem(Find(name, itemType), amount);
+        RemoveItem(Find(itemName, itemType), amount);
     }
     
     public void RemoveItem(Item Item, int Amount, bool CanDestroy = true)

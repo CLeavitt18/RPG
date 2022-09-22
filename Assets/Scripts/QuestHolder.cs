@@ -69,6 +69,21 @@ public class QuestHolder : Item
                 break;
         }
 
+        int itemsComplete = 0;
+
+        for (int i = 0; i < QuestItems.Length; i++)
+        {
+            if (QuestItems[i].complete)
+            {
+                itemsComplete++;
+            }
+        }
+
+        if (itemsComplete == QuestItems.Length)
+        {
+            complete = true;
+        }
+
         return returnBool;
     }
 
@@ -90,5 +105,30 @@ public class QuestHolder : Item
     public bool GetComplete()
     {
         return complete;
+    }
+
+    public bool[] GetAllCompletes()
+    {
+        bool[] completes = new bool[QuestItems.Length];
+
+        for (int i = 0; i < completes.Length; i++)
+        {
+            completes[i] = QuestItems[i].complete;
+        }
+
+        return completes;
+    }
+
+    public void SetComplete(bool state)
+    {
+        complete = state;
+    }
+
+    public void SetAllCompletes(bool[] completes)
+    {
+        for (int i = 0; i < completes.Length; i++)
+        {
+            QuestItems[i].complete = completes[i];
+        }
     }
 }

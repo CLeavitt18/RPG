@@ -230,7 +230,10 @@ public static class LoadSystem
         ToQuest.DateAquired[0] = FromQuest.DateAquiredDay;
         ToQuest.DateAquired[1] = FromQuest.DateAquiredMonth;
         ToQuest.DateAquired[2] = FromQuest.DateAquiredMonth;
+        ToQuest.SetComplete(FromQuest.complete);
+        ToQuest.SetAllCompletes(FromQuest.itemCompletes);
         ToQuest.CurrentQuestStep = FromQuest.CurrentQuestStep;
+
 
         return ToQuest;
     }
@@ -514,6 +517,8 @@ public static class LoadSystem
         ToQuest.DateAquiredMonth = FromQuest.DateAquired[1];
         ToQuest.DateAquiredYear = FromQuest.DateAquired[2];
         ToQuest.CurrentQuestStep = FromQuest.CurrentQuestStep;
+        ToQuest.complete = FromQuest.GetComplete();
+        ToQuest.itemCompletes = FromQuest.GetAllCompletes();
         ToQuest.Location = FromQuest.Location;
     }
 }
