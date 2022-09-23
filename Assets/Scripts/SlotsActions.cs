@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Text;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -17,7 +18,12 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
     [SerializeField] public QuestUi QuestUi;
 
     [SerializeField] private Text displayNameText;
+    [SerializeField] private Text weightText;
+    [SerializeField] private Text miscText;
+    [SerializeField] private Text valueText;
     [SerializeField] private Text indicatorText;
+
+    [SerializeField] private Image backGroundImage;
 
     [SerializeField] private bool Clicked = false;
 
@@ -93,7 +99,7 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
 
     public void SetState(IUi ui, Item item)
     {
-        if(ui as QuestUi)
+        if (ui as QuestUi)
         {
             QuestUi = ui as QuestUi;
             UI = null;
@@ -108,7 +114,94 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
 
         _Item = item;
 
-        displayNameText.text = item.GetName();
+        StringBuilder sb = new StringBuilder(_Item.GetName());
+
+        if (Mode == SlotState.Item)
+        {
+            if (_Item.GetAmount() > 1)
+            {
+                sb.Append(" (");
+                sb.Append(_Item.GetAmount().ToString("n0"));
+                sb.Append(")");
+            }
+
+            displayNameText.text = sb.ToString();
+
+            sb.Clear();
+
+            int ItemWeight = _Item.GetWeight();
+            int BeforeDecimal = ItemWeight / 100;
+            int AfterDecimal = ItemWeight - BeforeDecimal * 100;
+
+            if (BeforeDecimal > 999)
+            {
+                int AfterComma = BeforeDecimal / 1000;
+
+                BeforeDecimal = AfterComma * 1000 - BeforeDecimal;
+
+                sb.Append(AfterComma);
+                sb.Append(',');
+
+                if (BeforeDecimal > 10)
+                {
+                    sb.Append("00");
+                }
+                else if (BeforeDecimal > 100)
+                {
+                    sb.Append('0');
+                }
+            }
+
+            sb.Append(BeforeDecimal);
+
+            if (AfterDecimal != 0)
+            {
+                sb.Append('.');
+
+                if (AfterDecimal < 10)
+                {
+                    sb.Append('0');
+                }
+
+                sb.Append(AfterDecimal);
+            }
+
+            weightText.text = sb.ToString();
+
+            sb.Clear();
+
+            valueText.text = _Item.GetValue().ToString("n0");
+
+            switch (_Item.tag)
+            {
+                case GlobalValues.WeaponTag:
+                    WeaponHolder weapon = _Item as WeaponHolder;
+
+                    sb.Append(weapon.GetDurability().ToString("n0"));
+                    sb.Append('/');
+                    sb.Append(weapon.GetMaxDurability().ToString("n0"));
+
+                    break;
+                case GlobalValues.ArmourTag:
+                case GlobalValues.ShieldTag:
+                        ArmourHolder armour = _Item.GetComponent<ArmourHolder>();
+
+                        sb = new StringBuilder(armour.GetCurrentDurability().ToString("n0"));
+                        sb.Append('/');
+                        sb.Append(armour.GetMaxDurability().ToString("n0"));
+                    break;
+                default:
+                    break;
+            }
+
+            miscText.text = sb.ToString();
+
+            backGroundImage.color = _Item.GetRarity();
+        }
+        else
+        {
+            displayNameText.text = sb.ToString();
+        }
     }
 
     public void SetIndicator(bool state, string text)

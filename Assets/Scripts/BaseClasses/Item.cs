@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private InventoryState itemType;
+    //[SerializeField] private InventoryState itemType;
 
     [SerializeField] private int Value;
     [SerializeField] private int Amount;
@@ -119,10 +119,10 @@ public class Item : MonoBehaviour
         return equiped;
     }
 
-    public InventoryState GetItemType()
+    /*public InventoryState GetItemType()
     {
         return itemType;
-    }
+    }*/
 
     #endregion
 

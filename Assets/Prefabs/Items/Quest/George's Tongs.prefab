@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,9 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a2d1f235386b642901e761434e6524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 6
   Value: 0
   Amount: 1
   Weight: 500
   _Item: {fileID: 0}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
   Name: George's Tongs
+  isEquipable: 0
+  equiped: 0

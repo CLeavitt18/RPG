@@ -156,21 +156,43 @@ public class InventoryUi : IUi
             Slots.Clear();
         }
 
-        if (UiMode == UiState.Container)
+        Item gold = inventory.Find("Gold", GlobalValues.MiscTag);
+
+        if (gold != null)
         {
-            if (!inventory.gameObject.CompareTag(GlobalValues.ContainerTag))
+            if (UiMode == UiState.Container)
+            {
+                if (Player.player.GetMode() == PlayerState.InStore)
+                {
+                    GoldText.text = gold.GetAmount().ToString("n0");
+                }
+                else
+                {
+                    GoldText.text = "";
+                }
+            }
+            else if (UiMode == UiState.Player)
+            {
+                GoldText.text = gold.GetAmount().ToString("n0");
+            }
+        }
+        else
+        {
+            if (UiMode == UiState.Container)
+            {
+                if (Player.player.GetMode() == PlayerState.InStore)
+                {
+                    GoldText.text = "0";
+                }
+                else
+                {
+                    GoldText.text = "";
+                }
+            }
+            else if (UiMode == UiState.Player)
             {
                 GoldText.text = "0";
             }
-            else
-            {
-                GoldText.text = "";
-            }
-        }
-
-        if (UiMode == UiState.Player)
-        {
-            GoldText.text = "0";
         }
 
         InstructionText.text = "";
@@ -217,8 +239,6 @@ public class InventoryUi : IUi
             MiscBanner = null;
         }
 
-        StringBuilder sb;
-
         switch (Mode)
         {
             case InventoryState.AllItems:
@@ -259,34 +279,10 @@ public class InventoryUi : IUi
         {
             Item Item = inventory[i].GetComponent<Item>();
 
-            if (Item.CompareTag(GlobalValues.GoldTag))
+            if (Player.player.GetMode() == PlayerState.InStore && ((Item.GetEquipable() && Item.GetEquiped()) || Item == gold))
             {
-                if (UiMode == UiState.Container && Player.player.GetHit().CompareTag(GlobalValues.NPCTag))
-                {
-                    GoldText.text = Item.GetAmount().ToString("n0");
-                }
-                else if (UiMode == UiState.Player)
-                {
-                    GoldText.text = Item.GetAmount().ToString("n0");
-                }
-
-                if (Player.player.GetMode() == PlayerState.InStore)
-                {
-                    continue;
-                }
+                continue;
             }
-
-            if (Item.GetEquipable() &&
-                Player.player.GetMode() == PlayerState.InStore)
-            {
-                if (Item.GetEquiped())
-                {
-                    continue;
-                }
-            }
-
-            Text MiscText;
-            int id;
 
             switch (Item.tag)
             {
@@ -296,20 +292,6 @@ public class InventoryUi : IUi
                         WeaponsBanner = Instantiate(CategoryPrefab, InventroyHolder);
                         WeaponsBanner.GetComponent<Text>().text = "Weapons\n___________________________________________________";
                     }
-
-                    if (Mode == InventoryState.AllItems || Mode == InventoryState.Weapons)
-                    {
-                        id = SpawnItemInventorySlot(Item);
-                        MiscText = Slots[id].transform.GetChild(2).gameObject.GetComponent<Text>();
-
-                        WeaponHolder Weapon = Item.GetComponent<WeaponHolder>();
-
-                        sb = new StringBuilder(Weapon.GetDurability().ToString("n0"));
-                        sb.Append('/');
-                        sb.Append(Weapon.GetMaxDurability().ToString("n0"));
-
-                        MiscText.text = sb.ToString();
-                    }
                     break;
                 case GlobalValues.ArmourTag:
                 case GlobalValues.ShieldTag:
@@ -318,36 +300,12 @@ public class InventoryUi : IUi
                         ArmourBanner = Instantiate(CategoryPrefab, InventroyHolder);
                         ArmourBanner.GetComponent<Text>().text = "Armour\n___________________________________________________";
                     }
-
-                    if (Mode == InventoryState.AllItems || Mode == InventoryState.Armour)
-                    {
-                        id = SpawnItemInventorySlot(Item);
-                        MiscText = Slots[id].transform.GetChild(2).gameObject.GetComponent<Text>();
-
-                        ArmourHolder armour = Item.GetComponent<ArmourHolder>();
-
-                        sb = new StringBuilder(armour.GetCurrentDurability().ToString("n0"));
-                        sb.Append('/');
-                        sb.Append(armour.GetMaxDurability().ToString("n0"));
-
-                        MiscText.text = sb.ToString();
-                    }
                     break;
                 case GlobalValues.SpellTag:
                     if (SpellsBanner == null)
                     {
                         SpellsBanner = Instantiate(CategoryPrefab, InventroyHolder);
                         SpellsBanner.GetComponent<Text>().text = "Spells\n___________________________________________________";
-                    }
-
-                    if (Mode == InventoryState.AllItems || Mode == InventoryState.Spells)
-                    {
-                        id = SpawnItemInventorySlot(Item);
-                        MiscText = Slots[id].transform.GetChild(2).gameObject.GetComponent<Text>();
-
-                        SpellHolder Spell = Item.GetComponent<SpellHolder>();
-
-                        //MiscText.text = Spell.ManaCost.ToString("n0");
                     }
                     break;
                 case GlobalValues.RuneTag:
@@ -356,14 +314,6 @@ public class InventoryUi : IUi
                         RuneBanner = Instantiate(CategoryPrefab, InventroyHolder);
                         RuneBanner.GetComponent<Text>().text = "Runes\n___________________________________________________";
                     }
-
-                    if (Mode == InventoryState.AllItems || Mode == InventoryState.Runes)
-                    {
-                        id = SpawnItemInventorySlot(Item);
-                        MiscText = Slots[id].transform.GetChild(2).gameObject.GetComponent<Text>();
-                        MiscText.text = "";
-                    }
-
                     break;
                 case GlobalValues.PotionTag:
                     if (PotionsBanner == null)
@@ -371,27 +321,12 @@ public class InventoryUi : IUi
                         PotionsBanner = Instantiate(CategoryPrefab, InventroyHolder);
                         PotionsBanner.GetComponent<Text>().text = "Potions\n___________________________________________________";
                     }
-
-                    if (Mode == InventoryState.AllItems || Mode == InventoryState.Potions)
-                    {
-                        id = SpawnItemInventorySlot(Item);
-                        MiscText = Slots[id].transform.GetChild(2).gameObject.GetComponent<Text>();
-                        MiscText.text = "";
-                    }
-
                     break;
                 case GlobalValues.ResourceTag:
                     if (ResourcesBanner == null)
                     {
                         ResourcesBanner = Instantiate(CategoryPrefab, InventroyHolder);
                         ResourcesBanner.GetComponent<Text>().text = "Resources\n___________________________________________________";
-                    }
-
-                    if (Mode == InventoryState.AllItems || Mode == InventoryState.Resources)
-                    {
-                        id = SpawnItemInventorySlot(Item);
-                        MiscText = Slots[id].transform.GetChild(2).gameObject.GetComponent<Text>();
-                        MiscText.text = "";
                     }
                     break;
                 default://Gold | Misc | Keys
@@ -400,16 +335,10 @@ public class InventoryUi : IUi
                         MiscBanner = Instantiate(CategoryPrefab, InventroyHolder);
                         MiscBanner.GetComponent<Text>().text = "Misc\n___________________________________________________";
                     }
-
-                    if (Mode == InventoryState.AllItems || Mode == InventoryState.Misc)
-                    {
-                        id = SpawnItemInventorySlot(Item);
-                        MiscText = Slots[id].transform.GetChild(2).gameObject.GetComponent<Text>();
-
-                        MiscText.text = "";
-                    }
                     break;
             }
+
+            SpawnItemInventorySlot(Item);
         }
     }
 
@@ -421,7 +350,7 @@ public class InventoryUi : IUi
         }
 
         isActive = false;
-        
+
         int children = InventroyHolder.childCount;
 
         if (!inventoryUi.activeSelf)
@@ -479,83 +408,15 @@ public class InventoryUi : IUi
         SetInventroy(false);
     }
 
-    private int SpawnItemInventorySlot(Item Item)
+    private void SpawnItemInventorySlot(Item Item)
     {
-        StringBuilder WeightString = new StringBuilder();
-
-        int ItemWeight = Item.GetWeight();
-        int BeforeDecimal = ItemWeight / 100;
-        int AfterDecimal = ItemWeight - BeforeDecimal * 100;
-
-        if (BeforeDecimal > 999)
-        {
-            int AfterComma = BeforeDecimal / 1000;
-
-            BeforeDecimal = AfterComma * 1000 - BeforeDecimal;
-
-            WeightString.Append(AfterComma);
-            WeightString.Append(',');
-
-            if (BeforeDecimal > 10)
-            {
-                WeightString.Append("00");
-            }
-            else if (BeforeDecimal > 100)
-            {
-                WeightString.Append('0');
-            }
-        }
-
-        WeightString.Append(BeforeDecimal);
-
-        if (AfterDecimal != 0)
-        {
-            WeightString.Append('.');
-
-            if (AfterDecimal < 10)
-            {
-                WeightString.Append('0');
-            }
-
-            WeightString.Append(AfterDecimal);
-        }
-
         GameObject NewSlot = Instantiate(this.slot, InventroyHolder);
-
-        NewSlot.GetComponent<Image>().color = Item.GetRarity();
 
         SlotsActions slot = NewSlot.GetComponent<SlotsActions>();
 
         slot.SetState(this, Item);
 
         Slots.Add(slot);
-
-        int id = Slots.Count - 1;
-
-        Text NameText = Slots[id].transform.GetChild(0).GetComponent<Text>();
-        Text WeightText = Slots[id].transform.GetChild(1).GetComponent<Text>();
-        Text MiscText = Slots[id].transform.GetChild(2).GetComponent<Text>();
-        Text ValueText = Slots[id].transform.GetChild(3).GetComponent<Text>();
-
-        if (Item.GetAmount() > 1)
-        {
-            StringBuilder sb = new StringBuilder(Item.GetName());
-            sb.Append(" (");
-            sb.Append(Item.GetAmount().ToString("n0"));
-            sb.Append(")");
-
-            NameText.text = sb.ToString();
-        }
-        else
-        {
-            NameText.text = Item.GetName();
-        }
-
-        WeightText.text = WeightString.ToString();
-
-        ValueText.text = Item.GetValue().ToString("n0");
-
-        return id;
     }
 
     public void CallSetInventory(InventoryState state)
@@ -852,8 +713,8 @@ public class InventoryUi : IUi
             Item rightHand = Player.player.GetHeldItem(0);
             Item leftHand = Player.player.GetHeldItem(1);
 
-            if (AllItems[i].CompareTag(GlobalValues.WeaponTag) || 
-            AllItems[i].CompareTag(GlobalValues.SpellTag) || 
+            if (AllItems[i].CompareTag(GlobalValues.WeaponTag) ||
+            AllItems[i].CompareTag(GlobalValues.SpellTag) ||
             AllItems[i].CompareTag(GlobalValues.TorchTag) ||
             AllItems[i].CompareTag(GlobalValues.ShieldTag))
             {

@@ -172,9 +172,9 @@ public class Inventory : MonoBehaviour, ISavable
         }
     }
 
-    public void RemoveItem(string itemName, int amount, InventoryState itemType)
+    public void RemoveItem(string itemName, int amount, string tag)
     {
-        RemoveItem(Find(itemName, itemType), amount);
+        RemoveItem(Find(itemName, tag), amount);
     }
     
     public void RemoveItem(Item Item, int Amount, bool CanDestroy = true)
@@ -475,43 +475,40 @@ public class Inventory : MonoBehaviour, ISavable
         ranges = new Range[0];
     }
 
-    public Item Find(string name, InventoryState itemType)
+    public Item Find(string name, string tag)
     {
         int start = 0;
         int end = 0;
 
-        switch (itemType)
+        switch (tag)
         {
-            case InventoryState.Weapons:
+            case GlobalValues.WeaponTag:
                 start = 0;
                 end = GetStart(GlobalValues.ArmourStart);
                 break;
-            case InventoryState.Armour:
+            case GlobalValues.ArmourTag:
+            case GlobalValues.ShieldTag:
                 start = GetStart(GlobalValues.Armourpieces);
                 end = GetStart(GlobalValues.SpellStart);
                 break;
-            case InventoryState.Spells:
+            case GlobalValues.SpellTag:
                 start = GetStart(GlobalValues.SpellStart);
                 end = GetStart(GlobalValues.RuneStart);
                 break;
-            case InventoryState.Runes:
+            case GlobalValues.RuneTag:
                 start = GetStart(GlobalValues.RuneStart);
                 end = GetStart(GlobalValues.PotionStart);
                 break;
-            case InventoryState.Potions:
+            case GlobalValues.PotionTag:
                 start = GetStart(GlobalValues.PotionStart);
                 end = GetStart(GlobalValues.ResourceStart);
                 break;
-            case InventoryState.Resources:
+            case GlobalValues.ResourceTag:
                 start = GetStart(GlobalValues.ResourceStart);
                 end = GetStart(GlobalValues.MiscStart);
                 break;
-            case InventoryState.Misc:
+            default:// Gold | Misc | Key
                 start = GetStart(GlobalValues.MiscStart);
-                end = Count;
-                break;
-            case InventoryState.AllItems:
-                start = 0;
                 end = Count;
                 break;
         }

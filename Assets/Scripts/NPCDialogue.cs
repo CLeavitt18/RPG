@@ -157,7 +157,7 @@ public class NPCDialogue : MonoBehaviour
         {
             QuestItemCompleteConditon item = Quests[CurrentQuest].QuestItems[i];
 
-            Inventory.RemoveItem(item.item.GetName(), item.amount, InventoryState.Misc);
+            Inventory.RemoveItem(item.item.GetName(), item.amount, GlobalValues.MiscTag);
         }
 
         QuestTracker.questTracker.RemoveQuest(Quests[CurrentQuest]);

@@ -252,7 +252,7 @@ public class ForgeUI : MonoBehaviour
 
         foreach (KeyValuePair<string, int> item in RequiredItems)
         {
-            pInventory.RemoveItem(item.Key, item.Value, InventoryState.Resources);
+            pInventory.RemoveItem(item.Key, item.Value, GlobalValues.ResourceTag);
         }
 
         ConfirmCreateWeaponUi.SetActive(false);

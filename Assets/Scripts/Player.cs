@@ -1197,7 +1197,7 @@ public class Player : LivingEntities
         CalculateSpeed();
         CalculateWeight();
 
-        InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
+        //InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
     }
 
     #region Getters

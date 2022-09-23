@@ -311,7 +311,7 @@ public class RuneTableUI : MonoBehaviour
 
         foreach (KeyValuePair<string, int> item in requiredItems)
         {
-            pInventory.RemoveItem(item.Key, item.Value, InventoryState.Resources);
+            pInventory.RemoveItem(item.Key, item.Value, GlobalValues.ResourceTag);
         }
 
         SetState(true);
