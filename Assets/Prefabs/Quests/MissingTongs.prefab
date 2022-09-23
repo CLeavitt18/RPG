@@ -50,7 +50,7 @@ MonoBehaviour:
   Weight: 0
   _Item: {fileID: 0}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
-  Name: 
+  Name: Missing Tongs
   isEquipable: 0
   equiped: 0
   HourAquired: 1
@@ -65,7 +65,6 @@ MonoBehaviour:
   - Rewards:
     - {fileID: 7591549252762906547, guid: eab6452253f98dd429efb093ed9cc102, type: 3}
     Amount: f4010000
-  QuestName: Missing Tongs
   NPCName: George
   Location: 
   QuestItems:

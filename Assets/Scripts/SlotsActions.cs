@@ -108,7 +108,7 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
 
         _Item = item;
 
-        displayNameText.text = item.name;
+        displayNameText.text = item.GetName();
     }
 
     public void SetIndicator(bool state, string text)

@@ -399,7 +399,7 @@ public class Helper : MonoBehaviour
 
         Text nameText = t.GetChild(0).GetComponent<Text>();
 
-        nameText.text = quest.QuestName;
+        nameText.text = quest.GetName();
 
         StringBuilder sb = new StringBuilder("Time  ");
         sb.Append(quest.HourAquired);

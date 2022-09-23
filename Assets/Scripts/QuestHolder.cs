@@ -16,7 +16,6 @@ public class QuestHolder : Item
 
     [SerializeField] private QuestReward[] Rewards;
 
-    [SerializeField] public string QuestName;
     [SerializeField] public string NPCName;
     [SerializeField] public string Location;
 

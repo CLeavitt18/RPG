@@ -90,7 +90,7 @@ public class QuestTracker : MonoBehaviour
 
         for (int i = 0; i < Quests.Count; i++)
         {
-            if (Quest.QuestName == Quests[i].QuestName)
+            if (Quest.GetName() == Quests[i].GetName())
             {
                 Index = i;
                 break;
