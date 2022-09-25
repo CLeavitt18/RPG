@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour, ISavable
+public class Inventory : MonoBehaviour
 {
     [SerializeField] private UiState Mode;
 
@@ -94,6 +94,8 @@ public class Inventory : MonoBehaviour, ISavable
 
         if ((AllItems.Count == 0 || end_id == AllItems.Count) && !Stackable)
         {
+            Debug.Log("Item added at end of inveotry list");
+
             AllItems.Add(Item);
 
             CurrentCarryWeight += Item.GetWeight() * Amount;
@@ -176,7 +178,7 @@ public class Inventory : MonoBehaviour, ISavable
     {
         RemoveItem(Find(itemName, tag), amount);
     }
-    
+
     public void RemoveItem(Item Item, int Amount, bool CanDestroy = true)
     {
         //Debug.Log("Remove item called");
@@ -515,10 +517,10 @@ public class Inventory : MonoBehaviour, ISavable
 
         for (int i = start; i < end; i++)
         {
-           if (AllItems[i].GetName() == name)
-           {
+            if (AllItems[i].GetName() == name)
+            {
                 return AllItems[i];
-           } 
+            }
         }
 
         return null;
@@ -544,7 +546,7 @@ public class Inventory : MonoBehaviour, ISavable
 
         MaxCarryWeight = tempWeight;
     }
-    
+
     public Item this[int i]
     {
         get { return AllItems[i]; }
@@ -589,7 +591,7 @@ public class Inventory : MonoBehaviour, ISavable
                 InventroyHolder = GameObject.Find("PlayerInventoryHolder").transform;
                 break;
             case EntityType.Enemy:
-                
+
                 break;
             case EntityType.NPC:
                 InventroyHolder = GameObject.Find("NPCInventoryHolder").transform;
@@ -597,141 +599,95 @@ public class Inventory : MonoBehaviour, ISavable
         }
     }
 
-    public bool Save(int id)
+    public bool Load(InventoryData data)
     {
-        return SaveSystem.SaveContainer(this, id);
+        return LoadInventory(data);
     }
 
-    public bool Load(int id)
-    {
-        return LoadContainer(id);
-    }
-
-    private bool LoadContainer(int id)
+    private bool LoadInventory(InventoryData data)
     {
         if (AllItems.Count != 0)
         {
-            int Count = AllItems.Count;
-
-            for (int i = 0; i < Count; i++)
-            {
-                Destroy(AllItems[i].gameObject);
-            }
-
-            AllItems = new List<Item>();
-            StartIds = new int[GlobalValues.MiscStart + 1];
+            Clear();
         }
 
-        StringBuilder path = new StringBuilder(Application.persistentDataPath);
-        path.Append('/');
-        path.Append(WorldStateTracker.Tracker.PlayerName);
-        path.Append('/');
-        path.Append(WorldStateTracker.Tracker.SaveProfile);
-        path.Append(GlobalValues.LevelFolder);
-        path.Append(SceneManagerOwn.Manager.SceneName);
-        path.Append(GlobalValues.ContainerFolder);
-        path.Append('/');
-        path.Append(GetComponent<Containers>().Name);
-        path.Append(id);
-
-        StringBuilder tempPath = new StringBuilder(path.ToString());
-        tempPath.Append(GlobalValues.TempExtension);
-
-        path.Append(GlobalValues.SaveExtension);
-
-        InventoryData Data;
-
-        if (File.Exists(tempPath.ToString()))
-        {
-            Data = SaveSystem.LoadContainer(tempPath.ToString());
-        }
-        else
-        {
-            Data = SaveSystem.LoadContainer(path.ToString());
-        }
-
-        if (Data == null)
+        if (data == null)
         {
             Debug.Log("containers data equals null");
         }
 
-        if (Data.NumOfWeapons > 0)
+        for (int i = 0; i < data.NumOfWeapons; i++)
         {
-            for (int i = 0; i < Data.NumOfWeapons; i++)
-            {
-                WeaponHolder weapon = Instantiate(PrefabIDs.prefabIDs.WeaponHolder, InventroyHolder).GetComponent<WeaponHolder>();
+            WeaponHolder weapon = Instantiate(PrefabIDs.prefabIDs.WeaponHolder, InventroyHolder).GetComponent<WeaponHolder>();
 
-                WeaponData WeaponRef = Data.Weapons[i];
+            WeaponData WeaponRef = data.Weapons[i];
 
-                LoadSystem.LoadItem(WeaponRef, weapon);
+            LoadSystem.LoadItem(WeaponRef, weapon);
 
-                AddItem(weapon, false, Data.Weapons[i].Amount);
-            }
+            AddItem(weapon, false, data.Weapons[i].Amount);
         }
 
-        if (Data.NumOfArmour > 0)
+        for (int i = 0; i < data.NumOfArmour; i++)
         {
-            for (int i = 0; i < Data.NumOfArmour; i++)
+            ArmourHolder armour;
+
+            if (data.Armour[i].IsShield)
             {
-                ArmourHolder armour;
-
-                if (Data.Armour[i].IsShield)
-                {
-                    armour = Instantiate(PrefabIDs.prefabIDs.ShieldHolder, InventroyHolder).GetComponent<ArmourHolder>();
-                }
-                else
-                {
-                    armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder, InventroyHolder).GetComponent<ArmourHolder>();
-                }
-                LoadSystem.LoadItem(Data.Armour[i], armour.GetComponent<ArmourHolder>());
-
-                AddItem(armour, false, Data.Armour[i].Amount);
+                armour = Instantiate(PrefabIDs.prefabIDs.ShieldHolder, InventroyHolder).GetComponent<ArmourHolder>();
             }
+            else
+            {
+                armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder, InventroyHolder).GetComponent<ArmourHolder>();
+            }
+
+            LoadSystem.LoadItem(data.Armour[i], armour.GetComponent<ArmourHolder>());
+
+            AddItem(armour, false, data.Armour[i].Amount);
         }
 
-        for (int i = 0; i < Data.NumOfSpells; i++)
+        for (int i = 0; i < data.NumOfSpells; i++)
         {
             SpellHolder spell = Instantiate(PrefabIDs.prefabIDs.SpellHolder, InventroyHolder).GetComponent<SpellHolder>();
 
-            LoadSystem.LoadItem(Data.Spells[i], spell);
+            LoadSystem.LoadItem(data.Spells[i], spell);
 
-            AddItem(spell, false, Data.Spells[i].Amount);
+            AddItem(spell, false, data.Spells[i].Amount);
         }
 
-        for (int i = 0; i < Data.NumOfRunes; i++)
+        for (int i = 0; i < data.NumOfRunes; i++)
         {
             RuneHolder rune = Instantiate(PrefabIDs.prefabIDs.RuneHolder, InventroyHolder).GetComponent<RuneHolder>();
 
-            LoadSystem.LoadItem(Data.Runes[i], rune);
+            LoadSystem.LoadItem(data.Runes[i], rune);
 
-            AddItem(rune, false, Data.Runes[i].Amount);
+            AddItem(rune, false, data.Runes[i].Amount);
         }
 
-        for (int i = 0; i < Data.NumOfPotions; i++)
+        for (int i = 0; i < data.NumOfPotions; i++)
         {
-            Consumable potion = Instantiate(PrefabIDs.prefabIDs.Potions[Data.Potions[i].ResourceId], InventroyHolder).GetComponent<Consumable>();
+            Consumable potion = Instantiate(PrefabIDs.prefabIDs.Potions[data.Potions[i].ResourceId], InventroyHolder).GetComponent<Consumable>();
 
-            potion.SetAmount(Data.Potions[i].Amount);
+            potion.SetAmount(data.Potions[i].Amount);
 
-            AddItem(potion, false, Data.Potions[i].Amount);
+            AddItem(potion, false, data.Potions[i].Amount);
         }
 
-        for (int i = 0; i < Data.NumOfResources; i++)
+        for (int i = 0; i < data.NumOfResources; i++)
         {
-            ResourceHolder resource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[Data.Resources[i].ResourceId], InventroyHolder).GetComponent<ResourceHolder>();
+            ResourceHolder resource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[data.Resources[i].ResourceId], InventroyHolder).GetComponent<ResourceHolder>();
 
-            resource.SetAmount(Data.Resources[i].Amount);
+            resource.SetAmount(data.Resources[i].Amount);
 
-            AddItem(resource, false, Data.Resources[i].Amount);
+            AddItem(resource, false, data.Resources[i].Amount);
         }
 
-        for (int i = 0; i < Data.NumOfMisc; i++)
+        for (int i = 0; i < data.NumOfMisc; i++)
         {
-            Item misc = Instantiate(PrefabIDs.prefabIDs.Items[Data.Misc[i].ResourceId], InventroyHolder).GetComponent<Item>();
+            Item misc = Instantiate(PrefabIDs.prefabIDs.Items[data.Misc[i].ResourceId], InventroyHolder).GetComponent<Item>();
 
-            misc.SetAmount(Data.Misc[i].Amount);
+            misc.SetAmount(data.Misc[i].Amount);
 
-            AddItem(misc, false, Data.Misc[i].Amount);
+            AddItem(misc, false, data.Misc[i].Amount);
         }
 
         ranges = new Range[0];

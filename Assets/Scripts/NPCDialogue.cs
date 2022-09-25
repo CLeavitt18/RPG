@@ -65,11 +65,11 @@ public class NPCDialogue : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
 
             TargetNPC = Player.player.GetHit().GetComponent<NPC>();
-            CurrentQuest = TargetNPC.CurrentQuest;
+            CurrentQuest = TargetNPC.GetCurrentQuest();
             Quests = TargetNPC.GetQuests();
             NPCSpeach = TargetNPC.GetDialogue();
             VendorSpeach = TargetNPC.GetVendorSpeach();
-            CurrentSpeachBranch = TargetNPC.CurrentSpeachBranch;
+            CurrentSpeachBranch = TargetNPC.GetCurrentSpeachBranch();
             NPCDialogueText.text = NPCSpeach[CurrentSpeachBranch].Dialogue[0];
 
             for (int i = 0; i < Quests.Length; i++)
@@ -162,7 +162,7 @@ public class NPCDialogue : MonoBehaviour
 
         QuestTracker.questTracker.RemoveQuest(Quests[CurrentQuest]);
 
-        TargetNPC.GetComponent<NPC>().CurrentQuest++;
+        TargetNPC.GetComponent<NPC>().IncrementSpeachBranch();
         CurrentQuest++;
 
         NextDialogue = 0;
@@ -277,7 +277,7 @@ public class NPCDialogue : MonoBehaviour
         Accept.SetActive(false);
         Reject.SetActive(false);
 
-        TargetNPC.GetComponent<NPC>().CurrentSpeachBranch++;
+        TargetNPC.GetComponent<NPC>().IncrementSpeachBranch();
         CurrentSpeachBranch++;
     }
 }

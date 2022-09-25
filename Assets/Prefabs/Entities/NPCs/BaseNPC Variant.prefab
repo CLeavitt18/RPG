@@ -1,29 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &907030419381169325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3441224914128218801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3273b47316b55f04c96adceda724d855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entity: {fileID: 94435771005091078}
-  CurrentSpeachBranch: 0
-  CurrentQuest: 0
-  NPCSpeach: []
-  VendorSpeach:
-    Dialogue: []
-  Quests: []
 --- !u!1001 &4099531889565425536
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1667978222189203576, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
@@ -74,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1667978222684927278, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1248163606826628148}
     - target: {fileID: 1667978222684927281, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
       propertyPath: m_Name
       value: NPCModel
@@ -111,12 +97,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 907030419381169325}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
---- !u!1 &3441224914128218801 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1667978222684927281, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
-  m_PrefabInstance: {fileID: 4099531889565425536}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &94435771005091078 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4155685964200010374, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
@@ -128,3 +110,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3cc067175e5d5345832cee5d2b7667b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1248163606826628148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3005634500929940404, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
+  m_PrefabInstance: {fileID: 4099531889565425536}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441224914128218801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad10f110d9ad87f41ac2af507129bb42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3441224914128218801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1667978222684927281, guid: e9d4ed4041256604ba14ab67d9020fc1, type: 3}
+  m_PrefabInstance: {fileID: 4099531889565425536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &907030419381169325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441224914128218801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3273b47316b55f04c96adceda724d855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 94435771005091078}
+  CurrentSpeachBranch: 0
+  CurrentQuest: 0
+  NPCSpeach: []
+  VendorSpeach:
+    Dialogue: []
+  Quests: []

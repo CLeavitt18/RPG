@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    //[SerializeField] private InventoryState itemType;
-
     [SerializeField] private int Value;
     [SerializeField] private int Amount;
     [SerializeField] private int Weight;
@@ -52,6 +50,8 @@ public class Item : MonoBehaviour
         Rarity = stats.Rarity;
 
         _Item = stats.Item;
+
+        Amount = stats.Amount;
     }
 
     #region Setters
@@ -118,11 +118,6 @@ public class Item : MonoBehaviour
     {
         return equiped;
     }
-
-    /*public InventoryState GetItemType()
-    {
-        return itemType;
-    }*/
 
     #endregion
 

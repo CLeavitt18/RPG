@@ -6,13 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class NPC : AI, ISavable
 {
-    public int CurrentSpeachBranch;
-    public int CurrentQuest;
+    [SerializeField] private int CurrentSpeachBranch;
+    [SerializeField] private int CurrentQuest;
 
     [SerializeField] private DialogueSet[] NPCSpeach;
     [SerializeField] private DialogueSet VendorSpeach;
 
     [SerializeField] private QuestHolder[] Quests;
+
+    public int GetCurrentSpeachBranch()
+    {
+        return CurrentSpeachBranch;
+    }
+
+    public int GetCurrentQuest()
+    {
+        return CurrentQuest;
+    }
 
     public DialogueSet[] GetDialogue()
     {
@@ -29,6 +39,11 @@ public class NPC : AI, ISavable
         return Quests;
     }
 
+    public void IncrementSpeachBranch()
+    {
+        CurrentSpeachBranch++;
+    }
+
     public override void BehaviuorOnUpdate()
     {
         entity.BehaviuorOnUpdate();
@@ -37,7 +52,7 @@ public class NPC : AI, ISavable
     public void SetDefaultState(bool priority)
     {
         entity.SetStats(priority);
-        GetComponent<Inventory>().SetDefaultState(priority);
+        entity.Inventory.SetDefaultState(priority);
     }
 
     public override void CallDeath(bool Animate)

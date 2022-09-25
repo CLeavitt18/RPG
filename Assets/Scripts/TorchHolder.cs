@@ -26,6 +26,11 @@ public class TorchHolder : Item
 
     public override bool Equals(Item Item)
     {
-        return base.Equals(Item);
+        if (Item == null || CompareTag(Item.tag) == false)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

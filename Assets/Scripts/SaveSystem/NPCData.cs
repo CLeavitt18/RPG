@@ -13,8 +13,8 @@ public class NPCData : LivingEntitiesData
     {
         NPC npc = NPC.GetController() as NPC;
 
-        CurrentSpeachBranch = npc.CurrentSpeachBranch;
-        CurrentQuest = npc.CurrentQuest;
+        CurrentSpeachBranch = npc.GetCurrentSpeachBranch();
+        CurrentQuest = npc.GetCurrentQuest();
 
         IsDead = NPC.GetDead();
     }

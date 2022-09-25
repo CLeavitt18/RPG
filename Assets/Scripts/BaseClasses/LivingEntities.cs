@@ -1291,119 +1291,27 @@ public class LivingEntities : MonoBehaviour
         Minions.Remove(minion.GetComponent<AIController>());
     }
 
-    public void LoadEntity(LivingEntitiesData Data)
+    public void LoadEntity(LivingEntitiesData data)
     {
-        InventoryData iData = Data.inventoryData;
-
-        Level = Data.Level;
+        Level = data.Level;
 
         for (int i = 0; i < 3; i++)
         {
-            Attributes[i].Current = Data.Attributes[i].Current;
-            Attributes[i].Max = Data.Attributes[i].Max;
-            Attributes[i].Reserved = Data.Attributes[i].Reserved;
+            Attributes[i].Current = data.Attributes[i].Current;
+            Attributes[i].Max = data.Attributes[i].Max;
+            Attributes[i].Reserved = data.Attributes[i].Reserved;
         }
 
-        if (Inventory.Count != 0)
+        Inventory.Load(data.inventoryData);
+
+        if (data.RightHand)
         {
-            int Count = Inventory.Count;
-
-            for (int i = 0; i < Count; i++)
-            {
-                Destroy(Inventory[i].gameObject);
-            }
-
-            Inventory.Clear();
+            EquipItem(Inventory[data.RightHandId], 0);
         }
 
-        for (int i = 0; i < iData.NumOfWeapons; i++)
+        if (data.LeftHand)
         {
-            WeaponHolder weapon = Instantiate(PrefabIDs.prefabIDs.WeaponHolder).GetComponent<WeaponHolder>();
-
-            LoadSystem.LoadItem(iData.Weapons[i], weapon);
-
-            Inventory.AddItem(weapon, false, iData.Weapons[i].Amount);
-        }
-
-        for (int i = 0; i < iData.NumOfArmour; i++)
-        {
-            ArmourHolder armour;
-
-            if (iData.Armour[i].IsShield)
-            {
-                armour = Instantiate(PrefabIDs.prefabIDs.ShieldHolder).GetComponent<ArmourHolder>();
-            }
-            else
-            {
-                armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder).GetComponent<ArmourHolder>();
-            }
-
-            LoadSystem.LoadItem(iData.Armour[i], armour);
-
-            Inventory.AddItem(armour, false, iData.Armour[i].Amount);
-
-            if (iData.Armour[i].IsEquiped && iData.Armour[i].IsShield == false)
-            {
-                EquipItem(armour, 0);
-            }
-        }
-
-        for (int i = 0; i < iData.NumOfSpells; i++)
-        {
-            SpellHolder spell = Instantiate(PrefabIDs.prefabIDs.SpellHolder).GetComponent<SpellHolder>();
-
-            LoadSystem.LoadItem(iData.Spells[i], spell);
-
-            Inventory.AddItem(spell, false, iData.Spells[i].Amount);
-        }
-
-        for (int i = 0; i < iData.NumOfRunes; i++)
-        {
-            RuneHolder rune = Instantiate(PrefabIDs.prefabIDs.RuneHolder).GetComponent<RuneHolder>();
-
-            LoadSystem.LoadItem(iData.Runes[i], rune);
-
-            Inventory.AddItem(rune, false, iData.Runes[i].Amount);
-        }
-
-        for (int i = 0; i < iData.NumOfPotions; i++)
-        {
-            CraftingMaterials potionData = iData.Potions[i];
-
-            Item potion = Instantiate(PrefabIDs.prefabIDs.Potions[potionData.ResourceId]).GetComponent<Consumable>();
-            potion += potionData.Amount;
-
-            Inventory.AddItem(potion, false, potionData.Amount);
-        }
-
-        for (int i = 0; i < iData.NumOfResources; i++)
-        {
-            CraftingMaterials resourceData = iData.Resources[i];
-
-            Item HResource = Instantiate(PrefabIDs.prefabIDs.CraftingMaterials[resourceData.ResourceId]).GetComponent<ResourceHolder>();
-            HResource += resourceData.Amount;
-
-            Inventory.AddItem(HResource, false, resourceData.Amount);
-        }
-
-        for (int i = 0; i < iData.NumOfMisc; i++)
-        {
-            CraftingMaterials miscData = iData.Misc[i];
-
-            Item misc = Instantiate(PrefabIDs.prefabIDs.Items[miscData.ResourceId]).GetComponent<Item>();
-            misc += miscData.Amount;
-
-            Inventory.AddItem(misc, false, miscData.Amount);
-        }
-
-        if (Data.RightHand)
-        {
-            EquipItem(Inventory[Data.RightHandId], 0);
-        }
-
-        if (Data.LeftHand)
-        {
-            EquipItem(Inventory[Data.LeftHandId], 1);
+            EquipItem(Inventory[data.LeftHandId], 1);
         }
 
         for (int i = 0; i < Attributes.Length; i++)

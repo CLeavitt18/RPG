@@ -1,30 +1,31 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Containers : Interactialbes, IInteractable
+public class Containers : Interactialbes, IInteractable, ISavable
 {
     public UiState Mode;
 
     public bool FirstOpen = true;
 
+    [SerializeField] private Inventory inventory; 
+
     public void Awake()
     {
         PUIInsruction = GameObject.Find("Player UI").transform.GetChild(2).transform.GetChild(1).gameObject;
         gameObject.name = Name;
-        Mode = GetComponent<Inventory>().GetMode();
+        Mode = inventory.GetMode();
     }
 
     public override void SetUiOpen()
     {
-        Inventory Inventory = GetComponent<Inventory>();
-
         StringBuilder sb = new StringBuilder();
 
         switch (Mode)
         {
             case UiState.Container:
-                if (Inventory.Count == 0)
+                if (inventory.Count == 0)
                 {
                     PUIInsruction.GetComponent<Text>().text = "E: Open (Empty)";
                 }
@@ -77,5 +78,59 @@ public class Containers : Interactialbes, IInteractable
         SetPlayerState(State);
 
         FirstOpen = false;
+    }
+
+    public void SetDefaultState(bool state)
+    {
+        inventory.SetDefaultState(state);
+    }
+
+    public bool Save(int id)
+    {
+        return SaveSystem.SaveContainer(inventory, id);
+    }
+
+    public bool Load(int id)
+    {
+        return LoadContainer(id);
+    }
+
+    private bool LoadContainer(int id)
+    {
+        StringBuilder path = new StringBuilder(Application.persistentDataPath);
+        path.Append('/');
+        path.Append(WorldStateTracker.Tracker.PlayerName);
+        path.Append('/');
+        path.Append(WorldStateTracker.Tracker.SaveProfile);
+        path.Append(GlobalValues.LevelFolder);
+        path.Append(SceneManagerOwn.Manager.SceneName);
+        path.Append(GlobalValues.ContainerFolder);
+        path.Append('/');
+        path.Append(GetComponent<Containers>().Name);
+        path.Append(id);
+
+        StringBuilder tempPath = new StringBuilder(path.ToString());
+        tempPath.Append(GlobalValues.TempExtension);
+
+        path.Append(GlobalValues.SaveExtension);
+
+        InventoryData data;
+
+        if (File.Exists(tempPath.ToString()))
+        {
+            data = SaveSystem.LoadContainer(tempPath.ToString());
+        }
+        else
+        {
+            data = SaveSystem.LoadContainer(path.ToString());
+        }
+
+        if (data == null)
+        {
+            Debug.Log("containers data equals null");
+        }
+
+        inventory.Load(data);
+        return true;
     }
 }
