@@ -41,13 +41,13 @@ public class Inventory : MonoBehaviour
     {
         //Debug.Log("Add Item called");
 
-        if (Stackable && !FromRoller)
+        if (Stackable && !FromRoller && Item.GetAmount() != Amount)
         {
             string Name = Item.name;
             Color rarity = Item.GetRarity();
             Item = Instantiate(Item, InventroyHolder);
             Item.name = Name;
-            //Item.SetAmount(Amount);
+            Item.SetAmount(Amount);
             //Item.SetRarity(rarity);
         }
 
@@ -166,6 +166,11 @@ public class Inventory : MonoBehaviour
         for (int i = loopStart; i < GlobalValues.MiscStart + 1; i++)
         {
             StartIds[i]++;
+        }
+
+        if (Mode == UiState.Player || Mode == UiState.Entity)
+        {
+            GetComponent<LivingEntities>().CalculateSpeed();
         }
 
         if (Item is QuestItemHolder holder)

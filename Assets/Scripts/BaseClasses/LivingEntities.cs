@@ -72,7 +72,7 @@ public class LivingEntities : MonoBehaviour
             //if shrine is active make stats a copy of the other hands damagestats class
 
             string attackAnimation;
-            
+
             float attackSpeed;
 
             Hand hand = Hands[HandType];
@@ -166,7 +166,7 @@ public class LivingEntities : MonoBehaviour
             hand.Stats.Clear();
 
             hand.attackFinsihed = false;
-            
+
             hand.Animator.speed = 1.0f / attackSpeed;
             hand.Animator.SetTrigger(attackAnimation);
 
@@ -383,8 +383,8 @@ public class LivingEntities : MonoBehaviour
         {
             if (gSpell.Activated)
             {
-                if (Hit.collider != null && 
-                    Hit.collider.CompareTag(gameObject.tag) == false && 
+                if (Hit.collider != null &&
+                    Hit.collider.CompareTag(gameObject.tag) == false &&
                     Hit.collider.CompareTag(gameObject.tag + "Minion") == false)
                 {
                     Minion minion;
@@ -758,7 +758,7 @@ public class LivingEntities : MonoBehaviour
                         for (int x = 0; x < count; x++)
                         {
                             Minion minion = (Minions[id].GetController() as Minion);
-                            
+
                             if (minion.SourceSpell == golemSpell)
                             {
                                 minion.CallDeath(false);
@@ -1217,10 +1217,16 @@ public class LivingEntities : MonoBehaviour
 
         if (currentWeight >= maxWeight)
         {
-            float WeightMulti = currentWeight - maxWeight;
+            int weightDifferance = currentWeight - maxWeight;
 
-            WeightMulti *= .01f;
-            WeightMulti *= .05f;
+            if (weightDifferance > maxWeight * 2)
+            {
+                weightDifferance = maxWeight * 2;
+            }
+
+            float WeightMulti = 0.01f * (float)weightDifferance;
+
+            WeightMulti *= 0.0005f;
 
             tempSpeed *= WeightMulti;
         }

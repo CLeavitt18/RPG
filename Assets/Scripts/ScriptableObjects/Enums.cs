@@ -254,7 +254,8 @@ public enum UiState : byte
 {
     Container,
     Store,
-    Player
+    Player,
+    Entity
 }
 
 public enum InventoryState : byte
