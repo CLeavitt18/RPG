@@ -130,7 +130,7 @@ public class LivingEntities : MonoBehaviour
                 }
             }
 
-            if (hand.ChannelTime >= .3f)
+            if (hand.ChannelTime >= GlobalValues.ChargeAttackTime)
             {
                 float cost = (float)Weapon.GetWeight() / 100f;
                 cost *= 1 + (Mathf.Floor((float)Attributes[(int)Abilities.Strenght].Ability * .5f)) * .05f;
@@ -186,14 +186,14 @@ public class LivingEntities : MonoBehaviour
 
         Hand hand = Hands[HandType];
 
-        if (hand.ChannelTime >= .2f || fromEnemy)
+        if (hand.ChannelTime >= GlobalValues.ChargeAttackTime || fromEnemy)
         {
             StartCoroutine(Attack(HandType));
 
             return;
         }
 
-        if (hand.ChannelTime < .2f)
+        if (hand.ChannelTime < GlobalValues.ChargeAttackTime)
         {
             hand.ChannelTime += Time.deltaTime;
         }

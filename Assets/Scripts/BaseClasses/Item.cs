@@ -61,6 +61,11 @@ public class Item : MonoBehaviour
         Amount = amount;
     }
 
+    public void SetRarity(Color rarity)
+    {
+        Rarity = rarity;
+    }
+
     public void SetEquiped(bool State)
     {
         equiped = State;

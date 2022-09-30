@@ -55,6 +55,7 @@ public static class GlobalValues
     public const float RDamPerDex = 0.045f;
     public const float SPDamIntInterval = 0.50f;
     public const float SPDamPerInt = 0.055f;
+    public const float ChargeAttackTime = 0.3f;
 
     public static readonly Color[] rarities = {new Color(0.72f, 0.72f, 0.72f, 0.50f), //base color
                                                new Color(0.50f, 0.50f, 0.50f, 0.50f), //common color

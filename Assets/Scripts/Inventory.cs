@@ -41,14 +41,14 @@ public class Inventory : MonoBehaviour
     {
         //Debug.Log("Add Item called");
 
-        if (Stackable && !FromRoller && Item.GetAmount() != Amount)
+        if (Stackable && !FromRoller)
         {
             string Name = Item.name;
             Color rarity = Item.GetRarity();
             Item = Instantiate(Item, InventroyHolder);
             Item.name = Name;
             Item.SetAmount(Amount);
-            //Item.SetRarity(rarity);
+            Item.SetRarity(rarity);
         }
 
         int start_id;

@@ -588,9 +588,9 @@ MonoBehaviour:
       DamageValues: 
       Status: 
     HasAttacked: 0
+    attackFinsihed: 1
     NextAttack: 0
     ChannelTime: 0
-    ActionsPerSecond: 0
   - State: 0
     DamageMultis:
       Melee:
@@ -614,15 +614,15 @@ MonoBehaviour:
     HeldItem: {fileID: 0}
     Stats:
       Parent: {fileID: 0}
-      SourceHand: 0
+      SourceHand: 1
       LifeSteal: 0
       DamageTypes: 
       DamageValues: 00000000000000000000000000000000
       Status: 00000000
     HasAttacked: 0
+    attackFinsihed: 1
     NextAttack: 0
     ChannelTime: 0
-    ActionsPerSecond: 0
   Running: 0
   Dead: 0
   IsRegening: 000000
