@@ -104,7 +104,7 @@ public enum SpellType : byte
 
 public enum ArmourType : byte
 {
-    Helmat,
+    Helmet,
     RightPauldron,
     LeftPauldron,
     ChestPlate,

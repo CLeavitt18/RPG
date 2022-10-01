@@ -74,7 +74,16 @@ public class ArmourRoller : MonoBehaviour
 
     public Item CreateArmour(int Mat_Id, ArmourType Type, SkillType SkillType, int Cat_Id)
     {
-        Item armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder).GetComponent<Item>();
+        Item armour;
+        
+        if (Type == ArmourType.Shield)
+        {
+            armour = Instantiate(PrefabIDs.prefabIDs.ShieldHolder).GetComponent<Item>();
+        }
+        else
+        {
+            armour = Instantiate(PrefabIDs.prefabIDs.ArmourHolder).GetComponent<Item>();
+        }
 
         BaseArmour ArmourBase;
 
@@ -84,29 +93,32 @@ public class ArmourRoller : MonoBehaviour
 
         ArmourStats stats = new ArmourStats();
 
-        if (Type == ArmourType.Helmat)
+        switch(Type)
         {
-            ArmourBase = Armour[0];
-        }
-        else if (Type == ArmourType.RightPauldron || Type == ArmourType.LeftPauldron)
-        {
-            ArmourBase= Armour[1];
-        }
-        else if (Type == ArmourType.ChestPlate)
-        {
-            ArmourBase = Armour[2];
-        }
-        else if (Type == ArmourType.RightGauntlet || Type == ArmourType.LeftGauntlet)
-        {
-            ArmourBase = Armour[3];
-        }
-        else if (Type == ArmourType.Leggings)
-        {
-            ArmourBase = Armour[4];
-        }
-        else //Boots
-        {
-            ArmourBase = Armour[5];
+            case ArmourType.Helmet:
+                ArmourBase = Armour[0];
+                break;
+            case ArmourType.RightPauldron:
+            case ArmourType.LeftPauldron:
+                ArmourBase = Armour[1];
+                break;
+            case ArmourType.ChestPlate:
+                ArmourBase = Armour[2];
+                break;
+            case ArmourType.RightGauntlet:
+            case ArmourType.LeftGauntlet:
+                ArmourBase = Armour[3];
+                break;
+            case ArmourType.Leggings:
+                ArmourBase = Armour[4];
+                break;
+            case ArmourType.RightBoot:
+            case ArmourType.LeftBoot:
+                ArmourBase = Armour[5];
+                break;
+            default: // shield
+                ArmourBase= Armour[6];
+                break;
         }
 
         stats.Rarity = GlobalValues.rarities[rarityId];
@@ -125,7 +137,7 @@ public class ArmourRoller : MonoBehaviour
 
         StringBuilder sb = new StringBuilder();
 
-        if (Type == ArmourType.Helmat || Type == ArmourType.ChestPlate || Type == ArmourType.Leggings)
+        if (Type == ArmourType.Helmet || Type == ArmourType.ChestPlate || Type == ArmourType.Leggings)
         {
             sb.Append(((MaterialType)Mat_Id).ToString());
             sb.Append(Type.ToString());

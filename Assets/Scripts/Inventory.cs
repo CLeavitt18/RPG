@@ -94,8 +94,6 @@ public class Inventory : MonoBehaviour
 
         if ((AllItems.Count == 0 || end_id == AllItems.Count) && !Stackable)
         {
-            Debug.Log("Item added at end of inveotry list");
-
             AllItems.Add(Item);
 
             CurrentCarryWeight += Item.GetWeight() * Amount;
