@@ -41,6 +41,7 @@ public class NPC : AI, ISavable
 
     public void IncrementSpeachBranch()
     {
+        Debug.Log("Incrment called");
         CurrentSpeachBranch++;
     }
 

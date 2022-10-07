@@ -152,7 +152,7 @@ public class NPCDialogue : MonoBehaviour
         }
 
         Inventory Inventory = Player.player.Inventory;
-
+ 
         for (int i = 0; i < Quests[CurrentQuest].QuestItems.Length; i++)
         {
             QuestItemCompleteConditon item = Quests[CurrentQuest].QuestItems[i];
@@ -162,7 +162,7 @@ public class NPCDialogue : MonoBehaviour
 
         QuestTracker.questTracker.RemoveQuest(Quests[CurrentQuest]);
 
-        TargetNPC.GetComponent<NPC>().IncrementSpeachBranch();
+        //TargetNPC.GetComponent<NPC>().IncrementSpeachBranch();
         CurrentQuest++;
 
         NextDialogue = 0;
@@ -218,7 +218,6 @@ public class NPCDialogue : MonoBehaviour
 
         if (Mode == NPCChatState.TurnInQuest && NextDialogue == NPCSpeach[CurrentSpeachBranch].Dialogue.Length - 2)
         {
-            Debug.Log("Branch " + CurrentSpeachBranch + " dialogue " + NextDialogue);
             NPCDialogueText.text = NPCSpeach[CurrentSpeachBranch].Dialogue[NextDialogue];
             SetButtons(true);
             return;
@@ -260,6 +259,7 @@ public class NPCDialogue : MonoBehaviour
 
     public void SetQuest()
     {
+        Debug.Log("Set Quest called");
         if (Mode == NPCChatState.Quest)
         {
             QuestTracker.questTracker.AddQuest(Quests[CurrentQuest]);
