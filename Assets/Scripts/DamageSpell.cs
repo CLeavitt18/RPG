@@ -50,4 +50,34 @@ public class DamageSpell : Spell
 
         return false;
     }
+
+    public int GetCritDamage()
+    {
+        return CritDamage;
+    }
+
+    public int GetLowerRange(int id)
+    {
+        return DamageRanges[id].LDamage;
+    }
+
+    public int GetUpperRange(int id)
+    {
+        return DamageRanges[id].HDamage;
+    }
+
+    public int GetStatusChance(int id)
+    {
+        return StatusChance[id];
+    }
+
+    public int GetDamageTypeCount()
+    {
+       return DamageRanges.Count;
+    }
+
+    public DamageTypeEnum GetDamageType(int id)
+    {
+        return DamageRanges[id].Type;
+    }
 }

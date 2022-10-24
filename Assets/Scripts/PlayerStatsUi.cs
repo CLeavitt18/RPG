@@ -205,287 +205,96 @@ public class PlayerStatsUi : IUi
 
             if (heldItem != null)
             {
-                text = Instantiate(BannerPrefab, StatsListHolder);
+                continue;
+            }
+            
+            text = Instantiate(BannerPrefab, StatsListHolder);
 
-                if (HandType == 0)
+            if (HandType == 0)
+            {
+                text.text = "Right Hand\n___________________________________________________";
+            }
+            else
+            {
+                if (Player.player.GetHeldItem(0) == Player.player.GetHeldItem(1))
                 {
-                    text.text = "Right Hand\n___________________________________________________";
+                    Destroy(text);
+                    continue;
                 }
-                else
-                {
-                    if (Player.player.GetHeldItem(0) == Player.player.GetHeldItem(1))
+
+                text.text = "Left Hand\n___________________________________________________";
+            }
+
+            switch (heldItem.tag)
+            {
+                case GlobalValues.WeaponTag:
+
+                    WeaponHolder weapon = heldItem.GetComponent<WeaponHolder>();
+
+                    for (int x = 0; x < weapon.GetDamageRangesCount(); x++)
                     {
-                        Destroy(text);
-                        continue;
-                    }
-
-                    text.text = "Left Hand\n___________________________________________________";
-                }
-
-                switch (heldItem.tag)
-                {
-                    case "Weapon":
-
-                        WeaponHolder weapon = heldItem.GetComponent<WeaponHolder>();
-
-                        for (int x = 0; x < weapon.GetDamageRangesCount(); x++)
-                        {
-                            text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                            sb.Append(weapon.GetDamageType(x).ToString());
-                            sb.Append(": ");
-                            sb.Append(weapon.GetLowerRange(x).ToString("n0"));
-                            sb.Append(" to ");
-                            sb.Append(weapon.GetUpperRange(x).ToString("n0"));
-
-                            text.text = sb.ToString();
-                            sb.Clear();
-                        }
-
                         text = Instantiate(StatTextPrefab, StatsListHolder);
 
-                        WeaponHolder tempWeapon = weapon as WeaponHolder;
-
-                        sb.Append("Attacks Per Secound: ");
-                        sb.Append(tempWeapon.GetAttackSpeed().ToString("0.00"));
+                        sb.Append(weapon.GetDamageType(x).ToString());
+                        sb.Append(": ");
+                        sb.Append(weapon.GetLowerRange(x).ToString("n0"));
+                        sb.Append(" to ");
+                        sb.Append(weapon.GetUpperRange(x).ToString("n0"));
 
                         text.text = sb.ToString();
+                        sb.Clear();
+                    }
+
+                    text = Instantiate(StatTextPrefab, StatsListHolder);
+
+                    WeaponHolder tempWeapon = weapon as WeaponHolder;
+
+                    sb.Append("Attacks Per Secound: ");
+                    sb.Append(tempWeapon.GetAttackSpeed().ToString("0.00"));
+
+                    text.text = sb.ToString();
+
+                    sb.Clear();
+
+                    text = Instantiate(StatTextPrefab, StatsListHolder);
+
+                    sb.Append("Life Steal: ");
+                    sb.Append(tempWeapon.GetLifeSteal());
+                    sb.Append("%");
+
+                    text.text = sb.ToString();
+
+                    for (int i = 0; i < weapon.GetDamageRangesCount(); i++)
+                    {
+                        SetStatsStats(weapon, i, weapon.GetDamageType(i));
+                    }
+
+                    float[] multi;
+
+                    text = Instantiate(BannerPrefab, StatsListHolder);
+                    text.text = "Melee Damage Multipliers\n___________________________________________";
+
+                    multi = Player.player.GetMeleeMultis(HandType);
+
+                    for (int x = 0; x < weapon.GetDamageRangesCount(); x++)
+                    {
+                        text = Instantiate(StatTextPrefab, StatsListHolder);
 
                         sb.Clear();
 
-                        text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                        sb.Append("Life Steal: ");
-                        sb.Append(tempWeapon.GetLifeSteal());
-                        sb.Append("%");
+                        sb.Append(weapon.GetDamageType(x).ToString());
+                        sb.Append(" Damage: ");
+                        sb.Append(multi[(int)weapon.GetDamageType(x)]);
 
                         text.text = sb.ToString();
 
-                        for (int i = 0; i < weapon.GetDamageRangesCount(); i++)
-                        {
-                            switch (weapon.GetDamageType(i))
-                            {
-                                case DamageTypeEnum.Physical:
-                                    text = Instantiate(BannerPrefab, StatsListHolder);
-                                    text.text = "Critical\n___________________________________________";
-
-                                    #region CreateCriticalChanceText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Critical Chance: ");
-                                    sb.Append(weapon.GetStatus(i));
-                                    sb.Append("%");
-
-                                    text.text = sb.ToString();
-                                    #endregion
-
-                                    #region CreateCriticalDamageText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Critital Damage: ");
-                                    sb.Append(weapon.GetCrit());
-                                    sb.Append("%");
-
-                                    text.text = sb.ToString();
-                                    #endregion
-                                    break;
-                                case DamageTypeEnum.Fire:
-                                    text = Instantiate(BannerPrefab, StatsListHolder);
-                                    text.text = "Burn\n___________________________________________";
-
-                                    #region CreateBurnChanceText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Burn Chance: ");
-                                    sb.Append(weapon.GetStatus(i));
-                                    sb.Append("%");
-
-                                    text.text = sb.ToString();
-                                    #endregion
-
-                                    #region CreateBurnDamageText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Burn Damage: ");
-                                    sb.Append(Player.player.GetBurnDamage());
-                                    sb.Append("%");
-
-                                    text.text = sb.ToString();
-                                    #endregion
-
-                                    #region CreateNBurningTicksText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Burn Ticks: ");
-                                    sb.Append(Player.player.GetTicks());
-
-                                    text.text = sb.ToString();
-
-                                    #endregion
-
-                                    #region CreateBurnTimeText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Time Between Burn Ticks: ");
-                                    sb.Append(Mathf.Round(Player.player.GetWaitTime() * 100) * .01f);
-                                    sb.Append("s");
-
-                                    text.text = sb.ToString();
-                                    #endregion
-                                    break;
-                                case DamageTypeEnum.Lightning:
-                                    text = Instantiate(BannerPrefab, StatsListHolder);
-                                    text.text = "Chain\n___________________________________________";
-
-                                    #region CreateChainChanceText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Chain Chance: ");
-                                    sb.Append(weapon.GetStatus(i));
-                                    sb.Append("%");
-
-                                    text.text = sb.ToString();
-                                    #endregion
-
-                                    #region CreateChainDamageText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Chain Damage: ");
-                                    sb.Append(Player.player.GetChainDamage());
-                                    sb.Append("%");
-
-                                    text.text = sb.ToString();
-                                    #endregion
-
-                                    #region CreateNChainsText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Number Of Chains: ");
-                                    sb.Append(Player.player.GetChains());
-
-                                    text.text = sb.ToString();
-                                    #endregion
-
-                                    #region CreateChainLenghtText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Chain Lenght: ");
-                                    sb.Append(Player.player.GetChainLength());
-
-                                    text.text = sb.ToString();
-                                    #endregion
-                                    break;
-                                case DamageTypeEnum.Ice:
-                                    text = Instantiate(BannerPrefab, StatsListHolder);
-                                    text.text = "Chill\n___________________________________________";
-
-                                    #region CreateChillChanceText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Chill Chance: ");
-                                    sb.Append(weapon.GetStatus(i));
-                                    sb.Append("%");
-
-                                    text.text = sb.ToString();
-                                    #endregion
-
-                                    #region CreateChillAffectText
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Clear();
-
-                                    sb.Append("Chill Affect: ");
-                                    sb.Append(Player.player.GetChillAffect());
-                                    sb.Append("% Reduced Action Speed");
-
-                                    text.text = sb.ToString();
-
-                                    sb.Clear();
-
-                                    text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                                    sb.Append("Chill Duration: ");
-                                    sb.Append(Mathf.Round(Player.player.GetChillDuration() * 100) / 100);
-                                    sb.Append("s");
-
-                                    text.text = sb.ToString();
-
-                                    sb.Clear();
-
-                                    #endregion
-                                    break;
-                                case DamageTypeEnum.Soul:
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-
-                        float[] multi;
-
-                        text = Instantiate(BannerPrefab, StatsListHolder);
-                        text.text = "Melee Damage Multipliers\n___________________________________________";
-
-                        multi = Player.player.GetMeleeMultis(HandType);
-
-                        /*else if (weapon is SpellHolder)
-                        {
-                            text = Instantiate(BannerPrefab, StatsListHolder);
-                            text.text = "Spell Damage Multipliers\n___________________________________________";
-
-                            multi = Player.player.GetSpellMultis(HandType);
-                        }
-                        else
-                        {
-                            text = Instantiate(BannerPrefab, StatsListHolder);
-                            text.text = "Ranged Damage Multipliers\n_____________________________________________";
-
-                            multi = Player.player.GetRangedMultis(HandType);
-                        }*/
-
-                        #region CreateMultiText
-                        for (int x = 0; x < weapon.GetDamageRangesCount(); x++)
-                        {
-                            text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                            sb.Clear();
-
-                            sb.Append(weapon.GetDamageType(x).ToString());
-                            sb.Append(" Damage: ");
-                            sb.Append(multi[(int)weapon.GetDamageType(x)]);
-
-                            text.text = sb.ToString();
-
-                        }
-                        #endregion
-                        break;
-                    case "Spell":
-                        break;
-                    default:
-                        break;
-                }
+                    }
+                    break;
+                case GlobalValues.SpellTag:
+
+                    break;
+                default:
+                    break;
             }
         }
     }
@@ -512,5 +321,205 @@ public class PlayerStatsUi : IUi
     public override void Close()
     {
         StatsUi.SetActive(false);
+    }
+
+    private void SetStatsStats(WeaponHolder weapon, int id, DamageTypeEnum type)
+    {
+        switch (type)
+        {
+            case DamageTypeEnum.Physical:
+                DisplayPhysStats(weapon.GetStatus(id), weapon.GetCrit());
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void SetStatsStats(Spell spell, int id, DamageTypeEnum type)
+    {
+        int chance = 0;
+        int damage = 0;
+
+        switch (spell.GetSpellType())
+        {
+            case SpellType.DamageSpell:
+                DamageSpell dSpell = spell as DamageSpell;
+                damage = dSpell.GetCritDamage();
+                chance = dSpell.GetStatusChance(id);
+                break;
+            default:
+                break;
+        }
+
+        switch (type)
+        {
+            case DamageTypeEnum.Physical:
+                DisplayPhysStats(chance, damage);
+                break;
+            case DamageTypeEnum.Fire:
+                DisplayFireStats(chance);
+                break;
+            case DamageTypeEnum.Lightning:
+                DisplayLightningStats(chance);
+                break;
+            case DamageTypeEnum.Ice:
+                DisplayIceStats(chance);
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    private void DisplayPhysStats(int statusChance, int crit)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        Text text = Instantiate(BannerPrefab, StatsListHolder);
+        text.text = "Critical\n___________________________________________";
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Append("Critical Chance: ");
+        sb.Append(statusChance);
+        sb.Append("%");
+
+        text.text = sb.ToString();
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Clear();
+
+        sb.Append("Critital Damage: ");
+        sb.Append(crit);
+        sb.Append("%");
+
+        text.text = sb.ToString();
+    }
+
+    private void DisplayFireStats(int statsChance)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        Text text = Instantiate(BannerPrefab, StatsListHolder);
+        text.text = "Burn\n___________________________________________";
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Append("Burn Chance: ");
+        sb.Append(statsChance);
+        sb.Append("%");
+
+        text.text = sb.ToString();
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Clear();
+
+        sb.Append("Burn Damage: ");
+        sb.Append(Player.player.GetBurnDamage());
+        sb.Append("%");
+
+        text.text = sb.ToString();
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Clear();
+
+        sb.Append("Burn Ticks: ");
+        sb.Append(Player.player.GetTicks());
+
+        text.text = sb.ToString();
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Clear();
+
+        sb.Append("Time Between Burn Ticks: ");
+        sb.Append(Mathf.Round(Player.player.GetWaitTime() * 100) * .01f);
+        sb.Append("s");
+
+        text.text = sb.ToString();
+    }
+
+    private void DisplayLightningStats(int statsChance)
+    {
+        StringBuilder sb = new StringBuilder();
+        Text text = Instantiate(BannerPrefab, StatsListHolder);
+        text.text = "Chain\n___________________________________________";
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Append("Chain Chance: ");
+        sb.Append(statsChance);
+        sb.Append("%");
+
+        text.text = sb.ToString();
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Clear();
+
+        sb.Append("Chain Damage: ");
+        sb.Append(Player.player.GetChainDamage());
+        sb.Append("%");
+
+        text.text = sb.ToString();
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Clear();
+
+        sb.Append("Number Of Chains: ");
+        sb.Append(Player.player.GetChains());
+
+        text.text = sb.ToString();
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Clear();
+
+        sb.Append("Chain Lenght: ");
+        sb.Append(Player.player.GetChainLength());
+
+        text.text = sb.ToString();
+    }
+
+    private void DisplayIceStats(int statsChance)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        Text text = Instantiate(BannerPrefab, StatsListHolder);
+        text.text = "Chill\n___________________________________________";
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Append("Chill Chance: ");
+        sb.Append(statsChance);
+        sb.Append("%");
+
+        text.text = sb.ToString();
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Clear();
+
+        sb.Append("Chill Affect: ");
+        sb.Append(Player.player.GetChillAffect());
+        sb.Append("% Reduced Action Speed");
+
+        text.text = sb.ToString();
+
+        sb.Clear();
+
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Append("Chill Duration: ");
+        sb.Append(Mathf.Round(Player.player.GetChillDuration() * 100) / 100);
+        sb.Append("s");
+
+        text.text = sb.ToString();
+
+        sb.Clear();
     }
 }

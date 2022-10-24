@@ -860,9 +860,9 @@ public class Player : LivingEntities
 
                     if (spell.GetRune(x) is DamageSpell dSpell)
                     {
-                        for (int y = 0; y < dSpell.DamageRanges.Count; y++)
+                        for (int y = 0; y < dSpell.GetDamageTypeCount(); y++)
                         {
-                            SpellDamageMulti(i, dSpell.DamageRanges[y].Type);
+                            SpellDamageMulti(i, dSpell.GetDamageType(i));
                         }
                     }
                     else if (spell.GetRune(x) is GolemSpell gSpell && gSpell.Activated)
