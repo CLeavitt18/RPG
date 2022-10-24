@@ -616,7 +616,7 @@ public class Inventory : MonoBehaviour
 
         if (data == null)
         {
-            Debug.Log("containers data equals null");
+            Debug.Log("container's data equals null");
         }
 
         for (int i = 0; i < data.NumOfWeapons; i++)
