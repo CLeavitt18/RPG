@@ -1,12 +1,14 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class DamageSpell : Spell
 {
-    public int CritDamage;
+    [SerializeField] private int CritDamage;
 
     public List<DamageTypeStruct> DamageRanges;
 
-    public List<int> StatusChance;
+    [SerializeField] private List<int> StatusChance;
+
 
     public override void SetStats(SpellStats stats)
     {

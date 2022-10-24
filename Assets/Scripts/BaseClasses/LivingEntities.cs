@@ -355,7 +355,7 @@ public class LivingEntities : MonoBehaviour
                 int Chance;
                 Chance = Random.Range(1, 101);
 
-                if (Chance <= damageSpell.StatusChance[i])
+                if (Chance <= damageSpell.GetStatusChance(i))
                 {
                     hand.Stats.Status.Add(true);
                 }
