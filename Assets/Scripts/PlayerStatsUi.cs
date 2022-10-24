@@ -405,7 +405,7 @@ public class PlayerStatsUi : IUi
                                     sb.Clear();
 
                                     sb.Append("Chill Chance: ");
-                                    sb.Append(weapon.GetStatus(3));
+                                    sb.Append(weapon.GetStatus(i));
                                     sb.Append("%");
 
                                     text.text = sb.ToString();
@@ -426,9 +426,13 @@ public class PlayerStatsUi : IUi
 
                                     text = Instantiate(StatTextPrefab, StatsListHolder);
 
-                                    sb.Append("Chill Duration");
-                                    sb.Append(Player.player.GetChillDuration());
+                                    sb.Append("Chill Duration: ");
+                                    sb.Append(Mathf.Round(Player.player.GetChillDuration() * 100) / 100);
                                     sb.Append("s");
+
+                                    text.text = sb.ToString();
+
+                                    sb.Clear();
 
                                     #endregion
                                     break;
