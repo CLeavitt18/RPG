@@ -454,14 +454,14 @@ public static class LoadSystem
                 ToRune.StatArray4[x] = spellD.DamageRanges[x].HDamage;
             }
 
-            ToRune.StatArray1 = new int[spellD.StatusChance.Count];
+            ToRune.StatArray1 = new int[spellD.GetDamageTypeCount()];
 
             for (int x = 0; x < ToRune.StatArray1.Length; x++)
             {
-                ToRune.StatArray1[x] = spellD.StatusChance[x];
+                ToRune.StatArray1[x] = spellD.GetStatusChance(x);
             }
 
-            ToRune.int0 = spellD.CritDamage;
+            ToRune.int0 = spellD.GetCritDamage();
 
             ToRune.CastRate = spellD.GetCastRate();
 
