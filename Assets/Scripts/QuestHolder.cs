@@ -101,6 +101,11 @@ public class QuestHolder : Item
         return Rewards;
     }
 
+    public QuestCompleteType GetCompleteType()
+    {
+        return CompletionType;
+    }
+
     public bool GetComplete()
     {
         return complete;
@@ -117,6 +122,16 @@ public class QuestHolder : Item
 
         return completes;
     }
+    
+    public string GetSource()
+    {
+        return NPCName;
+    }
+
+    public string GetLocation()
+    {
+        return Location;
+    }
 
     public void SetComplete(bool state)
     {
@@ -130,4 +145,5 @@ public class QuestHolder : Item
             QuestItems[i].complete = completes[i];
         }
     }
+
 }

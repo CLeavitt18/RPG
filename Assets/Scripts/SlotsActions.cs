@@ -200,7 +200,27 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
         }
         else
         {
+            weightText.text = "";
+
+            QuestHolder quest = item as QuestHolder;
+
             displayNameText.text = sb.ToString();
+
+            sb.Clear();
+
+            sb.Append(quest.GetCompleteType().ToString());
+            weightText.text = sb.ToString();
+
+            sb.Clear();
+
+            sb.Append(quest.GetLocation());
+            miscText.text = sb.ToString();
+
+            sb.Clear();
+
+            sb.Append(quest.GetSource());
+
+            valueText.text = sb.ToString();
         }
     }
 
