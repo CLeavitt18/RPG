@@ -203,16 +203,16 @@ public class PlayerStatsUi : IUi
             Item heldItem = Player.player.GetHeldItem(HandType);
             DamageStats stats = Player.player.GetStats(HandType);
 
-            if (heldItem != null)
+            if (heldItem == null)
             {
                 continue;
             }
-            
+
             text = Instantiate(BannerPrefab, StatsListHolder);
 
             if (HandType == 0)
             {
-                text.text = "Right Hand\n___________________________________________________";
+                text.text = "Right Hand" + GlobalValues.breakLine;
             }
             else
             {
@@ -222,8 +222,12 @@ public class PlayerStatsUi : IUi
                     continue;
                 }
 
-                text.text = "Left Hand\n___________________________________________________";
+                text.text = "Left Hand" + GlobalValues.breakLine;
             }
+
+            text = Instantiate(BannerPrefab, StatsListHolder);
+
+            text.text = heldItem.GetName();
 
             switch (heldItem.tag)
             {
@@ -272,7 +276,7 @@ public class PlayerStatsUi : IUi
                     float[] multi;
 
                     text = Instantiate(BannerPrefab, StatsListHolder);
-                    text.text = "Melee Damage Multipliers\n___________________________________________";
+                    text.text = "Melee Damage Multipliers" + GlobalValues.breakLine;
 
                     multi = Player.player.GetMeleeMultis(HandType);
 
@@ -287,10 +291,37 @@ public class PlayerStatsUi : IUi
                         sb.Append(multi[(int)weapon.GetDamageType(x)]);
 
                         text.text = sb.ToString();
-
                     }
                     break;
                 case GlobalValues.SpellTag:
+
+                    SpellHolder spellH = heldItem as SpellHolder;
+
+                    Spell rune;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        rune = spellH.GetRune(i);
+
+                        if (rune == null)
+                        {
+                            continue;
+                        }
+
+                        switch (rune.GetSpellType())
+                        {
+                            case SpellType.DamageSpell:
+                                DamageSpell dRune = rune as DamageSpell;
+
+                                for (int x = 0; x < dRune.GetDamageTypeCount(); x++)
+                                {
+                                    SetStatsStats(dRune, x, dRune.GetDamageType(x));
+                                }
+
+                                break;
+                            default:
+                                break;
+                        }
+                    }
 
                     break;
                 default:
@@ -325,31 +356,31 @@ public class PlayerStatsUi : IUi
 
     private void SetStatsStats(WeaponHolder weapon, int id, DamageTypeEnum type)
     {
+        int statusChance = weapon.GetStatus(id);
+        
         switch (type)
         {
             case DamageTypeEnum.Physical:
-                DisplayPhysStats(weapon.GetStatus(id), weapon.GetCrit());
+                DisplayPhysStats(statusChance, weapon.GetCrit());
+                break;
+            case DamageTypeEnum.Fire:
+                DisplayFireStats(statusChance);
+                break;
+            case DamageTypeEnum.Lightning:
+                DisplayLightningStats(statusChance);
+                break;
+            case DamageTypeEnum.Ice:
+                DisplayIceStats(statusChance);
                 break;
             default:
                 break;
         }
     }
 
-    private void SetStatsStats(Spell spell, int id, DamageTypeEnum type)
+    private void SetStatsStats(DamageSpell spell, int id, DamageTypeEnum type)
     {
-        int chance = 0;
-        int damage = 0;
-
-        switch (spell.GetSpellType())
-        {
-            case SpellType.DamageSpell:
-                DamageSpell dSpell = spell as DamageSpell;
-                damage = dSpell.GetCritDamage();
-                chance = dSpell.GetStatusChance(id);
-                break;
-            default:
-                break;
-        }
+        int damage = spell.GetCritDamage();
+        int chance = spell.GetStatusChance(id);
 
         switch (type)
         {
