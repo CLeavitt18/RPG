@@ -212,7 +212,7 @@ public class PlayerStatsUi : IUi
 
             if (HandType == 0)
             {
-                text.text = "Right Hand" + GlobalValues.breakLine;
+                text.text = "Right Hand" + GlobalValues.BreakLine;
             }
             else
             {
@@ -222,7 +222,7 @@ public class PlayerStatsUi : IUi
                     continue;
                 }
 
-                text.text = "Left Hand" + GlobalValues.breakLine;
+                text.text = "Left Hand" + GlobalValues.BreakLine;
             }
 
             text = Instantiate(BannerPrefab, StatsListHolder);
@@ -237,16 +237,7 @@ public class PlayerStatsUi : IUi
 
                     for (int x = 0; x < weapon.GetDamageRangesCount(); x++)
                     {
-                        text = Instantiate(StatTextPrefab, StatsListHolder);
-
-                        sb.Append(weapon.GetDamageType(x).ToString());
-                        sb.Append(": ");
-                        sb.Append(weapon.GetLowerRange(x).ToString("n0"));
-                        sb.Append(" to ");
-                        sb.Append(weapon.GetUpperRange(x).ToString("n0"));
-
-                        text.text = sb.ToString();
-                        sb.Clear();
+                        SetDamageStats(weapon, x, weapon.GetDamageType(x), sb);
                     }
 
                     text = Instantiate(StatTextPrefab, StatsListHolder);
@@ -270,13 +261,13 @@ public class PlayerStatsUi : IUi
 
                     for (int i = 0; i < weapon.GetDamageRangesCount(); i++)
                     {
-                        SetStatsStats(weapon, i, weapon.GetDamageType(i));
+                        SetStatusStats(weapon, i, weapon.GetDamageType(i), sb);
                     }
 
                     float[] multi;
 
                     text = Instantiate(BannerPrefab, StatsListHolder);
-                    text.text = "Melee Damage Multipliers" + GlobalValues.breakLine;
+                    text.text = "Melee Damage Multipliers" + GlobalValues.BreakLine;
 
                     multi = Player.player.GetMeleeMultis(HandType);
 
@@ -314,7 +305,12 @@ public class PlayerStatsUi : IUi
 
                                 for (int x = 0; x < dRune.GetDamageTypeCount(); x++)
                                 {
-                                    SetStatsStats(dRune, x, dRune.GetDamageType(x));
+                                    SetDamageStats(dRune, x, dRune.GetDamageType(x), sb);
+                                }
+
+                                for (int x = 0; x < dRune.GetDamageTypeCount(); x++)
+                                {
+                                    SetStatusStats(dRune, x, dRune.GetDamageType(x), sb);
                                 }
 
                                 break;
@@ -354,47 +350,62 @@ public class PlayerStatsUi : IUi
         StatsUi.SetActive(false);
     }
 
-    private void SetStatsStats(WeaponHolder weapon, int id, DamageTypeEnum type)
+    private void SetDamageStats(WeaponHolder weapon, int id, DamageTypeEnum type, StringBuilder sb)
+    {
+        int min = weapon.GetLowerRange(id);
+        int max = weapon.GetUpperRange(id);
+
+        DisplayDamageStats(min, max, type, sb);
+    }
+
+    private void SetDamageStats(DamageSpell rune, int id, DamageTypeEnum type, StringBuilder sb)
+    {
+        int min = rune.GetLowerRange(id);
+        int max = rune.GetUpperRange(id);
+
+        DisplayDamageStats(min, max, type, sb);
+    }
+
+    private void SetStatusStats(WeaponHolder weapon, int id, DamageTypeEnum type, StringBuilder sb)
     {
         int statusChance = weapon.GetStatus(id);
         
         switch (type)
         {
             case DamageTypeEnum.Physical:
-                DisplayPhysStats(statusChance, weapon.GetCrit());
+                DisplayPhysStats(statusChance, weapon.GetCrit(), sb);
                 break;
             case DamageTypeEnum.Fire:
-                DisplayFireStats(statusChance);
+                DisplayFireStats(statusChance, sb);
                 break;
             case DamageTypeEnum.Lightning:
-                DisplayLightningStats(statusChance);
+                DisplayLightningStats(statusChance, sb);
                 break;
             case DamageTypeEnum.Ice:
-                DisplayIceStats(statusChance);
+                DisplayIceStats(statusChance, sb);
                 break;
             default:
                 break;
         }
     }
 
-    private void SetStatsStats(DamageSpell spell, int id, DamageTypeEnum type)
+    private void SetStatusStats(DamageSpell spell, int id, DamageTypeEnum type, StringBuilder sb)
     {
-        int damage = spell.GetCritDamage();
         int chance = spell.GetStatusChance(id);
 
         switch (type)
         {
             case DamageTypeEnum.Physical:
-                DisplayPhysStats(chance, damage);
+                DisplayPhysStats(chance, spell.GetCritDamage(), sb);
                 break;
             case DamageTypeEnum.Fire:
-                DisplayFireStats(chance);
+                DisplayFireStats(chance, sb);
                 break;
             case DamageTypeEnum.Lightning:
-                DisplayLightningStats(chance);
+                DisplayLightningStats(chance, sb);
                 break;
             case DamageTypeEnum.Ice:
-                DisplayIceStats(chance);
+                DisplayIceStats(chance, sb);
                 break;
             default:
                 break;
@@ -402,54 +413,91 @@ public class PlayerStatsUi : IUi
 
     }
 
-    private void DisplayPhysStats(int statusChance, int crit)
+    private void DisplayDamageStats(int min, int max, DamageTypeEnum type, StringBuilder sb)
     {
-        StringBuilder sb = new StringBuilder();
+        Text text = Instantiate(StatTextPrefab, StatsListHolder);
 
-        Text text = Instantiate(BannerPrefab, StatsListHolder);
-        text.text = "Critical\n___________________________________________";
-
-        text = Instantiate(StatTextPrefab, StatsListHolder);
-
-        sb.Append("Critical Chance: ");
-        sb.Append(statusChance);
-        sb.Append("%");
+        sb.Append(type.ToString());
+        sb.Append(": ");
+        sb.Append(min.ToString("n0"));
+        sb.Append(GlobalValues.ToText);
+        sb.Append(max.ToString("n0"));
 
         text.text = sb.ToString();
 
-        text = Instantiate(StatTextPrefab, StatsListHolder);
+        sb.Clear();
+    }
+
+    private void DisplayPhysStats(int statusChance, int crit, StringBuilder sb)
+    {
+        Text text = Instantiate(BannerPrefab, StatsListHolder);
+
+        sb.Append(GlobalValues.CritText);
+        sb.Append(GlobalValues.BreakLine);
+
+        text.text = sb.ToString();
 
         sb.Clear();
 
-        sb.Append("Critital Damage: ");
-        sb.Append(crit);
-        sb.Append("%");
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Append(GlobalValues.CritText);
+        sb.Append(' ');
+        sb.Append(GlobalValues.ChanceText);
+        sb.Append(": ");
+        sb.Append(statusChance);
+        sb.Append('%');
 
         text.text = sb.ToString();
+
+        sb.Clear();
+        
+        text = Instantiate(StatTextPrefab, StatsListHolder);
+
+        sb.Append(GlobalValues.CritText);
+        sb.Append(' ');
+        sb.Append(GlobalValues.DamageText);
+        sb.Append(": ");
+        sb.Append(crit);
+        sb.Append('%');
+
+        text.text = sb.ToString();
+
+        sb.Clear();
     }
 
-    private void DisplayFireStats(int statsChance)
+    private void DisplayFireStats(int statsChance, StringBuilder sb)
     {
-        StringBuilder sb = new StringBuilder();
-
         Text text = Instantiate(BannerPrefab, StatsListHolder);
-        text.text = "Burn\n___________________________________________";
+
+        sb.Append(GlobalValues.BurnText);
+        sb.Append(GlobalValues.BreakLine);
+
+        text.text = sb.ToString();
+
+        sb.Clear();
 
         text = Instantiate(StatTextPrefab, StatsListHolder);
 
-        sb.Append("Burn Chance: ");
+        sb.Append(GlobalValues.BurnText);
+        sb.Append(' ');
+        sb.Append(GlobalValues.ChanceText);
+        sb.Append(": ");
         sb.Append(statsChance);
         sb.Append("%");
 
         text.text = sb.ToString();
 
+        sb.Clear();
+        
         text = Instantiate(StatTextPrefab, StatsListHolder);
 
-        sb.Clear();
-
-        sb.Append("Burn Damage: ");
+        sb.Append(GlobalValues.BurnText);
+        sb.Append(' ');
+        sb.Append(GlobalValues.DamageText);
+        sb.Append(": ");
         sb.Append(Player.player.GetBurnDamage());
-        sb.Append("%");
+        sb.Append('%');
 
         text.text = sb.ToString();
 
@@ -457,27 +505,31 @@ public class PlayerStatsUi : IUi
 
         sb.Clear();
 
-        sb.Append("Burn Ticks: ");
+        sb.Append(GlobalValues.BurnText);
+        sb.Append(' ');
+        sb.Append(GlobalValues.TicksText);
+        sb.Append(": ");
         sb.Append(Player.player.GetTicks());
 
         text.text = sb.ToString();
 
-        text = Instantiate(StatTextPrefab, StatsListHolder);
-
         sb.Clear();
+        
+        text = Instantiate(StatTextPrefab, StatsListHolder);
 
         sb.Append("Time Between Burn Ticks: ");
         sb.Append(Mathf.Round(Player.player.GetWaitTime() * 100) * .01f);
         sb.Append("s");
 
         text.text = sb.ToString();
+
+        sb.Clear();
     }
 
-    private void DisplayLightningStats(int statsChance)
+    private void DisplayLightningStats(int statsChance, StringBuilder sb)
     {
-        StringBuilder sb = new StringBuilder();
         Text text = Instantiate(BannerPrefab, StatsListHolder);
-        text.text = "Chain\n___________________________________________";
+        text.text = "Chain" + GlobalValues.BreakLine;
 
         text = Instantiate(StatTextPrefab, StatsListHolder);
 
@@ -514,12 +566,12 @@ public class PlayerStatsUi : IUi
         sb.Append(Player.player.GetChainLength());
 
         text.text = sb.ToString();
+
+        sb.Clear();
     }
 
-    private void DisplayIceStats(int statsChance)
+    private void DisplayIceStats(int statsChance, StringBuilder sb)
     {
-        StringBuilder sb = new StringBuilder();
-
         Text text = Instantiate(BannerPrefab, StatsListHolder);
         text.text = "Chill\n___________________________________________";
 

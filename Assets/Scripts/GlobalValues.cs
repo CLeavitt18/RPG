@@ -2,7 +2,9 @@ using UnityEngine;
 
 public static class GlobalValues
 {
-    public const string PlayerFolder = "/Player";
+    public static string PlayerFolder { get{ return playerFolder;} private set{}}
+    private static string playerFolder = "/Player";
+    
     public const string LevelFolder = "/Levels/";
     public const string NPCFolder = "/NPC";
     public const string EnemyFolder = "/Enemy";
@@ -31,7 +33,23 @@ public static class GlobalValues
     public const string GoldTag = "Gold";
     public const string MiscTag = "Misc";
     public const string TorchTag = "Torch";
-    public const string breakLine = "\n___________________________________________________";
+    public const string CritText = "Critical";
+    public const string BurnText = "Burn";
+    public const string ChainText = "Chain";
+    public const string ChillText = "Chill";
+    public const string ChanceText = "Chance";
+    public const string DamageText = "Damage";
+    public const string TicksText = "Ticks";
+    public const string TimeText = "Time";
+    public const string LenghtText = "Lenght";
+    public const string AffectText = "Affect";
+    public const string ReducedText = "Reduced";
+    public const string ActionText = "Action";
+    public const string SpeedText = "Speed";
+    public const string NumberText = "Number";
+    public const string BreakLine = "\n___________________________________________";
+    public const string ToText= " to ";
+    public const string OfText= " of ";
 
     public static readonly string[] AttackInputs = { "Fire1", "Fire2", "1", "2", "3", "4" };
 
