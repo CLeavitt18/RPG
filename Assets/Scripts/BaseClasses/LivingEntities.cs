@@ -133,7 +133,7 @@ public class LivingEntities : MonoBehaviour
             if (hand.ChannelTime >= GlobalValues.ChargeAttackTime)
             {
                 float cost = (float)Weapon.GetWeight() / 100f;
-                cost *= 1 + (Mathf.Floor((float)Attributes[(int)Abilities.Strenght].Ability * .5f)) * .05f;
+                cost *= 1 + (Mathf.Floor((float)Attributes[(int)Abilities.Strenght].Ability * 0.5f)) * 0.05f;
 
                 if (LoseAttribute((int)cost, AttributesEnum.Stamina))
                 {
@@ -161,18 +161,18 @@ public class LivingEntities : MonoBehaviour
 
             hand.ChannelTime = 0;
 
-            Weapon.Attack(true, hand.Stats);
-
             hand.Stats.Clear();
+
+            Weapon.Attack(true, hand.Stats);
 
             hand.attackFinsihed = false;
 
-            hand.Animator.speed = 1.0f / attackSpeed;
+            hand.Animator.speed = 1.0f * attackSpeed;
             hand.Animator.SetTrigger(attackAnimation);
 
-            yield return new WaitForSeconds(attackSpeed);
+            yield return new WaitForSeconds(1.0f / attackSpeed);
 
-            hand.Animator.speed = 1.0f / (Weapon.GetAttackSpeed() * ActionSpeed);
+            hand.Animator.speed = 1.0f * ActionSpeed;
 
             Weapon.Attack(false);
 

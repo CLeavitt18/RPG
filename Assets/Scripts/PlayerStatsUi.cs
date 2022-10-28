@@ -727,7 +727,6 @@ public class PlayerStatsUi : IUi
 
         text = Instantiate(StatTextPrefab, StatsListHolder);
 
-
         sb.Append(GlobalValues.ChillText);
         sb.Append(' ');
         sb.Append(GlobalValues.DurationText);
