@@ -32,6 +32,7 @@ public static class GlobalValues
     public const string MiscTag = "Misc";
     public const string TorchTag = "Torch";
 
+    public const string LevelText = "Level";
     public const string RightText = "Right";
     public const string LeftText = "Left";
     public const string HandText = "Hand";
@@ -51,6 +52,11 @@ public static class GlobalValues
     public const string LifeText = "Life";
     public const string StealText = "Steal";
     public const string MeleeText = "Melee";
+    public const string ManaText = "Mana";
+    public const string CostText = "Cost";
+    public const string CastText = "Case";
+    public const string TypeText = "Type";
+    public const string RateText = "Rate";
     public const string MultipliersText = "Multipliers";
     public const string CritText = "Critical";
     public const string BurnText = "Burn";
@@ -61,7 +67,7 @@ public static class GlobalValues
     public const string TicksText = "Ticks";
     public const string TimeText = "Time";
     public const string BetweenText = "Between";
-    public const string LenghtText = "Lenght";
+    public const string LengthText = "Length";
     public const string AffectText = "Affect";
     public const string DurationText = "Duration";
     public const string ReducedText = "Reduced";
