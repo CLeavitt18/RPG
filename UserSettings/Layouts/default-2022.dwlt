@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -297,15 +297,15 @@ MonoBehaviour:
     y: 0
     width: 574
     height: 630
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 23}
+  m_MinSize: {x: 232, y: 271}
+  m_MaxSize: {x: 10002, y: 10021}
+  m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
   - {fileID: 23}
   - {fileID: 24}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1120,7 +1120,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: a0baa0ffcedac9ff30fbffff
+      m_ExpandedIDs: 8cfdbdff6cb2c6ff30fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1232,7 +1232,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: global
+    m_NameFilter: player
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -1246,7 +1246,7 @@ MonoBehaviour:
     m_Folders:
     - Assets/Animation/Player
     m_Globs: []
-    m_OriginalText: global
+    m_OriginalText: player
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
@@ -1257,8 +1257,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ce5e0000
-    m_LastClickedID: 24270
+    m_SelectedIDs: d45e0000
+    m_LastClickedID: 24276
     m_ExpandedIDs: 000000009a5c00009c5c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0

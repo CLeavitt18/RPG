@@ -320,23 +320,36 @@ public class PlayerStatsUi : IUi
                         continue;
                     }
 
+                    sb.Append(GlobalValues.SlotText);
+                    sb.Append(' ');
+                    sb.Append(i.ToString());
+                    sb.Append(": ");
+                            
+                    CreateBanner(rune.GetName(), 2);
+
                     switch (rune.GetSpellType())
                     {
                         case SpellType.DamageSpell:
 
                             DamageSpell dRune = rune as DamageSpell;
 
-                            sb.Append(GlobalValues.SlotText);
-                            sb.Append(' ');
-                            sb.Append(i.ToString());
-                            sb.Append(": ");
-
-                            CreateBanner(dRune.GetName(), 2);
-
                             for (int x = 0; x < dRune.GetDamageTypeCount(); x++)
                             {
                                 SetDamageStats(dRune, x, dRune.GetDamageType(x));
                             }
+
+                            break;
+                        case SpellType.GolemSpell:
+                            
+                            GolemSpell gRune = rune as GolemSpell;
+
+                            sb.Append(GlobalValues.NumberText);
+                            sb.Append(GlobalValues.OfText);
+                            sb.Append(GlobalValues.MinionTag);
+                            sb.Append("s: ");
+                            sb.Append(gRune.Number);
+
+                            CreateStatText();
 
                             break;
                         default:
@@ -351,13 +364,16 @@ public class PlayerStatsUi : IUi
 
                     CreateStatText();
 
-                    sb.Append(GlobalValues.CastText);
-                    sb.Append(' ');
-                    sb.Append(GlobalValues.RateText);
-                    sb.Append(": ");
-                    sb.Append(rune.GetCastRate());
+                    if (rune.GetCastType() != CastType.Aura)
+                    {
+                        sb.Append(GlobalValues.CastText);
+                        sb.Append(' ');
+                        sb.Append(GlobalValues.RateText);
+                        sb.Append(": ");
+                        sb.Append(rune.GetCastRate());
 
-                    CreateStatText();
+                        CreateStatText();
+                    }
 
                     sb.Append(GlobalValues.CastText);
                     sb.Append(' ');

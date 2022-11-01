@@ -1066,7 +1066,7 @@ public class LivingEntities : MonoBehaviour
             }
             else if (damageType < 4)
             {
-                float ProtectionValue = Resistences[i - 1] * .01f;
+                float ProtectionValue = Resistences[(int)stats.DamageTypes[i] - 1] * .01f;
                 stats.DamageValues[i] = (int)(stats.DamageValues[i] - (stats.DamageValues[i] * ProtectionValue));
             }
 

@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2836226209321691674}
   m_RootOrder: 0
@@ -60,6 +61,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.2, z: 4}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1801451449173404160}
   m_Father: {fileID: 0}
@@ -143,15 +145,8 @@ MonoBehaviour:
   Stats:
     Parent: {fileID: 0}
     SourceHand: 0
-    BurnWaitTime: 0
-    ChainLength: 0
-    ChillDuration: 0
     LifeSteal: 0
-    BurnDamage: 0
-    BurnTicks: 0
-    ChainDamage: 0
-    Chains: 0
-    ChillAffect: 0
-    DamageValues: 00000000000000000000000000000000
-    Status: 00000000
+    DamageTypes: 
+    DamageValues: 
+    Status: 
   LifeTime: 0
