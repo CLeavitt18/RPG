@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class RefineryUi : MonoBehaviour
@@ -6,13 +7,17 @@ public class RefineryUi : MonoBehaviour
     public int R_Id;
     public int ResourceAmount = 1;
 
+    [SerializeField] private int[] maxResources;
+
+    [SerializeField] private bool canCraft;
+
     public BaseRecipes ResourceRecipes;
 
-    public Transform ResourceUiContentHolder;
+    [SerializeField] public Transform ResourceCostHolder;
     [SerializeField] private Transform contentHolder;
 
-    public GameObject ConfirmUi;
-    public GameObject ResourceSlot;
+    [SerializeField] public GameObject ConfirmUi;
+    [SerializeField] private GameObject amountUi;
     [SerializeField] private GameObject refinerySlot;
 
     public GameObject[] Resources;
@@ -21,17 +26,29 @@ public class RefineryUi : MonoBehaviour
 
     public Text ResourceAmountText;
 
-    public ItemAmount ItemsRequired;
-    //public ItemAmount Temp;
+    //public ItemAmount ItemsRequired;
+
+    [SerializeField] private DictionaryOfStringAndInt requiredItems = new DictionaryOfStringAndInt(10);
 
 
     public void SetResourceId(int Id)
     {
         R_Id = Id;
-        DisplayResourceCost();
+
+        if (maxResources[R_Id] > 1)
+        {
+            ResourceSlider.maxValue = maxResources[R_Id];
+            ResourceSlider.value = 1;
+            amountUi.SetActive(true);
+        }
+        else
+        {
+            ResourceAmount = 1;
+            DisplayResourceCost();
+        }
     }
 
-    public void SetRefinaryToDefault(bool reset)
+    public void SetRefineryToDefault(bool reset)
     {
         R_Id = 0;
         ResourceAmount = 1;
@@ -39,148 +56,151 @@ public class RefineryUi : MonoBehaviour
 
         ConfirmUi.SetActive(false);
 
-        SetResourceAmountId();
-
-        if (reset)
+        if (ResourceCostHolder.childCount > 0)
         {
-            if (contentHolder.childCount > 0)
-            {
-                int children = contentHolder.childCount;
+            Destroy(ResourceCostHolder.GetChild(0).gameObject);
+        }
 
-                for (int i = 0; i < children; i++)
+        if (reset == false)
+        {
+            return;
+        }
+
+        if (contentHolder.childCount > 0)
+        {
+            int children = contentHolder.childCount;
+
+            for (int i = 0; i < children; i++)
+            {
+                Destroy(contentHolder.GetChild(i).gameObject);
+            }
+
+            contentHolder.DetachChildren();
+            return;
+        }
+
+        maxResources = new int[Resources.Length];
+
+        for (int i = 0; i < Resources.Length; i++)
+        {
+            //DO NOT REMOVE
+            int id = i;
+            GameObject slot = Instantiate(refinerySlot, contentHolder);
+
+            Text text = slot.transform.GetChild(0).GetComponent<Text>();
+            text.text = Resources[i].GetComponent<Item>().GetName();
+
+            Button button = slot.GetComponent<Button>();
+            button.onClick.AddListener(delegate { SetResourceId(id); });
+
+            Inventory pInventory = Player.player.Inventory;
+            Item item;
+
+            string itemName;
+            int itemAmount;
+
+            int[] numItems = new int[ResourceRecipes.ItemsRequired[i].Item.Length];
+
+            for (int x = 0; x < ResourceRecipes.ItemsRequired[i].Item.Length; x++)
+            {
+                itemName = ResourceRecipes.ItemsRequired[i].Item[x];
+                itemAmount = ResourceRecipes.ItemsRequired[i].Amount[x];
+
+                item = pInventory.Find(itemName, GlobalValues.ResourceTag);
+
+                if (item != null && item.GetAmount() >= itemAmount)
                 {
-                    Destroy(contentHolder.GetChild(i).gameObject);
+                    numItems[x] = item.GetAmount() / ResourceRecipes.ItemsRequired[i].Amount[x];
+                }
+                else
+                {
+                    numItems[x] = 0;
                 }
 
-                contentHolder.DetachChildren();
-            }
-            else
-            {
-                for (int i = 0; i < Resources.Length; i++)
+                if (x != numItems.Length - 1)
                 {
-                    //DO NOT REMOVE
-                    int id = i;
-                    GameObject slot = Instantiate(refinerySlot, contentHolder);
+                    continue;
+                }
 
-                    Text text = slot.transform.GetChild(0).GetComponent<Text>();
-                    text.text = Resources[i].GetComponent<Item>().GetName();
+                int currentNum = int.MaxValue;
 
-                    Button button = slot.GetComponent<Button>();
-                    button.onClick.AddListener(delegate {SetResourceId(id);});
+                for (int y = 0; y < x + 1; y++)
+                {
+                    if (numItems[y] <= currentNum)
+                    {
+                        currentNum = numItems[y];
+                    }
+                }
+
+                maxResources[i] = currentNum;
+
+                if (maxResources[i] > 0)
+                {
+                    text.color = Color.black;
+                }
+                else
+                {
+                    text.color = Color.red;
                 }
             }
         }
+    }
+
+    public void SelectAllResource()
+    {
+        ResourceAmount = maxResources[R_Id];
+        DisplayResourceCost();
+    }
+
+    public void AmountUp()
+    {
+        ResourceSlider.value++;
+
+        SetResourceAmountId();
+    }
+
+    public void AmountDown()
+    {
+        ResourceSlider.value--;
+
+        SetResourceAmountId();
     }
 
     public void SetResourceAmountId()
     {
         ResourceAmount = (int)ResourceSlider.value;
-        ResourceAmountText.text = "" + ResourceAmount;
-
-        DisplayResourceCost();
+        ResourceAmountText.text = "How many?\n" + ResourceAmount;
     }
 
     public void DisplayResourceCost()
     {
-        if (ResourceUiContentHolder.childCount > 0)
-        {
-            //Debug.Log("Deleteting Resource Texts");
-            int Loops = ResourceUiContentHolder.childCount;
-            //Debug.Log("Number of Loops " + Loops);
-
-            for (int i = 0; i < Loops; i++)
-            {
-                //Debug.Log("Number of Loops " + ResourceUiContentHolder.childCount);
-
-                Destroy(ResourceUiContentHolder.GetChild(i).gameObject);
-
-            }
-
-            ResourceUiContentHolder.DetachChildren();
-        }
-
-        ItemsRequired = new ItemAmount(0);
-
-        Debug.Log(R_Id);
-
-        for (int i = 0; i < ResourceRecipes.ItemsRequired[R_Id].Amount.Length; i++)
-        {
-            if (ItemsRequired.Amount.Length > 0)
-            {
-                ItemAmount Temp = new ItemAmount(ItemsRequired.Amount.Length + 1);
-
-                for (int x = 0; x < ItemsRequired.Amount.Length; x++)
-                {
-                    Temp.Amount[x] = ResourceRecipes.ItemsRequired[R_Id].Amount[x] * ResourceAmount;
-                    Temp.Item[x] = ResourceRecipes.ItemsRequired[R_Id].Item[x];
-
-                }
-
-                Temp.Amount[ItemsRequired.Amount.Length] = ResourceRecipes.ItemsRequired[R_Id].Amount[i] * ResourceAmount;
-                Temp.Item[ItemsRequired.Item.Length] = ResourceRecipes.ItemsRequired[R_Id].Item[i];
-
-                ItemsRequired = Temp;
-
-            }
-            else
-            {
-                ItemsRequired = new ItemAmount(1);
-
-                ItemsRequired.Amount[0] = ResourceRecipes.ItemsRequired[R_Id].Amount[i] * ResourceAmount;
-                ItemsRequired.Item[0] = ResourceRecipes.ItemsRequired[R_Id].Item[i];
-
-            }
-
-            Instantiate(ResourceSlot, ResourceUiContentHolder);
-        }
-
-        Inventory inventory = Player.player.Inventory;
-
-        int start = inventory.GetStart(GlobalValues.ResourceStart);
-        int end = inventory.GetStart(GlobalValues.MiscStart);
+        amountUi.SetActive(false);
         
-        for (int i = 0; i < ResourceUiContentHolder.childCount; i++)
+        if (ResourceCostHolder.childCount > 0)
         {
-            ResourceUiContentHolder.GetChild(i).gameObject.GetComponent<Text>().text = ItemsRequired.Item[i] + " x " + ItemsRequired.Amount[i];
-            ResourceUiContentHolder.GetChild(i).gameObject.GetComponent<Text>().color = Color.red;
-
-            for (int x = start; x < end; x++)
-            {
-
-                if (inventory[x].name == ItemsRequired.Item[i] && inventory[x].GetAmount() >= ItemsRequired.Amount[i])
-                {
-                    ResourceUiContentHolder.GetChild(i).gameObject.GetComponent<Text>().color = Color.black;
-                    break;
-                }
-            }
+            Destroy(ResourceCostHolder.GetChild(0).gameObject);
+            
+            ResourceCostHolder.DetachChildren();
         }
+
+        ItemAmount temp = ResourceRecipes.ItemsRequired[R_Id];
+
+        if (requiredItems.Count > 0)
+        {
+            requiredItems.Clear();
+        }
+
+        for (int i = 0; i < temp.Amount.Length; i++)
+        {
+            requiredItems.Add(temp.Item[i], temp.Amount[i] * ResourceAmount);
+        }
+
+        canCraft = Helper.helper.CreateResourceCostDetails(requiredItems, ResourceCostHolder);
     }
 
     public void CheckRequirements()
     {
-        int Target = 0;
-        int Count = 0;
-
-        Inventory inventory = Player.player.Inventory;
-
-        int start = inventory.GetStart(GlobalValues.ResourceStart);
-        int end = inventory.GetStart(GlobalValues.MiscStart);
-
-        for (int i = 0; i < ResourceRecipes.ItemsRequired[R_Id].Amount.Length; i++)
-        {
-            Target++;
-
-            for (int x = start; x < end; x++)
-            {
-                if (inventory[x].name == ResourceRecipes.ItemsRequired[R_Id].Item[i] &&
-                    inventory[x] >= ResourceRecipes.ItemsRequired[R_Id].Amount[i] * ResourceAmount)
-                {
-                    Count++;
-                }
-            }
-        }
-
-        if (Count == Target)
+        if (canCraft)
         {
             ConfirmUi.SetActive(true);
         }
@@ -194,18 +214,10 @@ public class RefineryUi : MonoBehaviour
     public void Refine()
     {
         Inventory Inventory = Player.player.Inventory;
-        int start = Inventory.GetStart(GlobalValues.ResourceStart);
-        int end = Inventory.GetStart(GlobalValues.MiscStart);
 
-        for (int i = 0; i < ItemsRequired.Amount.Length; i++)
+        foreach (KeyValuePair<string, int> item in requiredItems)
         {
-            for (int x = start; x < end; x++)
-            {
-                if (Inventory[x].name == ItemsRequired.Item[i])
-                {
-                    Inventory.RemoveItem(Inventory[x], ItemsRequired.Amount[i] * ResourceAmount);
-                }
-            }
+            Inventory.RemoveItem(item.Key, item.Value, GlobalValues.ResourceTag);
         }
 
         Item RH = Instantiate(Resources[R_Id]).GetComponent<Item>();
@@ -216,6 +228,13 @@ public class RefineryUi : MonoBehaviour
         Player.player.Inventory.AddItem(RH, true, ResourceAmount);
         InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
 
-        SetRefinaryToDefault(false);
+        maxResources[R_Id] -= ResourceAmount;
+        
+        if (maxResources[R_Id] == 0)
+        {
+            contentHolder.GetChild(R_Id).GetChild(0).GetComponent<Text>().color = Color.red;
+        }
+
+        SetRefineryToDefault(false);
     }
 }
