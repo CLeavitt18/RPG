@@ -161,8 +161,6 @@ public class LivingEntities : MonoBehaviour
 
             hand.ChannelTime = 0;
 
-            hand.Stats.Clear();
-
             Weapon.Attack(true, hand.Stats);
 
             hand.attackFinsihed = false;
@@ -177,6 +175,8 @@ public class LivingEntities : MonoBehaviour
             Weapon.Attack(false);
 
             hand.attackFinsihed = true;
+            
+            hand.Stats.Clear();
         }
     }
 
@@ -818,7 +818,7 @@ public class LivingEntities : MonoBehaviour
             case DamageTypeEnum.Physical:
                 float StrenghtMeleeMulti;
 
-                StrenghtMeleeMulti = (Mathf.Floor(Attributes[0].Ability * .5f)) * .05f;
+                StrenghtMeleeMulti = (Mathf.Floor(Attributes[0].Ability * GlobalValues.MDamStrInterval)) * GlobalValues.MDamPerStr;
 
                 PercentFromLevel = (float)Skills[(int)((Hands[HandType].HeldItem) as WeaponHolder).GetSkill()].Level * .01f;
 

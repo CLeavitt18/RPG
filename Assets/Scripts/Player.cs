@@ -610,7 +610,7 @@ public class Player : LivingEntities
 
                     for (int i = 0; i < 2; i++)
                     {
-                        if (Hands[i].HeldItem != null)
+                        if (Hands[i].HeldItem != null && Hands[i].HeldItem.CompareTag(GlobalValues.WeaponTag))
                         {
                             MeleeDamageMulti(i, DamageTypeEnum.Physical);
                         }

@@ -51,7 +51,7 @@ public class PlayerStatsUi : IUi
         }
         else
         {
-            CreateSkillText((double)Player.player.GetLevelProgress(), 0.1);
+            CreateSkillText((double)Player.player.GetLevelProgress(), (double)Player.player.GetRequiredLevelProgress());
         }
 
         CreateBanner(GlobalValues.SkillsText, 0);
