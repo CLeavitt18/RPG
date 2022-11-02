@@ -9,9 +9,11 @@ public class RefineryUi : MonoBehaviour
     public BaseRecipes ResourceRecipes;
 
     public Transform ResourceUiContentHolder;
+    [SerializeField] private Transform contentHolder;
 
     public GameObject ConfirmUi;
     public GameObject ResourceSlot;
+    [SerializeField] private GameObject refinerySlot;
 
     public GameObject[] Resources;
 
@@ -22,13 +24,14 @@ public class RefineryUi : MonoBehaviour
     public ItemAmount ItemsRequired;
     //public ItemAmount Temp;
 
+
     public void SetResourceId(int Id)
     {
         R_Id = Id;
         DisplayResourceCost();
     }
 
-    public void SetRefinaryToDefault()
+    public void SetRefinaryToDefault(bool reset)
     {
         R_Id = 0;
         ResourceAmount = 1;
@@ -37,6 +40,36 @@ public class RefineryUi : MonoBehaviour
         ConfirmUi.SetActive(false);
 
         SetResourceAmountId();
+
+        if (reset)
+        {
+            if (contentHolder.childCount > 0)
+            {
+                int children = contentHolder.childCount;
+
+                for (int i = 0; i < children; i++)
+                {
+                    Destroy(contentHolder.GetChild(i).gameObject);
+                }
+
+                contentHolder.DetachChildren();
+            }
+            else
+            {
+                for (int i = 0; i < Resources.Length; i++)
+                {
+                    //DO NOT REMOVE
+                    int id = i;
+                    GameObject slot = Instantiate(refinerySlot, contentHolder);
+
+                    Text text = slot.transform.GetChild(0).GetComponent<Text>();
+                    text.text = Resources[i].GetComponent<Item>().GetName();
+
+                    Button button = slot.GetComponent<Button>();
+                    button.onClick.AddListener(delegate {SetResourceId(id);});
+                }
+            }
+        }
     }
 
     public void SetResourceAmountId()
@@ -46,6 +79,7 @@ public class RefineryUi : MonoBehaviour
 
         DisplayResourceCost();
     }
+
     public void DisplayResourceCost()
     {
         if (ResourceUiContentHolder.childCount > 0)
@@ -66,6 +100,8 @@ public class RefineryUi : MonoBehaviour
         }
 
         ItemsRequired = new ItemAmount(0);
+
+        Debug.Log(R_Id);
 
         for (int i = 0; i < ResourceRecipes.ItemsRequired[R_Id].Amount.Length; i++)
         {
@@ -180,6 +216,6 @@ public class RefineryUi : MonoBehaviour
         Player.player.Inventory.AddItem(RH, true, ResourceAmount);
         InventoryUi.playerUi.CallSetInventory(InventoryUi.playerUi.GetMode());
 
-        SetRefinaryToDefault();
+        SetRefinaryToDefault(false);
     }
 }

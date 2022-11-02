@@ -13,54 +13,45 @@ MonoBehaviour:
   m_Name: Resources
   m_EditorClassIdentifier: 
   ItemsRequired:
-  - Name: Leather
-    Amount: 01000000
+  - Amount: 01000000
     Item:
     - Hide
-  - Name: Copper Ingot
-    Amount: 0200000001000000
-    Item:
-    - Copper Ore
-    - Coal
-  - Name: Iron Ingot
-    Amount: 0200000001000000
-    Item:
-    - Iron Ore
-    - Coal
-  - Name: Silver Ingot
-    Amount: 0200000001000000
-    Item:
-    - Silver Ore
-    - Coal
-  - Name: Steel Ingot
-    Amount: 020000000100000002000000
-    Item:
-    - Iron Ingot
-    - Silver Ingot
-    - Coal
-  - Name: Cobalt Ingot
-    Amount: 0200000001000000
-    Item:
-    - Cobalt Ore
-    - Coal
-  - Name: Mithril Ingot
-    Amount: 0200000001000000
-    Item:
-    - Mithril Ore
-    - Coal
-  - Name: Ebony Ingot
-    Amount: 0200000001000000
-    Item:
-    - Ebony Ore
-    - Coal
-  - Name: Tin Ingot
-    Amount: 0200000001000000
+  - Amount: 0200000001000000
     Item:
     - Tin Ore
     - Coal
-  - Name: Bronze
-    Amount: 020000000100000002000000
+  - Amount: 0200000001000000
+    Item:
+    - Copper Ore
+    - Coal
+  - Amount: 020000000100000002000000
     Item:
     - Copper Ingot
     - Tin Ingot
     - Coal
+  - Amount: 0200000001000000
+    Item:
+    - Iron Ore
+    - Coal
+  - Amount: 0200000001000000
+    Item:
+    - Silver Ore
+    - Coal
+  - Amount: 020000000100000002000000
+    Item:
+    - Iron Ingot
+    - Silver Ingot
+    - Coal
+  - Amount: 0200000001000000
+    Item:
+    - Cobalt Ore
+    - Coal
+  - Amount: 0200000001000000
+    Item:
+    - Mithril Ore
+    - Coal
+  - Amount: 0200000001000000
+    Item:
+    - Ebony Ore
+    - Coal
+  Item: {fileID: 0}

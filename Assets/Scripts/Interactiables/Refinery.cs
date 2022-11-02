@@ -15,7 +15,7 @@ public class Refinery : Interactialbes, IInteractable
     public void Interact(bool State)
     {
         RefinaryUI.SetActive(State);
-        RefinaryUI.transform.parent.gameObject.GetComponent<RefineryUi>().SetRefinaryToDefault();
+        RefinaryUI.transform.parent.gameObject.GetComponent<RefineryUi>().SetRefinaryToDefault(State);
         SetPlayerState(State);
     }
     public override void SetUiOpen()
