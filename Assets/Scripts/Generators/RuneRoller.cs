@@ -116,7 +116,7 @@ public class RuneRoller : MonoBehaviour
         
         SpellStats stats = null;
 
-        DamageTypeStruct damage;
+        DamageType damage;
 
         switch (spellType)
         {
@@ -129,10 +129,10 @@ public class RuneRoller : MonoBehaviour
 
                 DamageSpellStats statsD = stats as DamageSpellStats;
 
-                statsD.ranges = new List<DamageTypeStruct>();
+                statsD.ranges = new List<DamageType>();
                 statsD.StatusChances = new List<int>();
 
-                damage = new DamageTypeStruct(baseSpells[id].Ranges[castId][damageType], cat.CatMultis[damageType]);
+                damage = new DamageType(baseSpells[id].Ranges[castId][damageType], cat.CatMultis[damageType]);
 
                 statsD.ranges.Add(damage);
 
@@ -151,7 +151,7 @@ public class RuneRoller : MonoBehaviour
                 castId = 0;
                 damageType = 0;
 
-                damage = new DamageTypeStruct(baseSpells[id].Ranges[castId][damageType], cat.CatMultis[damageType]);
+                damage = new DamageType(baseSpells[id].Ranges[castId][damageType], cat.CatMultis[damageType]);
 
                 statsG.range = damage;
 

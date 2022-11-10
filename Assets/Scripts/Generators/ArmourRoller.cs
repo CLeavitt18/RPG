@@ -127,6 +127,8 @@ public class ArmourRoller : MonoBehaviour
 
         stats.Armour = ArmourBase.Armour[Catogory] * Multis[Mat_Id].Multi * Cats[Cat_Id].CatMultis[0];
 
+        stats.Resistences = new ResistenceType[0];
+
         stats.MaxDurability = ArmourBase.Durability;
         stats.CurrentDurability = stats.MaxDurability;
 

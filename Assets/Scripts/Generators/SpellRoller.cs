@@ -76,11 +76,11 @@ public class SpellRoller : MonoBehaviour
                 case SpellType.DamageSpell:
                     DamageSpell dSpell = runes[i] as DamageSpell;
 
-                    DamageTypeStruct damageType;
+                    DamageType damageType;
 
                     for (int x = 0; x < dSpell.DamageRanges.Count; x++)
                     {
-                        damageType = new DamageTypeStruct(dSpell.DamageRanges[x], mats[mat_id].Multi);
+                        damageType = new DamageType(dSpell.DamageRanges[x], mats[mat_id].Multi);
 
                         dSpell.DamageRanges[x] = damageType;
                     }
@@ -88,7 +88,7 @@ public class SpellRoller : MonoBehaviour
                 case SpellType.GolemSpell:
                     GolemSpell gSpell = runes[i] as GolemSpell;
 
-                    gSpell.DamageRange = new DamageTypeStruct(gSpell.DamageRange, mats[mat_id].Multi);
+                    gSpell.DamageRange = new DamageType(gSpell.DamageRange, mats[mat_id].Multi);
 
                     break;
                 default:

@@ -93,24 +93,43 @@ public class DamageStats
 }
 
 [Serializable]
-public class DamageTypeStruct
+public class DamageType
 {
     public DamageTypeEnum Type;
     public int LDamage;
     public int HDamage;
 
-    public DamageTypeStruct()
+    public DamageType()
     {
         Type = DamageTypeEnum.Physical;
         LDamage = 0;
         HDamage = 0;
     }
 
-    public DamageTypeStruct(DamageTypeStruct dTStruct, int multi)
+    public DamageType(DamageType dt, int multi)
     {
-        Type = dTStruct.Type;
-        LDamage = dTStruct.LDamage * multi;
-        HDamage = dTStruct.HDamage * multi;
+        Type = dt.Type;
+        LDamage = dt.LDamage * multi;
+        HDamage = dt.HDamage * multi;
+    }
+}
+
+[Serializable]
+public class ResistenceType
+{
+    public DamageTypeEnum Type;
+    public int resistence;
+
+    public ResistenceType()
+    {
+        Type = DamageTypeEnum.Physical;
+        resistence = 0;
+    }
+
+    public ResistenceType(ResistenceType rt, int multi)
+    {
+        Type = rt.Type;
+        resistence = rt.resistence * multi;
     }
 }
 
@@ -158,7 +177,7 @@ public class WeaponData
     public int[] StatusChance;
     public int[] AnimatorId = new int[2];
 
-    public DamageTypeStruct[] DamageRanges;
+    public DamageType[] DamageRanges;
     
     public WeaponType Type;
 
@@ -210,7 +229,7 @@ public class WeaponStats : ItemStats
 
     public List<int> StatusChance = new List<int>();
 
-    public List<DamageTypeStruct> DamageRanges = new List<DamageTypeStruct>();
+    public List<DamageType> DamageRanges = new List<DamageType>();
 
     public RuntimeAnimatorController[] Animator = new RuntimeAnimatorController[2];
 
@@ -235,7 +254,7 @@ public class ArmourData
 
     public float[] Rarity;
 
-    public int[] Resistences = new int[3];
+    public ResistenceType[] Resistences;
 
     public Power[] Enchantments;
 
@@ -255,7 +274,7 @@ public class ArmourStats : ItemStats
     public ArmourType ArmourType;
     public SkillType SkillType;
 
-    public int[] Resistences = new int[3];
+    public ResistenceType[] Resistences;
 
     public Power[] Enchantments = new Power[0];
 
@@ -358,7 +377,7 @@ public class DamageSpellStats : SpellStats
 {
     public int CritDamage;
 
-    public List<DamageTypeStruct> ranges;
+    public List<DamageType> ranges;
 
     public List<int> StatusChances;
 }
@@ -370,7 +389,7 @@ public class GolemSpellStats : SpellStats
 
     public bool activated;
 
-    public DamageTypeStruct range;
+    public DamageType range;
 }
 [Serializable]
 public class QuestData

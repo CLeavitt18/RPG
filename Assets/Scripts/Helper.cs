@@ -14,6 +14,8 @@ public class Helper : MonoBehaviour
     [SerializeField] private GameObject costDetailsPrefab;
     [SerializeField] private GameObject resourceSlot;
 
+    private StringBuilder sb = new StringBuilder();
+
     private void OnEnable()
     {
         if (helper != null && helper != this)
@@ -33,35 +35,34 @@ public class Helper : MonoBehaviour
         Transform t = Ui.transform.GetChild(0).GetChild(0);
         Text nameText = t.GetChild(0).GetComponent<Text>();
 
-        StringBuilder sb = new StringBuilder();
-
         nameText.text = item.GetName();
 
-        SpawnItemDetailSlot("", t);
+        SpawnItemDetailSlot(t);
 
         switch (item.tag)
         {
             case GlobalValues.WeaponTag:
-                CreateWeaponText(item, t, sb);
+                CreateWeaponText(item, t);
                 break;
             case GlobalValues.ArmourTag:
-                CreateArmourText(item, t, sb);
+            case GlobalValues.ShieldTag:
+                CreateArmourText(item, t);
                 break;
             case GlobalValues.SpellTag:
-                CreateSpellText(item, t, sb);
+                CreateSpellText(item, t);
                 break;
             case GlobalValues.RuneTag:
-                CreateRuneText(item, t, sb);
+                CreateRuneText(item, t);
                 break;
             case GlobalValues.PotionTag:
-                CreatePotionText(item, t, sb);
+                CreatePotionText(item, t);
                 break;
             default:
                 break;
         }
     }
 
-    private void CreateWeaponText(Item item, Transform t, StringBuilder sb)
+    private void CreateWeaponText(Item item, Transform t)
     {
         WeaponHolder weapon = item.GetComponent<WeaponHolder>();
 
@@ -78,54 +79,40 @@ public class Helper : MonoBehaviour
                 sb.Append("Blade: ");
                 sb.Append(weapon.GetMaterialType(0).ToString());
 
-                SpawnItemDetailSlot(sb.ToString(), t);
-
-                sb.Clear();
+                SpawnItemDetailSlot(t);
 
                 sb.Append("Hilt: ");
                 sb.Append(weapon.GetMaterialType(1).ToString());
 
-                SpawnItemDetailSlot(sb.ToString(), t);
-
-                sb.Clear();
+                SpawnItemDetailSlot(t);
 
                 sb.Append("Grip: ");
                 sb.Append(weapon.GetMaterialType(2).ToString());
 
-                SpawnItemDetailSlot(sb.ToString(), t);
-
-                sb.Clear();
-
+                SpawnItemDetailSlot(t);
                 break;
             case WeaponType.Axe:
 
                 sb.Append("Blade: ");
                 sb.Append(weapon.GetMaterialType(0).ToString());
 
-                SpawnItemDetailSlot(sb.ToString(), t);
-
-                sb.Clear();
+                SpawnItemDetailSlot(t);
 
                 sb.Append("Top: ");
                 sb.Append(weapon.GetMaterialType(1).ToString());
 
-                SpawnItemDetailSlot(sb.ToString(), t);
-
-                sb.Clear();
+                SpawnItemDetailSlot(t);
 
                 sb.Append("Handle: ");
                 sb.Append(weapon.GetMaterialType(2).ToString());
 
-                SpawnItemDetailSlot(sb.ToString(), t);
-
-                sb.Clear();
-
+                SpawnItemDetailSlot(t);
                 break;
             default:
                 break;
         }
 
-        SpawnItemDetailSlot("", t);
+        SpawnItemDetailSlot(t);
 
         for (int i = 0; i < weapon.GetDamageRangesCount(); i++)
         {
@@ -135,35 +122,71 @@ public class Helper : MonoBehaviour
             sb.Append(" to ");
             sb.Append(weapon.GetUpperRange(i).ToString("n0"));
 
-            SpawnItemDetailSlot(sb.ToString(), t);
+            SpawnItemDetailSlot(t);
 
             TempDamage = (weapon.GetLowerRange(i) + weapon.GetUpperRange(i)) * .5f;
             DPS += (int)TempDamage;
-
-            sb.Clear();
         }
 
-        SpawnItemDetailSlot("", t);
+        SpawnItemDetailSlot(t);
 
         sb.Append("Damage: ");
         sb.Append(DPS.ToString("n0"));
 
-        SpawnItemDetailSlot(sb.ToString(), t);
-
-        sb.Clear();
+        SpawnItemDetailSlot(t);
 
         sb.Append("Attack Speed: ");
         sb.Append(weapon.GetAttackSpeed().ToString("0.00"));
 
-        SpawnItemDetailSlot(sb.ToString(), t);
+        SpawnItemDetailSlot(t);
     }
 
-    private void CreateArmourText(Item item, Transform t, StringBuilder sb)
+    private void CreateArmourText(Item item, Transform t)
     {
         ArmourHolder armour = item.GetComponent<ArmourHolder>();
+
+        sb.Append("Weight Class: ");
+
+        switch (armour.GetSkillType())
+        {
+            case SkillType.LightArmour:
+                sb.Append("Light");
+                break;
+            case SkillType.MediumArmour:
+                sb.Append("Medium");
+                break;
+            case SkillType.HeavyArmour:
+                sb.Append("Heavy");
+                break;
+            default:
+                break;
+        }
+
+        SpawnItemDetailSlot(t);
+
+        SpawnItemDetailSlot(t);
+
+        sb.Append(GlobalValues.ArmourText);
+        sb.Append(": ");
+        sb.Append(armour.GetArmour());
+
+        SpawnItemDetailSlot(t);
+
+        for (int i = 0; i < armour.GetResistenceCount(); i++)
+        {
+            sb.Append(((DamageTypeEnum)(i + 1)).ToString());
+            sb.Append(' ');
+            sb.Append(GlobalValues.ResistanceText);
+            sb.Append(": ");
+            sb.Append(armour.GetResistence(i));
+            sb.Append('%');
+
+            SpawnItemDetailSlot(t);
+        }
+
     }
 
-    private void CreateSpellText(Item item, Transform t, StringBuilder sb)
+    private void CreateSpellText(Item item, Transform t)
     {
         SpellHolder SpellH = item.GetComponent<SpellHolder>();
 
@@ -172,11 +195,9 @@ public class Helper : MonoBehaviour
         sb.Append("Material: ");
         sb.Append(SpellH.GetMaterialType().ToString());
 
-        SpawnItemDetailSlot(sb.ToString(), t);
+        SpawnItemDetailSlot(t);
 
-        sb.Clear();
-
-        SpawnItemDetailSlot("", t);
+        SpawnItemDetailSlot(t);
 
         for (int i = 0; i < 3; i++)
         {
@@ -193,9 +214,7 @@ public class Helper : MonoBehaviour
                 sb.Append("Empty");
             }
 
-            SpawnItemDetailSlot(sb.ToString(), t);
-
-            sb.Clear();
+            SpawnItemDetailSlot(t);
         }
 
         for (int i = 0; i < 3; i++)
@@ -205,18 +224,20 @@ public class Helper : MonoBehaviour
                 continue;
             }
 
-            SpawnItemDetailSlot("", t);
+            SpawnItemDetailSlot(t);
 
-            Text name = SpawnItemDetailSlot(SpellH.GetRune(i).GetName(), t);
+            sb.Append(SpellH.GetRune(i).GetName());
+
+            Text name = SpawnItemDetailSlot(t);
             name.alignment = TextAnchor.MiddleCenter;
 
-            SpawnItemDetailSlot("", t);
+            SpawnItemDetailSlot(t);
 
-            CreateRuneStatsText(SpellH.GetRune(i), t, sb);
+            CreateRuneStatsText(SpellH.GetRune(i), t);
         }
     }
 
-    private void CreateRuneStatsText(Spell rune, Transform t, StringBuilder sb)
+    private void CreateRuneStatsText(Spell rune, Transform t)
     {
         float castRate = rune.GetCastRate();
      
@@ -237,19 +258,15 @@ public class Helper : MonoBehaviour
                 TempDamage = (dSpell.DamageRanges[x].LDamage + dSpell.DamageRanges[x].HDamage) * .5f;
                 DPS += (int)TempDamage;
 
-                SpawnItemDetailSlot(sb.ToString(), t);
-
-                sb.Clear();
+                SpawnItemDetailSlot(t);
             }
 
-            SpawnItemDetailSlot("", t);
+            SpawnItemDetailSlot(t);
 
             sb.Append("Damage: ");
             sb.Append(DPS.ToString("n0"));
 
-            SpawnItemDetailSlot(sb.ToString(), t);
-
-            sb.Clear();
+            SpawnItemDetailSlot(t);
 
         }
         else if (rune is GolemSpell gSpell)
@@ -259,45 +276,37 @@ public class Helper : MonoBehaviour
             sb.Append("Minions: ");
             sb.Append(gSpell.Number);
 
-            SpawnItemDetailSlot(sb.ToString(), t);
-
-            sb.Clear();
+            SpawnItemDetailSlot(t);
         }
 
-        SpawnItemDetailSlot("", t);
+        SpawnItemDetailSlot(t);
 
         sb.Append(rune.GetCostType().ToString());
         sb.Append(" Cost: ");
         sb.Append(rune.GetCost().ToString("n0"));
 
-        SpawnItemDetailSlot(sb.ToString(), t);
-
-        sb.Clear();
+        SpawnItemDetailSlot(t);
 
         if (rune.GetCastType() != CastType.Aura)
         {
             sb.Append("Cast Rate: ");
             sb.Append(castRate.ToString("n0"));
 
-            SpawnItemDetailSlot(sb.ToString(), t);
-
-            sb.Clear();
+            SpawnItemDetailSlot(t);
         }
 
         sb.Append("Cast Type: ");
         sb.Append(rune.GetCastType().ToString());
 
-        SpawnItemDetailSlot(sb.ToString(), t);
-
-        sb.Clear();
+        SpawnItemDetailSlot(t);
     }
 
-    private void CreateRuneText(Item item, Transform t, StringBuilder sb)
+    private void CreateRuneText(Item item, Transform t)
     {
-        CreateRuneStatsText((item as RuneHolder).GetSpell(), t, sb);
+        CreateRuneStatsText((item as RuneHolder).GetSpell(), t);
     }
 
-    private void CreatePotionText(Item item, Transform t, StringBuilder sb)
+    private void CreatePotionText(Item item, Transform t)
     {
         Consumable potion = item.GetComponent<Consumable>();
 
@@ -310,11 +319,11 @@ public class Helper : MonoBehaviour
             sb.Append(' ');
             sb.Append(gPotion.Type.ToString());
 
-            SpawnItemDetailSlot(sb.ToString(), t);
+            SpawnItemDetailSlot(t);
         }
     }
 
-    private Text SpawnItemDetailSlot(string text, Transform t, bool useQuestText = false)
+    private Text SpawnItemDetailSlot(Transform t, bool useQuestText = false)
     {
         Text _text;
 
@@ -327,7 +336,9 @@ public class Helper : MonoBehaviour
             _text = Instantiate(textSlot, t).GetComponent<Text>();
         }
 
-        _text.text = text;
+        _text.text = sb.ToString();
+
+        sb.Clear();
 
         return _text;
     }
@@ -369,9 +380,7 @@ public class Helper : MonoBehaviour
                 }
             }
 
-            SpawnResourceDetailsSlot(sb.ToString(), t, color);
-
-            sb.Clear();
+            SpawnResourceDetailsSlot(t, color);
         }
 
         if (count == items.Count)
@@ -382,12 +391,14 @@ public class Helper : MonoBehaviour
         return playercanCraft;
     }
 
-    private Text SpawnResourceDetailsSlot(string text, Transform t, Color color)
+    private Text SpawnResourceDetailsSlot(Transform t, Color color)
     {
         Text _text = Instantiate(resourceSlot, t).GetComponent<Text>();
 
-        _text.text = text;
+        _text.text = sb.ToString();
         _text.color = color;
+
+        sb.Clear();
 
         return _text;
     }
@@ -412,9 +423,7 @@ public class Helper : MonoBehaviour
 
         sb.Append(quest.MintueAquired);
 
-        SpawnItemDetailSlot(sb.ToString(), t);
-
-        sb.Clear();
+        SpawnItemDetailSlot(t);
 
         sb.Append("Date  ");
         sb.Append(quest.DateAquired[0].ToString());
@@ -423,23 +432,17 @@ public class Helper : MonoBehaviour
         sb.Append(": ");
         sb.Append(quest.DateAquired[2]);
 
-        SpawnItemDetailSlot(sb.ToString(), t);
-
-        sb.Clear();
+        SpawnItemDetailSlot(t);
 
         sb.Append("Location: ");
         sb.Append(quest.Location);
 
-        SpawnItemDetailSlot(sb.ToString(), t);
-
-        sb.Clear();
+        SpawnItemDetailSlot(t);
 
         sb.Append("NPC: ");
         sb.Append(quest.NPCName);
 
-        SpawnItemDetailSlot(sb.ToString(), t);
-
-        sb.Clear();
+        SpawnItemDetailSlot(t);
 
         for (int i = 0; i < quest.CurrentQuestStep; i++)
         {
@@ -453,6 +456,6 @@ public class Helper : MonoBehaviour
             sb.Append("\n");
         }
 
-        SpawnItemDetailSlot(sb.ToString(), t, true);
+        SpawnItemDetailSlot(t, true);
     }
 }

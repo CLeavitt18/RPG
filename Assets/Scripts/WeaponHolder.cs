@@ -19,7 +19,7 @@ public class WeaponHolder : Item
     
     [SerializeField] private float ActionsPerSecond;
     
-    [SerializeField] private List<DamageTypeStruct> DamageRanges;
+    [SerializeField] private List<DamageType> DamageRanges;
 
     [SerializeField] private WeaponSpawns WeaponSpawn;
 

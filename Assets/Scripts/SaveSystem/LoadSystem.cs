@@ -71,9 +71,12 @@ public static class LoadSystem
             stats.Item = PrefabIDs.prefabIDs.Armour[0];
         }
 
-        for (int i = 0; i < 3; i++)
+        stats.Resistences = new ResistenceType[FromArmour.Resistences.Length];
+
+        for (int i = 0; i < FromArmour.Resistences.Length; i++)
         {
-            stats.Resistences[i] = FromArmour.Resistences[i];
+            stats.Resistences[i].Type = FromArmour.Resistences[i].Type;
+            stats.Resistences[i].resistence = FromArmour.Resistences[i].resistence;
         }
 
         stats.Enchantments = new Power[FromArmour.Enchantments.Length];
@@ -167,11 +170,11 @@ public static class LoadSystem
 
             DamageSpellStats statsD = stats as DamageSpellStats;
 
-            statsD.ranges = new List<DamageTypeStruct>();
+            statsD.ranges = new List<DamageType>();
 
             for (int x = 0; x < FromRune.StatArray2.Length; x++)
             {
-                statsD.ranges.Add(new DamageTypeStruct());
+                statsD.ranges.Add(new DamageType());
                 {
                     statsD.ranges[x].Type = (DamageTypeEnum)FromRune.StatArray2[x];
                     statsD.ranges[x].LDamage = FromRune.StatArray3[x];
@@ -204,7 +207,7 @@ public static class LoadSystem
 
             spellG.number = FromRune.int0;
 
-            spellG.range = new DamageTypeStruct()
+            spellG.range = new DamageType()
             {
                 Type = (DamageTypeEnum)FromRune.StatArray0[0],
                 LDamage = FromRune.StatArray0[1],
@@ -246,12 +249,12 @@ public static class LoadSystem
         ToWeapon.WeaponSkillType = (int)FromWeapon.GetSkill();
         ToWeapon.HandType = (int)FromWeapon.GetHandType();
 
-        ToWeapon.DamageRanges = new DamageTypeStruct[FromWeapon.GetDamageRangesCount()];
+        ToWeapon.DamageRanges = new DamageType[FromWeapon.GetDamageRangesCount()];
         ToWeapon.StatusChance = new int[FromWeapon.GetStatusCount()];
 
         for (int i = 0; i < ToWeapon.DamageRanges.Length; i++)
         {
-            ToWeapon.DamageRanges[i] = new DamageTypeStruct()
+            ToWeapon.DamageRanges[i] = new DamageType()
             { 
                LDamage = FromWeapon.GetLowerRange(i),
                HDamage = FromWeapon.GetUpperRange(i),
@@ -364,11 +367,12 @@ public static class LoadSystem
         ToArmour.Rarity[2] = FromArmour.GetRarity().b;
         ToArmour.Rarity[3] = FromArmour.GetRarity().a;
 
-        ToArmour.Resistences = new int[3];
+        ToArmour.Resistences = new ResistenceType[FromArmour.GetResistenceCount()];
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < ToArmour.Resistences.Length; i++)
         {
-            ToArmour.Resistences[i] = FromArmour.GetResistence(i);
+            ToArmour.Resistences[i].resistence = FromArmour.GetResistence(i);
+            ToArmour.Resistences[i].Type = FromArmour.GetResistenceType(i);
         }
 
         ToArmour.Enchantments = new Power[FromArmour.GetEnchantCount()];

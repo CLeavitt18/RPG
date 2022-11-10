@@ -5,7 +5,7 @@ public class DamageSpell : Spell
 {
     [SerializeField] private int CritDamage;
 
-    public List<DamageTypeStruct> DamageRanges;
+    public List<DamageType> DamageRanges;
 
     [SerializeField] private List<int> StatusChance;
 
@@ -19,7 +19,7 @@ public class DamageSpell : Spell
 
         DamageSpellStats statsD = stats as DamageSpellStats;
 
-        DamageRanges = new List<DamageTypeStruct>();
+        DamageRanges = new List<DamageType>();
         StatusChance = new List<int>();
 
         for (int i = 0; i < statsD.ranges.Count; i++)

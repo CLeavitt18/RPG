@@ -1,7 +1,7 @@
 
 public class GolemSpell : Spell
 {
-    public DamageTypeStruct DamageRange;
+    public DamageType DamageRange;
 
     public int Number;
     public int Alive;

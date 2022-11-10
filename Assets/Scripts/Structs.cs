@@ -159,9 +159,9 @@ public struct ResourceList
 [Serializable]
 public struct RangesArray
 {
-    public DamageTypeStruct[] Ranges;
+    public DamageType[] Ranges;
 
-    public DamageTypeStruct this[int i]
+    public DamageType this[int i]
     {
         get { return Ranges[i]; }
 

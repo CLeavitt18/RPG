@@ -233,7 +233,7 @@ public class WeaponRoller : MonoBehaviour
 
             int temp;
 
-            DamageTypeStruct damageStruct = new DamageTypeStruct
+            DamageType damageStruct = new DamageType
             {
                 Type = (DamageTypeEnum)i,
 
