@@ -8,5 +8,7 @@ public class BaseArmour : ScriptableObject
     public int[] Armour;
     public int[] Weight;
 
+    public IntArray[] Resistnce;
+
     public ArmourType ArmourType;
 }

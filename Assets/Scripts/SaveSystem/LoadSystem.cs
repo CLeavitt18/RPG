@@ -71,12 +71,9 @@ public static class LoadSystem
             stats.Item = PrefabIDs.prefabIDs.Armour[0];
         }
 
-        stats.Resistences = new ResistenceType[FromArmour.Resistences.Length];
-
         for (int i = 0; i < FromArmour.Resistences.Length; i++)
         {
-            stats.Resistences[i].Type = FromArmour.Resistences[i].Type;
-            stats.Resistences[i].resistence = FromArmour.Resistences[i].resistence;
+            stats.Resistences.Add(FromArmour.Resistences[i]);
         }
 
         stats.Enchantments = new Power[FromArmour.Enchantments.Length];
@@ -371,7 +368,9 @@ public static class LoadSystem
 
         for (int i = 0; i < ToArmour.Resistences.Length; i++)
         {
-            ToArmour.Resistences[i].resistence = FromArmour.GetResistence(i);
+            ToArmour.Resistences[i] = new ResistenceType();
+
+            ToArmour.Resistences[i].Resistence = FromArmour.GetResistence(i);
             ToArmour.Resistences[i].Type = FromArmour.GetResistenceType(i);
         }
 

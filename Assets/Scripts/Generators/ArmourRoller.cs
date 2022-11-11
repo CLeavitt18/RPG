@@ -7,8 +7,6 @@ public class ArmourRoller : MonoBehaviour
 
     [SerializeField] private MatMults[] Multis;
 
-    [SerializeField] private Catalyst[] Cats;
-
     [SerializeField] private DropTable[] TypeTable;
     [SerializeField] private DropTable[] ClassTable;
     [SerializeField] private DropTable[] MatTable;
@@ -27,20 +25,20 @@ public class ArmourRoller : MonoBehaviour
 
         int Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
 
-        for (int i = 0;  i < MatTable[0].Chances.Length; i++)   
+        for (int i = 0; i < MatTable[0].Chances.Length; i++)
         {
-            if(Chance <= MatTable[0].Chances[i])
+            if (Chance <= MatTable[0].Chances[i])
             {
                 Mat_Id = i;
                 break;
-            } 
+            }
         }
 
         Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
 
-        for(int i = 0; i < TypeTable[0].Chances.Length; i++)
+        for (int i = 0; i < TypeTable[0].Chances.Length; i++)
         {
-            if(Chance <= TypeTable[0].Chances[i])
+            if (Chance <= TypeTable[0].Chances[i])
             {
                 State = (ArmourType)i;
                 break;
@@ -51,7 +49,7 @@ public class ArmourRoller : MonoBehaviour
 
         for (int i = 0; i < ClassTable[0].Chances.Length; i++)
         {
-            if(Chance <= ClassTable[0].Chances.Length)
+            if (Chance <= ClassTable[0].Chances.Length)
             {
                 skill = (SkillType)i;
                 break;
@@ -60,12 +58,60 @@ public class ArmourRoller : MonoBehaviour
 
         Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
 
-        for(int i = 0; i < CatTable[0].Chances.Length; i++)
+        if (Chance <= 748)
         {
-            if (Chance <= CatTable[0].Chances[i])
+            //Physical
+            Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
+
+            for (int i = 0; i < CatTable[0].Chances.Length; i++)
             {
-                Cat_Id = i;
-                break;
+                if (Chance <= CatTable[0].Chances[i])
+                {
+                    Cat_Id = i;
+                    break;
+                }
+            }
+        }
+        else if (Chance >= 749 && Chance <= 832)
+        {
+            //Fire
+            Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
+
+            for (int i = 0; i < CatTable[0].Chances.Length; i++)
+            {
+                if (Chance <= CatTable[0].Chances[i])
+                {
+                    Cat_Id = 6 + i;
+                    break;
+                }
+            }
+        }
+        else if (Chance >= 833 && Chance <= 915)
+        {
+            //Lightning
+            Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
+
+            for (int i = 0; i < CatTable[0].Chances.Length; i++)
+            {
+                if (Chance <= CatTable[0].Chances[i])
+                {
+                    Cat_Id = 12 + i;
+                    break;
+                }
+            }
+        }
+        else if (Chance >= 916 && Chance <= 999)
+        {
+            //Ice
+            Chance = Random.Range(GlobalValues.MinRoll, GlobalValues.MaxRoll);
+
+            for (int i = 0; i < CatTable[0].Chances.Length; i++)
+            {
+                if (Chance <= CatTable[0].Chances[i])
+                {
+                    Cat_Id = 18 + i;
+                    break;
+                }
             }
         }
 
@@ -75,7 +121,9 @@ public class ArmourRoller : MonoBehaviour
     public Item CreateArmour(int Mat_Id, ArmourType Type, SkillType SkillType, int Cat_Id)
     {
         Item armour;
-        
+
+        Catalyst[] Cats = Roller.roller.Cats;
+
         if (Type == ArmourType.Shield)
         {
             armour = Instantiate(PrefabIDs.prefabIDs.ShieldHolder).GetComponent<Item>();
@@ -93,7 +141,7 @@ public class ArmourRoller : MonoBehaviour
 
         ArmourStats stats = new ArmourStats();
 
-        switch(Type)
+        switch (Type)
         {
             case ArmourType.Helmet:
                 ArmourBase = Armour[0];
@@ -117,7 +165,7 @@ public class ArmourRoller : MonoBehaviour
                 ArmourBase = Armour[5];
                 break;
             default: // shield
-                ArmourBase= Armour[6];
+                ArmourBase = Armour[6];
                 break;
         }
 
@@ -125,9 +173,27 @@ public class ArmourRoller : MonoBehaviour
 
         ArmourHolder ArmourH = armour as ArmourHolder;
 
-        stats.Armour = ArmourBase.Armour[Catogory] * Multis[Mat_Id].Multi * Cats[Cat_Id].CatMultis[0];
+        for (int i = 0; i < 4; i++)
+        {
+            if (Cats[Cat_Id].CatMultis[i] == 0)
+            {
+                continue;
+            }
 
-        stats.Resistences = new ResistenceType[0];
+            if (i == 0)
+            {
+                stats.Armour = ArmourBase.Armour[Catogory] * Multis[Mat_Id].Multi * Cats[Cat_Id].CatMultis[i];
+                continue;
+            }
+
+            ResistenceType resistenceType = new ResistenceType
+            {
+                Type = (DamageTypeEnum)i,
+                Resistence = (byte)(ArmourBase.Resistnce[i - 1][Catogory] * (1 + rarityId))
+            };
+
+            stats.Resistences.Add(resistenceType);
+        }
 
         stats.MaxDurability = ArmourBase.Durability;
         stats.CurrentDurability = stats.MaxDurability;
@@ -135,7 +201,7 @@ public class ArmourRoller : MonoBehaviour
         stats.Weight = ArmourBase.Weight[Catogory];
         stats.ArmourType = Type;
 
-        stats.SkillType = SkillType;
+        stats.SkillType = (SkillType)((byte)SkillType + (byte)SkillType.LightArmour);
 
         StringBuilder sb = new StringBuilder();
 

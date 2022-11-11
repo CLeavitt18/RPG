@@ -7,7 +7,7 @@ public class ArmourHolder : Item
     [SerializeField] private int CurrentDurability;
     [SerializeField] private int MaxDurability;
 
-    [SerializeField] private ResistenceType[] Resistences;
+    [SerializeField] private List<ResistenceType> Resistences = new List<ResistenceType>();
 
     [SerializeField] private ArmourType ArmourType;
 
@@ -38,12 +38,9 @@ public class ArmourHolder : Item
         CurrentDurability = armStats.CurrentDurability;
         MaxDurability = armStats.MaxDurability;
 
-        Resistences = new ResistenceType[armStats.Resistences.Length];
-
-        for (int i = 0; i < Resistences.Length; i++)
+        for (int i = 0; i < armStats.Resistences.Count; i++)
         {
-            Resistences[i].Type = armStats.Resistences[i].Type;
-            Resistences[i].resistence = armStats.Resistences[i].resistence;
+            Resistences.Add(armStats.Resistences[i]);
         }
 
         Enchantments = new List<Power>();
@@ -114,7 +111,7 @@ public class ArmourHolder : Item
 
     public int GetResistenceCount()
     {
-        return Resistences.Length;
+        return Resistences.Count;
     }
 
     public DamageTypeEnum GetResistenceType(int id)
@@ -124,7 +121,7 @@ public class ArmourHolder : Item
 
     public byte GetResistence(int typeId)
     {
-        return Resistences[typeId].resistence;
+        return Resistences[typeId].Resistence;
     }
 
     public ArmourType GetArmourType()

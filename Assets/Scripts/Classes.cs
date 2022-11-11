@@ -118,18 +118,18 @@ public class DamageType
 public class ResistenceType
 {
     public DamageTypeEnum Type;
-    public byte resistence;
+    public byte Resistence;
 
     public ResistenceType()
     {
         Type = DamageTypeEnum.Physical;
-        resistence = 0;
+        Resistence = 0;
     }
 
     public ResistenceType(ResistenceType rt, int multi)
     {
         Type = rt.Type;
-        resistence = (byte)(rt.resistence * multi);
+        Resistence = (byte)(rt.Resistence * multi);
     }
 }
 
@@ -274,7 +274,7 @@ public class ArmourStats : ItemStats
     public ArmourType ArmourType;
     public SkillType SkillType;
 
-    public ResistenceType[] Resistences;
+    public List<ResistenceType> Resistences = new List<ResistenceType>();
 
     public Power[] Enchantments = new Power[0];
 

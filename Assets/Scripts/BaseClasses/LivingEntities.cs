@@ -796,6 +796,11 @@ public class LivingEntities : MonoBehaviour
     {
         Armour = BaseArmour;
 
+        for (int i = 0; i < Resistences.Length; i++)
+        {
+            Resistences[i] = 0;
+        }
+
         for (int i = 0; i < EquipedArmour.Length; i++)
         {
             if (EquipedArmour[i] != null)
@@ -808,7 +813,7 @@ public class LivingEntities : MonoBehaviour
 
                 for (int x = 0; x < currArm.GetResistenceCount(); x++)
                 {
-                    int id = (int)currArm.GetResistenceType(x);
+                    int id = ((int)currArm.GetResistenceType(x)) - 1;
 
                     Resistences[id] = currArm.GetResistence(x);
                 }
@@ -853,7 +858,6 @@ public class LivingEntities : MonoBehaviour
             Hands[HandType].DamageMultis.Melee[(int)Type] = 1;
 
             Hands[HandType].DamageMultis.Melee[(int)Type] += PercentFromLevel;
-
         }
     }
 

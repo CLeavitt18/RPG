@@ -34,6 +34,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.368372, y: -145.30336, z: 57.426907}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -50,7 +51,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eecad49e322b683479e3da217b9f13c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cats: []
+  Cats:
+  - {fileID: 11400000, guid: 105f72afbb0758a449a180d1106722a2, type: 2}
+  - {fileID: 11400000, guid: 0570c8477dad9ee4da61870fd8d1f5b5, type: 2}
+  - {fileID: 11400000, guid: 276db67e5e9bb78468afab4176b2fbe9, type: 2}
+  - {fileID: 11400000, guid: 6d4ea345f1f2fb9419ae6e03aad132c1, type: 2}
+  - {fileID: 11400000, guid: 015254d6517727c4c8d0d57964bd647b, type: 2}
+  - {fileID: 11400000, guid: 2b49cf7abcb312e4a84adebf59636463, type: 2}
+  - {fileID: 11400000, guid: c6dacd3588db7004092cf85b3cb91a73, type: 2}
+  - {fileID: 11400000, guid: e509e705256baf44db3e2c12d49fbbaa, type: 2}
+  - {fileID: 11400000, guid: e84462ac95b62114f9ceff2154e3997c, type: 2}
+  - {fileID: 11400000, guid: f2db8618ea4713b43997fdc392286840, type: 2}
+  - {fileID: 11400000, guid: 11163de92d9550c46aeb7a3af91fa145, type: 2}
+  - {fileID: 11400000, guid: f47ca116148457f4aa32e8f724391855, type: 2}
+  - {fileID: 11400000, guid: b0f2be7d4198b2241a0c92c79cb35145, type: 2}
+  - {fileID: 11400000, guid: 2052f04d547f34d478a2061d403c5bdb, type: 2}
+  - {fileID: 11400000, guid: 70605d9e3e4d5f741b7b30e243b6c21d, type: 2}
+  - {fileID: 11400000, guid: b1a237f3aee8f964d80697454dbed4ed, type: 2}
+  - {fileID: 11400000, guid: 75a9c7720ce9d8342b590005fc8327ce, type: 2}
+  - {fileID: 11400000, guid: d6a0863e321d8a54ea5cbf7a419c93da, type: 2}
+  - {fileID: 11400000, guid: 852379ce2a2bace44adc1700e0e44215, type: 2}
+  - {fileID: 11400000, guid: e1ba00165136a6d4c9ab1a37555cd5ca, type: 2}
+  - {fileID: 11400000, guid: 43622ee28009fdb46bb344b30d5162e3, type: 2}
+  - {fileID: 11400000, guid: d2e20579e0f2f7540a08b5838b5ffb56, type: 2}
+  - {fileID: 11400000, guid: 1cf8eaad6809d6542bf9dd286d6f917a, type: 2}
+  - {fileID: 11400000, guid: d0deaad98a772cf45a3b3ab13e4154dc, type: 2}
   weaponRoller: {fileID: 1390889405927506913}
   armourRoller: {fileID: 1390889405927506912}
   spellRoller: {fileID: 5209461353604122228}
