@@ -805,6 +805,13 @@ public class LivingEntities : MonoBehaviour
                 int tempArmour = currArm.GetArmour() * (1 + ((int)currArm.GetSkillType()) / 100);
 
                 Armour += tempArmour;
+
+                for (int x = 0; x < currArm.GetResistenceCount(); x++)
+                {
+                    int id = (int)currArm.GetResistenceType(x);
+
+                    Resistences[id] = currArm.GetResistence(x);
+                }
             }
         }
     }

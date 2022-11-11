@@ -118,7 +118,7 @@ public class DamageType
 public class ResistenceType
 {
     public DamageTypeEnum Type;
-    public int resistence;
+    public byte resistence;
 
     public ResistenceType()
     {
@@ -129,7 +129,7 @@ public class ResistenceType
     public ResistenceType(ResistenceType rt, int multi)
     {
         Type = rt.Type;
-        resistence = rt.resistence * multi;
+        resistence = (byte)(rt.resistence * multi);
     }
 }
 

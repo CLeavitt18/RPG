@@ -122,14 +122,9 @@ public class ArmourHolder : Item
         return Resistences[id].Type;
     }
 
-    public int GetResistence(int typeId)
+    public byte GetResistence(int typeId)
     {
         return Resistences[typeId].resistence;
-    }
-
-    public int GetResistence(DamageTypeEnum type)
-    {
-        return Resistences[(int)type].resistence;
     }
 
     public ArmourType GetArmourType()
