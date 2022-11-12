@@ -104,9 +104,11 @@ public class Inventory : MonoBehaviour
 
         if (Stackable && end_id != 0)
         {
+            Item item;
+
             for (int i = start_id; i < end_id; i++)
             {
-                Item item = AllItems[i];
+                item = AllItems[i];
 
                 if (item.GetEquipable() && item.GetEquiped())
                 {
@@ -527,6 +529,62 @@ public class Inventory : MonoBehaviour
         }
 
         return null;
+    }
+
+    public int FindIndex(Item item)
+    {
+        if (item == null)
+        {
+            return -1;
+        }
+
+        int start = 0;
+        int end = 0;
+
+        string tag = item.tag;
+
+        switch (tag)
+        {
+            case GlobalValues.WeaponTag:
+                start = 0;
+                end = GetStart(GlobalValues.ArmourStart);
+                break;
+            case GlobalValues.ArmourTag:
+            case GlobalValues.ShieldTag:
+                start = GetStart(GlobalValues.Armourpieces);
+                end = GetStart(GlobalValues.SpellStart);
+                break;
+            case GlobalValues.SpellTag:
+                start = GetStart(GlobalValues.SpellStart);
+                end = GetStart(GlobalValues.RuneStart);
+                break;
+            case GlobalValues.RuneTag:
+                start = GetStart(GlobalValues.RuneStart);
+                end = GetStart(GlobalValues.PotionStart);
+                break;
+            case GlobalValues.PotionTag:
+                start = GetStart(GlobalValues.PotionStart);
+                end = GetStart(GlobalValues.ResourceStart);
+                break;
+            case GlobalValues.ResourceTag:
+                start = GetStart(GlobalValues.ResourceStart);
+                end = GetStart(GlobalValues.MiscStart);
+                break;
+            default:// Gold | Misc | Key
+                start = GetStart(GlobalValues.MiscStart);
+                end = Count;
+                break;
+        }
+
+        for (int i = start; i < end; i++)
+        {
+            if (AllItems[i] == item)
+            {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public void Clear()

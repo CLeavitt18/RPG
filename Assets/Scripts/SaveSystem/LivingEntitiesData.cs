@@ -26,9 +26,8 @@ public class LivingEntitiesData
 
     public LivingEntitiesData(LivingEntities entity)
     {
-        int start;
-        int end;
-        int id = 0;
+        int index = 0;
+
         Inventory inventory = entity.Inventory;
 
         inventoryData = new InventoryData(inventory);
@@ -53,89 +52,20 @@ public class LivingEntitiesData
             Attributes[i].Reserved = entity.GetResrvedAttribute(i);
         }
 
-        start = 0;
-        end = inventory.GetStart(GlobalValues.ArmourStart);
+        index = inventory.FindIndex(rightHand);
 
-        for (int i = start; i < end; i++)
+        if (index > -1)
         {
-            WeaponHolder WeaponH = inventory[i].GetComponent<WeaponHolder>();
-
-            if (inventory[i] == rightHand)
-            {
-                RightHand = true;
-                RightHandId = i;
-            }
-
-            if (inventory[i] == leftHand && rightHand != leftHand)
-            {
-                LeftHand = true;
-                LeftHandId = i;
-            }
-
-            id++;
+            RightHand = true;
+            RightHandId = index;
         }
 
-        start = inventory.GetStart(GlobalValues.ArmourStart);
-        end = inventory.GetStart(GlobalValues.SpellStart);
+        index = inventory.FindIndex(leftHand);
 
-        for (int i = start; i < end; i++)
+        if (index > -1 && rightHand != leftHand)
         {
-            ArmourHolder ArmourH = inventory[i].GetComponent<ArmourHolder>();   
-
-            if (inventory[i] == rightHand)
-            {
-                RightHand = true;
-                RightHandId = i;
-            }
-            else if (inventory[i] == leftHand)
-            {
-                LeftHand = true;
-                LeftHandId = i;
-            }
-        }
-
-        start = inventory.GetStart(GlobalValues.SpellStart);
-        end = inventory.GetStart(GlobalValues.RuneStart);
-
-        id = 0;
-
-        for (int i = start; i < end; i++)
-        {
-            SpellHolder SpellH = inventory[i].GetComponent<SpellHolder>();
-
-            if (inventory[i] == rightHand)
-            {
-                RightHand = true;
-                RightHandId = i;
-            }
-
-            if (inventory[i] == leftHand && rightHand != leftHand)
-            {
-                LeftHand = true;
-                LeftHandId = i;
-            }
-
-            id++;
-        }
-
-        start = inventory.GetStart(GlobalValues.MiscStart);
-        end = inventory.Count;
-
-        for(int i = start; i < end; i++)
-        {
-            if(inventory[i] is TorchHolder torch && torch.GetEquiped())
-            {
-                if(torch == rightHand)
-                {
-                    RightHand = true;
-                    RightHandId = i;
-                }
-                else
-                {
-                    LeftHand = true;
-                    LeftHandId = i;
-                }
-            }
+            LeftHand = true;
+            LeftHandId = index;
         }
     }
 }

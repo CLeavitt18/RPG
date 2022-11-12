@@ -240,7 +240,7 @@ public class Helper : MonoBehaviour
     private void CreateRuneStatsText(Spell rune, Transform t)
     {
         float castRate = rune.GetCastRate();
-     
+
         if (rune is DamageSpell dSpell)
         {
             float TempDamage;
@@ -358,8 +358,7 @@ public class Helper : MonoBehaviour
 
         Inventory pInventory = Player.player.Inventory;
 
-        int start = pInventory.GetStart(GlobalValues.ResourceStart);
-        int end = pInventory.GetStart(GlobalValues.MiscStart);
+        Item itemRef;
 
         foreach (KeyValuePair<string, int> item in items)
         {
@@ -369,15 +368,13 @@ public class Helper : MonoBehaviour
 
             color = Color.red;
 
-            for (int x = start; x < end; x++)
+            itemRef = pInventory.Find(item.Key, GlobalValues.ResourceTag);
+
+            if (itemRef != null &&
+                itemRef.GetAmount() >= item.Value)
             {
-                if (pInventory[x].GetName() == item.Key && 
-                pInventory[x].GetAmount() >= item.Value)
-                {
-                    color = Color.black;
-                    count++;
-                    break;
-                }
+                color = Color.black;
+                count++;
             }
 
             SpawnResourceDetailsSlot(t, color);

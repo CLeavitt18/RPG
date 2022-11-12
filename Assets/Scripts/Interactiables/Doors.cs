@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Doors : Interactialbes, IInteractable, ISavable
 {
     public bool Locked;
-    
+
     public GameObject LoadingScreen;
 
     public void OnEnable()
@@ -28,7 +28,7 @@ public class Doors : Interactialbes, IInteractable, ISavable
 
         int target = SceneManagerOwn.Manager.Target;
         int tracker = SceneManagerOwn.Manager.Tracker;
-        
+
         yield return new WaitForSecondsRealtime(.1f);
 
         do
@@ -51,20 +51,15 @@ public class Doors : Interactialbes, IInteractable, ISavable
         {
             Inventory inventory = Player.player.Inventory;
 
-            int start = inventory.GetStart(GlobalValues.MiscStart);
-            int end = inventory.Count;
-
             StringBuilder KeyName = new StringBuilder("Key to ");
             KeyName.Append(Name);
 
-            for (int i = start; i < end; i++)
+            if (inventory.Find(KeyName.ToString(), GlobalValues.MiscTag) != null)
             {
-                if (inventory[i].name == KeyName.ToString())
-                {
-                    Locked = false;
-                    return;
-                }
+                Locked = false;
+                return;
             }
+
         }
         else
         {
