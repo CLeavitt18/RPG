@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.331, y: 0.096, z: 0.789}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1391528214274596829}
   m_Father: {fileID: 1667978222684927276}
@@ -58,6 +59,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1667978222684927276}
   m_Father: {fileID: 0}
@@ -111,6 +113,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.331, y: 0.096, z: 0.789}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1667978223657683231}
   m_Father: {fileID: 1667978222684927276}
@@ -142,6 +145,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.061, y: 0.214, z: 0.807}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1667978222684927276}
   m_RootOrder: 2
@@ -187,6 +191,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1667978222189535515}
   - {fileID: 3949852463838209015}
@@ -259,7 +264,7 @@ BoxCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &1667978222684927279
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -272,6 +277,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -353,6 +359,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Masteries:
+  - Level: 0
+    Exp: 0
+    RExp: 0
+  - Level: 0
+    Exp: 0
+    RExp: 0
+  - Level: 0
+    Exp: 0
+    RExp: 0
+  - Level: 0
+    Exp: 0
+    RExp: 0
+  - Level: 0
+    Exp: 0
+    RExp: 0
   - Level: 0
     Exp: 0
     RExp: 0
@@ -465,9 +486,9 @@ MonoBehaviour:
       DamageValues: 
       Status: 
     HasAttacked: 0
+    attackFinsihed: 1
     NextAttack: 0
     ChannelTime: 0
-    ActionsPerSecond: 0
   - State: 0
     DamageMultis:
       Melee:
@@ -497,9 +518,9 @@ MonoBehaviour:
       DamageValues: 
       Status: 
     HasAttacked: 0
+    attackFinsihed: 1
     NextAttack: 0
     ChannelTime: 0
-    ActionsPerSecond: 0
   Running: 0
   Dead: 0
   IsRegening: 000000
@@ -516,7 +537,6 @@ MonoBehaviour:
   StoppingDistance: 0
   AttackRange: 0
   AttackRollWaitTime: 0
-  IsHumanoid: 1
   animator: {fileID: 1667978222684927279}
   HitAnimationTriggerName: 
   DeathAnimationBoolName: 
@@ -542,6 +562,7 @@ MonoBehaviour:
   NextTime: 0
   Mode: 0
   FirstOpen: 1
+  inventory: {fileID: 0}
 --- !u!114 &3005634500929940404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,13 +736,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1667978222189535515}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1667978223657683230
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -734,6 +756,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -765,13 +788,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3949852463838209015}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1732263288718084366
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -784,6 +808,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

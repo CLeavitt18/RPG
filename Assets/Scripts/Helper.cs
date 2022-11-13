@@ -174,7 +174,7 @@ public class Helper : MonoBehaviour
 
         for (int i = 0; i < armour.GetResistenceCount(); i++)
         {
-            sb.Append(((DamageTypeEnum)(i + 1)).ToString());
+            sb.Append(armour.GetResistenceType(i).ToString());
             sb.Append(' ');
             sb.Append(GlobalValues.ResistanceText);
             sb.Append(": ");

@@ -57,9 +57,10 @@ public class PlayerStatsUi : IUi
         CreateBanner(GlobalValues.SkillsText, 0);
 
         //Create Skill Texts /Skill Bars
-        for (int i = 0; i < 16; i++)
+        for (SkillType i = SkillType.Blade; i < SkillType.None; i++)
         {
-            string name = ((SkillType)i).ToString();
+            string name = i.ToString();
+            int id = (int)i;
 
             for (int x = 0; x < name.Length; x++)
             {
@@ -74,17 +75,18 @@ public class PlayerStatsUi : IUi
 
             sb.Append(name);
             sb.Append(": ");
-            sb.Append(Player.player.GetSkillLevel(i)); ;
+            sb.Append(Player.player.GetSkillLevel(id)); ;
 
-            CreateSkillText((double)Player.player.GetSkillExp(i), (double)Player.player.GetSkillRExp(i));
+            CreateSkillText((double)Player.player.GetSkillExp(id), (double)Player.player.GetSkillRExp(id));
         }
 
         CreateBanner(GlobalValues.MasteriesText, 0);
 
         //Create Mastery Texts /Mastery Bars
-        for (int i = 0; i < 10; i++)
+        for (MasteryType i = MasteryType.OneHandedMelee; i < MasteryType.None; i++)
         {
-            string name = ((MasteryType)i).ToString();
+            string name = (i).ToString();
+            int id = (int)i;
 
             for (int x = 0; x < name.Length; x++)
             {
@@ -99,9 +101,9 @@ public class PlayerStatsUi : IUi
 
             sb.Append(name);
             sb.Append(": ");
-            sb.Append(Player.player.GetMasteryLevel(i));
+            sb.Append(Player.player.GetMasteryLevel(id));
 
-            CreateSkillText((double)Player.player.GetMasteryExp(i), (double)Player.player.GetMasteryRExp(i));
+            CreateSkillText((double)Player.player.GetMasteryExp(id), (double)Player.player.GetMasteryRExp(id));
         }
 
         CreateBanner(GlobalValues.AbilitiesText, 0);
@@ -499,7 +501,7 @@ public class PlayerStatsUi : IUi
 
     private void DisplayResistanceText(int id)
     {
-        DamageTypeEnum type = (DamageTypeEnum)id;
+        DamageTypeEnum type = (DamageTypeEnum)(id + 1);
 
         sb.Append(type.ToString());
         sb.Append(' ');

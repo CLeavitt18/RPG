@@ -54,7 +54,8 @@ public enum SkillType : byte
     Enchanting,
     SpellCrafting,
     Brewing,
-    Cooking
+    Cooking,
+    None
 }
 
 public enum AttackType : byte

@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aae939d8f1119d408d4b39fb75d3018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 0
   Value: 0
   Amount: 0
   Weight: 0
@@ -283,7 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aae939d8f1119d408d4b39fb75d3018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 0
   Value: 0
   Amount: 0
   Weight: 0
@@ -402,7 +400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
       propertyPath: masteryType
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
       propertyPath: ScalingValues
