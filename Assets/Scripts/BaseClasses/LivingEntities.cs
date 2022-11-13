@@ -133,11 +133,12 @@ public class LivingEntities : MonoBehaviour
             if (hand.ChannelTime >= GlobalValues.ChargeAttackTime)
             {
                 float cost = (float)Weapon.GetWeight() / 100f;
-                cost *= 1 + (Mathf.Floor((float)Attributes[(int)Abilities.Strenght].Ability * 0.5f)) * 0.05f;
+                cost *= 1 + (Mathf.Floor((float)Attributes[(int)Abilities.Strenght].Ability * 
+                            GlobalValues.MDamStrInterval)) * GlobalValues.MDamPerStr;
 
                 if (LoseAttribute((int)cost, AttributesEnum.Stamina))
                 {
-                    hand.Stats.DamageValues[0] = (int)((float)hand.Stats.DamageValues[0] * (1 + ((float)Weapon.GetPowerAttack() * .01f)));
+                    hand.Stats.DamageValues[0] = (int)((float)hand.Stats.DamageValues[0] * ((float)Weapon.GetPowerAttack() * .01f));
                     attackSpeed = Weapon.GetAttackSpeed() * ActionSpeed * 1.25f;
                     attackAnimation = Weapon.GetPwrAttackAnimationName();
                 }
@@ -165,7 +166,7 @@ public class LivingEntities : MonoBehaviour
 
             hand.attackFinsihed = false;
 
-            hand.Animator.speed = 1.0f * attackSpeed;
+            hand.Animator.speed = attackSpeed;
             hand.Animator.SetTrigger(attackAnimation);
 
             yield return new WaitForSeconds(1.0f / attackSpeed);

@@ -256,7 +256,6 @@ public class WeaponRoller : MonoBehaviour
 
         averageDamage = (int)(averageDamage * stats.ActionsPerSecond);
 
-
         float value = baseWeapon.Values[pri_Id];
         value += secondary.Value;
         value += tertiary.Value;

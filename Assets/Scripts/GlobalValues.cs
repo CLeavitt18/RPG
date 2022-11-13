@@ -46,7 +46,7 @@ public static class GlobalValues
     public const string LightningText = "Lightning";
     public const string IceText = "Ice";
     public const string OffensesText = "Offenses";
-    public const string AttacksText = "Attacks";
+    public const string AttackText = "Attack";
     public const string PerText = "Per";
     public const string SecondText = "Second";
     public const string LifeText = "Life";
@@ -74,6 +74,7 @@ public static class GlobalValues
     public const string ActionText = "Action";
     public const string SpeedText = "Speed";
     public const string NumberText = "Number";
+    public const string PowerText = "Power";
     public const string BreakLineSmall = "\n_____________________________________";
     public const string BreakLineMid =   "\n___________________________________________";
     public const string BreakLineLarge = "\n___________________________________________________";

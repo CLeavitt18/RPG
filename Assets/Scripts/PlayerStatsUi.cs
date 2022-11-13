@@ -259,8 +259,8 @@ public class PlayerStatsUi : IUi
 
                 WeaponHolder tempWeapon = weapon as WeaponHolder;
 
-                sb.Append(GlobalValues.AttacksText);
-                sb.Append(' ');
+                sb.Append(GlobalValues.AttackText);
+                sb.Append("s ");
                 sb.Append(GlobalValues.PerText);
                 sb.Append(' ');
                 sb.Append(GlobalValues.SecondText);
@@ -274,6 +274,34 @@ public class PlayerStatsUi : IUi
                 sb.Append(GlobalValues.StealText);
                 sb.Append(": ");
                 sb.Append(tempWeapon.GetLifeSteal());
+                sb.Append("%");
+
+                CreateStatText();
+
+                sb.Append(GlobalValues.PowerText);
+                sb.Append(' ');
+                sb.Append(GlobalValues.AttackText);
+                sb.Append(' ');
+                sb.Append(GlobalValues.CostText);
+                sb.Append(": ");
+
+                float cost = heldItem.GetWeight() / 100.0f;
+                cost *= 1 + (Mathf.Floor((float)Player.player.GetAbility(AttributesEnum.Health) * 
+                            GlobalValues.MDamStrInterval)) * GlobalValues.MDamPerStr;
+
+                sb.Append((int)cost);
+                sb.Append(' ');
+                sb.Append(AttributesEnum.Stamina.ToString());
+
+                CreateStatText();
+
+                sb.Append(GlobalValues.PowerText);
+                sb.Append(' ');
+                sb.Append(GlobalValues.AttackText);
+                sb.Append(' ');
+                sb.Append(GlobalValues.DamageText);
+                sb.Append(": ");
+                sb.Append(weapon.GetPowerAttack());
                 sb.Append("%");
 
                 CreateStatText();

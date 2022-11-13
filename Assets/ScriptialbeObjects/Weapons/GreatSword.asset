@@ -15,7 +15,7 @@ MonoBehaviour:
   WeaponSkillType: 0
   HandType: 1
   LifeSteal: 0
-  PwrAttackDamage: 50
+  PwrAttackDamage: 170
   CritDamage: 40
   Durability: 400
   StatusChance: 3c0000003c0000003c0000003c000000
