@@ -17,18 +17,10 @@ public class ForgeUI : MonoBehaviour
 
     public GameObject CreateWeaponUi;
     public GameObject CreateArmourUi;
-    public GameObject ResourceCostUi;
-    public GameObject ResourceSlot;
     public GameObject ConfirmCreateWeaponUi;
-
-    public GameObject[] BaseItems;
 
     [SerializeField] private Transform itemDetailsLocation;
     [SerializeField] private Transform resourceCostDetailsLocation;
-
-    public BaseWeapon[] WeaponBase;
-
-    public BaseArmour[] ArmourBase;
 
     public BaseRecipes RecipesCatalyst;
 
