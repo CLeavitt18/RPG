@@ -33,9 +33,8 @@ public class Helper : MonoBehaviour
         GameObject Ui = Instantiate(itemDetailsPrefab, parent.position, parent.rotation, parent);
 
         Transform t = Ui.transform.GetChild(0).GetChild(0);
-        Text nameText = t.GetChild(0).GetComponent<Text>();
-
-        nameText.text = item.GetName();
+        t.GetChild(0).GetChild(0).GetComponent<Text>().text = item.GetName();
+        t.GetChild(0).GetComponent<RawImage>().color = item.GetRarity();
 
         SpawnItemDetailSlot(t);
 
@@ -352,8 +351,6 @@ public class Helper : MonoBehaviour
 
         Transform t = ui.transform.GetChild(0).GetChild(0);
 
-        StringBuilder sb = new StringBuilder();
-
         Color color;
 
         Inventory pInventory = Player.player.Inventory;
@@ -388,7 +385,7 @@ public class Helper : MonoBehaviour
         return playercanCraft;
     }
 
-    private Text SpawnResourceDetailsSlot(Transform t, Color color)
+    private void SpawnResourceDetailsSlot(Transform t, Color color)
     {
         Text _text = Instantiate(resourceSlot, t).GetComponent<Text>();
 
@@ -396,8 +393,6 @@ public class Helper : MonoBehaviour
         _text.color = color;
 
         sb.Clear();
-
-        return _text;
     }
 
     public void CreateQuestDetails(QuestHolder quest, Transform parent)

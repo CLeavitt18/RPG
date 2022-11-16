@@ -6,31 +6,38 @@ public class ForgeUI : MonoBehaviour
 {
     public static ForgeUI forgeUi;
 
-    [Range(0, 1)] public int ItemType;
-    public int ItemCatogoryType = 0;
-    public int mat_Id = 0;
-    public int sec_Id = 0;
-    public int ter_Id = 0;
+    [SerializeField, Range(0, 1)] public int ItemType;
+    [SerializeField] public int ItemCatogoryType = 0;
+    [SerializeField] public int mat_Id = 0;
+    [SerializeField] public int sec_Id = 0;
+    [SerializeField] public int ter_Id = 0;
     [Range(0, 23)] public int Cat_ID = 0;
 
     [SerializeField] private bool canCraft = false;
 
-    public GameObject CreateWeaponUi;
-    public GameObject CreateArmourUi;
-    public GameObject ConfirmCreateWeaponUi;
+    [SerializeField] public GameObject CreateWeaponUi;
+    [SerializeField] public GameObject CreateArmourUi;
+    [SerializeField] public GameObject ConfirmCreateWeaponUi;
+    [SerializeField] private GameObject weaponPartButtonPrefab;
+    [SerializeField] private GameObject catalystButtonPrefab;
 
+    [SerializeField] private Transform primaryHolder;
+    [SerializeField] private Transform secondaryHolder;
+    [SerializeField] private Transform teritiaryHolder;
+    [SerializeField] private Transform catHolder;
     [SerializeField] private Transform itemDetailsLocation;
     [SerializeField] private Transform resourceCostDetailsLocation;
 
-    public BaseRecipes RecipesCatalyst;
 
-    public BaseRecipes[] RecipesPrimary;
-    public BaseRecipes[] RecipesSecoundary;
-    public BaseRecipes[] RecipesTeritiary;
+    [SerializeField] public BaseRecipes RecipesCatalyst;
+
+    [SerializeField] public BaseRecipes[] RecipesPrimary;
+    [SerializeField] public BaseRecipes[] RecipesSecoundary;
+    [SerializeField] public BaseRecipes[] RecipesTeritiary;
 
     [SerializeField] private DictionaryOfStringAndInt RequiredItems;
 
-    public WeaponHolder weapon;
+    [SerializeField] public WeaponHolder weapon;
 
     public void OnEnable()
     {
@@ -64,6 +71,37 @@ public class ForgeUI : MonoBehaviour
         ter_Id = 0;
         ItemCatogoryType = 0;
         Cat_ID = 0;
+
+        GameObject button;
+
+        for (MaterialType i = MaterialType.Bone; i <= MaterialType.Ebony; i++)
+        {
+            int id = (int)i;
+            button = Instantiate(weaponPartButtonPrefab, primaryHolder);
+            button.transform.GetChild(0).GetComponent<Text>().text = i.ToString();
+
+            button.GetComponent<Button>().onClick.AddListener(delegate { SetPrimary(id);});
+
+            button = Instantiate(weaponPartButtonPrefab, secondaryHolder);
+            button.transform.GetChild(0).GetComponent<Text>().text = i.ToString();
+
+            button.GetComponent<Button>().onClick.AddListener(delegate { SetSecoundary(id);});
+
+            button = Instantiate(weaponPartButtonPrefab, teritiaryHolder);
+            button.transform.GetChild(0).GetComponent<Text>().text = i.ToString();
+
+            button.GetComponent<Button>().onClick.AddListener(delegate { SetTeritiary(id);});
+        }
+
+        for (CatType i = CatType.T1Phys; i <= CatType.T6Ice; i++)
+        {
+            int id = (int)i;
+
+            button = Instantiate(catalystButtonPrefab, catHolder);
+            button.transform.GetChild(0).GetComponent<Text>().text = RecipesCatalyst.ItemsRequired[id].Item[0];
+
+            button.GetComponent<Button>().onClick.AddListener(delegate { SetCatalyst(id);});
+        }
 
         PreviewItem();
     }
@@ -114,6 +152,7 @@ public class ForgeUI : MonoBehaviour
     {
         if (weapon != null)
         {
+            Destroy(itemDetailsLocation.GetChild(0).gameObject);
             Destroy(weapon.gameObject);
         }
 
