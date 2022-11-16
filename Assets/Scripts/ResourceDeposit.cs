@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ResourceDeposit : Interactialbes, IInteractable, ISavable
 {
@@ -12,16 +12,15 @@ public class ResourceDeposit : Interactialbes, IInteractable, ISavable
 
     public void OnEnable()
     {
-        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(0).transform.GetChild(1).gameObject;
+        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         gameObject.name = Name;
     }
 
     public override void SetUiOpen()
     {
-        PUIInsruction.GetComponent<Text>().text = "E: " + gameObject.name;
-        //Debug.Log("Door Interaction Text Set");
+        PUIInsruction.text = "E: " + gameObject.name;
 
-        PUIInsruction.SetActive(true);
+        PUIInsruction.gameObject.SetActive(true);
         UIOpen = true;
 
         NextTime = Time.time + WaitTime;
@@ -39,7 +38,7 @@ public class ResourceDeposit : Interactialbes, IInteractable, ISavable
             SaveSystem.TempSaveResourceDeposit(this.gameObject, SceneManagerOwn.Manager.SavableObjects.IndexOf(this));
         }
 
-        PUIInsruction.SetActive(false);
+        PUIInsruction.gameObject.SetActive(false);
 
         GameObject.FindGameObjectWithTag("Ground").GetComponent<Ground>().CallBakeNavMeshSurface();
 

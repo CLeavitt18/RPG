@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class Containers : Interactialbes, IInteractable, ISavable
 {
@@ -13,7 +13,7 @@ public class Containers : Interactialbes, IInteractable, ISavable
 
     public void Awake()
     {
-        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(0).transform.GetChild(1).gameObject;
+        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         gameObject.name = Name;
         inventory = GetComponent<Inventory>();
         Mode = inventory.GetMode();
@@ -28,21 +28,21 @@ public class Containers : Interactialbes, IInteractable, ISavable
             case UiState.Container:
                 if (inventory.Count == 0)
                 {
-                    PUIInsruction.GetComponent<Text>().text = "E: Open (Empty)";
+                    PUIInsruction.text = "E: Open (Empty)";
                 }
                 else
                 {
                     sb.Append("E: Open ");
                     sb.Append(Name);
 
-                    PUIInsruction.GetComponent<Text>().text = sb.ToString();
+                    PUIInsruction.text = sb.ToString();
                 }
                 break;
             case UiState.Store:
                     sb.Append("E: Talk To ");
                     sb.Append(Name);
 
-                    PUIInsruction.GetComponent<Text>().text = sb.ToString();
+                    PUIInsruction.text = sb.ToString();
                 break;
         }
 
@@ -51,6 +51,8 @@ public class Containers : Interactialbes, IInteractable, ISavable
 
     public void Interact(bool State)
     {
+        SetPlayerState(State);
+        
         switch (Mode)
         {
             case UiState.Container:
@@ -76,7 +78,6 @@ public class Containers : Interactialbes, IInteractable, ISavable
                 break;
         }
 
-        SetPlayerState(State);
 
         FirstOpen = false;
     }

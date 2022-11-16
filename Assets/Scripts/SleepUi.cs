@@ -2,6 +2,7 @@ using System.Collections;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SleepUi : IUi
 {
@@ -9,7 +10,7 @@ public class SleepUi : IUi
 
     [SerializeField] private GameObject _sleepUi;
 
-    [SerializeField] private Text SleepText;
+    [SerializeField] private TextMeshProUGUI SleepText;
 
     [SerializeField] private Slider SleepBar;
 
@@ -61,6 +62,15 @@ public class SleepUi : IUi
         StringBuilder sb = new StringBuilder(SleepDuration.ToString("n0"));
 
         SleepText.text = sb.ToString();
+
+        if (SleepDuration != 1)
+        {
+            SleepText.text += " Hours";
+        }
+        else
+        {
+            SleepText.text += " Hour";
+        }
     }
 
     public void CancelSleep()

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class ItemInteractiable : Interactialbes, IInteractable
 {
     public void OnEnable()
     {
-        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(0).transform.GetChild(1).gameObject;
+        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     public void Interact(bool State)
@@ -17,9 +17,9 @@ public class ItemInteractiable : Interactialbes, IInteractable
 
     public override void SetUiOpen()
     {
-        PUIInsruction.GetComponent<Text>().text = "E: Take";
+        PUIInsruction.text = "E: Take";
 
-        PUIInsruction.SetActive(true);
+        PUIInsruction.gameObject.SetActive(true);
         UIOpen = true;
 
         NextTime = Time.time + WaitTime;

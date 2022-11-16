@@ -2,6 +2,7 @@
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerUi : MonoBehaviour
 {
@@ -14,9 +15,9 @@ public class PlayerUi : MonoBehaviour
     [SerializeField] private Image[] AttributeBars = new Image[3];
     [SerializeField] private Image[] ReserveBars = new Image[3];
 
-    [SerializeField] private Text EnemyInfoText;
+    [SerializeField] private TextMeshProUGUI EnemyInfoText;
 
-    [SerializeField] private Text[] AttributeTexts = new Text[3];
+    [SerializeField] private TextMeshProUGUI[] AttributeTexts = new TextMeshProUGUI[3];
 
     [SerializeField] private GameObject PlayerCanvas;
     [SerializeField] private GameObject EnemyInfoUi;

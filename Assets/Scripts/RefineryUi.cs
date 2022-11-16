@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RefineryUi : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class RefineryUi : MonoBehaviour
 
     public Slider ResourceSlider;
 
-    public Text ResourceAmountText;
+    public TextMeshProUGUI ResourceAmountText;
 
     //public ItemAmount ItemsRequired;
 
@@ -89,7 +90,7 @@ public class RefineryUi : MonoBehaviour
             Button button = Helper.helper.CreateCraftingButton(refinerySlot, Resources[i].GetComponent<Item>().GetName(), contentHolder);
             button.onClick.AddListener(delegate { SetResourceId(id); });
 
-            Text text = button.transform.GetChild(0).GetComponent<Text>();
+            TextMeshProUGUI text = button.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
             Inventory pInventory = Player.player.Inventory;
             Item item;

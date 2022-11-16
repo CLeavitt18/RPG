@@ -1,6 +1,6 @@
 using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class SpellCraftingTable : Interactialbes, IInteractable
 {
@@ -8,7 +8,7 @@ public class SpellCraftingTable : Interactialbes, IInteractable
 
     public void OnEnable()
     {
-        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject;
+        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         gameObject.name = Name;
     }
 
@@ -17,7 +17,7 @@ public class SpellCraftingTable : Interactialbes, IInteractable
         StringBuilder sb = new StringBuilder("E: Use ");
         sb.Append(Name);
 
-        PUIInsruction.GetComponent<Text>().text = sb.ToString();
+        PUIInsruction.text = sb.ToString();
 
 
         base.SetUiOpen();

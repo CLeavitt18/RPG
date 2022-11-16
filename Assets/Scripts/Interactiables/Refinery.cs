@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class Refinery : Interactialbes, IInteractable
 {
@@ -7,7 +7,7 @@ public class Refinery : Interactialbes, IInteractable
 
     public void OnEnable()
     {
-        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(0).transform.GetChild(1).gameObject;
+        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(0).GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         RefinaryUI = GameObject.Find("RefinaryUi").transform.GetChild(0).gameObject;
         gameObject.name = Name;
     }
@@ -18,9 +18,10 @@ public class Refinery : Interactialbes, IInteractable
         RefinaryUI.transform.parent.gameObject.GetComponent<RefineryUi>().SetRefineryToDefault(true);
         SetPlayerState(State);
     }
+    
     public override void SetUiOpen()
     {
-        PUIInsruction.GetComponent<Text>().text = "E: Use " + Name;
+        PUIInsruction.text = "E: Use " + Name;
 
         base.SetUiOpen();
     }

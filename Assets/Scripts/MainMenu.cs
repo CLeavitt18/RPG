@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -65,7 +66,7 @@ public class MainMenu : MonoBehaviour
             {
                 GameObject Profile = Instantiate(PlayerProfileButton, PlayerProfilesList);
 
-                Profile.transform.GetChild(0).gameObject.GetComponent<Text>().text = File.Name;
+                Profile.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = File.Name;
             }
         }
     }
@@ -89,7 +90,7 @@ public class MainMenu : MonoBehaviour
         {
             GameObject Profile = Instantiate(PlayerProfileButton, PlayerProfilesList);
 
-            Profile.transform.GetChild(0).gameObject.GetComponent<Text>().text = File.Name;
+            Profile.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = File.Name;
             Profile.GetComponent<PlayerProfileInfo>().Mode = true;
         }
 
@@ -105,7 +106,7 @@ public class MainMenu : MonoBehaviour
 
     public void SetFocusedProfile(GameObject Item)
     {
-        PlayerName = Item.transform.GetChild(0).gameObject.GetComponent<Text>().text;
+        PlayerName = Item.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text;
 
         LoadUiObjects[1].SetActive(true);
         LoadUiObjects[2].SetActive(true);
@@ -113,7 +114,7 @@ public class MainMenu : MonoBehaviour
 
     public void SetFocusedSaveFile(GameObject Item)
     {
-        SaveProfile = Item.transform.GetChild(0).gameObject.GetComponent<Text>().text;
+        SaveProfile = Item.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text;
 
         LoadUiObjects[4].SetActive(true);
         LoadUiObjects[5].SetActive(true);

@@ -2,6 +2,7 @@ using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Helper : MonoBehaviour
 {
@@ -31,9 +32,8 @@ public class Helper : MonoBehaviour
     public void CreateItemDetails(Item item, Transform parent)
     {
         GameObject Ui = Instantiate(itemDetailsPrefab, parent.position, parent.rotation, parent);
-
         Transform t = Ui.transform.GetChild(0).GetChild(0);
-        t.GetChild(0).GetChild(0).GetComponent<Text>().text = item.GetName();
+        t.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = item.GetName();
         t.GetChild(0).GetComponent<RawImage>().color = item.GetRarity();
 
         SpawnItemDetailSlot(t);
@@ -227,8 +227,8 @@ public class Helper : MonoBehaviour
 
             sb.Append(SpellH.GetRune(i).GetName());
 
-            Text name = SpawnItemDetailSlot(t);
-            name.alignment = TextAnchor.MiddleCenter;
+            TextMeshProUGUI name = SpawnItemDetailSlot(t);
+            name.alignment = TextAlignmentOptions.MidlineGeoAligned;
 
             SpawnItemDetailSlot(t);
 
@@ -322,17 +322,17 @@ public class Helper : MonoBehaviour
         }
     }
 
-    private Text SpawnItemDetailSlot(Transform t, bool useQuestText = false)
+    private TextMeshProUGUI SpawnItemDetailSlot(Transform t, bool useQuestText = false)
     {
-        Text _text;
+        TextMeshProUGUI _text;
 
         if (useQuestText)
         {
-            _text = Instantiate(questStepTextPrebef, t).GetComponent<Text>();
+            _text = Instantiate(questStepTextPrebef, t).GetComponent<TextMeshProUGUI>();
         }
         else
         {
-            _text = Instantiate(textSlot, t).GetComponent<Text>();
+            _text = Instantiate(textSlot, t).GetComponent<TextMeshProUGUI>();
         }
 
         _text.text = sb.ToString();
@@ -387,7 +387,7 @@ public class Helper : MonoBehaviour
 
     private void SpawnResourceDetailsSlot(Transform t, Color color)
     {
-        Text _text = Instantiate(resourceSlot, t).GetComponent<Text>();
+        TextMeshProUGUI _text = Instantiate(resourceSlot, t).GetComponent<TextMeshProUGUI>();
 
         _text.text = sb.ToString();
         _text.color = color;
@@ -400,7 +400,7 @@ public class Helper : MonoBehaviour
         GameObject ui = Instantiate(itemDetailsPrefab, parent.position, parent.rotation, parent);
         Transform t = ui.transform.GetChild(0).GetChild(0);
 
-        Text nameText = t.GetChild(0).GetComponent<Text>();
+        TextMeshProUGUI nameText = t.GetChild(0).GetComponent<TextMeshProUGUI>();
 
         nameText.text = quest.GetName();
 
@@ -455,7 +455,7 @@ public class Helper : MonoBehaviour
     {
         GameObject intsance = Instantiate(prefab, parent);
         
-        intsance.transform.GetChild(0).GetComponent<Text>().text = text;
+        intsance.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
         
         Button button = intsance.GetComponent<Button>();
 

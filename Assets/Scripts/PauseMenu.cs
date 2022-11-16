@@ -3,6 +3,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -203,7 +204,7 @@ public class PauseMenu : MonoBehaviour
         {
             GameObject Profile = Instantiate(ExistingSaveSlot, SaveSlotHolder);
 
-            Profile.transform.GetChild(0).gameObject.GetComponent<Text>().text = File.Name;
+            Profile.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = File.Name;
             Profile.GetComponent<ExistingSaveProfileButton>().ProfileName = File.Name;
             Profile.GetComponent<ExistingSaveProfileButton>().Parent = this;
         }
@@ -239,7 +240,7 @@ public class PauseMenu : MonoBehaviour
         {
             GameObject Profile = Instantiate(LoadSaveSlot, LoadSlotHolder);
 
-            Profile.transform.GetChild(0).gameObject.GetComponent<Text>().text = File.Name;
+            Profile.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = File.Name;
             Profile.GetComponent<LoadProfileButton>().ProfileName = File.Name;
             Profile.GetComponent<LoadProfileButton>().Parent = this;
         }

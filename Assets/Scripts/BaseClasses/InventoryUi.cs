@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUi : IUi
 {
@@ -35,12 +36,11 @@ public class InventoryUi : IUi
 
     [SerializeField] private string[] Instructions;
 
-    [SerializeField] private Text ItemNameText;
-    [SerializeField] private Text InstructionText;
-    [SerializeField] private Text ArmourText;
-    [SerializeField] private Text GoldText;
-    [SerializeField] private Text AmountText;
-    [SerializeField] private Text CarryWeigthText;
+    [SerializeField] private TextMeshProUGUI InstructionText;
+    [SerializeField] private TextMeshProUGUI ArmourText;
+    [SerializeField] private TextMeshProUGUI GoldText;
+    [SerializeField] private TextMeshProUGUI AmountText;
+    [SerializeField] private TextMeshProUGUI CarryWeigthText;
 
     [SerializeField] private SlotsActions Focus;
 
@@ -292,7 +292,7 @@ public class InventoryUi : IUi
                     if (WeaponsBanner == null)
                     {
                         WeaponsBanner = Instantiate(CategoryPrefab, InventroyHolder);
-                        WeaponsBanner.GetComponent<Text>().text = "Weapons\n___________________________________________________";
+                        WeaponsBanner.GetComponent<TextMeshProUGUI>().text = "Weapons\n___________________________________________________";
                     }
                     break;
                 case GlobalValues.ArmourTag:
@@ -300,42 +300,42 @@ public class InventoryUi : IUi
                     if (ArmourBanner == null)
                     {
                         ArmourBanner = Instantiate(CategoryPrefab, InventroyHolder);
-                        ArmourBanner.GetComponent<Text>().text = "Armour\n___________________________________________________";
+                        ArmourBanner.GetComponent<TextMeshProUGUI>().text = "Armour\n___________________________________________________";
                     }
                     break;
                 case GlobalValues.SpellTag:
                     if (SpellsBanner == null)
                     {
                         SpellsBanner = Instantiate(CategoryPrefab, InventroyHolder);
-                        SpellsBanner.GetComponent<Text>().text = "Spells\n___________________________________________________";
+                        SpellsBanner.GetComponent<TextMeshProUGUI>().text = "Spells\n___________________________________________________";
                     }
                     break;
                 case GlobalValues.RuneTag:
                     if (RuneBanner == null)
                     {
                         RuneBanner = Instantiate(CategoryPrefab, InventroyHolder);
-                        RuneBanner.GetComponent<Text>().text = "Runes\n___________________________________________________";
+                        RuneBanner.GetComponent<TextMeshProUGUI>().text = "Runes\n___________________________________________________";
                     }
                     break;
                 case GlobalValues.PotionTag:
                     if (PotionsBanner == null)
                     {
                         PotionsBanner = Instantiate(CategoryPrefab, InventroyHolder);
-                        PotionsBanner.GetComponent<Text>().text = "Potions\n___________________________________________________";
+                        PotionsBanner.GetComponent<TextMeshProUGUI>().text = "Potions\n___________________________________________________";
                     }
                     break;
                 case GlobalValues.ResourceTag:
                     if (ResourcesBanner == null)
                     {
                         ResourcesBanner = Instantiate(CategoryPrefab, InventroyHolder);
-                        ResourcesBanner.GetComponent<Text>().text = "Resources\n___________________________________________________";
+                        ResourcesBanner.GetComponent<TextMeshProUGUI>().text = "Resources\n___________________________________________________";
                     }
                     break;
                 default://Gold | Misc | Keys
                     if (MiscBanner == null)
                     {
                         MiscBanner = Instantiate(CategoryPrefab, InventroyHolder);
-                        MiscBanner.GetComponent<Text>().text = "Misc\n___________________________________________________";
+                        MiscBanner.GetComponent<TextMeshProUGUI>().text = "Misc\n___________________________________________________";
                     }
                     break;
             }
@@ -358,6 +358,7 @@ public class InventoryUi : IUi
         if (!inventoryUi.activeSelf)
         {
             inventoryUi.SetActive(true);
+            InventoryPanel.SetActive(true);
         }
 
         for (int i = 0; i < children; i++)
@@ -447,25 +448,36 @@ public class InventoryUi : IUi
                 inventory = Player.player.GetHit().GetComponent<Inventory>();
 
                 CallSetInventory(InventoryState.AllItems);
+            
+                if (Player.player.GetMode() == PlayerState.InStore)
+                {
+                    PlayerButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Sell";
+                    ContainerButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Buy";
+                }
+                else if (Player.player.GetMode() == PlayerState.InContainer)
+                {
+                    PlayerButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = WorldStateTracker.Tracker.PlayerName;
+                    ContainerButton.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = inventory.name;
+                }
             }
             else
             {
                 Clear();
             }
 
-            if (Player.player.GetMode() == PlayerState.InStore)
-            {
-                PlayerButton.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Sell";
-                ContainerButton.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Buy";
-            }
-            else if (Player.player.GetMode() == PlayerState.InContainer)
-            {
-                PlayerButton.transform.GetChild(0).gameObject.GetComponent<Text>().text = WorldStateTracker.Tracker.PlayerName;
-                ContainerButton.transform.GetChild(0).gameObject.GetComponent<Text>().text = inventory.name;
-            }
+        }
+        else if (UiMode == UiState.Player)
+        {
+            UpDateWeight();
+        }
+
+        if (ItemDetailsLocation.transform.childCount != 0)
+        {
+            Destroy(ItemDetailsLocation.transform.GetChild(0).gameObject);
         }
 
         inventoryUi.SetActive(State);
+        InventoryPanel.SetActive(State);
         ActionBar.SetActive(State);
     }
 
@@ -778,8 +790,10 @@ public class InventoryUi : IUi
 
         playerUi.inventoryUi.SetActive(Action);
         playerUi.InventoryBar.SetActive(Action);
+        playerUi.InventoryPanel.SetActive(Action);
 
         inventoryUi.SetActive(!Action);
+        InventoryPanel.SetActive(!Action);
 
         TurnItemDetailsOff();
 

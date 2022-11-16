@@ -1,6 +1,7 @@
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStatsUi : IUi
 {
@@ -8,14 +9,14 @@ public class PlayerStatsUi : IUi
 
     [SerializeField] private Transform StatsListHolder;
 
-    [SerializeField] private Text StatTextPrefab;
-    [SerializeField] private Text BannerPrefab;
+    [SerializeField] private TextMeshProUGUI StatTextPrefab;
+    [SerializeField] private TextMeshProUGUI BannerPrefab;
 
     [SerializeField] private GameObject SkillTextPrefab;
     [SerializeField] private GameObject InventoryPanel;
 
     private StringBuilder sb = new StringBuilder();
-    private Text text;
+    private TextMeshProUGUI text;
     private Image bar;
 
     /*------When button pressed-------
@@ -238,8 +239,8 @@ public class PlayerStatsUi : IUi
 
     private void CreateSkillText(double curr, double max)
     {
-        text = Instantiate(SkillTextPrefab, StatsListHolder).GetComponent<Text>();
-        bar = text.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+        text = Instantiate(SkillTextPrefab, StatsListHolder).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        bar = text.transform.parent.GetChild(1).GetChild(0).GetComponent<Image>();
 
         text.text = sb.ToString();
         bar.fillAmount = (float)(curr / max);

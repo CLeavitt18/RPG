@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
@@ -44,7 +45,7 @@ public class CraftingSlotAction : MonoBehaviour, IPointerEnterHandler, IPointerC
         _item = item;
         _ui = ui;
 
-        transform.GetChild(0).gameObject.GetComponent<Text>().text = item.GetName();
+        transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = item.GetName();
         GetComponent<Image>().color = item.GetRarity();
     }
 }

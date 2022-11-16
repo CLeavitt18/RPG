@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class Interactialbes : MonoBehaviour
 {
-    public GameObject PUIInsruction;
+    public TextMeshProUGUI PUIInsruction;
 
     public bool UIOpen;
 
@@ -18,7 +19,7 @@ public class Interactialbes : MonoBehaviour
         if (UIOpen && Time.time >= NextTime || Player.player.GetMode() == PlayerState.InContainer)
         {
             UIOpen = false;
-            PUIInsruction.SetActive(false);
+            PUIInsruction.gameObject.SetActive(false);
         }
     }
 
@@ -34,7 +35,7 @@ public class Interactialbes : MonoBehaviour
 
     public virtual void SetUiOpen()
     {
-        PUIInsruction.SetActive(true);
+        PUIInsruction.gameObject.SetActive(true);
         UIOpen = true;
 
         NextTime = Time.time + WaitTime;

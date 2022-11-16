@@ -1,12 +1,12 @@
 ﻿using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class Bed : Interactialbes, IInteractable
 {
     public void OnEnable()
     {
-        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject;
+        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         gameObject.name = Name;
     }
 
@@ -15,9 +15,9 @@ public class Bed : Interactialbes, IInteractable
         StringBuilder sb = new StringBuilder("E: Use ");
         sb.Append(Name);
 
-        PUIInsruction.GetComponent<Text>().text = sb.ToString();
+        PUIInsruction.text = sb.ToString();
 
-        PUIInsruction.SetActive(true);
+        PUIInsruction.gameObject.SetActive(true);
         UIOpen = true;
 
         NextTime = Time.time + WaitTime;

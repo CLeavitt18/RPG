@@ -2,7 +2,7 @@
 using System.IO;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class Doors : Interactialbes, IInteractable, ISavable
 {
@@ -12,7 +12,7 @@ public class Doors : Interactialbes, IInteractable, ISavable
 
     public void OnEnable()
     {
-        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(0).transform.GetChild(1).gameObject;
+        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         name = Name;
     }
 
@@ -22,7 +22,7 @@ public class Doors : Interactialbes, IInteractable, ISavable
 
         Player.player.SavePlayer(false);
 
-        PUIInsruction.SetActive(false);
+        PUIInsruction.gameObject.SetActive(false);
         WorldStateTracker.Tracker.UpdateTracker();
         SceneManagerOwn.Manager.TempSaveScene();
 
@@ -77,8 +77,7 @@ public class Doors : Interactialbes, IInteractable, ISavable
             sb.Append("(Locked)");
         }
 
-        PUIInsruction.GetComponent<Text>().text = sb.ToString();
-        //Debug.Log("Door Interaction Text Set");
+        PUIInsruction.text = sb.ToString();
 
         base.SetUiOpen();
     }

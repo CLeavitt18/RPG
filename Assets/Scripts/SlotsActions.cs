@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using TMPro;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -17,11 +18,11 @@ public class SlotsActions : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
 
     [SerializeField] public QuestUi QuestUi;
 
-    [SerializeField] private Text displayNameText;
-    [SerializeField] private Text weightText;
-    [SerializeField] private Text miscText;
-    [SerializeField] private Text valueText;
-    [SerializeField] private Text indicatorText;
+    [SerializeField] private TextMeshProUGUI displayNameText;
+    [SerializeField] private TextMeshProUGUI weightText;
+    [SerializeField] private TextMeshProUGUI miscText;
+    [SerializeField] private TextMeshProUGUI valueText;
+    [SerializeField] private TextMeshProUGUI indicatorText;
 
     [SerializeField] private Image backGroundImage;
 
