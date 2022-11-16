@@ -72,35 +72,29 @@ public class ForgeUI : MonoBehaviour
         ItemCatogoryType = 0;
         Cat_ID = 0;
 
-        GameObject button;
+        Button button;
 
         for (MaterialType i = MaterialType.Bone; i <= MaterialType.Ebony; i++)
         {
             int id = (int)i;
-            button = Instantiate(weaponPartButtonPrefab, primaryHolder);
-            button.transform.GetChild(0).GetComponent<Text>().text = i.ToString();
+            string text = i.ToString();
 
-            button.GetComponent<Button>().onClick.AddListener(delegate { SetPrimary(id);});
+            button = Helper.helper.CreateCraftingButton(weaponPartButtonPrefab, text, primaryHolder);
+            button.onClick.AddListener(delegate { SetPrimary(id);});
 
-            button = Instantiate(weaponPartButtonPrefab, secondaryHolder);
-            button.transform.GetChild(0).GetComponent<Text>().text = i.ToString();
+            button = Helper.helper.CreateCraftingButton(weaponPartButtonPrefab, text, secondaryHolder);
+            button.onClick.AddListener(delegate { SetSecoundary(id);});
 
-            button.GetComponent<Button>().onClick.AddListener(delegate { SetSecoundary(id);});
-
-            button = Instantiate(weaponPartButtonPrefab, teritiaryHolder);
-            button.transform.GetChild(0).GetComponent<Text>().text = i.ToString();
-
-            button.GetComponent<Button>().onClick.AddListener(delegate { SetTeritiary(id);});
+            button = Helper.helper.CreateCraftingButton(weaponPartButtonPrefab, text, teritiaryHolder);
+            button.onClick.AddListener(delegate { SetTeritiary(id);});
         }
 
         for (CatType i = CatType.T1Phys; i <= CatType.T6Ice; i++)
         {
             int id = (int)i;
 
-            button = Instantiate(catalystButtonPrefab, catHolder);
-            button.transform.GetChild(0).GetComponent<Text>().text = RecipesCatalyst.ItemsRequired[id].Item[0];
-
-            button.GetComponent<Button>().onClick.AddListener(delegate { SetCatalyst(id);});
+            button = Helper.helper.CreateCraftingButton(catalystButtonPrefab, i.ToString(), catHolder);
+            button.onClick.AddListener(delegate { SetCatalyst(id);});
         }
 
         PreviewItem();

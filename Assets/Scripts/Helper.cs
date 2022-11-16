@@ -450,4 +450,15 @@ public class Helper : MonoBehaviour
 
         SpawnItemDetailSlot(t, true);
     }
+
+    public Button CreateCraftingButton(GameObject prefab, string text, Transform parent)
+    {
+        GameObject intsance = Instantiate(prefab, parent);
+        
+        intsance.transform.GetChild(0).GetComponent<Text>().text = text;
+        
+        Button button = intsance.GetComponent<Button>();
+
+        return button;
+    }
 }

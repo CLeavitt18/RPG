@@ -85,13 +85,11 @@ public class RefineryUi : MonoBehaviour
         {
             //DO NOT REMOVE
             int id = i;
-            GameObject slot = Instantiate(refinerySlot, contentHolder);
 
-            Text text = slot.transform.GetChild(0).GetComponent<Text>();
-            text.text = Resources[i].GetComponent<Item>().GetName();
-
-            Button button = slot.GetComponent<Button>();
+            Button button = Helper.helper.CreateCraftingButton(refinerySlot, Resources[i].GetComponent<Item>().GetName(), contentHolder);
             button.onClick.AddListener(delegate { SetResourceId(id); });
+
+            Text text = button.transform.GetChild(0).GetComponent<Text>();
 
             Inventory pInventory = Player.player.Inventory;
             Item item;
