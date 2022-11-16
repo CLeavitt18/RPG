@@ -6,7 +6,7 @@ public class Bed : Interactialbes, IInteractable
 {
     public void OnEnable()
     {
-        PUIInsruction = PlayerUi.playerUi.transform.GetChild(2).transform.GetChild(1).gameObject;
+        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject;
         gameObject.name = Name;
     }
 

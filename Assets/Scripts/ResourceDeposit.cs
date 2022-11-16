@@ -12,7 +12,7 @@ public class ResourceDeposit : Interactialbes, IInteractable, ISavable
 
     public void OnEnable()
     {
-        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(2).transform.GetChild(1).gameObject;
+        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(0).transform.GetChild(1).gameObject;
         gameObject.name = Name;
     }
 

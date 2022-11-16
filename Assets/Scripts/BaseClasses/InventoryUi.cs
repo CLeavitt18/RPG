@@ -21,6 +21,7 @@ public class InventoryUi : IUi
     [SerializeField] public GameObject AmountUi;
     [SerializeField] private GameObject CategoryPrefab;
     [SerializeField] private GameObject InventoryBar;
+    [SerializeField] private GameObject InventoryPanel;
     [SerializeField] private GameObject ContainerButton;
     [SerializeField] private GameObject PlayerButton;
     [SerializeField] public GameObject PlayerCanvas;
@@ -106,6 +107,7 @@ public class InventoryUi : IUi
     {
         inventoryUi.SetActive(State);
         InventoryBar.SetActive(State);
+        InventoryPanel.SetActive(State);
         Cursor.visible = State;
         PlayerCanvas.SetActive(!State);
         ActionBar.SetActive(State);

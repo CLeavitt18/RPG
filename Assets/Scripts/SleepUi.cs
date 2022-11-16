@@ -27,17 +27,40 @@ public class SleepUi : IUi
         _sleepUi.SetActive(false);
     }
 
+    public void IncrementDuration()
+    {
+        if (IsSleeping)
+        {
+            return;
+        }
+
+        SleepBar.value++;
+        SetSleepDuration();
+    }
+
+    public void DecrementDuration()
+    {
+        if (IsSleeping)
+        {
+            return;
+        }
+
+        SleepBar.value--;
+        SetSleepDuration();
+    }
+
     public void SetSleepDuration()
     {
-        if (!IsSleeping)
+        if (IsSleeping)
         {
-            SleepDuration = (int)SleepBar.value;
-
-            StringBuilder sb = new StringBuilder(SleepDuration.ToString("n0"));
-
-            SleepText.text = sb.ToString();
-            //Debug.Log("Sleep Duration " + SleepDuration);
+            return;
         }
+
+        SleepDuration = (int)SleepBar.value;
+
+        StringBuilder sb = new StringBuilder(SleepDuration.ToString("n0"));
+
+        SleepText.text = sb.ToString();
     }
 
     public void CancelSleep()

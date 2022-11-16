@@ -12,6 +12,7 @@ public class PlayerStatsUi : IUi
     [SerializeField] private Text BannerPrefab;
 
     [SerializeField] private GameObject SkillTextPrefab;
+    [SerializeField] private GameObject InventoryPanel;
 
     private StringBuilder sb = new StringBuilder();
     private Text text;
@@ -36,6 +37,7 @@ public class PlayerStatsUi : IUi
         isActive = true;
 
         StatsUi.SetActive(true);
+        InventoryPanel.SetActive(true);
 
         //Craete Name Text
         CreateBanner(WorldStateTracker.Tracker.PlayerName, 4);
@@ -188,6 +190,7 @@ public class PlayerStatsUi : IUi
     public override void Close()
     {
         StatsUi.SetActive(false);
+        InventoryPanel.SetActive(false);
     }
 
     private void CreateBanner(string title, int type)
