@@ -105,10 +105,10 @@ MonoBehaviour:
     - {fileID: 6980226527911800416, guid: 288b6ad4c0001b54e8e750c59df87d9a, type: 3}
     - {fileID: 0}
   - Resources:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 6980226527911800416, guid: 81e54688e68e3b5418ad9c1dbd37bae9, type: 3}
+    - {fileID: 6980226527911800416, guid: 931b7ace5396e8a49b758dab20a71e79, type: 3}
+    - {fileID: 6980226527911800416, guid: 7ff08c8663cb20f439ac54bd67137f67, type: 3}
+    - {fileID: 6980226527911800416, guid: 288b6ad4c0001b54e8e750c59df87d9a, type: 3}
     - {fileID: 0}
   - Resources:
     - {fileID: 0}

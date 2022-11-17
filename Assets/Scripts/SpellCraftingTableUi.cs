@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SpellCraftingTableUi : MonoBehaviour
 {
@@ -20,8 +21,8 @@ public class SpellCraftingTableUi : MonoBehaviour
 
     [SerializeField] private GameObject slot;
 
-    [SerializeField] private Dropdown materialTypeDropDown;
-    [SerializeField] private Dropdown slotIdDropDown;
+    [SerializeField] private TMP_Dropdown materialTypeDropDown;
+    [SerializeField] private TMP_Dropdown slotIdDropDown;
 
     private void OnEnable()
     {
@@ -45,7 +46,7 @@ public class SpellCraftingTableUi : MonoBehaviour
         {
             for (int type = 0; type < 11; type++)
             {
-                materialTypeDropDown.options.Add(new Dropdown.OptionData(((MaterialType)type).ToString()));
+                materialTypeDropDown.options.Add(new TMP_Dropdown.OptionData(((MaterialType)type).ToString()));
             }
 
             CreateRuneSlots();

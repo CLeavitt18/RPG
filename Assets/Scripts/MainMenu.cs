@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
     
     public Transform PlayerProfilesList;
     
-    public InputField PlayerNameField;
+    public TMP_InputField PlayerNameInputField;
 
     public string PlayerName;
     public string SaveProfile;
@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
     private void OnEnable()
     {
         Application.targetFrameRate = -1;
+        PlayerNameInputField.onSubmit.AddListener(CheckName);
     }
 
     public void NewGame()
@@ -156,9 +157,17 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void CheckName()
+    public void CheckNameFromButton()
     {
-        string PlayerName = PlayerNameField.GetComponent<InputField>().text;
+        CheckName(PlayerNameInputField.text);
+    }
+
+    public void CheckName(string PlayerName)
+    {
+        if (PlayerNameInputField.wasCanceled)
+        {
+            return;
+        }
 
         if (PlayerName == string.Empty)
         {
@@ -170,11 +179,11 @@ public class MainMenu : MonoBehaviour
             if (PlayerName[i] == '/')
             {
                 InvaildPlayerName();
+                return;
             }
         }
 
         NewGameMenu.SetActive(false);
-        ConfirmPlayerName.SetActive(true);
 
         DirectoryInfo Info = new DirectoryInfo(Application.persistentDataPath);
 
@@ -185,8 +194,11 @@ public class MainMenu : MonoBehaviour
             if (File.Name == PlayerName)
             {
                 NameAlreadyExists();
+                return;
             }
         }
+
+        ConfirmPlayerName.SetActive(true);
     }
 
     public void InvaildPlayerName()
@@ -196,7 +208,6 @@ public class MainMenu : MonoBehaviour
 
     public void NameAlreadyExists()
     {
-        ConfirmPlayerName.SetActive(false);
         PlayerNameAlreadyExists.SetActive(true);
     }
 
@@ -231,7 +242,7 @@ public class MainMenu : MonoBehaviour
 
     public void CreateNewGame()
     {
-        WorldStateTracker.Tracker.PlayerName = PlayerNameField.GetComponent<InputField>().text;
+        WorldStateTracker.Tracker.PlayerName = PlayerNameInputField.text;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Starting Camp");
     }
 

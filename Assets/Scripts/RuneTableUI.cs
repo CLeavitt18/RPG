@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RuneTableUI : MonoBehaviour
 {
@@ -22,11 +23,11 @@ public class RuneTableUI : MonoBehaviour
 
     [SerializeField] private DictionaryOfStringAndInt requiredItems = new DictionaryOfStringAndInt(10);
 
-    [SerializeField] private Dropdown spellTypeDropDown;
-    [SerializeField] private Dropdown damageTypeDropDown;
-    [SerializeField] private Dropdown castTypeDropDown;
-    [SerializeField] private Dropdown costTypeDropDown;
-    [SerializeField] private Dropdown catTypeDropDown;
+    [SerializeField] private TMP_Dropdown spellTypeDropDown;
+    [SerializeField] private TMP_Dropdown damageTypeDropDown;
+    [SerializeField] private TMP_Dropdown castTypeDropDown;
+    [SerializeField] private TMP_Dropdown costTypeDropDown;
+    [SerializeField] private TMP_Dropdown catTypeDropDown;
 
     [SerializeField] private BaseRecipes recipesCatalyst;
     [SerializeField] private BaseRecipes recipesCostType;
@@ -58,29 +59,29 @@ public class RuneTableUI : MonoBehaviour
 
         for (int type = 0; type < 2; type++)
         {
-            spellTypeDropDown.options.Add(new Dropdown.OptionData(((SpellType)type).ToString()));
+            spellTypeDropDown.options.Add(new TMP_Dropdown.OptionData(((SpellType)type).ToString()));
         }
 
         for (int type = 0; type < 4; type++)
         {
-            damageTypeDropDown.options.Add(new Dropdown.OptionData(((DamageTypeEnum)type).ToString()));
+            damageTypeDropDown.options.Add(new TMP_Dropdown.OptionData(((DamageTypeEnum)type).ToString()));
         }
 
         for (int type = 0; type < 5; type++)
         {
-            castTypeDropDown.options.Add(new Dropdown.OptionData(((CastType)type).ToString()));
+            castTypeDropDown.options.Add(new TMP_Dropdown.OptionData(((CastType)type).ToString()));
         }
 
         for (int type = 0; type < 3; type++)
         {
-            costTypeDropDown.options.Add(new Dropdown.OptionData(((AttributesEnum)type).ToString()));
+            costTypeDropDown.options.Add(new TMP_Dropdown.OptionData(((AttributesEnum)type).ToString()));
         }
 
         costTypeDropDown.value = 2;
 
         for (int type = 0; type <= (int)CatType.T6Phys; type++)
         {
-            catTypeDropDown.options.Add(new Dropdown.OptionData(((CatType)type).ToString()));
+            catTypeDropDown.options.Add(new TMP_Dropdown.OptionData(((CatType)type).ToString()));
         }
 
         canPreview = true;
@@ -148,8 +149,10 @@ public class RuneTableUI : MonoBehaviour
 
         for (int i = start; i <= end; i++)
         {
-            catTypeDropDown.options.Add(new Dropdown.OptionData(((CatType)i).ToString()));
+            catTypeDropDown.options.Add(new TMP_Dropdown.OptionData(((CatType)i).ToString()));
         }
+        
+        catTypeDropDown.value = value + 1;
 
         canPreview = false;
 

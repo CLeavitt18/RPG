@@ -20,9 +20,14 @@ public class PauseMenu : MonoBehaviour
     public GameObject LoadSaveSlot;
     public GameObject InvaildNameUI;
 
-    public InputField ProfileNameInputField;
+    public TMP_InputField ProfileNameInputField;
 
     private PauseUiState Mode = PauseUiState.Paused;
+
+    private void OnEnable() 
+    {
+        ProfileNameInputField.onSubmit.AddListener(SaveGame);    
+    }
 
     public void SetPauseMenuDefault()
     {
@@ -60,10 +65,13 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void SaveGame()
+    public void SaveGameFromButton()
     {
-        string name = ProfileNameInputField.text;
+        SaveGame(ProfileNameInputField.text);
+    }
 
+    public void SaveGame(string name)
+    {
         if (name == string.Empty)
         {
             InvaildNameUI.SetActive(true);
