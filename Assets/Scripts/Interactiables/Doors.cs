@@ -69,7 +69,7 @@ public class Doors : Interactialbes, IInteractable, ISavable
 
     public override void SetUiOpen()
     {
-        StringBuilder sb = new StringBuilder("E: To Enter ");
+        StringBuilder sb = new StringBuilder("E: Enter ");
         sb.Append(Name);
 
         if (Locked)

@@ -1,6 +1,7 @@
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LevelUpUi : IUi
 {
@@ -9,10 +10,10 @@ public class LevelUpUi : IUi
 
     [SerializeField] private int[] TempAttributes = new int[3];
 
-    [SerializeField] private Text AvalialbePointsText;
-    [SerializeField] private Text LevelCounterText;
+    [SerializeField] private TextMeshProUGUI AvalialbePointsText;
+    [SerializeField] private TextMeshProUGUI LevelCounterText;
 
-    [SerializeField] private Text[] AbilityTexts = new Text[3];
+    [SerializeField] private TextMeshProUGUI[] AbilityTexts = new TextMeshProUGUI[3];
 
     [SerializeField] private Button[] AttributeButtons;
 
@@ -41,7 +42,7 @@ public class LevelUpUi : IUi
             sb.Append(": ");
             sb.Append(Player.player.GetAbility(i));
 
-            AttributeButtons[i].transform.GetChild(0).gameObject.GetComponent<Text>().text = sb.ToString();
+            AttributeButtons[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = sb.ToString();
 
             sb.Clear();
         }
@@ -72,6 +73,7 @@ public class LevelUpUi : IUi
 
         levelUpUi.SetActive(false);
         PlayerUi.playerUi.SetPlayerCanvas(true);
+        isActive = false;
     }
 
     public void AddTempAttribute(int ID)

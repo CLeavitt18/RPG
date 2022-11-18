@@ -595,7 +595,7 @@ public class Player : LivingEntities
 
             TempExpNumber = Skills[skill].RExp * 1.4f;
             Skills[skill].RExp = (ulong)TempExpNumber;
-            LevelProgress += Skills[skill].Level;
+            LevelProgress++;
 
             if (Skills[skill].Exp >= Skills[skill].RExp)
             {
@@ -845,10 +845,8 @@ public class Player : LivingEntities
                     MeleeDamageMulti(i, weapon.GetDamageType(i));
                 }
             }
-            else //Item is SpellHolder
+            else if (item is SpellHolder spell)//Item is SpellHolder
             {
-                SpellHolder spell = item as SpellHolder;
-
                 Spell RuneRef = null;
 
                 for (int x = 0; x < 3; x++)

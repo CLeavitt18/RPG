@@ -15790,12 +15790,12 @@ MonoBehaviour:
   levelUpUi: {fileID: 6017402170861628333}
   LevelUpCounter: {fileID: 2055055003594045699}
   TempAttributes: 000000000000000000000000
-  AvalialbePointsText: {fileID: 0}
-  LevelCounterText: {fileID: 0}
+  AvalialbePointsText: {fileID: 5723970148251752340}
+  LevelCounterText: {fileID: 2809909031048508329}
   AbilityTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1461071118512092856}
+  - {fileID: 2949662337936158914}
+  - {fileID: 3904234358163603102}
   AttributeButtons:
   - {fileID: 1606238914683105486}
   - {fileID: 5325129539472030659}
