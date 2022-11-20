@@ -61,16 +61,16 @@ public class SleepUi : IUi
 
         StringBuilder sb = new StringBuilder(SleepDuration.ToString("n0"));
 
-        SleepText.text = sb.ToString();
-
         if (SleepDuration != 1)
         {
-            SleepText.text += " Hours";
+            sb.Append(" Hours");
         }
         else
         {
-            SleepText.text += " Hour";
+            sb.Append(" Hour");
         }
+
+        SleepText.text = sb.ToString();
     }
 
     public void CancelSleep()
@@ -116,6 +116,16 @@ public class SleepUi : IUi
             SleepBar.value--;
 
             StringBuilder sb = new StringBuilder(((int)SleepBar.value).ToString());
+            
+            if ((int)SleepBar.value != 1)
+            {
+                sb.Append(" Hours");
+            }
+            else
+            {
+                sb.Append(" Hour");
+            }
+
             SleepText.text = sb.ToString();
 
             yield return new WaitForSecondsRealtime(1);
