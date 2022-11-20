@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mode: 0
-  max: 4
+  max: 2
   ranges:
   - min: 1
     max: 2

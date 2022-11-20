@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -463,19 +461,21 @@ public class Inventory : MonoBehaviour
 
         for (InventoryState state = InventoryState.Weapons; state < InventoryState.AllItems; state++)
         {
-            chance = Random.Range(0, max);
+            int index = (int)state;
 
-            if (chance == 0)
+            num = Random.Range(ranges[index].min, ranges[index].max + 1);
+
+            for (int x = 0; x < num; x++)
             {
-                int index = (int)state;
-
-                num = Random.Range(ranges[index].min, ranges[index].max + 1);
-
-                for (int x = 0; x < num; x++)
+                chance = Random.Range(0, max);
+                
+                if (chance != 0)
                 {
-                    item = Roller.roller.Roll(state);
-                    AddItem(item, true, item.GetAmount(), true);
+                    continue;
                 }
+
+                item = Roller.roller.Roll(state);
+                AddItem(item, true, item.GetAmount(), true);
             }
         }
 
