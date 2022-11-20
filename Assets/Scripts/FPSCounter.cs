@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FPSCounter : MonoBehaviour
 {
-    static FPSCounter Counter;
+    public static FPSCounter Counter;
 
-    public Text Text;
+    public TextMeshProUGUI Text;
 
     public int FPS;
 
@@ -20,7 +19,7 @@ public class FPSCounter : MonoBehaviour
             Counter = this;
             DontDestroyOnLoad(this.gameObject);
         }
-        else
+        else if (Counter != this)
         {
             Destroy(this.gameObject);
         }

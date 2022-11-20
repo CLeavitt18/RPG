@@ -5,27 +5,120 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject MainMenuUI;
-    public GameObject NewGameMenu;
-    public GameObject LoadGameMenu;
-    public GameObject ConfirmPlayerName;
-    public GameObject InvaildNameUI;
-    public GameObject PlayerNameAlreadyExists;
-    public GameObject PlayerProfileButton;
-
-    public GameObject[] LoadUiObjects;
+    [SerializeField] public string PlayerName;
+    [SerializeField] public string SaveProfile;
     
-    public Transform PlayerProfilesList;
-    
-    public TMP_InputField PlayerNameInputField;
+    [SerializeField] public Transform PlayerProfilesList;
 
-    public string PlayerName;
-    public string SaveProfile;
+    [SerializeField] public GameObject MainMenuUI;
+    [SerializeField] public GameObject NewGameMenu;
+    [SerializeField] public GameObject LoadGameMenu;
+    [SerializeField] private GameObject OptionsMenu;
+    [SerializeField] public GameObject ConfirmPlayerName;
+    [SerializeField] public GameObject InvaildNameUI;
+    [SerializeField] public GameObject PlayerNameAlreadyExists;
+    [SerializeField] public GameObject PlayerProfileButton;
+
+    [SerializeField] public GameObject[] LoadUiObjects;
+    
+    [SerializeField] public TMP_InputField PlayerNameInputField;
+
+    [SerializeField] private Toggle ShowPlayerHSMNumToggle;
+    [SerializeField] private Toggle ShowEnemyNumToggle;
+    [SerializeField] private Toggle ShowFPSToggle;
 
     private void OnEnable()
     {
         Application.targetFrameRate = -1;
         PlayerNameInputField.onSubmit.AddListener(CheckName);
+
+        int toggle;
+
+        if (PlayerPrefs.HasKey("ShowPlayerHSMNumToggle"))
+        {
+            toggle = PlayerPrefs.GetInt("ShowPlayerHSMNumToggle");
+
+            if (toggle == 0)
+            {
+                ShowPlayerHSMNumToggle.isOn = false;
+            }
+            else
+            {
+                ShowPlayerHSMNumToggle.isOn = true;
+            }
+        }
+        else
+        {
+            if (ShowPlayerHSMNumToggle.isOn)
+            {
+                toggle = 1;
+            }
+            else
+            {
+                toggle = 0;
+            }
+
+            PlayerPrefs.SetInt("ShowPlayerHSMNumToggle", toggle);
+        }
+
+        if (PlayerPrefs.HasKey("ShowEnemyNumToggle"))
+        {
+            toggle = PlayerPrefs.GetInt("ShowEnemyNumToggle");
+
+            if (toggle == 0)
+            {
+                ShowEnemyNumToggle.isOn = false;
+            }
+            else
+            {
+                ShowEnemyNumToggle.isOn = true;
+            }
+        }
+        else
+        {
+            if (ShowEnemyNumToggle.isOn)
+            {
+                toggle = 1;
+            }
+            else
+            {
+                toggle = 0;
+            }
+
+            PlayerPrefs.SetInt("ShowEnemyNumToggle", toggle);
+        }
+
+        if (PlayerPrefs.HasKey("ShowFPSToggle"))
+        {
+            toggle = PlayerPrefs.GetInt("ShowFPSToggle");
+
+            if (toggle == 0)
+            {
+                ShowFPSToggle.isOn = false;
+            }
+            else
+            {
+                ShowFPSToggle.isOn = true;
+            }
+        }
+        else
+        {
+            if (ShowFPSToggle.isOn)
+            {
+                toggle = 1;
+            }
+            else
+            {
+                toggle = 0;
+            }
+
+            PlayerPrefs.SetInt("ShowFPSToggle", toggle);
+            
+            PlayerPrefs.Save();
+        }
+
+        SetShowFPSToggle();
+        OptionsManager.instance.GetPrefs();
     }
 
     public void NewGame()
@@ -152,6 +245,59 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    public void OpenOptions()
+    {
+        OptionsMenu.SetActive(true);
+        MainMenuUI.SetActive(false);
+
+        OptionsManager.instance.GetPrefs();
+    }
+
+    public void SetShowPlayerHSMNumToggle()
+    {
+        if (ShowFPSToggle.isOn)
+        {
+            PlayerPrefs.SetInt("ShowPlayerHSMNumToggle", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ShowPlayerHSMNumToggle", 0);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+    public void SetShowEnemyNumToggle()
+    {
+        if (ShowFPSToggle.isOn)
+        {
+            PlayerPrefs.SetInt("ShowEnemyNumToggle", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ShowEnemyNumToggle", 0);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+
+    public void SetShowFPSToggle()
+    {
+        if (ShowFPSToggle.isOn)
+        {
+            PlayerPrefs.SetInt("ShowFPSToggle", 1);
+            FPSCounter.Counter.gameObject.SetActive(true);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ShowFPSToggle", 0);
+            FPSCounter.Counter.gameObject.SetActive(false);
+        }
+
+        PlayerPrefs.Save();
+    }
+
     public void QuitGame()
     {
         Application.Quit();
@@ -238,6 +384,12 @@ public class MainMenu : MonoBehaviour
     public void BackToLoadScreanFromPlayerProfileScrean()
     {
         SetProfilesUI();
+    }
+
+    public void BackToMainFromOptions()
+    {
+        OptionsMenu.SetActive(false);
+        MainMenuUI.SetActive(true);
     }
 
     public void CreateNewGame()

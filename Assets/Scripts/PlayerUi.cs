@@ -116,8 +116,19 @@ public class PlayerUi : MonoBehaviour
 
     public void SetEnemyInfoUI(AIController enemy)
     {
+        StringBuilder sb = new StringBuilder(enemy.GetName());
+
         EnemyInfoUi.SetActive(true);
-        EnemyInfoText.text = enemy.GetName();
+
+        if(OptionsManager.instance.GetShowEnemyNumToggle())
+        {
+            sb.Append(" ");
+            sb.Append(enemy.GetCurrentHealth());
+            sb.Append(" / ");
+            sb.Append(enemy.GetMaxHealth());
+        }
+
+        EnemyInfoText.text = sb.ToString();
         EnemyHealthBar.fillAmount = (float)enemy.GetCurrentHealth() / enemy.GetMaxHealth();
 
         NextCheck = Time.time + WaitTime;
@@ -131,6 +142,12 @@ public class PlayerUi : MonoBehaviour
 
         AttributeBars[attribute].fillAmount = (float)((decimal)current / max);
         ReserveBars[attribute].fillAmount = (float)((decimal)reserved / max);
+
+        if (OptionsManager.instance.GetShowPlayerHSMNumToggle() == false)
+        {
+            AttributeTexts[attribute].text = "";
+            return;
+        }
 
         StringBuilder sb = new StringBuilder(current.ToString());
         sb.Append(" / ");

@@ -163,6 +163,7 @@
      <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
      <Compile Include="Assets\Scripts\RuneTableUI.cs" />
      <Compile Include="Assets\Scripts\CraftingSlotAction.cs" />
+     <Compile Include="Assets\Scripts\OptionsManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
