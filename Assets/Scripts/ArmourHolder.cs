@@ -34,6 +34,7 @@ public class ArmourHolder : Item
     {
         ArmourStats armStats = stats as ArmourStats;
 
+        ArmourType = armStats.ArmourType;
         Armour = armStats.Armour;
         CurrentDurability = armStats.CurrentDurability;
         MaxDurability = armStats.MaxDurability;
