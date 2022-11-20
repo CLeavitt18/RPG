@@ -584,7 +584,7 @@ public class InventoryUi : IUi
 
     public void AllAmount()
     {
-        AmountBar.value = FocusedItem.GetAmount();
+        AmountBar.value = AmountBar.maxValue;
         ConfirmAmount();
     }
 
