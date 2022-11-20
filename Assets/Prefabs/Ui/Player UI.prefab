@@ -17820,6 +17820,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2349809046127893582, guid: 6c2898e8d5a5f394ea9a317e1b050cc8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7905633172275075591}
+    - target: {fileID: 2349809046127893582, guid: 6c2898e8d5a5f394ea9a317e1b050cc8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AllAmount
+      objectReference: {fileID: 0}
     - target: {fileID: 4963462743553448070, guid: 6c2898e8d5a5f394ea9a317e1b050cc8, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25

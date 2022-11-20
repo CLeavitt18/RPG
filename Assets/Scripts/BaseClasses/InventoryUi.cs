@@ -582,6 +582,12 @@ public class InventoryUi : IUi
         SetAmountText();
     }
 
+    public void AllAmount()
+    {
+        AmountBar.value = FocusedItem.GetAmount();
+        ConfirmAmount();
+    }
+
     public void SetAmountText()
     {
         StringBuilder sb = new StringBuilder("How many?");
