@@ -106,10 +106,15 @@ public class InventoryUi : IUi
     public void SetInventroy(bool State)
     {
         inventoryUi.SetActive(State);
-        InventoryBar.SetActive(State);
+        
+        if (UiMode == UiState.Player)
+        {
+            InventoryBar.SetActive(State);
+            PlayerCanvas.SetActive(!State);
+        }
+        
         InventoryPanel.SetActive(State);
         Cursor.visible = State;
-        PlayerCanvas.SetActive(!State);
         ActionBar.SetActive(State);
 
         TurnItemDetailsOff();
@@ -117,6 +122,13 @@ public class InventoryUi : IUi
         if (State == true)
         {
             CallSetInventory(InventoryState.AllItems);
+        }
+        else
+        {
+            if (AmountUi.activeSelf)
+            {
+                AmountUi.SetActive(false);
+            }
         }
 
         if (Focus != null)
@@ -399,11 +411,6 @@ public class InventoryUi : IUi
 
         FocusedItem = null;
         Focus = null;
-
-        if (InventoryBar != null)
-        {
-            InventoryBar.SetActive(false);
-        }
     }
 
     public override void Close()
@@ -463,6 +470,7 @@ public class InventoryUi : IUi
             else
             {
                 Clear();
+                Close();
             }
 
         }

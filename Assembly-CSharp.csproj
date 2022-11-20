@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\ScriptableObjects\WeaponParts.cs" />
      <Compile Include="Assets\Scripts\Interfaces\ISavable.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\MatMults.cs" />
+     <Compile Include="Assets\Scripts\OptionsManager.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\BaseArmour.cs" />
      <Compile Include="Assets\Scripts\QuestTracker.cs" />
      <Compile Include="Assets\Scripts\Interactiables\SpellCraftingTable.cs" />
@@ -163,7 +164,6 @@
      <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
      <Compile Include="Assets\Scripts\RuneTableUI.cs" />
      <Compile Include="Assets\Scripts\CraftingSlotAction.cs" />
-     <Compile Include="Assets\Scripts\OptionsManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
