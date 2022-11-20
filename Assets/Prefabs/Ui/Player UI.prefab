@@ -7077,7 +7077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ef72788378ffa4fa93b003ba057ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Parent: {fileID: 0}
+  Parent: {fileID: 7905633172275075591}
   State: 5
 --- !u!1 &3757709870346849746
 GameObject:
@@ -8870,7 +8870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ef72788378ffa4fa93b003ba057ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Parent: {fileID: 0}
+  Parent: {fileID: 7905633172275075591}
   State: 6
 --- !u!1 &5059319052247426957
 GameObject:

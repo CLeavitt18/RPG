@@ -732,6 +732,11 @@ public class InventoryUi : IUi
 
         for (int i = 0; i < AllItems.Count; i++)
         {
+            if (i >= Slots.Count)
+            {
+                break;
+            }
+
             Item rightHand = Player.player.GetHeldItem(0);
             Item leftHand = Player.player.GetHeldItem(1);
 
