@@ -595,7 +595,7 @@ public class Player : LivingEntities
 
             TempExpNumber = Skills[skill].RExp * 1.4f;
             Skills[skill].RExp = (ulong)TempExpNumber;
-            LevelProgress++;
+            LevelProgress += Skills[skill].Level;
 
             if (Skills[skill].Exp >= Skills[skill].RExp)
             {
@@ -729,7 +729,12 @@ public class Player : LivingEntities
             StoredLevel++;
             PlayerUi.playerUi.CallSetLevelCounter(StoredLevel);
 
-            requiredLevelProgress = (int)(requiredLevelProgress * 1.15f);
+            requiredLevelProgress = Mathf.RoundToInt((float)requiredLevelProgress * 1.15f);
+
+            if (LevelProgress >= requiredLevelProgress)
+            {
+                CheckLevelProgress();
+            }
         }
     }
 
