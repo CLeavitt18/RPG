@@ -745,6 +745,7 @@ public class InventoryUi : IUi
                     if (rightHand == leftHand)
                     {
                         Slots[i].SetIndicator(true, "LR");
+                        break;
                     }
                     else
                     {
