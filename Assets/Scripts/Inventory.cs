@@ -5,8 +5,6 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private UiState Mode;
 
-    [SerializeField] private int max;
-
     [SerializeField] private Range[] ranges;
 
     public int Count { get { return AllItems.Count; } private set { } }
@@ -455,7 +453,6 @@ public class Inventory : MonoBehaviour
     public void SetDefaultState(bool priority)
     {
         int num;
-        int chance;
 
         Item item = null;
 
@@ -467,13 +464,6 @@ public class Inventory : MonoBehaviour
 
             for (int x = 0; x < num; x++)
             {
-                chance = Random.Range(0, max);
-                
-                if (chance != 0)
-                {
-                    continue;
-                }
-
                 item = Roller.roller.Roll(state);
                 AddItem(item, true, item.GetAmount(), true);
             }

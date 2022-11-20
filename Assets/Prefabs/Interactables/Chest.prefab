@@ -370,14 +370,14 @@ MonoBehaviour:
   Mode: 0
   max: 2
   ranges:
-  - min: 1
-    max: 2
-  - min: 2
+  - min: 0
     max: 4
-  - min: 1
-    max: 1
-  - min: 1
+  - min: 0
+    max: 4
+  - min: 0
     max: 2
+  - min: 0
+    max: 3
   - min: 0
     max: 3
   - min: 1
