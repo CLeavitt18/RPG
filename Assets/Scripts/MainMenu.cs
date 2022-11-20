@@ -117,6 +117,8 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.Save();
         }
 
+        SetShowPlayerHSMNumToggle();
+        SetShowEnemyNumToggle();
         SetShowFPSToggle();
         OptionsManager.instance.GetPrefs();
     }

@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OptionsManager : MonoBehaviour
 {
     public static OptionsManager instance;
 
-    private bool ShowPlayerHSMNumToggle;
-    private bool ShowEnemyNumToggle;
+    [SerializeField] private bool ShowPlayerHSMNumToggle;
+    [SerializeField] private bool ShowEnemyNumToggle;
 
     private void OnEnable() 
     {
