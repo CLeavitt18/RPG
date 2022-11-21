@@ -1,23 +1,16 @@
 ﻿using System.Text;
-using UnityEngine;
-using TMPro;
 
 public class Forge : Interactialbes, IInteractable
 {
-    public GameObject ForgueUI;
-
-    public void OnEnable()
-    {
-        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
-        gameObject.name = Name;
-    }
-
     public override void SetUiOpen()
     {
-        StringBuilder sb = new StringBuilder("E: Use ");
+        StringBuilder sb = new StringBuilder(GlobalValues.InterationKey);
+        sb.Append(": ");
+        sb.Append(GlobalValues.UseText);
+        sb.Append(' ');
         sb.Append(Name);
 
-        PUIInsruction.text = sb.ToString();
+        PlayerInstructionText.text = sb.ToString();
 
         base.SetUiOpen();
     }

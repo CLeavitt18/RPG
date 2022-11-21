@@ -8,6 +8,9 @@ public class PlayerUi : MonoBehaviour
 {
     public static PlayerUi playerUi;
 
+    public TextMeshProUGUI PlayerInstuctionText { get{return playerIntrustionText;} private set{}}
+    [SerializeField] private TextMeshProUGUI playerIntrustionText;
+
     [SerializeField] private IUi[] uis;
 
     [SerializeField] private Image EnemyHealthBar;

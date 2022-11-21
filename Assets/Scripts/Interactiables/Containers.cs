@@ -13,8 +13,6 @@ public class Containers : Interactialbes, IInteractable, ISavable
 
     public void Awake()
     {
-        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
-        gameObject.name = Name;
         inventory = GetComponent<Inventory>();
         Mode = inventory.GetMode();
     }
@@ -26,23 +24,28 @@ public class Containers : Interactialbes, IInteractable, ISavable
         switch (Mode)
         {
             case UiState.Container:
+                sb.Append(GlobalValues.InterationKey);
+                sb.Append(": ");
+                sb.Append(GlobalValues.OpenText);
+                sb.Append(' ');
+                sb.Append(Name);
+
                 if (inventory.Count == 0)
                 {
-                    PUIInsruction.text = "E: Open (Empty)";
+                    sb.Append(' ');
+                    sb.Append(GlobalValues.EmptyText);
                 }
-                else
-                {
-                    sb.Append("E: Open ");
-                    sb.Append(Name);
-
-                    PUIInsruction.text = sb.ToString();
-                }
+                
+                PlayerInstructionText.text = sb.ToString();
                 break;
             case UiState.Store:
-                    sb.Append("E: Talk To ");
+                    sb.Append(GlobalValues.InterationKey);
+                    sb.Append(": ");
+                    sb.Append(GlobalValues.TalkText);
+                    sb.Append(GlobalValues.ToText);
                     sb.Append(Name);
 
-                    PUIInsruction.text = sb.ToString();
+                    PlayerInstructionText.text = sb.ToString();
                 break;
         }
 

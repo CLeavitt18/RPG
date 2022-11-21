@@ -1,29 +1,23 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using System.Text;
 
 public class Refinery : Interactialbes, IInteractable
 {
-    public GameObject RefinaryUI;
-
-    public void OnEnable()
-    {
-        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(0).GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
-        RefinaryUI = GameObject.Find("RefinaryUi").transform.GetChild(0).gameObject;
-        gameObject.name = Name;
-    }
-
-    public void Interact(bool State)
-    {
-        RefinaryUI.SetActive(State);
-        RefinaryUI.transform.parent.gameObject.GetComponent<RefineryUi>().SetRefineryToDefault(true);
-        SetPlayerState(State);
-    }
-    
     public override void SetUiOpen()
     {
-        PUIInsruction.text = "E: Use " + Name;
+        StringBuilder sb = new StringBuilder(GlobalValues.InterationKey);
+        sb.Append(": ");
+        sb.Append(GlobalValues.UseText);
+        sb.Append(' ');
+        sb.Append(Name);
+
+        PlayerInstructionText.text = sb.ToString();
 
         base.SetUiOpen();
     }
 
+    public void Interact(bool State)
+    {
+        RefineryUi.refineryUi.SetOpen(State);
+        SetPlayerState(State);
+    }
 }

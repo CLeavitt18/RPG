@@ -12,7 +12,7 @@ public class Doors : Interactialbes, IInteractable, ISavable
 
     public void OnEnable()
     {
-        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+        PlayerInstructionText = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         name = Name;
     }
 
@@ -22,7 +22,7 @@ public class Doors : Interactialbes, IInteractable, ISavable
 
         Player.player.SavePlayer(false);
 
-        PUIInsruction.gameObject.SetActive(false);
+        PlayerInstructionText.gameObject.SetActive(false);
         WorldStateTracker.Tracker.UpdateTracker();
         SceneManagerOwn.Manager.TempSaveScene();
 
@@ -69,15 +69,18 @@ public class Doors : Interactialbes, IInteractable, ISavable
 
     public override void SetUiOpen()
     {
-        StringBuilder sb = new StringBuilder("E: Enter ");
+        StringBuilder sb = new StringBuilder(GlobalValues.InterationKey);
+        sb.Append(": ");
+        sb.Append(GlobalValues.EnterText);
+        sb.Append(' ');
         sb.Append(Name);
 
         if (Locked)
         {
-            sb.Append("(Locked)");
+            sb.Append(GlobalValues.LockedText);
         }
 
-        PUIInsruction.text = sb.ToString();
+        PlayerInstructionText.text = sb.ToString();
 
         base.SetUiOpen();
     }

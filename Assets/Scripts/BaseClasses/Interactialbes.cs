@@ -3,7 +3,7 @@ using TMPro;
 
 public class Interactialbes : MonoBehaviour
 {
-    public TextMeshProUGUI PUIInsruction;
+    public TextMeshProUGUI PlayerInstructionText;
 
     public bool UIOpen;
 
@@ -14,12 +14,18 @@ public class Interactialbes : MonoBehaviour
     [HideInInspector]
     public float NextTime;
 
+    public void OnEnable()
+    {
+        PlayerInstructionText = PlayerUi.playerUi.PlayerInstuctionText;
+        gameObject.name = Name;
+    }
+
     public void Update()
     {
         if (UIOpen && Time.time >= NextTime || Player.player.GetMode() == PlayerState.InContainer)
         {
             UIOpen = false;
-            PUIInsruction.gameObject.SetActive(false);
+            PlayerInstructionText.gameObject.SetActive(false);
         }
     }
 
@@ -35,7 +41,7 @@ public class Interactialbes : MonoBehaviour
 
     public virtual void SetUiOpen()
     {
-        PUIInsruction.gameObject.SetActive(true);
+        PlayerInstructionText.gameObject.SetActive(true);
         UIOpen = true;
 
         NextTime = Time.time + WaitTime;

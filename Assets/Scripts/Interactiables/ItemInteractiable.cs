@@ -5,7 +5,7 @@ public class ItemInteractiable : Interactialbes, IInteractable
 {
     public void OnEnable()
     {
-        PUIInsruction = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+        PlayerInstructionText = PlayerUi.playerUi.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     public void Interact(bool State)
@@ -17,9 +17,9 @@ public class ItemInteractiable : Interactialbes, IInteractable
 
     public override void SetUiOpen()
     {
-        PUIInsruction.text = "E: Take";
+        PlayerInstructionText.text = "E: Take";
 
-        PUIInsruction.gameObject.SetActive(true);
+        PlayerInstructionText.gameObject.SetActive(true);
         UIOpen = true;
 
         NextTime = Time.time + WaitTime;

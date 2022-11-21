@@ -15915,6 +15915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93aa0a7adf908f447b0d8fd63f49e673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIntrustionText: {fileID: 510011953745347525}
   uis:
   - {fileID: 3478989344690712265}
   - {fileID: 2681431667724490395}

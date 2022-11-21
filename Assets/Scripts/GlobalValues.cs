@@ -75,6 +75,12 @@ public static class GlobalValues
     public const string SpeedText = "Speed";
     public const string NumberText = "Number";
     public const string PowerText = "Power";
+    public const string EnterText = "Enter";
+    public const string OpenText = "Open";
+    public const string TalkText = "Talk";
+    public const string LockedText = "(Locked)";
+    public const string EmptyText = "(Empty)";
+    public const string UseText = "Use";
     public const string BreakLineSmall = "\n_____________________________________";
     public const string BreakLineMid =   "\n___________________________________________";
     public const string BreakLineLarge = "\n___________________________________________________";
@@ -82,6 +88,7 @@ public static class GlobalValues
     public const string ToText= " to ";
     public const string OfText= " of ";
     public const string SlotText= "Slot";
+    public const string InterationKey = "E";
 
     public static readonly string[] AttackInputs = { "Fire1", "Fire2", "1", "2", "3", "4" };
 

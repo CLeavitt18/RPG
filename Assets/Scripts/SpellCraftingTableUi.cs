@@ -36,7 +36,7 @@ public class SpellCraftingTableUi : MonoBehaviour
         }
     }
 
-    public void SetState(bool state)
+    public void SetOpen(bool state)
     {
         transform.GetChild(0).gameObject.SetActive(state);
 

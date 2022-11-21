@@ -5,6 +5,8 @@ using TMPro;
 
 public class RefineryUi : MonoBehaviour
 {
+    public static RefineryUi refineryUi;
+
     public int R_Id;
     public int ResourceAmount = 1;
 
@@ -27,10 +29,31 @@ public class RefineryUi : MonoBehaviour
 
     public TextMeshProUGUI ResourceAmountText;
 
-    //public ItemAmount ItemsRequired;
-
     [SerializeField] private DictionaryOfStringAndInt requiredItems = new DictionaryOfStringAndInt(10);
 
+
+    private void OnEnable() 
+    {
+        if (refineryUi == null)
+        {
+            refineryUi = this;
+            DontDestroyOnLoad(gameObject);
+        }    
+        else if (refineryUi != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void SetOpen(bool state)
+    {
+        if (state)
+        {
+            SetRefineryToDefault(state);
+        }
+
+        transform.GetChild(0).gameObject.SetActive(state);
+    }
 
     public void SetResourceId(int Id)
     {

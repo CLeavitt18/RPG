@@ -12,15 +12,15 @@ public class ResourceDeposit : Interactialbes, IInteractable, ISavable
 
     public void OnEnable()
     {
-        PUIInsruction = GameObject.Find("Player UI").transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+        PlayerInstructionText = GameObject.Find("Player UI").transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         gameObject.name = Name;
     }
 
     public override void SetUiOpen()
     {
-        PUIInsruction.text = "E: " + gameObject.name;
+        PlayerInstructionText.text = "E: " + gameObject.name;
 
-        PUIInsruction.gameObject.SetActive(true);
+        PlayerInstructionText.gameObject.SetActive(true);
         UIOpen = true;
 
         NextTime = Time.time + WaitTime;
@@ -38,7 +38,7 @@ public class ResourceDeposit : Interactialbes, IInteractable, ISavable
             SaveSystem.TempSaveResourceDeposit(this.gameObject, SceneManagerOwn.Manager.SavableObjects.IndexOf(this));
         }
 
-        PUIInsruction.gameObject.SetActive(false);
+        PlayerInstructionText.gameObject.SetActive(false);
 
         GameObject.FindGameObjectWithTag("Ground").GetComponent<Ground>().CallBakeNavMeshSurface();
 
