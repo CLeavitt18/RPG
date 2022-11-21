@@ -356,7 +356,7 @@ public class PlayerStatsUi : IUi
 
                     sb.Append(GlobalValues.SlotText);
                     sb.Append(' ');
-                    sb.Append(i.ToString());
+                    sb.Append((i + 1).ToString());
                     sb.Append(": ");
                             
                     CreateBanner(rune.GetName(), 2);

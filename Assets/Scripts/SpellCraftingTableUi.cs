@@ -44,10 +44,14 @@ public class SpellCraftingTableUi : MonoBehaviour
 
         if (state)
         {
+
             for (int type = 0; type < 11; type++)
             {
                 materialTypeDropDown.options.Add(new TMP_Dropdown.OptionData(((MaterialType)type).ToString()));
             }
+            
+            materialTypeDropDown.value++;
+            materialTypeDropDown.value = 0;
 
             CreateRuneSlots();
 
@@ -57,8 +61,6 @@ public class SpellCraftingTableUi : MonoBehaviour
         }
         else
         {
-            materialTypeDropDown.ClearOptions();
-
             ClearRuneSlots();
 
             for (int i = 0; i < 3; i++)
@@ -73,7 +75,7 @@ public class SpellCraftingTableUi : MonoBehaviour
             {
                 Destroy(runeItemDetailsLocation.GetChild(0).gameObject);
             }
-            //add logic for cleaing up details ui for spell statss
+            //add logic for cleaing up details ui for spell stats
         }
 
     }
@@ -204,6 +206,17 @@ public class SpellCraftingTableUi : MonoBehaviour
     {
         Player.player.Inventory.AddItem(spell, true, 1);
 
-        CreatePlaceHolderSpell();
+        for (int i = 0; i < 3; i++)
+        {
+            if (runesFocused[i] == null)
+            {
+                continue;
+            }
+            
+            Player.player.Inventory.RemoveItem(runesFocused[i], 1);
+        }
+
+        SetOpen(false);
+        SetOpen(true);
     }
 }

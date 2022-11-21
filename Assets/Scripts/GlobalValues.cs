@@ -54,7 +54,7 @@ public static class GlobalValues
     public const string MeleeText = "Melee";
     public const string ManaText = "Mana";
     public const string CostText = "Cost";
-    public const string CastText = "Case";
+    public const string CastText = "Cast";
     public const string TypeText = "Type";
     public const string RateText = "Rate";
     public const string MultipliersText = "Multipliers";
