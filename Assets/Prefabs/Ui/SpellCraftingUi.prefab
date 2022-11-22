@@ -1515,7 +1515,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6718526814049829038}
         m_TargetAssemblyTypeName: SpellCraftingTableUi, Assembly-CSharp
-        m_MethodName: CreateSpell
+        m_MethodName: CheckCanCreateSpell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4022,6 +4022,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5393716587670718637}
+  - {fileID: 7463532817398589886}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4106,6 +4107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spell: {fileID: 0}
   CurrentSpellSlot: 0
+  canCraft: 0
   runesFocused:
   - {fileID: 0}
   - {fileID: 0}
@@ -4115,8 +4117,13 @@ MonoBehaviour:
   spellItemDetailsLocation: {fileID: 8934910557343173723}
   costDetailsLocation: {fileID: 7878803605937501809}
   slot: {fileID: 1865744662274582771, guid: 2bd5b9cfc56b64d47a03d133be637229, type: 3}
+  confirmCreateUi: {fileID: 7463532817398589887}
   materialTypeDropDown: {fileID: 4864491562160825329}
   slotIdDropDown: {fileID: 5686550964087331589}
+  materialRecipes: {fileID: 11400000, guid: 72a10fccb960f364e9544caf4908be7b, type: 2}
+  requiredItems:
+    keys: []
+    values: 
 --- !u!1 &8741993079451212880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4273,3 +4280,144 @@ RectTransform:
   m_AnchoredPosition: {x: 765, y: -370}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &7334106609104122290
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 9099447038734665196}
+    m_Modifications:
+    - target: {fileID: 167812513407479685, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513407479739, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6718526814049829038}
+    - target: {fileID: 167812513407479739, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CancelCraft
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513407479739, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpellCraftingTableUi, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 930
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -503
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -64
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274445, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_Name
+      value: ConfrimCreateUi
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812513952274445, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812514770467296, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6718526814049829038}
+    - target: {fileID: 167812514770467296, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CreateSpell
+      objectReference: {fileID: 0}
+    - target: {fileID: 167812514770467296, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpellCraftingTableUi, Assembly-CSharp
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+--- !u!224 &7463532817398589886 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 167812513952274444, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+  m_PrefabInstance: {fileID: 7334106609104122290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7463532817398589887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 167812513952274445, guid: 6f9796b2e11d8344fa6993fa625df753, type: 3}
+  m_PrefabInstance: {fileID: 7334106609104122290}
+  m_PrefabAsset: {fileID: 0}

@@ -12,6 +12,8 @@ public class SpellCraftingTableUi : MonoBehaviour
 
     [SerializeField] private int CurrentSpellSlot;
 
+    [SerializeField] private bool canCraft;
+
     [SerializeField] private Item[] runesFocused;
 
     [SerializeField] private Transform runeContentHolder;
@@ -20,9 +22,14 @@ public class SpellCraftingTableUi : MonoBehaviour
     [SerializeField] private Transform costDetailsLocation;
 
     [SerializeField] private GameObject slot;
+    [SerializeField] private GameObject confirmCreateUi;
 
     [SerializeField] private TMP_Dropdown materialTypeDropDown;
     [SerializeField] private TMP_Dropdown slotIdDropDown;
+
+    [SerializeField] private BaseRecipes materialRecipes;
+
+    [SerializeField] private DictionaryOfStringAndInt requiredItems = new DictionaryOfStringAndInt(0);
 
     private void OnEnable()
     {
@@ -168,9 +175,54 @@ public class SpellCraftingTableUi : MonoBehaviour
         if (spellItemDetailsLocation.childCount != 0)
         {
             Destroy(spellItemDetailsLocation.GetChild(0).gameObject);
+            Destroy(costDetailsLocation.GetChild(0).gameObject);
         }
 
         Helper.helper.CreateItemDetails(spell, spellItemDetailsLocation);
+
+        DisplayResourceCost();
+    }
+
+    private void DisplayResourceCost()
+    {
+        int matId = materialTypeDropDown.value;
+
+        ItemAmount items = materialRecipes.ItemsRequired[matId];
+
+        requiredItems.Clear();
+
+        for (int i = 0; i < items.Item.Length; i++)
+        {
+            if (requiredItems.ContainsKey(items.Item[i]))
+            {
+                requiredItems[items.Item[i]] += items.Amount[i];
+            }
+            else
+            {
+                requiredItems.Add(items.Item[i], items.Amount[i]);
+            }
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (runesFocused[i] == null)
+            {
+                continue;
+            }
+
+            string runeName = runesFocused[i].GetName();
+
+            if (requiredItems.ContainsKey(runeName))
+            {
+                requiredItems[runeName]++;
+            }
+            else
+            {
+                requiredItems.Add(runeName, 1);
+            }
+        }
+
+        canCraft = Helper.helper.CreateResourceCostDetails(requiredItems, costDetailsLocation);
     }
 
     public void PreviewRune(Item item)
@@ -202,6 +254,30 @@ public class SpellCraftingTableUi : MonoBehaviour
         return runeItemDetailsLocation;
     }
 
+    public void CheckCanCreateSpell()
+    {
+        bool hasARune = false;
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (runesFocused[i] != null)
+            {
+                hasARune = true;
+                break;
+            }
+        }
+
+        if (canCraft && hasARune)
+        {
+            confirmCreateUi.SetActive(true);
+        }
+    }
+
+    public void CancelCraft()
+    {
+        confirmCreateUi.SetActive(false);
+    }
+
     public void CreateSpell()
     {
         Player.player.Inventory.AddItem(spell, true, 1);
@@ -216,6 +292,7 @@ public class SpellCraftingTableUi : MonoBehaviour
             Player.player.Inventory.RemoveItem(runesFocused[i], 1);
         }
 
+        confirmCreateUi.SetActive(false);
         SetOpen(false);
         SetOpen(true);
     }

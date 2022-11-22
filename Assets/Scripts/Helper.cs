@@ -367,8 +367,40 @@ public class Helper : MonoBehaviour
 
             itemRef = pInventory.Find(item.Key, GlobalValues.ResourceTag);
 
+            string runeString = "";
+
+            if (itemRef == null)
+            {
+                string itemName = item.Key;
+
+                for (int i = 0; i < itemName.Length; i++)
+                {
+                    if (itemName[i] == 'R')
+                    {
+                        runeString = "R";
+
+                        if (itemName[i + 1] == 'u')
+                        {
+                            runeString += "u";
+
+                            if (itemName[i + 2] == 'n')
+                            {
+                                runeString += "n";
+
+                                if (itemName[i + 3] == 'e')
+                                {
+                                    runeString += "e";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             if (itemRef != null &&
-                itemRef.GetAmount() >= item.Value)
+                itemRef.GetAmount() >= item.Value ||
+                runeString == "Rune")
             {
                 color = Color.black;
                 count++;
@@ -454,9 +486,9 @@ public class Helper : MonoBehaviour
     public Button CreateCraftingButton(GameObject prefab, string text, Transform parent)
     {
         GameObject intsance = Instantiate(prefab, parent);
-        
+
         intsance.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
-        
+
         Button button = intsance.GetComponent<Button>();
 
         return button;
