@@ -19,3 +19,30 @@ MonoBehaviour:
   - Amount: 03000000
     Item:
     - Wood
+  - Amount: 03000000
+    Item:
+    - Tin
+  - Amount: 03000000
+    Item:
+    - Copper
+  - Amount: 03000000
+    Item:
+    - Bronze
+  - Amount: 03000000
+    Item:
+    - Iron
+  - Amount: 03000000
+    Item:
+    - Silver
+  - Amount: 03000000
+    Item:
+    - Steel
+  - Amount: 03000000
+    Item:
+    - Cobolt
+  - Amount: 03000000
+    Item:
+    - Mithril
+  - Amount: 03000000
+    Item:
+    - Ebony
