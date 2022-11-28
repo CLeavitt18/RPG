@@ -44,6 +44,7 @@ public class SpellRoller : MonoBehaviour
         stats.Type = (MaterialType)mat_id;
 
         stats.Name = ((MaterialType)mat_id).ToString() + " Spell Focus";
+        stats.Value = 0;
 
         for (int i = 0; i < 3; i++)
         {
@@ -56,6 +57,7 @@ public class SpellRoller : MonoBehaviour
             stats.Spells[i] = new SpellData();
 
             LoadSystem.LoadRune(runes[i], stats.Spells[i]);
+            stats.Value += runes[i].GetComponent<Item>().GetValue();
         }
 
         int numRune = 0;

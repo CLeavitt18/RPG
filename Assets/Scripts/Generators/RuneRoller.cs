@@ -118,6 +118,9 @@ public class RuneRoller : MonoBehaviour
 
         DamageType damage;
 
+        float value = 0.0f;
+
+
         switch (spellType)
         {
             case SpellType.DamageSpell:
@@ -180,6 +183,9 @@ public class RuneRoller : MonoBehaviour
                 break;
         }
 
+        value = baseSpells[id].Value[castId][damageType];
+        value *=1.25f;
+
         stats.SpellType = spellType;
         stats.CastType = castType;
         stats.CostType = costType;
@@ -204,6 +210,8 @@ public class RuneRoller : MonoBehaviour
         
         runeStats.Name = tempName + " Rune";
         runeStats.Rarity = GlobalValues.rarities[rarityId];
+
+        runeStats.Value = (int)value;
 
         RuneHolder runeH = item as RuneHolder;
 

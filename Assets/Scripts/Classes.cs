@@ -287,6 +287,7 @@ public class SpellHolderData
     public int handType;
     public int SpellSkillType;
     public int Amount;
+    public int Value;
     public int MaterialId;
     public int MaterialMulti;
 
@@ -315,6 +316,7 @@ public class RuneHolderData
     public SpellData runeData;
 
     public int Amount;
+    public int Value;
 
     public string Name;
 

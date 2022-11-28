@@ -344,7 +344,7 @@ public class Helper : MonoBehaviour
 
     public bool CreateResourceCostDetails(DictionaryOfStringAndInt items, Transform parent)
     {
-        bool playercanCraft = false;
+        bool playerCanCraft = false;
         int count = 0;
 
         GameObject ui = Instantiate(costDetailsPrefab, parent.position, parent.rotation, parent);
@@ -367,40 +367,11 @@ public class Helper : MonoBehaviour
 
             itemRef = pInventory.Find(item.Key, GlobalValues.ResourceTag);
 
-            string runeString = "";
-
-            if (itemRef == null)
-            {
-                string itemName = item.Key;
-
-                for (int i = 0; i < itemName.Length; i++)
-                {
-                    if (itemName[i] == 'R')
-                    {
-                        runeString = "R";
-
-                        if (itemName[i + 1] == 'u')
-                        {
-                            runeString += "u";
-
-                            if (itemName[i + 2] == 'n')
-                            {
-                                runeString += "n";
-
-                                if (itemName[i + 3] == 'e')
-                                {
-                                    runeString += "e";
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
+            int runeString = item.Key.IndexOf("Rune");
+            
             if (itemRef != null &&
                 itemRef.GetAmount() >= item.Value ||
-                runeString == "Rune")
+                runeString != -1)
             {
                 color = Color.black;
                 count++;
@@ -411,10 +382,10 @@ public class Helper : MonoBehaviour
 
         if (count == items.Count)
         {
-            playercanCraft = true;
+            playerCanCraft = true;
         }
 
-        return playercanCraft;
+        return playerCanCraft;
     }
 
     private void SpawnResourceDetailsSlot(Transform t, Color color)

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseSpell : ScriptableObject
@@ -8,6 +6,7 @@ public class BaseSpell : ScriptableObject
 
     public FloatArray[] CastsPerSecond;
 
+    public IntArray[] Value;
     public IntArray[] ManaCost;
 
     public ResourceList[] SpellAffects;

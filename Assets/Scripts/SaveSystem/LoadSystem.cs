@@ -115,6 +115,7 @@ public static class LoadSystem
         stats.SpellSkillType = (SkillType)FromSpell.SpellSkillType;
         stats.Amount = FromSpell.Amount;
         stats.Name = FromSpell.Name;
+        stats.Value = FromSpell.Value;
 
         Color color = new Color(
             FromSpell.Rarity[0],
@@ -132,8 +133,8 @@ public static class LoadSystem
         RuneHolderStats stats = new RuneHolderStats();
 
         stats.Name = FromRuneH.Name;
-
         stats.Amount = FromRuneH.Amount;
+        stats.Value  =FromRuneH.Value;
 
         Color color = new Color(
             FromRuneH.Rarity[0],
@@ -414,6 +415,7 @@ public static class LoadSystem
         ToSpell.MaterialId = (int)FromSpell.GetMaterialType();
         ToSpell.Amount = FromSpell.GetAmount();
         ToSpell.Name = FromSpell.GetName();
+        ToSpell.Value = FromSpell.GetValue();
 
         ToSpell.Rarity = new float[4];
 
@@ -425,8 +427,9 @@ public static class LoadSystem
 
     public static void LoadItem(RuneHolder FromRuneH, RuneHolderData ToRuneH)
     {
-        ToRuneH.Amount = FromRuneH.GetAmount();
         ToRuneH.Name = FromRuneH.GetName();
+        ToRuneH.Amount = FromRuneH.GetAmount();
+        ToRuneH.Value = FromRuneH.GetValue();
 
         ToRuneH.Rarity = new float[4];
 
