@@ -6,6 +6,6 @@ public class HitManager : MonoBehaviour
 
     public int HitSomething(LivingEntities other, bool hitShield)
     {
-        return other.TakeDamage(Stats, hitShield);
+        return other.TakeDamage(new DamageStats(Stats), hitShield);
     }
 }
