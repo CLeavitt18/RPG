@@ -121,4 +121,4 @@ MonoBehaviour:
   PredictionStepsPerFrame: 50
   ProjectileVelocity: {x: 0, y: 0, z: 0}
   Explosion: {fileID: 6409333485655707130, guid: 9ee23523f6222a94b85629a6682eae4b, type: 3}
-  Range: 10
+  Range: 5
