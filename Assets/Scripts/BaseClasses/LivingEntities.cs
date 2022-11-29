@@ -250,8 +250,9 @@ public class LivingEntities : MonoBehaviour
                 }
                 break;
             case CastType.Charged:
-                if (state == true)
+                if (state)
                 {
+                    TempNextCast = 1.0f / SpellH.GetCastRate();
                     hand.ChannelTime = 0;
 
                     if (TempChannelTime >= TempNextCast)

@@ -187,7 +187,7 @@ public class Player : LivingEntities
                             }
                             break;
                         case CastType.Charged:
-                            if (Input.GetButtonDown(key))
+                            if (Input.GetButton(key))
                             {
                                 Cast(handType, hand, spell);
                             }

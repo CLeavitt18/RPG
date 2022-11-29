@@ -4,7 +4,7 @@ public class ExplosionHitManager : HitManager
 {
     private void Awake() 
     {
-        //Destroy(gameObject, 0.15f);
+        Destroy(gameObject, 0.15f);
     }
 
     public void SetDamage()
