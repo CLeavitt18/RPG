@@ -4406,7 +4406,7 @@ MonoBehaviour:
   Weight: 0
   _Item: {fileID: 0}
   Rarity: {r: 0, g: 0, b: 0, a: 0}
-  Name: 
+  Name: Jewelry
   isEquipable: 0
   equiped: 0
   SkillType: 0
