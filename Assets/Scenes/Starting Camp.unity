@@ -123,13 +123,128 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: a35d514b9f5d73a4bb55978e723d900b, type: 2}
---- !u!43 &80566821
+--- !u!1001 &25335505
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 775505682}
+    m_Modifications:
+    - target: {fileID: 2865060664139588975, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_Name
+      value: Spell
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.248934
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.25296
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.1709375
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588977, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: Name
+      value: Fire Blast Test Spell
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865060664139588977, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+      propertyPath: Spells.Array.data[0]
+      value: 
+      objectReference: {fileID: 25335507}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+--- !u!1 &25335506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2865060664139588975, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+  m_PrefabInstance: {fileID: 25335505}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &25335507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25335506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ceac4157dc00641854dbc8d9e5e5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Fire Blast
+  SpellType: 0
+  CastType: 2
+  CostType: 2
+  SkillType: 4
+  Cost: 10
+  SpellAffect: {fileID: 5636415486039233703, guid: a0546ed9eedbf764a9b5361b6ec30793, type: 3}
+  CastsPerSecond: 1
+  NextAttack: 0
+  CritDamage: 0
+  DamageRanges:
+  - Type: 1
+    LDamage: 2
+    HDamage: 5
+  StatusChance: 3c000000
+--- !u!114 &25335508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2865060664139588977, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+  m_PrefabInstance: {fileID: 25335505}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25335506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80be433ba5c0551429d923d22f2e82cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &25335509 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2865060664139588976, guid: db68c3a6cbeb7a148b44ead6d8434c8a, type: 3}
+  m_PrefabInstance: {fileID: 25335505}
+  m_PrefabAsset: {fileID: 0}
+--- !u!43 &213905046
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7724270
+  m_Name: pb_Mesh-1114940
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -788,12 +903,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8626998037439577810, guid: 145a0e167945edd4e883003296c72704, type: 3}
       propertyPath: AllItems.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8626998037439577810, guid: 145a0e167945edd4e883003296c72704, type: 3}
       propertyPath: AllItems.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 25335508}
     - target: {fileID: -8626998037439577810, guid: 145a0e167945edd4e883003296c72704, type: 3}
       propertyPath: AllItems.Array.data[1]
       value: 
@@ -911,8 +1026,16 @@ PrefabInstance:
       value: Chest (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4018705457666250438, guid: 145a0e167945edd4e883003296c72704, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 25335509}
   m_SourcePrefab: {fileID: 100100000, guid: 145a0e167945edd4e883003296c72704, type: 3}
+--- !u!4 &775505682 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4018705457666250438, guid: 145a0e167945edd4e883003296c72704, type: 3}
+  m_PrefabInstance: {fileID: 775505681}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &802362542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1018,7 +1141,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7722830
+  m_Name: pb_Mesh-377562
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -2952,7 +3075,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7721674
+  m_Name: pb_Mesh-381224
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2

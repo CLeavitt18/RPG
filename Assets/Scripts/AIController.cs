@@ -250,7 +250,8 @@ public class AIController : LivingEntities
 
             if (entity.GetDead() ||
                 (type == EntityType.Minion && ((entity as AIController).Controller  as Minion).Owner is AIController) ||
-                (entity is AIController && type == EntityType.Enemy))
+                (entity is AIController && type == EntityType.Enemy) ||
+                entity == this)
             {
                 continue;
             }

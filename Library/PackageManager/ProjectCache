@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637950526070169206
-    m_Hash: 3826786689
+      ticks: 638053427400041881
+    m_Hash: 3367756319
   m_LockFileStatus:
     m_FilePath: D:/Unity Games/RPG/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637950526070169206
-    m_Hash: 2882387466
+      ticks: 638053427400116289
+    m_Hash: 427281289
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -357,6 +357,7 @@ m_ResolvedPackages:
     - 10.8.1
     - 10.9.0
     - 10.10.0
+    - 10.10.1
     - 13.1.8
     compatible:
     - 13.1.8
@@ -538,6 +539,7 @@ m_ResolvedPackages:
     - 10.8.1
     - 10.9.0
     - 10.10.0
+    - 10.10.1
     - 13.1.8
     compatible:
     - 13.1.8
@@ -597,7 +599,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: Unity Test Framework
-  type: 
+  type: asset
   description: Test framework for running Edit mode and Play mode tests in Unity.
   status: 4
   errors: []
@@ -637,13 +639,19 @@ m_ResolvedPackages:
     - 1.1.30
     - 1.1.31
     - 1.1.33
+    - 1.3.0
+    - 1.3.1
     - 2.0.1-exp.1
+    - 2.0.1-exp.2
     - 2.0.1-pre.12
     - 2.0.1-pre.18
     compatible:
     - 1.1.31
     - 1.1.33
+    - 1.3.0
+    - 1.3.1
     - 2.0.1-exp.1
+    - 2.0.1-exp.2
     - 2.0.1-pre.12
     - 2.0.1-pre.18
     verified: 1.1.33
@@ -671,7 +679,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637804266210000000
   documentationUrl: 
@@ -864,7 +872,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: Use Unity Timeline to create cinematic content, game-play sequences,
     audio sequences, and complex particle effects.
   status: 4
@@ -943,9 +951,13 @@ m_ResolvedPackages:
     - 1.7.0-pre.2
     - 1.7.0
     - 1.7.1
+    - 1.7.2
+    - 1.8.0
     compatible:
     - 1.7.1
-    verified: 1.7.1
+    - 1.7.2
+    - 1.8.0
+    verified: 1.7.2
   dependencies:
   - name: com.unity.modules.director
     version: 1.0.0
@@ -977,7 +989,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637824211470000000
   documentationUrl: 
@@ -1004,7 +1016,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: Cross-compilation toolchain to build player target Linux x86_64 on
     host Windows x86_64
   status: 4
@@ -1032,6 +1044,7 @@ m_ResolvedPackages:
     - 2.0.0
     - 2.0.1
     - 2.0.2
+    - 2.0.3
     compatible:
     - 0.1.4-preview
     - 0.1.5-preview
@@ -1054,6 +1067,7 @@ m_ResolvedPackages:
     - 2.0.0
     - 2.0.1
     - 2.0.2
+    - 2.0.3
     verified: 
   dependencies:
   - name: com.unity.sysroot
@@ -1077,7 +1091,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637902311680000000
   documentationUrl: 
@@ -1151,6 +1165,148 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 1.0.0
+    nextVersion: 
+- packageId: com.unity.visualeffectgraph@13.1.8
+  testable: 0
+  isDirectDependency: 1
+  version: 13.1.8
+  source: 2
+  resolvedPath: D:\Unity Games\RPG\Library\PackageCache\com.unity.visualeffectgraph@13.1.8
+  assetPath: Packages/com.unity.visualeffectgraph
+  name: com.unity.visualeffectgraph
+  displayName: Visual Effect Graph
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: The Visual Effect Graph is a node based visual effect editor. It allows
+    you to author next generation visual effects that Unity simulates directly on
+    the GPU. The Visual Effect Graph is production-ready for the High Definition
+    Render Pipeline and runs on all platforms supported by it. Full support for the
+    Universal Render Pipeline and compatible mobile devices is still in development.
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 4.3.0-preview
+    - 4.6.0-preview
+    - 4.8.0-preview
+    - 4.9.0-preview
+    - 4.10.0-preview
+    - 5.2.0-preview
+    - 5.2.1-preview
+    - 5.2.3-preview
+    - 5.3.1-preview
+    - 5.6.1-preview
+    - 5.7.2-preview
+    - 5.8.2-preview
+    - 5.10.0-preview
+    - 5.13.0-preview
+    - 5.16.1-preview
+    - 6.5.2-preview
+    - 6.5.3-preview
+    - 6.7.1-preview
+    - 6.9.0-preview
+    - 6.9.1-preview
+    - 6.9.2-preview
+    - 7.0.0
+    - 7.0.1
+    - 7.1.1
+    - 7.1.2
+    - 7.1.5
+    - 7.1.6
+    - 7.1.7
+    - 7.1.8
+    - 7.2.0
+    - 7.2.1
+    - 7.3.1
+    - 7.4.1
+    - 7.4.2
+    - 7.4.3
+    - 7.5.1
+    - 7.5.2
+    - 7.5.3
+    - 7.6.0
+    - 7.7.0
+    - 7.7.1
+    - 8.0.1
+    - 8.1.0
+    - 8.2.0
+    - 8.3.1
+    - 9.0.0-preview.13
+    - 9.0.0-preview.33
+    - 9.0.0-preview.54
+    - 9.0.0-preview.71
+    - 10.0.0-preview.27
+    - 10.1.0
+    - 10.2.0
+    - 10.2.1
+    - 10.2.2
+    - 10.3.1
+    - 10.3.2
+    - 10.4.0
+    - 10.5.0
+    - 10.5.1
+    - 10.6.0
+    - 10.7.0
+    - 10.8.0
+    - 10.8.1
+    - 10.9.0
+    - 10.10.0
+    - 10.10.1
+    - 13.1.8
+    compatible:
+    - 13.1.8
+    verified: 13.1.8
+  dependencies:
+  - name: com.unity.shadergraph
+    version: 13.1.8
+  - name: com.unity.render-pipelines.core
+    version: 13.1.8
+  resolvedDependencies:
+  - name: com.unity.shadergraph
+    version: 13.1.8
+  - name: com.unity.render-pipelines.core
+    version: 13.1.8
+  - name: com.unity.ugui
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.searcher
+    version: 4.9.2
+  keywords:
+  - vfx
+  - visualeffect
+  - graph
+  - effect
+  - particles
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 13.1.8
     nextVersion: 
 - packageId: com.unity.modules.ai@1.0.0
   testable: 0
@@ -2892,227 +3048,6 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 
     nextVersion: 
-- packageId: com.unity.sysroot@2.0.3
-  testable: 0
-  isDirectDependency: 0
-  version: 2.0.3
-  source: 1
-  resolvedPath: D:\Unity Games\RPG\Library\PackageCache\com.unity.sysroot@2.0.3
-  assetPath: Packages/com.unity.sysroot
-  name: com.unity.sysroot
-  displayName: Sysroot Base
-  author:
-    name: 
-    email: 
-    url: 
-  category: 
-  type: 
-  description: This is the base sysroot package required by all sysroot and toolchain
-    packages
-  status: 4
-  errors: []
-  versions:
-    all:
-    - 0.1.7-preview
-    - 0.1.8-preview
-    - 0.1.9-preview
-    - 0.1.10-preview
-    - 0.1.11-preview
-    - 0.1.12-preview
-    - 0.1.14-preview
-    - 0.1.15-preview
-    - 0.1.16-preview
-    - 0.1.17-preview
-    - 0.1.18-preview
-    - 0.1.19-preview
-    - 1.0.0
-    - 2.0.0
-    - 2.0.2
-    - 2.0.3
-    compatible:
-    - 0.1.7-preview
-    - 0.1.8-preview
-    - 0.1.9-preview
-    - 0.1.10-preview
-    - 0.1.11-preview
-    - 0.1.12-preview
-    - 0.1.14-preview
-    - 0.1.15-preview
-    - 0.1.16-preview
-    - 0.1.17-preview
-    - 0.1.18-preview
-    - 0.1.19-preview
-    - 1.0.0
-    - 2.0.0
-    - 2.0.2
-    - 2.0.3
-    verified: 
-  dependencies: []
-  resolvedDependencies: []
-  keywords:
-  - unity
-  - linux
-  - sysroot
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.com
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 637902310480000000
-  documentationUrl: 
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.com/Unity-Technologies/com.unity.sysroot.git
-    revision: 66ed41bba76e1f66c4e578e9bad86d33dff8b82b
-    path: 
-  unityLifecycle:
-    version: 
-    nextVersion: 
-- packageId: com.unity.sysroot.linux-x86_64@2.0.2
-  testable: 0
-  isDirectDependency: 0
-  version: 2.0.2
-  source: 1
-  resolvedPath: D:\Unity Games\RPG\Library\PackageCache\com.unity.sysroot.linux-x86_64@2.0.2
-  assetPath: Packages/com.unity.sysroot.linux-x86_64
-  name: com.unity.sysroot.linux-x86_64
-  displayName: Sysroot Linux x64
-  author:
-    name: 
-    email: 
-    url: 
-  category: 
-  type: 
-  description: Sysroot used to build unity player for linux x86_64
-  status: 4
-  errors: []
-  versions:
-    all:
-    - 0.1.6-preview
-    - 0.1.7-preview
-    - 0.1.8-preview
-    - 0.1.9-preview
-    - 0.1.10-preview
-    - 0.1.11-preview
-    - 0.1.12-preview
-    - 0.1.13-preview
-    - 0.1.14-preview
-    - 0.1.15-preview
-    - 1.0.0
-    - 2.0.0
-    - 2.0.1
-    - 2.0.2
-    compatible:
-    - 0.1.6-preview
-    - 0.1.7-preview
-    - 0.1.8-preview
-    - 0.1.9-preview
-    - 0.1.10-preview
-    - 0.1.11-preview
-    - 0.1.12-preview
-    - 0.1.13-preview
-    - 0.1.14-preview
-    - 0.1.15-preview
-    - 1.0.0
-    - 2.0.0
-    - 2.0.1
-    - 2.0.2
-    verified: 
-  dependencies:
-  - name: com.unity.sysroot
-    version: 2.0.3
-  resolvedDependencies:
-  - name: com.unity.sysroot
-    version: 2.0.3
-  keywords:
-  - unity
-  - linux
-  - sysroot
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.com
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 637902310650000000
-  documentationUrl: 
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.com/Unity-Technologies/com.unity.sysroot.git
-    revision: 66ed41bba76e1f66c4e578e9bad86d33dff8b82b
-    path: 
-  unityLifecycle:
-    version: 
-    nextVersion: 
-- packageId: com.unity.ext.nunit@1.0.6
-  testable: 0
-  isDirectDependency: 0
-  version: 1.0.6
-  source: 1
-  resolvedPath: D:\Unity Games\RPG\Library\PackageCache\com.unity.ext.nunit@1.0.6
-  assetPath: Packages/com.unity.ext.nunit
-  name: com.unity.ext.nunit
-  displayName: Custom NUnit
-  author:
-    name: 
-    email: 
-    url: 
-  category: Libraries
-  type: 
-  description: Custom version of the nunit package build to work with Unity. Used
-    by the Unity Test Framework.
-  status: 4
-  errors: []
-  versions:
-    all:
-    - 0.1.5-preview
-    - 0.1.6-preview
-    - 0.1.9-preview
-    - 1.0.0
-    - 1.0.5
-    - 1.0.6
-    - 2.0.2
-    - 2.0.3
-    compatible:
-    - 1.0.6
-    - 2.0.2
-    - 2.0.3
-    verified: 1.0.6
-  dependencies: []
-  resolvedDependencies: []
-  keywords:
-  - nunit
-  - unittest
-  - test
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.com
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 637429759280000000
-  documentationUrl: 
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.ext.nunit.git
-    revision: 29ea4d6504a5f58fb3a6934db839aa80ae6d9d88
-    path: 
-  unityLifecycle:
-    version: 1.0.6
-    nextVersion: 
 - packageId: com.unity.render-pipelines.core@13.1.8
   testable: 0
   isDirectDependency: 0
@@ -3236,6 +3171,7 @@ m_ResolvedPackages:
     - 10.8.1
     - 10.9.0
     - 10.10.0
+    - 10.10.1
     - 13.1.8
     compatible:
     - 13.1.8
@@ -3278,6 +3214,231 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 13.1.8
+    nextVersion: 
+- packageId: com.unity.sysroot@2.0.3
+  testable: 0
+  isDirectDependency: 0
+  version: 2.0.3
+  source: 1
+  resolvedPath: D:\Unity Games\RPG\Library\PackageCache\com.unity.sysroot@2.0.3
+  assetPath: Packages/com.unity.sysroot
+  name: com.unity.sysroot
+  displayName: Sysroot Base
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: asset
+  description: This is the base sysroot package required by all sysroot and toolchain
+    packages
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 0.1.7-preview
+    - 0.1.8-preview
+    - 0.1.9-preview
+    - 0.1.10-preview
+    - 0.1.11-preview
+    - 0.1.12-preview
+    - 0.1.14-preview
+    - 0.1.15-preview
+    - 0.1.16-preview
+    - 0.1.17-preview
+    - 0.1.18-preview
+    - 0.1.19-preview
+    - 1.0.0
+    - 2.0.0
+    - 2.0.2
+    - 2.0.3
+    - 2.0.4
+    compatible:
+    - 0.1.7-preview
+    - 0.1.8-preview
+    - 0.1.9-preview
+    - 0.1.10-preview
+    - 0.1.11-preview
+    - 0.1.12-preview
+    - 0.1.14-preview
+    - 0.1.15-preview
+    - 0.1.16-preview
+    - 0.1.17-preview
+    - 0.1.18-preview
+    - 0.1.19-preview
+    - 1.0.0
+    - 2.0.0
+    - 2.0.2
+    - 2.0.3
+    - 2.0.4
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - unity
+  - linux
+  - sysroot
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 0
+  isAssetStorePackage: 0
+  datePublishedTicks: 637902310480000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.sysroot.git
+    revision: 66ed41bba76e1f66c4e578e9bad86d33dff8b82b
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+- packageId: com.unity.sysroot.linux-x86_64@2.0.2
+  testable: 0
+  isDirectDependency: 0
+  version: 2.0.2
+  source: 1
+  resolvedPath: D:\Unity Games\RPG\Library\PackageCache\com.unity.sysroot.linux-x86_64@2.0.2
+  assetPath: Packages/com.unity.sysroot.linux-x86_64
+  name: com.unity.sysroot.linux-x86_64
+  displayName: Sysroot Linux x64
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: asset
+  description: Sysroot used to build unity player for linux x86_64
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 0.1.6-preview
+    - 0.1.7-preview
+    - 0.1.8-preview
+    - 0.1.9-preview
+    - 0.1.10-preview
+    - 0.1.11-preview
+    - 0.1.12-preview
+    - 0.1.13-preview
+    - 0.1.14-preview
+    - 0.1.15-preview
+    - 1.0.0
+    - 2.0.0
+    - 2.0.1
+    - 2.0.2
+    - 2.0.3
+    compatible:
+    - 0.1.6-preview
+    - 0.1.7-preview
+    - 0.1.8-preview
+    - 0.1.9-preview
+    - 0.1.10-preview
+    - 0.1.11-preview
+    - 0.1.12-preview
+    - 0.1.13-preview
+    - 0.1.14-preview
+    - 0.1.15-preview
+    - 1.0.0
+    - 2.0.0
+    - 2.0.1
+    - 2.0.2
+    - 2.0.3
+    verified: 
+  dependencies:
+  - name: com.unity.sysroot
+    version: 2.0.3
+  resolvedDependencies:
+  - name: com.unity.sysroot
+    version: 2.0.3
+  keywords:
+  - unity
+  - linux
+  - sysroot
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 0
+  isAssetStorePackage: 0
+  datePublishedTicks: 637902310650000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.sysroot.git
+    revision: 66ed41bba76e1f66c4e578e9bad86d33dff8b82b
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+- packageId: com.unity.ext.nunit@1.0.6
+  testable: 0
+  isDirectDependency: 0
+  version: 1.0.6
+  source: 1
+  resolvedPath: D:\Unity Games\RPG\Library\PackageCache\com.unity.ext.nunit@1.0.6
+  assetPath: Packages/com.unity.ext.nunit
+  name: com.unity.ext.nunit
+  displayName: Custom NUnit
+  author:
+    name: 
+    email: 
+    url: 
+  category: Libraries
+  type: 
+  description: Custom version of the nunit package build to work with Unity. Used
+    by the Unity Test Framework.
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 0.1.5-preview
+    - 0.1.6-preview
+    - 0.1.9-preview
+    - 1.0.0
+    - 1.0.5
+    - 1.0.6
+    - 2.0.2
+    - 2.0.3
+    compatible:
+    - 1.0.6
+    - 2.0.2
+    - 2.0.3
+    verified: 1.0.6
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - nunit
+  - unittest
+  - test
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637429759280000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.ext.nunit.git
+    revision: 29ea4d6504a5f58fb3a6934db839aa80ae6d9d88
+    path: 
+  unityLifecycle:
+    version: 1.0.6
     nextVersion: 
 - packageId: com.unity.searcher@4.9.2
   testable: 0
@@ -3423,7 +3584,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: Burst is a compiler that translates from IL/.NET bytecode to highly
     optimized native code using LLVM.
   status: 4
@@ -3543,13 +3704,23 @@ m_ResolvedPackages:
     - 1.7.1
     - 1.7.2
     - 1.7.3
+    - 1.7.4
     - 1.8.0-pre.1
+    - 1.8.0-pre.2
+    - 1.8.0
+    - 1.8.1
+    - 1.8.2
     compatible:
     - 1.7.1
     - 1.7.2
     - 1.7.3
+    - 1.7.4
     - 1.8.0-pre.1
-    verified: 1.7.3
+    - 1.8.0-pre.2
+    - 1.8.0
+    - 1.8.1
+    - 1.8.2
+    verified: 1.7.4
   dependencies:
   - name: com.unity.mathematics
     version: 1.2.1
@@ -3564,7 +3735,7 @@ m_ResolvedPackages:
     scopes: []
     isDefault: 1
     capabilities: 7
-  hideInEditor: 1
+  hideInEditor: 0
   isAssetStorePackage: 0
   datePublishedTicks: 637853933000000000
   documentationUrl: 

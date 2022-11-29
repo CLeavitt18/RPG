@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\PowerHolder.cs" />
      <Compile Include="Assets\Scripts\Roller.cs" />
      <Compile Include="Assets\Scripts\QuestHolder.cs" />
+     <Compile Include="Assets\Scripts\ExplosionHitManager.cs" />
      <Compile Include="Assets\Generator Testing\Tile.cs" />
      <Compile Include="Assets\Scripts\QuestItemHolder.cs" />
      <Compile Include="Assets\Scripts\Ground.cs" />
@@ -118,6 +119,7 @@
      <Compile Include="Assets\Scripts\SaveSystem\DoorData.cs" />
      <Compile Include="Assets\Scripts\Generators\ArmourRoller.cs" />
      <Compile Include="Assets\Scripts\ArmourHolder.cs" />
+     <Compile Include="Assets\Scripts\ChargedSpellHitManager.cs" />
      <Compile Include="Assets\Scripts\CatalystHolder.cs" />
      <Compile Include="Assets\Scripts\LoadProfileButton.cs" />
      <Compile Include="Assets\Scripts\BurningStatus.cs" />
@@ -141,8 +143,8 @@
      <Compile Include="Assets\Generator Testing\SpawnPoint.cs" />
      <Compile Include="Assets\Scripts\GlobalValues.cs" />
      <Compile Include="Assets\Scripts\Interfaces\IInteractable.cs" />
-     <Compile Include="Assets\Scripts\BaseClasses\HitManager.cs" />
      <Compile Include="Assets\Scripts\TorchHolder.cs" />
+     <Compile Include="Assets\Scripts\BaseClasses\HitManager.cs" />
      <Compile Include="Assets\Scripts\WorldStateTracker.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\WorldData.cs" />
      <Compile Include="Assets\Scripts\PlayerCamera.cs" />
@@ -827,6 +829,9 @@
     <Reference Include="System.Xml.XPath.XDocument">
         <HintPath>D:\Unity Editors\2022.1.4f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Editor">
+        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -847,6 +852,9 @@
     </Reference>
     <Reference Include="Unity.Sysroot.Linux_x86_64">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.VisualEffectGraph.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>

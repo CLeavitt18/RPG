@@ -508,7 +508,7 @@ MonoBehaviour:
     backgroundColour: {r: 0.792, g: 0.239, b: 0.239, a: 0.25}
     visibleInInspector: 1
     styleFilteredInInspector: 0
-  - mInitialised: 0
+  - mInitialised: 1
     matchMethod: 2
     matchValue: 170a36f6d36153045a30688d20215f67
     priority: 0
@@ -521,5 +521,20 @@ MonoBehaviour:
     overrideBackground: 1
     backgroundName: Metal
     backgroundColour: {r: 0.38, g: 0.251, b: 0.839, a: 0.25}
+    visibleInInspector: 1
+    styleFilteredInInspector: 0
+  - mInitialised: 0
+    matchMethod: 2
+    matchValue: c400356fc22a526409edd7e295136737
+    priority: 0
+    recursive: 1
+    overrideIcon: 1
+    iconName: Shape - Pink Circle Coloured
+    overrideLabel: 1
+    labelColour: {r: 1.5056272, g: 0.5448428, b: 1.3634702, a: 1}
+    labelStyle: 1
+    overrideBackground: 1
+    backgroundName: Glass
+    backgroundColour: {r: 0.612, g: 0.024, b: 0.525, a: 0.25}
     visibleInInspector: 1
     styleFilteredInInspector: 0

@@ -2,20 +2,20 @@
 
 public class ProjectileSpellHitManger : HitManager
 {
-    public float Speed;
+    [SerializeField] protected float Speed;
 
-    public int PredictionStepsPerFrame;
+    [SerializeField] protected int PredictionStepsPerFrame;
 
-    public Vector3 ProjectileVelocity;
+    [SerializeField] protected Vector3 ProjectileVelocity;
 
-    void OnEnable()
+    protected void OnEnable()
     {
         ProjectileVelocity = this.transform.forward * Speed;
+        Destroy(gameObject, 6.0f);
     }
 
-    void Update()
+    protected void Update()
     {
-        Destroy(gameObject, 6f);
 
         Vector3 Point1 = this.transform.position;
         float StepSize = 1.0f / PredictionStepsPerFrame;
@@ -33,13 +33,20 @@ public class ProjectileSpellHitManger : HitManager
                 if (Hit.collider.GetComponent<LivingEntities>() != null)
                 {
                     HitSomething(Hit.collider.GetComponent<LivingEntities>(), false);
-                    Destroy(gameObject, Time.deltaTime * 1.1f);
                 }
+                
+                Destroy(gameObject, Time.deltaTime * 1.1f);
+                BeforeDestroy();
             }
 
             Point1 = Point2;
         }
 
         this.transform.position = Point1;
+    }
+
+    protected virtual void BeforeDestroy()
+    {
+        
     }
 }
