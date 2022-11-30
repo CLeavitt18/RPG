@@ -254,7 +254,7 @@ public class RefineryUi : MonoBehaviour
         
         if (maxResources[R_Id] == 0)
         {
-            contentHolder.GetChild(R_Id).GetChild(0).GetComponent<Text>().color = Color.red;
+            contentHolder.GetChild(R_Id).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
         }
 
         SetRefineryToDefault(false);

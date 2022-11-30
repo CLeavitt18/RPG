@@ -21,11 +21,11 @@ public class Spell : MonoBehaviour
     [SerializeField] protected float NextAttack;
 
 
-    public int CalculateManaCost(int Intelligence)
+    public int CalculateManaCost(int intelligence)
     {
         float tempCost = GetCost();
 
-        tempCost *= 1 + ((Intelligence * GlobalValues.SPDamIntInterval) * GlobalValues.SPDamPerInt);
+        tempCost *= 1 + ((intelligence * GlobalValues.SPDamIntInterval) * GlobalValues.SPDamPerInt);
 
         return (int)tempCost;
     }
@@ -107,5 +107,16 @@ public class Spell : MonoBehaviour
     public float GetCastRate()
     {
         return CastsPerSecond;
+    }
+
+    public float GetNextAttack()
+    {
+        return NextAttack;
+    }
+
+
+    public void SetNextAttack(float time)
+    {
+        NextAttack = time;
     }
 }

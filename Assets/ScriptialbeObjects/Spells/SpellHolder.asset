@@ -21,28 +21,28 @@ MonoBehaviour:
     - Wood
   - Amount: 03000000
     Item:
-    - Tin
+    - Tin Ingot
   - Amount: 03000000
     Item:
-    - Copper
+    - Copper Ingot
   - Amount: 03000000
     Item:
-    - Bronze
+    - Bronze Ingot
   - Amount: 03000000
     Item:
-    - Iron
+    - Iron Ingot
   - Amount: 03000000
     Item:
-    - Silver
+    - Silver Ingot
   - Amount: 03000000
     Item:
-    - Steel
+    - Steel Ingot
   - Amount: 03000000
     Item:
-    - Cobolt
+    - Cobolt Ingot
   - Amount: 03000000
     Item:
-    - Mithril
+    - Mithril Ingot
   - Amount: 03000000
     Item:
-    - Ebony
+    - Ebony Ingot

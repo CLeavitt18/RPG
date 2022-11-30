@@ -147,8 +147,16 @@ public class Player : LivingEntities
                 int index = handType;
 
                 for (int i = 0; i < 3; i++)
-                {
-                    if (SpellH.GetRune(i) == null)
+                {   
+                    string key = GlobalValues.AttackInputs[index];
+                    Spell spell = SpellH.GetRune(i);
+                    
+                    if (hand.CurrSpell != null && hand.CurrSpell != spell)
+                    {
+                        continue;    
+                    }
+
+                    if (spell == null)
                     {
                         if (i == 0)
                         {
@@ -162,8 +170,6 @@ public class Player : LivingEntities
                         continue;
                     }
 
-                    string key = GlobalValues.AttackInputs[index];
-                    Spell spell = SpellH.GetRune(i);
 
                     CastType castType = spell.GetCastType();
 
@@ -172,10 +178,12 @@ public class Player : LivingEntities
                         case CastType.Channelled:
                             if (Input.GetButton(key))
                             {
+                                hand.CurrSpell = spell;
                                 Cast(handType, hand, spell);
                             }
                             else if (Input.GetButtonUp(key))
                             {
+                                hand.CurrSpell = null;
                                 hand.ChannelTime = 0;
                             }
                             break;
@@ -183,10 +191,13 @@ public class Player : LivingEntities
                         case CastType.Aura:
                             if (Input.GetButtonDown(key))
                             {
+                                hand.CurrSpell = spell;
                                 Cast(handType, hand, spell);
                             }
                             break;
                         case CastType.Charged:
+                            hand.CurrSpell = spell;
+                            
                             if (Input.GetButton(key))
                             {
                                 Cast(handType, hand, spell);
@@ -210,7 +221,7 @@ public class Player : LivingEntities
                     }
                 }
             }
-            else //Attack Tpye is shield
+            else //Attack Type is shield
             {
                 if (Input.GetButtonDown(GlobalValues.AttackInputs[handType]))
                 {

@@ -67,7 +67,7 @@ public class LivingEntities : MonoBehaviour
     #region AttackFunctions
     protected IEnumerator Attack(int HandType)
     {
-        if (Hands[HandType].attackFinsihed)
+        if (Hands[HandType].AttackFinsihed)
         {
             //if shrine is active make stats a copy of the other hands damagestats class
 
@@ -133,7 +133,7 @@ public class LivingEntities : MonoBehaviour
             if (hand.ChannelTime >= GlobalValues.ChargeAttackTime)
             {
                 float cost = (float)Weapon.GetWeight() / 100f;
-                cost *= 1 + (Mathf.Floor((float)Attributes[(int)Abilities.Strenght].Ability * 
+                cost *= 1 + (Mathf.Floor((float)Attributes[(int)Abilities.Strenght].Ability *
                             GlobalValues.MDamStrInterval)) * GlobalValues.MDamPerStr;
 
                 if (LoseAttribute((int)cost, AttributesEnum.Stamina))
@@ -145,7 +145,7 @@ public class LivingEntities : MonoBehaviour
                 else
                 {
                     hand.HasAttacked = true;
-                    hand.attackFinsihed = true;
+                    hand.AttackFinsihed = true;
                     hand.ChannelTime = 0;
 
                     Weapon.Attack(false);
@@ -164,7 +164,7 @@ public class LivingEntities : MonoBehaviour
 
             Weapon.Attack(true, hand.Stats);
 
-            hand.attackFinsihed = false;
+            hand.AttackFinsihed = false;
 
             hand.Animator.speed = attackSpeed;
             hand.Animator.SetTrigger(attackAnimation);
@@ -175,8 +175,8 @@ public class LivingEntities : MonoBehaviour
 
             Weapon.Attack(false);
 
-            hand.attackFinsihed = true;
-            
+            hand.AttackFinsihed = true;
+
             hand.Stats.Clear();
         }
     }
@@ -205,12 +205,12 @@ public class LivingEntities : MonoBehaviour
 
     }
 
-    protected void Cast(int HandType, Hand hand, Spell SpellH, bool state = false)
+    protected void Cast(int HandType, Hand hand, Spell SpellH, bool ButtonUp = false)
     {
         int TempManaCost = SpellH.CalculateManaCost(GetIntelligence());
 
         float TempChannelTime = hand.ChannelTime;
-        float TempNextCast = hand.NextAttack;
+        float TempNextCast = SpellH.GetNextAttack();
 
         CastType TempCastType = SpellH.GetCastType();
         AttributesEnum TempCostType = SpellH.GetCostType();
@@ -220,7 +220,7 @@ public class LivingEntities : MonoBehaviour
             case CastType.Channelled:
                 if (TempChannelTime >= TempNextCast)
                 {
-                    hand.NextAttack = 1f / SpellH.GetCastRate();
+                    SpellH.SetNextAttack(1f / SpellH.GetCastRate());
 
                     hand.ChannelTime = 0;
 
@@ -237,11 +237,13 @@ public class LivingEntities : MonoBehaviour
                 }
                 break;
             case CastType.Instant:
+                hand.CurrSpell = null;
+
                 if (Time.time >= TempNextCast)
                 {
-                    hand.NextAttack = (1f / SpellH.GetCastRate()) + Time.time;
+                    SpellH.SetNextAttack((1f / SpellH.GetCastRate()) + Time.time);
 
-                    if (!LoseAttribute((int)TempManaCost, TempCostType))
+                    if (!LoseAttribute(TempManaCost, TempCostType))
                     {
                         return;
                     }
@@ -250,18 +252,14 @@ public class LivingEntities : MonoBehaviour
                 }
                 break;
             case CastType.Charged:
-                if (state)
+                if (ButtonUp)
                 {
-                    TempNextCast = 1.0f / SpellH.GetCastRate();
+                    TempNextCast = SpellH.GetCastRate();
                     hand.ChannelTime = 0;
+                    hand.CurrSpell = null;
 
-                    if (TempChannelTime >= TempNextCast)
+                    if (TempChannelTime >= TempNextCast && LoseAttribute(TempManaCost, TempCostType))
                     {
-                        if (!LoseAttribute(TempManaCost, TempCostType))
-                        {
-                            return;
-                        }
-
                         CreateSpell(HandType, hand, SpellH);
                     }
                 }
@@ -273,17 +271,25 @@ public class LivingEntities : MonoBehaviour
             case CastType.Touch:
                 break;
             case CastType.Aura:
-
-                if (SpellH is GolemSpell gspell && !gspell.Activated)
+                if (SpellH is GolemSpell gspell)
                 {
-                    hand.NextAttack = 0;
-                    hand.ChannelTime = 0;
-
-                    if (!ReserveAttribute(((int)TempManaCost) * gspell.Number, TempCostType))
+                    if (gspell.Activated)
                     {
-                        Debug.Log("Returned from lose attribute");
                         return;
                     }
+                    else
+                    {
+                        TempManaCost *= gspell.Number;
+                    }
+                }
+
+                SpellH.SetNextAttack(0);
+                hand.ChannelTime = 0;
+                hand.CurrSpell = null;
+
+                if (!ReserveAttribute(TempManaCost, TempCostType))
+                {
+                    return;
                 }
 
                 CreateSpell(HandType, hand, SpellH);

@@ -147,10 +147,12 @@ public class Hand
 
     public Item HeldItem;
 
+    public Spell CurrSpell;
+
     public DamageStats Stats;
 
     public bool HasAttacked;
-    public bool attackFinsihed = true;
+    public bool AttackFinsihed = true;
 
     public float NextAttack;
     public float ChannelTime;
