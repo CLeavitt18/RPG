@@ -32,7 +32,7 @@ Material:
     - Smooth: 0
     - _WorkflowMode: 0
     m_Colors:
-    - Material_Color: {r: 0, g: 0.3137255, b: 2, a: 1}
+    - Material_Color: {r: 0, g: 0.31398875, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8636729306769742657
 MonoBehaviour:

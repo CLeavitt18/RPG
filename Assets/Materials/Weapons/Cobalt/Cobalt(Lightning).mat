@@ -42,6 +42,6 @@ Material:
     m_Floats:
     - _Emit: 1
     m_Colors:
-    - GradnaintNoiseColor: {r: 0, g: 0.5019608, b: 23.968628, a: 1}
+    - GradnaintNoiseColor: {r: 0, g: 0.2509804, b: 11.984314, a: 1}
     - Material_Color: {r: 0, g: 0.31398875, b: 1, a: 1}
   m_BuildTextureStacks: []
