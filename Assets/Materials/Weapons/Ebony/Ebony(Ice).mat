@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bronze(Ice)
+  m_Name: Ebony(Ice)
   m_Shader: {fileID: -6465566751694194690, guid: 265c89cc8416e1141b21fcc9a162ed91, type: 3}
   m_Parent: {fileID: 2100000, guid: 63e186a3a2658f0429b3f993e9085e13, type: 2}
   m_ModifiedSerializedProperties: 0
@@ -43,5 +43,5 @@ Material:
     - _Emit: 1
     m_Colors:
     - GradnaintNoiseColor: {r: 7.4286995, g: 16.82382, b: 41.73181, a: 1}
-    - Material_Color: {r: 0.2509804, g: 0.19607843, b: 0.050980393, a: 1}
+    - Material_Color: {r: 0.033333335, g: 0.033333335, b: 0.033333335, a: 1}
   m_BuildTextureStacks: []
