@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cobalt
+  m_Name: Cobalt(Fire)
   m_Shader: {fileID: -6465566751694194690, guid: 265c89cc8416e1141b21fcc9a162ed91, type: 3}
-  m_Parent: {fileID: 2100000, guid: 41e7b8e78da56294dbc5a09fa41118e8, type: 2}
+  m_Parent: {fileID: 2100000, guid: 8b1d6674fa8fb1d49993520e175ba18f, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -26,11 +26,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Emit: 1
     m_Colors:
+    - GradnaintNoiseColor: {r: 23.718306, g: 0.4993328, b: 0, a: 1}
     - Material_Color: {r: 0, g: 0.31398875, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &8636729306769742657
+--- !u!114 &7588715651311398646
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
