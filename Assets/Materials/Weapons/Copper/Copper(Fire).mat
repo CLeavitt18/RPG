@@ -7,13 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Copper(Mat)
+  m_Name: Copper(Fire)
   m_Shader: {fileID: -6465566751694194690, guid: 265c89cc8416e1141b21fcc9a162ed91, type: 3}
-  m_Parent: {fileID: 2100000, guid: c4d1effb34f55f449a8bdf96a3915683, type: 2}
+  m_Parent: {fileID: 2100000, guid: 8b1d6674fa8fb1d49993520e175ba18f, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
-  - _SPECULAR_SETUP
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -28,13 +27,12 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - Metallic: 0
-    - Smooth: 0
-    - _WorkflowMode: 0
+    - _Emit: 1
     m_Colors:
-    - Material_Color: {r: 1.0039216, g: 0.7058824, b: 0, a: 1}
+    - GradnaintNoiseColor: {r: 23.718306, g: 0.4993328, b: 0, a: 1}
+    - Material_Color: {r: 1, g: 0.7019608, b: 0, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &54388113285164396
+--- !u!114 &7588715651311398646
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
