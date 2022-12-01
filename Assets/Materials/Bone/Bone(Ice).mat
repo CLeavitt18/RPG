@@ -21,7 +21,7 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
-  m_LockedProperties: Metallic
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -120,11 +120,12 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - GradiantColorSpeed: {r: 0, g: -0.1, b: 0, a: 0}
-    - GradnaintNoiseColor: {r: 25.148195, g: 112.220924, b: 141.2737, a: 1}
+    - GradnaintNoiseColor: {r: 141.2737, g: 141.2737, b: 141.2737, a: 1}
     - Material_Color: {r: 0.99215686, g: 0.98039216, b: 0.7607843, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpacularColor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3288025193019773123

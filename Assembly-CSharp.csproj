@@ -137,8 +137,8 @@
      <Compile Include="Assets\Scripts\PlayerProfileInfo.cs" />
      <Compile Include="Assets\Scripts\ShieldHolder.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
-     <Compile Include="Assets\Scripts\Helper.cs" />
      <Compile Include="Assets\Scripts\Interactiables\Forge.cs" />
+     <Compile Include="Assets\Scripts\Helper.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Generator Testing\SpawnPoint.cs" />
      <Compile Include="Assets\Scripts\GlobalValues.cs" />
@@ -847,8 +847,8 @@
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Sysroot.Linux_x86_64">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
@@ -865,17 +865,17 @@
     <Reference Include="Unity.Burst.Editor">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
+        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.ProBuilder">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Editor">
+        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.Editor">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
@@ -888,6 +888,9 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
@@ -919,20 +922,14 @@
     <Reference Include="Unity.Mathematics.Editor">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
+        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.SysrootPackage.Editor">
         <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
-        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
-        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.HighDefinition.Editor">
-        <HintPath>D:\Unity Games\RPG\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

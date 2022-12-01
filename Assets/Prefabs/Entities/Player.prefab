@@ -595,6 +595,7 @@ MonoBehaviour:
     WeaponSpawn: {fileID: 2279016529663060696}
     Animator: {fileID: 2279016529663060697}
     HeldItem: {fileID: 0}
+    CurrSpell: {fileID: 0}
     Stats:
       Parent: {fileID: 0}
       SourceHand: 0
@@ -603,7 +604,7 @@ MonoBehaviour:
       DamageValues: 
       Status: 
     HasAttacked: 0
-    attackFinsihed: 1
+    AttackFinsihed: 1
     NextAttack: 0
     ChannelTime: 0
   - State: 0
@@ -627,6 +628,7 @@ MonoBehaviour:
     WeaponSpawn: {fileID: 8542431877326400650}
     Animator: {fileID: 4021205621927660066}
     HeldItem: {fileID: 0}
+    CurrSpell: {fileID: 0}
     Stats:
       Parent: {fileID: 0}
       SourceHand: 1
@@ -635,7 +637,7 @@ MonoBehaviour:
       DamageValues: 00000000000000000000000000000000
       Status: 00000000
     HasAttacked: 0
-    attackFinsihed: 1
+    AttackFinsihed: 1
     NextAttack: 0
     ChannelTime: 0
   Running: 0
@@ -687,7 +689,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mode: 2
-  max: 0
   ranges: []
   StartIds: 000000000000000000000000000000000000000000000000
   MaxCarryWeight: 15000

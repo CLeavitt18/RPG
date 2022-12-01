@@ -98,7 +98,7 @@ Material:
     - GradiantNoisePower: 9
     - GradiantNoiseScale: 3
     - Meallic: 1
-    - Metallic: 0
+    - Metallic: 1
     - Smooth: 0.5
     - _AlphaClip: 0
     - _Blend: 0
