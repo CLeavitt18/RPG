@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mithril
+  m_Name: Mithril(Ice)
   m_Shader: {fileID: -6465566751694194690, guid: 265c89cc8416e1141b21fcc9a162ed91, type: 3}
-  m_Parent: {fileID: 2100000, guid: 41e7b8e78da56294dbc5a09fa41118e8, type: 2}
+  m_Parent: {fileID: 2100000, guid: 63e186a3a2658f0429b3f993e9085e13, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -27,10 +27,9 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats: []
-    m_Colors:
-    - Material_Color: {r: 0.047058824, g: 0.6784314, b: 0.34901962, a: 1}
+    m_Colors: []
   m_BuildTextureStacks: []
---- !u!114 &1089437339552818241
+--- !u!114 &1298790960587870159
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

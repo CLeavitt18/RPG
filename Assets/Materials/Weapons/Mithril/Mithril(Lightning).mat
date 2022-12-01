@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-190816136720103567
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 6
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,9 +20,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mithril
+  m_Name: Mithril(Lightning)
   m_Shader: {fileID: -6465566751694194690, guid: 265c89cc8416e1141b21fcc9a162ed91, type: 3}
-  m_Parent: {fileID: 2100000, guid: 41e7b8e78da56294dbc5a09fa41118e8, type: 2}
+  m_Parent: {fileID: 2100000, guid: c6351e38c4f97e4468b4fae714b48c3c, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -27,19 +40,5 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats: []
-    m_Colors:
-    - Material_Color: {r: 0.047058824, g: 0.6784314, b: 0.34901962, a: 1}
+    m_Colors: []
   m_BuildTextureStacks: []
---- !u!114 &1089437339552818241
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 6
