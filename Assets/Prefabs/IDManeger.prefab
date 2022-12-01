@@ -314,8 +314,8 @@ MonoBehaviour:
   Armour:
   - {fileID: 7287768545305473151, guid: 0bcf0e2df0fa0604ea3256fc48edd931, type: 3}
   WeaponMaterials:
-  - {fileID: 2100000, guid: 8ea9129a3b682d347b8b1c7bb60581f1, type: 2}
-  - {fileID: 2100000, guid: b10b42c0df9d5524fab0533c9a220733, type: 2}
+  - {fileID: 2100000, guid: 1f9529873bae7164698f919b32740eff, type: 2}
+  - {fileID: 2100000, guid: 28e995a33c0604a4b909b054f2164a04, type: 2}
   - {fileID: 2100000, guid: 8ff188f37ba50414bbbe572efc8e3a79, type: 2}
   - {fileID: 2100000, guid: 65d1eff5fef52c440bd22f23ab90318f, type: 2}
   - {fileID: 2100000, guid: 3bc0f9e9a0d81de499a9646b71fa3887, type: 2}
