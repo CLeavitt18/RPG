@@ -28,8 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3124157371363296515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.5, y: 1.45, z: 4.54}
+  m_LocalPosition: {x: 0, y: 1.45, z: 0}
   m_LocalScale: {x: 1, y: 3, z: 2}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9415752f7165b564eaee3764b819949a, type: 2}
+  - {fileID: 2100000, guid: 13c6379a9ded3cc46a51b50ed20a5f84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7b65579725b654eb2f9d0e683e20a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PUIInsruction: {fileID: 0}
+  PlayerInstructionText: {fileID: 0}
   UIOpen: 0
   WaitTime: 0.2
   Name: 

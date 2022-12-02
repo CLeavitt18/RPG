@@ -45,5 +45,5 @@ Material:
     - Smooth: 0
     - _WorkflowMode: 0
     m_Colors:
-    - Material_Color: {r: 0.5372549, g: 0.20784314, b: 0.09411765, a: 1}
+    - Material_Color: {r: 0.13431373, g: 0.051960785, b: 0.023529412, a: 1}
   m_BuildTextureStacks: []

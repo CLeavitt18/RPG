@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1.2500001, y: 0.4, z: 2.5}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,6 +55,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -62,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9415752f7165b564eaee3764b819949a, type: 2}
+  - {fileID: 2100000, guid: 13c6379a9ded3cc46a51b50ed20a5f84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,12 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df64a339d656354d83915c8973b8d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PUIInsruction: {fileID: 0}
+  PlayerInstructionText: {fileID: 0}
   UIOpen: 0
   WaitTime: 0.1
   Name: Bed
   NextTime: 0
-  SleepUi: {fileID: 0}
 --- !u!208 &28555580
 NavMeshObstacle:
   m_ObjectHideFlags: 0
