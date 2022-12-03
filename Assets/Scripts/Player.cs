@@ -114,50 +114,105 @@ public class Player : LivingEntities
 
             AttackType type = hand.State;
 
-            if (type == AttackType.Melee)
+            switch (type)
             {
-                if (hand.HasAttacked)
-                {
+                case AttackType.Melee:
+                    if (hand.HasAttacked)
+                    {
+                        if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]))
+                        {
+                            hand.HasAttacked = false;
+                        }
+
+                        return;
+                    }
+
                     if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]))
                     {
+                        StartCoroutine(Attack(handType));
                         hand.HasAttacked = false;
                     }
-
-                    return;
-                }
-
-                if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]))
-                {
-                    StartCoroutine(Attack(handType));
-                    hand.HasAttacked = false;
-                }
-                else if (Input.GetButton(GlobalValues.AttackInputs[handType]))
-                {
-                    ChargeAttack(handType);
-                }
-            }
-            else if (type == AttackType.Ranged && Input.GetButton(GlobalValues.AttackInputs[handType]))
-            {
-                Shoot();
-            }
-            else if(type == AttackType.Spell)
-            {
-                SpellHolder SpellH = hand.HeldItem.GetComponent<SpellHolder>();
-
-                int index = handType;
-
-                for (int i = 0; i < 3; i++)
-                {   
-                    string key = GlobalValues.AttackInputs[index];
-                    Spell spell = SpellH.GetRune(i);
-                    
-                    if (hand.CurrSpell != null && hand.CurrSpell != spell)
+                    else if (Input.GetButton(GlobalValues.AttackInputs[handType]))
                     {
-                        continue;    
+                        ChargeAttack(handType);
                     }
-
-                    if (spell == null)
+                    break;
+                case AttackType.Ranged:
+                    if (Input.GetButton(GlobalValues.AttackInputs[handType]))
                     {
+                        Shoot();
+                    }
+                    break;
+                case AttackType.Spell:
+                    SpellHolder SpellH = hand.HeldItem.GetComponent<SpellHolder>();
+
+                    int index = handType;
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        string key = GlobalValues.AttackInputs[index];
+                        Spell spell = SpellH.GetRune(i);
+
+                        if (hand.CurrSpell != null && hand.CurrSpell != spell)
+                        {
+                            continue;
+                        }
+
+                        if (spell == null)
+                        {
+                            if (i == 0)
+                            {
+                                index += 2 + handType;
+                            }
+                            else
+                            {
+                                index++;
+                            }
+
+                            continue;
+                        }
+
+
+                        CastType castType = spell.GetCastType();
+
+                        switch (castType)
+                        {
+                            case CastType.Channelled:
+                                if (Input.GetButton(key))
+                                {
+                                    hand.CurrSpell = spell;
+                                    Cast(handType, hand, spell);
+                                }
+                                else if (Input.GetButtonUp(key))
+                                {
+                                    hand.CurrSpell = null;
+                                    hand.ChannelTime = 0;
+                                }
+                                break;
+                            case CastType.Instant:
+                            case CastType.Aura:
+                                if (Input.GetButtonDown(key))
+                                {
+                                    hand.CurrSpell = spell;
+                                    Cast(handType, hand, spell);
+                                }
+                                break;
+                            case CastType.Charged:
+                                hand.CurrSpell = spell;
+
+                                if (Input.GetButton(key))
+                                {
+                                    Cast(handType, hand, spell);
+                                }
+                                else if (Input.GetButtonUp(key))
+                                {
+                                    Cast(handType, hand, spell, true);
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+
                         if (i == 0)
                         {
                             index += 2 + handType;
@@ -166,74 +221,23 @@ public class Player : LivingEntities
                         {
                             index++;
                         }
-
-                        continue;
                     }
-
-
-                    CastType castType = spell.GetCastType();
-
-                    switch (castType)
+                    break;
+                case AttackType.Shield:
+                    if (Input.GetButtonDown(GlobalValues.AttackInputs[handType]))
                     {
-                        case CastType.Channelled:
-                            if (Input.GetButton(key))
-                            {
-                                hand.CurrSpell = spell;
-                                Cast(handType, hand, spell);
-                            }
-                            else if (Input.GetButtonUp(key))
-                            {
-                                hand.CurrSpell = null;
-                                hand.ChannelTime = 0;
-                            }
-                            break;
-                        case CastType.Instant:
-                        case CastType.Aura:
-                            if (Input.GetButtonDown(key))
-                            {
-                                hand.CurrSpell = spell;
-                                Cast(handType, hand, spell);
-                            }
-                            break;
-                        case CastType.Charged:
-                            hand.CurrSpell = spell;
-                            
-                            if (Input.GetButton(key))
-                            {
-                                Cast(handType, hand, spell);
-                            }
-                            else if (Input.GetButtonUp(key))
-                            {
-                                Cast(handType, hand, spell, true);
-                            }
-                            break;
-                        default:
-                            break;
+                        hand.Animator.SetTrigger("Start Block");
+                        (hand.HeldItem as ShieldHolder).SetState(true);
                     }
 
-                    if (i == 0)
+                    if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]) || Input.GetButtonDown("Cancel"))
                     {
-                        index += 2 + handType;
+                        hand.Animator.SetTrigger("End Block");
+                        (hand.HeldItem as ShieldHolder).SetState(false);
                     }
-                    else
-                    {
-                        index++;
-                    }
-                }
-            }
-            else //Attack Type is shield
-            {
-                if (Input.GetButtonDown(GlobalValues.AttackInputs[handType]))
-                {
-                    hand.Animator.SetTrigger("Start Block");
-                    (hand.HeldItem as ShieldHolder).SetState(true);
-                }
-
-                if (Input.GetButtonUp(GlobalValues.AttackInputs[handType]))
-                {
-                    hand.Animator.SetTrigger("End Block");
-                    (hand.HeldItem as ShieldHolder).SetState(false);
-                }
+                    break;
+                default:
+                    break;
             }
         }
 
