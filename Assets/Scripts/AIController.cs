@@ -222,9 +222,22 @@ public class AIController : LivingEntities
                     {
                         Chance = Random.Range(0, 101);
 
-                        if (Chance <= GetAccuracy() && Hands[i].HeldItem != null)
+                        if ((Chance <= GetAccuracy() && Hands[i].HeldItem != null))
                         {
-                            StartCoroutine(Attack(i));
+                            switch (Hands[i].State)
+                            {
+                                case AttackType.Melee:
+                                    StartCoroutine(Attack(i));
+                                    break;
+                                case AttackType.Ranged:
+                                    break;
+                                case AttackType.Spell:
+                                    break;
+                                case AttackType.Shield:
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     }
 

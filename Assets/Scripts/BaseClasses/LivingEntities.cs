@@ -67,118 +67,120 @@ public class LivingEntities : MonoBehaviour
     #region AttackFunctions
     protected IEnumerator Attack(int HandType)
     {
-        if (Hands[HandType].AttackFinsihed)
+        if (!Hands[HandType].AttackFinsihed || !Hands[HandType].Animator.enabled)
         {
-            //if shrine is active make stats a copy of the other hands damagestats class
+            yield break;
+        }
 
-            string attackAnimation;
+        //if shrine is active make stats a copy of the other hands damagestats class
 
-            float attackSpeed;
+        string attackAnimation;
 
-            Hand hand = Hands[HandType];
+        float attackSpeed;
 
-            hand.HasAttacked = true;
+        Hand hand = Hands[HandType];
 
-            int[] StatusChances;
+        hand.HasAttacked = true;
 
-            WeaponHolder Weapon = hand.HeldItem as WeaponHolder;
+        int[] StatusChances;
 
-            StatusChances = new int[Weapon.GetStatusCount()];
+        WeaponHolder Weapon = hand.HeldItem as WeaponHolder;
 
-            hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed;
+        StatusChances = new int[Weapon.GetStatusCount()];
 
-            hand.Stats.SourceHand = HandType;
+        hand.Animator.speed = Weapon.GetAttackSpeed() * ActionSpeed;
 
-            hand.Stats.LifeSteal = Weapon.GetLifeSteal();
+        hand.Stats.SourceHand = HandType;
 
-            for (int i = 0; i < StatusChances.Length; i++)
+        hand.Stats.LifeSteal = Weapon.GetLifeSteal();
+
+        for (int i = 0; i < StatusChances.Length; i++)
+        {
+            StatusChances[i] = Weapon.GetStatus(i);
+
+            if (Powers[1].Contains(2) && i != 0)
             {
-                StatusChances[i] = Weapon.GetStatus(i);
-
-                if (Powers[1].Contains(2) && i != 0)
+                if (Weapon.GetDamageType(i) == DamageTypeEnum.Fire)
                 {
-                    if (Weapon.GetDamageType(i) == DamageTypeEnum.Fire)
-                    {
-                        StatusChances[i] = 100;
-                    }
-                    else
-                    {
-                        StatusChances[i] = 0;
-                    }
+                    StatusChances[i] = 100;
                 }
-
-                if (Powers[1].Contains(5) && Weapon.GetDamageType(i) == DamageTypeEnum.Fire)
+                else
                 {
                     StatusChances[i] = 0;
                 }
             }
 
-            for (int i = 0; i < Weapon.GetDamageRangesCount(); i++)
+            if (Powers[1].Contains(5) && Weapon.GetDamageType(i) == DamageTypeEnum.Fire)
             {
-                hand.Stats.DamageValues.Add(CalculateMeleeDamage(Weapon, HandType, Weapon.GetDamageType(i), i));
-                hand.Stats.DamageTypes.Add(Weapon.GetDamageType(i));
-
-                int Chance = Random.Range(1, 101);
-
-                if (Chance <= StatusChances[i] && hand.Stats.DamageValues[i] > 0)
-                {
-                    hand.Stats.Status.Add(true);
-                }
-                else
-                {
-                    hand.Stats.Status.Add(false);
-                }
+                StatusChances[i] = 0;
             }
+        }
 
-            if (hand.ChannelTime >= GlobalValues.ChargeAttackTime)
+        for (int i = 0; i < Weapon.GetDamageRangesCount(); i++)
+        {
+            hand.Stats.DamageValues.Add(CalculateMeleeDamage(Weapon, HandType, Weapon.GetDamageType(i), i));
+            hand.Stats.DamageTypes.Add(Weapon.GetDamageType(i));
+
+            int Chance = Random.Range(1, 101);
+
+            if (Chance <= StatusChances[i] && hand.Stats.DamageValues[i] > 0)
             {
-                float cost = (float)Weapon.GetWeight() / 100f;
-                cost *= 1 + (Mathf.Floor((float)Attributes[(int)Abilities.Strenght].Ability *
-                            GlobalValues.MDamStrInterval)) * GlobalValues.MDamPerStr;
-
-                if (LoseAttribute((int)cost, AttributesEnum.Stamina))
-                {
-                    hand.Stats.DamageValues[0] = (int)((float)hand.Stats.DamageValues[0] * ((float)Weapon.GetPowerAttack() * .01f));
-                    attackSpeed = Weapon.GetAttackSpeed() * ActionSpeed * 1.25f;
-                    attackAnimation = Weapon.GetPwrAttackAnimationName();
-                }
-                else
-                {
-                    hand.HasAttacked = true;
-                    hand.AttackFinsihed = true;
-                    hand.ChannelTime = 0;
-
-                    Weapon.Attack(false);
-                    hand.Stats.Clear();
-
-                    yield break;
-                }
+                hand.Stats.Status.Add(true);
             }
             else
             {
-                attackSpeed = Weapon.GetAttackSpeed() * ActionSpeed;
-                attackAnimation = Weapon.GetAttackAnimationName();
+                hand.Stats.Status.Add(false);
             }
-
-            hand.ChannelTime = 0;
-
-            Weapon.Attack(true, hand.Stats);
-
-            hand.AttackFinsihed = false;
-
-            hand.Animator.speed = attackSpeed;
-            hand.Animator.SetTrigger(attackAnimation);
-
-            yield return new WaitForSeconds(1.0f / attackSpeed);
-
-            hand.Animator.speed = 1.0f * ActionSpeed;
-
-            Weapon.Attack(false);
-
-            hand.AttackFinsihed = true;
-
-            hand.Stats.Clear();
         }
+
+        if (hand.ChannelTime >= GlobalValues.ChargeAttackTime)
+        {
+            float cost = (float)Weapon.GetWeight() / 100f;
+            cost *= 1 + (Mathf.Floor((float)Attributes[(int)Abilities.Strenght].Ability *
+                        GlobalValues.MDamStrInterval)) * GlobalValues.MDamPerStr;
+
+            if (LoseAttribute((int)cost, AttributesEnum.Stamina))
+            {
+                hand.Stats.DamageValues[0] = (int)((float)hand.Stats.DamageValues[0] * ((float)Weapon.GetPowerAttack() * .01f));
+                attackSpeed = Weapon.GetAttackSpeed() * ActionSpeed * 1.25f;
+                attackAnimation = Weapon.GetPwrAttackAnimationName();
+            }
+            else
+            {
+                hand.HasAttacked = true;
+                hand.AttackFinsihed = true;
+                hand.ChannelTime = 0;
+
+                Weapon.Attack(false);
+                hand.Stats.Clear();
+
+                yield break;
+            }
+        }
+        else
+        {
+            attackSpeed = Weapon.GetAttackSpeed() * ActionSpeed;
+            attackAnimation = Weapon.GetAttackAnimationName();
+        }
+
+        hand.ChannelTime = 0;
+
+        Weapon.Attack(true, hand.Stats);
+
+        hand.AttackFinsihed = false;
+
+        hand.Animator.speed = attackSpeed;
+        hand.Animator.SetTrigger(attackAnimation);
+
+        yield return new WaitForSeconds(1.0f / attackSpeed);
+
+        hand.Animator.speed = 1.0f * ActionSpeed;
+
+        Weapon.Attack(false);
+
+        hand.AttackFinsihed = true;
+
+        hand.Stats.Clear();
     }
 
     protected void ChargeAttack(int HandType, bool fromEnemy = false)

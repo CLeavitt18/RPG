@@ -107,7 +107,7 @@ public class Player : LivingEntities
         {
             Hand hand = Hands[handType];
 
-            if (hand.HeldItem == null || hand.HeldItem is TorchHolder)
+            if (hand.HeldItem == null || hand.HeldItem.CompareTag(GlobalValues.TorchTag))
             {
                 continue;
             }
