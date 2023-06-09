@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: be94e4b69fb3d0b4ba6fee2b5cc01c77, type: 2}
+  - {fileID: 2100000, guid: 49df685c847082a468cf1739ca77281f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -248,7 +248,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: be94e4b69fb3d0b4ba6fee2b5cc01c77, type: 2}
+  - {fileID: 2100000, guid: 49df685c847082a468cf1739ca77281f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -498,6 +498,10 @@ PrefabInstance:
       propertyPath: Name
       value: Earth Golem
       objectReference: {fileID: 0}
+    - target: {fileID: 8663921921827013336, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49df685c847082a468cf1739ca77281f, type: 2}
     - target: {fileID: 8663921921827013339, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
       propertyPath: m_Name
       value: EarthGolemModel
