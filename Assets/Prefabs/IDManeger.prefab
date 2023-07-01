@@ -56,6 +56,8 @@ MonoBehaviour:
   ShieldAnimators: []
   Minions:
   - {fileID: 5693625826450547961, guid: 1e341ab5e75388a4e83655532a9c1035, type: 3}
+  - {fileID: 5693625826450547961, guid: 1e341ab5e75388a4e83655532a9c1035, type: 3}
+  - {fileID: 5714569540901454822, guid: afd95c67ddd80464dab63e8cba1c2e73, type: 3}
   Items:
   - {fileID: 7591549252762906544, guid: eab6452253f98dd429efb093ed9cc102, type: 3}
   - {fileID: 6170037183960945339, guid: c7d40d13dec5a254b8a79123f9d34ccd, type: 3}

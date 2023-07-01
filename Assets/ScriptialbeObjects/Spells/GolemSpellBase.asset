@@ -17,6 +17,15 @@ MonoBehaviour:
     - Type: 0
       LDamage: 10
       HDamage: 15
+    - Type: 1
+      LDamage: 5
+      HDamage: 20
+    - Type: 2
+      LDamage: 0
+      HDamage: 30
+    - Type: 3
+      LDamage: 12
+      HDamage: 13
   - Ranges: []
   - Ranges: []
   - Ranges: []
@@ -51,7 +60,7 @@ MonoBehaviour:
   - ints: 00000000000000000000000000000000
   - ints: 00000000000000000000000000000000
   ManaCost:
-  - ints: 14000000
+  - ints: 14000000140000001900000014000000
   - ints: 
   - ints: 
   - ints: 
@@ -59,7 +68,7 @@ MonoBehaviour:
   - Resources:
     - {fileID: 5693625826450547961, guid: 1e341ab5e75388a4e83655532a9c1035, type: 3}
     - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 5714569540901454822, guid: afd95c67ddd80464dab63e8cba1c2e73, type: 3}
     - {fileID: 0}
   - Resources:
     - {fileID: 0}
@@ -119,6 +128,6 @@ MonoBehaviour:
     - {fileID: 0}
   Number:
   - ints: 01000000
-  - ints: 
-  - ints: 
-  - ints: 
+  - ints: 00000000
+  - ints: 00000000
+  - ints: 00000000

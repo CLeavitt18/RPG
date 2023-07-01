@@ -152,8 +152,6 @@ public class RuneRoller : MonoBehaviour
                 GolemSpellStats statsG = stats as GolemSpellStats;
 
                 castId = 0;
-                damageType = 0;
-
                 damage = new DamageType(baseSpells[id].Ranges[castId][damageType], cat.CatMultis[damageType]);
 
                 statsG.range = damage;
@@ -184,7 +182,7 @@ public class RuneRoller : MonoBehaviour
         }
 
         value = baseSpells[id].Value[castId][damageType];
-        value *=1.25f;
+        value *= 1.25f;
 
         stats.SpellType = spellType;
         stats.CastType = castType;

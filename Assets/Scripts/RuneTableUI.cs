@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class RuneTableUI : MonoBehaviour
@@ -57,9 +56,14 @@ public class RuneTableUI : MonoBehaviour
         costTypeDropDown.options.Clear();
         catTypeDropDown.options.Clear();
 
-        for (int type = 0; type < 2; type++)
+        for (int type = 0; type < 2; type++) 
         {
-            spellTypeDropDown.options.Add(new TMP_Dropdown.OptionData(((SpellType)type).ToString()));
+            string spellTypeTemp = ((SpellType)type).ToString();
+            int indexOfS = spellTypeTemp.IndexOf("S");
+
+            spellTypeTemp = spellTypeTemp.Insert(indexOfS, " ");
+
+            spellTypeDropDown.options.Add(new TMP_Dropdown.OptionData((spellTypeTemp).ToString()));
         }
 
         for (int type = 0; type < 4; type++)
@@ -201,7 +205,7 @@ public class RuneTableUI : MonoBehaviour
         if (rune != null)
         {
             Destroy(rune.gameObject);
-        }
+        } 
 
         if (spellType == SpellType.GolemSpell)
         {
@@ -300,6 +304,11 @@ public class RuneTableUI : MonoBehaviour
 
     public void CreateRune()
     {
+        if(!canCraft)
+        {
+            return;
+        }
+
         rune = Roller.roller.CreateRune(
             spellType,
             (AttributesEnum)costTypeDropDown.value,

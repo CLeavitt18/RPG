@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3995350024893424756
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 40674644, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 40674644, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: ProtectRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Name
+      value: Lightning Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: LookRad
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: AttackRange
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: ScalingValues
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c68d335d11d8a9409849162f7b585ee, type: 2}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: StoppingDistance
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: AttackRollWaitTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: DeathAnimationBoolName
+      value: Skeleton Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: HitAnimationTriggerName
+      value: Skeleton Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308434, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_Name
+      value: Lightning Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921827013336, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e94cc171b3f135b42af7b2afe3368c90, type: 2}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
