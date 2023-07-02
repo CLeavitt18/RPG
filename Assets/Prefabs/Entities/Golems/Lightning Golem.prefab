@@ -21,8 +21,16 @@ PrefabInstance:
       value: Lightning Golem
       objectReference: {fileID: 0}
     - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
       propertyPath: LookRad
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: BaseSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
       propertyPath: AttackRange
