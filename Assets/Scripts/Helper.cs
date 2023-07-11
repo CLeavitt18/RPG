@@ -229,6 +229,7 @@ public class Helper : MonoBehaviour
 
             TextMeshProUGUI name = SpawnItemDetailSlot(t);
             name.alignment = TextAlignmentOptions.MidlineGeoAligned;
+            name.fontStyle |= FontStyles.Underline;
 
             SpawnItemDetailSlot(t);
 
@@ -270,7 +271,27 @@ public class Helper : MonoBehaviour
         }
         else if (rune is GolemSpell gSpell)
         {
-            castRate = gSpell.GetCastRate();
+            float TempDamage;
+
+            int DPS = 0;
+
+            sb.Append(gSpell.DamageRange.Type.ToString());
+            sb.Append(": ");
+            sb.Append(gSpell.DamageRange.LDamage);
+            sb.Append(" to ");
+            sb.Append(gSpell.DamageRange.HDamage);
+
+            TempDamage = (gSpell.DamageRange.LDamage + gSpell.DamageRange.HDamage) * .5f;
+            DPS += (int)TempDamage;
+
+            SpawnItemDetailSlot(t);
+            
+            SpawnItemDetailSlot(t);
+
+            sb.Append("Damage: ");
+            sb.Append(DPS.ToString("n0"));
+
+            SpawnItemDetailSlot(t);
 
             sb.Append("Minions: ");
             sb.Append(gSpell.Number);
@@ -322,7 +343,7 @@ public class Helper : MonoBehaviour
         }
     }
 
-    private TextMeshProUGUI SpawnItemDetailSlot(Transform t, bool useQuestText = false)
+    private TextMeshProUGUI SpawnItemDetailSlot(Transform t, bool useQuestText = false, bool isBold = false)
     {
         TextMeshProUGUI _text;
 
