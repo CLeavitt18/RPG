@@ -24,17 +24,17 @@ public class Item : MonoBehaviour
 
     public virtual void SpawnItem()
     {
-        Debug.Log("Method not implmented");
+        Debug.Log($"Method not implmented: Spawn Item: {name}");
     }
 
     public virtual void StoreItem()
     {
-        Debug.Log("Method not implmented");
+        Debug.Log($"Method not implmented: Store Item: {name}");
     }
 
     public virtual bool Equals(Item Item)
     {
-        Debug.Log("Method not implmented");
+        Debug.Log($"Method not implmented: Equals: {name}");
 
         return false;
     }
