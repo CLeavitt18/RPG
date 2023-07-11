@@ -111,7 +111,7 @@ public class PlayerStatsUi : IUi
 
         CreateBanner(GlobalValues.AbilitiesText, 0);
 
-        //Create Ability Texts
+        // Create Ability Texts
         for (int i = 0; i < 3; i++)
         {
             sb.Append(((Abilities)i).ToString());
@@ -129,10 +129,19 @@ public class PlayerStatsUi : IUi
 
         CreateStatText();
 
-        //Create Resistence Text
+        // Create Resistence Text
         for (int i = 0; i < 3; i++)
         {
             DisplayResistanceText(i);
+        }
+
+        // Create weapon stats
+
+        if(Player.player.GetHeldItem(0) == null && Player.player.GetHeldItem(1) == null)
+        {
+            // player has no weapons 
+            // setting stats is skipped
+            return;
         }
 
         CreateBanner(GlobalValues.OffensesText, 0);
