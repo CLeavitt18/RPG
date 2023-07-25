@@ -31,7 +31,7 @@ public class Minion : AI
 
         distance = Vector3.Distance(target.position, transform.parent.position);
 
-        if (target != Owner.transform && distance <= lookRad)
+        if (target != Owner.transform && distance <= lookRad) 
         {
             distance = Vector3.Distance(target.position, Owner.transform.position);
 
@@ -87,7 +87,7 @@ public class Minion : AI
                 if (Owner is AIController)
                 {
                     if (entity is AIController && (!(type == EntityType.Minion) ||
-                                                     ((entity as AIController).GetController() as Minion).Owner != Player.player))
+                       ((entity as AIController).GetController() as Minion).Owner != Player.player))
                     {
                         continue;
                     }

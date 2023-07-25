@@ -208,7 +208,7 @@ public class SceneManagerOwn : MonoBehaviour
                 }
 
                 SavableObjects[i].SetDefaultState(Priority);
-                Debug.Log("Set Default State call on " + SavableObjects[i].ToString());
+                //Debug.Log("Set Default State call on " + SavableObjects[i].ToString());
             }
 
             TempSaveScene();
