@@ -155,8 +155,6 @@ public class Minion : AI
 
     public bool SetStats(bool priority)
     {
-        entity.SetStats(priority);
-
         for (int i = 0; i < 2; i++)
         {
             if (entity.GetHeldItem(i) == null)
@@ -167,6 +165,8 @@ public class Minion : AI
             SetWeaponStats(i);
         }
 
+        entity.SetStats(priority);
+
         return true;
     }
 
@@ -174,10 +174,13 @@ public class Minion : AI
     {
         float multi = 1f + (entity.GetLevel() - 1f) * .05f;
 
-        int matCatMulti = SourceSpell.gameObject.GetComponent<SpellHolder>().GetValueMulti();
-
         WeaponHolder fist = entity.GetHeldItem(HandType).GetComponent<WeaponHolder>();
 
+        WeaponStats stats = new WeaponStats();
+
+        stats.DamageRanges.Add(new DamageType(SourceSpell.DamageRange));
+
+        fist.SetWeaponState(stats, true);
         /*for (int i = 0; i < fist.GetDamageRangesCount(); i++)
         {
             fist.DamageRanges[i].LDamage = (int)(fist.GetLowerRange(i) * (multi + matCatMulti));
@@ -234,7 +237,7 @@ public class Minion : AI
         Rotation = Vector3.MoveTowards(transform.parent.transform.rotation.eulerAngles, Rotation, 360);
         transform.parent.rotation = Quaternion.Euler(Rotation);
 
-        SetStats(true);
+        SetStats(false);
 
         transform.parent.gameObject.GetComponent<NavMeshAgent>().enabled = true;
 

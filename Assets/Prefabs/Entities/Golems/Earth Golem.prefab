@@ -113,13 +113,10 @@ MonoBehaviour:
   PwrAttackDamage: 80
   CurrentDurability: 1
   MaxDurability: 0
-  CritDamage: 0
+  CritDamage: 40
   StatusChance: 3c000000
   ActionsPerSecond: 1.1
-  DamageRanges:
-  - Type: 0
-    LDamage: 5
-    HDamage: 10
+  DamageRanges: []
   WeaponSpawn:
     PrimarySpawn: {fileID: 0}
     SecoundarySpawn: {fileID: 0}
@@ -302,10 +299,7 @@ MonoBehaviour:
   CritDamage: 40
   StatusChance: 3c000000
   ActionsPerSecond: 1.1
-  DamageRanges:
-  - Type: 0
-    LDamage: 5
-    HDamage: 10
+  DamageRanges: []
   WeaponSpawn:
     PrimarySpawn: {fileID: 0}
     SecoundarySpawn: {fileID: 0}

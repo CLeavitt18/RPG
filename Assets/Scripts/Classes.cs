@@ -106,6 +106,13 @@ public class DamageType
         HDamage = 0;
     }
 
+    public DamageType(DamageType dt)
+    {
+        Type = dt.Type;
+        LDamage = dt.LDamage;
+        HDamage = dt.HDamage;
+    }
+
     public DamageType(DamageType dt, int multi)
     {
         Type = dt.Type;

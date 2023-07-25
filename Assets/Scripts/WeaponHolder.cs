@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponHolder : Item
@@ -125,8 +123,15 @@ public class WeaponHolder : Item
         HitManagerRef = null;
     }
 
-    public void SetWeaponState(WeaponStats stats)
+    public void SetWeaponState(WeaponStats stats, bool fromMinion = false)
     {
+        if(fromMinion)
+        {
+            DamageRanges.Add(stats.DamageRanges[0]);
+
+            return;
+        }
+        
         if (Primary != null)
         {
             Debug.Log("Weapon State already set");
