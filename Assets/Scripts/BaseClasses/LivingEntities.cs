@@ -834,7 +834,7 @@ public class LivingEntities : MonoBehaviour
     protected void MeleeDamageMulti(int HandType, DamageTypeEnum Type)
     {
         float PercentFromLevel = 0;
-        Debug.Log("Runnning from " + name);
+
         switch (Type)
         {
             case DamageTypeEnum.Physical:
@@ -847,11 +847,7 @@ public class LivingEntities : MonoBehaviour
                 Hands[HandType].DamageMultis.Melee[(int)Type] = 1.0f;
 
                 Hands[HandType].DamageMultis.Melee[(int)Type] += StrenghtMeleeMulti + PercentFromLevel;
-                if(CompareTag("Minion"))
-                {
-                    Debug.Log($"Strenght Melee Multi = {StrenghtMeleeMulti}");
-                    Debug.Log($"Percent from Level = {PercentFromLevel}");
-                }
+
                 break;
             case DamageTypeEnum.Fire:
                 PercentFromLevel = (float)Skills[(int)SkillType.Pyromancy].Level * .01f;
