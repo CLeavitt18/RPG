@@ -1,0 +1,511 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2430219854963814178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 650148200336004574}
+  - component: {fileID: 1924437884572112708}
+  - component: {fileID: 8163258825330695860}
+  - component: {fileID: 2319753567447567201}
+  - component: {fileID: 475208972230257491}
+  - component: {fileID: 8402123676028336198}
+  - component: {fileID: 5228021412198045175}
+  m_Layer: 0
+  m_Name: LeftFist
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &650148200336004574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430219854963814178}
+  m_LocalRotation: {x: 0.4126005, y: 0.19616088, z: -0.09147132, w: 0.8848247}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.19999999, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3572347190971553448}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 50, y: 25, z: 0}
+--- !u!33 &1924437884572112708
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430219854963814178}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8163258825330695860
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430219854963814178}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 49df685c847082a468cf1739ca77281f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2319753567447567201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430219854963814178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aae939d8f1119d408d4b39fb75d3018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 0
+  Amount: 0
+  Weight: 0
+  _Item: {fileID: 0}
+  Rarity: {r: 0, g: 0, b: 0, a: 0}
+  Name: Fire Golem Left Fist
+  isEquipable: 0
+  equiped: 0
+  SkillType: 0
+  HandType: 0
+  LifeSteal: 15
+  PwrAttackDamage: 80
+  CurrentDurability: 1
+  MaxDurability: 0
+  CritDamage: 40
+  StatusChance: 3c000000
+  ActionsPerSecond: 1.1
+  DamageRanges: []
+  WeaponSpawn:
+    PrimarySpawn: {fileID: 0}
+    SecoundarySpawn: {fileID: 0}
+    TeritiarySpawn: {fileID: 0}
+  Spawns: []
+  Primary: {fileID: 0}
+  Secoundary: {fileID: 0}
+  Teritiary: {fileID: 0}
+  Material: {fileID: 0}
+  Materials: 000000
+  HitManagerRef: {fileID: 475208972230257491}
+  Type: 0
+  Animator:
+  - {fileID: 9100000, guid: 2f20a0f31346e7745af9672c9dbc2761, type: 2}
+  - {fileID: 9100000, guid: a48e94a4e6ce507448b540d383a3595b, type: 2}
+  AttackAnimationName: Attack
+  PwrAttackAnimationName: Power Attack
+--- !u!114 &475208972230257491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430219854963814178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a383311301e3eef4d91a4279314087ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stats:
+    Parent: {fileID: 0}
+    SourceHand: 0
+    LifeSteal: 0
+    DamageTypes: 
+    DamageValues: 
+    Status: 
+  alreaddyHit: 0
+--- !u!65 &8402123676028336198
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430219854963814178}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.0000001}
+  m_Center: {x: 0.0000019073486, y: -0.00000047683716, z: -0.00000047683716}
+--- !u!54 &5228021412198045175
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430219854963814178}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!1 &5435271103935404403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8315805640147908415}
+  - component: {fileID: 1607680487068347161}
+  - component: {fileID: 6217716018984459135}
+  - component: {fileID: 3094249022277311667}
+  - component: {fileID: 7187736109247234051}
+  - component: {fileID: 1723607666645221248}
+  - component: {fileID: 8258340644284497223}
+  m_Layer: 0
+  m_Name: RightFist
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8315805640147908415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435271103935404403}
+  m_LocalRotation: {x: 0.4126005, y: -0.19616082, z: 0.091471285, w: 0.88482475}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.19999999, y: 0.25, z: 0.25000006}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3889399261389389930}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 50, y: -25, z: 0}
+--- !u!33 &1607680487068347161
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435271103935404403}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6217716018984459135
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435271103935404403}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 49df685c847082a468cf1739ca77281f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3094249022277311667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435271103935404403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aae939d8f1119d408d4b39fb75d3018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 0
+  Amount: 0
+  Weight: 0
+  _Item: {fileID: 0}
+  Rarity: {r: 0, g: 0, b: 0, a: 0}
+  Name: Fire Golem Right Fist
+  isEquipable: 0
+  equiped: 0
+  SkillType: 0
+  HandType: 0
+  LifeSteal: 15
+  PwrAttackDamage: 80
+  CurrentDurability: 1
+  MaxDurability: 0
+  CritDamage: 40
+  StatusChance: 3c000000
+  ActionsPerSecond: 1.1
+  DamageRanges: []
+  WeaponSpawn:
+    PrimarySpawn: {fileID: 0}
+    SecoundarySpawn: {fileID: 0}
+    TeritiarySpawn: {fileID: 0}
+  Spawns: []
+  Primary: {fileID: 0}
+  Secoundary: {fileID: 0}
+  Teritiary: {fileID: 0}
+  Material: {fileID: 0}
+  Materials: 000000
+  HitManagerRef: {fileID: 7187736109247234051}
+  Type: 0
+  Animator:
+  - {fileID: 9100000, guid: 2f20a0f31346e7745af9672c9dbc2761, type: 2}
+  - {fileID: 9100000, guid: a48e94a4e6ce507448b540d383a3595b, type: 2}
+  AttackAnimationName: Attack
+  PwrAttackAnimationName: Power Attack
+--- !u!114 &7187736109247234051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435271103935404403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a383311301e3eef4d91a4279314087ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stats:
+    Parent: {fileID: 0}
+    SourceHand: 0
+    LifeSteal: 0
+    DamageTypes: 
+    DamageValues: 
+    Status: 
+  alreaddyHit: 0
+--- !u!65 &1723607666645221248
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435271103935404403}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.0000001}
+  m_Center: {x: 0.0000019073486, y: -0.00000047683716, z: -0.00000047683716}
+--- !u!54 &8258340644284497223
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435271103935404403}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!1001 &5604029418474110623
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 40674644, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 40674644, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: ProtectRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Name
+      value: Fire Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: LookRad
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: BaseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: AttackRange
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: masteryType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: ScalingValues
+      value: 
+      objectReference: {fileID: 11400000, guid: 94b9234976dde1c448723b883c240034, type: 2}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: StoppingDistance
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: AttackRollWaitTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: DeathAnimationBoolName
+      value: Skeleton Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: HitAnimationTriggerName
+      value: Skeleton Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Hands.Array.data[0].State
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Hands.Array.data[1].State
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Hands.Array.data[0].HeldItem
+      value: 
+      objectReference: {fileID: 3094249022277311667}
+    - target: {fileID: 6247126084777088364, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: Hands.Array.data[1].HeldItem
+      value: 
+      objectReference: {fileID: 2319753567447567201}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308433, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921331308434, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_Name
+      value: Fire Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663921921827013336, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4530506e284f9c743811efee25974d89, type: 2}
+    m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8663921923336765173, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8315805640147908415}
+    - targetCorrespondingSourceObject: {fileID: 8959354862479714359, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 650148200336004574}
+  m_SourcePrefab: {fileID: 100100000, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+--- !u!4 &3572347190971553448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8959354862479714359, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+  m_PrefabInstance: {fileID: 5604029418474110623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3889399261389389930 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8663921923336765173, guid: 5f59ae3b7b349a84c85cd9d137b81bae, type: 3}
+  m_PrefabInstance: {fileID: 5604029418474110623}
+  m_PrefabAsset: {fileID: 0}
