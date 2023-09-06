@@ -39,12 +39,7 @@ public class Inventory : MonoBehaviour
 
         if (Stackable && !FromRoller)
         {
-            string Name = Item.name;
-            Color rarity = Item.GetRarity();
-            Item = Instantiate(Item, InventroyHolder);
-            Item.name = Name;
-            Item.SetAmount(Amount);
-            Item.SetRarity(rarity);
+            Item = Item.Clone(Amount);
         }
 
         int start_id;
@@ -585,6 +580,11 @@ public class Inventory : MonoBehaviour
         {
             StartIds[i] = 0;
         }
+    }
+
+    private void Sort()
+    {
+
     }
 
     public void CalculateWeight(int strenght)

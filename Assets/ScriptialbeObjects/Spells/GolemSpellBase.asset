@@ -67,7 +67,7 @@ MonoBehaviour:
   SpellAffects:
   - Resources:
     - {fileID: 5693625826450547961, guid: 1e341ab5e75388a4e83655532a9c1035, type: 3}
-    - {fileID: 0}
+    - {fileID: 3889399259636750605, guid: 113ed92448f59454e945ed2f81672b90, type: 3}
     - {fileID: 5714569540901454822, guid: afd95c67ddd80464dab63e8cba1c2e73, type: 3}
     - {fileID: 0}
   - Resources:

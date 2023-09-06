@@ -54,6 +54,25 @@ public class Item : MonoBehaviour
         Amount = stats.Amount;
     }
 
+    public virtual Item Clone()
+    {
+        Item clone = Instantiate(this, gameObject.transform.parent.transform);
+
+        clone.name = name;
+        clone.Amount = Amount;
+        clone.Rarity = Rarity;
+
+        return clone;
+    }
+
+    public virtual Item Clone(int amount)
+    {
+        Item clone = Clone();
+        clone.Amount = amount;
+
+        return clone;
+    }
+
     #region Setters
 
     public void SetAmount(int amount)
