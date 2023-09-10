@@ -4,7 +4,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private UiState Mode;
-    [SerializeField] private sortOrder sortMode;
+    [SerializeField] private SortOrder sortMode;
 
     [SerializeField] private Range[] ranges;
 
@@ -166,7 +166,7 @@ public class Inventory : MonoBehaviour
         
         if (Count != 1)
         {
-            Sort(start_id, end_id);
+            SortHandler(start_id, end_id + 1);
         }
 
         if (Mode == UiState.Player || Mode == UiState.Entity)
@@ -593,7 +593,45 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void Sort(int start_id, int end_id)
+    public void Sort()
+    {
+        int start_id = 0;
+        int end_id = StartIds[GlobalValues.ArmourStart];
+
+        SortHandler(start_id, end_id);
+
+        start_id = StartIds[GlobalValues.ArmourStart];
+        end_id = StartIds[GlobalValues.SpellStart];
+
+        SortHandler(start_id, end_id);
+
+        start_id = StartIds[GlobalValues.SpellStart];
+        end_id = StartIds[GlobalValues.RuneStart];
+
+        SortHandler(start_id, end_id);
+
+        start_id = StartIds[GlobalValues.RuneStart];
+        end_id = StartIds[GlobalValues.PotionStart];
+
+        SortHandler(start_id, end_id);
+
+        start_id = StartIds[GlobalValues.PotionStart];
+        end_id = StartIds[GlobalValues.ResourceStart];
+
+        SortHandler(start_id, end_id);
+
+        start_id = StartIds[GlobalValues.ResourceStart];
+        end_id = StartIds[GlobalValues.MiscStart];
+
+        SortHandler(start_id, end_id);
+
+        start_id = StartIds[GlobalValues.MiscStart];
+        end_id = AllItems.Count;
+
+        SortHandler(start_id, end_id);
+    }
+
+    private void SortHandler(int start_id, int end_id)
     {
         bool sortOnGoing = true;
 
@@ -608,16 +646,16 @@ public class Inventory : MonoBehaviour
             
             for (int i = start_id; i < end_id; i++)
             {
-                if(i + 1 == Count)
+                if (i + 1 == Count || i + 1 == end_id)
                 {
                     continue;
                 }
-                
+
                 nextIndex = i + 1;
 
                 switch (sortMode)
                 {
-                    case sortOrder.Alphabetical:
+                    case SortOrder.Alphabetical:
                         if (sortOderNormal)
                         {
                             compareResult = AllItems[i].GetName().CompareTo(AllItems[nextIndex].GetName());
@@ -627,7 +665,7 @@ public class Inventory : MonoBehaviour
                             compareResult = AllItems[nextIndex].GetName().CompareTo(AllItems[i].GetName());
                         }
                         break;
-                    case sortOrder.Value:
+                    case SortOrder.Value:
                         if (sortOderNormal)
                         {
                             compareResult = AllItems[i].GetValue() - AllItems[nextIndex].GetValue();
@@ -702,6 +740,16 @@ public class Inventory : MonoBehaviour
         return InventroyHolder;
     }
 
+    public int GetSrotOrdor()
+    {
+        return (int)sortMode;
+    }
+
+    public bool GetSortOrdorNormal()
+    {
+        return sortOderNormal;
+    }
+
     public void SetToContainer()
     {
         Mode = UiState.Container;
@@ -725,12 +773,12 @@ public class Inventory : MonoBehaviour
 
     public void SetSortOrder(int order_id)
     {
-        sortMode = (sortOrder)order_id;
+        sortMode = (SortOrder)order_id;
     }
 
-    public void SetSortOrderNormal()
+    public void SetSortOrderNormal(bool state)
     {
-        sortOderNormal = !sortOderNormal;
+        sortOderNormal = state;
     }
 
     private int[] GetStartEndIds(string tag)

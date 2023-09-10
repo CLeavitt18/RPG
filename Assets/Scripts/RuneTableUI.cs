@@ -63,7 +63,7 @@ public class RuneTableUI : MonoBehaviour
 
             spellTypeTemp = spellTypeTemp.Insert(indexOfS, " ");
 
-            spellTypeDropDown.options.Add(new TMP_Dropdown.OptionData((spellTypeTemp).ToString()));
+            spellTypeDropDown.options.Add(new TMP_Dropdown.OptionData(spellTypeTemp.ToString()));
         }
 
         for (int type = 0; type < 4; type++)

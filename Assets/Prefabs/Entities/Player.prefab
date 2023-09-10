@@ -689,12 +689,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mode: 2
+  sortMode: 0
   ranges: []
   StartIds: 000000000000000000000000000000000000000000000000
   MaxCarryWeight: 15000
   CurrentCarryWeight: 0
   InventroyHolder: {fileID: 0}
   AllItems: []
+  sortOderNormal: 1
 --- !u!114 &5014798448673781093
 MonoBehaviour:
   m_ObjectHideFlags: 0

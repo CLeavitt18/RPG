@@ -285,7 +285,7 @@ public enum SlotState : byte
     Quest
 }
 
-public enum sortOrder : byte
+public enum SortOrder : byte
 {
     Alphabetical,
     Value,
