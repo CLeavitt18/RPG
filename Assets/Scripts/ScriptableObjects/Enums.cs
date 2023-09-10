@@ -284,3 +284,10 @@ public enum SlotState : byte
     Item,
     Quest
 }
+
+public enum sortOrder : byte
+{
+    Alphabetical,
+    Value,
+    Weight
+}

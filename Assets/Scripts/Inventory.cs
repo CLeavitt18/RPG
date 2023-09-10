@@ -4,6 +4,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private UiState Mode;
+    [SerializeField] private sortOrder sortMode;
 
     [SerializeField] private Range[] ranges;
 
@@ -17,6 +18,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Transform InventroyHolder;
 
     [SerializeField] private List<Item> AllItems;
+
+    [SerializeField] private bool sortOderNormal;
 
 
     public void OnEnable()
@@ -163,7 +166,7 @@ public class Inventory : MonoBehaviour
         
         if (Count != 1)
         {
-            SortAlphabetical(Item.tag);   
+            Sort(start_id, end_id);
         }
 
         if (Mode == UiState.Player || Mode == UiState.Entity)
@@ -590,19 +593,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void SortAlphabetical(string tag)
+    private void Sort(int start_id, int end_id)
     {
         bool sortOnGoing = true;
 
-        int[] ids = GetStartEndIds(tag); 
-        int start_id = ids[0];
-        int end_id = ids[1];
-
-        int comparResult;
+        int compareResult;
         int nextIndex;
-
-        string itemName;
-        string nextItemName;
 
         Item item;
 
@@ -619,12 +615,41 @@ public class Inventory : MonoBehaviour
                 
                 nextIndex = i + 1;
 
-                itemName = AllItems[i].GetName();
-                nextItemName = AllItems[nextIndex].GetName();
-
-                comparResult = itemName.CompareTo(nextItemName);
+                switch (sortMode)
+                {
+                    case sortOrder.Alphabetical:
+                        if (sortOderNormal)
+                        {
+                            compareResult = AllItems[i].GetName().CompareTo(AllItems[nextIndex].GetName());
+                        }
+                        else
+                        {
+                            compareResult = AllItems[nextIndex].GetName().CompareTo(AllItems[i].GetName());
+                        }
+                        break;
+                    case sortOrder.Value:
+                        if (sortOderNormal)
+                        {
+                            compareResult = AllItems[i].GetValue() - AllItems[nextIndex].GetValue();
+                        }
+                        else
+                        {
+                            compareResult = AllItems[nextIndex].GetValue() - AllItems[i].GetValue();
+                        }
+                        break;
+                    default: // Weight
+                        if (sortOderNormal)
+                        {
+                            compareResult = AllItems[i].GetWeight() - AllItems[nextIndex].GetWeight();
+                        }
+                        else
+                        {
+                            compareResult = AllItems[nextIndex].GetWeight() - AllItems[i].GetWeight();
+                        }
+                        break;
+                }
                 
-                if (comparResult > 0)
+                if (compareResult > 0)
                 {
                     item = AllItems[i];
                     AllItems[i] = AllItems[nextIndex];
@@ -696,6 +721,16 @@ public class Inventory : MonoBehaviour
                 InventroyHolder = GameObject.Find("NPCInventoryHolder").transform;
                 break;
         }
+    }
+
+    public void SetSortOrder(int order_id)
+    {
+        sortMode = (sortOrder)order_id;
+    }
+
+    public void SetSortOrderNormal()
+    {
+        sortOderNormal = !sortOderNormal;
     }
 
     private int[] GetStartEndIds(string tag)

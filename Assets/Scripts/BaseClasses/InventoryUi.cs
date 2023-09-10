@@ -20,6 +20,7 @@ public class InventoryUi : IUi
     [SerializeField] private GameObject inventoryUi;
     [SerializeField] private GameObject ActionBar;
     [SerializeField] public GameObject AmountUi;
+    [SerializeField] public GameObject sortOptionsUi;
     [SerializeField] private GameObject CategoryPrefab;
     [SerializeField] private GameObject InventoryBar;
     [SerializeField] private GameObject InventoryPanel;
