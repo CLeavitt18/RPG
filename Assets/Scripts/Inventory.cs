@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] private List<Item> AllItems;
 
+
     public void OnEnable()
     {
         if (AllItems.Count != 0)
@@ -154,9 +155,15 @@ public class Inventory : MonoBehaviour
                 break;
         }
 
+        
         for (int i = loopStart; i < GlobalValues.MiscStart + 1; i++)
         {
             StartIds[i]++;
+        }
+        
+        if (Count != 1)
+        {
+            SortAlphabetical(Item.tag);   
         }
 
         if (Mode == UiState.Player || Mode == UiState.Entity)
@@ -168,6 +175,7 @@ public class Inventory : MonoBehaviour
         {
             QuestTracker.questTracker.UpdateQuest(Item.gameObject);
         }
+
     }
 
     public void RemoveItem(string itemName, int amount, string tag)
@@ -582,9 +590,49 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void Sort()
+    private void SortAlphabetical(string tag)
     {
+        bool sortOnGoing = true;
 
+        int[] ids = GetStartEndIds(tag); 
+        int start_id = ids[0];
+        int end_id = ids[1];
+
+        int comparResult;
+        int nextIndex;
+
+        string itemName;
+        string nextItemName;
+
+        Item item;
+
+        while (sortOnGoing)
+        {
+            sortOnGoing = false;
+            
+            for (int i = start_id; i < end_id; i++)
+            {
+                if(i + 1 == Count)
+                {
+                    continue;
+                }
+                
+                nextIndex = i + 1;
+
+                itemName = AllItems[i].GetName();
+                nextItemName = AllItems[nextIndex].GetName();
+
+                comparResult = itemName.CompareTo(nextItemName);
+                
+                if (comparResult > 0)
+                {
+                    item = AllItems[i];
+                    AllItems[i] = AllItems[nextIndex];
+                    AllItems[nextIndex] = item;
+                    sortOnGoing = true;
+                }
+            }
+        }
     }
 
     public void CalculateWeight(int strenght)
@@ -648,6 +696,46 @@ public class Inventory : MonoBehaviour
                 InventroyHolder = GameObject.Find("NPCInventoryHolder").transform;
                 break;
         }
+    }
+
+    private int[] GetStartEndIds(string tag)
+    {
+        int[] ids = new int[2];
+        switch (tag)
+        {
+            case GlobalValues.WeaponTag:
+                ids[0] = 0;
+                ids[1] = StartIds[GlobalValues.ArmourStart];
+                break;
+            case GlobalValues.ArmourTag:
+            case GlobalValues.ShieldTag:
+                ids[0] = StartIds[GlobalValues.ArmourStart];
+                ids[1] = StartIds[GlobalValues.SpellStart];
+                break;
+            case GlobalValues.SpellTag:
+                ids[0] = StartIds[GlobalValues.SpellStart];
+                ids[1] = StartIds[GlobalValues.RuneStart];
+                break;
+            case GlobalValues.RuneTag:
+                ids[0] = StartIds[GlobalValues.RuneStart];
+                ids[1] = StartIds[GlobalValues.PotionStart];
+                break;
+            case GlobalValues.PotionTag:
+                ids[0] = StartIds[GlobalValues.PotionStart];
+                ids[1] = StartIds[GlobalValues.ResourceStart];
+                break;
+            case GlobalValues.ResourceTag:
+                ids[0] = StartIds[GlobalValues.ResourceStart];
+                ids[1] = StartIds[GlobalValues.MiscStart];
+                break;
+            default:
+                //Gold || Misc || Key || Torch
+                ids[0] = StartIds[GlobalValues.MiscStart];
+                ids[1] = AllItems.Count;
+                break;
+        }
+
+        return ids;
     }
 
     public bool Load(InventoryData data)
