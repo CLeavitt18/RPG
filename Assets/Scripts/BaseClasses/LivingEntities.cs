@@ -240,7 +240,7 @@ public class LivingEntities : MonoBehaviour
                 break;
             case CastType.Instant:
                 hand.CurrSpell = null;
-
+                
                 if (Time.time >= TempNextCast)
                 {
                     SpellH.SetNextAttack((1f / SpellH.GetCastRate()) + Time.time);
@@ -254,11 +254,12 @@ public class LivingEntities : MonoBehaviour
                 }
                 break;
             case CastType.Charged:
+                hand.CurrSpell = null;
+                
                 if (ButtonUp)
                 {
                     TempNextCast = SpellH.GetCastRate();
                     hand.ChannelTime = 0;
-                    hand.CurrSpell = null;
 
                     if (TempChannelTime >= TempNextCast && LoseAttribute(TempManaCost, TempCostType))
                     {
@@ -273,6 +274,10 @@ public class LivingEntities : MonoBehaviour
             case CastType.Touch:
                 break;
             case CastType.Aura:
+                SpellH.SetNextAttack(0);
+                hand.ChannelTime = 0;
+                hand.CurrSpell = null;
+
                 if (SpellH is GolemSpell gspell)
                 {
                     if (gspell.Activated)
@@ -284,10 +289,6 @@ public class LivingEntities : MonoBehaviour
                         TempManaCost *= gspell.Number;
                     }
                 }
-
-                SpellH.SetNextAttack(0);
-                hand.ChannelTime = 0;
-                hand.CurrSpell = null;
 
                 if (!ReserveAttribute(TempManaCost, TempCostType))
                 {

@@ -172,7 +172,6 @@ public class Player : LivingEntities
                             continue;
                         }
 
-
                         CastType castType = spell.GetCastType();
 
                         switch (castType)
