@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6badac8cde14f4aa38503c2549aa1b, type: 3}
+  m_Name: SkeletonMageScaler
+  m_EditorClassIdentifier: 
+  ThreshHolds: 010000000200000004000000
+  BaseMasteries: 050000000100000005000000010000000100000005000000010000000500000001000000010000000100000001000000010000000100000001000000
+  BaseSkills: 0500000005000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  MasteryWeights: 050000000000000005000000000000000000000000000000050000000000000005000000000000000000000000000000000000000000000000000000
+  SkillWeights: 0a0000000a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  BaseAbilities: 0f0000000500000002000000
+  AbilitiesPerLevel: 0a0000000500000000000000
+  WeaponData:
+  - Type: 0
+    PrimaryIds: 0
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 0
+  - Type: 0
+    PrimaryIds: 0
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 1
+  - Type: 0
+    PrimaryIds: 2
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 0
+  OffWeaponData:
+  - Type: 2
+    PrimaryIds: 0
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 0
+  - Type: 2
+    PrimaryIds: 0
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 1
+  - Type: 2
+    PrimaryIds: 2
+    SecondaryIds: 0
+    TertiaryIds: 0
+    WeaponCatayst: 0

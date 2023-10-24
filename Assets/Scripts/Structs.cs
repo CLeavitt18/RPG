@@ -35,6 +35,31 @@ public struct EnemyWeaponData
     public CatType WeaponCatayst;
 }
 
+public struct EnemySpellData
+{
+    public EnemySpellDataBase[] spellDataBase;
+
+    public MaterialType mat;
+}
+
+[Serializable]
+public struct EnemySpellDataBase
+{
+    public DamageTypeEnum damageType;
+
+    public SpellType spellType;
+
+    public CastType castType;
+
+    public CastTarget castTarget;
+
+    public AttributesEnum costType;
+
+    public CatType cat;
+
+    public SkillType skillType;
+}
+
 [Serializable]
 public struct AttributeStruct
 {

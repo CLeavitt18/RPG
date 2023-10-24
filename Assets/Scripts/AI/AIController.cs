@@ -17,6 +17,8 @@ public class AIController : LivingEntities
 
     //[SerializeField] private bool IsHumanoid = true;
 
+    [SerializeField] private bool[] isChanneling;
+
     [SerializeField] private Animator animator;
 
     [SerializeField] private string HitAnimationTriggerName;
@@ -114,22 +116,35 @@ public class AIController : LivingEntities
             }
         }
 
-        EnemyWeaponData weaponData = ScalingValues.WeaponData[ID];
+        EnemyWeaponData weaponData;
+        EnemySpellData spellData;
 
-        WeaponType WeaponType = weaponData.Type;
+        WeaponType WeaponType;
 
-        int primary = (int)weaponData.PrimaryIds;
-        int secoundary = (int)weaponData.SecondaryIds;
-        int tertiary = (int)weaponData.TertiaryIds;
-        int cat = (int)weaponData.WeaponCatayst;
+        int primary;
+        int secoundary;
+        int tertiary;
+        int cat;
 
-        Item WeaponH = Roller.roller.CreateWeapon(WeaponType, primary, secoundary, tertiary, cat).GetComponent<Item>();
+        if(ScalingValues.WeaponData != null )
+        {
+            weaponData = ScalingValues.WeaponData[ID];
 
-        Inventory.AddItem(WeaponH, false, 1);
+            WeaponType = weaponData.Type;
 
-        EquipItem(WeaponH, 0);
+            primary = (int)weaponData.PrimaryIds;
+            secoundary = (int)weaponData.SecondaryIds;
+            tertiary = (int)weaponData.TertiaryIds;
+            cat = (int)weaponData.WeaponCatayst;
 
-        if (GetMastery() == MasteryType.DualWieldingMelee)
+            Item WeaponH = Roller.roller.CreateWeapon(WeaponType, primary, secoundary, tertiary, cat);
+
+            Inventory.AddItem(WeaponH, false, 1);
+
+            EquipItem(WeaponH, 0);
+        }
+
+        if (GetMastery() != MasteryType.TwoHandedMelee && ScalingValues.OffWeaponData != null)
         {
             weaponData = ScalingValues.OffWeaponData[ID];
 
@@ -140,11 +155,59 @@ public class AIController : LivingEntities
             tertiary = (int)weaponData.TertiaryIds;
             cat = (int)weaponData.WeaponCatayst;
 
-            WeaponH = Roller.roller.CreateWeapon(WeaponType, primary, secoundary, tertiary, cat).GetComponent<Item>();
+            Item WeaponH = Roller.roller.CreateWeapon(WeaponType, primary, secoundary, tertiary, cat);
 
             Inventory.AddItem(WeaponH, false, 1);
 
             EquipItem(WeaponH, 1);
+        }
+
+        if (ScalingValues.spellData != null)
+        {
+            spellData = ScalingValues.spellData[ID];
+
+            Spell[] runes = new Spell[3];
+
+            for (int i = 0; i < spellData.spellDataBase.Length; i++)
+            {
+                EnemySpellDataBase runeData = spellData.spellDataBase[i];
+
+                runes[i] = Roller.roller.CreateRune(runeData.spellType, 
+                                                    runeData.costType, 
+                                                    runeData.castType, 
+                                                    (int)runeData.damageType, 
+                                                    (int)runeData.cat, 
+                                                    GetSkillLevel(runeData.skillType)).GetComponent<RuneHolder>().GetSpell();
+            }
+
+            Item spellH = Roller.roller.CreateSpell((int)spellData.mat, runes);
+
+            Inventory.AddItem(spellH, false, 1);
+
+            EquipItem(spellH, 0);
+        }
+
+        if(GetMastery() != MasteryType.TwoHandedSpell && ScalingValues.offSpellData != null)
+        {
+            spellData = ScalingValues.offSpellData[ID];
+
+            Spell[] runes = new Spell[3];
+
+            for (int i = 0; i < spellData.spellDataBase.Length; i++)
+            {
+                runes[i] = Roller.roller.CreateRune(spellData.spellType[i], 
+                                                    spellData.costType[i], 
+                                                    spellData.castType[i], 
+                                                    (int)spellData.damageType[i], 
+                                                    (int)spellData.cat[i], 
+                                                    GetSkillLevel(spellData.skillType)).GetComponent<RuneHolder>().GetSpell();
+            }
+
+            Item spellH = Roller.roller.CreateSpell((int)spellData.mat[0], runes);
+
+            Inventory.AddItem(spellH, false, 1);
+
+            EquipItem(spellH, 1);
         }
     }
 
@@ -181,26 +244,18 @@ public class AIController : LivingEntities
 
         Ray DetectionRay = new Ray(RaySpawn.position, RaySpawn.forward);
 
-        if (Physics.Raycast(DetectionRay, out Hit, 40))
+        if (Physics.Raycast(DetectionRay, out Hit, 40) && 
+            (Hit.collider.gameObject == Target.gameObject || Hit.collider.CompareTag(GlobalValues.ShieldTag)) && 
+            GetPath(Path, transform.position, Target.position, NavMesh.AllAreas) == true)
         {
-            if (Hit.collider.gameObject == Target.gameObject || Hit.collider.CompareTag(GlobalValues.ShieldTag))
-            {
-                if (GetPath(Path, transform.position, Target.position, NavMesh.AllAreas) == true)
-                {
-                    Agent.SetPath(Path);
-                }
-            }
+            Agent.SetPath(Path);
         }
 
-        if (Distance <= LookRad)
+        if (Distance <= LookRad &&
+            GetPath(Path, transform.position, Target.position, NavMesh.AllAreas) == true &&
+            GetPathLenght(Path) <= LookRad)
         {
-            if (GetPath(Path, transform.position, Target.position, NavMesh.AllAreas) == true)
-            {
-                if (GetPathLenght(Path) <= LookRad)
-                {
-                    Agent.SetPath(Path);
-                }
-            }
+            Agent.SetPath(Path);
         }
 
         if (Distance <= Agent.stoppingDistance + 0.5f)
@@ -208,43 +263,78 @@ public class AIController : LivingEntities
             FaceTarget();
         }
 
-        if (Distance <= AttackRange && Time.time >= NextRoll)
+        if (Distance > AttackRange || (Time.time < NextRoll && isChanneling[0] == false && isChanneling[1] == false))
         {
-            Ray AttackRay = new Ray(RaySpawn.position, RaySpawn.forward);
+            return;
+        }
+        
+        Ray AttackRay = new Ray(RaySpawn.position, RaySpawn.forward);
 
-            if (Physics.Raycast(AttackRay, out Hit, RayDistance))
+        if ((!Physics.Raycast(AttackRay, out Hit, RayDistance)) || 
+            (Hit.collider.gameObject == Target.gameObject == false && Hit.collider.CompareTag(GlobalValues.ShieldTag) == false))
+        {
+            return;
+        }
+
+        int Chance;
+
+        for (int i = 0; i < 2; i++)
+        {
+            Chance = Random.Range(0, 101);
+
+            if ((Chance > GetAccuracy() && isChanneling[i] == false) || Hands[i].HeldItem == null)
             {
-                if (Hit.collider.gameObject == Target.gameObject || Hit.collider.CompareTag(GlobalValues.ShieldTag))
-                {
-                    int Chance;
+                break;
+            }
 
-                    for (int i = 0; i < 2; i++)
+            switch (Hands[i].State)
+            {
+                case AttackType.Melee:
+                    StartCoroutine(Attack(i));
+                    break;
+                case AttackType.Ranged:
+                    break;
+                case AttackType.Spell:
+                    Spell spellH = Hands[i].HeldItem.GetComponent<SpellHolder>().GetRune(0); 
+                    switch(spellH.GetCastType())
                     {
-                        Chance = Random.Range(0, 101);
+                        case CastType.Channelled:
+                            isChanneling[i] = true;
+                            Cast(i, Hands[i], spellH);
 
-                        if ((Chance <= GetAccuracy() && Hands[i].HeldItem != null))
-                        {
-                            switch (Hands[i].State)
+                            if(Hands[i].ChannelTime == 0)
                             {
-                                case AttackType.Melee:
-                                    StartCoroutine(Attack(i));
-                                    break;
-                                case AttackType.Ranged:
-                                    break;
-                                case AttackType.Spell:
-                                    break;
-                                case AttackType.Shield:
-                                    break;
-                                default:
-                                    break;
+                                isChanneling[i] = false;
                             }
-                        }
-                    }
+                            break;
+                        case CastType.Charged:
+                            bool release = false;
+                            isChanneling[i] = true;
+                            if (Hands[i].ChannelTime >= spellH.GetCastRate())
+                            {
+                                release = true;
+                            }
 
-                    NextRoll = Time.time + AttackRollWaitTime;
-                }
+                            Cast(i, Hands[i], spellH, release);
+
+                            if(release)
+                            {
+                                isChanneling[i] = false;
+                            }
+                            break;
+                        default: // Instant, Touch, and Arua
+                            Cast(i, Hands[i], spellH);
+                            break;
+                    }
+                    break;
+                case AttackType.Shield:
+                    break;
+                default:
+                    break;
             }
         }
+
+        NextRoll = Time.time + AttackRollWaitTime;
     }
 
     public void FindNewTarget()

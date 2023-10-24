@@ -523,7 +523,7 @@ MonoBehaviour:
     backgroundColour: {r: 0.38, g: 0.251, b: 0.839, a: 0.25}
     visibleInInspector: 1
     styleFilteredInInspector: 0
-  - mInitialised: 0
+  - mInitialised: 1
     matchMethod: 2
     matchValue: c400356fc22a526409edd7e295136737
     priority: 0

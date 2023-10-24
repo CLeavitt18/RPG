@@ -14,4 +14,7 @@ public class EntityScaler : ScriptableObject
     
     public EnemyWeaponData[] WeaponData;
     public EnemyWeaponData[] OffWeaponData;
+
+    public EnemySpellData[] spellData;
+    public EnemySpellData[] offSpellData;
 }
