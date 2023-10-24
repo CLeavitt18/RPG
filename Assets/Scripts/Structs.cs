@@ -35,6 +35,7 @@ public struct EnemyWeaponData
     public CatType WeaponCatayst;
 }
 
+[Serializable]
 public struct EnemySpellData
 {
     public EnemySpellDataBase[] spellDataBase;

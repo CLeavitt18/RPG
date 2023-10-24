@@ -126,7 +126,7 @@ public class AIController : LivingEntities
         int tertiary;
         int cat;
 
-        if(ScalingValues.WeaponData != null )
+        if (ScalingValues.WeaponData.Length != 0)
         {
             weaponData = ScalingValues.WeaponData[ID];
 
@@ -144,7 +144,7 @@ public class AIController : LivingEntities
             EquipItem(WeaponH, 0);
         }
 
-        if (GetMastery() != MasteryType.TwoHandedMelee && ScalingValues.OffWeaponData != null)
+        if (GetMastery() != MasteryType.TwoHandedMelee && ScalingValues.OffWeaponData.Length != 0)
         {
             weaponData = ScalingValues.OffWeaponData[ID];
 
@@ -162,7 +162,7 @@ public class AIController : LivingEntities
             EquipItem(WeaponH, 1);
         }
 
-        if (ScalingValues.spellData != null)
+        if (ScalingValues.spellData.Length != 0)
         {
             spellData = ScalingValues.spellData[ID];
 
@@ -187,23 +187,25 @@ public class AIController : LivingEntities
             EquipItem(spellH, 0);
         }
 
-        if(GetMastery() != MasteryType.TwoHandedSpell && ScalingValues.offSpellData != null)
+        if(GetMastery() != MasteryType.TwoHandedSpell && ScalingValues.offSpellData.Length != 0)
         {
-            spellData = ScalingValues.offSpellData[ID];
+            spellData = ScalingValues.spellData[ID];
 
             Spell[] runes = new Spell[3];
 
             for (int i = 0; i < spellData.spellDataBase.Length; i++)
             {
-                runes[i] = Roller.roller.CreateRune(spellData.spellType[i], 
-                                                    spellData.costType[i], 
-                                                    spellData.castType[i], 
-                                                    (int)spellData.damageType[i], 
-                                                    (int)spellData.cat[i], 
-                                                    GetSkillLevel(spellData.skillType)).GetComponent<RuneHolder>().GetSpell();
+                EnemySpellDataBase runeData = spellData.spellDataBase[i];
+
+                runes[i] = Roller.roller.CreateRune(runeData.spellType, 
+                                                    runeData.costType, 
+                                                    runeData.castType, 
+                                                    (int)runeData.damageType, 
+                                                    (int)runeData.cat, 
+                                                    GetSkillLevel(runeData.skillType)).GetComponent<RuneHolder>().GetSpell();
             }
 
-            Item spellH = Roller.roller.CreateSpell((int)spellData.mat[0], runes);
+            Item spellH = Roller.roller.CreateSpell((int)spellData.mat, runes);
 
             Inventory.AddItem(spellH, false, 1);
 
