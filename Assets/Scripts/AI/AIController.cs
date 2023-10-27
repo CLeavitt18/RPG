@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class AIController : LivingEntities
 {
     [SerializeField] private Behaviuor Mode;
-    
+
     [SerializeField] private AI Controller;
 
     [SerializeField] private EntityScaler ScalingValues;
@@ -174,11 +174,11 @@ public class AIController : LivingEntities
             {
                 EnemySpellDataBase runeData = spellData.spellDataBase[i];
 
-                runes[i] = Roller.roller.CreateRune(runeData.spellType, 
-                                                    runeData.costType, 
-                                                    runeData.castType, 
-                                                    (int)runeData.damageType, 
-                                                    (int)runeData.cat, 
+                runes[i] = Roller.roller.CreateRune(runeData.spellType,
+                                                    runeData.costType,
+                                                    runeData.castType,
+                                                    (int)runeData.damageType,
+                                                    (int)runeData.cat,
                                                     GetSkillLevel(runeData.skillType)).GetComponent<RuneHolder>().GetSpell();
             }
 
@@ -189,7 +189,7 @@ public class AIController : LivingEntities
             EquipItem(spellH, 0);
         }
 
-        if(GetMastery() != MasteryType.TwoHandedSpell && ScalingValues.offSpellData.Length != 0)
+        if (GetMastery() != MasteryType.TwoHandedSpell && ScalingValues.offSpellData.Length != 0)
         {
             spellData = ScalingValues.spellData[ID];
 
@@ -248,8 +248,8 @@ public class AIController : LivingEntities
 
         Ray DetectionRay = new Ray(RaySpawn.position, RaySpawn.forward);
 
-        if (Physics.Raycast(DetectionRay, out Hit, 40) && 
-            (Hit.collider.gameObject == Target.gameObject || Hit.collider.CompareTag(GlobalValues.ShieldTag)) && 
+        if (Physics.Raycast(DetectionRay, out Hit, 40) &&
+            (Hit.collider.gameObject == Target.gameObject || Hit.collider.CompareTag(GlobalValues.ShieldTag)) &&
             GetPath(Path, transform.position, Target.position, NavMesh.AllAreas) == true)
         {
             Agent.SetPath(Path);
@@ -271,10 +271,10 @@ public class AIController : LivingEntities
         {
             return;
         }
-        
+
         Ray AttackRay = new Ray(RaySpawn.position, RaySpawn.forward);
 
-        if ((!Physics.Raycast(AttackRay, out Hit, RayDistance)) || 
+        if ((!Physics.Raycast(AttackRay, out Hit, RayDistance)) ||
             (Hit.collider.gameObject == Target.gameObject == false && Hit.collider.CompareTag(GlobalValues.ShieldTag) == false))
         {
             return;
@@ -291,7 +291,9 @@ public class AIController : LivingEntities
                 break;
             }
 
-            switch (Hands[i].State)
+            Hand currHand = Hands[i];
+
+            switch (currHand.State)
             {
                 case AttackType.Melee:
                     StartCoroutine(Attack(i));
@@ -299,41 +301,12 @@ public class AIController : LivingEntities
                 case AttackType.Ranged:
                     break;
                 case AttackType.Spell:
-                    if (Hands[i].CurrSpell == null)
+                    if (currHand.CurrSpell == null)
                     {
-
+                        SetCurrentSpell(i, currHand);
                     }
-                    Spell spellH = Hands[i].HeldItem.GetComponent<SpellHolder>().GetRune(0); 
-                    switch(spellH.GetCastType())
-                    {
-                        case CastType.Channelled:
-                            isChanneling[i] = true;
-                            Cast(i, Hands[i], spellH);
 
-                            if(Hands[i].ChannelTime == 0)
-                            {
-                                isChanneling[i] = false;
-                            }
-                            break;
-                        case CastType.Charged:
-                            bool release = false;
-                            isChanneling[i] = true;
-                            if (Hands[i].ChannelTime >= spellH.GetCastRate())
-                            {
-                                release = true;
-                            }
-
-                            Cast(i, Hands[i], spellH, release);
-
-                            if(release)
-                            {
-                                isChanneling[i] = false;
-                            }
-                            break;
-                        default: // Instant, Touch, and Arua
-                            Cast(i, Hands[i], spellH);
-                            break;
-                    }
+                    HandleCast(i, currHand, currHand.CurrSpell);
                     break;
                 case AttackType.Shield:
                     break;
@@ -360,7 +333,7 @@ public class AIController : LivingEntities
             type = entity.GetType();
 
             if (entity.GetDead() ||
-                (type == EntityType.Minion && ((entity as AIController).Controller  as Minion).Owner is AIController) ||
+                (type == EntityType.Minion && ((entity as AIController).Controller as Minion).Owner is AIController) ||
                 (entity is AIController && type == EntityType.Enemy) ||
                 entity == this)
             {
@@ -435,7 +408,22 @@ public class AIController : LivingEntities
         {
             rune = spellH.GetRune(i);
 
-            if (rune is IAura aura && aura.GetActivated() == false)
+            if (rune is IAura aura)
+            {
+                if (aura.GetActivated())
+                {
+                    hand.CurrSpell = null;
+                    continue;
+                }
+
+                hand.CurrSpell = rune;
+                return;
+            }
+            else if (false) // Will be for healing spells
+            {
+                return;
+            }
+            else
             {
                 hand.CurrSpell = rune;
                 return;
@@ -443,6 +431,39 @@ public class AIController : LivingEntities
         }
     }
 
+    public void HandleCast(int handId, Hand hand, Spell spell)
+    {
+        switch (hand.CurrSpell.GetCastType())
+        {
+            case CastType.Channelled:
+                isChanneling[handId] = true;
+                Cast(handId, hand, spell);
+
+                if (hand.ChannelTime == 0)
+                {
+                    isChanneling[handId] = false;
+                }
+                break;
+            case CastType.Charged:
+                bool release = false;
+                isChanneling[handId] = true;
+                if (hand.ChannelTime >= hand.CurrSpell.GetCastRate())
+                {
+                    release = true;
+                }
+
+                Cast(handId, hand, spell, release);
+
+                if (release)
+                {
+                    isChanneling[handId] = false;
+                }
+                break;
+            default: // Instant, Touch, and Arua
+                Cast(handId, hand, spell);
+                break;
+        }
+    }
     public override int TakeDamage(DamageStats stats, bool shieldHit)
     {
         int TotalDamage = base.TakeDamage(stats, shieldHit);
