@@ -280,13 +280,13 @@ public class LivingEntities : MonoBehaviour
 
                 if (SpellH is GolemSpell gspell)
                 {
-                    if (gspell.Activated)
+                    if (gspell.GetActivated())
                     {
                         return;
                     }
                     else
                     {
-                        TempManaCost *= gspell.Number;
+                        TempManaCost *= gspell.GetNumber();
                     }
                 }
 
@@ -392,7 +392,7 @@ public class LivingEntities : MonoBehaviour
         }
         else if (SpellH is GolemSpell gSpell)
         {
-            if (gSpell.Activated)
+            if (gSpell.GetActivated())
             {
                 if (Hit.collider != null &&
                     Hit.collider.CompareTag(gameObject.tag) == false &&
@@ -400,7 +400,7 @@ public class LivingEntities : MonoBehaviour
                 {
                     Minion minion;
 
-                    for (int i = 0; i < gSpell.Alive; i++)
+                    for (int i = 0; i < gSpell.GetAlive(); i++)
                     {
                         minion = Minions[i].GetController() as Minion;
 
@@ -410,7 +410,7 @@ public class LivingEntities : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < gSpell.Number; i++)
+                for (int i = 0; i < gSpell.GetNumber(); i++)
                 {
                     Spell = Instantiate(SpellH.GetSpellAffect(), hand.WeaponSpawn.position, hand.WeaponSpawn.rotation);
 
@@ -425,10 +425,8 @@ public class LivingEntities : MonoBehaviour
 
                     Minions.Add(minion.entity);
 
-                    gSpell.Alive++;
+                    gSpell.IncrementAlive();
                 }
-
-                gSpell.Activated = true;
             }
         }
     }
@@ -546,6 +544,7 @@ public class LivingEntities : MonoBehaviour
                 }
 
                 //Create Spell Object in world
+                Item.transform.parent = hand.WeaponSpawn;
 
                 //Calculate Spell Damage multis
                 for (int i = 0; i < 3; i++)
@@ -779,8 +778,6 @@ public class LivingEntities : MonoBehaviour
                                 id++;
                             }
                         }
-
-                        golemSpell.Activated = false;
                     }
                 }
 

@@ -1,5 +1,4 @@
 ﻿
-
 public interface ISavable
 {
     bool Save(int id);

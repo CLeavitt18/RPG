@@ -1,12 +1,12 @@
 
-public class GolemSpell : Spell
+public class GolemSpell : Spell, IAura
 {
     public DamageType DamageRange;
 
-    public int Number;
-    public int Alive;
+    private int Number;
+    private int Alive;
 
-    public bool Activated;
+    private bool Activated ;
 
 
     public override void SetStats(SpellStats stats)
@@ -20,6 +20,37 @@ public class GolemSpell : Spell
         Activated = statsG.activated;
 
         base.SetStats(stats);
+    }
+
+    public void IncrementAlive()
+    {
+        Alive++;
+        Activated = true;
+    }
+
+    public void DecrametAlive()
+    {
+        Alive--;
+
+        if (Alive == 0)
+        {
+            Activated = false;
+        }
+    }
+
+    public int GetNumber()
+    {
+        return Number;
+    }
+
+    public int GetAlive()
+    {
+        return Alive;
+    }
+
+    public bool GetActivated()
+    {
+        return Activated;
     }
 
     public override bool Equals(Spell spell)

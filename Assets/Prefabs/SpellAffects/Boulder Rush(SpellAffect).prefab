@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -61,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9415752f7165b564eaee3764b819949a, type: 2}
+  - {fileID: 2100000, guid: 23a82a62e71ed1c4288e56a21676f9bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,17 +110,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b16396700f64464db6ae43ec33bc5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BurningDamage: 0
-  BurningTicks: 0
-  ChainDamage: 0
-  Chains: 0
-  ChillA: 0
-  BurningWaitTime: 0
-  ChillD: 0
-  DamageVS: 0000000000000000000000000000000000000000
-  Status: 00000000
-  Parent: {fileID: 0}
-  OTHER: {fileID: 0}
+  Stats:
+    Parent: {fileID: 0}
+    SourceHand: 0
+    LifeSteal: 0
+    DamageTypes: 
+    DamageValues: 
+    Status: 
   Speed: 100
   PredictionStepsPerFrame: 50
   ProjectileVelocity: {x: 0, y: 0, z: 0}

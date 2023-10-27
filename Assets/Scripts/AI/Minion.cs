@@ -202,12 +202,7 @@ public class Minion : AI
 
         Owner.UnReserveAttribute((int)cost, SourceSpell.GetCostType());
 
-        SourceSpell.Alive--;
-
-        if (SourceSpell.Alive == 0)
-        {
-            SourceSpell.Activated = false;
-        }
+        SourceSpell.DecrametAlive();
 
         Owner.RemoveMinion(this);
 

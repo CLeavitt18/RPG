@@ -10,6 +10,8 @@ public class AIController : LivingEntities
 
     [SerializeField] private EntityScaler ScalingValues;
 
+    [SerializeField] private int currentSpellId;
+
     [SerializeField] private float LookRad;
     [SerializeField] private float StoppingDistance;
     [SerializeField] private float AttackRange;
@@ -197,11 +199,11 @@ public class AIController : LivingEntities
             {
                 EnemySpellDataBase runeData = spellData.spellDataBase[i];
 
-                runes[i] = Roller.roller.CreateRune(runeData.spellType, 
-                                                    runeData.costType, 
-                                                    runeData.castType, 
-                                                    (int)runeData.damageType, 
-                                                    (int)runeData.cat, 
+                runes[i] = Roller.roller.CreateRune(runeData.spellType,
+                                                    runeData.costType,
+                                                    runeData.castType,
+                                                    (int)runeData.damageType,
+                                                    (int)runeData.cat,
                                                     GetSkillLevel(runeData.skillType)).GetComponent<RuneHolder>().GetSpell();
             }
 
@@ -297,6 +299,10 @@ public class AIController : LivingEntities
                 case AttackType.Ranged:
                     break;
                 case AttackType.Spell:
+                    if (Hands[i].CurrSpell == null)
+                    {
+
+                    }
                     Spell spellH = Hands[i].HeldItem.GetComponent<SpellHolder>().GetRune(0); 
                     switch(spellH.GetCastType())
                     {
@@ -418,6 +424,23 @@ public class AIController : LivingEntities
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 
         transform.parent.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
+    public void SetCurrentSpell(int handId, Hand hand)
+    {
+        SpellHolder spellH = hand.HeldItem.GetComponent<SpellHolder>();
+        Spell rune;
+
+        for (int i = 0; i > spellH.GetNumOfSpells(); i++)
+        {
+            rune = spellH.GetRune(i);
+
+            if (rune is IAura aura && aura.GetActivated() == false)
+            {
+                hand.CurrSpell = rune;
+                return;
+            }
+        }
     }
 
     public override int TakeDamage(DamageStats stats, bool shieldHit)

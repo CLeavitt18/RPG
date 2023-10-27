@@ -294,7 +294,7 @@ public class Helper : MonoBehaviour
             SpawnItemDetailSlot(t);
 
             sb.Append("Minions: ");
-            sb.Append(gSpell.Number);
+            sb.Append(gSpell.GetNumber());
 
             SpawnItemDetailSlot(t);
         }

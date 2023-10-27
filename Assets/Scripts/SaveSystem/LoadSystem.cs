@@ -486,9 +486,9 @@ public static class LoadSystem
         {
             ToRune.SpellTypeId = (int)SpellType.GolemSpell;
 
-            ToRune.bool0 = spellG.Activated;
+            ToRune.bool0 = spellG.GetActivated();
 
-            ToRune.int0 = spellG.Number;
+            ToRune.int0 = spellG.GetNumber();
 
             ToRune.StatArray0 = new int[3];
 

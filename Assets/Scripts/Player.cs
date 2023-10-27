@@ -882,9 +882,9 @@ public class Player : LivingEntities
                             SpellDamageMulti(i, dSpell.GetDamageType(i));
                         }
                     }
-                    else if (spell.GetRune(x) is GolemSpell gSpell && gSpell.Activated)
+                    else if (spell.GetRune(x) is GolemSpell gSpell && gSpell.GetActivated())
                     {
-
+                        // needs logic for how to tell golems to change stats when player levels up
                     }
                 }
             }
@@ -1119,7 +1119,7 @@ public class Player : LivingEntities
 
                     minion.Owner = this;
                     minion.SourceSpell = (GolemSpell)Hands[data.HandSource].HeldItem.GetComponent<SpellHolder>().GetRune(data.SourceId);
-                    minion.SourceSpell.Alive++;
+                    minion.SourceSpell.IncrementAlive();
 
                     minion.LoadMinion(data);
 

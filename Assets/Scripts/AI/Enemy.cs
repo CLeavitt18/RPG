@@ -75,9 +75,6 @@ public class Enemy : AI, ISavable
 
         path.Append(GlobalValues.SaveExtension);
 
-            Debug.Log("temp save location " + TempPath.ToString());
-            Debug.Log("save location " + path.ToString());
-
         if (File.Exists(TempPath.ToString()))
         {
             Data = SaveSystem.LoadEnemy(TempPath.ToString());

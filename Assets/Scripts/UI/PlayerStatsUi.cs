@@ -390,7 +390,7 @@ public class PlayerStatsUi : IUi
                             sb.Append(GlobalValues.OfText);
                             sb.Append(GlobalValues.MinionTag);
                             sb.Append("s: ");
-                            sb.Append(gRune.Number);
+                            sb.Append(gRune.GetNumber());
 
                             CreateStatText();
 
