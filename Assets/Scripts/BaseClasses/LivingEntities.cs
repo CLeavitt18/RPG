@@ -204,7 +204,7 @@ public class LivingEntities : MonoBehaviour
 
     protected void Shoot()
     {
-
+        // logic for shooting a bow
     }
 
     protected void Cast(int HandType, Hand hand, Spell SpellH, bool ButtonUp = false)
@@ -225,6 +225,7 @@ public class LivingEntities : MonoBehaviour
                     SpellH.SetNextAttack(1f / SpellH.GetCastRate());
 
                     hand.ChannelTime = 0;
+                    hand.CurrSpell = null;
 
                     if (!LoseAttribute(TempManaCost, TempCostType))
                     {
@@ -254,12 +255,11 @@ public class LivingEntities : MonoBehaviour
                 }
                 break;
             case CastType.Charged:
-                hand.CurrSpell = null;
-                
                 if (ButtonUp)
                 {
                     TempNextCast = SpellH.GetCastRate();
                     hand.ChannelTime = 0;
+                    hand.CurrSpell = null;
 
                     if (TempChannelTime >= TempNextCast && LoseAttribute(TempManaCost, TempCostType))
                     {
@@ -1003,8 +1003,6 @@ public class LivingEntities : MonoBehaviour
 
         switch (type)
         {
-            case AttributesEnum.Health:
-                break;
             case AttributesEnum.Stamina:
 
                 if (Running)
@@ -1012,8 +1010,6 @@ public class LivingEntities : MonoBehaviour
                     return;
                 }
 
-                break;
-            case AttributesEnum.Mana:
                 break;
             default:
                 break;
@@ -1271,17 +1267,17 @@ public class LivingEntities : MonoBehaviour
             //Health
             case 0:
                 multi1 = 3.0f;
-                multi2 = .06f;
+                multi2 = 0.06f;
                 break;
             //Stamina
             case 1:
                 multi1 = 8.0f;
-                multi2 = .09f;
+                multi2 = 0.09f;
                 break;
             //Mana
             case 2:
                 multi1 = 12.0f;
-                multi2 = .12f;
+                multi2 = 0.12f;
                 break;
             default:
                 break;

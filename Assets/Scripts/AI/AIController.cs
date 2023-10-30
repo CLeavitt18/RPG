@@ -404,9 +404,14 @@ public class AIController : LivingEntities
         SpellHolder spellH = hand.HeldItem.GetComponent<SpellHolder>();
         Spell rune;
 
-        for (int i = 0; i > spellH.GetNumOfSpells(); i++)
+        for (int i = 0; i < spellH.GetNumOfSpells(); i++)
         {
             rune = spellH.GetRune(i);
+            
+            if (rune == null)
+            {
+                return;
+            }
 
             if (rune is IAura aura)
             {
@@ -418,10 +423,11 @@ public class AIController : LivingEntities
 
                 hand.CurrSpell = rune;
                 return;
-            }
-            else if (false) // Will be for healing spells
-            {
-                return;
+                /*else if (false) // Will be for healing spells
+                {
+
+                    return;
+                }*/
             }
             else
             {

@@ -149,6 +149,7 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\BaseRecipes.cs" />
     <Compile Include="Assets\Scripts\Interactiables\Doors.cs" />
     <Compile Include="Assets\Scripts\StatusManagers\ChainAffect.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IAura.cs" />
     <Compile Include="Assets\Scripts\HitManagers\ChannelSpellHitManager.cs" />
     <Compile Include="Assets\Scripts\UI\QuestUi.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerProfileInfo.cs" />
@@ -184,7 +185,8 @@
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\UI\RuneTableUI.cs" />
     <Compile Include="Assets\Scripts\UI\CraftingSlotAction.cs" />
-    <Compile Include="Assets\Scripts\Interfaces\IAura.cs" />
+    <Compile Include="Assets\Scripts\PassiveTree.cs" />
+    <Compile Include="Assets\Scripts\PassiveTreeNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
