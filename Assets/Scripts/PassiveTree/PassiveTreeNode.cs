@@ -7,6 +7,8 @@ public class PassiveTreeNode : MonoBehaviour
     [SerializeField] private PassiveTreeNode[] previuos;
     [SerializeField] private PassiveTreeNode[] next;
 
+    [SerializeField] private PassiveTreeNodeType type;
+
     [SerializeField] private int amount;
     [SerializeField] private int divotion;
 

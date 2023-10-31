@@ -291,3 +291,25 @@ public enum SortOrder : byte
     Value,
     Weight
 }
+
+public enum PassiveTreeNodeType : byte
+{
+    Strength,
+    Dexterity,
+    Intelligence,
+    Health,
+    Stamina,
+    Mana,
+    Armor,
+    FireRes,
+    LightningRes,
+    IceRes,
+    MeleePhyDamage,
+    MeleeFireDamage,
+    MeleeLightningDamage,
+    MeleeIceDamage,
+    SpellPhyDamage,
+    SpellFireDamage,
+    SpellLightning,
+    SpellIceDamage
+}
