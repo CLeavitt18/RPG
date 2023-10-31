@@ -66,6 +66,8 @@
     <Compile Include="Assets\Scripts\ResourceDeposit.cs" />
     <Compile Include="Assets\Scripts\ItemHolderObjects\ResourceHolder.cs" />
     <Compile Include="Assets\Scripts\PotionRolller.cs" />
+    <Compile Include="Assets\Scripts\PassiveTree\LargeNode.cs" />
+    <Compile Include="Assets\Scripts\PassiveTree\PassiveTree.cs" />
     <Compile Include="Assets\Scripts\NPCDialogue.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\BaseWeapon.cs" />
     <Compile Include="Assets\Scripts\ItemHolderObjects\PowerHolder.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Assets\Scripts\BaseClasses\Item.cs" />
     <Compile Include="Assets\Scripts\StatusManagers\IceStatusManager.cs" />
     <Compile Include="Assets\Scripts\Generators\RuneRoller.cs" />
+    <Compile Include="Assets\Scripts\PassiveTree\PassiveTreeNode.cs" />
     <Compile Include="Assets\Scripts\RuneTable.cs" />
     <Compile Include="Assets\Scripts\SlotsActions.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\DepositData.cs" />
@@ -139,6 +142,7 @@
     <Compile Include="Assets\Scripts\HitManagers\ChargedSpellHitManager.cs" />
     <Compile Include="Assets\Scripts\ItemHolderObjects\CatalystHolder.cs" />
     <Compile Include="Assets\Scripts\UI\LoadProfileButton.cs" />
+    <Compile Include="Assets\Scripts\PassiveTree\KeyNode.cs" />
     <Compile Include="Assets\Scripts\StatusManagers\BurningStatus.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\Enums.cs" />
     <Compile Include="Assets\Scripts\Spells\GolemSpell.cs" />
@@ -185,8 +189,6 @@
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\UI\RuneTableUI.cs" />
     <Compile Include="Assets\Scripts\UI\CraftingSlotAction.cs" />
-    <Compile Include="Assets\Scripts\PassiveTree.cs" />
-    <Compile Include="Assets\Scripts\PassiveTreeNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
