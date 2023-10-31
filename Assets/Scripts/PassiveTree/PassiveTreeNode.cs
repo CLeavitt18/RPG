@@ -15,13 +15,18 @@ public class PassiveTreeNode : MonoBehaviour
     [SerializeField] private bool active;
     [SerializeField] private bool baseOrPercent;
 
-    public PassiveTreeNode GetPreviuos()
+    public int GetNextPassivesCount()
     {
-        return previuos[0];
+        return next.Length;
     }
 
-    public PassiveTreeNode GetNext()
+    public PassiveTreeNode GetPreviuos(int index)
     {
-        return next[0];
+        return previuos[index];
+    }
+
+    public PassiveTreeNode GetNext(int index)
+    {
+        return next[index];
     }
 }

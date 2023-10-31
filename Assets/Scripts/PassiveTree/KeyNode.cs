@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyNode : PassiveTreeNode
 {
-    
+    [SerializeField] private StatusTypeEnum type;
+    [SerializeField] private DamageTypeEnum damageType;
 }

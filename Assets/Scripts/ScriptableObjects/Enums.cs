@@ -310,6 +310,6 @@ public enum PassiveTreeNodeType : byte
     MeleeIceDamage,
     SpellPhyDamage,
     SpellFireDamage,
-    SpellLightning,
+    SpellLightningDamage,
     SpellIceDamage
 }
