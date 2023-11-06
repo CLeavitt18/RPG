@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PassiveTreeUi : IUi
 {
     [SerializeField] private GameObject Ui;
+    [SerializeField] private Button[] nodeButtons;
+
+    [SerializeField] private GameObject activeNodeUi;
+    [SerializeField] private GameObject inactiveNodeUi;
 
     public override void Set()
     {
@@ -26,6 +31,11 @@ public class PassiveTreeUi : IUi
 
     public void SetNode(int index)
     {
-        PassiveTree.instance.SetNode(index);
+        bool result = PassiveTree.instance.SetNode(index);
+
+        if(result)
+        {
+
+        }
     }
 }
