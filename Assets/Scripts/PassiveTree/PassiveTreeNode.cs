@@ -1,4 +1,6 @@
 using System;
+using System.Net.Http.Headers;
+using Unity.Mathematics;
 using UnityEngine;
 
 [Serializable]
@@ -25,8 +27,36 @@ public class PassiveTreeNode : MonoBehaviour
         return previuos[index];
     }
 
+    public bool GetActive()
+    {
+        return active;
+    }
+
     public PassiveTreeNode GetNext(int index)
     {
-        return next[index];
+        int baseTen = 10;
+
+        if (active == false)
+        {
+            return null;
+        }
+
+        if (baseTen > index)
+        {
+            return next[index - 1];
+        }
+
+        while(index / baseTen > 10)
+        {
+            baseTen *= 10;
+        }
+
+        index -= baseTen * (index / baseTen);
+        return next[index- 1].GetNext(index);
+    }
+
+    public void NegateActive()
+    {
+        active = !active;
     }
 }

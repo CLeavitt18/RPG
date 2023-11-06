@@ -6,6 +6,8 @@ public class PassiveTree : MonoBehaviour
     
     [SerializeField] private PassiveTreeNode start;
 
+    [SerializeField] private int passivePoints = 0;
+
 
     private void OnEnable() 
     {
@@ -17,5 +19,26 @@ public class PassiveTree : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    public void SetNode(int index)
+    {
+        PassiveTreeNode node = GetNode(index);
+
+        if(node.GetActive() == false && passivePoints > 0)
+        {
+            node.NegateActive();
+            passivePoints--;
+        }
+    }
+
+    private PassiveTreeNode GetNode(int index)
+    {
+        if(index != -1)
+        {
+            return start.GetNext(index);
+        }
+
+        return start;
     }
 }
