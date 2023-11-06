@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PassiveTree : MonoBehaviour
 {
-    public PassiveTree instance;
+    public static PassiveTree instance;
     
     [SerializeField] private PassiveTreeNode start;
 
@@ -21,15 +21,23 @@ public class PassiveTree : MonoBehaviour
         }
     }
 
-    public void SetNode(int index)
+    public bool SetNode(int index)
     {
         PassiveTreeNode node = GetNode(index);
 
-        if(node.GetActive() == false && passivePoints > 0)
+        if(node == null || passivePoints == 0)
+        {
+            return false;
+        }
+
+        if(node.GetActive() == false)
         {
             node.NegateActive();
             passivePoints--;
+            return true;
         }
+
+        return false;
     }
 
     private PassiveTreeNode GetNode(int index)
