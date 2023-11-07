@@ -69,21 +69,4 @@ public class SortOptionsUi : IUi
     {
         inventory.SetSortOrderNormal(!sortOrderNormalToggle.isOn);
     }
-
-    public void Sort()
-    {
-        if (InventoryUi.playerUi != null)
-        {
-            inventory = Player.player.Inventory;
-            inventoryUi = InventoryUi.playerUi;
-        }
-        else
-        {
-            inventory = Player.player.GetHit().GetComponent<Inventory>();
-            inventoryUi = InventoryUi.containerUi;
-        }
-
-        inventory.Sort();
-        inventoryUi.Set();
-    }
 }

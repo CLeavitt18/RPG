@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\ResourceDeposit.cs" />
     <Compile Include="Assets\Scripts\ItemHolderObjects\ResourceHolder.cs" />
     <Compile Include="Assets\Scripts\PotionRolller.cs" />
+    <Compile Include="Assets\Scripts\UI\PassiveTreeUi.cs" />
     <Compile Include="Assets\Scripts\PassiveTree\LargeNode.cs" />
     <Compile Include="Assets\Scripts\PassiveTree\PassiveTree.cs" />
     <Compile Include="Assets\Scripts\NPCDialogue.cs" />
@@ -189,7 +190,6 @@
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\UI\RuneTableUI.cs" />
     <Compile Include="Assets\Scripts\UI\CraftingSlotAction.cs" />
-    <Compile Include="Assets\Scripts\UI\PassiveTreeUi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
