@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PassiveTreeUi : IUi
 {
     [SerializeField] private GameObject Ui;
-    [SerializeField] private Button[] nodeButtons;
+    [SerializeField] private PassiveButton[] nodeButtons;
 
     [SerializeField] private GameObject activeNodeUi;
     [SerializeField] private GameObject inactiveNodeUi;
@@ -19,21 +19,16 @@ public class PassiveTreeUi : IUi
         Ui.SetActive(true);
 
         isActive = true;
+
+        for(int i = 0; i < nodeButtons.Length; i++)
+        {
+            nodeButtons[i].SetColor();
+        }
     }
 
     public override void Close()
     {
         Ui.SetActive(false);
         isActive = false;
-    }
-
-    public void SetNode(int index)
-    {
-        bool result = PassiveTree.instance.SetNode(index);
-
-        if(result)
-        {
-
-        }
     }
 }

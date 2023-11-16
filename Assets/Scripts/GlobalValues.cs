@@ -121,5 +121,8 @@ public static class GlobalValues
                                                new Color(0.00f, 1.00f, 0.36f, 0.50f), //magic color
                                                new Color(0.94f, 0.80f, 0.00f, 0.50f), //rare color
                                                new Color(1.00f, 0.25f, 0.25f, 0.50f)}; //legendary color
+    public static readonly Color[] buttonColors = {new Color(0.75f, 0.75f, 0.75f, 0.50f),
+                                                   new Color(1.00f, 0.90f, 0.75f, 0.50f),
+                                                   new Color(1.00f, 0.90f, 0.40f, 0.50f)};
 
 }
