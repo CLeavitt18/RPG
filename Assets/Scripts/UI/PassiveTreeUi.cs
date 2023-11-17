@@ -5,9 +5,7 @@ public class PassiveTreeUi : IUi
 {
     [SerializeField] private GameObject Ui;
     [SerializeField] private PassiveButton[] nodeButtons;
-
-    [SerializeField] private GameObject activeNodeUi;
-    [SerializeField] private GameObject inactiveNodeUi;
+    
 
     public override void Set()
     {

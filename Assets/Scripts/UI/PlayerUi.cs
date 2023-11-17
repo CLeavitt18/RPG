@@ -67,11 +67,6 @@ public class PlayerUi : MonoBehaviour
     {
         for (int i = 0; i < uis.Length; i++)
         {
-            if(i == (int)UiType.Inventory)
-            {
-                uis[i].Set();
-                continue;
-            }
             uis[i].Clear();
         }
 

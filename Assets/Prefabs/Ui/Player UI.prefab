@@ -339,7 +339,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12102,7 +12102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6746321544346670133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18567,8 +18567,8 @@ MonoBehaviour:
   - {fileID: 7905633172275075591}
   - {fileID: 1147691146617709574}
   - {fileID: 4499564134056826904}
-  - {fileID: 599502610512178036}
   - {fileID: 7364362109346848329}
+  - {fileID: 599502610512178036}
   EnemyHealthBar: {fileID: 9209264223317288489}
   AttributeBars:
   - {fileID: 7349954683287275262}
@@ -18754,8 +18754,6 @@ MonoBehaviour:
   isActive: 0
   Ui: {fileID: 0}
   nodeButtons: []
-  activeNodeUi: {fileID: 0}
-  inactiveNodeUi: {fileID: 0}
 --- !u!1 &8732479582182715332
 GameObject:
   m_ObjectHideFlags: 0
@@ -18866,7 +18864,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
