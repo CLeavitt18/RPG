@@ -88,6 +88,16 @@ public class PlayerUi : MonoBehaviour
         uis[(int)UiType.Quests].Set();
     }
 
+    public void CallSetPassivetree()
+    {
+        for (int i = 0; i < uis.Length; i++)
+        {
+            uis[i].Clear();
+        }
+
+        uis[(int)UiType.PassiveTree].Set();
+    }
+
     public void StartPause(bool pause)
     {
         PauseMenu.SetActive(pause);

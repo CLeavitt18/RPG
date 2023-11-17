@@ -74,13 +74,10 @@ public class Player : LivingEntities
                 ActiveInputCheck();
                 break;
             case PlayerState.InInventoy:
-                InInventoyInputCheck();
-                break;
             case PlayerState.InJournal:
-                InJournalInputCheck();
-                break;
             case PlayerState.InStats:
-                InStatsInputCheck();
+            case PlayerState.InPassiveTree:
+                InventoyInputCheck();
                 break;
             case PlayerState.InContainer:
             case PlayerState.InStore:
@@ -371,6 +368,22 @@ public class Player : LivingEntities
             return;
         }
 
+        if (Input.GetButtonDown("P"))
+        {
+            if (Running)
+            {
+                StopRunning();
+            }
+
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+            Mode = PlayerState.InPassiveTree;
+
+            InventoryUi.playerUi.SetInventroy(true);
+            PlayerUi.playerUi.CallSetPassivetree();
+            return;
+        }
+
         if (Input.GetButtonDown("Cancel"))
         {
             if (Running)
@@ -382,40 +395,16 @@ public class Player : LivingEntities
         }
     }
 
-    private void InInventoyInputCheck()
+    private void InventoyInputCheck()
     {
         if (Input.GetButtonDown("I"))
         {
-            SetPlayerStateActive();
-            return;
-        }
+            if(Mode == PlayerState.InInventoy)
+            {
+                SetPlayerStateActive();
+                return;
+            }
 
-        if (Input.GetButtonDown("J"))
-        {
-            Mode = PlayerState.InJournal;
-
-            PlayerUi.playerUi.CallSetQuestInventory();
-            return;
-        }
-
-        if (Input.GetButtonDown("C"))
-        {
-            Mode = PlayerState.InStats;
-
-            PlayerUi.playerUi.CallSetStats();
-            return;
-        }
-
-        if (Input.GetButtonDown("Cancel"))
-        {
-            SetPlayerStateActive();
-        }
-    }
-
-    private void InJournalInputCheck()
-    {
-        if (Input.GetButtonDown("I"))
-        {
             Mode = PlayerState.InInventoy;
 
             PlayerUi.playerUi.CallSetInventory();
@@ -424,36 +413,12 @@ public class Player : LivingEntities
 
         if (Input.GetButtonDown("J"))
         {
-            SetPlayerStateActive();
-            return;
-        }
+            if(Mode == PlayerState.InJournal)
+            {
+                SetPlayerStateActive();
+                return;
+            }
 
-        if (Input.GetButtonDown("C"))
-        {
-            Mode = PlayerState.InStats;
-
-            PlayerUi.playerUi.CallSetStats();
-            return;
-        }
-
-        if (Input.GetButtonDown("Cancel"))
-        {
-            SetPlayerStateActive();
-        }
-    }
-
-    private void InStatsInputCheck()
-    {
-        if (Input.GetButtonDown("I"))
-        {
-            Mode = PlayerState.InInventoy;
-
-            PlayerUi.playerUi.CallSetInventory();
-            return;
-        }
-
-        if (Input.GetButtonDown("J"))
-        {
             Mode = PlayerState.InJournal;
 
             PlayerUi.playerUi.CallSetQuestInventory();
@@ -462,7 +427,29 @@ public class Player : LivingEntities
 
         if (Input.GetButtonDown("C"))
         {
-            SetPlayerStateActive();
+            if(Mode == PlayerState.InStats)
+            {
+                SetPlayerStateActive();
+                return;
+            }
+
+            Mode = PlayerState.InStats;
+
+            PlayerUi.playerUi.CallSetStats();
+            return;
+        }
+
+        if (Input.GetButtonDown("P"))
+        {
+            if(Mode == PlayerState.InPassiveTree)
+            {
+                SetPlayerStateActive();
+                return;
+            }
+
+            Mode = PlayerState.InPassiveTree;
+
+            PlayerUi.playerUi.CallSetPassivetree();
             return;
         }
 

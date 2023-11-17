@@ -220,6 +220,7 @@ public enum PlayerState : byte
     InInventoy,
     InJournal,
     InStats,
+    InPassiveTree,
     InContainer,
     InConvoe,
     InStore,
@@ -248,7 +249,8 @@ public enum UiType : byte
     Quests,
     Inventory,
     Sleep,
-    LevelUp
+    LevelUp,
+    PassiveTree
 }
 
 public enum UiState : byte
