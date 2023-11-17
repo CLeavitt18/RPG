@@ -928,7 +928,7 @@ public class LivingEntities : MonoBehaviour
                     TempDamage *= 0.25f;
                 }
 
-                //Checks to see if entity hasa reflect burn to self
+                //Checks to see if entity has reflect burn to self
                 if (Powers[1].Contains(0))
                 {
                     //checks which burning mulit to use with reflect burning to self

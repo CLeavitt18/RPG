@@ -9,10 +9,10 @@ public class PassiveTreeUi : IUi
 
     public override void Set()
     {
-        if (isActive)
+        /*if (isActive)
         {
             return;
-        }
+        }*/
 
         Ui.SetActive(true);
 

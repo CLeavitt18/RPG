@@ -830,6 +830,11 @@ public class Player : LivingEntities
 
         SetLevel(level + 1);
 
+        if (level % 3 == 0)
+        {
+            PassiveTree.instance.AddPassivePoint();
+        }
+
         UnReserveAttribute(0, AttributesEnum.Mana);
 
         UpDatePlayerState();

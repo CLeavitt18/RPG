@@ -93,6 +93,11 @@ public class PlayerUi : MonoBehaviour
         uis[(int)UiType.PassiveTree].Set();
     }
 
+    public void CallSetPassiveTreeButtons()
+    {
+        uis[(int)UiType.PassiveTree].Set();
+    }
+
     public void StartPause(bool pause)
     {
         PauseMenu.SetActive(pause);

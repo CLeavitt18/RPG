@@ -7,6 +7,7 @@ public class PassiveTree : MonoBehaviour
     [SerializeField] private PassiveTreeNode start;
 
     [SerializeField] private int passivePoints = 0;
+    [SerializeField] private bool inRespec = false;
 
 
     private void OnEnable() 
@@ -21,6 +22,11 @@ public class PassiveTree : MonoBehaviour
         }
     }
 
+    public void AddPassivePoint()
+    {
+        passivePoints++;
+    }
+
     public bool SetNode(int index)
     {
         if(passivePoints == 0)
@@ -30,13 +36,18 @@ public class PassiveTree : MonoBehaviour
 
         PassiveTreeNode node = GetNode(index);
 
-        if(node == null || passivePoints == 0)
+        if((node == null && index != -1) || passivePoints == 0)
         {
             return false;
         }
 
-        if(node.GetActive() == false)
+        if((node != null && node.GetActive() == false) || node == null)
         {
+            if (node == null)
+            {
+                node = start;
+            }
+
             node.NegateActive();
             passivePoints--;
             return true;
@@ -55,7 +66,7 @@ public class PassiveTree : MonoBehaviour
             return 2;
         }
 
-        if (GetNodeUsable(index))
+        if ((index == -1 || GetNodeUsable(index)) && passivePoints != 0 && inRespec == false)
         {
             // node can be activated
             return 1;
@@ -69,19 +80,26 @@ public class PassiveTree : MonoBehaviour
     {
         // gets the index of the previuos node
         // returns true if that node is active 
-        // return false if the noe is not active
+        // return false if the node is not active
         int baseTen = 10;
 
-        while(index / baseTen > 10)
+        if (index > baseTen)
         {
-            baseTen *= 10;
-        }
+            while(index / baseTen > 10)
+            {
+                baseTen *= 10;
+            }
 
-        index -= baseTen * (index / baseTen);
+            index -= baseTen * (index / baseTen);
+        }
+        else
+        {
+            index = -1;
+        }
         
         PassiveTreeNode node = GetNode(index);
 
-        if (node == null)
+        if (node == null || node.GetActive() == false)
         {
             return false;
         }
@@ -94,6 +112,11 @@ public class PassiveTree : MonoBehaviour
         if(index != -1)
         {
             return start.GetNext(index);
+        }
+
+        if (start.GetActive() == false)
+        {
+            return null;
         }
 
         return start;

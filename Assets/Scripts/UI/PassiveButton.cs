@@ -12,8 +12,9 @@ public class PassiveButton : MonoBehaviour
 
         if(result)
         {
-            SetColor(2);
+            PlayerUi.playerUi.CallSetPassiveTreeButtons();
         }
+
     }
     
     public void SetColor()
@@ -28,6 +29,10 @@ public class PassiveButton : MonoBehaviour
         if(index == 0)
         {
             gameObject.GetComponent<Button>().enabled = false;
+        }
+        else if (index == 1) 
+        {
+            gameObject.GetComponent<Button>().enabled = true;
         }
     }
 }
