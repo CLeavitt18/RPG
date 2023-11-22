@@ -1,7 +1,5 @@
-using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PassiveTreeUi : IUi, ISavable
 {
@@ -36,7 +34,7 @@ public class PassiveTreeUi : IUi, ISavable
     {
         List<int> nodes = new List<int>();
 
-        for (int i = 0; i < nodes.Count; i++)
+        for (int i = 0; i < nodeButtons.Length; i++)
         {
             nodeButtons[i].AddToActiveListForSaving(nodes);
         }
@@ -50,15 +48,27 @@ public class PassiveTreeUi : IUi, ISavable
     }
     public bool Load(int id)
     {
+        PassiveTreeData data = SaveSystem.LoadPassiveTree();
 
-        StringBuilder sb = new StringBuilder(Application.persistentDataPath);
-        sb.Append(WorldStateTracker.Tracker.PlayerName);
-        sb.Append('/');
-        sb.Append(WorldStateTracker.Tracker.SaveProfile);
-        sb.Append(GlobalValues.PlayerFolder);
-        //sb.Append();
+        if (data.nodes.Length > 0)
+        {
+            for (int i = 0; i < data.nodes.Length; i++)
+            {
+                PassiveTree.instance.SetNode(data.nodes[i], true);
+            }
+        }
+
+        if (data.passivePoints > 0)
+        {
+            for (int i = 0; i < data.passivePoints; i++)
+            {
+                PassiveTree.instance.AddPassivePoint();
+            }
+        }
+
         return true;
     }
+
     public void SetDefaultState(bool priority)
     {
         

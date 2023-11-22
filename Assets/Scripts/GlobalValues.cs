@@ -31,7 +31,7 @@ public static class GlobalValues
     public const string GoldTag = "Gold";
     public const string MiscTag = "Misc";
     public const string TorchTag = "Torch";
-    public const string PassTreeTag = "PassTree";
+    public const string PassTreeTag = "PassiveTree";
 
     public const string LevelText = "Level";
     public const string RightText = "Right";

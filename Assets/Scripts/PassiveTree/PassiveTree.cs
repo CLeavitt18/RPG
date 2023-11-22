@@ -28,16 +28,16 @@ public class PassiveTree : MonoBehaviour
         passivePoints++;
     }
 
-    public bool SetNode(int index)
+    public bool SetNode(int index, bool fromLoad = false)
     {
-        if(passivePoints == 0)
+        if(passivePoints == 0 && fromLoad == false)
         {
             return false;
         }
 
         PassiveTreeNode node = GetNode(index);
 
-        if((node == null && index != -1) || passivePoints == 0)
+        if(node == null && index != -1)
         {
             return false;
         }
@@ -50,8 +50,12 @@ public class PassiveTree : MonoBehaviour
             }
 
             node.NegateActive();
-            passivePoints--;
-            return true;
+            
+            if (fromLoad == false)
+            {
+                passivePoints--;
+                return true;
+            }
         }
 
         return false;
@@ -121,5 +125,10 @@ public class PassiveTree : MonoBehaviour
         }
 
         return start;
+    }
+
+    public int GetPassivePoints()
+    {
+        return passivePoints;
     }
 }

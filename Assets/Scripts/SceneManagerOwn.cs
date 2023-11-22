@@ -99,6 +99,8 @@ public class SceneManagerOwn : MonoBehaviour
         {
             SavableObjects.Add(Savables[i].GetComponent<ISavable>());
         }
+
+        SavableObjects.Add(PlayerUi.playerUi.gameObject.GetComponent<ISavable>());
     }
 
     public void SetScene()

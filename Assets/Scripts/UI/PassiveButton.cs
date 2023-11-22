@@ -7,9 +7,9 @@ public class PassiveButton : MonoBehaviour
     [SerializeField] private int index;
 
 
-    public void SetNode()
+    public void SetNode(bool fromLoad = false)
     {
-        bool result = PassiveTree.instance.SetNode(index);
+        bool result = PassiveTree.instance.SetNode(index, fromLoad);
 
         if(result)
         {
@@ -41,7 +41,7 @@ public class PassiveButton : MonoBehaviour
     {
         int state = PassiveTree.instance.GetNodeState(index);
 
-        if (state == 3)
+        if (state == 2)
         {
             activeNodes.Add(index);
         }

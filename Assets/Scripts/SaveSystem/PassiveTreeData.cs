@@ -1,16 +1,18 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
 public class PassiveTreeData
 {
+    public int passivePoints;
+
     public int[] nodes;
     
 
     public PassiveTreeData(PassiveTreeUi tree)
     {
+        passivePoints = PassiveTree.instance.GetPassivePoints();
+        
         List<int> activeNodes = tree.GetListOfActiveNodes();
 
         nodes = new int[activeNodes.Count];
@@ -19,5 +21,6 @@ public class PassiveTreeData
         {
             nodes[i] = activeNodes[i];
         }
+
     }
 }

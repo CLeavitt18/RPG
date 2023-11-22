@@ -47,7 +47,7 @@ public static class SaveSystem
         }
     }
 
-    public static PlayerData LoadPlayer(string Path)
+    public static PlayerData LoadPlayer(string Path) 
     {
         if (File.Exists(Path))
         {
@@ -74,7 +74,6 @@ public static class SaveSystem
         path.Append(WorldStateTracker.Tracker.PlayerName);
         path.Append('/');
         path.Append(WorldStateTracker.Tracker.SaveProfile);
-        path.Append(GlobalValues.PlayerFolder);
         path.Append('/');
         path.Append(GlobalValues.PassTreeTag);
         path.Append(GlobalValues.TempExtension);
@@ -82,6 +81,36 @@ public static class SaveSystem
         File.WriteAllText(path.ToString(), Json);
 
         return true;
+    }
+
+    public static PassiveTreeData LoadPassiveTree()
+    {
+        StringBuilder path = new StringBuilder(Application.persistentDataPath);
+        path.Append('/');
+        path.Append(WorldStateTracker.Tracker.PlayerName);
+        path.Append('/');
+        path.Append(WorldStateTracker.Tracker.SaveProfile);
+        path.Append('/');
+        path.Append(GlobalValues.PassTreeTag);
+
+        if(Directory.Exists(path.ToString()) == false)
+        {
+            Directory.CreateDirectory(path.ToString());
+        }
+
+        path.Append(GlobalValues.SaveExtension);
+
+        if (File.Exists(path.ToString()))
+        {
+            string saveString = File.ReadAllText(path.ToString());
+            PassiveTreeData data = JsonUtility.FromJson<PassiveTreeData>(saveString);
+            return data;
+        }
+        else
+        {
+            //Debug.Log("Save file not found in " + Path);
+            return null;
+        }
     }
 
     public static void SaveWorld(WorldStateTracker World)
