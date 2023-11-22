@@ -1,6 +1,4 @@
 using System;
-using System.Net.Http.Headers;
-using Unity.Mathematics;
 using UnityEngine;
 
 [Serializable]

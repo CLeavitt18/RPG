@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,16 @@ public class PassiveButton : MonoBehaviour
         else if (index == 1) 
         {
             gameObject.GetComponent<Button>().enabled = true;
+        }
+    }
+
+    public void AddToActiveListForSaving(List<int> activeNodes)
+    {
+        int state = PassiveTree.instance.GetNodeState(index);
+
+        if (state == 3)
+        {
+            activeNodes.Add(index);
         }
     }
 }

@@ -191,6 +191,7 @@
     <Compile Include="Assets\Scripts\BaseClasses\Consumable.cs" />
     <Compile Include="Assets\Scripts\UI\RuneTableUI.cs" />
     <Compile Include="Assets\Scripts\UI\CraftingSlotAction.cs" />
+    <Compile Include="Assets\Scripts\SaveSystem\PassiveTreeData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Text;
+using System.Security.Policy;
 
 public static class SaveSystem
 {
@@ -61,6 +62,26 @@ public static class SaveSystem
             //Debug.Log("Save file not found in " + Path);
             return null;
         }
+    }
+
+    public static bool SavePassiveTree(PassiveTreeUi tree)
+    {
+        PassiveTreeData data = new PassiveTreeData(tree);
+
+        string Json = JsonUtility.ToJson(data, true);
+        StringBuilder path = new StringBuilder(Application.persistentDataPath);
+        path.Append('/');
+        path.Append(WorldStateTracker.Tracker.PlayerName);
+        path.Append('/');
+        path.Append(WorldStateTracker.Tracker.SaveProfile);
+        path.Append(GlobalValues.PlayerFolder);
+        path.Append('/');
+        path.Append(GlobalValues.PassTreeTag);
+        path.Append(GlobalValues.TempExtension);
+
+        File.WriteAllText(path.ToString(), Json);
+
+        return true;
     }
 
     public static void SaveWorld(WorldStateTracker World)
